@@ -1,0 +1,27 @@
+{
+  "name": "rpg-web-character-creator",
+  "version": "1.0.0",
+  "description": "An open source character generator and manager for RPGs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkyJedi/RPG-Web-Character-Creator.git"
+  },
+  "keywords": [
+    "RPG",
+    "FFG",
+    "Genesys",
+    "character",
+    "creator",
+    "web"
+  ],
+  "author": "SkyJedi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SkyJedi/RPG-Web-Character-Creator/issues"
+  },
+  "homepage": "https://github.com/SkyJedi/RPG-Web-Character-Creator#readme"
+}
