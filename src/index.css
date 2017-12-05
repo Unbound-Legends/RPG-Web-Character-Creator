@@ -1,0 +1,27 @@
+.login-box {
+  padding-top: 2em;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.textinput {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 15em;
+  height: 2em;
+  margin: 2px;
+  padding: 2px;
+  vertical-align: middle;
+  border: 1px solid #b7b7b7;
+  font: normal 17px/normal Tahoma, Geneva, sans-serif;
+  color: rgba(0,0,0,1);
+  background: rgba(252,252,252,1);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
