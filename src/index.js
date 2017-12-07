@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Channel from './channel';
+import Archetype from './pages/Archetype';
 import './index.css';
 import * as firebase from 'firebase';
 import config from './config';
-firebase.initializeApp(config.config);
+firebase.initializeApp(config);
 
 if (window.location.pathname !== '/') {
   var channel = window.location.pathname.slice(1).toLowerCase();
@@ -30,7 +31,7 @@ function setChanPage() {
 function startUp () {
   var webApp =
   <div>
-    <h1>BLANK PAGE</h1>
+    <Archetype />,
   </div>;
 
 ReactDOM.render(
