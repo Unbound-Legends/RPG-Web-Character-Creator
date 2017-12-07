@@ -39,11 +39,7 @@ class Archetype extends Component {
 
           <div>
             <b>Starting Skills:</b>
-            {Object.keys(this.state.selected.skills).map((skill)=>
-              <div key={skill}>
-                <p style={{textIndent: '1em'}}>{this.state.selected.skills[skill]} ranks in {skill} skill</p>
-              </div>
-            )}
+                <p style={{textIndent: '1em'}}>{this.state.selected.skills.description}</p>
           </div>
 
           <div>

@@ -8,7 +8,8 @@ const archetypes = {
     strainThreshold: 10,
     experience: 110,
     skills: {
-      any: 2
+      Any: 2,
+      description: 'One rank in two non-career skills.'
     },
     talents: {
       readyforanything: {
@@ -36,7 +37,8 @@ const archetypes = {
     strainThreshold: 8,
     experience: 100,
     skills: {
-      athletics: 1
+      Athletics: 1,
+      description: 'One rank in Athletics.'
     },
     talents: {
       toughasnails: {
@@ -64,7 +66,8 @@ const archetypes = {
     strainThreshold: 12,
     experience: 100,
     skills: {
-      knowledge: 1
+      Knowledge: 1,
+      description: 'One rank in Knowledge.'
     },
     talents: {
       brilliant: {
@@ -92,7 +95,8 @@ const archetypes = {
     strainThreshold: 10,
     experience: 100,
     skills: {
-      cool: 1
+      Cool: 1,
+      description: 'One rank in Cool.'
     },
     talents: {
       forcefulPersonality: {
@@ -120,7 +124,8 @@ const archetypes = {
     strainThreshold: 10,
     experience: 90,
     skills: {
-      perception: 1
+      Perception: 1,
+      description: 'One rank in Perception.'
     },
     talents: {
       nimble: {
@@ -144,7 +149,7 @@ const archetypes = {
   },
 
   dwarf: {
-    name: 'dwarf',
+    name: 'Dwarf',
     source: 'CRB page 142',
     description: 'See CRB, page 142, for more details.',
     setting: 'fantasy',
@@ -152,7 +157,8 @@ const archetypes = {
     strainThreshold: 10,
     experience: 90,
     skills: {
-      resilience: 1
+      Resilience: 1,
+      description: 'One rank in Resilience.'
     },
     talents: {
       darkvision: {
@@ -185,7 +191,8 @@ const archetypes = {
     strainThreshold: 8,
     experience: 100,
     skills: {
-      coercion: 1
+      Coercion: 1,
+      description: 'One rank in Coercion.'
     },
     talents: {
       battlerage: {
@@ -213,7 +220,8 @@ const archetypes = {
     strainThreshold: 8,
     experience: 100,
     skills: {
-      discipline: 1
+      Discipline: 1,
+      description: 'One rank in Discipline.'
     },
     talents: {
       thebeastwithin: {
@@ -246,7 +254,8 @@ const archetypes = {
     strainThreshold: 9,
     experience: 100,
     skills: {
-      coercion: 1
+      Coercion: 1,
+      description: 'One rank in Coercion.'
     },
     talents: {
       reanimated: {
@@ -310,11 +319,12 @@ const archetypes = {
     strainThreshold: 10,
     experience: 80,
     skills: {
-      any: 2
+      Any: 2,
+      description: '1 rank in 2 non-career skills.'
     },
     talents: {
       afaceinacrowd: {
-        name: 'A face in a Crowd',
+        name: 'A Face in a Crowd',
         source: 'CRB page 174',
         description: 'See CRB, page 174, for more details.',
       }
@@ -338,9 +348,10 @@ const archetypes = {
     strainThreshold: 8,
     experience: 70,
     skills: {
-      athletics: 1,
-      corrdination: 1,
-      resilience: 1
+      Athletics: 1,
+      Coordination: 1,
+      Resilience: 1,
+      description: 'One rank in Athletics, Coordination or Resilience.'
     },
     talents: {
       naturalweapons: {
@@ -367,8 +378,7 @@ const archetypes = {
     woundThreshold: 7,
     strainThreshold: 11,
     experience: 70,
-    skills: {
-    },
+    skills: {},
     talents: {
       mindreader: {
         name: 'Mind Reader',
@@ -406,7 +416,8 @@ const archetypes = {
     strainThreshold: 10,
     experience: 175,
     skills: {
-      careerSkills: 6
+      careerSkills: 6,
+      description: 'Choose 6 career skills.'
     },
     talents: {
       robot: {
@@ -444,7 +455,8 @@ const archetypes = {
     strainThreshold: 9,
     experience: 100,
     skills: {
-      knowledge: 1
+      Knowledge: 1,
+      description: 'One rank in Knowledge.'
     },
     talents: {
       spaceisourbirthright: {
