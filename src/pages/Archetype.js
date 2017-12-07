@@ -19,41 +19,31 @@ class Archetype extends Component {
   render() {
     return (
       <div className='module'>
-        <div>
-          <h2>Archetype:&nbsp;
-            <select ref='archetype' onChange={this.select.bind(this)}>
-              {Object.keys(archetypes).map((key)=>
-                <option id={key} key={key}>{archetypes[key].name}</option>
-              )}
-            </select>
-          </h2>
-        </div>
-
-        <div>
-          <b>Starting Stats: </b>
-          <br/>
-          <StatBlock path={ this.state.selected } />
-          <br/>
-          <div><b>Wound Threshold:</b>&nbsp;{this.state.selected.woundThreshold}&emsp;<b>Strain Threshold:</b>&nbsp;{this.state.selected.strainThreshold}&emsp;<b>Starting XP:</b>&nbsp;{this.state.selected.experience}&emsp;</div>
-          <br/>
-
-          <div>
-            <b>Starting Skills:</b>
-                <p style={{textIndent: '1em'}}>{this.state.selected.skills.description}</p>
-          </div>
-
-          <div>
-            <b>Starting Talents:</b>
-            {Object.keys(this.state.selected.talents).map((talent)=>
-              <div key={talent}>
-                <p style={{textIndent: '1em'}}><b>{this.state.selected.talents[talent].name}</b></p>
-                <p style={{textIndent: '1.2em'}}>{this.state.selected.talents[talent].description}</p>
-            </div>
+        <h2>Archetype:&nbsp;
+          <select ref='archetype' onChange={this.select.bind(this)}>
+            {Object.keys(archetypes).map((key)=>
+              <option id={key} key={key}>{archetypes[key].name}</option>
             )}
-          </div>
-
-          <div><b>Description:</b>&nbsp;{this.state.selected.description}</div>
+          </select>
+        </h2>
+        <p><b>Starting Stats: </b></p>
+        <StatBlock path={ this.state.selected } />
+        <p><b>Wound Threshold:</b>&nbsp;{this.state.selected.woundThreshold}&emsp;<b>Strain Threshold:</b>&nbsp;{this.state.selected.strainThreshold}&emsp;<b>Starting XP:</b>&nbsp;{this.state.selected.experience}&emsp;</p>
+        <div>
+          <b>Starting Skills:</b>
+              <p style={{textIndent: '1em'}}>{this.state.selected.skills.description}</p>
         </div>
+        <div>
+          <b>Starting Talents:</b>
+          {Object.keys(this.state.selected.talents).map((talent)=>
+            <div key={talent} style={{textIndent: '1em'}}>
+              <p><b>{this.state.selected.talents[talent].name}</b></p>
+              <p>{this.state.selected.talents[talent].description}</p>
+          </div>
+          )}
+        </div>
+
+        <div><b>Description:</b>&nbsp;{this.state.selected.description}</div>
       </div>
     );
   }
