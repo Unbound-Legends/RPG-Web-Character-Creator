@@ -43,6 +43,6 @@
 @media only screen
   and (max-width: 480px) {
     .module{
-      width: max-content;
+      width: auto;
     }
 }

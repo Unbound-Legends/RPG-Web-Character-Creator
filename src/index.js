@@ -29,10 +29,7 @@ function setChanPage() {
 }
 
 function startUp () {
-  var webApp =
-  <div>
-    <Archetype />,
-  </div>;
+  var webApp = <Archetype />;
 
 ReactDOM.render(
     webApp,
