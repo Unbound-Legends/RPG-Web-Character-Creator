@@ -8,7 +8,7 @@ class Archetype extends Component {
   constructor() {
       super();
       this.state = {
-        selected: archetypes.averageHuman,
+        selected: archetypes.AverageHuman,
       };
     }
 
@@ -30,8 +30,7 @@ class Archetype extends Component {
         <StatBlock path={ this.state.selected } />
         <p><b>Wound Threshold:</b>&nbsp;{this.state.selected.woundThreshold}&emsp;<b>Strain Threshold:</b>&nbsp;{this.state.selected.strainThreshold}&emsp;<b>Starting XP:</b>&nbsp;{this.state.selected.experience}&emsp;</p>
         <div>
-          <b>Starting Skills:</b>
-              <p style={{textIndent: '1em'}}>{this.state.selected.skills.description}</p>
+          <b>Starting Skills:</b><p style={{textIndent: '1em'}}>{this.state.selected.skills.description}</p>
         </div>
         <div>
           <b>Starting Talents:</b>
@@ -42,8 +41,8 @@ class Archetype extends Component {
           </div>
           )}
         </div>
-
-        <div><b>Description:</b>&nbsp;{this.state.selected.description}</div>
+        <p><b>Setting:</b>&nbsp;{this.state.selected.setting}</p>
+        <p><b>Description:</b>&nbsp;{this.state.selected.description}</p>
       </div>
     );
   }

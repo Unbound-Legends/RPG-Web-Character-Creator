@@ -18,6 +18,9 @@
   display: inline-block;
 }
 
+.statsblock {
+  display: inline-block;
+}
 .stats-box {
   margin: 4px;
   width: 6em;
@@ -29,13 +32,13 @@
 }
 
 .stats-top-box {
-  font-size: initial;
+  font-size: 1.3em;
   display: block;
   background: var(--orange);
 }
 
 .stats-bottom-box {
-  font-size: xx-large;
+  font-size: 3em;
   display: block;
   background: #f0f0f0;
 }
@@ -43,6 +46,6 @@
 @media only screen
   and (max-width: 480px) {
     .module{
-      width: auto;
+      width: 100vw;
     }
 }

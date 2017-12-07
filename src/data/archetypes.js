@@ -1,9 +1,9 @@
 const archetypes = {
-  averageHuman: {
+  AverageHuman: {
     name: 'Average Human',
     source: 'CRB page 36',
     description: 'See CRB, page 36, for more details.',
-    setting: 'all',
+    setting: 'All',
     woundThreshold: 10,
     strainThreshold: 10,
     experience: 110,
@@ -28,11 +28,11 @@ const archetypes = {
     }
   },
 
-  laborer: {
+  Laborer: {
     name: 'The Laborer',
     source: 'CRB page 37',
     description: 'See CRB, page 37, for more details.',
-    setting: 'all',
+    setting: 'All',
     woundThreshold: 12,
     strainThreshold: 8,
     experience: 100,
@@ -57,11 +57,11 @@ const archetypes = {
     }
   },
 
-  intellectual: {
+  Intellectual: {
     name: 'The Intellectual',
     source: 'CRB page 36',
     description: 'See CRB, page 36, for more details.',
-    setting: 'all',
+    setting: 'All',
     woundThreshold: 8,
     strainThreshold: 12,
     experience: 100,
@@ -86,11 +86,11 @@ const archetypes = {
     }
   },
 
-  aristocrat: {
+  Aristocrat: {
     name: 'The Aristocrat',
     source: 'CRB page 39',
     description: 'See CRB, page 39, for more details.',
-    setting: 'all',
+    setting: 'All',
     woundThreshold: 10,
     strainThreshold: 10,
     experience: 100,
@@ -115,7 +115,7 @@ const archetypes = {
     }
   },
 
-  elf: {
+  Elf: {
     name: 'Elf',
     source: 'CRB page 142',
     description: 'See CRB, page 142, for more details.',
@@ -148,7 +148,7 @@ const archetypes = {
     }
   },
 
-  dwarf: {
+  Dwarf: {
     name: 'Dwarf',
     source: 'CRB page 142',
     description: 'See CRB, page 142, for more details.',
@@ -182,7 +182,7 @@ const archetypes = {
     }
   },
 
-  orc: {
+  Orc: {
     name: 'Orc',
     source: 'CRB page 143',
     description: 'See CRB, page 143, for more details.',
@@ -211,7 +211,7 @@ const archetypes = {
     }
   },
 
-  mongrel: {
+  Mongrel: {
     name: 'Mongrel',
     source: 'CRB page 152',
     description: 'See CRB, page 152, for more details.',
@@ -245,7 +245,7 @@ const archetypes = {
     }
   },
 
-  revenant: {
+  Revenant: {
     name: 'Revenant',
     source: 'CRB page 152',
     description: 'See CRB, page 152, for more details.',
@@ -279,7 +279,7 @@ const archetypes = {
     }
   },
 
-  bioroid: {
+  Bioroid: {
     name: 'Bioroid',
     source: 'CRB page 174',
     description: 'See CRB, page 174, for more details.',
@@ -310,7 +310,7 @@ const archetypes = {
     }
   },
 
-  clone: {
+  Clone: {
     name: 'Clone',
     source: 'CRB page 174',
     description: 'See CRB, page 174, for more details.',
@@ -339,7 +339,7 @@ const archetypes = {
     }
   },
 
-  animalisticAlien: {
+  AnimalisticAlien: {
     name: 'Animalitic Alien',
     source: 'CRB page 182',
     description: 'See CRB, page 182, for more details.',
@@ -370,7 +370,7 @@ const archetypes = {
     }
   },
 
-  psionic: {
+  Psionic: {
     name: 'Psionic',
     source: 'CRB page 182',
     description: 'See CRB, page 182, for more details.',
@@ -407,7 +407,7 @@ const archetypes = {
     }
   },
 
-  robot: {
+  Robot: {
     name: 'Robot',
     source: 'CRB page 183',
     description: 'See CRB, page 183, for more details.',
@@ -446,7 +446,7 @@ const archetypes = {
     }
   },
 
-  vangaurd: {
+  Vangaurd: {
     name: 'Vangaurd',
     source: 'CRB page 183',
     description: 'See CRB, page 183, for more details.',

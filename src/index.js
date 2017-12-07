@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Channel from './channel';
 import Archetype from './pages/Archetype';
+import Career from './pages/Career';
 import './index.css';
 import * as firebase from 'firebase';
 import config from './config';
@@ -29,7 +30,7 @@ function setChanPage() {
 }
 
 function startUp () {
-  var webApp = <Archetype />;
+  var webApp = <Career />;
 
 ReactDOM.render(
     webApp,
