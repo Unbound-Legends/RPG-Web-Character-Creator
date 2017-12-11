@@ -12,25 +12,25 @@ class Career extends Component {
     }
 
   select() {
-    this.setState({selected: careers[this.refs.career.options[this.refs.career.selectedIndex].id]});
+    let career = careers[this.refs.career.options[this.refs.career.selectedIndex].id];
+    career.skills.sort();
+    this.setState({selected: career});
   }
 
 
   render(){
     return (
       <div className='module'>
-        <h2>Career:&nbsp;
-          <select ref='career' onChange={this.select.bind(this)}>
-            {Object.keys(careers).map((key)=>
-              <option id={key} key={key}>{careers[key].name}</option>
-            )}
-          </select>
-        </h2>
-        <li>
-        <lh>Career Skills:</lh>
-          {this.state.selected.skills.map((skill)=>
-        <ul key={skill}>{skill}</ul>
-      )}</li>
+        <select ref='career' onChange={this.select.bind(this)}>
+          {Object.keys(careers).map((key)=>
+            <option id={key} key={key}>{careers[key].name}</option>
+          )}
+        </select>
+        <h2>Career:&nbsp;<span className='title'>{this.state.selected.name}</span></h2>
+        <h3>Career Skills:</h3>
+        <ul>{this.state.selected.skills.map((skill)=>
+          <li key={skill}>{skill}</li>
+      )}</ul>
         <p><b>Setting:</b>&nbsp;{this.state.selected.setting}</p>
         <p><b>Description:</b>&nbsp;{this.state.selected.description}</p>
       </div>

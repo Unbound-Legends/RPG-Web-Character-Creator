@@ -19,16 +19,27 @@ class Archetype extends Component {
   render() {
     return (
       <div className='module'>
-        <h2>Archetype:&nbsp;
-          <select ref='archetype' onChange={this.select.bind(this)}>
-            {Object.keys(archetypes).map((key)=>
-              <option id={key} key={key}>{archetypes[key].name}</option>
-            )}
-          </select>
-        </h2>
+        <select ref='archetype' onChange={this.select.bind(this)}>
+          {Object.keys(archetypes).map((key)=>
+            <option id={key} key={key}>{archetypes[key].name}</option>
+          )}
+        </select>
+        <h2>Archetype:&nbsp;<span className='title'>{this.state.selected.name}</span></h2>
         <p><b>Starting Stats: </b></p>
         <StatBlock path={ this.state.selected } />
-        <p><b>Wound Threshold:</b>&nbsp;{this.state.selected.woundThreshold}&emsp;<b>Strain Threshold:</b>&nbsp;{this.state.selected.strainThreshold}&emsp;<b>Starting XP:</b>&nbsp;{this.state.selected.experience}&emsp;</p>
+        <div>
+          <div className='stats-box attrib-box'>
+            <div className='stats-top-box attrib-top-box'>Wounds</div>
+            <div className='stats-bottom-box attrib-bottom-box'>0 | {this.state.selected.woundThreshold}</div>
+          </div>
+          <div className='stats-box attrib-box'>
+            <div className='stats-top-box attrib-top-box'>Strain</div>
+            <div className='stats-bottom-box attrib-bottom-box'>0 | {this.state.selected.strainThreshold}</div>
+          </div>
+        </div>
+        <p><b>Starting XP:</b>&nbsp;{this.state.selected.experience}&emsp;</p>
+
+
         <div>
           <b>Starting Skills:</b><p style={{textIndent: '1em'}}>{this.state.selected.skills.description}</p>
         </div>

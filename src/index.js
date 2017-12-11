@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Channel from './channel';
-import Archetype from './pages/Archetype';
-import Career from './pages/Career';
-import './index.css';
 import * as firebase from 'firebase';
 import config from './config';
+import Channel from './channel';
+import './index.css';
+import Archetype from './pages/Archetype';
+import Career from './pages/Career';
+import Talent from './pages/Talent';
+
 firebase.initializeApp(config);
 
 if (window.location.pathname !== '/') {
