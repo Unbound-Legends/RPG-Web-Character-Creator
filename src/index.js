@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Popup from 'react-popup';
 import * as firebase from 'firebase';
 import config from './config';
 import Channel from './channel';
@@ -32,10 +33,14 @@ function setChanPage() {
 }
 
 function startUp () {
-  var webApp = <Career />;
+  var webApp = <Talent />;
 
 ReactDOM.render(
     webApp,
     document.getElementById('root')
   );
+ReactDOM.render(
+  <Popup />,
+  document.getElementById('popupContainer')
+);
 };

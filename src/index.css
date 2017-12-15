@@ -34,31 +34,57 @@ h3, ul {
   display: inline-block;
 }
 
-.stats-top-box {
+.stats-box-top {
   border: 0.1em black solid;
   border-top-left-radius: 0.3em;
   border-top-right-radius: 0.3em;
-  font-size: 1em;
+  padding: 0.5em;
+  font-size: 2vw;
   display: block;
   background: var(--orange);
 }
 
-.stats-bottom-box {
+.stats-box-bottom {
   border: 0.1em black solid;
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
-  font-size: 2em;
+  padding: 0.5em;
+  font-size: 2vw;
   display: block;
   background: #f0f0f0;
+}
+
+.talent-box {
+  width: 6.5em;
+  box-shadow: 5px 5px 1px var(--lightblue);
+  border-radius: 5px;
+}
+
+.talent-box-top{
+  background: var(--gray);
+}
+
+.talent-box-active {
+  background: var(--orange);
+}
+
+.talent-box-passive {
+  background: var(--lightblue);
+}
+.talent-box-bottom {
+}
+
+.talent-select {
+  width: 100%;
 }
 
 .attrib-box {
   width: 9em;
 }
 
-.attrib-top-box {
+.attrib-box-top {
 }
-.attrib-bottom-box {
+.attrib-box-bottom {
 }
 
 .title {

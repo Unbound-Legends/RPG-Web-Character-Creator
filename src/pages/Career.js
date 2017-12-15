@@ -7,7 +7,7 @@ class Career extends Component {
   constructor() {
       super();
       this.state = {
-        selected: careers.Entertainer,
+        selected: careers[Object.keys(careers)[0]],
       };
     }
 

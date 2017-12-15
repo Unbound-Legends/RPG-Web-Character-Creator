@@ -8,7 +8,7 @@ class Archetype extends Component {
   constructor() {
       super();
       this.state = {
-        selected: archetypes.AverageHuman,
+        selected: archetypes[Object.keys(archetypes)[0]],
       };
     }
 
@@ -29,12 +29,12 @@ class Archetype extends Component {
         <StatBlock path={ this.state.selected } />
         <div>
           <div className='stats-box attrib-box'>
-            <div className='stats-top-box attrib-top-box'>Wounds</div>
-            <div className='stats-bottom-box attrib-bottom-box'>0 | {this.state.selected.woundThreshold}</div>
+            <div className='stats-box-top attrib-box-top'>Wounds</div>
+            <div className='stats-box-bottom attrib-box-bottom'>0 | {this.state.selected.woundThreshold}</div>
           </div>
           <div className='stats-box attrib-box'>
-            <div className='stats-top-box attrib-top-box'>Strain</div>
-            <div className='stats-bottom-box attrib-bottom-box'>0 | {this.state.selected.strainThreshold}</div>
+            <div className='stats-box-top attrib-box-top'>Strain</div>
+            <div className='stats-box-bottom attrib-box-bottom'>0 | {this.state.selected.strainThreshold}</div>
           </div>
         </div>
         <p><b>Starting XP:</b>&nbsp;{this.state.selected.experience}&emsp;</p>
