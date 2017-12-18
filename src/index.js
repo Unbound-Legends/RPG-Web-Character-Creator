@@ -33,14 +33,16 @@ function setChanPage() {
 }
 
 function startUp () {
-  var webApp = <Talent />;
+  var webApp = (
+    <Talent />
+  );
 
-ReactDOM.render(
+  ReactDOM.render(
     webApp,
     document.getElementById('root')
   );
-ReactDOM.render(
-  <Popup />,
-  document.getElementById('popupContainer')
-);
+  ReactDOM.render(
+    <Popup />,
+    document.getElementById('popupContainer')
+  );
 };

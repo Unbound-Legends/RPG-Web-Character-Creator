@@ -8,8 +8,8 @@ class StatBlock extends Component {
       <div className='module'>
       {Object.keys(this.props.path.characteristics).map((stat)=>
         <div className='stats-box' key={stat}>
-          <div className='stats-top-box'>{stat}</div>
-          <div className='stats-bottom-box'>{this.props.path.characteristics[stat]}</div>
+          <div className='stats-box-top characteristic-box-top'>{stat}</div>
+          <div className='stats-box-bottom characteristic-box-bottom'>{this.props.path.characteristics[stat]}</div>
         </div>
       )}
       </div>

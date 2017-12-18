@@ -1,7 +1,7 @@
 :root {
-  --orange: #FD9F3D;
-  --lightblue: #7dd3f5;
-  --darkblue: #024f6b;
+  --orange: #F69337;
+  --lightblue: #1ABEEF;
+  --darkblue: #326DA1;
   --gray: #f7f5f2;
   --brown: #b3977b;
   --red: #e65247;
@@ -13,9 +13,9 @@ h3, ul {
 }
 
 .login-box {
-  padding-top: 2em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
+  padding-top: 2vw;
+  padding-left: 0.2vw;
+  padding-right: 0.2vw;
   text-align: center;
 }
 
@@ -28,34 +28,32 @@ h3, ul {
 }
 
 .stats-box {
-  margin: 0.2em;
-  width: 6em;
+  margin: 0.5vw;
+  width: 10vw;
+  font-size: 1.3vw;
   text-align: center;
   display: inline-block;
 }
 
 .stats-box-top {
-  border: 0.1em black solid;
-  border-top-left-radius: 0.3em;
-  border-top-right-radius: 0.3em;
-  padding: 0.5em;
-  font-size: 2vw;
+  border: 0.1vw black solid;
+  border-top-left-radius: 0.8vw;
+  border-top-right-radius: 0.8vw;
+  padding: 0.5vw;
   display: block;
   background: var(--orange);
 }
 
 .stats-box-bottom {
-  border: 0.1em black solid;
-  border-bottom-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-  padding: 0.5em;
-  font-size: 2vw;
+  border: 0.1vw black solid;
+  border-bottom-left-radius: 0.8vw;
+  border-bottom-right-radius: 0.8vw;
+  padding: 0.5vw;
   display: block;
   background: #f0f0f0;
 }
 
 .talent-box {
-  width: 6.5em;
   box-shadow: 5px 5px 1px var(--lightblue);
   border-radius: 5px;
 }
@@ -71,20 +69,34 @@ h3, ul {
 .talent-box-passive {
   background: var(--lightblue);
 }
+.talent-box-inactive {
+  background: var(--brown);
+}
 .talent-box-bottom {
 }
+.talent-row {
+  width: fit-content;
+}
 
-.talent-select {
+.popup-select {
   width: 100%;
 }
 
-.attrib-box {
-  width: 9em;
+.characteristic-box-top {
+  font-size: 2vw;
+}
+.characteristic-box-bottom {
+  font-size: 3vw;
 }
 
+.attrib-box {
+  width: 12vw;
+}
 .attrib-box-top {
+  font-size: 2vw;
 }
 .attrib-box-bottom {
+  font-size: 3vw;
 }
 
 .title {

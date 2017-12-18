@@ -22,7 +22,7 @@ class TalentBlock extends Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({talent: talents[nextProps.talentKey]});
-    this.activation(talents[nextProps.talentKey].activation);
+    this.activation(nextProps.talentKey);
   }
 
   select(key) {
@@ -31,8 +31,11 @@ class TalentBlock extends Component {
   }
 
   activation(key) {
-    if (key) this.setState({activation: 'stats-box-top talent-box-active'});
-    else this.setState({activation: 'stats-box-top talent-box-passive'});
+    if (talents[key] === undefined) this.setState({activation: 'stats-box-top talent-box-inactive'});
+    else {
+      if (talents[key].activation) this.setState({activation: 'stats-box-top talent-box-active'});
+      else this.setState({activation: 'stats-box-top talent-box-passive'});
+    }
   }
 
 
@@ -48,13 +51,14 @@ class TalentBlock extends Component {
 
   render() {
     return (
-
-          <div className='stats-box talent-box' key={this.state.talent.name} onClick={this.selectPopup.bind(this)}>
-            <div className={this.state.activation}>
-              <b>{this.state.talent.name}</b>
-            </div>
-            <div className='stats-box-bottom talent-box-bottom'>{this.state.talent.description}</div>
-          </div>
+      <div className='stats-box talent-box' onClick={this.selectPopup.bind(this)}>
+        <div className={this.state.activation}>
+          {this.state.talent &&
+            <b>{this.state.talent.name}</b>
+          }
+        </div>
+          <div className='stats-box-bottom talent-box-bottom'>{this.state.talent ? this.state.talent.description : 'Inactive'}</div>
+      </div>
     )
   }
 }
