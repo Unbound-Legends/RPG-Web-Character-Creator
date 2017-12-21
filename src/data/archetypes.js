@@ -1,7 +1,8 @@
 const archetypes = {
   AverageHuman: {
     name: 'Average Human',
-    source: 'CRB page 36',
+    book: 'CRB',
+    page: '36',
     description: 'See CRB, page 36, for more details.',
     setting: 'All',
     woundThreshold: 10,
@@ -14,7 +15,8 @@ const archetypes = {
     talents: {
       readyforanything: {
         name: 'Ready for Anything',
-        source: 'CRB page 36',
+        book: 'CRB',
+        page: '36',
         description: 'See CRB, page 36, for more details.',
       }
     },
@@ -30,7 +32,8 @@ const archetypes = {
 
   Laborer: {
     name: 'The Laborer',
-    source: 'CRB page 37',
+    book: 'CRB',
+    page: '37',
     description: 'See CRB, page 37, for more details.',
     setting: 'All',
     woundThreshold: 12,
@@ -43,7 +46,8 @@ const archetypes = {
     talents: {
       toughasnails: {
         name: 'Tough as Nails',
-        source: 'CRB page 37',
+        book: 'CRB',
+        page: '37',
         description: 'See CRB, page 37, for more details.',
       }
     },
@@ -59,8 +63,9 @@ const archetypes = {
 
   Intellectual: {
     name: 'The Intellectual',
-    source: 'CRB page 36',
-    description: 'See CRB, page 36, for more details.',
+    book: 'CRB',
+    page: '38',
+    description: 'See CRB, page 38, for more details.',
     setting: 'All',
     woundThreshold: 8,
     strainThreshold: 12,
@@ -72,7 +77,8 @@ const archetypes = {
     talents: {
       brilliant: {
         name: 'Brilliant!',
-        source: 'CRB page 38',
+        book: 'CRB',
+        page: '38',
         description: 'See CRB, page 38, for more details.',
       }
     },
@@ -88,7 +94,8 @@ const archetypes = {
 
   Aristocrat: {
     name: 'The Aristocrat',
-    source: 'CRB page 39',
+    book: 'CRB',
+    page: '39',
     description: 'See CRB, page 39, for more details.',
     setting: 'All',
     woundThreshold: 10,
@@ -101,7 +108,8 @@ const archetypes = {
     talents: {
       forcefulPersonality: {
         name: 'Forceful Personality',
-        source: 'CRB page 39',
+        book: 'CRB',
+        page: '39',
         description: 'See CRB, page 39, for more details.',
       }
     },
@@ -117,7 +125,8 @@ const archetypes = {
 
   Elf: {
     name: 'Elf',
-    source: 'CRB page 142',
+    book: 'CRB',
+    page: '142',
     description: 'See CRB, page 142, for more details.',
     setting: 'Fantasy',
     woundThreshold: 9,
@@ -134,7 +143,8 @@ const archetypes = {
           rangedDefense: 1
         },
         name: 'Nimble',
-        source: 'CRB page 142',
+        book: 'CRB',
+        page: '142',
         description: 'See CRB, page 142, for more details.',
       }
     },
@@ -150,7 +160,8 @@ const archetypes = {
 
   Dwarf: {
     name: 'Dwarf',
-    source: 'CRB page 142',
+    book: 'CRB',
+    page:  '142',
     description: 'See CRB, page 142, for more details.',
     setting: 'Fantasy',
     woundThreshold: 11,
@@ -163,12 +174,13 @@ const archetypes = {
     talents: {
       darkvision: {
         name: 'Dark Vision',
-        source: 'CRB page 142',
+        book: 'CRB',
+        page: '142',
         description: 'See CRB, page 142, for more details.',
       },
       toughasnails: {
         name: 'Tough as Nails',
-        source: 'CRB page 37',
+        book: 'CRB', page: '37',
         description: 'See CRB, page 37, for more details.',
       }
     },
@@ -184,7 +196,8 @@ const archetypes = {
 
   Orc: {
     name: 'Orc',
-    source: 'CRB page 143',
+    book: 'CRB',
+    page: '143',
     description: 'See CRB, page 143, for more details.',
     setting: 'Fantasy',
     woundThreshold: 12,
@@ -197,7 +210,8 @@ const archetypes = {
     talents: {
       battlerage: {
         name: 'Battle Rage',
-        source: 'CRB page 143',
+        book: 'CRB',
+        page: '143',
         description: 'See CRB, page 143, for more details.',
       }
     },
@@ -213,7 +227,8 @@ const archetypes = {
 
   Mongrel: {
     name: 'Mongrel',
-    source: 'CRB page 152',
+    book: 'CRB',
+    page: '152',
     description: 'See CRB, page 152, for more details.',
     setting: 'Steampunk',
     woundThreshold: 10,
@@ -226,12 +241,14 @@ const archetypes = {
     talents: {
       thebeastwithin: {
         name: 'The Beast Within',
-        source: 'CRB page 152',
+        book: 'CRB',
+        page: '152',
         description: 'See CRB, page 152, for more details.',
       },
       thehumanspirt: {
         name: 'The Human Spirit',
-        source: 'CRB page 152',
+        book: 'CRB',
+        page: '152',
         description: 'See CRB, page 152, for more details.',
       }
     },
@@ -247,7 +264,8 @@ const archetypes = {
 
   Revenant: {
     name: 'Revenant',
-    source: 'CRB page 152',
+    book: 'CRB',
+    page: '152',
     description: 'See CRB, page 152, for more details.',
     setting: 'Steampunk',
     woundThreshold: 11,
@@ -260,12 +278,14 @@ const archetypes = {
     talents: {
       reanimated: {
         name: 'Reanimated',
-        source: 'CRB page 153',
+        book: 'CRB',
+        page: '153',
         description: 'See CRB, page 153, for more details.',
       },
       deadnerves: {
         name: 'Dead Nerves',
-        source: 'CRB page 153',
+        book: 'CRB',
+        page: '153',
         description: 'See CRB, page 153, for more details.',
       }
     },
@@ -281,7 +301,8 @@ const archetypes = {
 
   Bioroid: {
     name: 'Bioroid',
-    source: 'CRB page 174',
+    book: 'CRB',
+    page: '174',
     description: 'See CRB, page 174, for more details.',
     setting: 'Science Fiction',
     woundThreshold: 11,
@@ -291,12 +312,14 @@ const archetypes = {
     talents: {
       robot: {
         name: 'Robot',
-        source: 'CRB page 174',
+        book: 'CRB',
+        page: '174',
         description: 'See CRB, page 174, for more details.',
       },
       inorganic: {
         name: 'Inorganic',
-        source: 'CRB page 174',
+        book: 'CRB',
+        page: '174',
         description: 'See CRB, page 174, for more details.',
       }
     },
@@ -312,7 +335,8 @@ const archetypes = {
 
   Clone: {
     name: 'Clone',
-    source: 'CRB page 174',
+    book: 'CRB',
+    page: '174',
     description: 'See CRB, page 174, for more details.',
     setting: 'Science Fiction',
     woundThreshold: 11,
@@ -325,7 +349,8 @@ const archetypes = {
     talents: {
       afaceinacrowd: {
         name: 'A Face in a Crowd',
-        source: 'CRB page 174',
+        book: 'CRB',
+        page: '174',
         description: 'See CRB, page 174, for more details.',
       }
     },
@@ -341,7 +366,8 @@ const archetypes = {
 
   AnimalisticAlien: {
     name: 'Animalistic Alien',
-    source: 'CRB page 182',
+    book: 'CRB',
+    page: '182',
     description: 'See CRB, page 182, for more details.',
     setting: 'Space Opera',
     woundThreshold: 10,
@@ -356,7 +382,8 @@ const archetypes = {
     talents: {
       naturalweapons: {
         name: 'Natural Weapons',
-        source: 'CRB page 182',
+        book: 'CRB',
+        page: '182',
         description: 'See CRB, page 182, for more details.',
       }
     },
@@ -372,7 +399,8 @@ const archetypes = {
 
   Psionic: {
     name: 'Psionic',
-    source: 'CRB page 182',
+    book: 'CRB',
+    page: '182',
     description: 'See CRB, page 182, for more details.',
     setting: 'Space Opera',
     woundThreshold: 7,
@@ -382,17 +410,20 @@ const archetypes = {
     talents: {
       mindreader: {
         name: 'Mind Reader',
-        source: 'CRB page 182',
+        book: 'CRB',
+        page: '182',
         description: 'See CRB, page 182, for more details.',
       },
       mindshaper: {
         name: 'Mind Shaper',
-        source: 'CRB page 182',
+        book: 'CRB',
+        page: '182',
         description: 'See CRB, page 182, for more details.',
       },
       mindbreaker: {
         name: 'Mind Breaker',
-        source: 'CRB page 182',
+        book: 'CRB',
+        page: '182',
         description: 'See CRB, page 182, for more details.',
       },
 
@@ -409,7 +440,8 @@ const archetypes = {
 
   Robot: {
     name: 'Robot',
-    source: 'CRB page 183',
+    book: 'CRB',
+    page: '183',
     description: 'See CRB, page 183, for more details.',
     setting: 'Space Opera',
     woundThreshold: 10,
@@ -422,17 +454,20 @@ const archetypes = {
     talents: {
       robot: {
         name: 'Robot',
-        source: 'CRB page 174',
+        book: 'CRB',
+        page: '174',
         description: 'See CRB, page 174, for more details.',
       },
       networkedintelligence: {
         name: 'Networked Intelligence',
-        source: 'CRB page 183',
+        book: 'CRB',
+        page: '183',
         description: 'See CRB, page 183, for more details.',
       },
       inorganic: {
         name: 'Inorganic',
-        source: 'CRB page 174',
+        book: 'CRB',
+        page: '174',
         description: 'See CRB, page 174, for more details.',
       }
     },
@@ -448,7 +483,8 @@ const archetypes = {
 
   Vangaurd: {
     name: 'Vangaurd',
-    source: 'CRB page 183',
+    book: 'CRB',
+    page: '183',
     description: 'See CRB, page 183, for more details.',
     setting: 'Space Opera',
     woundThreshold: 9,
@@ -461,7 +497,8 @@ const archetypes = {
     talents: {
       spaceisourbirthright: {
         name: 'Space is our Birth Right',
-        source: 'CRB page 183',
+        book: 'CRB',
+        page: '183',
         description: 'See CRB, page 183, for more details.',
       },
       hightechbaubles: {

@@ -6,6 +6,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '72',
     description: 'See CRB, page 72, for more details.'
   },
   CleverRetort: {
@@ -15,6 +17,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   DefensiveSysops: {
@@ -22,8 +26,10 @@ const talents = {
     setting: 'Modern Day, Science Fiction, Space Opera',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   DesperateRecovery: {
@@ -31,8 +37,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   Duelist: {
@@ -40,8 +48,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   Durable: {
@@ -49,8 +59,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   Forager: {
@@ -58,8 +70,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   Grit: {
@@ -67,8 +81,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   HamstringShot: {
@@ -78,6 +94,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   JumpUp: {
@@ -87,6 +105,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   KnackForIt: {
@@ -94,8 +114,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '73',
     description: 'See CRB, page 73, for more details.'
   },
   KnowSomebody: {
@@ -105,6 +127,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   LetsRide: {
@@ -114,6 +138,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   OneWithNature: {
@@ -123,6 +149,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   Parry: {
@@ -132,6 +160,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   ProperUpbringing: {
@@ -141,6 +171,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   Quickdraw: {
@@ -150,6 +182,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   QuickStrike: {
@@ -157,8 +191,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   RapidReaction: {
@@ -168,6 +204,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out if Turn',
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   SecondWind: {
@@ -177,6 +215,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   Surgeon: {
@@ -184,8 +224,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '74',
     description: 'See CRB, page 74, for more details.'
   },
   Swift: {
@@ -193,8 +235,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   Toughened: {
@@ -202,8 +246,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   Unremarkable: {
@@ -211,8 +257,10 @@ const talents = {
     setting: 'All',
     tier: 1,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   BasicMilitaryTraining: {
@@ -220,8 +268,10 @@ const talents = {
     setting: 'Weird War',
     tier: 2,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   Berserk: {
@@ -231,6 +281,8 @@ const talents = {
     activation: true,
     turn: 'Maneuver',
     ranked: false,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   CoordinatedAssault: {
@@ -240,6 +292,8 @@ const talents = {
     activation: true,
     turn: 'Maneuver',
     ranked: true,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   Counteroffer: {
@@ -249,6 +303,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   DaringAviator: {
@@ -258,6 +314,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: true,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   DefensiveStance: {
@@ -267,6 +325,8 @@ const talents = {
     activation: true,
     turn: 'Maneuver',
     ranked: true,
+    book: 'CRB',
+    page: '75',
     description: 'See CRB, page 75, for more details.'
   },
   DefensiveSysopsImproved: {
@@ -276,6 +336,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   DualWielder: {
@@ -285,6 +347,8 @@ const talents = {
     activation: true,
     turn: 'Maneuver',
     ranked: false,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   FanTheHammer: {
@@ -294,6 +358,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   HeightenedAwareness: {
@@ -301,8 +367,10 @@ const talents = {
     setting: 'All',
     tier: 2,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   InspiringRhetoric: {
@@ -312,6 +380,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   Inventor: {
@@ -321,6 +391,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: true,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   LuckyStrike: {
@@ -330,6 +402,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '76',
     description: 'See CRB, page 76, for more details.'
   },
   ScathingTirade: {
@@ -339,6 +413,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '77',
     description: 'See CRB, page 77, for more details.'
   },
   SideStep: {
@@ -348,6 +424,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: true,
+    book: 'CRB',
+    page: '77',
     description: 'See CRB, page 77, for more details.'
   },
   AnimalCompanion: {
@@ -355,8 +433,10 @@ const talents = {
     setting: 'All',
     tier: 3,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '77',
     description: 'See CRB, page 77, for more details.'
   },
   BarrellRoll: {
@@ -366,6 +446,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: false,
+    book: 'CRB',
+    page: '77',
     description: 'See CRB, page 77, for more details.'
   },
   DistintiveStyle: {
@@ -375,6 +457,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   Dodge: {
@@ -384,6 +468,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: true,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   EagleEyes: {
@@ -393,6 +479,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   FieldCommander: {
@@ -402,6 +490,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   ForgotToCount: {
@@ -411,6 +501,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: false,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   FullThrottle: {
@@ -420,6 +512,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   Grenadier: {
@@ -429,6 +523,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: true,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   InspiringRhetoricImproved: {
@@ -436,8 +532,10 @@ const talents = {
     setting: 'All',
     tier: 3,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '78',
     description: 'See CRB, page 78, for more details.'
   },
   PainkillerSpecialization: {
@@ -445,8 +543,10 @@ const talents = {
     setting: 'All',
     tier: 3,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   ScathingTiradeImproved: {
@@ -454,8 +554,10 @@ const talents = {
     setting: 'All',
     tier: 3,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   HeroicWill: {
@@ -465,6 +567,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   Natural: {
@@ -474,6 +578,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   RapidArchery: {
@@ -483,6 +589,8 @@ const talents = {
     activation: true,
     turn: 'Maneuver',
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   ParryImproved: {
@@ -492,6 +600,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   CantWeTalkAboutThis: {
@@ -501,6 +611,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   Deadeye: {
@@ -510,6 +622,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '79',
     description: 'See CRB, page 79, for more details.'
   },
   Defensive: {
@@ -517,8 +631,10 @@ const talents = {
     setting: 'All',
     tier: 4,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   DefensiveDriving: {
@@ -526,8 +642,10 @@ const talents = {
     setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
     tier: 4,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   Enduring: {
@@ -535,8 +653,10 @@ const talents = {
     setting: 'All',
     tier: 4,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   FieldCommanderImproved: {
@@ -544,8 +664,10 @@ const talents = {
     setting: 'All',
     tier: 4,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: false,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   HowConvenient: {
@@ -555,6 +677,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   InspiringRhetoricSupreme: {
@@ -564,6 +688,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   MadInventor: {
@@ -573,6 +699,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   Overcharge: {
@@ -582,6 +710,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '80',
     description: 'See CRB, page 80, for more details.'
   },
   ScathingTiradeSupreme: {
@@ -591,6 +721,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '81',
     description: 'See CRB, page 81, for more details.'
   },
   Dedication: {
@@ -598,8 +730,10 @@ const talents = {
     setting: 'All',
     tier: 5,
     activation: false,
-    turn: '',
+    turn: false,
     ranked: true,
+    book: 'CRB',
+    page: '81',
     description: 'See CRB, page 81, for more details.'
   },
   Indomitable: {
@@ -609,6 +743,8 @@ const talents = {
     activation: true,
     turn: 'Incidental, Out of Turn',
     ranked: false,
+    book: 'CRB',
+    page: '81',
     description: 'See CRB, page 81, for more details.'
   },
   Master: {
@@ -618,6 +754,8 @@ const talents = {
     activation: true,
     turn: 'Incidental',
     ranked: false,
+    book: 'CRB',
+    page: '81',
     description: 'See CRB, page 81, for more details.'
   },
   OverchargeImproved: {
@@ -627,6 +765,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '81',
     description: 'See CRB, page 81, for more details.'
   },
   RuinousRepartee: {
@@ -636,6 +776,8 @@ const talents = {
     activation: true,
     turn: 'Action',
     ranked: false,
+    book: 'CRB',
+    page: '81',
     description: 'See CRB, page 81, for more details.'
   }
 }

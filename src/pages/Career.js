@@ -1,43 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../index.css';
 import careers from '../data/careers';
 
-class Career extends Component {
-
-  constructor() {
-      super();
-      this.state = {
-        selected: careers[Object.keys(careers)[0]],
-      };
-    }
-
-  select() {
-    let career = careers[this.refs.career.options[this.refs.career.selectedIndex].id];
+export default class Career extends React.Component {
+  state = {selected: careers[Object.keys(careers)[0]]};
+  
+  select = (event) => {
+    let career = careers[event.target.value];
     career.skills.sort();
     this.setState({selected: career});
   }
 
-
   render(){
+    const {selected} = this.state;
     return (
       <div className='module'>
-        <select ref='career' onChange={this.select.bind(this)}>
+        <select ref='career' onChange={this.select}>
           {Object.keys(careers).map((key)=>
-            <option id={key} key={key}>{careers[key].name}</option>
+            <option value={key} key={key}>{careers[key].name}</option>
           )}
         </select>
-        <h2>Career:&nbsp;<span className='title'>{this.state.selected.name}</span></h2>
+        <h2>Career:&nbsp;<span className='title'>{selected.name}</span></h2>
         <h3>Career Skills:</h3>
-        <ul>{this.state.selected.skills.map((skill)=>
+        <ul>{selected.skills.map((skill)=>
           <li key={skill}>{skill}</li>
       )}</ul>
-        <p><b>Setting:</b>&nbsp;{this.state.selected.setting}</p>
-        <p><b>Description:</b>&nbsp;{this.state.selected.description}</p>
+        <p><b>Setting:</b>&nbsp;{selected.setting}</p>
+        <p><b>Description:</b>&nbsp;{selected.description}</p>
       </div>
-
     );
   }
-
 }
-
-export default Career;

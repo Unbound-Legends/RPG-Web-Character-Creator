@@ -12,6 +12,10 @@ h3, ul {
   margin: unset;
 }
 
+button, input {
+  margin: 0 1vw 0 0;
+}
+
 .login-box {
   padding-top: 2vw;
   padding-left: 0.2vw;
@@ -23,8 +27,8 @@ h3, ul {
   display: inline-block;
 }
 
-.statsblock {
-  display: inline-block;
+.block {
+  display: block;
 }
 
 .stats-box {
@@ -62,14 +66,14 @@ h3, ul {
   background: var(--gray);
 }
 
-.talent-box-active {
+.talent-box-top-active {
   background: var(--orange);
 }
 
-.talent-box-passive {
+.talent-box-top-passive {
   background: var(--lightblue);
 }
-.talent-box-inactive {
+.talent-box-top-inactive {
   background: var(--brown);
 }
 .talent-box-bottom {
@@ -79,7 +83,7 @@ h3, ul {
 }
 
 .popup-select {
-  width: 100%;
+  width: fit-content;
 }
 
 .characteristic-box-top {

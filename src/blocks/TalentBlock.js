@@ -1,22 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import popup from 'react-popup';
 import Selection from '../blocks/Selection';
+import StatBlock from '../blocks/StatBlock';
 import talents from '../data/talents';
 import '../index.css';
 import '../popup.css';
 
-
-class TalentBlock extends Component {
-  constructor() {
-      super();
-      this.state = {
-        activation: '',
-        talent: {},
-      };
-    }
+export default class TalentBlock extends React.Component {
+  state = {activation: '', talent: talents[this.props.talentKey]};
 
   componentDidMount() {
-    this.setState({talent: talents[this.props.talentKey]});
     this.activation(this.props.talentKey);
   }
 
@@ -25,41 +18,38 @@ class TalentBlock extends Component {
     this.activation(nextProps.talentKey);
   }
 
-  select(key) {
+  select = (key) => {
     this.props.submit(key);
     popup.close();
   }
 
-  activation(key) {
-    if (talents[key] === undefined) this.setState({activation: 'stats-box-top talent-box-inactive'});
+  activation = (key) => {
+    if (talents[key] === undefined) this.setState({activation: 'inactive'});
     else {
-      if (talents[key].activation) this.setState({activation: 'stats-box-top talent-box-active'});
-      else this.setState({activation: 'stats-box-top talent-box-passive'});
+      if (talents[key].activation) this.setState({activation: 'active'});
+      else this.setState({activation: 'passive'});
     }
   }
 
-
-  selectPopup() {
+  selectPopup = () => {
     popup.create({
       title: 'Talent',
       className: 'alert',
       content: (
-        <Selection data={talents} value={this.props.talentKey} submit={this.select.bind(this)}/>
+        <Selection data={talents} value={this.props.talentKey} submit={this.select}/>
       ),
     })
   }
 
   render() {
+    const {talent, activation} = this.state;
+
     return (
-      <div className='stats-box talent-box' onClick={this.selectPopup.bind(this)}>
-        <div className={this.state.activation}>
-          {this.state.talent &&
-            <b>{this.state.talent.name}</b>
-          }
-        </div>
-          <div className='stats-box-bottom talent-box-bottom'>{this.state.talent ? this.state.talent.description : 'Inactive'}</div>
-      </div>
+      <StatBlock  onClick={this.selectPopup}
+                  textTop={talent &&<b>{talent.name}</b>}
+                  textBottom={talent ? talent.description : 'inactive'}
+                  block='talent'
+                  topMod={activation} />
     )
   }
 }
-export default TalentBlock;

@@ -33,12 +33,8 @@ function setChanPage() {
 }
 
 function startUp () {
-  var webApp = (
-    <Talent />
-  );
-
   ReactDOM.render(
-    webApp,
+    <Talent />,
     document.getElementById('root')
   );
   ReactDOM.render(
