@@ -31,13 +31,36 @@ export default class TalentBlock extends React.Component {
     }
   }
 
+  makeList = (cb) => {
+    const {tier, masterTalents} = this.props;
+    let count = {};
+    let options = [];
+    Object.keys(masterTalents).forEach((row)=>{
+      Object.keys(masterTalents[row]).forEach((tier)=>{
+        let talent = masterTalents[row][tier];
+        if (talent !== '') count[talent] = count[talent] ? count[talent]+1 : 1;
+      })
+    })
+    Object.keys(talents).forEach((key)=>{
+      //talent from this tier and has not been selected already
+      if (tier===talents[key].tier && !count[key]) options.push(key);
+      //talent is ranked and has been selected enough for this tier
+      if (talents[key].ranked && ((talents[key].tier+count[key])===tier)) options.push(key);
+    })
+
+    options.sort();
+    cb(options);
+  }
+
   selectPopup = () => {
-    popup.create({
-      title: 'Talent',
-      className: 'alert',
-      content: (
-        <Selection data={talents} value={this.props.talentKey} submit={this.select}/>
-      ),
+    this.makeList((options) => {
+      popup.create({
+        title: 'Talent',
+        className: 'alert',
+        content: (
+          <Selection options={options} data={talents} value={this.props.talentKey} submit={this.select}/>
+        ),
+      })
     })
   }
 

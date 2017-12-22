@@ -5,7 +5,7 @@ export default class Selection extends React.Component {
   state = {value: this.props.value};
 
   componentDidMount() {
-    if (this.props.value === '') this.setState({value: Object.keys(this.props.data)[0]});
+    if (this.props.value == '') this.setState({value: Object.keys(this.props.options)[0]});
   }
 
   handleChange = (event) => {
@@ -24,13 +24,13 @@ export default class Selection extends React.Component {
 
   render() {
     const {value} = this.state;
-    const {data} = this.props;
+    const {data, options} = this.props;
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
         <select value={value} className='popup-select' onChange={this.handleChange}>
         <option key='' value=''></option>
-        {Object.keys(data).map((key)=>
+        {options.map((key)=>
           <option value={key} key={key}>{data[key].name}</option>
         )}
         </select>
@@ -46,8 +46,10 @@ export default class Selection extends React.Component {
             <p><b>Description:</b> {data[value].description}</p>
           </div>
         }
-        <input type='submit' value='Submit' />
-        <button value='Clear' onClick={this.handleClear}>Clear</button>
+        <div>
+          <input type='submit' value='Submit' />
+          <button value='Clear' onClick={this.handleClear}>Clear</button>
+        </div>
       </form>
 
 

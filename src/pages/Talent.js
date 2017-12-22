@@ -15,10 +15,6 @@ export default class Talents extends React.Component {
 
     if (+tier===1) masterTalents[+row+1]={1:''};
 
-    if (masterTalents[row][tier].description === '') {
-      masterTalents[row][tier].description = `See ${masterTalents[row][tier].book}, page ${masterTalents[row][tier].page}, for more details.`
-    }
-
     this.setState({masterTalents: masterTalents})
   }
 
