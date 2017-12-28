@@ -30,7 +30,7 @@ export default class TalentBlock extends React.Component {
   }
 
   makeOptions = (cb) => {
-    const {tier, count} = this.props;
+    const {tier, row, count, masterTalents} = this.props;
       let options = [];
       Object.keys(talents).forEach((key)=>{
         //checked to make surre the improved and supreme talensts aren't selected first
@@ -44,6 +44,8 @@ export default class TalentBlock extends React.Component {
         else if (tier===talents[key].tier && !count[key]) options.push(key);
         //talent is ranked and has been selected enough for this tier
         else if (talents[key].ranked && ((talents[key].tier+count[key])===tier)) options.push(key);
+        console.log(masterTalents[row][tier]);
+        if (masterTalents[row][tier]!=='') options.push(masterTalents[row][tier]);
       })
 
       options.sort();
