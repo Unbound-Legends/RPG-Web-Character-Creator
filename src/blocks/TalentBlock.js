@@ -24,36 +24,34 @@ export default class TalentBlock extends React.Component {
   }
 
   activation = (key) => {
-    if (talents[key] === undefined) this.setState({activation: 'inactive'});
-    else {
-      if (talents[key].activation) this.setState({activation: 'active'});
-      else this.setState({activation: 'passive'});
-    }
+    talents[key] ?
+    talents[key].activation ? this.setState({activation: 'active'}) : this.setState({activation: 'passive'}) :
+    this.setState({activation: 'inactive'})
   }
 
-  makeList = (cb) => {
-    const {tier, masterTalents} = this.props;
-    let count = {};
-    let options = [];
-    Object.keys(masterTalents).forEach((row)=>{
-      Object.keys(masterTalents[row]).forEach((tier)=>{
-        let talent = masterTalents[row][tier];
-        if (talent !== '') count[talent] = count[talent] ? count[talent]+1 : 1;
+  makeOptions = (cb) => {
+    const {tier, count} = this.props;
+      let options = [];
+      Object.keys(talents).forEach((key)=>{
+        //checked to make surre the improved and supreme talensts aren't selected first
+        if (key.includes('Improved') || key.includes('Supreme')) {
+          if ((key.includes('Improved') && count[key.slice(0, -8)]) ||
+              (key.includes('Supreme') && count[key.slice(0, -7)])) {
+              if (tier===talents[key].tier && !count[key]) options.push(key);
+          }
+        }
+        //talent from this tier and has not been selected already
+        else if (tier===talents[key].tier && !count[key]) options.push(key);
+        //talent is ranked and has been selected enough for this tier
+        else if (talents[key].ranked && ((talents[key].tier+count[key])===tier)) options.push(key);
       })
-    })
-    Object.keys(talents).forEach((key)=>{
-      //talent from this tier and has not been selected already
-      if (tier===talents[key].tier && !count[key]) options.push(key);
-      //talent is ranked and has been selected enough for this tier
-      if (talents[key].ranked && ((talents[key].tier+count[key])===tier)) options.push(key);
-    })
 
-    options.sort();
-    cb(options);
+      options.sort();
+      cb(options);
   }
 
   selectPopup = () => {
-    this.makeList((options) => {
+    this.makeOptions((options) => {
       popup.create({
         title: 'Talent',
         className: 'alert',
@@ -69,8 +67,8 @@ export default class TalentBlock extends React.Component {
 
     return (
       <StatBlock  onClick={this.selectPopup}
-                  textTop={talent &&<b>{talent.name}</b>}
-                  textBottom={talent ? talent.description : 'inactive'}
+                  textTop={talent && talent.name}
+                  textBottom={(talent ? talent.description+'\n'+(talent.activation ? talent.turn : '') : 'inactive')}
                   block='talent'
                   topMod={activation} />
     )

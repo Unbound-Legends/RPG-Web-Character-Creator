@@ -20,9 +20,11 @@
     "url": "https://github.com/SkyJedi/RPG-Web-Character-Creator/issues"
   },
   "dependencies": {
-    "firebase": "^4.7.0",
+    "firebase": "^4.8.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-dynamic-font": "^1.0.1",
+    "react-fittext": "^1.0.0",
     "react-popup": "^0.8.0",
     "react-scripts": "^1.0.17"
   },

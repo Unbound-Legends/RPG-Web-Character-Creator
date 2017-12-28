@@ -1,33 +1,74 @@
 import React from 'react';
+import popup from 'react-popup';
 import TalentBlock from '../blocks/TalentBlock';
+import talents from '../data/talents';
 import '../index.css';
 
 export default class Talents extends React.Component {
-  state = {masterTalents: {1:{1:''}}};
+  state = {masterTalents: {1:{1:''}}, count: {}};
+
 
   select(row, tier, key) {
-    let masterTalents = Object.assign({}, this.state.masterTalents);
+    row=+row;
+    tier=+tier;
+    let masterTalents = this.state.masterTalents;
     masterTalents[row][tier] = key;
 
-    if (+row===+tier || +tier===5) {
-      if (masterTalents[+row+1] === undefined) masterTalents[+row+1]={1:''};
-    } else masterTalents[row][+tier+1]='';
+    //if the new talents isn't blank make a new empty block
+    if (key !== '0'){
+      if (row===tier || tier===5) if (masterTalents[row+1]===undefined) masterTalents[row+1]={1:''};
+      if (tier===1) masterTalents[row+1]={1:''};
+      if (row>tier) masterTalents[row][tier+1]='';
+    }
+    this.setState({masterTalents: masterTalents}, () => this.makeCount());
+  }
 
-    if (+tier===1) masterTalents[+row+1]={1:''};
+  makeCount = () => {
+    const {masterTalents} = this.state;
+    let count = {};
+    Object.keys(masterTalents).forEach((row)=>{
+      Object.keys(masterTalents[row]).forEach((tier)=>{
+        let talent = masterTalents[row][tier];
+        if(talent!=='') count[talent] = count[talent] ? count[talent]+1 : 1;
+      })
+    })
+    this.setState({count: count})
+  }
 
-    this.setState({masterTalents: masterTalents})
+  countXP = () => {
+    const {masterTalents} = this.state;
+    let xp = 0;
+    Object.keys(masterTalents).forEach((row)=>{
+      Object.keys(masterTalents[row]).forEach((tier)=>{
+        if (masterTalents[row][tier] !== '') xp = xp+(5*tier);
+      })
+    })
+    return xp;
+  }
+
+  popupList = () => {
+    const {count} = this.state;
+    popup.create({
+      title: 'Talents',
+      className: 'alert',
+      content: (
+        <div>{Object.keys(count).sort().map((key)=><p className='noMargin' key={key}>{talents[key].name}: {count[key]}</p>)}</div>
+      ),
+    })
   }
 
   render() {
-    const {masterTalents} = this.state;
+    const {masterTalents, count} = this.state;
     return (
       <div className='module'>
+        <div><span onClick={this.popupList}>Total XP: {this.countXP()}</span></div>
         {Object.keys(masterTalents).map((row)=>
           <div key={row} className='talent-row'>
             {Object.keys(masterTalents[row]).map((tier)=>
               <TalentBlock  key={row+tier}
                             row={+row}
                             tier={+tier}
+                            count={count}
                             masterTalents={masterTalents}
                             talentKey={masterTalents[row][tier]}
                             submit={this.select.bind(this, row, tier)}/>

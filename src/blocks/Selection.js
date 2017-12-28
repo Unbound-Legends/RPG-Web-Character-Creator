@@ -1,11 +1,12 @@
 import React from 'react';
+import popup from 'react-popup';
 import '../index.css';
 
 export default class Selection extends React.Component {
   state = {value: this.props.value};
 
   componentDidMount() {
-    if (this.props.value == '') this.setState({value: Object.keys(this.props.options)[0]});
+    if (this.props.value === '') this.setState({value: Object.keys(this.props.options)[0]})
   }
 
   handleChange = (event) => {
@@ -17,8 +18,8 @@ export default class Selection extends React.Component {
     event.preventDefault();
   }
 
-  handleClear = (event) => {
-    this.props.submit('');
+  handleCancel = (event) => {
+    popup.close();
     event.preventDefault();
   }
 
@@ -48,7 +49,7 @@ export default class Selection extends React.Component {
         }
         <div>
           <input type='submit' value='Submit' />
-          <button value='Clear' onClick={this.handleClear}>Clear</button>
+          <button value='Clear' onClick={this.handleCancel}>Cancel</button>
         </div>
       </form>
 

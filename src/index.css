@@ -16,6 +16,10 @@ button, input {
   margin: 0 1vw 0 0;
 }
 
+.noMargin {
+  margin: 0;
+}
+
 .login-box {
   padding-top: 2vw;
   padding-left: 0.2vw;
@@ -45,6 +49,7 @@ button, input {
   border-top-right-radius: 0.8vw;
   padding: 0.5vw;
   display: block;
+  font-weight: bold;
   background: var(--orange);
 }
 
@@ -58,28 +63,43 @@ button, input {
 }
 
 .talent-box {
-  box-shadow: 5px 5px 1px var(--lightblue);
+  display: table-cell;
+  vertical-align: middle;
   border-radius: 5px;
+  max-width: 10vw;
+  font-size: 1vw;
+  overflow: hidden;
+  padding: 0 2vw 0 0;
 }
 
 .talent-box-top{
+  height: 4%;
+  padding: 13% 0;
   background: var(--gray);
 }
 
 .talent-box-top-active {
+  font-style: bold;
+
   background: var(--orange);
 }
 
 .talent-box-top-passive {
+  font-style: bold;
+
   background: var(--lightblue);
 }
 .talent-box-top-inactive {
   background: var(--brown);
 }
 .talent-box-bottom {
+  font-style: normal;
+  height: 58%;
 }
 .talent-row {
+  display: table;
   width: fit-content;
+  height: 11vw;
 }
 
 .popup-select {
@@ -109,7 +129,10 @@ button, input {
 
 @media only screen
   and (max-width: 480px) {
+    #root {
+      width: fit-content;
+    }
     .module{
-      width: 100vw;
+      width: fit-content;
     }
 }

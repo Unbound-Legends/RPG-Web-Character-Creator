@@ -506,7 +506,7 @@ const talents = {
     description: 'See CRB, page 78, for more details.'
   },
   FullThrottle: {
-    name: 'FullThrottle',
+    name: 'Full Throttle',
     setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
     tier: 3,
     activation: true,
