@@ -12,13 +12,18 @@ export default class Talents extends React.Component {
     row=+row;
     tier=+tier;
     let masterTalents = this.state.masterTalents;
-    masterTalents[row][tier] = key;
 
+    masterTalents[row][tier]=key
     //if the new talents isn't blank make a new empty block
-    if (key !== '0'){
-      if (row===tier || tier===5) if (masterTalents[row+1]===undefined) masterTalents[row+1]={1:''};
+    if (key !== ''){
+      //select tier 1 talent, add the next tier 1 row
       if (tier===1) masterTalents[row+1]={1:''};
-      if (row>tier) masterTalents[row][tier+1]='';
+      //if the row allows, add the next tier
+      if (row>tier && 5>tier) if (masterTalents[row-1][tier+1]!=='') masterTalents[row][tier+1]='';
+      //add the same tier in the next row if it wasn't allowed in a previous select
+      if (masterTalents[row+1][tier]===undefined) {
+        if (masterTalents[row+1][tier-1]!==undefined && masterTalents[row+1][tier-1]!=='') masterTalents[row+1][tier]='';
+      }
     }
     this.setState({masterTalents: masterTalents}, () => this.makeCount());
   }
