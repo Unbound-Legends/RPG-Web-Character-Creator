@@ -1,6 +1,6 @@
 import React from 'react';
 import popup from 'react-popup';
-import '../index.css';
+import '../style/index.css';
 
 export default class Selection extends React.Component {
   state = {value: this.props.value};

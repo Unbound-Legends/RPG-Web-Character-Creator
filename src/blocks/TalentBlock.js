@@ -3,8 +3,8 @@ import popup from 'react-popup';
 import Selection from '../blocks/Selection';
 import StatBlock from '../blocks/StatBlock';
 import talents from '../data/talents';
-import '../index.css';
-import '../popup.css';
+import '../style/index.css';
+import '../style/popup.css';
 
 export default class TalentBlock extends React.Component {
   state = {activation: '', talent: talents[this.props.talentKey]};

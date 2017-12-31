@@ -2,7 +2,7 @@ import React from 'react';
 import popup from 'react-popup';
 import TalentBlock from '../blocks/TalentBlock';
 import talents from '../data/talents';
-import '../index.css';
+import '../style/index.css';
 
 export default class Talents extends React.Component {
   state = {masterTalents: {1:{1:''}}, count: {}};

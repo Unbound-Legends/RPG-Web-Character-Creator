@@ -1,10 +1,10 @@
 import React from 'react';
-import '../index.css';
+import '../style/index.css';
 import careers from '../data/careers';
 
 export default class Career extends React.Component {
   state = {selected: careers[Object.keys(careers)[0]]};
-  
+
   select = (event) => {
     let career = careers[event.target.value];
     career.skills.sort();

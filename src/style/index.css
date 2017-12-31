@@ -103,6 +103,7 @@ button, input {
 }
 
 .popup-select {
+  margin: 1vw 0;
   width: fit-content;
 }
 
