@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/index.css';
+import '../styles/index.css';
 import DynamicFont from 'react-dynamic-font';
 
 

@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import * as firebase from 'firebase';
-import './style/index.css';
-import 'react-tabs/style/react-tabs.css';
+import './styles/index.css';
+import './styles/tabs.css';
 import config from './config';
-import Channel from './channel';
+import Channel from './pages/Channel';
 import Archetype from './pages/Archetype';
 import Career from './pages/Career';
 import Talent from './pages/Talent';
+import Motivation from './pages/Motivation';
 import About from './blocks/About'
 firebase.initializeApp(config);
 
@@ -31,11 +32,12 @@ function loginPage() {
 
 function mainPage () {
   return (
-    <Tabs>
+    <Tabs defaultIndex={3}>
   		<TabList>
   			<Tab>Archetype</Tab>
   			<Tab>Career</Tab>
   			<Tab>Talents</Tab>
+        <Tab>Motivations</Tab>
         <Tab>About</Tab>
   		</TabList>
       <TabPanel>
@@ -46,6 +48,9 @@ function mainPage () {
       </TabPanel>
       <TabPanel>
         <Talent/>
+      </TabPanel>
+      <TabPanel>
+        <Motivation/>
       </TabPanel>
       <TabPanel>
         <About/>

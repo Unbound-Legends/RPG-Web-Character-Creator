@@ -1,10 +1,10 @@
 import React from 'react';
 import popup from 'react-popup';
-import Selection from '../blocks/Selection';
+import TalentSelection from '../blocks/TalentSelection';
 import StatBlock from '../blocks/StatBlock';
 import talents from '../data/talents';
-import '../style/index.css';
-import '../style/popup.css';
+import '../styles/index.css';
+import '../styles/popup.css';
 
 export default class TalentBlock extends React.Component {
   state = {activation: '', talent: talents[this.props.talentKey]};
@@ -57,7 +57,7 @@ export default class TalentBlock extends React.Component {
         title: 'Talent',
         className: 'alert',
         content: (
-          <Selection options={options} data={talents} value={this.props.talentKey} submit={this.select}/>
+          <TalentSelection options={options} data={talents} value={this.props.talentKey} submit={this.select}/>
         ),
       })
     })

@@ -1,8 +1,8 @@
 import React from 'react';
 import popup from 'react-popup';
-import '../style/index.css';
+import '../styles/index.css';
 
-export default class Selection extends React.Component {
+export default class TalentSelection extends React.Component {
   state = {value: this.props.value};
 
   componentDidMount() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/index.css';
+import '../styles/index.css';
 import archetypes from '../data/archetypes';
 import StatBlock from '../blocks/StatBlock';
 

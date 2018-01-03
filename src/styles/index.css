@@ -6,6 +6,7 @@
   --brown: #b3977b;
   --red: #e65247;
   font-family: 'Avenir Next', sans-serif !important;
+  background-image: url(../images/background.png);
 }
 
 h3, ul {
@@ -13,7 +14,14 @@ h3, ul {
 }
 
 button, input {
-  margin: 0 1vw 0 0;
+  margin: 1vw;
+}
+
+.textField {
+  width: 90%;
+  padding: 0.5vw;
+  background-color: var(--gray);
+  margin: 1vw 1vw 0 1vw;
 }
 
 .noMargin {
@@ -124,6 +132,18 @@ button, input {
   font-size: 3vw;
 }
 
+.motivation-module {
+  width: 45vw;
+  margin: 1vw;
+  border: black solid 1px;
+}
+
+.motivation-title {
+  width: 75%;
+  padding: 0.8vw;
+  border-bottom: black solid 1px;
+}
+
 .title {
   color: var(--lightblue);
 }
@@ -131,9 +151,6 @@ button, input {
 @media only screen
   and (max-width: 480px) {
     #root {
-      width: fit-content;
-    }
-    .module{
       width: fit-content;
     }
 }

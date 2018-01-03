@@ -1,4 +1,3 @@
-
 :root {
   --orange: #F69337;
   --lightblue: #1ABEEF;
@@ -81,7 +80,6 @@
         outline: none;
         text-decoration: none;
         cursor: pointer;
-        font-family: "Open Sans", sans-serif;
     }
 
     .mm-popup__btn--success {

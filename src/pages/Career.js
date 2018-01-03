@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/index.css';
+import '../styles/index.css';
 import careers from '../data/careers';
 
 export default class Career extends React.Component {

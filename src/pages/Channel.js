@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './style/index.css';
-import About from './blocks/About';
+import React from 'react';
+import '../styles/index.css';
+import About from '../blocks/About';
 
-class Channel extends Component {
+export default class Channel extends React.Component {
 
   setChannel(stop) {
     stop.preventDefault();
@@ -29,4 +29,3 @@ class Channel extends Component {
     );
   }
 }
-export default Channel;
