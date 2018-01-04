@@ -6,7 +6,7 @@
   --brown: #b3977b;
   --red: #e65247;
   font-family: 'Avenir Next', sans-serif !important;
-  background-image: url(../images/background.png);
+  background-image: url(/images/background.png);
 }
 
 h3, ul {
@@ -15,6 +15,10 @@ h3, ul {
 
 button, input {
   margin: 1vw;
+}
+
+.textSymbols {
+  width: 1.4vw;
 }
 
 .textField {

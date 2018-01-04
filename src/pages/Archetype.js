@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/index.css';
+import Description from '../blocks/Description';
 import archetypes from '../data/archetypes';
 import StatBlock from '../blocks/StatBlock';
 
@@ -48,12 +49,12 @@ export default class Archetype extends React.Component {
           {Object.keys(selected.talents).map((talent)=>
             <div key={talent} style={{textIndent: '1em'}}>
               <p><b>{selected.talents[talent].name}</b></p>
-              <p>{selected.talents[talent].description}</p>
+              <p><Description text={selected.talents[talent].description}/></p>
           </div>
           )}
         </div>
         <p><b>Setting:</b>&nbsp;{selected.setting}</p>
-        <p><b>Description:</b>&nbsp;{selected.description}</p>
+        <p><b>Description:</b>&nbsp;<Description text={selected.description} /></p>
       </div>
     );
   }

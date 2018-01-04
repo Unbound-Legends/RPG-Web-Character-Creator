@@ -17,7 +17,7 @@ export default class Channel extends React.Component {
         <h1>A Cool Name</h1>
         <h2>RPG Character Creator</h2>
         <br />
-        <img src={`/favicon.png`} alt='' style={{maxWidth:'350px'}} />
+        <img src={`/images/favicon.png`} alt='' style={{maxWidth:'350px'}} />
         <form onSubmit={this.setChannel.bind(this)}>
           <input className='textinput' style={{textAlign: 'center'}} ref="channel" name="channel" placeholder="Channel Name" />
           <br/>

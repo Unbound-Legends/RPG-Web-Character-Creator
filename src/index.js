@@ -11,6 +11,7 @@ import Archetype from './pages/Archetype';
 import Career from './pages/Career';
 import Talent from './pages/Talent';
 import Motivation from './pages/Motivation';
+import Description from './blocks/Description';
 import About from './blocks/About'
 firebase.initializeApp(config);
 
@@ -32,7 +33,7 @@ function loginPage() {
 
 function mainPage () {
   return (
-    <Tabs defaultIndex={3}>
+    <Tabs defaultIndex={0}>
   		<TabList>
   			<Tab>Archetype</Tab>
   			<Tab>Career</Tab>

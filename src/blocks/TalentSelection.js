@@ -1,5 +1,6 @@
 import React from 'react';
 import popup from 'react-popup';
+import Description from './Description';
 import '../styles/index.css';
 
 export default class TalentSelection extends React.Component {
@@ -44,7 +45,7 @@ export default class TalentSelection extends React.Component {
             {data[value].turn ?  <p>{data[value].turn}</p> : null}
             {data[value].ranked ? <p><b>Ranked</b></p> : <p><b>Not Ranked</b></p> }
             <p><b>Setting:</b> {data[value].setting}</p>
-            <p><b>Description:</b> {data[value].description}</p>
+            <p><b>Description:</b> <Description text={data[value].description}/></p>
           </div>
         }
         <div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/index.css';
+import Description from '../blocks/Description';
 import careers from '../data/careers';
 
 export default class Career extends React.Component {
@@ -26,7 +27,7 @@ export default class Career extends React.Component {
           <li key={skill}>{skill}</li>
       )}</ul>
         <p><b>Setting:</b>&nbsp;{selected.setting}</p>
-        <p><b>Description:</b>&nbsp;{selected.description}</p>
+        <p><b>Description:</b>&nbsp;<Description text={selected.description}/></p>
       </div>
     );
   }
