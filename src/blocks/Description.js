@@ -15,7 +15,6 @@ export default class Description extends React.Component {
     let text = this.props.text.split(' ');
     let newString = '';
     text.forEach((word)=>{
-      console.log(word);
       switch (true) {
         case word.includes('CRB'):
           newString += `<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook" target="_blank"  target="_blank" rel="noopener noreferrer">${word}</a> `

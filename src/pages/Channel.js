@@ -3,11 +3,16 @@ import '../styles/index.css';
 import About from '../blocks/About';
 
 export default class Channel extends React.Component {
+  state = {value : ''};
 
-  setChannel(stop) {
-    stop.preventDefault();
-    var channel = this.refs.channel.value.replace(/\W/g, '').toLowerCase();
-    this.props.setFormChan(channel);
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit = (event) => {
+    console.log(this.state.value);
+    window.location = `/${this.state.value}`;
+    event.preventDefault();
   }
 
   render() {
@@ -18,10 +23,10 @@ export default class Channel extends React.Component {
         <h2>RPG Character Creator</h2>
         <br />
         <img src={`/images/favicon.png`} alt='' style={{maxWidth:'350px'}} />
-        <form onSubmit={this.setChannel.bind(this)}>
-          <input className='textinput' style={{textAlign: 'center'}} ref="channel" name="channel" placeholder="Channel Name" />
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
           <br/>
-          <button>Enter</button>
+          <input type="submit" value="Submit" />
         </form>
         <About/>
         </div>
