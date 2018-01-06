@@ -53,7 +53,7 @@ export default class Skill extends React.Component {
   state = {masterSkills: masterSkills};
 
   handleChange = (skill, attrib, value) => {
-    if(isNaN(value)) value= +value;
+    if(isNaN(value)) value = +value;
     let newObj = this.state.masterSkills;
     newObj[skill][attrib] = value;
     this.setState({masterSkills: newObj});

@@ -4,7 +4,11 @@ import MotivationBlock from '../blocks/MotivationBlock';
 import motivations from '../data/motivations';
 
 export default class Motivation extends React.Component {
-  state = {masterMotivations: {Desire: {}, Fear: {}, Strength: {}, Flaw: {}}};
+  state = {masterMotivations: this.props.motivations ? this.props.motivations : {Desire: {}, Fear: {}, Strength: {}, Flaw: {}}};
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({masterMotivations:nextProps.motivations})
+  }
 
   select = (type, key) => {
     const {masterMotivations} = this.state;
@@ -12,14 +16,17 @@ export default class Motivation extends React.Component {
     let newMotivation = {};
     newMotivation[key] = motivations[type][key];
     newMasterMotivations[type] = newMotivation;
-    this.setState({masterMotivations: newMasterMotivations});
+    this.props.handleChange('motivations', newMasterMotivations)
+    //this.setState({masterMotivations: newMasterMotivations});
   }
 
   textEdit = (type, key, description) => {
     const {masterMotivations} = this.state;
     let newMasterMotivations = masterMotivations;
     newMasterMotivations[type][key] = description;
-    this.setState({masterMotivations: newMasterMotivations});
+    this.props.handleChange('motivations', newMasterMotivations)
+
+    //this.setState({masterMotivations: newMasterMotivations});
   }
 
   render() {
