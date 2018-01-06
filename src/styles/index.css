@@ -148,6 +148,45 @@ button, input {
   border-bottom: black solid 1px;
 }
 
+.skill-table {
+  text-align: center;
+  display: table;
+  width: 100%;
+}
+
+.skill-module {
+  width: auto;
+}
+
+.skill-header {
+  display: table-header-group;
+  font-weight: 600;
+}
+
+.skill-row {
+  display: table-row;
+  height: 3vw;
+  line-height: 3vw;
+  vertical-align: middle;
+}
+
+.skill-row-hide {
+  display: none;
+}
+
+.skill-cell {
+  display: table-cell;
+  padding: 0.3vw;
+  border: black solid 1px;
+}
+
+.skill-heading {
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  padding: 0 1vw;
+
+}
 .title {
   color: var(--lightblue);
 }
@@ -156,5 +195,8 @@ button, input {
   and (max-width: 480px) {
     #root {
       width: fit-content;
+    }
+    .module {
+      width: 100%;
     }
 }

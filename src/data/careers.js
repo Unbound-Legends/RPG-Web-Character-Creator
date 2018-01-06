@@ -5,7 +5,7 @@ const careers = {
     book: 'CRB',
     page: '40',
     setting: 'All',
-    skills: ['Charm', 'Coordination', 'Deception', 'Discipline', 'Leadership', 'Melee', 'Melee(Light)', 'Skullduggery', 'Stealth']
+    skills: ['Charm', 'Coordination', 'Deception', 'Discipline', 'Leadership', 'Melee', 'Melee (Light)', 'Skullduggery', 'Stealth']
   },
   Explorer: {
     name: 'Explorer',
@@ -13,7 +13,7 @@ const careers = {
     book: 'CRB',
     page: '41',
     setting: 'All',
-    skills: ['Athletics', 'Brawl', 'Coordination', 'Deception', 'Perception', 'Ranged', 'Renged(Heavy)', 'Stealth', 'Survival']
+    skills: ['Athletics', 'Brawl', 'Coordination', 'Deception', 'Perception', 'Ranged', 'Renged (Heavy)', 'Stealth', 'Survival']
   },
   Healer: {
     name: 'Healer',
@@ -21,7 +21,7 @@ const careers = {
     book: 'CRB',
     page: '41',
     setting: 'All',
-    skills: ['Cool', 'Discipline', 'Knowledge', 'Medicine', 'Melee', 'Melee(Light)', 'Resilience', 'Survival', 'Vigilance']
+    skills: ['Cool', 'Discipline', 'Knowledge', 'Medicine', 'Melee', 'Melee (Light)', 'Resilience', 'Survival', 'Vigilance']
   },
   Leader: {
     name: 'Leader',
@@ -29,7 +29,7 @@ const careers = {
     book: 'CRB',
     page: '41',
     setting: 'All',
-    skills: ['Charm', 'Coercion', 'Cool', 'Discipline', 'Leadership', 'Melee', 'Melee(Light)', 'Negotiation', 'Perception']
+    skills: ['Charm', 'Coercion', 'Cool', 'Discipline', 'Leadership', 'Melee', 'Melee (Light)', 'Negotiation', 'Perception']
   },
   Scoundrel: {
     name: 'Scoundrel',
@@ -37,7 +37,7 @@ const careers = {
     book: 'CRB',
     page: '41',
     setting: 'All',
-    skills: ['Charm', 'Cool', 'Coordination', 'Deception', 'Ranged', 'Ranged(Light)', 'Skullduggery', 'Stealth', 'Streetwise']
+    skills: ['Charm', 'Cool', 'Coordination', 'Deception', 'Ranged', 'Ranged (Light)', 'Skullduggery', 'Stealth', 'Streetwise']
   },
   Socialite: {
     name: 'Socialite',
@@ -53,7 +53,7 @@ const careers = {
     book: 'CRB',
     page: '41',
     setting: 'All',
-    skills: ['Athletics', 'Brawl', 'Gunnery', 'Coercion', 'Melee', 'Melee(Heavy)', 'Perception', 'Ranged', 'Ranged(Heavy)', 'Survival', 'Vigilance']
+    skills: ['Athletics', 'Brawl', 'Gunnery', 'Coercion', 'Melee', 'Melee (Heavy)', 'Perception', 'Ranged', 'Ranged (Heavy)', 'Survival', 'Vigilance']
   },
   Tradesperson: {
     name: 'Tradesperson',
@@ -77,7 +77,7 @@ const careers = {
     book: 'CRB',
     page: '42',
     description: 'See CRB, page 42, for more details.',
-    skills: ['Cool', 'Driving', 'Gunnery', 'Mechanics', 'Perception', 'Piloting', 'Ranged(Light)', 'Vigilance']
+    skills: ['Cool', 'Driving', 'Gunnery', 'Mechanics', 'Perception', 'Piloting', 'Ranged (Light)', 'Vigilance']
   },
   Knight: {
     name: 'Knight',
@@ -85,7 +85,7 @@ const careers = {
     book: 'CRB',
     page: '42',
     description: 'See CRB, page 42, for more details.',
-    skills: ['Athletics', 'Discipline', 'Leadership', 'Melee(Heavy)', 'Melee(Light)', 'Resilience', 'Riding', 'Vigilance', 'Melee', 'Gunnery', 'Driving', 'Piloting', 'Operating']
+    skills: ['Athletics', 'Discipline', 'Leadership', 'Melee (Heavy)', 'Melee (Light)', 'Resilience', 'Riding', 'Vigilance', 'Melee', 'Gunnery', 'Driving', 'Piloting', 'Operating']
   },
   MadScientist: {
     name: 'Mad Scientist',
@@ -93,7 +93,7 @@ const careers = {
     book: 'CRB',
     page: '43',
     description: 'See CRB, page 43, for more details.',
-    skills: ['Alchemy', 'Coercion', 'Knowledge', 'Mechanics', 'Medicine', 'Operating', 'Skullduggery', 'Ranged(Heavy)', 'Arcana']
+    skills: ['Alchemy', 'Coercion', 'Knowledge', 'Mechanics', 'Medicine', 'Operating', 'Skullduggery', 'Ranged (Heavy)', 'Arcana']
   },
   Priest: {
     name: 'Priest',
@@ -101,7 +101,7 @@ const careers = {
     book: 'CRB',
     page: '43',
     description: 'See CRB, page 43, for more details.',
-    skills: ['Charm', 'Coercion', 'Cool', 'Discipline', 'Divine', 'Medicine', 'Melee', 'Melee(Light)', 'Negotiation']
+    skills: ['Charm', 'Coercion', 'Cool', 'Discipline', 'Divine', 'Medicine', 'Melee', 'Melee (Light)', 'Negotiation']
   },
   Druid: {
     name: 'Druid',
@@ -109,7 +109,7 @@ const careers = {
     book: 'CRB',
     page: '43',
     description: 'See CRB, page 43, for more details.',
-    skills: ['Athletics', 'Brawl', 'Coordination', 'Melee', 'Melee(Heavy)', 'Primal', 'Resilience', 'Survival', 'Vigilance']
+    skills: ['Athletics', 'Brawl', 'Coordination', 'Melee', 'Melee (Heavy)', 'Primal', 'Resilience', 'Survival', 'Vigilance']
   },
   StarshipCaptain: {
     name: 'Starship Captain',

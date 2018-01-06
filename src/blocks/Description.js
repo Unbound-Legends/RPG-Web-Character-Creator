@@ -4,15 +4,15 @@ export default class Description extends React.Component {
   state = {text: ''};
 
   componentDidMount() {
-    this.checkText();
+    this.checkText(this.props.text);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.checkText();
+    this.checkText(nextProps.text);
   }
 
-  checkText = () => {
-    let text = this.props.text.split(' ');
+  checkText = (text) => {
+    text = text.split(' ');
     let newString = '';
     text.forEach((word)=>{
       switch (true) {

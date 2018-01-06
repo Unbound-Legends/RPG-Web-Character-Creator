@@ -481,8 +481,8 @@ const archetypes = {
     }
   },
 
-  Vangaurd: {
-    name: 'Vangaurd',
+  Vanguard: {
+    name: 'Vanguard',
     book: 'CRB',
     page: '183',
     description: 'See CRB, page 183, for more details.',
