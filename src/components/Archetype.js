@@ -1,25 +1,30 @@
 import React from 'react';
-import '../styles/index.css';
-import Description from '../blocks/Description';
-import archetypes from '../data/archetypes';
-import StatBlock from '../blocks/StatBlock';
+import Description from './Description';
+import StatBlock from './StatBlock';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {changeArchetype} from '../actions/index';
 
-export default class Archetype extends React.Component {
-  state = {masterArchetype: this.props.archetype ? this.props.archetype : undefined};
+class Archetype extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({masterArchetype:nextProps.archetype})
+  handleSelect = (event) => {
+    this.props.changeState(event.target.value);
   }
 
-  select = (event) => {
-    this.props.handleChange('archetype', archetypes[event.target.value])
+  makeDescription = (skills) => {
+    let description = '';
+    Object.keys(skills).forEach((key) => {
+      description+=`${skills[key]} rank in ${key} \n`
+    });
+    return description;
   }
 
   render() {
-    const {masterArchetype} = this.state;
+    const {archetype, archetypes} = this.props;
+    const masterArchetype = archetypes[archetype];
     return (
       <div className='module'>
-        <select onChange={this.select}>
+        <select value={archetype ? archetype : ''} onChange={this.handleSelect}>
           <option></option>
           {Object.keys(archetypes).map((key)=>
             <option value={key} key={key}>{archetypes[key].name}</option>
@@ -49,7 +54,10 @@ export default class Archetype extends React.Component {
 
 
         <div>
-          <b>Starting Skills:</b><p style={{textIndent: '1em'}}>{masterArchetype && masterArchetype.skills.description}</p>
+          <b>Starting Skills:</b>
+            {masterArchetype && Object.keys(masterArchetype.skills).map((key) =>
+              <p key={key} style={{textIndent: '1em'}}>{masterArchetype.skills[key]} rank in {key}</p>
+            )}
         </div>
         <div>
           <b>Starting Talents:</b>
@@ -66,3 +74,16 @@ export default class Archetype extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+    return {
+        archetype: state.archetype,
+        archetypes: state.archetypes
+    };
+}
+
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({changeState: changeArchetype}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Archetype);

@@ -4,11 +4,11 @@ export default class Description extends React.Component {
   state = {text: ''};
 
   componentDidMount() {
-    this.checkText(this.props.text);
+    if (this.props.text!==undefined) this.checkText(this.props.text);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.checkText(nextProps.text);
+    if (this.props.text!==undefined) this.checkText(this.props.text);
   }
 
   checkText = (text) => {

@@ -1,20 +1,16 @@
 import React from 'react';
 import popup from 'react-popup';
-import skills from '../data/skills.js';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {changeSkill} from '../actions/index';
 import SkillRow from './SkillRow';
 import SkillPopup from './SkillPopup';
-import '../styles/index.css';
-import '../styles/popup.css';
 
-
-
-export default class SkillBlock extends React.Component {
-  state = {masterSkills: this.props.masterSkills};
+class SkillBlock extends React.Component {
 
 
   handleClick = () => {
-    const {type, handleChange} = this.props;
-    const {masterSkills} = this.state;
+    const {type, skills} = this.props;
 
     popup.create({
       title: `${type} Skills`,
@@ -25,14 +21,9 @@ export default class SkillBlock extends React.Component {
             <div className='skill-cell'>Show/Hide</div>
             <div className='skill-cell'>Skill</div>
           </div>
-          {Object.keys(masterSkills).map((key)=>
+          {Object.keys(skills).map((key)=>
             skills[key].type===type && (
-              <SkillPopup masterSkill={masterSkills[key]}
-                          skill={skills[key]}
-                          handleChange={handleChange}
-                          type={key}
-                          key={key}
-              />
+              <SkillPopup skillName={key} key={key}/>
             ),
           )}
         </div>
@@ -41,7 +32,7 @@ export default class SkillBlock extends React.Component {
   }
 
   render() {
-    const {type, characteristics, masterSkills, handleChange} = this.props;
+    const {type, skills} = this.props;
     return (
         <div className='skill-table'>
           <div className='skill-heading' onClick={this.handleClick}>{type}</div>
@@ -53,19 +44,25 @@ export default class SkillBlock extends React.Component {
               <div className='skill-cell'>Rank</div>
               <div className='skill-cell'>Dice Pool</div>
             </div>
-            {Object.keys(masterSkills).map((key)=>
-              skills[key].type===type && (
-                <SkillRow key={key}
-                          handleChange={handleChange}
-                          characteristics={characteristics}
-                          masterSkill={masterSkills[key]}
-                          type={key}
-                          skill={skills[key]}
-                />
-              ),
+            {Object.keys(skills).map((skillName)=>
+              skills[skillName].type === type &&
+                <SkillRow skillName={skillName} key={skillName}/>
             )}
           </div>
         </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+    return {
+        masterSkills: state.skill,
+        skills: state.skills
+    };
+}
+
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({changeState: changeSkill}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(SkillBlock);

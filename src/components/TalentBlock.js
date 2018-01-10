@@ -1,10 +1,8 @@
 import React from 'react';
 import popup from 'react-popup';
-import TalentSelection from '../blocks/TalentSelection';
-import StatBlock from '../blocks/StatBlock';
-import talents from '../data/talents';
-import '../styles/index.css';
-import '../styles/popup.css';
+import TalentSelection from './TalentSelection';
+import StatBlock from './StatBlock';
+import talents from '../reducers/talents';
 
 export default class TalentBlock extends React.Component {
   state = {activation: '', talent: talents[this.props.talentKey]};

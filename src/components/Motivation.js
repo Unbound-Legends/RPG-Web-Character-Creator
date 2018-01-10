@@ -1,7 +1,6 @@
 import React from 'react';
-import '../styles/index.css';
-import MotivationBlock from '../blocks/MotivationBlock';
-import motivations from '../data/motivations';
+import MotivationBlock from './MotivationBlock';
+import motivations from '../reducers/motivations';
 
 export default class Motivation extends React.Component {
   state = {masterMotivations: this.props.motivations ? this.props.motivations : {Desire: {}, Fear: {}, Strength: {}, Flaw: {}}};

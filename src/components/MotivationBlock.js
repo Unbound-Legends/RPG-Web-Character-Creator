@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/index.css';
 const seedrandom = require('seedrandom');
 var rng = seedrandom('added entropy.', { entropy: true });
 

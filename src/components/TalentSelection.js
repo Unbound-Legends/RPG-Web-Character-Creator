@@ -1,7 +1,6 @@
 import React from 'react';
 import popup from 'react-popup';
 import Description from './Description';
-import '../styles/index.css';
 
 export default class TalentSelection extends React.Component {
   state = {value: this.props.value};

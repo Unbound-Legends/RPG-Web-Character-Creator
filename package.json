@@ -26,8 +26,10 @@
     "react-dom": "^16.2.0",
     "react-dynamic-font": "^1.0.1",
     "react-popup": "^0.9.1",
+    "react-redux": "^5.0.6",
     "react-scripts": "^1.0.17",
     "react-tabs": "^2.1.1",
+    "redux": "^3.7.2",
     "seedrandom": "^2.4.3"
   },
   "scripts": {
