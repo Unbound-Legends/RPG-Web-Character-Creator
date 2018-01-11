@@ -37,3 +37,45 @@ export const initialSkill = {
   Survival: {show:true, rank: 0},
   Vigilance: {show:true, rank: 0}
 }
+
+
+
+export const blankSkills = {
+  Alchemy: {},
+  Arcana: {},
+  Astrocartography: {},
+  Athletics: {},
+  Brawl: {},
+  Charm: {},
+  Coercion: {},
+  Computers: {},
+  Cool: {},
+  Coordination: {},
+  Deception: {},
+  Discipline: {},
+  Divine: {},
+  Driving: {},
+  Gunnery: {},
+  Knowledge: {},
+  Leadership: {},
+  Mechanics: {},
+  Medicine: {},
+  Melee: {},
+  MeleeHeavy: {},
+  MeleeLight: {},
+  Negotiation: {},
+  Operating: {},
+  Perception: {},
+  Piloting: {},
+  Primal: {},
+  Ranged: {},
+  RangedHeavy: {},
+  RangedLight: {},
+  Resilience: {},
+  Riding: {},
+  Skullduggery: {},
+  Stealth: {},
+  Streetwise: {},
+  Survival: {},
+  Vigilance: {}
+}

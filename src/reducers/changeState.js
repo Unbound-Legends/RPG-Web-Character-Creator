@@ -27,7 +27,7 @@ export const career = (state = null, action) =>{
     }
 }
 
-export const careerSkills = (state = null, action) =>{
+export const careerSkills = (state = [], action) =>{
     switch (action.type) {
         case 'Career_Skills_Changed':
           return action.payload;
@@ -36,9 +36,9 @@ export const careerSkills = (state = null, action) =>{
     }
 }
 
-export const skill = (state = initialSkill, action) =>{
+export const masterSkills = (state = initialSkill, action) =>{
     switch (action.type) {
-        case 'Skill_Changed':
+        case 'Master_Skills_Changed':
           return action.payload;
         default:
           return state;

@@ -1,18 +1,10 @@
 import React from 'react';
 
 export default class Description extends React.Component {
-  state = {text: ''};
 
-  componentDidMount() {
-    if (this.props.text!==undefined) this.checkText(this.props.text);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.text!==undefined) this.checkText(this.props.text);
-  }
-
-  checkText = (text) => {
-    text = text.split(' ');
+  checkText = () => {
+    if (this.props.text===null  || this.props.text===undefined) return '';
+    let text = this.props.text.split(' ');
     let newString = '';
     text.forEach((word)=>{
       switch (true) {
@@ -75,13 +67,11 @@ export default class Description extends React.Component {
           break;
       }
     })
-    this.setState({text: newString});
+    return newString;
   }
 
   render() {
-    const {text} = this.state;
-
-    return <span dangerouslySetInnerHTML={{__html: text}} />
+    return <span dangerouslySetInnerHTML={{__html: this.checkText()}} />
 
   }
 }

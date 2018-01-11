@@ -26,15 +26,9 @@ export const changeCareerSkills = (state) => {
     }
 };
 
-export const changeSkill = (state) => {
+export const changeMasterSkills = (state) => {
     return {
-        type: 'Skill_Changed',
-        payload: state,
-    }
-};
-export const changeSkillDice = (state) => {
-    return {
-        type: 'Skill_Dice_Changed',
+        type: 'Master_Skills_Changed',
         payload: state,
     }
 };

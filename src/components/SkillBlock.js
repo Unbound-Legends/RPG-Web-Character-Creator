@@ -2,7 +2,7 @@ import React from 'react';
 import popup from 'react-popup';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeSkill} from '../actions/index';
+import {changeMasterSkills} from '../actions/index';
 import SkillRow from './SkillRow';
 import SkillPopup from './SkillPopup';
 
@@ -56,13 +56,13 @@ class SkillBlock extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        masterSkills: state.skill,
+        masterSkills: state.masterSkills,
         skills: state.skills
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeSkill}, dispatch);
+    return bindActionCreators({changeState: changeMasterSkills}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SkillBlock);

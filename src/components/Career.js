@@ -4,29 +4,29 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeCareer, changeCareerSkills} from '../actions/index';
 
+var maxCareerSkills = 4;
+
 class Career extends React.Component {
 
   handleChange = (event) => {
     this.props.changeCareer(event.target.value);
-    this.props.changeCareerSkills(null);
+    this.props.changeCareerSkills([]);
     event.preventDefault();
   }
 
   handleCheck = (event) => {
-    let newObj = this.props.careerSkills ? {...this.props.careerSkills} : {};
-    newObj[event.target.name] ? delete newObj[event.target.name] : newObj[event.target.name] = true;
-    if (5>Object.keys(newObj).length) this.props.changeCareerSkills(newObj);
+    let careerSkills = [...this.props.careerSkills];
+    if (careerSkills.includes(event.target.name)) {
+      careerSkills.forEach((skill, index)=>{
+        careerSkills[skill]===event.target.name && careerSkills.splice(index, 1);
+      })
+    } else careerSkills.push(event.target.name);
+    if (maxCareerSkills>=careerSkills.length) this.props.changeCareerSkills(careerSkills);
     else event.preventDefault();
   }
 
-  checked = (skill) => {
-    if (this.props.careerSkills===null) return false;
-    else if (this.props.careerSkills[skill]===undefined) return false;
-    else return true;
-  }
-
   render(){
-    const {career, careers, skills} = this.props;
+    const {career, careers, skills, careerSkills} = this.props;
     const masterCareer = careers[career];
     return (
       <div className='module'>
@@ -39,7 +39,7 @@ class Career extends React.Component {
         <h2>Career:&nbsp;<span className='title'>{masterCareer && masterCareer.name}</span></h2>
         <h3>Career Skills:</h3>
         {masterCareer && masterCareer.skills.map((skill)=>
-          <div key={skill}><label><input type='checkbox' name={skill} checked={this.checked(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
+          <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
         )}
         <p><b>Setting:</b>&nbsp;{masterCareer && masterCareer.setting}</p>
         <p><b>Description:</b>&nbsp;<Description text={masterCareer ? masterCareer.description : ''}/></p>

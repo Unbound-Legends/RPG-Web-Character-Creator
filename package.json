@@ -30,6 +30,7 @@
     "react-scripts": "^1.0.17",
     "react-tabs": "^2.1.1",
     "redux": "^3.7.2",
+    "reselect": "^3.0.1",
     "seedrandom": "^2.4.3"
   },
   "scripts": {

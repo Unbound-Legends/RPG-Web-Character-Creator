@@ -17,12 +17,12 @@ const allReducers = combineReducers({
     archetype: changeState.archetype,
     career: changeState.career,
     careerSkills: changeState.careerSkills,
-    skill: changeState.skill,
+    masterSkills: changeState.masterSkills,
 });
 
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);
 export const skillRanks = (state) => derivedStats.calcSkillRanks(state);
-export const skillDice = (state) => derivedStats.calcDice(state);
+export const skillDice = (state) => derivedStats.calcSkillDice(state);
 
 
 export default allReducers;

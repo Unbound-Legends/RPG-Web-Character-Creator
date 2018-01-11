@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeSkill} from '../actions/index';
+import {changeMasterSkills} from '../actions/index';
 
 class SkillPopup extends React.Component {
 
@@ -31,13 +31,13 @@ class SkillPopup extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        masterSkills: state.skill,
+        masterSkills: state.masterSkills,
         skills: state.skills,
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeSkill}, dispatch);
+    return bindActionCreators({changeState: changeMasterSkills}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SkillPopup);

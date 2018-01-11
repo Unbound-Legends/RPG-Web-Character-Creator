@@ -1,14 +1,19 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeSkill} from '../actions/index';
+import {changeMasterSkills} from '../actions/index';
 import {skillDice, skillRanks} from '../reducers/index';
 import Description from './Description';
 
 class SkillRow extends React.Component {
 
   handleRankChange = (event) => {
-    event.preventDefault();
+    const {masterSkills, skillName, changeState} = this.props;
+    let newObj = {...masterSkills};
+    console.log(event.target.value);
+    newObj[skillName].rank = +event.target.value;
+    console.log(newObj);
+    changeState(newObj);
   }
 
   render() {
@@ -23,10 +28,10 @@ class SkillRow extends React.Component {
           {skill.characteristic}
         </div>
         <div className='skill-cell'>
-          <input type='checkbox' checked={careerSkills && careerSkills[skillName]} readOnly/>
+          <input type='checkbox' checked={careerSkills.includes(skillName)} readOnly/>
         </div>
         <div className='skill-cell'>
-          <select defaultValue={skillRanks[skillName] && skillRanks[skillName]} onChange={this.handleRankChange}>
+          <select defaultValue={skillRanks[skillName]} onChange={this.handleRankChange}>
             {[0,1,2,3,4,5].map((key)=> <option key={key} value={key}>{key}</option> )}
           </select>
         </div>
@@ -40,7 +45,7 @@ class SkillRow extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        masterSkills: state.skill,
+        masterSkills: state.masterSkills,
         skills: state.skills,
         careerSkills: state.careerSkills,
         skillDice: skillDice(state),
@@ -49,7 +54,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeSkill}, dispatch);
+    return bindActionCreators({changeState: changeMasterSkills}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SkillRow);
