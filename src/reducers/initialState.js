@@ -42,6 +42,10 @@ export const masterTalents = {
   1:{1:''}
 }
 
+export const masterMotivations = {
+  Desire: {}, Fear: {}, Strength: {}, Flaw: {}
+}
+
 export const blankSkills = {
   Alchemy: {},
   Arcana: {},

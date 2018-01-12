@@ -46,3 +46,10 @@ export const changeTalentSelection = (state) => {
         payload: state,
     }
 };
+
+export const changeMasterMotivations = (state) => {
+    return {
+        type: 'Master_Motivations_Changed',
+        payload: state,
+    }
+};

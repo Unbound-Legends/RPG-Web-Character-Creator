@@ -62,3 +62,12 @@ export const talentSelection = (state = '', action) =>{
           return state;
     }
 }
+
+export const masterMotivations = (state = {...initialState.masterMotivations}, action) =>{
+    switch (action.type) {
+        case 'Master_Motivations_Changed':
+          return action.payload;
+        default:
+          return state;
+    }
+}
