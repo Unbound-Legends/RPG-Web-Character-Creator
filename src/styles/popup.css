@@ -85,7 +85,7 @@
     }
 
     .mm-popup__box {
-        width: 350px;
+        max-width: 60vw;
         position: fixed;
         top: 10%;
         left: 50%;

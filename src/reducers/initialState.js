@@ -1,4 +1,4 @@
-export const initialSkill = {
+export const masterSkills = {
   Alchemy: {show:true, rank: 0},
   Arcana: {show:true, rank: 0},
   Astrocartography: {show:true, rank: 0},
@@ -38,7 +38,9 @@ export const initialSkill = {
   Vigilance: {show:true, rank: 0}
 }
 
-
+export const masterTalents = {
+  1:{1:''}
+}
 
 export const blankSkills = {
   Alchemy: {},

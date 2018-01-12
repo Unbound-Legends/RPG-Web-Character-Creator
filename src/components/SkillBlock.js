@@ -16,14 +16,14 @@ class SkillBlock extends React.Component {
       title: `${type} Skills`,
       className: 'alert',
       content: (
-        <div className='skill-table'>
-          <div className='skill-header'>
-            <div className='skill-cell'>Show/Hide</div>
-            <div className='skill-cell'>Skill</div>
+        <div className='table'>
+          <div className='table-header'>
+            <div className='table-cell'>Show/Hide</div>
+            <div className='table-cell'>Skill</div>
           </div>
           {Object.keys(skills).map((key)=>
             skills[key].type===type && (
-              <SkillPopup skillName={key} key={key}/>
+              <SkillPopup skillKey={key} key={key}/>
             ),
           )}
         </div>
@@ -34,19 +34,19 @@ class SkillBlock extends React.Component {
   render() {
     const {type, skills} = this.props;
     return (
-        <div className='skill-table'>
-          <div className='skill-heading' onClick={this.handleClick}>{type}</div>
-          <div className='module skill-table'>
-            <div className='skill-header'>
-              <div className='skill-cell'>Skill</div>
-              <div className='skill-cell'>Characteristic</div>
-              <div className='skill-cell'>Career</div>
-              <div className='skill-cell'>Rank</div>
-              <div className='skill-cell'>Dice Pool</div>
+        <div className='table-table'>
+          <div className='table-heading' onClick={this.handleClick}>{type}</div>
+          <div className='module table'>
+            <div className='table-header'>
+              <div className='table-cell'>Skill</div>
+              <div className='table-cell'>Characteristic</div>
+              <div className='table-cell'>Career</div>
+              <div className='table-cell'>Rank</div>
+              <div className='table-cell'>Dice Pool</div>
             </div>
-            {Object.keys(skills).map((skillName)=>
-              skills[skillName].type === type &&
-                <SkillRow skillName={skillName} key={skillName}/>
+            {Object.keys(skills).map((skillKey)=>
+              skills[skillKey].type === type &&
+                <SkillRow skillKey={skillKey} key={skillKey}/>
             )}
           </div>
         </div>

@@ -32,3 +32,17 @@ export const changeMasterSkills = (state) => {
         payload: state,
     }
 };
+
+export const changeMasterTalents = (state) => {
+    return {
+        type: 'Master_Talents_Changed',
+        payload: state,
+    }
+};
+
+export const changeTalentSelection = (state) => {
+    return {
+        type: 'Talent_Selection_Changed',
+        payload: state,
+    }
+};

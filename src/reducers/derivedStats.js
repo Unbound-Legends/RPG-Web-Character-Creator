@@ -5,6 +5,8 @@ const archetypes = state => state.archetypes;
 const masterSkills = state => state.masterSkills;
 const skills = state => state.skills;
 const careerSkills = state => state.careerSkills;
+const masterTalents = state => state.masterTalents;
+
 
 export const calcCharacteristics = createSelector(
     archetype, archetypes,
@@ -51,5 +53,19 @@ export const calcSkillDice = createSelector(
       skillDice[key] = text;
     });
     return skillDice;
+  }
+);
+
+export const calcTalentCount = createSelector(
+  masterTalents,
+  (masterTalents) => {
+    let count = {};
+    Object.keys(masterTalents).forEach((row)=>{
+      Object.keys(masterTalents[row]).forEach((tier)=>{
+        let talent = masterTalents[row][tier];
+        if(talent!=='') count[talent] = count[talent] ? count[talent]+1 : 1;
+      })
+    })
+    return count;
   }
 );

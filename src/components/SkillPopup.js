@@ -6,23 +6,23 @@ import {changeMasterSkills} from '../actions/index';
 class SkillPopup extends React.Component {
 
   handleChange = () => {
-    const {masterSkills, skillName} = this.props;
+    const {masterSkills, skillKey} = this.props;
     let newObj = {...masterSkills};
-    newObj[skillName].show = !masterSkills[skillName].show;
+    newObj[skillKey].show = !masterSkills[skillKey].show;
     this.props.changeState(newObj);
   }
 
   render() {
-    const {skillName, skills, masterSkills} = this.props;
+    const {skillKey, skills, masterSkills} = this.props;
     return (
-      <div className='skill-row'>
-        <div className='skill-cell'>
+      <div className='table-row'>
+        <div className='table-cell'>
           <form>
-            <input type='checkbox' checked={masterSkills[skillName].show} onChange={this.handleChange}/>
+            <input type='checkbox' checked={masterSkills[skillKey].show} onChange={this.handleChange}/>
           </form>
         </div>
-        <div className='skill-cell'>
-          {skills[skillName].name}
+        <div className='table-cell'>
+          {skills[skillKey].name}
         </div>
       </div>
     )

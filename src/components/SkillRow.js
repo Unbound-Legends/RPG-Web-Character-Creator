@@ -8,35 +8,33 @@ import Description from './Description';
 class SkillRow extends React.Component {
 
   handleRankChange = (event) => {
-    const {masterSkills, skillName, changeState} = this.props;
+    const {masterSkills, skillKey, changeState} = this.props;
     let newObj = {...masterSkills};
-    console.log(event.target.value);
-    newObj[skillName].rank = +event.target.value;
-    console.log(newObj);
+    newObj[skillKey].rank = +event.target.value;
     changeState(newObj);
   }
 
   render() {
-    const {masterSkills, skills, skillName, careerSkills, skillDice, skillRanks} = this.props;
-    const skill = skills[skillName];
+    const {masterSkills, skills, skillKey, careerSkills, skillDice, skillRanks} = this.props;
+    const skill = skills[skillKey];
     return (
-      <div className={masterSkills ? (masterSkills[skillName].show ? 'skill-row' : 'skill-row-hide') : 'skill-row'}>
-        <div className='skill-cell'>
+      <div className={masterSkills ? (masterSkills[skillKey].show ? 'table-row' : 'table-row-hide') : 'table-row'}>
+        <div className='table-cell'>
           {skill.name}
         </div>
-        <div className='skill-cell'>
+        <div className='table-cell'>
           {skill.characteristic}
         </div>
-        <div className='skill-cell'>
-          <input type='checkbox' checked={careerSkills.includes(skillName)} readOnly/>
+        <div className='table-cell'>
+          <input type='checkbox' checked={careerSkills.includes(skillKey)} readOnly/>
         </div>
-        <div className='skill-cell'>
-          <select defaultValue={skillRanks[skillName]} onChange={this.handleRankChange}>
+        <div className='table-cell'>
+          <select defaultValue={skillRanks[skillKey]} onChange={this.handleRankChange}>
             {[0,1,2,3,4,5].map((key)=> <option key={key} value={key}>{key}</option> )}
           </select>
         </div>
-        <div className='skill-cell'>
-          <Description text={skillDice[skillName]} />
+        <div className='table-cell'>
+          <Description text={skillDice[skillKey]} />
         </div>
       </div>
     )

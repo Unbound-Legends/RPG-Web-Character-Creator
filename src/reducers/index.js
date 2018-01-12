@@ -18,11 +18,13 @@ const allReducers = combineReducers({
     career: changeState.career,
     careerSkills: changeState.careerSkills,
     masterSkills: changeState.masterSkills,
+    masterTalents: changeState.masterTalents,
+    talentSelection: changeState.talentSelection,
 });
 
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);
 export const skillRanks = (state) => derivedStats.calcSkillRanks(state);
 export const skillDice = (state) => derivedStats.calcSkillDice(state);
-
+export const talentCount = (state) => derivedStats.calcTalentCount(state);
 
 export default allReducers;

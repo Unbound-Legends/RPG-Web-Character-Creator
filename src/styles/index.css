@@ -148,39 +148,39 @@ button, input {
   border-bottom: black solid 1px;
 }
 
-.skill-table {
+.table {
   text-align: center;
   display: table;
   width: 100%;
 }
 
-.skill-module {
+.table-module {
   width: auto;
 }
 
-.skill-header {
+.table-header {
   display: table-header-group;
   font-weight: 600;
 }
 
-.skill-row {
+.table-row {
   display: table-row;
   height: 3vw;
   line-height: 3vw;
   vertical-align: middle;
 }
 
-.skill-row-hide {
+.table-row-hide {
   display: none;
 }
 
-.skill-cell {
+.table-cell {
   display: table-cell;
   padding: 0.3vw;
   border: black solid 1px;
 }
 
-.skill-heading {
+.table-heading {
   text-align: left;
   font-size: large;
   font-weight: bold;

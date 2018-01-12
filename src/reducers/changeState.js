@@ -1,4 +1,4 @@
-import {initialSkill} from './initialState';
+import * as initialState from './initialState';
 
 export const channel = (state = null, action) =>{
     switch (action.type) {
@@ -36,9 +36,27 @@ export const careerSkills = (state = [], action) =>{
     }
 }
 
-export const masterSkills = (state = initialSkill, action) =>{
+export const masterSkills = (state = initialState.masterSkills, action) =>{
     switch (action.type) {
         case 'Master_Skills_Changed':
+          return action.payload;
+        default:
+          return state;
+    }
+}
+
+export const masterTalents = (state = {...initialState.masterTalents}, action) =>{
+    switch (action.type) {
+        case 'Master_Talents_Changed':
+          return action.payload;
+        default:
+          return state;
+    }
+}
+
+export const talentSelection = (state = '', action) =>{
+    switch (action.type) {
+        case 'Talent_Selection_Changed':
           return action.payload;
         default:
           return state;
