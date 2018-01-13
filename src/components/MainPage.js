@@ -10,7 +10,7 @@ import About from './About';
 export default class MainPage extends React.Component {
   render() {
     return (
-      <Tabs defaultIndex={2}>
+      <Tabs defaultIndex={0}>
     		<TabList>
     			<Tab>Archetype</Tab>
           <Tab>Career</Tab>

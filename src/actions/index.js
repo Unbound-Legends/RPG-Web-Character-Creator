@@ -12,6 +12,13 @@ export const changeArchetype = (state) => {
     }
 };
 
+export const changeArchetypeSpecialSkills = (state) => {
+    return {
+        type: 'Archetype_Special_Skills_Changed',
+        payload: state,
+    }
+};
+
 export const changeCareer = (state) => {
     return {
         type: 'Career_Changed',

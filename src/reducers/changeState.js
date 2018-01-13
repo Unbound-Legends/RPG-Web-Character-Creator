@@ -1,6 +1,6 @@
 import * as initialState from './initialState';
 
-export const channel = (state = null, action) =>{
+export const channel = (state = '', action) =>{
     switch (action.type) {
         case 'Channel_Changed':
           return action.payload;
@@ -12,6 +12,15 @@ export const channel = (state = null, action) =>{
 export const archetype = (state = null, action) =>{
     switch (action.type) {
         case 'Archetype_Changed':
+          return action.payload;
+        default:
+          return state;
+    }
+}
+
+export const archetypeSpecialSkills = (state = {}, action) =>{
+    switch (action.type) {
+        case 'Archetype_Special_Skills_Changed':
           return action.payload;
         default:
           return state;

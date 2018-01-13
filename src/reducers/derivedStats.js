@@ -6,6 +6,8 @@ const masterSkills = state => state.masterSkills;
 const skills = state => state.skills;
 const careerSkills = state => state.careerSkills;
 const masterTalents = state => state.masterTalents;
+const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
+
 
 
 export const calcCharacteristics = createSelector(
@@ -17,12 +19,30 @@ export const calcCharacteristics = createSelector(
     }
 );
 
+export const calcArchetypeSkillRank = createSelector(
+  archetype, archetypes, skills, archetypeSpecialSkills,
+  (archetype, archetypes, skills, archetypeSpecialSkills) => {
+    if (archetype===null) return archetypeSpecialSkills;
+    const archetypeSkills = archetypes[archetype].skills
+    let archetypeSkillRank = {};
+    if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
+    if (Object.keys(archetypeSkills).includes('careerSkills')) return archetypeSkillRank;
+    if (Object.keys(skills).includes(Object.keys(archetypeSkills)[0])) {
+      Object.keys(archetypeSkills).forEach((skillKey) => archetypeSkillRank[skillKey]={rank: archetypeSkills[skillKey]});
+      return archetypeSkillRank;
+    }
+    return archetypeSpecialSkills;
+  }
+);
+
 export const calcSkillRanks = createSelector(
-  masterSkills, skills, careerSkills,
-  (masterSkills, skills, careerSkills) => {
+  masterSkills, skills, careerSkills, calcArchetypeSkillRank,
+  (masterSkills, skills, careerSkills, archetypeSkillRank) => {
     let skillRanks = {}
+    console.log(archetypeSkillRank);
     Object.keys(skills).forEach((key)=>{
-      skillRanks[key] = masterSkills[key].rank + (careerSkills.includes(key) ? 1 : 0);
+      console.log(archetypeSkillRank);
+      skillRanks[key] = masterSkills[key].rank + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
     });
     return skillRanks;
   }
@@ -67,5 +87,14 @@ export const calcTalentCount = createSelector(
       })
     })
     return count;
+  }
+);
+
+export const calcMaxCareerSkills = createSelector(
+  archetype, archetypes,
+  (archetype, archetypes) => {
+    const archetypeSkills = archetypes[archetype].skills
+    let maxCareerSkills = Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
+    return maxCareerSkills;
   }
 );

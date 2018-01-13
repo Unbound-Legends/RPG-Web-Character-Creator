@@ -3,8 +3,7 @@ import Description from './Description';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeCareer, changeCareerSkills} from '../actions/index';
-
-var maxCareerSkills = 4;
+import {maxCareerSkills} from '../reducers/index';
 
 class Career extends React.Component {
 
@@ -21,7 +20,7 @@ class Career extends React.Component {
         careerSkills[skill]===event.target.name && careerSkills.splice(index, 1);
       })
     } else careerSkills.push(event.target.name);
-    if (maxCareerSkills>=careerSkills.length) this.props.changeCareerSkills(careerSkills);
+    if (this.props.maxCareerSkills>=careerSkills.length) this.props.changeCareerSkills(careerSkills);
     else event.preventDefault();
   }
 
@@ -36,13 +35,17 @@ class Career extends React.Component {
             <option value={key} key={key}>{careers[key].name}</option>
           )}
         </select>
-        <h2>Career:&nbsp;<span className='title'>{masterCareer && masterCareer.name}</span></h2>
-        <h3>Career Skills:</h3>
-        {masterCareer && masterCareer.skills.map((skill)=>
-          <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
-        )}
-        <p><b>Setting:</b>&nbsp;{masterCareer && masterCareer.setting}</p>
-        <p><b>Description:</b>&nbsp;<Description text={masterCareer ? masterCareer.description : ''}/></p>
+        {masterCareer &&
+          <div>
+            <h2>Career:&nbsp;<span className='title'>{masterCareer.name}</span></h2>
+            <h3>Career Skills:</h3>
+            {masterCareer.skills.map((skill)=>
+              <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
+            )}
+            <p><b>Setting:</b>&nbsp;{masterCareer.setting}</p>
+            <p><b>Description:</b>&nbsp;<Description text={masterCareer.description}/></p>
+          </div>
+        }
       </div>
     );
   }
@@ -53,7 +56,8 @@ function mapStateToProps(state) {
         career: state.career,
         careerSkills: state.careerSkills,
         careers: state.careers,
-        skills: state.skills
+        skills: state.skills,
+        maxCareerSkills: maxCareerSkills(state),
     };
 }
 

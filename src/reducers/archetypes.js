@@ -9,7 +9,7 @@ export default function () {
       woundThreshold: 10,
       strainThreshold: 10,
       experience: 110,
-      skills: {Any: 2},
+      skills: {choice: 2, any: 1},
       talents: {
         readyforanything: {
           name: 'Ready for Anything',
@@ -316,7 +316,7 @@ export default function () {
       woundThreshold: 11,
       strainThreshold: 10,
       experience: 80,
-      skills: {Any: 2},
+      skills: {choice: 2, any: 2},
       talents: {
         afaceinacrowd: {
           name: 'A Face in a Crowd',
@@ -345,6 +345,7 @@ export default function () {
       strainThreshold: 8,
       experience: 70,
       skills: {
+        choice: 1,
         Athletics: 1,
         Coordination: 1,
         Resilience: 1
