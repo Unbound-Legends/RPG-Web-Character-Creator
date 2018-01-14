@@ -7,14 +7,18 @@ const skills = state => state.skills;
 const careerSkills = state => state.careerSkills;
 const masterTalents = state => state.masterTalents;
 const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
-
-
+const masterCharacteristics = state => state.masterCharacteristics;
 
 export const calcCharacteristics = createSelector(
-    archetype, archetypes,
-    (archetype, archetypes) => {
-      if (archetype===null) return null;
+    archetype, archetypes, masterCharacteristics,
+    (archetype, archetypes, masterCharacteristics) => {
+      if (archetype===null) return masterCharacteristics.creation;
       let characteristics = archetypes[archetype].characteristics;
+      Object.keys(characteristics).forEach((characteristic)=>{
+        Object.keys(masterCharacteristics).forEach((modType)=>{
+          characteristics[characteristic] += masterCharacteristics[modType][characteristic];
+        });
+      });
       return characteristics;
     }
 );
@@ -39,9 +43,7 @@ export const calcSkillRanks = createSelector(
   masterSkills, skills, careerSkills, calcArchetypeSkillRank,
   (masterSkills, skills, careerSkills, archetypeSkillRank) => {
     let skillRanks = {}
-    console.log(archetypeSkillRank);
     Object.keys(skills).forEach((key)=>{
-      console.log(archetypeSkillRank);
       skillRanks[key] = masterSkills[key].rank + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
     });
     return skillRanks;
@@ -56,7 +58,6 @@ export const calcSkillDice = createSelector(
     Object.keys(skills).forEach((key)=>{
       let characteristic = characteristics[skills[key].characteristic];
       let rank = skillRanks[key];
-      //console.log(key, characteristic, rank );
       let dice, upgrade = 0;
       let text = '';
       if (characteristic>=rank) {

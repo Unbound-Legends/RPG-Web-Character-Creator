@@ -80,3 +80,12 @@ export const masterMotivations = (state = {...initialState.masterMotivations}, a
           return state;
     }
 }
+
+export const masterCharacteristics = (state = {...initialState.masterCharacteristics}, action) =>{
+    switch (action.type) {
+        case 'Master_Characteristics_Changed':
+          return action.payload;
+        default:
+          return state;
+    }
+}

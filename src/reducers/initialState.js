@@ -46,6 +46,25 @@ export const masterMotivations = {
   Desire: {}, Fear: {}, Strength: {}, Flaw: {}
 }
 
+export const masterCharacteristics = {
+  creation: {
+    Brawn: 0,
+    Agility: 0,
+    Intellect: 0,
+    Cunning: 0,
+    Willpower: 0,
+    Presence: 0
+  },
+  dedication: {
+    Brawn: 0,
+    Agility: 0,
+    Intellect: 0,
+    Cunning: 0,
+    Willpower: 0,
+    Presence: 0
+  }
+}
+
 export const blankSkills = {
   Alchemy: {},
   Arcana: {},

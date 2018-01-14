@@ -60,3 +60,10 @@ export const changeMasterMotivations = (state) => {
         payload: state,
     }
 };
+
+export const changeMasterCharacteristics = (state) => {
+    return {
+        type: 'Master_Characteristics_Changed',
+        payload: state,
+    }
+};

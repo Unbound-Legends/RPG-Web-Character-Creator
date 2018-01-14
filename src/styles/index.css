@@ -180,6 +180,11 @@ button, input {
   border: black solid 1px;
 }
 
+.table-cell-no-border{
+  display: table-cell;
+  padding: 0.3vw;
+}
+
 .table-heading {
   text-align: left;
   font-size: large;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Archetype from './Archetype';
+import Characteristics from './Characteristics';
 import Career from './Career';
 import Motivation from './Motivation';
 import Skill from './Skill';
@@ -10,9 +11,10 @@ import About from './About';
 export default class MainPage extends React.Component {
   render() {
     return (
-      <Tabs defaultIndex={0}>
+      <Tabs defaultIndex={1}>
     		<TabList>
     			<Tab>Archetype</Tab>
+          <Tab>Characteristics</Tab>
           <Tab>Career</Tab>
           <Tab>Motivations</Tab>
           <Tab>Skills</Tab>
@@ -21,6 +23,9 @@ export default class MainPage extends React.Component {
     		</TabList>
         <TabPanel>
           <Archetype />
+        </TabPanel>
+        <TabPanel>
+          <Characteristics />
         </TabPanel>
         <TabPanel>
           <Career />
