@@ -1,29 +1,28 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {changeChannel} from '../actions/index'
 import About from './About';
 
-class Channel extends Component {
+export default class Channel extends Component {
+  state = {text: ''};
+
   handleSubmit = (event) => {
-    window.location = `/${this.props.channel}`;
+    window.location = `/${this.state.text}`;
     event.preventDefault();
   }
 
   handleChange = (event) => {
-    this.props.changeState(event.target.value)
+    this.setState({text: event.target.value});
   }
 
   render() {
     return (
       <div className='login-box'>
         <div>
-        <h1>A Cool Name</h1>
-        <h2>RPG Character Creator</h2>
+        <h1>The Emporium</h1>
+        <h2>Genesys Character Creator</h2>
         <br />
         <img src={`/images/favicon.png`} alt='' style={{maxWidth:'350px'}} />
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.props.channel} onChange={this.handleChange}/>
+          <input type="text" value={this.state.text} onChange={this.handleChange}/>
           <br/>
           <input type="submit" value="Submit" />
         </form>
@@ -33,15 +32,3 @@ class Channel extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-    return {
-        channel: state.channel,
-    };
-}
-
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeChannel}, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(Channel);

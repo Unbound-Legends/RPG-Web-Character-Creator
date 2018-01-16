@@ -1,14 +1,14 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeArchetype, changeArchetypeSpecialSkills} from '../actions/index';
+import { changeData } from '../actions/index';
 import ArchetypeStats from './ArchetypeStats';
 
 class Archetype extends React.Component {
 
   handleSelect = (event) => {
-    this.props.changeState(event.target.value);
-    this.props.changeArchetypeSpecialSkills({});
+    this.props.changeData(event.target.value, 'archetype');
+    this.props.changeData({}, 'archetypeSpecialSkills');
   }
 
   render() {
@@ -29,13 +29,14 @@ class Archetype extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        archetypes: state.archetypes,
         archetype: state.archetype,
-        archetypes: state.archetypes
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeArchetype, changeArchetypeSpecialSkills: changeArchetypeSpecialSkills}, dispatch);
+  return bindActionCreators({changeData: changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Archetype);
+
+export default connect(mapStateToProps, matchDispatchToProps)(Archetype)

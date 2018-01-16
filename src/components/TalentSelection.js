@@ -2,18 +2,16 @@ import React from 'react';
 import popup from 'react-popup';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeMasterTalents, changeTalentSelection} from '../actions/index';
+import {changeData} from '../actions/index';
 import {talentCount} from '../reducers/index';
 import Description from './Description';
 
 class TalentSelection extends React.Component {
-
-  componentDidMount() {
-    this.props.changeSelection(this.props.talentKey);
-  }
+  state = {talentSelection: this.props.talentKey}
 
   handleSubmit = () => {
-    const {row, tier, masterTalents, talentSelection} = this.props;
+    const {row, tier, masterTalents, changeData} = this.props;
+    const {talentSelection} = this.state;
     let newObj = {...masterTalents}
     newObj[row][tier] = talentSelection;
     //if the new talents isn't blank make a new empty block
@@ -29,12 +27,13 @@ class TalentSelection extends React.Component {
         }
       }
     }
-    this.props.changeState(newObj);
+    changeData(newObj, 'masterTalents');
     popup.close();
+    this.setState({talentSelection: ''})
   }
 
   handleChange = (event) => {
-    this.props.changeSelection(event.target.value);
+    this.setState({talentSelection: event.target.value})
     event.preventDefault();
   }
 
@@ -44,7 +43,8 @@ class TalentSelection extends React.Component {
   }
 
   render() {
-    const {talents, options, talentSelection, talentKey} = this.props;
+    const {talents, options, talentKey} = this.props;
+    const {talentSelection} = this.state;
     const talent = talents[talentSelection];
     return (
     <div>
@@ -80,12 +80,11 @@ function mapStateToProps(state) {
         masterTalents: state.masterTalents,
         talentCount: talentCount(state),
         talents: state.talents,
-        talentSelection: state.talentSelection,
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeMasterTalents, changeSelection: changeTalentSelection}, dispatch);
+    return bindActionCreators({changeData: changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(TalentSelection);

@@ -9,7 +9,7 @@ class ArchetypeStats extends React.Component {
   render() {
     const {archetype, archetypes} = this.props;
     const masterArchetype = archetypes[archetype];
-    if (archetype===null) return <div></div>;
+    if (!archetype) return <div></div>;
     return (
       <div>
         <h2>Archetype:&nbsp;<span className='title'>{masterArchetype.name}</span></h2>

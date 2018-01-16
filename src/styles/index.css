@@ -18,7 +18,8 @@ button, input {
 }
 
 .textSymbols {
-  width: 1.4vw;
+  width: 2vw;
+  vertical-align: middle;
 }
 
 .textField {

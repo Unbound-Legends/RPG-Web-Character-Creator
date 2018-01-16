@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeMasterMotivations} from '../actions/index';
+import {changeData} from '../actions/index';
 const seedrandom = require('seedrandom');
 var rng = seedrandom('added entropy.', { entropy: true });
 
@@ -9,28 +9,28 @@ var rng = seedrandom('added entropy.', { entropy: true });
 class MotivationBlock extends React.Component {
 
   handleSelect = (event) => {
-    const {masterMotivations, type, motivations, changeState} = this.props;
+    const {masterMotivations, type, motivations, changeData} = this.props;
     let newObj={...masterMotivations};
     newObj[type]={key: event.target.value, description:motivations[type][event.target.value]};
-    changeState(newObj);
+    changeData(newObj, 'masterMotivations')
     event.preventDefault();
   }
 
   handleChange = (event) => {
-    const {masterMotivations, type, changeState} = this.props;
+    const {masterMotivations, type, changeData} = this.props;
     let newObj={...masterMotivations};
     newObj[type].description=event.target.value;
-    changeState(newObj);
+    changeData(newObj, 'masterMotivations')
     event.preventDefault();
   }
 
   handleClick = () => {
-    const {motivations, type, masterMotivations, changeState} = this.props;
+    const {motivations, type, masterMotivations, changeData} = this.props;
     const list = Object.keys(motivations[type])
     let newKey = list[Math.floor(rng() * list.length)];
     let newObj={...masterMotivations};
     newObj[type]={key: newKey, description:motivations[type][newKey]};
-    changeState(newObj);
+    changeData(newObj, 'masterMotivations')
   }
 
   render() {
@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeMasterMotivations}, dispatch);
+    return bindActionCreators({changeData: changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MotivationBlock);

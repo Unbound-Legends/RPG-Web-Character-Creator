@@ -3,7 +3,6 @@ import SkillBlock from './SkillBlock';
 
 const Skill = () => {
     return (
-      <div>
       <div className='table table-module module'>
         <div className='table-cell'>
           <SkillBlock   type='General'
@@ -16,7 +15,6 @@ const Skill = () => {
             />
           )}
         </div>
-      </div>
       </div>
     )
   }

@@ -1,17 +1,17 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeMasterSkills} from '../actions/index';
+import {changeData} from '../actions/index';
 import {skillDice, skillRanks} from '../reducers/index';
 import Description from './Description';
 
 class SkillRow extends React.Component {
 
   handleRankChange = (event) => {
-    const {masterSkills, skillKey, changeState} = this.props;
+    const {masterSkills, skillKey, changeData} = this.props;
     let newObj = {...masterSkills};
     newObj[skillKey].rank = +event.target.value;
-    changeState(newObj);
+    changeData(newObj, 'masterSkills');
   }
 
   render() {
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeState: changeMasterSkills}, dispatch);
+    return bindActionCreators({changeData: changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SkillRow);

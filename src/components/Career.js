@@ -2,14 +2,14 @@ import React from 'react';
 import Description from './Description';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeCareer, changeCareerSkills} from '../actions/index';
+import {changeData} from '../actions/index';
 import {maxCareerSkills} from '../reducers/index';
 
 class Career extends React.Component {
 
   handleChange = (event) => {
-    this.props.changeCareer(event.target.value);
-    this.props.changeCareerSkills([]);
+    this.props.changeData(event.target.value, 'career');
+    this.props.changeData([], 'careerSkills');
     event.preventDefault();
   }
 
@@ -20,7 +20,7 @@ class Career extends React.Component {
         careerSkills[skill]===event.target.name && careerSkills.splice(index, 1);
       })
     } else careerSkills.push(event.target.name);
-    if (this.props.maxCareerSkills>=careerSkills.length) this.props.changeCareerSkills(careerSkills);
+    if (this.props.maxCareerSkills>=careerSkills.length) this.props.changeData(careerSkills, 'careerSkills');
     else event.preventDefault();
   }
 
@@ -62,7 +62,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeCareer: changeCareer, changeCareerSkills: changeCareerSkills}, dispatch);
+    return bindActionCreators({changeData: changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Career);

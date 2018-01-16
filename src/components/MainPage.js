@@ -1,4 +1,8 @@
 import React from 'react';
+import {changeChannel} from '../actions/index';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import { getData } from '../actions/index';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Archetype from './Archetype';
 import Characteristics from './Characteristics';
@@ -8,7 +12,25 @@ import Skill from './Skill';
 import Talents from './Talents';
 import About from './About';
 
-export default class MainPage extends React.Component {
+const channel = window.location.pathname.slice(1);
+const dataTypes = [
+    'archetype',
+    'archetypeSpecialSkills',
+    'career',
+    'careerSkills',
+    'masterMotivations',
+    'masterSkills',
+    'masterTalents',
+    'masterCharacteristics'
+  ];
+
+class MainPage extends React.Component {
+
+  componentDidMount() {
+    this.props.changeChannel(channel);
+    dataTypes.forEach((type) => this.props.getData(channel, type));
+  }
+
   render() {
     return (
       <Tabs defaultIndex={1}>
@@ -46,3 +68,14 @@ export default class MainPage extends React.Component {
       );
   }
 }
+
+function mapStateToProps(state) {
+    return {
+    };
+}
+
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({changeChannel: changeChannel, getData: getData}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(MainPage);

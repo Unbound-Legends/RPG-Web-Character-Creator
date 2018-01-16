@@ -20,7 +20,6 @@ const allReducers = combineReducers({
     careerSkills: changeState.careerSkills,
     masterSkills: changeState.masterSkills,
     masterTalents: changeState.masterTalents,
-    talentSelection: changeState.talentSelection,
     masterMotivations: changeState.masterMotivations,
     masterCharacteristics: changeState.masterCharacteristics,
 });
@@ -31,7 +30,5 @@ export const skillDice = (state) => derivedStats.calcSkillDice(state);
 export const talentCount = (state) => derivedStats.calcTalentCount(state);
 export const maxCareerSkills = (state) => derivedStats.calcMaxCareerSkills(state);
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
-
-
 
 export default allReducers;

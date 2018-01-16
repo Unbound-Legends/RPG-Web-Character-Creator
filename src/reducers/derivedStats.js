@@ -94,6 +94,7 @@ export const calcTalentCount = createSelector(
 export const calcMaxCareerSkills = createSelector(
   archetype, archetypes,
   (archetype, archetypes) => {
+    if (archetype===null) return 4;
     const archetypeSkills = archetypes[archetype].skills
     let maxCareerSkills = Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
     return maxCareerSkills;
