@@ -1,4 +1,4 @@
-import {database} from '../firestore/database';
+import database from '../firestore/database';
 
 export const getData = (channel, type) => {
   return dispatch => {
