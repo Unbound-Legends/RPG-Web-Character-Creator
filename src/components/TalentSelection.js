@@ -49,7 +49,7 @@ class TalentSelection extends React.Component {
     return (
     <div>
       <select defaultValue={talentKey} className='popup-select' onChange={this.handleChange}>
-        <option key='' value=''></option>
+        <option value=''></option>
         {options.map((key)=>
           <option value={key} key={key}>{talents[key].name}</option>
         )}

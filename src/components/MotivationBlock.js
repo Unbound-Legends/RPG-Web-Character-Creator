@@ -11,7 +11,7 @@ class MotivationBlock extends React.Component {
   handleSelect = (event) => {
     const {masterMotivations, type, motivations, changeData} = this.props;
     let newObj={...masterMotivations};
-    newObj[type]={key: event.target.value, description:motivations[type][event.target.value]};
+    newObj[type]={key: event.target.value, description:motivations[type][event.target.value] ? motivations[type][event.target.value] : ''};
     changeData(newObj, 'masterMotivations')
     event.preventDefault();
   }
@@ -41,7 +41,7 @@ class MotivationBlock extends React.Component {
     <div className='module motivation-module'>
       <div className='motivation-title'>{type}:
           <select onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
-            <option></option>
+            <option value=''></option>
             {Object.keys(motivations[type]).map((key)=>
               <option key={key} value={key}>{key}</option>
             )}

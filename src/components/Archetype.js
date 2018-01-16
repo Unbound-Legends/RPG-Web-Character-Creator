@@ -16,7 +16,7 @@ class Archetype extends React.Component {
     return (
       <div className='module'>
         <select value={archetype ? archetype : ''} onChange={this.handleSelect}>
-          <option></option>
+          <option value=''></option>
           {Object.keys(archetypes).map((key)=>
             <option value={key} key={key}>{archetypes[key].name}</option>
           )}

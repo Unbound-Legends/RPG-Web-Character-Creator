@@ -30,7 +30,7 @@ class Career extends React.Component {
     return (
       <div className='module'>
         <select defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
-          <option></option>
+          <option value=''></option>
           {Object.keys(careers).map((key)=>
             <option value={key} key={key}>{careers[key].name}</option>
           )}

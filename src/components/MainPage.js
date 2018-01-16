@@ -33,7 +33,7 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <Tabs defaultIndex={1}>
+      <Tabs defaultIndex={0}>
     		<TabList>
     			<Tab>Archetype</Tab>
           <Tab>Characteristics</Tab>
