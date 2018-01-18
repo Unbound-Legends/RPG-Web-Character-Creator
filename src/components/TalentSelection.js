@@ -82,7 +82,7 @@ class TalentSelection extends React.Component {
         </div>
       }
       <div>
-        <input type='submit' value='Submit' onClick={this.handleSubmit}/>
+        <input disabled={talentSelection==='Dedication' && selection === ''} type='submit' value='Submit' onClick={this.handleSubmit}/>
         <button value='Clear' onClick={this.handleCancel}>Cancel</button>
       </div>
     </div>
