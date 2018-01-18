@@ -21,7 +21,8 @@ const allReducers = combineReducers({
     masterSkills: changeState.masterSkills,
     masterTalents: changeState.masterTalents,
     masterMotivations: changeState.masterMotivations,
-    masterCharacteristics: changeState.masterCharacteristics,
+    creationCharacteristics: changeState.creationCharacteristics,
+    talentModifiers: changeState.talentModifiers,
 });
 
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);

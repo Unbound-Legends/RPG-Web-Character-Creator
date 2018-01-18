@@ -5,14 +5,15 @@ import {connect} from 'react-redux';
 import {changeData} from '../actions/index';
 import {talentCount} from '../reducers/index';
 import Description from './Description';
+import TalentDedication from './TalentDedication';
 
 class TalentSelection extends React.Component {
-  state = {talentSelection: this.props.talentKey}
+  state = {talentSelection: this.props.talentKey, selection: this.props.talentModifiers.dedication[this.props.row] ? this.props.talentModifiers.dedication[this.props.row] : ''}
 
   handleSubmit = () => {
-    const {row, tier, masterTalents, changeData} = this.props;
-    const {talentSelection} = this.state;
-    let newObj = {...masterTalents}
+    const {row, tier, masterTalents, talentModifiers, changeData} = this.props;
+    const {talentSelection, selection} = this.state;
+    let newObj = {...masterTalents};
     newObj[row][tier] = talentSelection;
     //if the new talents isn't blank make a new empty block
     if (talentSelection !== ''){
@@ -27,9 +28,17 @@ class TalentSelection extends React.Component {
         }
       }
     }
+
     changeData(newObj, 'masterTalents');
+
+    if (selection!=='') {
+      let newObj2 = {...talentModifiers};
+      newObj2.dedication[row] = selection;
+      changeData(newObj2, 'talentModifiers');
+    }
     popup.close();
-    this.setState({talentSelection: ''})
+    this.setState({talentSelection: ''});
+    this.setState({selection: ''});
   }
 
   handleChange = (event) => {
@@ -42,9 +51,13 @@ class TalentSelection extends React.Component {
     event.preventDefault();
   }
 
+  handleDedicationChange = (name) => {
+     this.setState({selection: name})
+  }
+
   render() {
-    const {talents, options, talentKey} = this.props;
-    const {talentSelection} = this.state;
+    const {talents, options, talentKey, row} = this.props;
+    const {talentSelection, selection} = this.state;
     const talent = talents[talentSelection];
     return (
     <div>
@@ -64,6 +77,8 @@ class TalentSelection extends React.Component {
           {talent.ranked ? <p><b>Ranked</b></p> : <p><b>Not Ranked</b></p> }
           <p><b>Setting:</b> {talent.setting}</p>
           <p><b>Description:</b> <Description text={talent.description}/></p>
+          {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection} handleDedicationChange={this.handleDedicationChange}/>}
+
         </div>
       }
       <div>
@@ -80,6 +95,7 @@ function mapStateToProps(state) {
         masterTalents: state.masterTalents,
         talentCount: talentCount(state),
         talents: state.talents,
+        talentModifiers: state.talentModifiers,
     };
 }
 

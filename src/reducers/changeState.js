@@ -46,7 +46,12 @@ export const masterMotivations = (state = {...initialState.masterMotivations}, a
   return state;
 }
 
-export const masterCharacteristics = (state = {...initialState.masterCharacteristics}, action) =>{
-  if (action.type === 'masterCharacteristics_Changed' && action.payload!==null) return action.payload;
+export const creationCharacteristics = (state = {...initialState.creationCharacteristics}, action) =>{
+  if (action.type === 'creationCharacteristics_Changed' && action.payload!==null) return action.payload;
+  return state;
+}
+
+export const talentModifiers = (state = initialState.talentModifiers, action) =>{
+  if (action.type === 'talentModifiers_Changed' && action.payload!==null) return action.payload;
   return state;
 }

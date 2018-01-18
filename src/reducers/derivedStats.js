@@ -7,17 +7,23 @@ const skills = state => state.skills;
 const careerSkills = state => state.careerSkills;
 const masterTalents = state => state.masterTalents;
 const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
-const masterCharacteristics = state => state.masterCharacteristics;
+const creationCharacteristics = state => state.creationCharacteristics;
+const talentModifiers = state => state.talentModifiers;
+
 
 export const calcCharacteristics = createSelector(
-    archetype, archetypes, masterCharacteristics,
-    (archetype, archetypes, masterCharacteristics) => {
-      if (archetype===null) return masterCharacteristics.creation;
-      let characteristics = archetypes[archetype].characteristics;
+    archetype, archetypes, creationCharacteristics, talentModifiers,
+    (archetype, archetypes, creationCharacteristics, talentModifiers) => {
+      if (archetype===null) return creationCharacteristics;
+      //get the starting characteristics
+      let characteristics = {...archetypes[archetype].characteristics};
+      //add the creation characteristics
       Object.keys(characteristics).forEach((characteristic)=>{
-        Object.keys(masterCharacteristics).forEach((modType)=>{
-          characteristics[characteristic] += masterCharacteristics[modType][characteristic];
-        });
+        characteristics[characteristic] += creationCharacteristics[characteristic];
+      });
+      //add dedications talents
+      Object.values(talentModifiers.dedication).forEach((characteristic)=>{
+        characteristics[characteristic]++;
       });
       return characteristics;
     }
@@ -27,7 +33,7 @@ export const calcArchetypeSkillRank = createSelector(
   archetype, archetypes, skills, archetypeSpecialSkills,
   (archetype, archetypes, skills, archetypeSpecialSkills) => {
     if (archetype===null) return archetypeSpecialSkills;
-    const archetypeSkills = archetypes[archetype].skills
+    const archetypeSkills = {...archetypes[archetype].skills}
     let archetypeSkillRank = {};
     if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
     if (Object.keys(archetypeSkills).includes('careerSkills')) return archetypeSkillRank;

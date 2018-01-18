@@ -21,7 +21,8 @@ const dataTypes = [
     'masterMotivations',
     'masterSkills',
     'masterTalents',
-    'masterCharacteristics'
+    'creationCharacteristics',
+    'talentModifiers'
   ];
 
 class MainPage extends React.Component {

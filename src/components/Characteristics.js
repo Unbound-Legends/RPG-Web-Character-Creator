@@ -8,27 +8,25 @@ import StatBlock from './StatBlock';
 class Characteristics extends React.Component {
 
   handleClick = (event) => {
-    const {masterCharacteristics, characteristics, changeData} = this.props;
-    let newObj = {...masterCharacteristics};
+    const {creationCharacteristics, characteristics, changeData} = this.props;
+    let newObj = {...creationCharacteristics};
     let characteristic = event.target.value;
     if (event.target.name==='Up') {
       if (characteristics[characteristic]>=5) {
         alert(`You have maxed out ${characteristic}`);
         return;
       }
-      newObj.creation[characteristic]++;
+      newObj[characteristic]++;
     }
     if (event.target.name==='Down') {
-      if (0>=masterCharacteristics.creation[characteristic]) {
+      if (0>=creationCharacteristics[characteristic]) {
         alert(`${characteristic} cannot be decreased further`);
         return;
       }
-      newObj.creation[characteristic]--;
+      newObj[characteristic]--;
     }
-    changeData(newObj, 'masterCharacteristics');
+    changeData(newObj, 'creationCharacteristics');
   }
-
-
 
   render() {
     const {characteristics} = this.props;
@@ -65,8 +63,9 @@ function mapStateToProps(state) {
     return {
         archetype: state.archetype,
         archetypes: state.archetypes,
-        masterCharacteristics: state.masterCharacteristics,
+        creationCharacteristics: state.creationCharacteristics,
         characteristics: characteristics(state),
+        talentModifiers: state.talentModifiers,
     };
 }
 

@@ -31,6 +31,7 @@ class TalentBlock extends React.Component {
         else if (talents[key].ranked && ((talents[key].tier+talentCount[key])===tier)) options.push(key);
         if (key===talentKey) options.push(key);
       })
+      if (tier===5 && !options.includes('Dedication')) options.push('Dedication')
 
       options.sort();
       cb(options);
