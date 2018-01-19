@@ -1,8 +1,7 @@
 import React from 'react';
 import popup from 'react-popup';
 import {connect} from 'react-redux';
-import SkillRow from './SkillRow';
-import SkillPopup from './SkillPopup';
+import {SkillRow, SkillPopup} from './index';
 
 class SkillBlock extends React.Component {
 

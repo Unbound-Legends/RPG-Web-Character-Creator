@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeData} from '../actions/index';
+import {changeData} from '../actions';
 
 class SkillPopup extends React.Component {
 

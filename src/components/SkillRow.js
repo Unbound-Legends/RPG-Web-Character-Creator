@@ -1,9 +1,9 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeData} from '../actions/index';
-import {skillDice, skillRanks} from '../reducers/index';
-import Description from './Description';
+import {changeData} from '../actions';
+import {skillDice, skillRanks} from '../reducers';
+import {Description} from './index';
 
 class SkillRow extends React.Component {
 

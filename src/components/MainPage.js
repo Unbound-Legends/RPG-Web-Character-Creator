@@ -1,16 +1,10 @@
 import React from 'react';
-import {changeChannel} from '../actions/index';
+import {changeChannel} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { getData } from '../actions/index';
+import { getData } from '../actions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Archetype from './Archetype';
-import Characteristics from './Characteristics';
-import Career from './Career';
-import Motivation from './Motivation';
-import Skill from './Skill';
-import Talents from './Talents';
-import About from './About';
+import { About, Archetype, Career, Characteristics, Motivation, Skill, Attributes, Talents } from './index';
 
 const channel = window.location.pathname.slice(1);
 const dataTypes = [
@@ -22,7 +16,9 @@ const dataTypes = [
     'masterSkills',
     'masterTalents',
     'creationCharacteristics',
-    'talentModifiers'
+    'talentModifiers',
+    'currentWound',
+    'currentStrain',
   ];
 
 class MainPage extends React.Component {
@@ -33,40 +29,42 @@ class MainPage extends React.Component {
   }
 
   render() {
-    return (
-      <Tabs defaultIndex={0}>
-    		<TabList>
-    			<Tab>Archetype</Tab>
-          <Tab>Characteristics</Tab>
-          <Tab>Career</Tab>
-          <Tab>Motivations</Tab>
-          <Tab>Skills</Tab>
-          <Tab>Talents</Tab>
-          <Tab>About</Tab>
-    		</TabList>
-        <TabPanel>
-          <Archetype />
-        </TabPanel>
-        <TabPanel>
-          <Characteristics />
-        </TabPanel>
-        <TabPanel>
-          <Career />
-        </TabPanel>
-        <TabPanel>
-          <Motivation />
-        </TabPanel>
-        <TabPanel>
-          <Skill />
-        </TabPanel>
-        <TabPanel>
-          <Talents />
-        </TabPanel>
-        <TabPanel>
-          <About />
-        </TabPanel>
-      </Tabs>
-      );
+      return <Tabs defaultIndex={0}>
+          <TabList>
+              <Tab>Attributes</Tab>
+              <Tab>Archetype</Tab>
+              <Tab>Characteristics</Tab>
+              <Tab>Career</Tab>
+              <Tab>Motivations</Tab>
+              <Tab>Skills</Tab>
+              <Tab>Talents</Tab>
+              <Tab>About</Tab>
+          </TabList>
+          <TabPanel>
+              <Attributes/>
+          </TabPanel>
+          <TabPanel>
+              <Archetype/>
+          </TabPanel>
+          <TabPanel>
+              <Characteristics/>
+          </TabPanel>
+          <TabPanel>
+              <Career/>
+          </TabPanel>
+          <TabPanel>
+              <Motivation/>
+          </TabPanel>
+          <TabPanel>
+              <Skill/>
+          </TabPanel>
+          <TabPanel>
+              <Talents/>
+          </TabPanel>
+          <TabPanel>
+              <About/>
+          </TabPanel>
+      </Tabs>;
   }
 }
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Description from './Description';
-import StatBlock from './StatBlock';
-import ArchetypeSkills from './ArchetypeSkills';
+import {Description, StatBlock, ArchetypeSkills} from './index';
 
 class ArchetypeStats extends React.Component {
 
@@ -24,11 +22,11 @@ class ArchetypeStats extends React.Component {
         </div>
         {masterArchetype &&
           <div className='block'>
-            <StatBlock  textTop='Wounds'
-                        textBottom={`0 | ${masterArchetype.woundThreshold}`}
+            <StatBlock  textTop='Starting Wounds'
+                        textBottom={masterArchetype.woundThreshold}
                         block='attrib' />
-            <StatBlock  textTop='Strain'
-                        textBottom={`0 | ${masterArchetype.strainThreshold}`}
+            <StatBlock  textTop='Starting Strain'
+                        textBottom={masterArchetype.strainThreshold}
                         block='attrib' />
           </div>
         }

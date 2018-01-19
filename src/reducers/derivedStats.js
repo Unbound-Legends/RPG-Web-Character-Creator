@@ -22,7 +22,7 @@ export const calcCharacteristics = createSelector(
         characteristics[characteristic] += creationCharacteristics[characteristic];
       });
       //add dedications talents
-      Object.values(talentModifiers.dedication).forEach((characteristic)=>{
+      Object.values(talentModifiers.Dedication).forEach((characteristic)=>{
         characteristics[characteristic]++;
       });
       return characteristics;
@@ -105,4 +105,59 @@ export const calcMaxCareerSkills = createSelector(
     let maxCareerSkills = Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
     return maxCareerSkills;
   }
+);
+
+export const calcWounds = createSelector(
+    archetype, archetypes, creationCharacteristics, calcTalentCount,
+    (archetype, archetypes, creationCharacteristics, talentCount) => {
+        if (archetype===null) return 0;
+        //get starting wounds
+        let woundThreshold = archetypes[archetype].woundThreshold;
+        //get starting brawn
+        let startingBrawn = archetypes[archetype].characteristics.Brawn;
+        //get brawn added via creation
+        let creationBrawn = creationCharacteristics.Brawn;
+        //get wound modifier from talentModifier
+        let woundModifier = talentCount.Toughened ? talentCount.Toughened * 2 : 0;
+
+        woundThreshold += startingBrawn + creationBrawn + woundModifier;
+        return woundThreshold;
+    }
+);
+
+export const calcStrain = createSelector(
+    archetype, archetypes, creationCharacteristics, calcTalentCount,
+    (archetype, archetypes, creationCharacteristics, talentCount) => {
+        if (archetype===null) return 0;
+        //get starting wounds
+        let woundThreshold = archetypes[archetype].strainThreshold;
+        //get starting brawn
+        let startingBrawn = archetypes[archetype].characteristics.Willpower;
+        //get brawn added via creation
+        let creationBrawn = creationCharacteristics.Willpower;
+        //get wound modifier from talentModifier
+        let woundModifier = talentCount.Grit ? talentCount.Grit * 2 : 0;
+
+        woundThreshold += startingBrawn+creationBrawn+woundModifier;
+
+        return woundThreshold;
+    }
+);
+
+export const calcTotalSoak = createSelector(
+    calcCharacteristics, calcTalentCount,
+    (characteristics, talentCount) => {
+        if (archetype===null) return 0;
+        let totalSoak = 0;
+        //get calcBrawn
+        let Brawn = characteristics.Brawn;
+        //get soak from armor
+        let Armor = 0;
+        //get soak from Enduring Talent
+        let Enduring = talentCount.Enduring ? talentCount.Enduring : 0;
+        //add it all up
+        totalSoak = Brawn + Armor + Enduring;
+
+        return totalSoak;
+    }
 );

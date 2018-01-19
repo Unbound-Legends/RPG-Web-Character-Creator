@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import About from './About';
+import {About} from './index';
 
 export default class Channel extends Component {
   state = {text: ''};

@@ -56,7 +56,9 @@ export const creationCharacteristics = {
 }
 
 export const talentModifiers = {
-  dedication: {}
+  Dedication: {},
+  Toughened: 0,
+  Grit: 0
 }
 
 export const blankSkills = {

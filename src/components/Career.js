@@ -1,9 +1,9 @@
 import React from 'react';
-import Description from './Description';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeData} from '../actions/index';
-import {maxCareerSkills} from '../reducers/index';
+import {changeData} from '../actions';
+import {maxCareerSkills} from '../reducers';
+import {Description} from './index';
 
 class Career extends React.Component {
 

@@ -2,13 +2,12 @@ import React from 'react';
 import popup from 'react-popup';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeData} from '../actions/index';
-import {talentCount} from '../reducers/index';
-import Description from './Description';
-import TalentDedication from './TalentDedication';
+import {changeData} from '../actions';
+import {talentCount} from '../reducers';
+import {Description, TalentDedication} from './index';
 
 class TalentSelection extends React.Component {
-  state = {talentSelection: this.props.talentKey, selection: this.props.talentModifiers.dedication[this.props.row] ? this.props.talentModifiers.dedication[this.props.row] : ''}
+  state = {talentSelection: this.props.talentKey, selection: this.props.talentModifiers.Dedication[this.props.row] ? this.props.talentModifiers.Dedication[this.props.row] : ''}
 
   handleSubmit = () => {
     const {row, tier, masterTalents, talentModifiers, changeData} = this.props;
@@ -30,12 +29,13 @@ class TalentSelection extends React.Component {
     }
 
     changeData(newObj, 'masterTalents');
-
+    //add dedication info to talentModifiers
     if (selection!=='') {
       let newObj2 = {...talentModifiers};
-      newObj2.dedication[row] = selection;
+      newObj2.Dedication[row] = selection;
       changeData(newObj2, 'talentModifiers');
     }
+
     popup.close();
     this.setState({talentSelection: ''});
     this.setState({selection: ''});

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {talentCount} from '../reducers/index';
-import Description from './Description'
+import {talentCount} from '../reducers';
+import {Description} from './index'
 
 class TalentList extends React.Component {
   render() {

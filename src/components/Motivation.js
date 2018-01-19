@@ -1,6 +1,6 @@
 import React from 'react';
-import MotivationBlock from './MotivationBlock';
 import {connect} from 'react-redux';
+import {MotivationBlock} from './index';
 
 class Motivation extends React.Component {
 

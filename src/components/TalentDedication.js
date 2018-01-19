@@ -1,8 +1,8 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeData} from '../actions/index';
-import {characteristics} from '../reducers/index';
+import {changeData} from '../actions';
+import {characteristics} from '../reducers';
 
 class TalentDedication extends React.Component {
   state = {options: []};
@@ -11,7 +11,7 @@ class TalentDedication extends React.Component {
     const {characteristics, talentModifiers, row} = this.props;
       let options = [];
       Object.keys(characteristics).forEach((characteristic)=> 5>characteristics[characteristic] && options.push(characteristic))
-      talentModifiers.dedication[row] && options.push(talentModifiers.dedication[row])
+      talentModifiers.Dedication[row] && options.push(talentModifiers.Dedication[row])
       options.sort();
       this.setState({options: options});
   }

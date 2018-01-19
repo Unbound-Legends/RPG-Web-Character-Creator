@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import MainPage from './MainPage';
-import Channel from './Channel';
-import {changeChannel} from '../actions/index';
+import {changeChannel} from '../actions';
+import {MainPage, Channel} from './index';
 
 class App extends React.Component {
 

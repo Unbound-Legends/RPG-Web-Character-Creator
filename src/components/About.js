@@ -9,5 +9,5 @@ const About = () => {
         <p><a href="https://paypal.me/SkyJedi" target="_blank" rel="noopener noreferrer">Donate</a></p>
       </div>
     )
-}
+};
 export default About;

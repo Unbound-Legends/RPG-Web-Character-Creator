@@ -1,8 +1,8 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { changeData } from '../actions/index';
-import ArchetypeStats from './ArchetypeStats';
+import { changeData } from '../actions';
+import {ArchetypeStats} from './index';
 
 class Archetype extends React.Component {
 

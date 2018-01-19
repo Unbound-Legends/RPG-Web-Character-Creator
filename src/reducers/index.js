@@ -23,6 +23,8 @@ const allReducers = combineReducers({
     masterMotivations: changeState.masterMotivations,
     creationCharacteristics: changeState.creationCharacteristics,
     talentModifiers: changeState.talentModifiers,
+    currentWound: changeState.currentWound,
+    currentStrain: changeState.currentStrain,
 });
 
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);
@@ -30,6 +32,8 @@ export const skillRanks = (state) => derivedStats.calcSkillRanks(state);
 export const skillDice = (state) => derivedStats.calcSkillDice(state);
 export const talentCount = (state) => derivedStats.calcTalentCount(state);
 export const maxCareerSkills = (state) => derivedStats.calcMaxCareerSkills(state);
-export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
+export const woundThreshold = (state) => derivedStats.calcWounds(state);
+export const strainThreshold = (state) => derivedStats.calcStrain(state);
+export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
 
 export default allReducers;

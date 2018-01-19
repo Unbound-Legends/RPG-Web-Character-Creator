@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillBlock from './SkillBlock';
+import {SkillBlock} from './index';
 
 const Skill = () => {
     return (

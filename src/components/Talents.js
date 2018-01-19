@@ -1,9 +1,8 @@
 import React from 'react';
 import popup from 'react-popup';
 import {connect} from 'react-redux';
-import {talentCount} from '../reducers/index';
-import TalentBlock from './TalentBlock';
-import TalentList from './TalentList';
+import {talentCount} from '../reducers';
+import {TalentBlock, TalentList} from './index';
 
 class Talents extends React.Component {
 

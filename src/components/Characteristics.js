@@ -1,9 +1,9 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {changeData} from '../actions/index';
-import {characteristics} from '../reducers/index';
-import StatBlock from './StatBlock';
+import {changeData} from '../actions';
+import {characteristics} from '../reducers';
+import {StatBlock} from './index';
 
 class Characteristics extends React.Component {
 
@@ -65,7 +65,6 @@ function mapStateToProps(state) {
         archetypes: state.archetypes,
         creationCharacteristics: state.creationCharacteristics,
         characteristics: characteristics(state),
-        talentModifiers: state.talentModifiers,
     };
 }
 

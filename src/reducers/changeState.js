@@ -55,3 +55,13 @@ export const talentModifiers = (state = initialState.talentModifiers, action) =>
   if (action.type === 'talentModifiers_Changed' && action.payload!==null) return action.payload;
   return state;
 }
+
+export const currentWound = (state = 0, action) =>{
+    if (action.type === 'currentWound_Changed' && action.payload!==null) return action.payload;
+    return state;
+}
+
+export const currentStrain = (state = 0, action) =>{
+    if (action.type === 'currentStrain_Changed' && action.payload!==null) return action.payload;
+    return state;
+}
