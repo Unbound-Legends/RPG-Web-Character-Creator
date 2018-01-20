@@ -21,3 +21,4 @@ export {default as TalentDedication} from './TalentDedication';
 export {default as TalentList} from './TalentList';
 export {default as Talents} from './Talents';
 export {default as TalentSelection} from './TalentSelection';
+export {default as XPCounter} from './XPCounter';

@@ -1,6 +1,6 @@
 :root {
-  --orange: #F69337;
-  --lightblue: #1ABEEF;
+  --orange: #f58e20;
+  --lightblue: #b5e0e8;
   --darkblue: #326DA1;
   --gray: #f7f5f2;
   --brown: #b3977b;
@@ -60,6 +60,27 @@ button, input {
   text-align: center;
   border: none;
   background: var(--gray);
+}
+
+
+.inner {
+
+}
+
+.xp-block {
+    height: 14vw;
+    width: 14vw;
+    position: relative;
+    background-image: url(/images/blocks/AvailableXp.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.inside-block {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    height: 3vw;
 }
 
 .stats-box {

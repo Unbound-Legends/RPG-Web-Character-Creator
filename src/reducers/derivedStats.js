@@ -112,16 +112,15 @@ export const calcWounds = createSelector(
     (archetype, archetypes, creationCharacteristics, talentCount) => {
         if (archetype===null) return 0;
         //get starting wounds
-        let woundThreshold = archetypes[archetype].woundThreshold;
+        let startingThreshold = archetypes[archetype].woundThreshold;
         //get starting brawn
         let startingBrawn = archetypes[archetype].characteristics.Brawn;
         //get brawn added via creation
         let creationBrawn = creationCharacteristics.Brawn;
         //get wound modifier from talentModifier
-        let woundModifier = talentCount.Toughened ? talentCount.Toughened * 2 : 0;
+        let talentModifier = talentCount.Toughened ? talentCount.Toughened * 2 : 0;
 
-        woundThreshold += startingBrawn + creationBrawn + woundModifier;
-        return woundThreshold;
+        return startingThreshold + startingBrawn + creationBrawn + talentModifier;
     }
 );
 
@@ -130,17 +129,15 @@ export const calcStrain = createSelector(
     (archetype, archetypes, creationCharacteristics, talentCount) => {
         if (archetype===null) return 0;
         //get starting wounds
-        let woundThreshold = archetypes[archetype].strainThreshold;
+        let startingThreshold = archetypes[archetype].strainThreshold;
         //get starting brawn
         let startingBrawn = archetypes[archetype].characteristics.Willpower;
         //get brawn added via creation
         let creationBrawn = creationCharacteristics.Willpower;
         //get wound modifier from talentModifier
-        let woundModifier = talentCount.Grit ? talentCount.Grit * 2 : 0;
+        let talentModifier = talentCount.Grit ? talentCount.Grit * 2 : 0;
 
-        woundThreshold += startingBrawn+creationBrawn+woundModifier;
-
-        return woundThreshold;
+        return startingThreshold + startingBrawn + creationBrawn + talentModifier;
     }
 );
 
@@ -148,16 +145,57 @@ export const calcTotalSoak = createSelector(
     calcCharacteristics, calcTalentCount,
     (characteristics, talentCount) => {
         if (archetype===null) return 0;
-        let totalSoak = 0;
         //get calcBrawn
         let Brawn = characteristics.Brawn;
         //get soak from armor
         let Armor = 0;
         //get soak from Enduring Talent
         let Enduring = talentCount.Enduring ? talentCount.Enduring : 0;
-        //add it all up
-        totalSoak = Brawn + Armor + Enduring;
 
-        return totalSoak;
+        return Brawn + Armor + Enduring;
+    }
+);
+
+export const calcUsedXP = createSelector(
+    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, careerSkills, calcArchetypeSkillRank, calcSkillRanks,
+    (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, careerSkills, archetypeSkillRank, skillRanks) => {
+        if (archetype===null) return 0;
+        //talent XP
+        let talentXP = 0;
+        Object.keys(masterTalents).forEach((row)=>{
+            Object.keys(masterTalents[row]).forEach((tier)=>{
+                if (masterTalents[row][tier] !== '') talentXP = talentXP+(5*tier);
+            })
+        })
+        //skillXP
+        let skillXP = 0;
+        Object.keys(masterSkills).forEach((skill)=>{
+            let rank = skillRanks[skill];
+            for(let i=(careerSkills.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
+                skillXP += (((i + 1) * 5) + (careerSkills.includes(skill) ? 0 : 5));
+            }
+        })
+
+        //characteristicXP
+        let characteristicXP = 0;
+        //starting characteristics
+        Object.keys(creationCharacteristics).forEach((characteristic)=>{
+            let points = creationCharacteristics[characteristic];
+            for(let i=0; points>i; i++) {
+                characteristicXP += (archetypes[archetype].characteristics[characteristic]+i+1)*10;
+            }
+        });
+
+        return talentXP + skillXP + characteristicXP;
+    }
+);
+
+export const calcTotalXP = createSelector(
+    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills,
+    (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills) => {
+        if (archetype===null) return 0;
+        let totalXP = 0;
+
+        return totalXP;
     }
 );

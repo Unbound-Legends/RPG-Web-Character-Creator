@@ -9,7 +9,7 @@ export default class Description extends React.Component {
     text.forEach((word)=>{
       switch (true) {
         case word.includes('CRB'):
-          newString += `<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook" target="_blank"  target="_blank" rel="noopener noreferrer">${word}</a> `
+          newString += `<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook?affiliate_id=1131280" target="_blank"  target="_blank" rel="noopener noreferrer">${word}</a> `
           break;
         case word === '[blue]':
         case word === '[boost]':
