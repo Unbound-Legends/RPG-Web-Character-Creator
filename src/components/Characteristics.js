@@ -10,6 +10,7 @@ class Characteristics extends React.Component {
     countXP = () => {
         const {archetypes, archetype, creationCharacteristics} = this.props;
         let xp = 0;
+        if (archetype===null) return 0;
         //starting characteristics
         let startingCharacteristics = archetypes[archetype].characteristics;
 
