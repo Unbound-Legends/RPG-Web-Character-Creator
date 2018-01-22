@@ -36,7 +36,6 @@ class SkillBlock extends React.Component {
           <div className='module table'>
             <div className='table-header'>
               <div className='table-cell'>Skill</div>
-              <div className='table-cell'>Characteristic</div>
               <div className='table-cell'>Career</div>
               <div className='table-cell'>Rank</div>
               <div className='table-cell'>Dice Pool</div>

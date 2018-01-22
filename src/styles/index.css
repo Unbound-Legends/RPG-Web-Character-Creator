@@ -5,6 +5,11 @@
   --gray: #f7f5f2;
   --brown: #b3977b;
   --red: #e65247;
+  --difficulty: #52287E;
+  --challenge: #751317;
+  --boost: #76CDDB;
+  --ability: #46AC4E;
+  --proficiency: #FEF035;
   font-family: 'Avenir Next', sans-serif !important;
   background-image: url(/images/background.png);
 }
@@ -26,7 +31,8 @@ button, input {
 }
 
 .textSymbols {
-  width: 1.5vw;
+  height: 1.8vw;
+  vertical-align: middle;
 }
 
 .textField {

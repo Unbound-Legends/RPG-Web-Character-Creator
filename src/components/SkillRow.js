@@ -12,7 +12,27 @@ class SkillRow extends React.Component {
     let newObj = {...masterSkills};
     newObj[skillKey].rank = +event.target.value - (careerSkills.includes(skillKey) ? 1 : 0) - (archetypeSkillRank[skillKey] ? archetypeSkillRank[skillKey].rank : 0);
     changeData(newObj, 'masterSkills');
-  }
+  };
+
+  shortCharacteristics = () => {
+      const {skillKey, skills} = this.props;
+      switch (skills[skillKey].characteristic) {
+          case 'Agility':
+            return 'AG';
+          case 'Brawn':
+              return 'BR';
+          case 'Intellect':
+              return 'INT';
+          case 'Cunning':
+              return 'CUN';
+          case 'Willpower':
+              return 'WILL';
+          case 'Presence':
+              return 'PR';
+          default:
+              return '';
+      }
+  };
 
   render() {
     const {masterSkills, skills, skillKey, careerSkills, skillDice, skillRanks, archetypeSkillRank} = this.props;
@@ -26,11 +46,8 @@ class SkillRow extends React.Component {
     }
     return (
       <div className={masterSkills ? (masterSkills[skillKey].show ? 'table-row' : 'table-row-hide') : 'table-row'}>
-        <div className='table-cell'>
-          {skill.name}
-        </div>
-        <div className='table-cell'>
-          {skill.characteristic}
+        <div className='table-cell' style={{textAlign: 'left'}}>
+          {`${skill.name} (${this.shortCharacteristics()})`}
         </div>
         <div className='table-cell'>
           <input type='checkbox' checked={careerSkills.includes(skillKey)} readOnly/>

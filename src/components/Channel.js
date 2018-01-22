@@ -20,7 +20,7 @@ export default class Channel extends Component {
         <h1>The Emporium</h1>
         <h2>Genesys Character Creator</h2>
         <br />
-        <img src={`/images/favicon.svg`} alt='' style={{maxWidth:'350px'}} />
+        <img src={`/images/favicon.png`} alt='' style={{maxWidth:'350px'}} />
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.text} onChange={this.handleChange}/>
           <br/>
