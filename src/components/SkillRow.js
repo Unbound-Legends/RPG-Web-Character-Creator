@@ -21,7 +21,6 @@ class SkillRow extends React.Component {
     if (careerSkills.includes(skillKey)) ranks.shift();
     if (archetypeSkillRank[skillKey]) {
         for (let i = 0; archetypeSkillRank[skillKey].rank > i; i++) {
-            console.log(ranks)
             ranks.shift();
         }
     }

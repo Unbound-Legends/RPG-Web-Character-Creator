@@ -65,3 +65,11 @@ export const currentStrain = (state = 0, action) =>{
     if (action.type === 'currentStrain_Changed' && action.payload!==null) return action.payload;
     return state;
 }
+
+export const critical = (state = [], action) =>{
+    if (action.type === 'critical_Changed' && action.payload!==null) {
+        action.payload.sort((a, b) =>  a - b);
+        return action.payload;
+    }
+    return state;
+}

@@ -7,6 +7,7 @@ export {default as Attributes} from './Attributes';
 export {default as Career} from './Career';
 export {default as Channel} from './Channel';
 export {default as Characteristics} from './Characteristics';
+export {default as Critical} from './Critical';
 export {default as Description} from './Description';
 export {default as MainPage} from './MainPage';
 export {default as Motivation} from './Motivation';

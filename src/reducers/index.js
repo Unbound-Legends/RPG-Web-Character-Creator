@@ -4,6 +4,7 @@ import careers from './careers';
 import motivations from './motivations';
 import skills from './skills';
 import talents from './talents';
+import * as criticals from './criticals';
 import * as derivedStats from './derivedStats';
 import * as changeState from './changeState';
 
@@ -24,7 +25,7 @@ const allReducers = combineReducers({
     creationCharacteristics: changeState.creationCharacteristics,
     talentModifiers: changeState.talentModifiers,
     currentWound: changeState.currentWound,
-    currentStrain: changeState.currentStrain,
+    critical: changeState.critical,
 });
 
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);
@@ -38,5 +39,6 @@ export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const totalXP = (state) => derivedStats.calcUsedXP(state);
+export const criticalText = (state) => criticals.criticalText(state);
 
 export default allReducers;

@@ -17,9 +17,16 @@ button, input {
   margin: 1vw;
 }
 
+.module-header {
+    text-align: right;
+}
+
+.shortTextBox {
+    width: 5vw;
+}
+
 .textSymbols {
-  width: 2vw;
-  vertical-align: middle;
+  width: 1.5vw;
 }
 
 .textField {
@@ -41,7 +48,8 @@ button, input {
 }
 
 .module {
-  display: inline-block;
+    display: inline-block;
+    width: fit-content;
 }
 
 .block {
@@ -50,6 +58,11 @@ button, input {
 
 .inlineblock {
   display: inline-block;
+}
+
+.description {
+    vertical-align: middle;
+    height: 1.5vw;
 }
 
 .textEdit {

@@ -54,7 +54,7 @@ export default class Description extends React.Component {
         case word === '[thr]':
           newString += '<img src="/images/threat.png" class="textSymbols" /> '
           break;
-        case word === '[failue]':
+        case word === '[failure]':
         case word === '[fail]':
           newString += '<img src="/images/failure.png" class="textSymbols" /> '
           break;
@@ -71,7 +71,7 @@ export default class Description extends React.Component {
   }
 
   render() {
-    return <span dangerouslySetInnerHTML={{__html: this.checkText()}} />
+    return <span id={this.props.ref} className='description' dangerouslySetInnerHTML={{__html: this.checkText()}} />
 
   }
 }
