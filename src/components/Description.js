@@ -71,7 +71,7 @@ export default class Description extends React.Component {
   }
 
   render() {
-    return <span id={this.props.ref} className='description' dangerouslySetInnerHTML={{__html: this.checkText()}} />
+    return <p className='description' dangerouslySetInnerHTML={{__html: this.checkText()}} />
 
   }
 }

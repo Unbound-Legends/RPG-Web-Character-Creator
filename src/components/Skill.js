@@ -18,10 +18,11 @@ class Skill extends React.Component {
     };
     render() {
         return (
-            <div>
+            <div className='module'>
                 <div><span>Total XP: {this.countXP()}</span></div>
-
-                <div className='table table-module module' style={{width: '98vw'}}>
+                <div className='sectionheader'>SKILLS</div>
+                <hr />
+                <div className='table table-module' style={{width: '98vw'}}>
                     <div className='table-cell'>
                         <SkillBlock type='General'
                         />

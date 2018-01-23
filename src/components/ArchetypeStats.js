@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Description, StatBlock, ArchetypeSkills} from './index';
+import {Description, ArchetypeSkills} from './index';
 
 class ArchetypeStats extends React.Component {
 
@@ -14,21 +14,23 @@ class ArchetypeStats extends React.Component {
         <p><b>Starting Stats: </b></p>
         <div className='block'>
           {Object.keys(masterArchetype.characteristics).map((stat)=>
-            <StatBlock  key={stat}
-                        textTop={stat}
-                        textBottom={masterArchetype.characteristics[stat]}
-                        block='characteristic' />
-            )}
+              <div key={stat} className={`characteristic`}>
+                  <div className='characteristic-topText'>{masterArchetype.characteristics[stat]}</div>
+                  <div className='characteristic-bottomText'>{stat}</div>
+              </div>
+          )}
         </div>
         {masterArchetype &&
-          <div className='block'>
-            <StatBlock  textTop='Starting Wounds'
-                        textBottom={masterArchetype.woundThreshold}
-                        block='attrib' />
-            <StatBlock  textTop='Starting Strain'
-                        textBottom={masterArchetype.strainThreshold}
-                        block='attrib' />
-          </div>
+            <div className='block'>
+                <div className='singleAttribute'>
+                    <div className='singleAttribute-topText'>INITIAL WOUNDS</div>
+                    <div className='singleAttribute-bottomText'>{masterArchetype.woundThreshold}</div>
+                </div>
+                <div className='singleAttribute'>
+                  <div className='singleAttribute-topText'>INITIAL STRAIN</div>
+                  <div className='singleAttribute-bottomText'>{masterArchetype.strainThreshold}</div>
+                </div>
+            </div>
         }
         <p><b>Starting XP:</b>&nbsp;{masterArchetype.experience}&emsp;</p>
         <div>
@@ -40,12 +42,14 @@ class ArchetypeStats extends React.Component {
           {Object.keys(masterArchetype.talents : '').map((talent)=>
             <div key={talent} style={{textIndent: '1em'}}>
               <p><b>{masterArchetype.talents[talent].name}</b></p>
-              <p><Description text={masterArchetype.talents[talent].description}/></p>
-          </div>
+              <Description text={masterArchetype.talents[talent].description}/>
+            </div>
           )}
         </div>
         <p><b>Setting:</b>&nbsp;{masterArchetype.setting}</p>
-        <p><b>Description:</b>&nbsp;<Description text={masterArchetype.description} /></p>
+
+          <p><b>Description:</b></p>
+          <div style={{textIndent: '1em'}}><Description text={masterArchetype.description} /></div>
       </div>
     );
   }

@@ -76,7 +76,8 @@ class TalentSelection extends React.Component {
           {talent.turn ?  <p>{talent.turn}</p> : null}
           {talent.ranked ? <p><b>Ranked</b></p> : <p><b>Not Ranked</b></p> }
           <p><b>Setting:</b> {talent.setting}</p>
-          <p><b>Description:</b> <Description text={talent.description}/></p>
+          <p><b>Description:</b></p>
+            <div style={{textIndent: '1em'}}><Description text={talent.description} /></div>
           {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection} handleDedicationChange={this.handleDedicationChange}/>}
 
         </div>

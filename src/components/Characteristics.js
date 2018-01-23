@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
 import {characteristics} from '../reducers';
-import {StatBlock} from './index';
 
 class Characteristics extends React.Component {
 
@@ -59,9 +58,10 @@ class Characteristics extends React.Component {
               <div className='table-row'>
               {Object.keys(characteristics).map((stat)=>
                 <div key={stat} className='table-cell-no-border'>
-                  <StatBlock  textTop={stat}
-                              textBottom={characteristics[stat]}
-                              block='characteristic' />
+                    <div key={stat} className={`characteristic`}>
+                        <div className='characteristic-topText'>{characteristics[stat]}</div>
+                        <div className='characteristic-bottomText'>{stat}</div>
+                    </div>
                 </div>
               )}
             </div>

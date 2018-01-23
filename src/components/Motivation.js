@@ -7,8 +7,10 @@ class Motivation extends React.Component {
   render() {
     const {masterMotivations} = this.props;
     return (
-      <div>
-        {Object.keys(masterMotivations).map((type)=>
+      <div className='module'>
+          <div className='module-header'>Motivations</div>
+          <hr />
+          {Object.keys(masterMotivations).map((type)=>
           <MotivationBlock key={type} type={type}/>
         )}
       </div>

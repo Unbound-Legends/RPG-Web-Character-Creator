@@ -3,14 +3,16 @@ import {connect} from 'react-redux';
 import {usedXP, totalXP} from '../reducers';
 import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
-import {StatBlock} from "./index";
 
 class XPCounter extends React.Component {
     render() {
         const {usedXP} = this.props;
         return(
             <div className='module'>
-                <StatBlock textTop='Used XP' textBottom={usedXP}/>
+                <div className='singleAttribute xpBox'>
+                    <div className='xpBox-topText'>{usedXP}</div>
+                    <div className='xpBox-bottomText'>USED XP</div>
+                </div>
             </div>
         )
     }

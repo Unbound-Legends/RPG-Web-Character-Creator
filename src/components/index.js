@@ -12,6 +12,7 @@ export {default as Description} from './Description';
 export {default as MainPage} from './MainPage';
 export {default as Motivation} from './Motivation';
 export {default as MotivationBlock} from './MotivationBlock';
+export {default as ShowCharacteristics} from './ShowCharacteristics';
 export {default as Skill} from './Skill';
 export {default as SkillBlock} from './SkillBlock';
 export {default as SkillPopup} from './SkillPopup';

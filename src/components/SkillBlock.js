@@ -33,12 +33,12 @@ class SkillBlock extends React.Component {
     return (
         <div className='table-table'>
           <div className='table-heading' onClick={this.handleClick}>{type}</div>
-          <div className='module table'>
+          <div className='table'>
             <div className='table-header'>
-              <div className='table-cell'>Skill</div>
-              <div className='table-cell'>Career</div>
-              <div className='table-cell'>Rank</div>
-              <div className='table-cell'>Dice Pool</div>
+              <div className='table-cell skill-block-name'>Skill</div>
+              <div className='table-cell skill-block-career'>Career</div>
+              <div className='table-cell skill-block-rank'>Rank</div>
+              <div className='table-cell skill-block-dice'>Dice Pool</div>
             </div>
             {Object.keys(skills).map((skillKey)=>
               skills[skillKey].type === type &&

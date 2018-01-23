@@ -12,7 +12,7 @@ class StatBlock extends React.Component {
     }
 
     render() {
-        const {block, textTop, textBottom, topMod, textEdit, onClick} = this.props;
+        const {block, textTop, textBottom, topMod, onClick} = this.props;
         const blockType = block ? `${block}-box` : '';
         const mod = topMod ? `-${topMod}` : '';
         return (
@@ -21,13 +21,6 @@ class StatBlock extends React.Component {
                     <DynamicFont content={textTop}></DynamicFont>
                 </div>
                 <div className={`stats-box-bottom ${blockType}-bottom`}>
-                    {(textEdit || textEdit === 0) &&
-                    <div className='inlineblock'><input type='text'
-                           maxLength='2'
-                           className='textEdit'
-                           onChange={this.handleTextChange}
-                           onBlur={this.handleTextChange}
-                                defaultValue={textEdit}/>&nbsp;|&nbsp;</div>}
                     <div className='inlineblock'>{textBottom}</div>
                 </div>
             </div>

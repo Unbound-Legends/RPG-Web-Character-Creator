@@ -59,9 +59,9 @@ class Critical extends React.Component {
                 <input type='submit' onClick={this.handleSubmit}/>
             </div>
             {critical.map((critRoll, index)=>
-                <p key={index} onClick={this.criticalPopup.bind(this, index)}>
-                    <Description id={index} text={criticalText(critRoll)} />
-                </p>
+                <div key={index} onClick={this.criticalPopup.bind(this, index)}>
+                    <Description text={criticalText(critRoll)} />
+                </div>
             )}
       </div>
     );

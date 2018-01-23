@@ -43,7 +43,8 @@ class Career extends React.Component {
               <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
             )}
             <p><b>Setting:</b>&nbsp;{masterCareer.setting}</p>
-            <p><b>Description:</b>&nbsp;<Description text={masterCareer.description}/></p>
+              <p><b>Description:</b></p>
+              <div style={{textIndent: '1em'}}><Description text={masterCareer.description}/></div>
           </div>
         }
       </div>

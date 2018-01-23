@@ -1,15 +1,15 @@
 :root {
-  --orange: #f58e20;
-  --lightblue: #b5e0e8;
-  --darkblue: #326DA1;
-  --gray: #f7f5f2;
-  --brown: #b3977b;
-  --red: #e65247;
-  --difficulty: #52287E;
-  --challenge: #751317;
-  --boost: #76CDDB;
-  --ability: #46AC4E;
-  --proficiency: #FEF035;
+  --orange: rgb(245, 142, 32);
+  --lightblue: rgb(181, 224, 232);
+  --darkblue: rgb(50, 109, 161);
+  --gray: rgb(247, 245, 242);
+  --brown: rgb(179, 151, 123);
+  --red: rgb(230, 82, 71);
+  --difficulty: rgb(82, 40, 126);
+  --challenge: rgb(117, 19, 23);
+  --boost: rgb(118, 205, 219);
+  --ability: rgb(70, 172, 78);
+  --proficiency: rgb(254, 240, 53);
   font-family: 'Avenir Next', sans-serif !important;
   background-image: url(/images/background.png);
 }
@@ -22,6 +22,118 @@ button, input {
   margin: 1vw;
 }
 
+.sectionheader {
+    background-image: url(/images/png/SectionHeader.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 30vw;
+    margin: 1vw auto;
+    text-align: center;
+    color: white;
+    line-height: 3vw;
+    font-size: 2vw;
+}
+
+.characteristic {
+    background-image: url(/images/png/Characteristic.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    line-height: normal;
+    background-size: 100%;
+    width: 15vw;
+    height: 15vw;
+    margin: 0 0.5vw;
+    text-align: center;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.characteristic-topText {
+    position: relative;
+    top: 2vw;
+    font-size: 5vw;
+}
+
+.characteristic-bottomText {
+    position: relative;
+    bottom: -4vw;
+    color: white;
+    font-size: 2.8vw;
+}
+
+.singleAttribute {
+    background-image: url(/images/png/SingleAttribute.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 20vw;
+    height: 12vw;
+    margin: 0 0.5vw;
+    text-align: center;
+    color: black;
+    font-size: 1.5vw;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.singleAttribute-topText {
+    position: relative;
+    top: 1.5vw;
+    color: white;
+}
+
+.singleAttribute-bottomText {
+    position: relative;
+    top: 2.25vw;
+    font-size: 3vw;
+}
+
+.xpBox {
+    background-image: url(/images/png/XPBox.png);
+}
+
+.xpBox-topText {
+    position: relative;
+    top: 2vw;
+    font-size: 5vw;
+    color: black;
+}
+
+.xpBox-bottomText {
+    position: relative;
+    top: 1.7vw;
+    color: white;
+    font-size: 2vw;
+}
+
+.AttributeText {
+    position: relative;
+    font-size: 3vw;
+    top: 4vw;
+}
+
+.editableAttributeText {
+    display: inline-block;
+}
+
+.Soak {
+    background-image: url(/images/png/Soak.png);
+}
+
+.Defense {
+    background-image: url(/images/png/Defense.png);
+}
+
+.Strain {
+    background-image: url(/images/png/Strain.png);
+}
+
+.Wounds {
+    background-image: url(/images/png/Wounds.png);
+}
+
+
 .module-header {
     text-align: right;
 }
@@ -31,224 +143,206 @@ button, input {
 }
 
 .textSymbols {
-  height: 1.8vw;
-  vertical-align: middle;
+    height: 2vw;
+    vertical-align: middle;
 }
 
 .textField {
-  width: 90%;
-  padding: 0.5vw;
-  background-color: var(--gray);
-  margin: 1vw 1vw 0 1vw;
+    width: 90%;
+    padding: 0.5vw;
+    background-color: var(--gray);
+    margin: 1vw 1vw 0 1vw;
 }
 
 .noMargin {
-  margin: 0;
+    margin: 0;
 }
 
 .login-box {
-  padding-top: 2vw;
-  padding-left: 0.2vw;
-  padding-right: 0.2vw;
-  text-align: center;
+    padding-top: 2vw;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+    text-align: center;
 }
 
 .module {
     display: inline-block;
     width: fit-content;
+    background-color: rgba(181, 224, 232, 0.2);
 }
 
 .block {
-  display: block;
+    display: block;
 }
 
 .inlineblock {
-  display: inline-block;
+    display: inline-block;
 }
 
 .description {
     vertical-align: middle;
-    height: 1.5vw;
+    height: fit-content;
+    margin: 0;
 }
 
 .textEdit {
-  font-size: 2.5vw;
-  width: 3vw;
-  color: #454B4D;
-  margin: 0;
-  text-align: center;
-  border: none;
-  background: var(--gray);
-}
-
-
-.inner {
-
-}
-
-.xp-block {
-    height: 14vw;
-    width: 14vw;
-    position: relative;
-    background-image: url(/images/blocks/AvailableXp.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.inside-block {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    height: 3vw;
+    font-size: 2.5vw;
+    width: 3vw;
+    color: #454B4D;
+    margin: 0;
+    text-align: center;
+    border: none;
 }
 
 .stats-box {
-  margin: 0.5vw;
-  width: 10vw;
-  font-size: 1.3vw;
-  text-align: center;
-  display: inline-block;
+    margin: 0.5vw;
+    width: 10vw;
+    font-size: 1.3vw;
+    text-align: center;
+    display: inline-block;
 }
 
 .stats-box-top {
-  border: 0.1vw black solid;
-  border-top-left-radius: 0.8vw;
-  border-top-right-radius: 0.8vw;
-  padding: 0.5vw;
-  display: block;
-  font-weight: bold;
-  background: var(--orange);
+    border: 0.1vw black solid;
+    border-top-left-radius: 0.8vw;
+    border-top-right-radius: 0.8vw;
+    padding: 0.5vw;
+    display: block;
+    font-weight: bold;
+    background: var(--orange);
 }
 
 .stats-box-bottom {
-  border: 0.1vw black solid;
-  border-bottom-left-radius: 0.8vw;
-  border-bottom-right-radius: 0.8vw;
-  padding: 0.5vw;
-  display: block;
-  background: #f0f0f0;
+    border: 0.1vw black solid;
+    border-bottom-left-radius: 0.8vw;
+    border-bottom-right-radius: 0.8vw;
+    padding: 0.5vw;
+    display: block;
+    background: #f0f0f0;
 }
 
 .talent-box {
-  display: table-cell;
-  vertical-align: middle;
-  border-radius: 5px;
-  max-width: 10vw;
-  font-size: 1vw;
-  overflow: hidden;
-  padding: 0 2vw 0 0;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 5px;
+    max-width: 10vw;
+    font-size: 1vw;
+    overflow: hidden;
+    padding: 0 2vw 0 0;
 }
 
 .talent-box-top{
-  height: 4%;
-  padding: 13% 0;
-  background: var(--gray);
+    height: 4%;
+    padding: 13% 0;
+    background: var(--gray);
 }
 
 .talent-box-top-active {
-  font-style: bold;
-
-  background: var(--orange);
+    font-style: bold;
+    background: var(--orange);
 }
 
 .talent-box-top-passive {
-  font-style: bold;
+    font-style: bold;
+    background: var(--lightblue);
+}
 
-  background: var(--lightblue);
-}
 .talent-box-top-inactive {
-  background: var(--brown);
+    background: var(--brown);
 }
+
 .talent-box-bottom {
-  font-style: normal;
-  height: 58%;
+    font-style: normal;
+    height: 58%;
 }
+
 .talent-row {
-  display: table;
-  width: fit-content;
-  height: 11vw;
+    display: table;
+    width: fit-content;
+    height: 11vw;
 }
 
 .popup-select {
-  margin: 1vw 0;
-  width: fit-content;
+    margin: 1vw 0;
+    width: fit-content;
 }
 
-.characteristic-box-top {
-  font-size: 2vw;
-}
-.characteristic-box-bottom {
-  font-size: 3vw;
-}
-
-.attrib-box {
-  width: 12vw;
-}
-.attrib-box-top {
-  font-size: 2vw;
-}
-.attrib-box-bottom {
-  font-size: 3vw;
-}
 
 .motivation-module {
-  width: 45vw;
-  margin: 1vw;
-  border: black solid 1px;
+    display: inline-block;
+    width: 45%;
+    margin: 1vw;
+    border: black solid 1px;
 }
 
 .motivation-title {
-  width: 75%;
-  padding: 0.8vw;
-  border-bottom: black solid 1px;
+    width: 75%;
+    padding: 0.8vw;
+    border-bottom: black solid 1px;
 }
 
 .table {
-  text-align: center;
-  display: table;
-  width: 100%;
+    text-align: center;
+    display: table;
+    width: 100%;
 }
 
 .table-module {
-  width: auto;
+    width: auto;
 }
 
 .table-header {
-  display: table-header-group;
-  font-weight: 600;
+    display: table-header-group;
+    font-weight: 600;
 }
 
 .table-row {
-  display: table-row;
-  height: 3vw;
-  line-height: 3vw;
-  vertical-align: middle;
+    display: table-row;
+    height: 3vw;
+    line-height: 3vw;
+    vertical-align: middle;
 }
 
 .table-row-hide {
-  display: none;
+    display: none;
 }
 
 .table-cell {
-  display: table-cell;
-  padding: 0.3vw;
-  border: black solid 1px;
+    display: table-cell;
+    padding: 0.3vw;
+    border: black solid 1px;
 }
 
 .table-cell-no-border{
-  display: table-cell;
-  padding: 0.3vw;
+    display: table-cell;
+    padding: 0.3vw;
 }
 
 .table-heading {
-  text-align: left;
-  font-size: large;
-  font-weight: bold;
-  padding: 0 1vw;
-
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    padding: 0 1vw;
 }
+
+.skill-block-name {
+    width: 40%;
+}
+
+.skill-block-career {
+    width: 10%;
+}
+
+.skill-block-rank {
+    width: 10%;
+}
+
+.skill-block-dice {
+    width: 30%;
+}
+
 .title {
-  color: var(--lightblue);
+    color: var(--lightblue);
 }
 
 @media only screen

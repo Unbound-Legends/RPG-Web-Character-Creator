@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { getData } from '../actions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { About, Archetype, Career, Characteristics, Motivation, Skill, Attributes, Talents, XPCounter, Critical } from './index';
+import { About, Archetype, Career, Characteristics, Motivation, Skill, Attributes, Talents, XPCounter, Critical, ShowCharacteristics } from './index';
 
 const channel = window.location.pathname.slice(1);
 const dataTypes = [
@@ -42,6 +42,7 @@ class MainPage extends React.Component {
               <Tab>Talents</Tab>
               <Tab>XP</Tab>
               <Tab>Critical</Tab>
+              <Tab>ShowCharacteristics</Tab>
               <Tab>About</Tab>
           </TabList>
           <TabPanel>
@@ -70,6 +71,9 @@ class MainPage extends React.Component {
           </TabPanel>
           <TabPanel>
               <Critical />
+          </TabPanel>
+          <TabPanel>
+              <ShowCharacteristics />
           </TabPanel>
           <TabPanel>
               <About/>

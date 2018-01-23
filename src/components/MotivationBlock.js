@@ -38,7 +38,7 @@ class MotivationBlock extends React.Component {
     const name = masterMotivations[type].key;
     const description = masterMotivations[type].description;
     return (
-    <div className='module motivation-module'>
+    <div className='motivation-module'>
       <div className='motivation-title'>{type}:
           <select onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
             <option value=''></option>
