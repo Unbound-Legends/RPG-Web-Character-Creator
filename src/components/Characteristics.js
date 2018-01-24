@@ -45,18 +45,19 @@ class Characteristics extends React.Component {
 
     render() {
         const {characteristics} = this.props;
+        const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
         return (
           <div className='module'>
               <div><span>Total XP: {this.countXP()}</span></div>
               <p><b>Modify Characteristics: </b></p>
             <div className='table'>
               <div className='table-row'>
-                {Object.keys(characteristics).map((statUp)=>
+                {chars.map((statUp)=>
                   <div key={statUp} className='table-cell-no-border'><button value={statUp} name='Up' onClick={this.handleClick}>Up</button></div>
                 )}
               </div>
               <div className='table-row'>
-              {Object.keys(characteristics).map((stat)=>
+              {chars.map((stat)=>
                 <div key={stat} className='table-cell-no-border'>
                     <div key={stat} className={`characteristic`}>
                         <div className='characteristic-topText'>{characteristics[stat]}</div>
@@ -66,7 +67,7 @@ class Characteristics extends React.Component {
               )}
             </div>
               <div className='table-row'>
-                {Object.keys(characteristics).map((statDown)=>
+                {chars.map((statDown)=>
                   <div key={statDown} className='table-cell-no-border'><button value={statDown} name='Down' onClick={this.handleClick}>Down</button></div>
                   )}
               </div>

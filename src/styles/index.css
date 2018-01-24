@@ -1,25 +1,54 @@
 :root {
-  --orange: rgb(245, 142, 32);
-  --lightblue: rgb(181, 224, 232);
-  --darkblue: rgb(50, 109, 161);
-  --gray: rgb(247, 245, 242);
-  --brown: rgb(179, 151, 123);
-  --red: rgb(230, 82, 71);
-  --difficulty: rgb(82, 40, 126);
-  --challenge: rgb(117, 19, 23);
-  --boost: rgb(118, 205, 219);
-  --ability: rgb(70, 172, 78);
-  --proficiency: rgb(254, 240, 53);
-  font-family: 'Avenir Next', sans-serif !important;
-  background-image: url(/images/background.png);
+    --orange: rgb(245, 142, 32);
+    --lightblue: rgb(181, 224, 232);
+    --darkblue: rgb(50, 109, 161);
+    --gray: rgb(247, 245, 242);
+    --brown: rgb(179, 151, 123);
+    --red: rgb(230, 82, 71);
+    --difficulty: rgb(82, 40, 126);
+    --challenge: rgb(117, 19, 23);
+    --boost: rgb(118, 205, 219);
+    --ability: rgb(70, 172, 78);
+    --proficiency: rgb(254, 240, 53);
+    font-family: 'Avenir Next', sans-serif !important;
+    background-image: url(/images/background.png);
 }
 
 h3, ul {
-  margin: unset;
+    margin: unset;
 }
 
 button, input {
-  margin: 1vw;
+    margin: 1vw;
+}
+
+.signin-google {
+    background: url(/images/png/signin-google.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border: hidden;
+    height: 5vw;
+    width: 25vw;
+    padding: 0;
+}
+
+.signin-google:hover {
+    background: url(/images/png/signin-google-focus.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border: hidden;
+    padding: 0;
+}
+
+.signin-google:active {
+    background: url(/images/png/signin-google-pressed.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border: hidden;
+    padding: 0;
 }
 
 .sectionheader {
@@ -102,7 +131,7 @@ button, input {
 
 .xpBox-bottomText {
     position: relative;
-    top: 1.7vw;
+    bottom: -1.5vw;
     color: white;
     font-size: 2vw;
 }

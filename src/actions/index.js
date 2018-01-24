@@ -1,8 +1,9 @@
-import database from '../firestore/database';
+import {database} from '../firestore/database';
 
-export const getData = (channel, type) => {
-  return dispatch => {
-    return database.doc(`channels/${channel}/characters/characterA/data/${type}`).onSnapshot(doc => {
+export const getData = (type) => {
+    return (dispatch, getState) => {
+        const user = getState().user;
+        return database.doc(`users/${user}/characters/characterA/data/${type}`).onSnapshot(doc => {
       let payload = null;
       if (doc && doc.exists) payload = doc.data().data;
       dispatch({type: `${type}_Changed`, payload: payload})
@@ -12,15 +13,15 @@ export const getData = (channel, type) => {
 
 export const changeData = (data, type) => {
   return (dispatch, getState) => {
-    const channel = getState().channel;
-    const dbRef = database.doc(`channels/${channel}/characters/characterA/data/${type}`);
+    const user = getState().user;
+    const dbRef = database.doc(`users/${user}/characters/characterA/data/${type}`);
     dbRef.set({data});
   }
 }
 
-export const changeChannel = (state) => {
+export const changeUser = (state) => {
     return {
-        type: 'Channel_Changed',
+        type: 'User_Changed',
         payload: state,
     }
 };

@@ -14,7 +14,7 @@ const allReducers = combineReducers({
     motivations: motivations,
     skills: skills,
     talents: talents,
-    channel: changeState.channel,
+    user: changeState.user,
     archetype: changeState.archetype,
     archetypeSpecialSkills: changeState.archetypeSpecialSkills,
     career: changeState.career,
@@ -25,6 +25,7 @@ const allReducers = combineReducers({
     creationCharacteristics: changeState.creationCharacteristics,
     talentModifiers: changeState.talentModifiers,
     currentWound: changeState.currentWound,
+    currentStrain: changeState.currentStrain,
     critical: changeState.critical,
 });
 

@@ -1,12 +1,10 @@
 import React from 'react';
-import {changeChannel} from '../actions';
+import {getData} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { getData } from '../actions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { About, Archetype, Career, Characteristics, Motivation, Skill, Attributes, Talents, XPCounter, Critical, ShowCharacteristics } from './index';
+import { About, Archetype, Career, Characteristics, Motivation, Skill, Attributes, Talents, XPCounter, Critical, ShowCharacteristics, SignOut } from './index';
 
-const channel = window.location.pathname.slice(1);
 const dataTypes = [
     'archetype',
     'archetypeSpecialSkills',
@@ -25,9 +23,8 @@ const dataTypes = [
 
 class MainPage extends React.Component {
 
-  componentDidMount() {
-    this.props.changeChannel(channel);
-    dataTypes.forEach((type) => this.props.getData(channel, type));
+  componentWillMount() {
+    dataTypes.forEach((type) => this.props.getData(type));
   }
 
   render() {
@@ -43,6 +40,7 @@ class MainPage extends React.Component {
               <Tab>XP</Tab>
               <Tab>Critical</Tab>
               <Tab>ShowCharacteristics</Tab>
+              <Tab>Sign Out</Tab>
               <Tab>About</Tab>
           </TabList>
           <TabPanel>
@@ -76,6 +74,9 @@ class MainPage extends React.Component {
               <ShowCharacteristics />
           </TabPanel>
           <TabPanel>
+              <SignOut />
+          </TabPanel>
+          <TabPanel>
               <About/>
           </TabPanel>
       </Tabs>;
@@ -84,11 +85,12 @@ class MainPage extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        user: state.user,
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeChannel: changeChannel, getData: getData}, dispatch);
+    return bindActionCreators({getData: getData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MainPage);

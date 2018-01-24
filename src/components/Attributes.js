@@ -6,12 +6,11 @@ import {strainThreshold, totalSoak, woundThreshold} from "../reducers";
 
 class Attributes extends React.Component {
 
-    handleChange = (current, type) => {
-        const {currentWound, currentStrain, changeData} = this.props;
-        if (current==='') current = 0;
-        let newObj= type==='Wounds' ? {...currentWound} : {...currentStrain};
-        newObj=current;
-        changeData(newObj, type==='Wounds' ? 'currentWound' : 'currentStrain');
+    handleChange = (event) => {
+        const {changeData} = this.props;
+        let type = event.target.name;
+        let value = +event.target.value === '' ? 0 : +event.target.value;
+        changeData(value, type);
     }
 
     render() {
@@ -23,26 +22,28 @@ class Attributes extends React.Component {
                 </div>
                 <div className={`singleAttribute Wounds`}>
                     <div className='AttributeText'>
+                        <div className='editableAttributeText'>{woundThreshold}</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <input type='text'
+                            name='currentWound'
                             maxLength='2'
                             className='textEdit editableAttributeText'
-                            onChange={this.handleTextChange}
-                            onBlur={this.handleTextChange}
+                            onChange={this.handleChange}
+                            onBlur={this.handleChange}
                             placeholder={currentWound ? currentWound : 0}/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <div className='editableAttributeText'>{woundThreshold}</div>
                     </div>
                 </div>
                 <div className={`singleAttribute Strain`}>
                     <div className='AttributeText'>
+                        <div className='editableAttributeText'>{strainThreshold}</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <input type='text'
+                           name='currentStrain'
                            maxLength='2'
                            className='textEdit editableAttributeText'
-                           onChange={this.handleTextChange}
-                           onBlur={this.handleTextChange}
+                           onChange={this.handleChange}
+                           onBlur={this.handleChange}
                            placeholder={currentStrain ? currentStrain : 0}/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <div className='editableAttributeText'>{strainThreshold}</div>
                     </div>                </div>
 
                 <div className='singleAttribute Defense'>

@@ -1,7 +1,7 @@
 import * as initialState from './initialState';
 
-export const channel = (state = null, action) =>{
-  if (action.type === 'Channel_Changed') {
+export const user = (state = null, action) =>{
+  if (action.type === 'User_Changed') {
     return action.payload;
   }
   return state;
