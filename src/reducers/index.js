@@ -15,6 +15,8 @@ const allReducers = combineReducers({
     skills: skills,
     talents: talents,
     user: changeState.user,
+    characterList: changeState.characterList,
+    character: changeState.character,
     archetype: changeState.archetype,
     archetypeSpecialSkills: changeState.archetypeSpecialSkills,
     career: changeState.career,
@@ -27,6 +29,7 @@ const allReducers = combineReducers({
     currentWound: changeState.currentWound,
     currentStrain: changeState.currentStrain,
     critical: changeState.critical,
+    description: changeState.description,
 });
 
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);

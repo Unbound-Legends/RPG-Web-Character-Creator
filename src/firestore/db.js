@@ -4,6 +4,6 @@ import 'firebase/firestore';
 
 firebase.initializeApp(config);
 
-export const database = firebase.firestore();
+export const db = firebase.firestore();
 
 

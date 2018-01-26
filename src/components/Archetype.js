@@ -7,7 +7,8 @@ import {ArchetypeStats} from './index';
 class Archetype extends React.Component {
 
   handleSelect = (event) => {
-    this.props.changeData(event.target.value, 'archetype');
+    let value = event.target.value==='' ? null : event.target.value;
+    this.props.changeData(value, 'archetype');
     this.props.changeData({}, 'archetypeSpecialSkills');
   }
 

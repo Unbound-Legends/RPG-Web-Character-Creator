@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeUser} from '../actions';
-import {MainPage, User} from './index';
+import {LoadCharacterList, User} from './index';
 import firebase from 'firebase';
 
 class App extends React.Component {
@@ -21,10 +21,10 @@ class App extends React.Component {
 
     render() {
         const {loading} = this.state;
-        if (loading) return <div></div>;
+        if (loading) return <div> </div>;
         return (
           <div>
-            {this.props.user === null ? <User /> : <MainPage />}
+            {this.props.user === null ? <User /> : <LoadCharacterList />}
           </div>
 
         );
@@ -38,6 +38,6 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeUser: changeUser}, dispatch);
+    return bindActionCreators({changeUser}, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(App);

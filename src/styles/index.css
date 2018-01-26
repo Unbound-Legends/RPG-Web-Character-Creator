@@ -28,8 +28,8 @@ button, input {
     background-position: center;
     background-size: 100%;
     border: hidden;
-    height: 5vw;
-    width: 25vw;
+    height: 40px;
+    width: 150px;
     padding: 0;
 }
 
@@ -97,7 +97,7 @@ button, input {
     background-position: center;
     background-size: 100%;
     width: 20vw;
-    height: 12vw;
+    height: 11vw;
     margin: 0 0.5vw;
     text-align: center;
     color: black;
@@ -131,7 +131,7 @@ button, input {
 
 .xpBox-bottomText {
     position: relative;
-    bottom: -1.5vw;
+    bottom: -1.2vw;
     color: white;
     font-size: 2vw;
 }

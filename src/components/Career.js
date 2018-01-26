@@ -8,7 +8,8 @@ import {Description} from './index';
 class Career extends React.Component {
 
   handleChange = (event) => {
-    this.props.changeData(event.target.value, 'career');
+    let value = event.target.value==='' ? null : event.target.value;
+    this.props.changeData(value, 'career');
     this.props.changeData([], 'careerSkills');
     event.preventDefault();
   }

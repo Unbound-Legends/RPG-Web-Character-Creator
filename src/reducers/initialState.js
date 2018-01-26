@@ -61,6 +61,17 @@ export const talentModifiers = {
   Grit: 0
 }
 
+export const description = {
+    playerName: '',
+    gender: '',
+    age: '',
+    height: '',
+    build: '',
+    hair: '',
+    eyes: '',
+    features: ''
+}
+
 export const blankSkills = {
   Alchemy: {},
   Arcana: {},

@@ -1,0 +1,16 @@
+export const dataTypes = [
+    'archetype',
+    'archetypeSpecialSkills',
+    'career',
+    'careerSkills',
+    'masterMotivations',
+    'masterSkills',
+    'masterTalents',
+    'creationCharacteristics',
+    'talentModifiers',
+    'currentWound',
+    'currentStrain',
+    'earnedXP',
+    'critical',
+    'description',
+];
