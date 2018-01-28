@@ -9,7 +9,6 @@ export {default as Characteristics} from './Characteristics';
 export {default as CharacterSelect} from './CharacterSelect';
 export {default as Critical} from './Critical';
 export {default as Description} from './Description';
-export {default as LoadCharacterList} from './LoadCharacterList';
 export {default as MainPage} from './MainPage';
 export {default as Motivation} from './Motivation';
 export {default as MotivationBlock} from './MotivationBlock';

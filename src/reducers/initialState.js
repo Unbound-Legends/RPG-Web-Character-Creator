@@ -73,17 +73,6 @@ export const description = {
     features: ''
 };
 
-export const description = {
-    playerName: '',
-    gender: '',
-    age: '',
-    height: '',
-    build: '',
-    hair: '',
-    eyes: '',
-    features: ''
-}
-
 export const blankSkills = {
   Alchemy: {},
   Arcana: {},

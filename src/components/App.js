@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeUser} from '../actions';
-import {LoadCharacterList, User} from './index';
+import {MainPage, User} from './index';
 import firebase from 'firebase';
 
 class App extends React.Component {
@@ -24,7 +24,7 @@ class App extends React.Component {
         if (loading) return <div> </div>;
         return (
           <div>
-            {this.props.user === null ? <User /> : <LoadCharacterList />}
+            {this.props.user === null ? <User /> : <MainPage />}
           </div>
 
         );

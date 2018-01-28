@@ -11,7 +11,6 @@ class SkillRow extends React.Component {
     const {masterSkills, skillKey, changeData, careerSkills, archetypeSkillRank} = this.props;
     let newObj = {...masterSkills};
     newObj[skillKey].rank = +event.target.value - (careerSkills.includes(skillKey) ? 1 : 0) - (archetypeSkillRank[skillKey] ? archetypeSkillRank[skillKey].rank : 0);
-    console.log(masterSkills);
     changeData(newObj, 'masterSkills');
   };
 

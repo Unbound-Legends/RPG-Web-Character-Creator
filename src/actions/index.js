@@ -1,9 +1,9 @@
-import {database} from '../firestore/database';
+import {db} from '../firestore/db';
 
 export const getData = () => {
     return (dispatch, getState) => {
         const user = getState().user;
-        return database.doc(`users/${user}/characters/characterList/`).onSnapshot(doc => {
+        return db.doc(`users/${user}/characters/characterList/`).onSnapshot(doc => {
             let character = getState().character;
             if (doc && doc.exists) {
                 dispatch({type: `characterList_Changed`, payload: doc.data()});
@@ -24,7 +24,7 @@ export const getData = () => {
             } else {
                   let newObj = {};
                   newObj[Math.random().toString(36).substr(2, 16)] = {};
-                  database.doc(`users/${user}/characters/characterList/`).set(newObj);
+                  db.doc(`users/${user}/characters/characterList/`).set(newObj);
             }
         });
     }
@@ -36,7 +36,7 @@ export const addCharacter = () => {
         let newObj = {};
         let newCharacter = Math.random().toString(36).substr(2, 16)
         newObj[newCharacter] = {};
-        database.doc(`users/${user}/characters/characterList/`).update(newObj)
+        db.doc(`users/${user}/characters/characterList/`).update(newObj)
         dispatch({type: `character_Changed`, payload: newCharacter});
         dispatch({type: `Initialize_State`});
     }
@@ -50,9 +50,9 @@ export const deleteCharacter = () => {
         delete characterList[character];
         dispatch({type: `Initialize_State`});
         if (Object.keys(characterList).length===0) {
-            database.doc(`users/${user}/characters/characterList`).delete();
+            db.doc(`users/${user}/characters/characterList`).delete();
         }
-        else database.doc(`users/${user}/characters/characterList/`).set(characterList);
+        else db.doc(`users/${user}/characters/characterList/`).set(characterList);
 
     }
 };
@@ -68,7 +68,7 @@ export const changeData = (data, type) => {
     return (dispatch, getState) => {
         const user = getState().user;
         const character = getState().character;
-        const dbRef = database.doc(`users/${user}/characters/characterList/`);
+        const dbRef = db.doc(`users/${user}/characters/characterList/`);
         dbRef.set ({[character]: {[type]: data}}, { merge: true });
     }
 };
