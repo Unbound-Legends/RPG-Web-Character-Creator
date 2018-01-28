@@ -11,7 +11,7 @@ class SignOut extends React.Component {
             .then(() => {
                 this.props.changeUser(null);
             });
-    }
+    };
 
 
     render() {
@@ -31,6 +31,6 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeUser: changeUser}, dispatch);
+    return bindActionCreators({changeUser}, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignOut);

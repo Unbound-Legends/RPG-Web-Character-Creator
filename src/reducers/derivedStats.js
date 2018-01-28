@@ -48,9 +48,9 @@ export const calcArchetypeSkillRank = createSelector(
 export const calcSkillRanks = createSelector(
   masterSkills, skills, careerSkills, calcArchetypeSkillRank,
   (masterSkills, skills, careerSkills, archetypeSkillRank) => {
-    let skillRanks = {}
+    let skillRanks = {};
     Object.keys(skills).forEach((key)=>{
-      skillRanks[key] = masterSkills[key].rank + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
+      skillRanks[key] = (masterSkills[key].rank ? masterSkills[key].rank : 0) + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
     });
     return skillRanks;
   }
@@ -101,9 +101,8 @@ export const calcMaxCareerSkills = createSelector(
   archetype, archetypes,
   (archetype, archetypes) => {
     if (archetype===null) return 4;
-    const archetypeSkills = archetypes[archetype].skills
-    let maxCareerSkills = Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
-    return maxCareerSkills;
+    const archetypeSkills = archetypes[archetype].skills;
+      return Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
   }
 );
 

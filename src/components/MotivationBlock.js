@@ -14,7 +14,7 @@ class MotivationBlock extends React.Component {
     newObj[type]={key: event.target.value, description:motivations[type][event.target.value] ? motivations[type][event.target.value] : ''};
     changeData(newObj, 'masterMotivations')
     event.preventDefault();
-  }
+  };
 
   handleChange = (event) => {
     const {masterMotivations, type, changeData} = this.props;
@@ -22,7 +22,7 @@ class MotivationBlock extends React.Component {
     newObj[type].description=event.target.value;
     changeData(newObj, 'masterMotivations')
     event.preventDefault();
-  }
+  };
 
   handleClick = () => {
     const {motivations, type, masterMotivations, changeData} = this.props;
@@ -31,7 +31,7 @@ class MotivationBlock extends React.Component {
     let newObj={...masterMotivations};
     newObj[type]={key: newKey, description:motivations[type][newKey]};
     changeData(newObj, 'masterMotivations')
-  }
+  };
 
   render() {
     const {type, masterMotivations, motivations} = this.props;
@@ -41,7 +41,7 @@ class MotivationBlock extends React.Component {
     <div className='motivation-module'>
       <div className='motivation-title'>{type}:
           <select onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
-            <option value=''></option>
+            <option value=''/>
             {Object.keys(motivations[type]).map((key)=>
               <option key={key} value={key}>{key}</option>
             )}
@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MotivationBlock);

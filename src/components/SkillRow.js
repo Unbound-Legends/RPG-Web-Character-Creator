@@ -11,6 +11,7 @@ class SkillRow extends React.Component {
     const {masterSkills, skillKey, changeData, careerSkills, archetypeSkillRank} = this.props;
     let newObj = {...masterSkills};
     newObj[skillKey].rank = +event.target.value - (careerSkills.includes(skillKey) ? 1 : 0) - (archetypeSkillRank[skillKey] ? archetypeSkillRank[skillKey].rank : 0);
+    console.log(masterSkills);
     changeData(newObj, 'masterSkills');
   };
 
@@ -37,7 +38,7 @@ class SkillRow extends React.Component {
   render() {
     const {masterSkills, skills, skillKey, careerSkills, skillDice, skillRanks, archetypeSkillRank} = this.props;
     const skill = skills[skillKey];
-    var ranks = [ 0,1,2,3,4,5 ];
+    let ranks = [0, 1, 2, 3, 4, 5];
     if (careerSkills.includes(skillKey)) ranks.shift();
     if (archetypeSkillRank[skillKey]) {
         for (let i = 0; archetypeSkillRank[skillKey].rank > i; i++) {
@@ -45,7 +46,7 @@ class SkillRow extends React.Component {
         }
     }
     return (
-      <div className={masterSkills ? (masterSkills[skillKey].show ? 'table-row' : 'table-row-hide') : 'table-row'}>
+      <div className={masterSkills[skillKey] ? (masterSkills[skillKey].hide ? 'table-row-hide' : 'table-row') : 'table-row'}>
         <div className='table-cell' style={{textAlign: 'left'}}>
           {`${skill.name} (${this.shortCharacteristics()})`}
         </div>
@@ -77,7 +78,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SkillRow);

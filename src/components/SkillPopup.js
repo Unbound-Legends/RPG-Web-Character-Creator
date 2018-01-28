@@ -8,9 +8,9 @@ class SkillPopup extends React.Component {
   handleChange = () => {
     const {masterSkills, skillKey, changeData} = this.props;
     let newObj = {...masterSkills};
-    newObj[skillKey].show = !masterSkills[skillKey].show;
+    newObj[skillKey].hide = !masterSkills[skillKey].hide;
     changeData(newObj, 'masterSkills');
-  }
+  };
 
   render() {
     const {skillKey, skills, masterSkills} = this.props;
@@ -18,7 +18,7 @@ class SkillPopup extends React.Component {
       <div className='table-row'>
         <div className='table-cell'>
           <form>
-            <input type='checkbox' checked={masterSkills[skillKey].show} onChange={this.handleChange}/>
+            <input type='checkbox' checked={masterSkills[skillKey].hide ? false : true} onChange={this.handleChange}/>
           </form>
         </div>
         <div className='table-cell'>
@@ -37,7 +37,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SkillPopup);

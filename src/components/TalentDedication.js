@@ -23,7 +23,7 @@ class TalentDedication extends React.Component {
   handleChange = (event) => {
     this.props.handleDedicationChange(event.target.value);
     event.preventDefault();
-  }
+  };
 
   render() {
     const {options} = this.state;
@@ -32,7 +32,7 @@ class TalentDedication extends React.Component {
       <div>
         <div><b>Select a characteristic to increase:</b></div>
         <select value={selection} className='popup-select' onChange={this.handleChange}>
-          <option value=''></option>
+          <option value=''/>
           {options.map((key)=>
             <option value={key} key={key}>{key}</option>
           )}

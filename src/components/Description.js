@@ -66,9 +66,9 @@ export default class Description extends React.Component {
           newString += `${word} `;
           break;
       }
-    })
+    });
     return newString;
-  }
+  };
 
   render() {
     return <p className='description' dangerouslySetInnerHTML={{__html: this.checkText()}} />

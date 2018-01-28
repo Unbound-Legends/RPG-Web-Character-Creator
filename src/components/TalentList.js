@@ -4,6 +4,7 @@ import {talentCount} from '../reducers';
 import {Description} from './index'
 
 class TalentList extends React.Component {
+
   render() {
     const {talents, talentCount} = this.props;
     return(

@@ -11,7 +11,7 @@ class TalentBlock extends React.Component {
     if (talentKey==='') return 'inactive';
     if (talents[talentKey].activation) return 'active'
     else return 'passive';
-  }
+  };
 
   makeOptions = (cb) => {
     const {tier, talentCount, talentKey, talents} = this.props;
@@ -34,7 +34,7 @@ class TalentBlock extends React.Component {
 
       options.sort();
       cb(options);
-  }
+  };
 
   selectPopup = () => {
     const {talentKey, row, tier} = this.props;
@@ -47,7 +47,7 @@ class TalentBlock extends React.Component {
         ),
       })
     })
-  }
+  };
 
   render() {
     const {talents, talentKey} = this.props;

@@ -10,12 +10,14 @@ class ShowCharacteristics extends React.Component {
           <div className='module'>
               <div className='sectionheader'>CHARACTERISTICS</div>
               <hr />
-              {Object.keys(characteristics).map((stat)=>
-                <div key={stat} className={`characteristic`}>
-                    <div className='characteristic-topText'>{characteristics[stat]}</div>
-                    <div className='characteristic-bottomText'>{stat}</div>
-                </div>
-              )}
+              <div className='characteristicsBackround'>
+                  {Object.keys(characteristics).map((stat)=>
+                    <div key={stat} className={`characteristic`}>
+                        <div className='characteristic-topText'>{characteristics[stat]}</div>
+                        <div className='characteristic-bottomText'>{stat}</div>
+                    </div>
+                  )}
+              </div>
           </div>
         );
     }

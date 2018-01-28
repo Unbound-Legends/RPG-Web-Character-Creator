@@ -11,7 +11,7 @@ class Attributes extends React.Component {
         let type = event.target.name;
         let value = +event.target.value === '' ? 0 : +event.target.value;
         changeData(value, type);
-    }
+    };
 
     render() {
         const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak} = this.props;
@@ -67,7 +67,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Attributes);

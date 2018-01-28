@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeData, addCharacter, changeCharacter, getData, changeCharacterName} from '../actions';
-import {dataTypes} from "../functions/lists";
+import {changeData, addCharacter, changeCharacter, getData, deleteCharacter} from '../actions';
 
 class CharacterSelect extends React.Component {
 
@@ -11,17 +10,19 @@ class CharacterSelect extends React.Component {
     }
 
     handleNewCharacter = () => {
-        this.props.addCharacter()
+        this.props.addCharacter();
+        this.props.getData();
     };
 
     handleDeleteCharacter = () => {
-
-    }
+        this.props.deleteCharacter();
+        this.props.getData();
+    };
 
     handleSelect = (event) => {
         const {getData, changeCharacter} = this.props;
         changeCharacter(event.target.value);
-        dataTypes.forEach((type) => getData(type, event.target.value));
+        getData();
         event.preventDefault();
     };
 
@@ -33,29 +34,22 @@ class CharacterSelect extends React.Component {
         event.preventDefault();
     };
 
-    handleCharacterNameChange = (event) => {
-        const {changeCharacterName} = this.props;
-        changeCharacterName(event.target.value);
-        event.preventDefault();
-    }
-
-
     render() {
         const {archetype, archetypes, careers, career, description, characterList, character} = this.props;
-
+        if (character===null || characterList === null) return <div/>;
         return (
             <div className='module'>
                 <div className='module-header'>CHARACTER</div>
                 <hr />
                 <select value={character} onChange={this.handleSelect}>
                     {Object.keys(characterList).map((key)=>
-                        <option value={key} key={key}>{characterList[key].name}</option>
+                        <option value={key} key={key}>{characterList[key].description ? characterList[key].description.name : ''}</option>
                     )}
                 </select>
                 <button onClick={this.handleNewCharacter}>New Character</button>
                 <button onClick={this.handleDeleteCharacter}>Delete Character</button>
                 <div>Character Name:
-                    <input type='text' value={characterList[character] ? characterList[character].name : ""} maxLength='25' onChange={this.handleCharacterNameChange}/>
+                    <input type='text' value={description.name} maxLength='25' onChange={this.handleChange.bind(this, 'name')}/>
                 </div>
                 <hr />
                 <div>Archetype: {archetype===null ? '' : archetypes[archetype].name}
@@ -88,7 +82,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData, addCharacter, changeCharacter, getData, changeCharacterName}, dispatch);
+    return bindActionCreators({changeData, addCharacter, changeCharacter, getData, deleteCharacter}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CharacterSelect);

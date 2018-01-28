@@ -13,9 +13,10 @@ class Skill extends React.Component {
             for(let i=(careerSkills.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
                 xp += (((i + 1) * 5) + (careerSkills.includes(skill) ? 0 : 5));
             }
-        })
+        });
         return xp;
     };
+
     render() {
         return (
             <div className='module'>

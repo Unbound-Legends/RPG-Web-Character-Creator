@@ -18,19 +18,19 @@ class Critical extends React.Component {
         }
         this.setState({value: ''});
         event.preventDefault();
-    }
+    };
 
     handleChange = (event) => {
         this.setState({value: event.target.value});
         event.preventDefault();
-    }
+    };
 
     removeCritical = (index) => {
         let newArr = [...this.props.critical];
         newArr.splice(index, 1);
         this.props.changeData(newArr, 'critical');
         popup.close();
-    }
+    };
 
     criticalPopup = (index) => {
         popup.create({
@@ -44,7 +44,7 @@ class Critical extends React.Component {
                 </div>
             )
         })
-    }
+    };
 
 
     render() {
@@ -77,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Critical);

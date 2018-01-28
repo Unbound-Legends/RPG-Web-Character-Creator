@@ -28,8 +28,8 @@ button, input {
     background-position: center;
     background-size: 100%;
     border: hidden;
-    height: 40px;
-    width: 150px;
+    height: 5vw;
+    width: 25vw;
     padding: 0;
 }
 
@@ -67,7 +67,7 @@ button, input {
 .characteristic {
     background-image: url(/images/png/Characteristic.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
     line-height: normal;
     background-size: 100%;
     width: 15vw;
@@ -78,9 +78,19 @@ button, input {
     font-weight: 600;
 }
 
+.characteristicsBackround {
+    background-image: url(/images/png/characteristicsBackround.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    width: 99vw;
+    height: 16vw;
+    text-align: center;
+}
+
 .characteristic-topText {
     position: relative;
-    top: 2vw;
+    top: 1.8vw;
     font-size: 5vw;
 }
 
@@ -88,16 +98,16 @@ button, input {
     position: relative;
     bottom: -4vw;
     color: white;
-    font-size: 2.8vw;
+    font-size: 2vw;
 }
 
 .singleAttribute {
     background-image: url(/images/png/SingleAttribute.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
     background-size: 100%;
     width: 20vw;
-    height: 11vw;
+    height: 12vw;
     margin: 0 0.5vw;
     text-align: center;
     color: black;
@@ -108,30 +118,31 @@ button, input {
 
 .singleAttribute-topText {
     position: relative;
-    top: 1.5vw;
+    top: 2vw;
     color: white;
 }
 
 .singleAttribute-bottomText {
     position: relative;
-    top: 2.25vw;
+    top: 3vw;
     font-size: 3vw;
 }
 
 .xpBox {
     background-image: url(/images/png/XPBox.png);
+    background-position: bottom;
 }
 
 .xpBox-topText {
     position: relative;
-    top: 2vw;
+    top: 2.5vw;
     font-size: 5vw;
     color: black;
 }
 
 .xpBox-bottomText {
     position: relative;
-    bottom: -1.2vw;
+    bottom: -2.2vw;
     color: white;
     font-size: 2vw;
 }
@@ -139,7 +150,7 @@ button, input {
 .AttributeText {
     position: relative;
     font-size: 3vw;
-    top: 4vw;
+    top: 5vw;
 }
 
 .editableAttributeText {
@@ -161,7 +172,6 @@ button, input {
 .Wounds {
     background-image: url(/images/png/Wounds.png);
 }
-
 
 .module-header {
     text-align: right;

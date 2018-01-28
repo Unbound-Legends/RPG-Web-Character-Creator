@@ -12,7 +12,7 @@ class Career extends React.Component {
     this.props.changeData(value, 'career');
     this.props.changeData([], 'careerSkills');
     event.preventDefault();
-  }
+  };
 
   handleCheck = (event) => {
     let careerSkills = [...this.props.careerSkills];
@@ -23,7 +23,7 @@ class Career extends React.Component {
     } else careerSkills.push(event.target.name);
     if (this.props.maxCareerSkills>=careerSkills.length) this.props.changeData(careerSkills, 'careerSkills');
     else event.preventDefault();
-  }
+  };
 
   render(){
     const {career, careers, skills, careerSkills} = this.props;
@@ -31,7 +31,7 @@ class Career extends React.Component {
     return (
       <div className='module'>
         <select defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
-          <option value=''></option>
+          <option value=''/>
           {Object.keys(careers).map((key)=>
             <option value={key} key={key}>{careers[key].name}</option>
           )}
@@ -64,7 +64,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Career);

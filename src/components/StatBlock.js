@@ -9,7 +9,7 @@ class StatBlock extends React.Component {
         handleChange(event.target.value, this.props.type);
         event.preventDefault();
 
-    }
+    };
 
     render() {
         const {block, textTop, textBottom, topMod, onClick} = this.props;
@@ -18,7 +18,7 @@ class StatBlock extends React.Component {
         return (
             <div className={`stats-box ${blockType}`} onClick={onClick} >
                 <div className={`stats-box-top ${blockType}-top${mod}`}>
-                    <DynamicFont content={textTop}></DynamicFont>
+                    <DynamicFont content={textTop}/>
                 </div>
                 <div className={`stats-box-bottom ${blockType}-bottom`}>
                     <div className='inlineblock'>{textBottom}</div>

@@ -13,9 +13,9 @@ class Talents extends React.Component {
       Object.keys(masterTalents[row]).forEach((tier)=>{
         if (masterTalents[row][tier] !== '') xp = xp+(5*tier);
       })
-    })
+    });
     return xp;
-  }
+  };
 
   popupList = () => {
     popup.create({
@@ -25,7 +25,7 @@ class Talents extends React.Component {
         <TalentList />
       ),
     })
-  }
+  };
 
   render() {
     const {masterTalents} = this.props;

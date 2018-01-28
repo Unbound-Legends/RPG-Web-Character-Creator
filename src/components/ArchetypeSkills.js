@@ -15,19 +15,19 @@ class ArchetypeSkills extends React.Component {
     }
     newObj[event.target.name]={rank: Object.keys(masterArchetypeSkills).includes('any') ? masterArchetypeSkills.any : masterArchetypeSkills[event.target.name]};
     changeData(newObj, 'archetypeSpecialSkills');
-  }
+  };
 
   render() {
     const {archetype, archetypes, archetypeSpecialSkills, skills} = this.props;
     const masterArchetype = archetypes[archetype];
     let list = Object.keys(masterArchetype.skills).includes('any') ? Object.keys(skills) : Object.keys(masterArchetype.skills);
-    if (archetype===null) return <div></div>;
+    if (archetype===null) return <div/>;
     if (Object.keys(masterArchetype.skills).includes('choice')) {
       return (
         <div>
           <p>Select {masterArchetype.skills.choice} option:</p>
           {list.map((skill)=>
-            skill==='choice' ? <div key={skill}></div> : <div key={skill}><label><input type='checkbox' name={skill} checked={Object.keys(archetypeSpecialSkills).includes(skill)} onChange={this.handleCheck} /> {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : masterArchetype.skills[skill]} Rank: {skill}</label></div>
+            skill==='choice' ? <div key={skill}/> : <div key={skill}><label><input type='checkbox' name={skill} checked={Object.keys(archetypeSpecialSkills).includes(skill)} onChange={this.handleCheck} /> {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : masterArchetype.skills[skill]} Rank: {skill}</label></div>
           )}
         </div>
 
@@ -53,7 +53,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ArchetypeSkills);

@@ -39,21 +39,21 @@ class TalentSelection extends React.Component {
     popup.close();
     this.setState({talentSelection: ''});
     this.setState({selection: ''});
-  }
+  };
 
   handleChange = (event) => {
     this.setState({talentSelection: event.target.value})
     event.preventDefault();
-  }
+  };
 
   handleCancel = (event) => {
     popup.close();
     event.preventDefault();
-  }
+  };
 
   handleDedicationChange = (name) => {
      this.setState({selection: name})
-  }
+  };
 
   render() {
     const {talents, options, talentKey, row} = this.props;
@@ -62,7 +62,7 @@ class TalentSelection extends React.Component {
     return (
     <div>
       <select defaultValue={talentKey} className='popup-select' onChange={this.handleChange}>
-        <option value=''></option>
+        <option value=''/>
         {options.map((key)=>
           <option value={key} key={key}>{talents[key].name}</option>
         )}
@@ -101,7 +101,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData: changeData}, dispatch);
+    return bindActionCreators({changeData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(TalentSelection);

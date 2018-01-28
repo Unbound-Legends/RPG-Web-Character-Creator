@@ -26,7 +26,7 @@ class SkillBlock extends React.Component {
         </div>
       )
     })
-  }
+  };
 
   render() {
     const {type, skills} = this.props;
@@ -52,7 +52,6 @@ class SkillBlock extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        masterSkills: state.masterSkills,
         skills: state.skills
     };
 }

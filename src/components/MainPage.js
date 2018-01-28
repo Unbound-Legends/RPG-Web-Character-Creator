@@ -1,26 +1,21 @@
 import React from 'react';
-import {getData, getCharacterList, changeCharacter, addCharacter} from '../actions';
+import {getData} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {About, Archetype, Career, Characteristics, Motivation,
-        Skill, Attributes, Talents, XPCounter, Critical, ShowCharacteristics,
-        SignOut, CharacterSelect }
-        from './index';
-import {dataTypes} from '../functions/lists';
+import * as Component from './index';
+
 
 class MainPage extends React.Component {
 
-    componentWillMount() {
-        const {getData, character} = this.props;
-        dataTypes.forEach((type) => getData(type, character));
-    }
+  componentWillMount() {
+    this.props.getData();
+  }
 
-
-    render() {
+  render() {
       return <Tabs defaultIndex={0}>
           <TabList>
-              <Tab>CharacterSelect</Tab>
+              <Tab>Character Select</Tab>
               <Tab>Attributes</Tab>
               <Tab>Archetype</Tab>
               <Tab>Characteristics</Tab>
@@ -30,63 +25,62 @@ class MainPage extends React.Component {
               <Tab>Talents</Tab>
               <Tab>XP</Tab>
               <Tab>Critical</Tab>
-              <Tab>ShowCharacteristics</Tab>
+              <Tab>Show Characteristics</Tab>
               <Tab>Sign Out</Tab>
               <Tab>About</Tab>
           </TabList>
           <TabPanel>
-              <CharacterSelect/>
+              <Component.CharacterSelect />
           </TabPanel>
           <TabPanel>
-              <Attributes/>
+              <Component.Attributes/>
           </TabPanel>
           <TabPanel>
-              <Archetype/>
+              <Component.Archetype/>
           </TabPanel>
           <TabPanel>
-              <Characteristics/>
+              <Component.Characteristics/>
           </TabPanel>
           <TabPanel>
-              <Career/>
+              <Component.Career/>
           </TabPanel>
           <TabPanel>
-              <Motivation/>
+              <Component.Motivation/>
           </TabPanel>
           <TabPanel>
-              <Skill/>
+              <Component.Skill/>
           </TabPanel>
           <TabPanel>
-              <Talents/>
+              <Component.Talents/>
           </TabPanel>
           <TabPanel>
-              <XPCounter />
+              <Component.XPCounter />
           </TabPanel>
           <TabPanel>
-              <Critical />
+              <Component.Critical />
           </TabPanel>
           <TabPanel>
-              <ShowCharacteristics />
+              <Component.ShowCharacteristics />
           </TabPanel>
           <TabPanel>
-              <SignOut />
+              <Component.SignOut />
           </TabPanel>
           <TabPanel>
-              <About/>
+              <Component.About/>
           </TabPanel>
       </Tabs>;
-    }
+  }
 }
 
 function mapStateToProps(state) {
     return {
         user: state.user,
-        characterList: state.characterList,
         character: state.character,
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({getData, getCharacterList, changeCharacter, addCharacter}, dispatch);
+    return bindActionCreators({getData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MainPage);

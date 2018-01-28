@@ -9,7 +9,7 @@ export default class User extends Component {
     handleClick = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider);
-     }
+     };
 
     render() {
         return (

@@ -10,14 +10,14 @@ class Archetype extends React.Component {
     let value = event.target.value==='' ? null : event.target.value;
     this.props.changeData(value, 'archetype');
     this.props.changeData({}, 'archetypeSpecialSkills');
-  }
+  };
 
   render() {
     const {archetype, archetypes} = this.props;
     return (
       <div className='module'>
         <select value={archetype ? archetype : ''} onChange={this.handleSelect}>
-          <option value=''></option>
+          <option value=''/>
           {Object.keys(archetypes).map((key)=>
             <option value={key} key={key}>{archetypes[key].name}</option>
           )}
@@ -36,7 +36,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({changeData: changeData}, dispatch);
+  return bindActionCreators({changeData}, dispatch);
 }
 
 
