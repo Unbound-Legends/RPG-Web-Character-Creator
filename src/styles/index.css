@@ -130,19 +130,19 @@ button, input {
 
 .xpBox {
     background-image: url(/images/png/XPBox.png);
-    background-position: bottom;
+    height: 11vw;
 }
 
 .xpBox-topText {
     position: relative;
-    top: 2.5vw;
+    top: 2.2vw;
     font-size: 5vw;
     color: black;
 }
 
 .xpBox-bottomText {
     position: relative;
-    bottom: -2.2vw;
+    top: 1.2vw;
     color: white;
     font-size: 2vw;
 }
@@ -171,6 +171,15 @@ button, input {
 
 .Wounds {
     background-image: url(/images/png/Wounds.png);
+}
+
+.fieldLabel {
+    font-weight: 600;
+}
+
+.fieldData {
+    display: inline-block;
+    font-weight: 300;
 }
 
 .module-header {

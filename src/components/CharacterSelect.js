@@ -5,10 +5,6 @@ import {changeData, addCharacter, changeCharacter, getData, deleteCharacter} fro
 
 class CharacterSelect extends React.Component {
 
-    componentWillMount() {
-
-    }
-
     handleNewCharacter = () => {
         this.props.addCharacter();
         this.props.getData();
@@ -48,17 +44,17 @@ class CharacterSelect extends React.Component {
                 </select>
                 <button onClick={this.handleNewCharacter}>New Character</button>
                 <button onClick={this.handleDeleteCharacter}>Delete Character</button>
-                <div>Character Name:
+                <div className='fieldLabel'>CHARACTER NAME:
                     <input type='text' value={description.name} maxLength='25' onChange={this.handleChange.bind(this, 'name')}/>
                 </div>
                 <hr />
-                <div>Archetype: {archetype===null ? '' : archetypes[archetype].name}
+                <div className='fieldLabel'>ARCHETYPE: <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
                 </div>
                 <hr />
-                <div>Career: {career===null ? '' : careers[career].name}
+                <div className='fieldLabel'>CAREER: <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
                 </div>
                 <hr />
-                <div>Player Name:
+                <div className='fieldLabel'>PLAYER NAME:
                     <input type='text' value={description.playerName} maxLength='25' onChange={this.handleChange.bind(this, 'playerName')}/>
                 </div>
                 <hr />

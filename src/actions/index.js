@@ -7,7 +7,7 @@ export const getData = () => {
             let character = getState().character;
             if (doc && doc.exists) {
                 dispatch({type: `characterList_Changed`, payload: doc.data()});
-                if (character===null) {
+                if (!Object.keys(doc.data()).includes(character)) {
                     character = Object.keys(doc.data())[0];
                     dispatch({type: `character_Changed`, payload: character});
                 }
@@ -17,9 +17,6 @@ export const getData = () => {
                         let payload = doc.data()[character][type] ? doc.data()[character][type] : null;
                         if (data !== payload) dispatch({type: `${type}_Changed`, payload: payload})
                     });
-                } else {
-                    character = Object.keys(doc.data())[0];
-                    dispatch({type: `character_Changed`, payload: character});
                 }
             } else {
                   let newObj = {};

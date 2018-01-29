@@ -5,6 +5,7 @@ export {default as ArchetypeSkills} from './ArchetypeSkills';
 export {default as ArchetypeStats} from './ArchetypeStats';
 export {default as Attributes} from './Attributes';
 export {default as Career} from './Career';
+export {default as CharacterDescription} from './CharacterDescription';
 export {default as Characteristics} from './Characteristics';
 export {default as CharacterSelect} from './CharacterSelect';
 export {default as Critical} from './Critical';

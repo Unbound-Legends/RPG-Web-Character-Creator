@@ -16,6 +16,7 @@ class MainPage extends React.Component {
       return <Tabs defaultIndex={0}>
           <TabList>
               <Tab>Character Select</Tab>
+              <Tab>Character Description</Tab>
               <Tab>Attributes</Tab>
               <Tab>Archetype</Tab>
               <Tab>Characteristics</Tab>
@@ -31,6 +32,9 @@ class MainPage extends React.Component {
           </TabList>
           <TabPanel>
               <Component.CharacterSelect />
+          </TabPanel>
+          <TabPanel>
+              <Component.CharacterDescription />
           </TabPanel>
           <TabPanel>
               <Component.Attributes/>

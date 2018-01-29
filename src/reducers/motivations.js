@@ -38,7 +38,7 @@ export default function() {
     },
     Flaw: {
       Anger: 'Your character lashes out at themself or others with undue cause or with extreme force. They are quick to resort to physical force to solve their problems.',
-      Compulsion: ' is could be addiction, fascination, obsession, or another automatic behavior that is self-destructive or otherwise impedes your character’s ability to function and be healthy.',
+      Compulsion: ' This could be addiction, fascination, obsession, or another automatic behavior that is self-destructive or otherwise impedes your character’s ability to function and be healthy.',
       Deception: 'Your character may be disloyal or a compulsive liar. They are concerned with their own well being first and foremost, and they might always present themselves in the best possible light even when that isn’t the case.',
       Greed: 'Your character is never satis ed with what they have, always wanting more. They are willing to flout the law or infringe upon others’ rights in order to get what they want.',
       Laziness: 'Your character always seeks the path of least resistance and becomes intimidated by di cult or complex tasks.',
