@@ -26,53 +26,29 @@ class MainPage extends React.Component {
               <Tab>Talents</Tab>
               <Tab>XP</Tab>
               <Tab>Critical</Tab>
+              <Tab>Equipment Log</Tab>
+              <Tab>Notes</Tab>
               <Tab>Show Characteristics</Tab>
               <Tab>Sign Out</Tab>
               <Tab>About</Tab>
           </TabList>
-          <TabPanel>
-              <Component.CharacterSelect />
-          </TabPanel>
-          <TabPanel>
-              <Component.CharacterDescription />
-          </TabPanel>
-          <TabPanel>
-              <Component.Attributes/>
-          </TabPanel>
-          <TabPanel>
-              <Component.Archetype/>
-          </TabPanel>
-          <TabPanel>
-              <Component.Characteristics/>
-          </TabPanel>
-          <TabPanel>
-              <Component.Career/>
-          </TabPanel>
-          <TabPanel>
-              <Component.Motivation/>
-          </TabPanel>
-          <TabPanel>
-              <Component.Skill/>
-          </TabPanel>
-          <TabPanel>
-              <Component.Talents/>
-          </TabPanel>
-          <TabPanel>
-              <Component.XPCounter />
-          </TabPanel>
-          <TabPanel>
-              <Component.Critical />
-          </TabPanel>
-          <TabPanel>
-              <Component.ShowCharacteristics />
-          </TabPanel>
-          <TabPanel>
-              <Component.SignOut />
-          </TabPanel>
-          <TabPanel>
-              <Component.About/>
-          </TabPanel>
-      </Tabs>;
+          <TabPanel> <Component.CharacterSelect/> </TabPanel>
+          <TabPanel> <Component.CharacterDescription/> </TabPanel>
+          <TabPanel> <Component.Attributes/> </TabPanel>
+          <TabPanel> <Component.Archetype/> </TabPanel>
+          <TabPanel> <Component.Characteristics/> </TabPanel>
+          <TabPanel> <Component.Career/> </TabPanel>
+          <TabPanel> <Component.Motivation/> </TabPanel>
+          <TabPanel> <Component.Skill/> </TabPanel>
+          <TabPanel> <Component.Talents/> </TabPanel>
+          <TabPanel> <Component.XPCounter/> </TabPanel>
+          <TabPanel> <Component.Critical/> </TabPanel>
+          <TabPanel> <Component.EquipmentLog/> </TabPanel>
+          <TabPanel> <Component.Notes/> </TabPanel>
+          <TabPanel> <Component.ShowCharacteristics/> </TabPanel>
+          <TabPanel> <Component.SignOut/> </TabPanel>
+          <TabPanel> <Component.About/> </TabPanel>
+      </Tabs>
   }
 }
 

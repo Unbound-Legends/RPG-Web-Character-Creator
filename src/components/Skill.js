@@ -24,11 +24,11 @@ class Skill extends React.Component {
                 <div className='sectionheader'>SKILLS</div>
                 <hr />
                 <div className='table table-module' style={{width: '98vw'}}>
-                    <div className='table-cell'>
+                    <div className='table-cell' style={{width: '50%'}}>
                         <SkillBlock type='General'
                         />
                     </div>
-                    <div className='table-cell'>
+                    <div className='table-cell' style={{width: '50%'}}>
                         {['Combat', 'Magic', 'Social', 'Knowledge'].map((type) =>
                             <SkillBlock key={type}
                                         type={type}

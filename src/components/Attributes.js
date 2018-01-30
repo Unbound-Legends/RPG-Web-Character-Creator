@@ -24,7 +24,7 @@ class Attributes extends React.Component {
                     <div className='AttributeText'>
                         <div className='editableAttributeText'>{woundThreshold}</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type='text'
+                        <input type='number'
                             name='currentWound'
                             maxLength='2'
                             className='textEdit editableAttributeText'
@@ -37,17 +37,21 @@ class Attributes extends React.Component {
                     <div className='AttributeText'>
                         <div className='editableAttributeText'>{strainThreshold}</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type='text'
+                        <input type='number'
                            name='currentStrain'
                            maxLength='2'
                            className='textEdit editableAttributeText'
                            onChange={this.handleChange}
                            onBlur={this.handleChange}
                            placeholder={currentStrain ? currentStrain : 0}/>
-                    </div>                </div>
-
+                    </div>
+                </div>
                 <div className='singleAttribute Defense'>
                     <div className='AttributeText'>{'0 | 0'}</div>
+                </div>
+                <div className='singleAttribute'>
+                    <div className='singleAttribute-topText'>ENCUMBRANCE</div>
+                    <div className='singleAttribute-bottomText'>0</div>
                 </div>
             </div>
         )

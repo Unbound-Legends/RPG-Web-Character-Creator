@@ -135,3 +135,12 @@ export const critical = (state = [], action) =>{
     if (action.type === 'Initialize_State')  return [];
     return state;
 };
+
+export const equipment = (state = {}, action) =>{
+    if (action.type === 'equipment_Changed'){
+        if (action.payload===null) return {};
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return {};
+    return state;
+};

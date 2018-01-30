@@ -19,13 +19,18 @@ class CharacterDescription extends React.Component {
             <div className='module'>
                 <div className='module-header'>CHARACTER DESCRIPTION</div>
                 <hr />
-                {['gender', 'age', 'height', 'build', 'hair', 'eyes', 'features'].map((aspect)=>
+                {['gender', 'age', 'height', 'build', 'hair', 'eyes'].map((aspect)=>
                     <div className='fieldLabel' key={aspect}>{aspect.toLocaleUpperCase()}:
                         <input type='text' value={description[aspect]} maxLength='25' onChange={this.handleChange.bind(this, `${aspect}`)}/>
                         <hr />
                     </div>
                 )}
-
+                <div className='fieldLabel'>NOTABLE FEATURES:</div>
+                <textarea onChange={this.handleChange.bind(this, 'features')}
+                          rows='10'
+                          cols='45'
+                          className='textField'
+                          value={description.features ? description.features : ''}/>
             </div>
 
         );
