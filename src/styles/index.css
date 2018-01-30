@@ -22,10 +22,6 @@ button, input {
     margin: 1vw;
 }
 
-input, button, textarea, select {
-    background-color: transparent;
-}
-
 textarea {
     resize: none;
 }
@@ -167,12 +163,14 @@ input[type="number"] {
 }
 
 .AttributeText {
+    background-color: transparent;
     position: relative;
     font-size: 3vw;
     top: 5vw;
 }
 
 .editableAttributeText {
+    background-color: transparent;
     display: inline-block;
 }
 
@@ -234,7 +232,6 @@ input[type="number"] {
 .module {
     display: inline-block;
     width: fit-content;
-    background-color: rgba(181, 224, 232, 0.2);
 }
 
 .block {
