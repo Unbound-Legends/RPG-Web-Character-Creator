@@ -199,6 +199,10 @@ input[type="number"] {
     font-weight: 300;
 }
 
+.characterImage {
+    width: 100%;
+}
+
 .module-header {
     text-align: right;
 }

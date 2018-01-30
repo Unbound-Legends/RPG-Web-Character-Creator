@@ -17,6 +17,7 @@ class MainPage extends React.Component {
           <TabList>
               <Tab>Character Select</Tab>
               <Tab>Character Description</Tab>
+              <Tab>Character Image</Tab>
               <Tab>Attributes</Tab>
               <Tab>Archetype</Tab>
               <Tab>Characteristics</Tab>
@@ -34,6 +35,7 @@ class MainPage extends React.Component {
           </TabList>
           <TabPanel> <Component.CharacterSelect/> </TabPanel>
           <TabPanel> <Component.CharacterDescription/> </TabPanel>
+          <TabPanel> <Component.CharacterImage/> </TabPanel>
           <TabPanel> <Component.Attributes/> </TabPanel>
           <TabPanel> <Component.Archetype/> </TabPanel>
           <TabPanel> <Component.Characteristics/> </TabPanel>
