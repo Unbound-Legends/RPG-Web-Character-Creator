@@ -30,4 +30,5 @@ export {default as TalentList} from './TalentList';
 export {default as Talents} from './Talents';
 export {default as TalentSelection} from './TalentSelection';
 export {default as User} from './User';
+export {default as WeaponStats} from './WeaponStats';
 export {default as XPCounter} from './XPCounter';

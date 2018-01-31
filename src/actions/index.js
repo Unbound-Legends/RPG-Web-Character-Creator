@@ -31,9 +31,9 @@ export const addCharacter = () => {
     return (dispatch, getState) => {
         const user = getState().user;
         let newObj = {};
-        let newCharacter = Math.random().toString(36).substr(2, 16)
+        let newCharacter = Math.random().toString(36).substr(2, 16);
         newObj[newCharacter] = {};
-        db.doc(`users/${user}/characters/characterList/`).update(newObj)
+        db.doc(`users/${user}/characters/characterList/`).update(newObj);
         dispatch({type: `character_Changed`, payload: newCharacter});
         dispatch({type: `Initialize_State`});
     }

@@ -144,3 +144,30 @@ export const equipment = (state = {}, action) =>{
     if (action.type === 'Initialize_State')  return {};
     return state;
 };
+
+export const weapons = (state = {}, action) =>{
+    if (action.type === 'weapons_Changed'){
+        if (action.payload===null) return {};
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return {};
+    return state;
+};
+
+export const armor = (state = {}, action) =>{
+    if (action.type === 'armor_Changed'){
+        if (action.payload===null) return {};
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return {};
+    return state;
+};
+
+export const gear = (state = {}, action) =>{
+    if (action.type === 'gear_Changed'){
+        if (action.payload===null) return {};
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return {};
+    return state;
+};

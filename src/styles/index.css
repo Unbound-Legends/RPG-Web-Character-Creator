@@ -18,7 +18,7 @@ h3, ul {
     margin: unset;
 }
 
-button, input {
+button, input, select {
     margin: 1vw;
 }
 
