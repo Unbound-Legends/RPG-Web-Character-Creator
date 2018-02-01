@@ -61,12 +61,12 @@ export const changeCharacter = (state) => {
     }
 };
 
-export const changeData = (data, type) => {
+export const changeData = (data, type, merge = true) => {
     return (dispatch, getState) => {
         const user = getState().user;
         const character = getState().character;
         const dbRef = db.doc(`users/${user}/characters/characterList/`);
-        dbRef.set ({[character]: {[type]: data}}, { merge: true });
+        dbRef.set ({[character]: {[type]: data}}, { merge: merge });
     }
 };
 

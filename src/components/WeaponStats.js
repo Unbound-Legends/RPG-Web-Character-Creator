@@ -15,6 +15,15 @@ class WeaponStats extends React.Component {
         event.preventDefault();
     };
 
+    handleDelete = (event) => {
+        const {changeData, weapons, keyID} = this.props;
+        let newObj = {...weapons};
+        delete newObj[keyID];
+        changeData(newObj, 'weapons', false);
+        popup.close();
+        event.preventDefault();
+    };
+
     render() {
         const {weapons, keyID} = this.props;
         const weapon = weapons[keyID] ? weapons[keyID] : {};
@@ -51,9 +60,9 @@ class WeaponStats extends React.Component {
                     <input type='number' value={weapon.encumbrance ? weapon.encumbrance : ''} onChange={this.handleChange.bind(this, 'encumbrance')} />
                 <div>Special Qualities:</div>
                     <input type='text' value={weapon.qualities ? weapon.qualities : ''} onChange={this.handleChange.bind(this, 'qualities')} />
-                <input type='submit' onClick={popup.close}/>
+                <input type='submit' value='Enter' onClick={popup.close}/>
+                <input type='submit' value='Delete' onClick={this.handleDelete}/>
             </div>
-
         );
     }
 }

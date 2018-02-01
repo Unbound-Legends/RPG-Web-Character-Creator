@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {WeaponStats} from "./index";
+import {WeaponStats, Description} from "./index";
 import popup from "react-popup";
+import {skillDice} from "../reducers";
 
 class EquipmentLog extends React.Component {
 
@@ -39,10 +40,19 @@ class EquipmentLog extends React.Component {
         event.preventDefault();
     };
 
+    handleEquip = (type, key) => {
+        const {changeData, equipped} = this.props;
+        let newObj = {...equipped};
+        if (!newObj[type]) newObj[type] = [];
+        if (newObj[type].includes(key)) newObj[type].forEach((item, index)=> {
+            if (item===key) newObj[type].splice(index, 1);
+        })
+        else newObj[type].push(key);
+        changeData(newObj, 'equipped');
+    };
 
     render() {
-        const {equipment, weapons} = this.props;
-        const weaponAttributes = ['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities'];
+        const {equipment, weapons, equipped, skills, skillDice} = this.props;
         return (
             <div className='module'>
                 <div className='module-header'>EQUIPMENT LOG</div>
@@ -58,21 +68,34 @@ class EquipmentLog extends React.Component {
                         <Tab>GEAR</Tab>
                     </TabList>
                     <TabPanel>
-                        <div className='fieldLabel'>WEAPONS:</div>
-                        <div className='table'>
-                            <div className='table-header'>
-                                {weaponAttributes.map((attribute)=>
-                                    <div className='table-header table-cell' key={attribute}>{attribute.toUpperCase()}</div>
+                        {Object.keys(weapons).length > 0 &&
+                            <div className='table'>
+                                <div className='table-header'>
+                                    <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
+                                    <div className='table-header table-cell-bottom-border'>NAME</div>
+                                    <div className='table-header table-cell-bottom-border'>DAM</div>
+                                    <div className='table-header table-cell-bottom-border'>CRIT</div>
+                                    <div className='table-header table-cell-bottom-border'>RANGE</div>
+                                    <div className='table-header table-cell-bottom-border'>SKILL</div>
+                                    <div className='table-header table-cell-bottom-border'>ENCUM</div>
+                                    <div className='table-header table-cell-bottom-border'>QUAL</div>
+                                    <div className='table-header table-cell-bottom-border'>DICE</div>
+                                </div>
+                                {Object.keys(weapons).map((key) =>
+                                    <div className='table-row' key={key}>
+                                        <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.weapons ? equipped.weapons.includes(key) : false} onChange={this.handleEquip.bind(this, 'weapons', key)}/></div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].name}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].damage}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].critical}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].range}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].skill ? skills[weapons[key].skill].name : ''}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].encumbrance}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].qualities}</div>
+                                        <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}><Description text={skillDice[weapons[key].skill]} /></div>
+                                    </div>
                                 )}
                             </div>
-                            {Object.keys(weapons).map((key)=>
-                                <div className='table-row' key={key} onClick={this.editGear.bind(this, 'weapons', key)}>
-                                    {weaponAttributes.map((weaponAttrib)=>
-                                        <div key={key+weaponAttrib} className='table-cell'>{weapons[key][weaponAttrib]}</div>
-                                    )}
-                                </div>
-                            )}
-                        </div>
+                        }
                         <input type='submit' value='Add Weapon' onClick={this.addGear.bind(this, 'weapons')}/>
                         <hr />
                     </TabPanel>
@@ -102,10 +125,13 @@ class EquipmentLog extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        equipped: state.equipped,
         equipment: state.equipment,
         weapons: state.weapons,
         armor: state.armor,
         gear: state.gear,
+        skills: state.skills,
+        skillDice: skillDice(state),
     };
 }
 

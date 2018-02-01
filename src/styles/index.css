@@ -385,6 +385,12 @@ input[type="number"] {
     padding: 0.3vw;
 }
 
+.table-cell-bottom-border{
+    display: table-cell;
+    padding: 1.5vw;
+    border-bottom: black solid 1px;
+}
+
 .table-heading {
     text-align: left;
     font-size: large;

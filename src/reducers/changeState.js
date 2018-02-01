@@ -171,3 +171,12 @@ export const gear = (state = {}, action) =>{
     if (action.type === 'Initialize_State')  return {};
     return state;
 };
+
+export const equipped = (state = {}, action) =>{
+    if (action.type === 'equipped_Changed'){
+        if (action.payload===null) return {};
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return {};
+    return state;
+};
