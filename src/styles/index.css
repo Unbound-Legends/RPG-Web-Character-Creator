@@ -172,6 +172,16 @@ input[type="number"] {
 .editableAttributeText {
     background-color: transparent;
     display: inline-block;
+    font-size: 2.5vw;
+    width: 3vw;
+    color: #454B4D;
+    text-align: center;
+    border: none;
+}
+
+.doubleAttributeText {
+    display: inline-block;
+    margin: 0 2vw;
 }
 
 .Soak {

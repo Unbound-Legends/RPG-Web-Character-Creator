@@ -46,9 +46,11 @@ export const maxCareerSkills = (state) => derivedStats.calcMaxCareerSkills(state
 export const woundThreshold = (state) => derivedStats.calcWounds(state);
 export const strainThreshold = (state) => derivedStats.calcStrain(state);
 export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
+export const totalDefense = (state) => derivedStats.calcTotalDefense(state);
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const totalXP = (state) => derivedStats.calcUsedXP(state);
 export const criticalText = (state) => criticals.criticalText(state);
+
 
 export default allReducers;

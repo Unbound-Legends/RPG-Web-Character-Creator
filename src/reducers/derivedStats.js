@@ -164,6 +164,24 @@ export const calcTotalSoak = createSelector(
     }
 );
 
+export const calcTotalDefense = createSelector(
+    equipped, armor,
+    (equipped, armor) => {
+        if (!equipped.armor) return 0;
+
+        let defense = {melee: 0, ranged: 0};
+        if (equipped.armor) {
+            equipped.armor.forEach((key)=>{
+                defense.melee += (armor[key].meleeDefense ? +armor[key].meleeDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
+                defense.ranged += (armor[key].rangedDefense ? +armor[key].rangedDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
+            });
+        }
+
+        return defense;
+    }
+);
+
+
 export const calcUsedXP = createSelector(
     masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, careerSkills, calcArchetypeSkillRank, calcSkillRanks,
     (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, careerSkills, archetypeSkillRank, skillRanks) => {

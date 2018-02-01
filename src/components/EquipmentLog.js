@@ -113,19 +113,19 @@ class EquipmentLog extends React.Component {
                                 <div className='table-header table-cell-bottom-border'>NAME</div>
                                 <div className='table-header table-cell-bottom-border'>SOAK</div>
                                 <div className='table-header table-cell-bottom-border'>DEFENSE</div>
-                                <div className='table-header table-cell-bottom-border'>MELEE DEFENSE</div>
                                 <div className='table-header table-cell-bottom-border'>RANGED DEFENSE</div>
+                                <div className='table-header table-cell-bottom-border'>MELEE DEFENSE</div>
                                 <div className='table-header table-cell-bottom-border'>ENCUM</div>
                                 <div className='table-header table-cell-bottom-border'>QUAL</div>
                             </div>
                             {Object.keys(armor).map((key) =>
                                 <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.armor ? equipped.weapons.includes(key) : false} onChange={this.handleEquip.bind(this, 'armor', key)}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.armor ? equipped.armor.includes(key) : false} onChange={this.handleEquip.bind(this, 'armor', key)}/></div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].name}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].soak}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].defense}</div>
-                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].meleeDefense}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].rangedDefense}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].meleeDefense}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].encumbrance}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].qualities}</div>
                                 </div>

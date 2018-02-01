@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
-import {strainThreshold, totalSoak, woundThreshold} from "../reducers";
+import {strainThreshold, totalDefense, totalSoak, woundThreshold} from "../reducers";
 
 class Attributes extends React.Component {
 
@@ -14,7 +14,7 @@ class Attributes extends React.Component {
     };
 
     render() {
-        const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak} = this.props;
+        const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak, totalDefense} = this.props;
         return (
             <div>
                 <div className='singleAttribute Soak'>
@@ -22,12 +22,11 @@ class Attributes extends React.Component {
                 </div>
                 <div className={`singleAttribute Wounds`}>
                     <div className='AttributeText'>
-                        <div className='editableAttributeText'>{woundThreshold}</div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div className='editableAttributeText doubleAttributeText'>{woundThreshold}</div>
                         <input type='number'
                             name='currentWound'
                             maxLength='2'
-                            className='textEdit editableAttributeText'
+                            className='doubleAttributeText editableAttributeText '
                             onChange={this.handleChange}
                             onBlur={this.handleChange}
                             placeholder={currentWound ? currentWound : 0}/>
@@ -35,19 +34,18 @@ class Attributes extends React.Component {
                 </div>
                 <div className={`singleAttribute Strain`}>
                     <div className='AttributeText'>
-                        <div className='editableAttributeText'>{strainThreshold}</div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div className='editableAttributeText doubleAttributeText'>{strainThreshold}</div>
                         <input type='number'
                            name='currentStrain'
                            maxLength='2'
-                           className='textEdit editableAttributeText'
+                           className='doubleAttributeText editableAttributeText'
                            onChange={this.handleChange}
                            onBlur={this.handleChange}
                            placeholder={currentStrain ? currentStrain : 0}/>
                     </div>
                 </div>
                 <div className='singleAttribute Defense'>
-                    <div className='AttributeText'>{'0 | 0'}</div>
+                    <div className='AttributeText'><div className='doubleAttributeText'>{totalDefense.ranged}</div><div className='doubleAttributeText'>{totalDefense.melee}</div> </div>
                 </div>
                 <div className='singleAttribute'>
                     <div className='singleAttribute-topText'>ENCUMBRANCE</div>
@@ -65,6 +63,7 @@ function mapStateToProps(state) {
         woundThreshold: woundThreshold(state),
         strainThreshold: strainThreshold(state),
         totalSoak: totalSoak(state),
+        totalDefense: totalDefense(state),
         currentWound: state.currentWound,
         currentStrain: state.currentStrain,
     };
