@@ -23,6 +23,10 @@ class EquipmentLog extends React.Component {
         if (type==='weapons') content = <WeaponStats keyID={key}/>;
         if (type==='armor') content =  <ArmorStats keyID={key}/>;
         if (type==='gear') content =  <GearStats keyID={key}/>;
+        let newObj = {...this.props.carried};
+        if (!newObj[type]) newObj[type] = [];
+        newObj[type].push(key);
+        this.props.changeData(newObj, 'carried');
 
         popup.create({
             title: `New ${type}`,
@@ -46,19 +50,21 @@ class EquipmentLog extends React.Component {
         event.preventDefault();
     };
 
-    handleEquip = (type, key) => {
-        const {changeData, equipped} = this.props;
-        let newObj = {...equipped};
+    handleStatus = (type, key, status) => {
+        const {changeData, equipped, carried} = this.props;
+        let newObj = {};
+        if (status === 'carried') newObj = {...carried};
+        else if (status === 'equipped') newObj = {...equipped};
         if (!newObj[type]) newObj[type] = [];
         if (newObj[type].includes(key)) newObj[type].forEach((item, index)=> {
             if (item===key) newObj[type].splice(index, 1);
-        })
+        });
         else newObj[type].push(key);
-        changeData(newObj, 'equipped');
+        changeData(newObj, status);
     };
 
     render() {
-        const {equipment, weapons, armor, gear, equipped, skills, skillDice} = this.props;
+        const {equipment, weapons, armor, gear, equipped, carried, skills, skillDice} = this.props;
         return (
             <div className='module'>
                 <div className='module-header'>EQUIPMENT LOG</div>
@@ -78,6 +84,7 @@ class EquipmentLog extends React.Component {
                             <div className='table'>
                                 <div className='table-header'>
                                     <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
+                                    <div className='table-header table-cell-bottom-border'>CARRIED</div>
                                     <div className='table-header table-cell-bottom-border'>NAME</div>
                                     <div className='table-header table-cell-bottom-border'>DAM</div>
                                     <div className='table-header table-cell-bottom-border'>CRIT</div>
@@ -89,7 +96,8 @@ class EquipmentLog extends React.Component {
                                 </div>
                                 {Object.keys(weapons).map((key) =>
                                     <div className='table-row' key={key}>
-                                        <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.weapons ? equipped.weapons.includes(key) : false} onChange={this.handleEquip.bind(this, 'weapons', key)}/></div>
+                                        <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.weapons ? equipped.weapons.includes(key) : false} onChange={this.handleStatus.bind(this, 'weapons', key, 'equipped')}/></div>
+                                        <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={carried.weapons ? carried.weapons.includes(key) : false} onChange={this.handleStatus.bind(this, 'weapons', key, 'carried')}/></div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].name}</div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].damage}</div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].critical}</div>
@@ -110,6 +118,7 @@ class EquipmentLog extends React.Component {
                         <div className='table'>
                             <div className='table-header'>
                                 <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
+                                <div className='table-header table-cell-bottom-border'>CARRIED</div>
                                 <div className='table-header table-cell-bottom-border'>NAME</div>
                                 <div className='table-header table-cell-bottom-border'>SOAK</div>
                                 <div className='table-header table-cell-bottom-border'>DEFENSE</div>
@@ -120,7 +129,8 @@ class EquipmentLog extends React.Component {
                             </div>
                             {Object.keys(armor).map((key) =>
                                 <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.armor ? equipped.armor.includes(key) : false} onChange={this.handleEquip.bind(this, 'armor', key)}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.armor ? equipped.armor.includes(key) : false} onChange={this.handleStatus.bind(this, 'armor', key, 'equipped')}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={carried.armor ? carried.armor.includes(key) : false} onChange={this.handleStatus.bind(this, 'armor', key, 'carried')}/></div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].name}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].soak}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].defense}</div>
@@ -139,7 +149,7 @@ class EquipmentLog extends React.Component {
                         {Object.keys(gear).length > 0 &&
                         <div className='table'>
                             <div className='table-header'>
-                                <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
+                                <div className='table-header table-cell-bottom-border'>CARRIED</div>
                                 <div className='table-header table-cell-bottom-border'>NAME</div>
                                 <div className='table-header table-cell-bottom-border'>AMOUNT</div>
                                 <div className='table-header table-cell-bottom-border'>ENCUM</div>
@@ -147,7 +157,7 @@ class EquipmentLog extends React.Component {
                             </div>
                             {Object.keys(gear).map((key) =>
                                 <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.gear ? equipped.gear.includes(key) : false} onChange={this.handleEquip.bind(this, 'gear', key)}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={carried.gear ? carried.gear.includes(key) : false} onChange={this.handleStatus.bind(this, 'gear', key, 'carried')}/></div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].name}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].amount}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].encumbrance}</div>
@@ -169,6 +179,7 @@ class EquipmentLog extends React.Component {
 function mapStateToProps(state) {
     return {
         equipped: state.equipped,
+        carried: state.carried,
         equipment: state.equipment,
         weapons: state.weapons,
         armor: state.armor,

@@ -2,7 +2,10 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
-import {strainThreshold, totalDefense, totalSoak, woundThreshold} from "../reducers";
+import {
+    encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, totalSoak,
+    woundThreshold
+} from "../reducers";
 
 class Attributes extends React.Component {
 
@@ -14,7 +17,7 @@ class Attributes extends React.Component {
     };
 
     render() {
-        const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak, totalDefense} = this.props;
+        const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
         return (
             <div>
                 <div className='singleAttribute Soak'>
@@ -49,7 +52,7 @@ class Attributes extends React.Component {
                 </div>
                 <div className='singleAttribute'>
                     <div className='singleAttribute-topText'>ENCUMBRANCE</div>
-                    <div className='singleAttribute-bottomText'>0</div>
+                    <div className='singleAttribute-bottomText'><div className='doubleAttributeText'>{encumbranceLimit}</div><div className='doubleAttributeText'>{totalEncumbrance}</div></div>
                 </div>
             </div>
         )
@@ -64,6 +67,8 @@ function mapStateToProps(state) {
         strainThreshold: strainThreshold(state),
         totalSoak: totalSoak(state),
         totalDefense: totalDefense(state),
+        totalEncumbrance: totalEncumbrance(state),
+        encumbranceLimit: encumbranceLimit(state),
         currentWound: state.currentWound,
         currentStrain: state.currentStrain,
     };

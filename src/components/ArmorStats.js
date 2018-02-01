@@ -16,9 +16,29 @@ class ArmorStats extends React.Component {
     };
 
     handleDelete = (event) => {
-        const {changeData, armor, keyID} = this.props;
+        const {changeData, armor, keyID, carried, equipped} = this.props;
         let newObj = {...armor};
+        let newCarried = {...carried};
+        let newEquipped = {...equipped};
         delete newObj[keyID];
+
+        if (newCarried.armor) {
+            if (newCarried.armor.includes(keyID)) {
+                newCarried.armor.forEach((item, index) => {
+                    if (item === keyID) newCarried.armor.splice(index, 1);
+                });
+                changeData(newCarried, 'carried');
+            }
+        }
+
+        if (newEquipped.armor) {
+            if (newEquipped.armor.includes(keyID)) {
+                newEquipped.armor.forEach((item, index) => {
+                    if (item === keyID) newEquipped.armor.splice(index, 1);
+                });
+                changeData(newEquipped, 'equipped');
+            }
+        }
         changeData(newObj, 'armor', false);
         popup.close();
         event.preventDefault();
@@ -53,6 +73,8 @@ class ArmorStats extends React.Component {
 function mapStateToProps(state) {
     return {
         armor: state.armor,
+        equipped: state.equipped,
+        carried: state.carried,
     };
 }
 

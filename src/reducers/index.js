@@ -47,6 +47,8 @@ export const woundThreshold = (state) => derivedStats.calcWounds(state);
 export const strainThreshold = (state) => derivedStats.calcStrain(state);
 export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
 export const totalDefense = (state) => derivedStats.calcTotalDefense(state);
+export const totalEncumbrance = (state) => derivedStats.calcTotalEncumbrance(state);
+export const encumbranceLimit = (state) => derivedStats.calcEncumbranceLimit(state);
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const totalXP = (state) => derivedStats.calcUsedXP(state);

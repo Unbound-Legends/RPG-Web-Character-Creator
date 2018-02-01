@@ -10,7 +10,10 @@ const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
 const creationCharacteristics = state => state.creationCharacteristics;
 const talentModifiers = state => state.talentModifiers;
 const equipped = state => state.equipped;
+const carried = state => state.carried;
 const armor = state => state.armor;
+const weapons = state => state.weapons;
+const gear = state => state.gear;
 
 
 
@@ -154,7 +157,7 @@ export const calcTotalSoak = createSelector(
         let Armor = 0;
         if (equipped.armor) {
             equipped.armor.forEach((key)=>{
-               Armor += +armor[key].soak;
+               Armor += armor[key].soak ? +armor[key].soak : 0;
             });
         }
         //get soak from Enduring Talent
@@ -167,8 +170,6 @@ export const calcTotalSoak = createSelector(
 export const calcTotalDefense = createSelector(
     equipped, armor,
     (equipped, armor) => {
-        if (!equipped.armor) return 0;
-
         let defense = {melee: 0, ranged: 0};
         if (equipped.armor) {
             equipped.armor.forEach((key)=>{
@@ -178,6 +179,42 @@ export const calcTotalDefense = createSelector(
         }
 
         return defense;
+    }
+);
+
+export const calcEncumbranceLimit = createSelector(
+    calcCharacteristics,
+    (characteristics) => {
+        let Brawn = characteristics.Brawn
+        return Brawn + 5;
+    }
+);
+
+export const calcTotalEncumbrance = createSelector(
+    equipped, carried, armor, weapons, gear,
+    (equipped, carried, armor, weapons, gear,) => {
+        let encumbrance = 0;
+        //get weapon encumbrance
+        if (carried.weapons) {
+            carried.weapons.forEach((item)=>{
+                encumbrance += weapons[item].encumbrance ? +weapons[item].encumbrance : 0;
+            });
+        }
+        //get armor encumbrance
+        if (carried.armor) {
+            carried.armor.forEach((item)=>{
+                let armorEncum = +armor[item].encumbrance - (equipped.armor ? (equipped.armor.includes(item) ? 3 : 0) : 0);
+                if (armorEncum < 0 || !armorEncum) armorEncum = 0;
+                encumbrance += armorEncum;
+            });
+        }
+        //get gear encumbrance
+        if (carried.gear) {
+            carried.gear.forEach((item)=>{
+                encumbrance += ((gear[item].encumbrance ? +gear[item].encumbrance : 0) * (gear[item].amount ? +gear[item].amount : 1));
+            });
+        }
+        return encumbrance;
     }
 );
 

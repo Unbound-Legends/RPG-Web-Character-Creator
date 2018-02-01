@@ -16,9 +16,30 @@ class WeaponStats extends React.Component {
     };
 
     handleDelete = (event) => {
-        const {changeData, weapons, keyID} = this.props;
+        const {changeData, weapons, keyID, carried, equipped} = this.props;
         let newObj = {...weapons};
+        let newCarried = {...carried};
+        let newEquipped = {...equipped};
         delete newObj[keyID];
+
+        if (newCarried.weapons) {
+            if (newCarried.weapons.includes(keyID)) {
+                newCarried.weapons.forEach((item, index) => {
+                    if (item === keyID) newCarried.weapons.splice(index, 1);
+                });
+                changeData(newCarried, 'carried');
+            }
+        }
+
+        if (newEquipped.weapons) {
+            if (newEquipped.weapons.includes(keyID)) {
+                newEquipped.weapons.forEach((item, index) => {
+                    if (item === keyID) newEquipped.weapons.splice(index, 1);
+                });
+                changeData(newEquipped, 'equipped');
+            }
+        }
+
         changeData(newObj, 'weapons', false);
         popup.close();
         event.preventDefault();
@@ -70,6 +91,8 @@ class WeaponStats extends React.Component {
 function mapStateToProps(state) {
     return {
         weapons: state.weapons,
+        equipped: state.equipped,
+        carried: state.carried,
     };
 }
 
