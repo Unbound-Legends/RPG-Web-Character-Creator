@@ -9,6 +9,10 @@ const masterTalents = state => state.masterTalents;
 const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
 const creationCharacteristics = state => state.creationCharacteristics;
 const talentModifiers = state => state.talentModifiers;
+const equipped = state => state.equipped;
+const armor = state => state.armor;
+
+
 
 
 export const calcCharacteristics = createSelector(
@@ -141,13 +145,18 @@ export const calcStrain = createSelector(
 );
 
 export const calcTotalSoak = createSelector(
-    calcCharacteristics, calcTalentCount,
-    (characteristics, talentCount) => {
+    calcCharacteristics, calcTalentCount, equipped, armor,
+    (characteristics, talentCount, equipped, armor) => {
         if (archetype===null) return 0;
         //get calcBrawn
         let Brawn = characteristics.Brawn;
         //get soak from armor
         let Armor = 0;
+        if (equipped.armor) {
+            equipped.armor.forEach((key)=>{
+               Armor += +armor[key].soak;
+            });
+        }
         //get soak from Enduring Talent
         let Enduring = talentCount.Enduring ? talentCount.Enduring : 0;
 

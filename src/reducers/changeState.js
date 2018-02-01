@@ -180,3 +180,12 @@ export const equipped = (state = {}, action) =>{
     if (action.type === 'Initialize_State')  return {};
     return state;
 };
+
+export const carried = (state = {}, action) =>{
+    if (action.type === 'carried_Changed'){
+        if (action.payload===null) return {};
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return {};
+    return state;
+};

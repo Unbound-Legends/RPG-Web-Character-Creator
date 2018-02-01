@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {WeaponStats, Description} from "./index";
+import {WeaponStats, ArmorStats, GearStats, Description} from "./index";
 import popup from "react-popup";
 import {skillDice} from "../reducers";
 
@@ -19,23 +19,29 @@ class EquipmentLog extends React.Component {
 
     addGear = (type, event) => {
         let key = Math.random().toString(36).substr(2, 16);
+        let content;
+        if (type==='weapons') content = <WeaponStats keyID={key}/>;
+        if (type==='armor') content =  <ArmorStats keyID={key}/>;
+        if (type==='gear') content =  <GearStats keyID={key}/>;
+
         popup.create({
             title: `New ${type}`,
             className: 'alert',
-            content: (
-                type==='weapons' && <WeaponStats keyID={key}/>
-            )
+            content: content
         });
         event.preventDefault();
     };
 
     editGear = (type, key, event) => {
+        let content;
+        if (type==='weapons') content = <WeaponStats keyID={key}/>;
+        if (type==='armor') content =  <ArmorStats keyID={key}/>;
+        if (type==='gear') content =  <GearStats keyID={key}/>;
+
         popup.create({
             title: `Edit ${type}`,
             className: 'alert',
-            content: (
-                type==='weapons' && <WeaponStats keyID={key}/>
-            )
+            content: content
         });
         event.preventDefault();
     };
@@ -52,7 +58,7 @@ class EquipmentLog extends React.Component {
     };
 
     render() {
-        const {equipment, weapons, equipped, skills, skillDice} = this.props;
+        const {equipment, weapons, armor, gear, equipped, skills, skillDice} = this.props;
         return (
             <div className='module'>
                 <div className='module-header'>EQUIPMENT LOG</div>
@@ -100,20 +106,57 @@ class EquipmentLog extends React.Component {
                         <hr />
                     </TabPanel>
                     <TabPanel>
-                        <div className='fieldLabel'>ARMOR:</div>
-                        <textarea onChange={this.handleChange.bind(this, 'armor')}
-                                  rows='10'
-                                  cols='45'
-                                  className='textField'
-                                  value={equipment.armor ? equipment.armor : ''}/>
+                        {Object.keys(armor).length > 0 &&
+                        <div className='table'>
+                            <div className='table-header'>
+                                <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
+                                <div className='table-header table-cell-bottom-border'>NAME</div>
+                                <div className='table-header table-cell-bottom-border'>SOAK</div>
+                                <div className='table-header table-cell-bottom-border'>DEFENSE</div>
+                                <div className='table-header table-cell-bottom-border'>MELEE DEFENSE</div>
+                                <div className='table-header table-cell-bottom-border'>RANGED DEFENSE</div>
+                                <div className='table-header table-cell-bottom-border'>ENCUM</div>
+                                <div className='table-header table-cell-bottom-border'>QUAL</div>
+                            </div>
+                            {Object.keys(armor).map((key) =>
+                                <div className='table-row' key={key}>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.armor ? equipped.weapons.includes(key) : false} onChange={this.handleEquip.bind(this, 'armor', key)}/></div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].name}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].soak}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].defense}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].meleeDefense}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].rangedDefense}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].encumbrance}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].qualities}</div>
+                                </div>
+                            )}
+                        </div>
+                        }
+                        <input type='submit' value='Add Armor' onClick={this.addGear.bind(this, 'armor')}/>
+                        <hr />
                     </TabPanel>
                     <TabPanel>
-                        <div className='fieldLabel'>GEAR:</div>
-                        <textarea onChange={this.handleChange.bind(this, 'gear')}
-                                  rows='10'
-                                  cols='45'
-                                  className='textField'
-                                  value={equipment.gear ? equipment.gear : ''}/>
+                        {Object.keys(gear).length > 0 &&
+                        <div className='table'>
+                            <div className='table-header'>
+                                <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
+                                <div className='table-header table-cell-bottom-border'>NAME</div>
+                                <div className='table-header table-cell-bottom-border'>AMOUNT</div>
+                                <div className='table-header table-cell-bottom-border'>ENCUM</div>
+                                <div className='table-header table-cell-bottom-border'>QUAL</div>
+                            </div>
+                            {Object.keys(gear).map((key) =>
+                                <div className='table-row' key={key}>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.gear ? equipped.gear.includes(key) : false} onChange={this.handleEquip.bind(this, 'gear', key)}/></div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].name}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].amount}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].encumbrance}</div>
+                                    <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].qualities}</div>
+                                </div>
+                            )}
+                        </div>
+                        }
+                        <input type='submit' value='Add Gear' onClick={this.addGear.bind(this, 'gear')}/>
                         <hr />
                     </TabPanel>
                 </Tabs>

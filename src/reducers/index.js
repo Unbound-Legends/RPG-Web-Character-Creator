@@ -23,6 +23,7 @@ const allReducers = combineReducers({
     gear: changeState.gear,
     equipment: changeState.equipment,
     equipped: changeState.equipped,
+    carried: changeState.carried,
     archetype: changeState.archetype,
     archetypeSpecialSkills: changeState.archetypeSpecialSkills,
     career: changeState.career,
