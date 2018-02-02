@@ -71,7 +71,6 @@ class EquipmentLog extends React.Component {
                         {Object.keys(weapons).length > 0 &&
                             <div className='table'>
                                 <div className='table-header'>
-                                    <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
                                     <div className='table-header table-cell-bottom-border'>CARRIED</div>
                                     <div className='table-header table-cell-bottom-border'>NAME</div>
                                     <div className='table-header table-cell-bottom-border'>DAM</div>
@@ -84,7 +83,6 @@ class EquipmentLog extends React.Component {
                                 </div>
                                 {Object.keys(weapons).map((key) =>
                                     <div className='table-row' key={key}>
-                                        <div className='table-cell-bottom-border'><input type='checkbox' checked={weapons[key].equipped} onChange={this.handleStatus.bind(this, 'weapons', key, 'equipped')}/></div>
                                         <div className='table-cell-bottom-border'><input type='checkbox' checked={weapons[key].carried} onChange={this.handleStatus.bind(this, 'weapons', key, 'carried')}/></div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].name}</div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].damage}</div>

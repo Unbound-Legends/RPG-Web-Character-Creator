@@ -28,7 +28,7 @@ class MainPage extends React.Component {
               <Tab>XP</Tab>
               <Tab>Critical</Tab>
               <Tab>Equipment Log</Tab>
-              <Tab>Equipped Gear</Tab>
+              <Tab>Carried Gear</Tab>
               <Tab>Notes</Tab>
               <Tab>Show Characteristics</Tab>
               <Tab>Sign Out</Tab>
@@ -47,7 +47,7 @@ class MainPage extends React.Component {
           <TabPanel> <Component.XPCounter/> </TabPanel>
           <TabPanel> <Component.Critical/> </TabPanel>
           <TabPanel> <Component.EquipmentLog/> </TabPanel>
-          <TabPanel> <Component.EquippedGear/> </TabPanel>
+          <TabPanel> <Component.CarriedGear/> </TabPanel>
           <TabPanel> <Component.Notes/> </TabPanel>
           <TabPanel> <Component.ShowCharacteristics/> </TabPanel>
           <TabPanel> <Component.SignOut/> </TabPanel>
