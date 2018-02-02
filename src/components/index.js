@@ -13,6 +13,7 @@ export {default as CharacterSelect} from './CharacterSelect';
 export {default as Critical} from './Critical';
 export {default as Description} from './Description';
 export {default as EquipmentLog} from './EquipmentLog';
+export {default as EquippedGear} from './EquippedGear';
 export {default as GearStats} from './GearStats';
 export {default as MainPage} from './MainPage';
 export {default as Motivation} from './Motivation';

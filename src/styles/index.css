@@ -14,7 +14,7 @@
     background-image: url(/images/background.png);
 }
 
-h3, ul {
+ul {
     margin: unset;
 }
 
@@ -397,7 +397,8 @@ input[type="number"] {
 
 .table-cell-bottom-border{
     display: table-cell;
-    padding: 1.5vw;
+    padding: 0 1.5vw;
+    vertical-align: bottom;
     border-bottom: black solid 1px;
 }
 
