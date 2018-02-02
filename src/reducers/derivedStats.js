@@ -9,8 +9,6 @@ const masterTalents = state => state.masterTalents;
 const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
 const creationCharacteristics = state => state.creationCharacteristics;
 const talentModifiers = state => state.talentModifiers;
-const equipped = state => state.equipped;
-const carried = state => state.carried;
 const armor = state => state.armor;
 const weapons = state => state.weapons;
 const gear = state => state.gear;
@@ -148,18 +146,16 @@ export const calcStrain = createSelector(
 );
 
 export const calcTotalSoak = createSelector(
-    calcCharacteristics, calcTalentCount, equipped, armor,
-    (characteristics, talentCount, equipped, armor) => {
+    calcCharacteristics, calcTalentCount, armor,
+    (characteristics, talentCount, armor) => {
         if (archetype===null) return 0;
         //get calcBrawn
         let Brawn = characteristics.Brawn;
         //get soak from armor
         let Armor = 0;
-        if (equipped.armor) {
-            equipped.armor.forEach((key)=>{
-               Armor += armor[key].soak ? +armor[key].soak : 0;
-            });
-        }
+        Object.keys(armor).forEach((key)=>{
+           if (armor[key].equipped) Armor += armor[key].soak ? +armor[key].soak : 0;
+        });
         //get soak from Enduring Talent
         let Enduring = talentCount.Enduring ? talentCount.Enduring : 0;
 
@@ -168,16 +164,15 @@ export const calcTotalSoak = createSelector(
 );
 
 export const calcTotalDefense = createSelector(
-    equipped, armor,
-    (equipped, armor) => {
+    armor,
+    (armor) => {
         let defense = {melee: 0, ranged: 0};
-        if (equipped.armor) {
-            equipped.armor.forEach((key)=>{
+        Object.keys(armor).forEach((key)=>{
+            if (armor[key].equipped) {
                 defense.melee += (armor[key].meleeDefense ? +armor[key].meleeDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
                 defense.ranged += (armor[key].rangedDefense ? +armor[key].rangedDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
-            });
-        }
-
+            }
+        });
         return defense;
     }
 );
@@ -185,35 +180,29 @@ export const calcTotalDefense = createSelector(
 export const calcEncumbranceLimit = createSelector(
     calcCharacteristics,
     (characteristics) => {
-        let Brawn = characteristics.Brawn
+        let Brawn = characteristics.Brawn;
         return Brawn + 5;
     }
 );
 
 export const calcTotalEncumbrance = createSelector(
-    equipped, carried, armor, weapons, gear,
-    (equipped, carried, armor, weapons, gear,) => {
+    armor, weapons, gear,
+    (armor, weapons, gear) => {
         let encumbrance = 0;
         //get weapon encumbrance
-        if (carried.weapons) {
-            carried.weapons.forEach((item)=>{
-                encumbrance += weapons[item].encumbrance ? +weapons[item].encumbrance : 0;
-            });
-        }
+        Object.keys(weapons).forEach((item)=>{
+            if (weapons[item].carried) encumbrance += weapons[item].encumbrance ? +weapons[item].encumbrance : 0;
+        });
         //get armor encumbrance
-        if (carried.armor) {
-            carried.armor.forEach((item)=>{
-                let armorEncum = +armor[item].encumbrance - (equipped.armor ? (equipped.armor.includes(item) ? 3 : 0) : 0);
-                if (armorEncum < 0 || !armorEncum) armorEncum = 0;
-                encumbrance += armorEncum;
-            });
-        }
+        Object.keys(armor).forEach((item)=>{
+            let armorEncum = +armor[item].encumbrance - (armor[item].equipped ? 3 : 0);
+            if (armorEncum < 0 || !armorEncum) armorEncum = 0;
+            if (armor[item].carried) encumbrance += armorEncum;
+        });
         //get gear encumbrance
-        if (carried.gear) {
-            carried.gear.forEach((item)=>{
-                encumbrance += ((gear[item].encumbrance ? +gear[item].encumbrance : 0) * (gear[item].amount ? +gear[item].amount : 1));
-            });
-        }
+        Object.keys(gear).forEach((item)=>{
+            if (gear[item].carried) encumbrance += ((gear[item].encumbrance ? +gear[item].encumbrance : 0) * (gear[item].amount ? +gear[item].amount : 1));
+        });
         return encumbrance;
     }
 );

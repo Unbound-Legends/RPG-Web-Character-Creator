@@ -3,31 +3,21 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {WeaponStats, ArmorStats, GearStats, Description} from "./index";
+import {GearStats, Description} from "./index";
 import popup from "react-popup";
 import {skillDice} from "../reducers";
 
 class EquipmentLog extends React.Component {
 
-    handleChange = (type, event) => {
-        const {changeData, equipment} = this.props;
-        let newObj = {...equipment};
-        newObj[type] = event.target.value;
-        changeData(newObj, 'equipment');
+    handleChangeMoney = (event) => {
+        const {changeData} = this.props;
+        changeData(event.target.value, 'money');
         event.preventDefault();
     };
 
     addGear = (type, event) => {
         let key = Math.random().toString(36).substr(2, 16);
-        let content;
-        if (type==='weapons') content = <WeaponStats keyID={key}/>;
-        if (type==='armor') content =  <ArmorStats keyID={key}/>;
-        if (type==='gear') content =  <GearStats keyID={key}/>;
-        let newObj = {...this.props.carried};
-        if (!newObj[type]) newObj[type] = [];
-        newObj[type].push(key);
-        this.props.changeData(newObj, 'carried');
-
+        let content = <GearStats keyID={key} type={type} />;
         popup.create({
             title: `New ${type}`,
             className: 'alert',
@@ -37,11 +27,7 @@ class EquipmentLog extends React.Component {
     };
 
     editGear = (type, key, event) => {
-        let content;
-        if (type==='weapons') content = <WeaponStats keyID={key}/>;
-        if (type==='armor') content =  <ArmorStats keyID={key}/>;
-        if (type==='gear') content =  <GearStats keyID={key}/>;
-
+        let content = <GearStats keyID={key} type={type} />;
         popup.create({
             title: `Edit ${type}`,
             className: 'alert',
@@ -51,26 +37,28 @@ class EquipmentLog extends React.Component {
     };
 
     handleStatus = (type, key, status) => {
-        const {changeData, equipped, carried} = this.props;
+        const {changeData, weapons, armor, gear} = this.props;
         let newObj = {};
-        if (status === 'carried') newObj = {...carried};
-        else if (status === 'equipped') newObj = {...equipped};
-        if (!newObj[type]) newObj[type] = [];
-        if (newObj[type].includes(key)) newObj[type].forEach((item, index)=> {
-            if (item===key) newObj[type].splice(index, 1);
-        });
-        else newObj[type].push(key);
-        changeData(newObj, status);
+        if (type==='weapons') newObj = {...weapons};
+        if (type==='armor') newObj = {...armor};
+        if (type==='gear') newObj = {...gear};
+        if (status==='equipped' && !newObj[key].equipped) newObj[key].carried = true;
+        if (status==='carried' && newObj[key].equipped) {
+            alert(`${newObj[key].name} is equipped and cannot be dropped!`);
+            return;
+        }
+        newObj[key][status] = !newObj[key][status];
+        changeData(newObj, type);
     };
 
     render() {
-        const {equipment, weapons, armor, gear, equipped, carried, skills, skillDice} = this.props;
+        const {money, weapons, armor, gear, skills, skillDice} = this.props;
         return (
             <div className='module'>
                 <div className='module-header'>EQUIPMENT LOG</div>
                 <hr />
                 <div className='fieldLabel'>MONEY:
-                    <input type='number' value={equipment.money ? equipment.money : 0} maxLength='25' onChange={this.handleChange.bind(this, 'money')}/>
+                    <input type='number' value={money} maxLength='25' onChange={this.handleChangeMoney}/>
                     <hr />
                 </div>
                 <Tabs defaultIndex={0}>
@@ -96,8 +84,8 @@ class EquipmentLog extends React.Component {
                                 </div>
                                 {Object.keys(weapons).map((key) =>
                                     <div className='table-row' key={key}>
-                                        <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.weapons ? equipped.weapons.includes(key) : false} onChange={this.handleStatus.bind(this, 'weapons', key, 'equipped')}/></div>
-                                        <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={carried.weapons ? carried.weapons.includes(key) : false} onChange={this.handleStatus.bind(this, 'weapons', key, 'carried')}/></div>
+                                        <div className='table-cell-bottom-border'><input type='checkbox' checked={weapons[key].equipped} onChange={this.handleStatus.bind(this, 'weapons', key, 'equipped')}/></div>
+                                        <div className='table-cell-bottom-border'><input type='checkbox' checked={weapons[key].carried} onChange={this.handleStatus.bind(this, 'weapons', key, 'carried')}/></div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].name}</div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].damage}</div>
                                         <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].critical}</div>
@@ -129,8 +117,8 @@ class EquipmentLog extends React.Component {
                             </div>
                             {Object.keys(armor).map((key) =>
                                 <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={equipped.armor ? equipped.armor.includes(key) : false} onChange={this.handleStatus.bind(this, 'armor', key, 'equipped')}/></div>
-                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={carried.armor ? carried.armor.includes(key) : false} onChange={this.handleStatus.bind(this, 'armor', key, 'carried')}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' checked={armor[key].equipped} onChange={this.handleStatus.bind(this, 'armor', key, 'equipped')}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' checked={armor[key].carried} onChange={this.handleStatus.bind(this, 'armor', key, 'carried')}/></div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].name}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].soak}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].defense}</div>
@@ -157,7 +145,7 @@ class EquipmentLog extends React.Component {
                             </div>
                             {Object.keys(gear).map((key) =>
                                 <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox' defaultChecked={carried.gear ? carried.gear.includes(key) : false} onChange={this.handleStatus.bind(this, 'gear', key, 'carried')}/></div>
+                                    <div className='table-cell-bottom-border'><input type='checkbox' checked={gear[key].carried} onChange={this.handleStatus.bind(this, 'gear', key, 'carried')}/></div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].name}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].amount}</div>
                                     <div className='table-cell-bottom-border' onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].encumbrance}</div>
@@ -178,9 +166,7 @@ class EquipmentLog extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        equipped: state.equipped,
-        carried: state.carried,
-        equipment: state.equipment,
+        money: state.money,
         weapons: state.weapons,
         armor: state.armor,
         gear: state.gear,

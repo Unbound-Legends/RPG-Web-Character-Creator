@@ -21,7 +21,7 @@ class CharacterImage extends React.Component {
         const {description} = this.props;
         return (
             <div className='module' style={{width: '20vw'}}>
-                <img className='characterImage' src={description.image} onClick={this.editImage} alt='not found' ref={img => this.img = img} onError={() => this.img.src ='images/png/Crest.png'} />
+                <img className='characterImage' src={description.image ? description.image : ''} onClick={this.editImage} alt='not found' ref={img => this.img = img} onError={() => this.img.src ='images/png/Crest.png'} />
             </div>
 
         );

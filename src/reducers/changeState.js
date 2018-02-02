@@ -136,12 +136,12 @@ export const critical = (state = [], action) =>{
     return state;
 };
 
-export const equipment = (state = {}, action) =>{
-    if (action.type === 'equipment_Changed'){
-        if (action.payload===null) return {};
+export const money = (state = '', action) =>{
+    if (action.type === 'money_Changed'){
+        if (action.payload===null) return '';
         else return action.payload;
     }
-    if (action.type === 'Initialize_State')  return {};
+    if (action.type === 'Initialize_State')  return '';
     return state;
 };
 
@@ -165,24 +165,6 @@ export const armor = (state = {}, action) =>{
 
 export const gear = (state = {}, action) =>{
     if (action.type === 'gear_Changed'){
-        if (action.payload===null) return {};
-        else return action.payload;
-    }
-    if (action.type === 'Initialize_State')  return {};
-    return state;
-};
-
-export const equipped = (state = {}, action) =>{
-    if (action.type === 'equipped_Changed'){
-        if (action.payload===null) return {};
-        else return action.payload;
-    }
-    if (action.type === 'Initialize_State')  return {};
-    return state;
-};
-
-export const carried = (state = {}, action) =>{
-    if (action.type === 'carried_Changed'){
         if (action.payload===null) return {};
         else return action.payload;
     }
