@@ -35,6 +35,24 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.App {
+    display: inline-block;
+    width: 95vw;
+    text-align: center;
+    margin: 1vw;
+    vertical-align: top;
+}
+
+.module {
+    margin: 1vw 0;
+}
+
+.inlineblock {
+    display: inline-block;
+    margin: 1vw;
+    width: 100%;
+}
+
 .signin-google {
     background: url(/images/png/signin-google.png);
     background-repeat: no-repeat;
@@ -83,33 +101,102 @@ input[type="number"] {
     background-position: bottom;
     line-height: normal;
     background-size: 100%;
-    width: 15vw;
-    height: 15vw;
+    width: 14%;
+    height: 90%;
     margin: 0 0.5vw;
     text-align: center;
     display: inline-block;
     font-weight: 600;
 }
 
+.characteristic-archetype-topText {
+    position: relative;
+    top: 22%;
+    font-size: 2vw;;
+}
+
+.characteristic-archetype-bottomText {
+    position: relative;
+    top: 36%;
+    color: white;
+    font-size: 1.3vw;
+}
+
+.characteristic-table {
+    background-image: url(/images/png/Characteristic.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    line-height: normal;
+    background-size: 100%;
+    width: 8vw;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.characteristic-table-topText {
+    position: relative;
+    top: 26%;
+    font-size: 2vw;
+}
+
+.characteristic-table-bottomText {
+    position: relative;
+    top: 46%;
+    color: white;
+    font-size: 1.3vw;
+}
+
+.singleAttribute-archetype {
+    background-image: url(/images/png/SingleAttribute.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    margin: 0 0.5vw;
+    text-align: center;
+    vertical-align: bottom;
+    color: black;
+    font-size: 1.5vw;
+    display: inline-block;
+    font-weight: 600;
+    height: 6.5vw;
+    width: 12vw;
+}
+
+.singleAttribute-topText-archetype {
+    position: relative;
+    top: 10%;
+    color: white;
+    font-size: 0.8vw;
+}
+
+.singleAttribute-bottomText-archetype {
+    position: relative;
+    top: 20%;
+    font-size: 1.8vw;
+}
+
+
 .characteristicsBackround {
     background-image: url(/images/png/characteristicsBackround.png);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100%;
-    width: 99vw;
+    width: 98%;
     height: 16vw;
     text-align: center;
 }
 
 .characteristic-topText {
     position: relative;
-    top: 1.8vw;
+    top: 16%;
     font-size: 5vw;
 }
 
 .characteristic-bottomText {
     position: relative;
-    bottom: -4vw;
+    top: 30%;
     color: white;
     font-size: 2vw;
 }
@@ -132,13 +219,13 @@ input[type="number"] {
 
 .singleAttribute-topText {
     position: relative;
-    top: 3vw;
+    top: 25%;
     color: white;
 }
 
 .singleAttribute-bottomText {
     position: relative;
-    top: 3.5vw;
+    top: 30%;
     font-size: 3vw;
 }
 
@@ -172,7 +259,7 @@ input[type="number"] {
     background-color: transparent;
     position: relative;
     font-size: 3vw;
-    top: 5.5vw;
+    top: 45%;
 }
 
 .editableAttributeText {
@@ -206,6 +293,7 @@ input[type="number"] {
 }
 
 .fieldLabel {
+    text-align: left;
     font-weight: 600;
 }
 
@@ -220,6 +308,7 @@ input[type="number"] {
 
 .module-header {
     text-align: right;
+    font-weight: 600;
 }
 
 .shortTextBox {
@@ -248,17 +337,13 @@ input[type="number"] {
     text-align: center;
 }
 
-.module {
-    display: inline-block;
-    width: fit-content;
-}
-
 .block {
     display: block;
 }
 
-.inlineblock {
-    display: inline-block;
+.archetype {
+    width: 55vw;
+    display: block;
 }
 
 .description {
@@ -358,6 +443,7 @@ input[type="number"] {
 }
 
 .motivation-title {
+    text-align: left;
     width: 75%;
     padding: 0.8vw;
     border-bottom: black solid 1px;
@@ -433,6 +519,7 @@ input[type="number"] {
 .title {
     color: var(--lightblue);
 }
+
 
 @media only screen
   and (max-width: 480px) {

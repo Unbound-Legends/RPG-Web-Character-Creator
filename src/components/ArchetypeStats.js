@@ -12,23 +12,25 @@ class ArchetypeStats extends React.Component {
       <div>
         <h2>Archetype:&nbsp;<span className='title'>{masterArchetype.name}</span></h2>
         <p><b>Starting Stats: </b></p>
-        <div className='block'>
-          {Object.keys(masterArchetype.characteristics).map((stat)=>
-              <div key={stat} className={`characteristic`}>
-                  <div className='characteristic-topText'>{masterArchetype.characteristics[stat]}</div>
-                  <div className='characteristic-bottomText'>{stat}</div>
-              </div>
-          )}
+        <div className='archetype'>
+            <div className='characteristicsBackround' style={{height: '9vw'}}>
+                {Object.keys(masterArchetype.characteristics).map((stat)=>
+                    <div key={stat} className={`characteristic`}>
+                        <div className='characteristic-archetype-topText'>{masterArchetype.characteristics[stat]}</div>
+                        <div className='characteristic-archetype-bottomText'>{stat}</div>
+                    </div>
+                )}
+            </div>
         </div>
         {masterArchetype &&
-            <div className='block'>
-                <div className='singleAttribute'>
-                    <div className='singleAttribute-topText'>INITIAL WOUNDS</div>
-                    <div className='singleAttribute-bottomText'>{masterArchetype.woundThreshold}</div>
+            <div className='archetype'>
+                <div className='singleAttribute-archetype'>
+                    <div className='singleAttribute-topText-archetype'>INITIAL WOUNDS</div>
+                    <div className='singleAttribute-bottomText-archetype'>{masterArchetype.woundThreshold}</div>
                 </div>
-                <div className='singleAttribute'>
-                  <div className='singleAttribute-topText'>INITIAL STRAIN</div>
-                  <div className='singleAttribute-bottomText'>{masterArchetype.strainThreshold}</div>
+                <div className='singleAttribute-archetype'>
+                  <div className='singleAttribute-topText-archetype'>INITIAL STRAIN</div>
+                  <div className='singleAttribute-bottomText-archetype'>{masterArchetype.strainThreshold}</div>
                 </div>
             </div>
         }

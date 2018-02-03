@@ -1,13 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {characteristics} from '../reducers';
+import popup from 'react-popup';
+import {characteristics} from '../reducers'
+import {Characteristics} from './index';
 
 class ShowCharacteristics extends React.Component {
+
+    handleClick = () => {
+        popup.create({
+            title: `Modifiy Characteristics`,
+            className: 'alert',
+            content: <Characteristics/>,
+        })
+    };
 
     render() {
         const {characteristics} = this.props;
         return (
-          <div className='module'>
+          <div className='module' onClick={this.handleClick}>
               <div className='sectionheader'>CHARACTERISTICS</div>
               <hr />
               <div className='characteristicsBackround'>

@@ -16,11 +16,11 @@ class Notes extends React.Component {
     render() {
         const {description} = this.props;
         return (
-            <div className='module'>
+            <div className='inlineblock' style={{width: '46%', verticalAlign: 'top'}}>
                 <div className='module-header'>NOTES: </div>
                 <hr />
                     <textarea onChange={this.handleChange}
-                              rows='10'
+                              rows='38'
                               cols='45'
                               className='textField'
                               value={description.notes ? description.notes : ''}/>

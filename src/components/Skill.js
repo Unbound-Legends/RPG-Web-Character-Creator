@@ -5,26 +5,14 @@ import {skillRanks, archetypeSkillRank} from "../reducers";
 
 
 class Skill extends React.Component {
-    countXP = () => {
-        const {masterSkills, careerSkills, skillRanks, archetypeSkillRank} = this.props;
-        let xp = 0;
-        Object.keys(masterSkills).forEach((skill)=>{
-            let rank = skillRanks[skill];
-            for(let i=(careerSkills.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
-                xp += (((i + 1) * 5) + (careerSkills.includes(skill) ? 0 : 5));
-            }
-        });
-        return xp;
-    };
 
     render() {
         return (
             <div className='module'>
-                <div><span>Total XP: {this.countXP()}</span></div>
                 <div className='sectionheader'>SKILLS</div>
                 <hr />
-                <div className='table table-module' style={{width: '98vw'}}>
-                    <div className='table-cell' style={{width: '50%'}}>
+                <div className='table table-module' style={{width: '96vw'}}>
+                    <div className='table-cell' style={{width: '50%%'}}>
                         <SkillBlock type='General'
                         />
                     </div>

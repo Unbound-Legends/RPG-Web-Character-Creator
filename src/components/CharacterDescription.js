@@ -16,7 +16,7 @@ class CharacterDescription extends React.Component {
     render() {
         const {description} = this.props;
         return (
-            <div className='module'>
+            <div className='inlineblock' style={{width: '46%'}}>
                 <div className='module-header'>CHARACTER DESCRIPTION</div>
                 <hr />
                 {['gender', 'age', 'height', 'build', 'hair', 'eyes'].map((aspect)=>

@@ -6,17 +6,6 @@ import {TalentBlock, TalentList} from './index';
 
 class Talents extends React.Component {
 
-  countXP = () => {
-    const {masterTalents} = this.props;
-    let xp = 0;
-    Object.keys(masterTalents).forEach((row)=>{
-      Object.keys(masterTalents[row]).forEach((tier)=>{
-        if (masterTalents[row][tier] !== '') xp = xp+(5*tier);
-      })
-    });
-    return xp;
-  };
-
   popupList = () => {
     popup.create({
       title: 'Talents',
@@ -31,7 +20,8 @@ class Talents extends React.Component {
     const {masterTalents} = this.props;
     return (
       <div className='module'>
-        <div><span onClick={this.popupList}>Total XP: {this.countXP()}</span></div>
+        <div className='module-header'>TALENTS</div>
+        <hr />
         {Object.keys(masterTalents).map((row)=>
           <div key={row} className='talent-row'>
             {Object.keys(masterTalents[row]).map((tier)=>

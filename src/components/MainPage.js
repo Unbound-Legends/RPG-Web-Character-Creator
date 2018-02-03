@@ -13,7 +13,7 @@ class MainPage extends React.Component {
   }
 
   render() {
-      return <Tabs defaultIndex={11}>
+      return <Tabs defaultIndex={0}>
           <TabList>
               <Tab>Character Select</Tab>
               <Tab>Character Description</Tab>

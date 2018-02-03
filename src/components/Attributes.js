@@ -19,7 +19,9 @@ class Attributes extends React.Component {
     render() {
         const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
         return (
-            <div>
+            <div className='module'>
+                <div className='sectionheader'>ATTRIBUTES</div>
+                <hr />
                 <div className='singleAttribute Soak'>
                     <div className='AttributeText'>{totalSoak}</div>
                 </div>

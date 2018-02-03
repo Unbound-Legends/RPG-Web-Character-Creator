@@ -19,7 +19,7 @@ class XPTotal extends React.Component {
     render() {
         const {totalXP} = this.props;
         return(
-            <div className='module'>
+            <div className='inlineblock' style={{width: '46%', textAlign: 'left'}}>
                 <div className='singleAttribute xpBox xpTotal' onClick={this.popupXP}>
                     <div className='xpBox-Text'>{totalXP}</div>
                 </div>

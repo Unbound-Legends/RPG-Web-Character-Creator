@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {changeData} from '../actions';
 import {maxCareerSkills} from '../reducers';
 import {Description} from './index';
+import popup from 'react-popup';
 
 class Career extends React.Component {
 
@@ -30,24 +31,25 @@ class Career extends React.Component {
     const masterCareer = careers[career];
     return (
       <div className='module'>
-        <select defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
-          <option value=''/>
-          {Object.keys(careers).map((key)=>
-            <option value={key} key={key}>{careers[key].name}</option>
-          )}
-        </select>
-        {masterCareer &&
-          <div>
-            <h2>Career:&nbsp;<span className='title'>{masterCareer.name}</span></h2>
-            <h3>Career Skills:</h3>
-            {masterCareer.skills.map((skill)=>
-              <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
-            )}
-            <p><b>Setting:</b>&nbsp;{masterCareer.setting}</p>
-              <p><b>Description:</b></p>
-              <div style={{textIndent: '1em'}}><Description text={masterCareer.description}/></div>
-          </div>
-        }
+            <select defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
+              <option value=''/>
+              {Object.keys(careers).map((key)=>
+                <option value={key} key={key}>{careers[key].name}</option>
+              )}
+            </select>
+            {masterCareer &&
+              <div>
+                <h2>Career:&nbsp;<span className='title'>{masterCareer.name}</span></h2>
+                <h3>Career Skills:</h3>
+                {masterCareer.skills.map((skill)=>
+                  <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
+                )}
+                <p><b>Setting:</b>&nbsp;{masterCareer.setting}</p>
+                  <p><b>Description:</b></p>
+                  <div style={{textIndent: '1em'}}><Description text={masterCareer.description}/></div>
+              </div>
+            }
+            <button onClick={popup.close}>Close</button>
       </div>
     );
   }

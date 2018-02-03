@@ -21,7 +21,7 @@ class StatBlock extends React.Component {
                     <DynamicFont content={textTop}/>
                 </div>
                 <div className={`stats-box-bottom ${blockType}-bottom`}>
-                    <div className='inlineblock'>{textBottom}</div>
+                    <div style={{display: 'inline-block'}}>{textBottom}</div>
                 </div>
             </div>
         )

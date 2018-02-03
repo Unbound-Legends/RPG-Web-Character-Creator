@@ -59,7 +59,6 @@ class EquipmentLog extends React.Component {
                 <hr />
                 <div className='fieldLabel'>MONEY:
                     <input type='number' value={money} maxLength='25' onChange={this.handleChangeMoney}/>
-                    <hr />
                 </div>
                 <Tabs defaultIndex={0}>
                     <TabList>
@@ -97,7 +96,6 @@ class EquipmentLog extends React.Component {
                             </div>
                         }
                         <input type='submit' value='Add Weapon' onClick={this.addGear.bind(this, 'weapons')}/>
-                        <hr />
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(armor).length > 0 &&
@@ -129,7 +127,6 @@ class EquipmentLog extends React.Component {
                         </div>
                         }
                         <input type='submit' value='Add Armor' onClick={this.addGear.bind(this, 'armor')}/>
-                        <hr />
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(gear).length > 0 &&
@@ -153,10 +150,11 @@ class EquipmentLog extends React.Component {
                         </div>
                         }
                         <input type='submit' value='Add Gear' onClick={this.addGear.bind(this, 'gear')}/>
-                        <hr />
                     </TabPanel>
                 </Tabs>
+            <hr />
             </div>
+
 
         );
     }

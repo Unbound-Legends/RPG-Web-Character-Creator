@@ -2,8 +2,21 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData, addCharacter, changeCharacter, getData, deleteCharacter} from '../actions';
+import popup from 'react-popup';
+import {Archetype, Career} from './index';
 
 class CharacterSelect extends React.Component {
+
+    handleClick = (type) => {
+        let content = <div/>;
+        if (type === 'archetype') content = <Archetype/>;
+        if (type === 'career') content = <Career/>;
+        popup.create({
+            title: `Select ${type}`,
+            className: 'alert',
+            content: (content),
+        })
+    };
 
     handleNewCharacter = () => {
         this.props.addCharacter();
@@ -34,7 +47,7 @@ class CharacterSelect extends React.Component {
         const {archetype, archetypes, careers, career, description, characterList, character} = this.props;
         if (character===null || characterList === null) return <div/>;
         return (
-            <div className='module'>
+            <div className='inlineblock' style={{width: '60%'}}>
                 <div className='module-header'>CHARACTER</div>
                 <hr />
                 <select value={character} onChange={this.handleSelect}>
@@ -48,10 +61,10 @@ class CharacterSelect extends React.Component {
                     <input type='text' value={description.name} maxLength='25' onChange={this.handleChange.bind(this, 'name')}/>
                 </div>
                 <hr />
-                <div className='fieldLabel'>ARCHETYPE: <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
+                <div className='fieldLabel' onClick={this.handleClick.bind(this, 'archetype')}>ARCHETYPE: <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
                 </div>
                 <hr />
-                <div className='fieldLabel'>CAREER: <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
+                <div className='fieldLabel'onClick={this.handleClick.bind(this, 'career')}>CAREER: <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
                 </div>
                 <hr />
                 <div className='fieldLabel'>PLAYER NAME:

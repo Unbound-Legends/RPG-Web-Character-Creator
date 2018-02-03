@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { changeData } from '../actions';
 import {ArchetypeStats} from './index';
+import popup from 'react-popup';
 
 class Archetype extends React.Component {
 
@@ -15,7 +16,7 @@ class Archetype extends React.Component {
   render() {
     const {archetype, archetypes} = this.props;
     return (
-      <div className='module'>
+      <div className='inlineblock' style={{textAlign: 'left'}}>
         <select value={archetype ? archetype : ''} onChange={this.handleSelect}>
           <option value=''/>
           {Object.keys(archetypes).map((key)=>
@@ -23,6 +24,7 @@ class Archetype extends React.Component {
           )}
         </select>
         <ArchetypeStats />
+          <button onClick={popup.close}>Close</button>
       </div>
     );
   }

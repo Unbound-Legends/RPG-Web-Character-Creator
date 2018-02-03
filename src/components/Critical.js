@@ -51,8 +51,8 @@ class Critical extends React.Component {
     const {value} = this.state;
     const {critical} = this.props;
     return (
-      <div className='module' style={{width: '45vw'}}>
-          <div className='module-header'>Critical Injures</div>
+      <div className='module' style={{textAlign: 'left'}}>
+          <div className='module-header'>CRITICAL INJURIES</div>
           <hr />
             <div>Add a critical:
                 <input className='shortTextBox' type='text' name='critical' maxLength='3' value={value} onChange={this.handleChange}/>

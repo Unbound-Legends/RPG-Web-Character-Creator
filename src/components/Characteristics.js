@@ -41,7 +41,7 @@ class Characteristics extends React.Component {
           newObj[characteristic]--;
         }
         changeData(newObj, 'creationCharacteristics');
-    }
+    };
 
     render() {
         const {characteristics} = this.props;
@@ -58,10 +58,10 @@ class Characteristics extends React.Component {
               </div>
               <div className='table-row'>
               {chars.map((stat)=>
-                <div key={stat} className='table-cell-no-border'>
-                    <div key={stat} className={`characteristic`}>
-                        <div className='characteristic-topText'>{characteristics[stat]}</div>
-                        <div className='characteristic-bottomText'>{stat}</div>
+                <div key={stat} className='table-cell-no-border' style={{height: '9vw'}}>
+                    <div key={stat} className={`characteristic-table`}>
+                        <div className='characteristic-table-topText'>{characteristics[stat]}</div>
+                        <div className='characteristic-table-bottomText'>{stat}</div>
                     </div>
                 </div>
               )}
