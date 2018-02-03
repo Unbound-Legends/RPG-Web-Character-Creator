@@ -145,6 +145,15 @@ export const money = (state = '', action) =>{
     return state;
 };
 
+export const earnedXP = (state = '', action) =>{
+    if (action.type === 'earnedXP_Changed'){
+        if (action.payload===null) return '';
+        else return action.payload;
+    }
+    if (action.type === 'Initialize_State')  return '';
+    return state;
+};
+
 export const weapons = (state = {}, action) =>{
     if (action.type === 'weapons_Changed'){
         if (action.payload===null) return {};

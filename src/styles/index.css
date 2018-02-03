@@ -142,24 +142,30 @@ input[type="number"] {
     font-size: 3vw;
 }
 
+.doubleAttributeText {
+    display: inline-block;
+    margin: 0 2vw;
+}
+
 .xpBox {
-    background-image: url(/images/png/XPBox.png);
     height: 8vw;
     width: 15vw;
+    background-position: bottom;
 }
 
-.xpBox-topText {
+.xpTotal {
+    background-image: url(/images/png/TotalXP.png);
+}
+
+.xpAvailable {
+    background-image: url(/images/png/AvailableXP.png);
+}
+
+.xpBox-Text {
     position: relative;
-    top: 15%;
+    top: 10%;
     font-size: 4vw;
     color: black;
-}
-
-.xpBox-bottomText {
-    position: relative;
-    top: 5%;
-    color: white;
-    font-size: 1.5vw;
 }
 
 .AttributeText {
@@ -179,11 +185,6 @@ input[type="number"] {
     border: none;
 }
 
-.doubleAttributeText {
-    display: inline-block;
-    margin: 0 2vw;
-}
-
 .Soak {
     background-image: url(/images/png/Soak.png);
 }
@@ -198,6 +199,10 @@ input[type="number"] {
 
 .Wounds {
     background-image: url(/images/png/Wounds.png);
+}
+
+.DoubleAttribute {
+    background-image: url(/images/png/DoubleAttribute.png);
 }
 
 .fieldLabel {

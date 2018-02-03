@@ -50,7 +50,7 @@ class Attributes extends React.Component {
                 <div className='singleAttribute Defense'>
                     <div className='AttributeText'><div className='doubleAttributeText'>{totalDefense.ranged}</div><div className='doubleAttributeText'>{totalDefense.melee}</div> </div>
                 </div>
-                <div className='singleAttribute'>
+                <div className='singleAttribute DoubleAttribute'>
                     <div className='singleAttribute-topText'>ENCUMBRANCE</div>
                     <div className='singleAttribute-bottomText'><div className='doubleAttributeText'>{encumbranceLimit}</div><div className='doubleAttributeText'>{totalEncumbrance}</div></div>
                 </div>

@@ -13,7 +13,7 @@ class MainPage extends React.Component {
   }
 
   render() {
-      return <Tabs defaultIndex={13}>
+      return <Tabs defaultIndex={11}>
           <TabList>
               <Tab>Character Select</Tab>
               <Tab>Character Description</Tab>
@@ -25,7 +25,8 @@ class MainPage extends React.Component {
               <Tab>Motivations</Tab>
               <Tab>Skills</Tab>
               <Tab>Talents</Tab>
-              <Tab>XP</Tab>
+              <Tab>XP Available</Tab>
+              <Tab>XP Total</Tab>
               <Tab>Critical</Tab>
               <Tab>Equipment Log</Tab>
               <Tab>Carried Gear</Tab>
@@ -44,7 +45,8 @@ class MainPage extends React.Component {
           <TabPanel> <Component.Motivation/> </TabPanel>
           <TabPanel> <Component.Skill/> </TabPanel>
           <TabPanel> <Component.Talents/> </TabPanel>
-          <TabPanel> <Component.XPCounter/> </TabPanel>
+          <TabPanel> <Component.XPAvailable/> </TabPanel>
+          <TabPanel> <Component.XPTotal/> </TabPanel>
           <TabPanel> <Component.Critical/> </TabPanel>
           <TabPanel> <Component.EquipmentLog/> </TabPanel>
           <TabPanel> <Component.CarriedGear/> </TabPanel>

@@ -18,7 +18,6 @@ class CarriedGear extends React.Component {
                     <h3>Weapons:</h3>
                     <div className='table'>
                         <div className='table-header'>
-                            <div className='table-header table-cell-bottom-border'>CARRIED</div>
                             <div className='table-header table-cell-bottom-border'>NAME</div>
                             <div className='table-header table-cell-bottom-border'>DAM</div>
                             <div className='table-header table-cell-bottom-border'>CRIT</div>
@@ -31,7 +30,6 @@ class CarriedGear extends React.Component {
                         {Object.keys(weapons).map((key) =>
                             weapons[key].carried &&
                             <div className='table-row' key={key}>
-                                <div className='table-cell-bottom-border'><input type='checkbox' readOnly checked={weapons[key].carried}/></div>
                                 <div className='table-cell-bottom-border'>{weapons[key].name}</div>
                                 <div className='table-cell-bottom-border'>{weapons[key].damage}</div>
                                 <div className='table-cell-bottom-border'>{weapons[key].critical}</div>
@@ -50,8 +48,6 @@ class CarriedGear extends React.Component {
                     <h3>Armor:</h3>
                     <div className='table'>
                         <div className='table-header'>
-                            <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
-                            <div className='table-header table-cell-bottom-border'>CARRIED</div>
                             <div className='table-header table-cell-bottom-border'>NAME</div>
                             <div className='table-header table-cell-bottom-border'>SOAK</div>
                             <div className='table-header table-cell-bottom-border'>DEFENSE</div>
@@ -63,8 +59,6 @@ class CarriedGear extends React.Component {
                         {Object.keys(armor).map((key) =>
                             armor[key].carried &&
                             <div className='table-row' key={key}>
-                                <div className='table-cell-bottom-border'><input type='checkbox' readOnly checked={armor[key].equipped}/></div>
-                                <div className='table-cell-bottom-border'><input type='checkbox' readOnly checked={armor[key].carried}/></div>
                                 <div className='table-cell-bottom-border'>{armor[key].name}</div>
                                 <div className='table-cell-bottom-border'>{armor[key].soak}</div>
                                 <div className='table-cell-bottom-border'>{armor[key].defense}</div>
@@ -82,7 +76,6 @@ class CarriedGear extends React.Component {
                     <h3>Gear:</h3>
                     <div className='table'>
                         <div className='table-header'>
-                            <div className='table-header table-cell-bottom-border'>CARRIED</div>
                             <div className='table-header table-cell-bottom-border'>NAME</div>
                             <div className='table-header table-cell-bottom-border'>AMOUNT</div>
                             <div className='table-header table-cell-bottom-border'>ENCUM</div>
@@ -91,9 +84,6 @@ class CarriedGear extends React.Component {
                         {Object.keys(gear).map((key) =>
                             gear[key].carried &&
                             <div className='table-row' key={key}>
-                                <div className='table-cell-bottom-border'><input type='checkbox'
-                                                                                 checked={gear[key].carried} readOnly/>
-                                </div>
                                 <div className='table-cell-bottom-border'>{gear[key].name}</div>
                                 <div className='table-cell-bottom-border'>{gear[key].amount}</div>
                                 <div className='table-cell-bottom-border'>{gear[key].encumbrance}</div>

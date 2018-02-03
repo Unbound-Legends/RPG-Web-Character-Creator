@@ -12,6 +12,8 @@ const talentModifiers = state => state.talentModifiers;
 const armor = state => state.armor;
 const weapons = state => state.weapons;
 const gear = state => state.gear;
+const earnedXP = state => state.earnedXP;
+
 
 
 
@@ -218,7 +220,7 @@ export const calcUsedXP = createSelector(
             Object.keys(masterTalents[row]).forEach((tier)=>{
                 if (masterTalents[row][tier] !== '') talentXP = talentXP+(5*tier);
             })
-        })
+        });
         //skillXP
         let skillXP = 0;
         Object.keys(masterSkills).forEach((skill)=>{
@@ -226,7 +228,7 @@ export const calcUsedXP = createSelector(
             for(let i=(careerSkills.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
                 skillXP += (((i + 1) * 5) + (careerSkills.includes(skill) ? 0 : 5));
             }
-        })
+        });
 
         //characteristicXP
         let characteristicXP = 0;
@@ -243,11 +245,9 @@ export const calcUsedXP = createSelector(
 );
 
 export const calcTotalXP = createSelector(
-    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills,
-    (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills) => {
-        if (archetype===null) return 0;
-        let totalXP = 0;
-
-        return totalXP;
+    archetype, archetypes, earnedXP,
+    (archetype, archetypes, earnedXP) => {
+        if (archetype===null) return earnedXP;
+        return +archetypes[archetype].experience + +earnedXP;
     }
 );

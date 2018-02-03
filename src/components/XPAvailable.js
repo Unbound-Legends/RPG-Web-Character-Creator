@@ -3,15 +3,26 @@ import {connect} from 'react-redux';
 import {usedXP, totalXP} from '../reducers';
 import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
+import popup from 'react-popup';
+import {XPPopup} from './index';
+
 
 class XPCounter extends React.Component {
+
+    popupXP = () => {
+        popup.create({
+            title: `XP`,
+            className: 'alert',
+            content: ( <XPPopup /> )
+        });
+    };
+
     render() {
-        const {usedXP} = this.props;
+        const {usedXP, totalXP} = this.props;
         return(
             <div className='module'>
-                <div className='singleAttribute xpBox'>
-                    <div className='xpBox-topText'>{usedXP}</div>
-                    <div className='xpBox-bottomText'>USED XP</div>
+                <div className='singleAttribute xpBox xpAvailable' onClick={this.popupXP}>
+                    <div className='xpBox-Text'>{totalXP - usedXP}</div>
                 </div>
             </div>
         )
