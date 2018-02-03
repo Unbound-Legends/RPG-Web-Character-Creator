@@ -16,7 +16,7 @@ class SignOut extends React.Component {
 
     render() {
         return (
-          <div>
+          <div style={{textAlign: 'right'}}>
               <button onClick={this.handleClick}>Sign Out</button>
           </div>
 

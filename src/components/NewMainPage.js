@@ -11,9 +11,11 @@ class NewMainPage extends React.Component {
     this.props.getData();
   }
 
+
   render() {
       return (
           <div>
+              <Component.SignOut/>
               <div className='inlineblock'>
                   <Component.CharacterSelect/>
                   <Component.CharacterImage/>
@@ -38,6 +40,7 @@ class NewMainPage extends React.Component {
               <Component.TalentList/>
 
               <Component.Talents/>
+              <Component.About/>
           </div>
 
       )}
