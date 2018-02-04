@@ -6,6 +6,11 @@ import popup from 'react-popup';
 import {Archetype, Career} from './index';
 
 class CharacterSelect extends React.Component {
+    state = {name: this.props.description.name, playerName: this.props.description.playerName};
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({name: nextProps.description.name, playerName: nextProps.description.playerName});
+    }
 
     handleClick = (type) => {
         let content = <div/>;
@@ -36,15 +41,21 @@ class CharacterSelect extends React.Component {
     };
 
     handleChange = (type, event) => {
+        this.setState({[type]: event.target.value});
+        event.preventDefault();
+    };
+
+    handleBlur = (type, event) => {
         const {changeData, description} = this.props;
         let newObj = {...description};
-        newObj[type] = event.target.value;
+        newObj[type] = this.state[type];
         changeData(newObj, 'description');
         event.preventDefault();
     };
 
     render() {
-        const {archetype, archetypes, careers, career, description, characterList, character} = this.props;
+        const {archetype, archetypes, careers, career, characterList, character} = this.props;
+        const {name, playerName} = this.state;
         if (character===null || characterList === null) return <div/>;
         return (
             <div className='inlineblock' style={{width: '60%'}}>
@@ -58,7 +69,7 @@ class CharacterSelect extends React.Component {
                 <button onClick={this.handleNewCharacter}>New Character</button>
                 <button onClick={this.handleDeleteCharacter}>Delete Character</button>
                 <div className='fieldLabel'>CHARACTER NAME:
-                    <input type='text' value={description.name} maxLength='25' onChange={this.handleChange.bind(this, 'name')}/>
+                    <input type='text' value={name} maxLength='25' onChange={this.handleChange.bind(this, 'name')} onBlur={this.handleBlur.bind(this, 'name')}/>
                 </div>
                 <hr />
                 <div className='fieldLabel' onClick={this.handleClick.bind(this, 'archetype')}>ARCHETYPE: <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
@@ -68,7 +79,7 @@ class CharacterSelect extends React.Component {
                 </div>
                 <hr />
                 <div className='fieldLabel'>PLAYER NAME:
-                    <input type='text' value={description.playerName} maxLength='25' onChange={this.handleChange.bind(this, 'playerName')}/>
+                    <input type='text' value={playerName} maxLength='25' onChange={this.handleChange.bind(this, 'playerName')} onBlur={this.handleBlur.bind(this, 'playerName')}/>
                 </div>
                 <hr />
             </div>

@@ -7,36 +7,46 @@ var rng = seedrandom('added entropy.', { entropy: true });
 
 
 class MotivationBlock extends React.Component {
+  state = {description: ''};
 
-  handleSelect = (event) => {
-    const {masterMotivations, type, motivations, changeData} = this.props;
-    let newObj={...masterMotivations};
-    newObj[type]={key: event.target.value, description:motivations[type][event.target.value] ? motivations[type][event.target.value] : ''};
-    changeData(newObj, 'masterMotivations')
-    event.preventDefault();
-  };
+    componentWillReceiveProps(nextProps) {
+        nextProps.masterMotivations[nextProps.type] && this.setState({description: nextProps.masterMotivations[nextProps.type].description});
+    }
 
-  handleChange = (event) => {
-    const {masterMotivations, type, changeData} = this.props;
-    let newObj={...masterMotivations};
-    newObj[type].description=event.target.value;
-    changeData(newObj, 'masterMotivations')
-    event.preventDefault();
-  };
+    handleChange = (event) => {
+        this.setState({description: event.target.value});
+        event.preventDefault();
+    };
 
-  handleClick = () => {
-    const {motivations, type, masterMotivations, changeData} = this.props;
-    const list = Object.keys(motivations[type])
-    let newKey = list[Math.floor(rng() * list.length)];
-    let newObj={...masterMotivations};
-    newObj[type]={key: newKey, description:motivations[type][newKey]};
-    changeData(newObj, 'masterMotivations')
-  };
+    handleSelect = (event) => {
+        const {masterMotivations, type, motivations, changeData} = this.props;
+        let newObj={...masterMotivations};
+        newObj[type]={key: event.target.value, description:motivations[type][event.target.value] ? motivations[type][event.target.value] : ''};
+        changeData(newObj, 'masterMotivations');
+        event.preventDefault();
+    };
+
+    handleBlur = (event) => {
+        const {masterMotivations, type, changeData} = this.props;
+        let newObj={...masterMotivations};
+        newObj[type].description=this.state.description;
+        changeData(newObj, 'masterMotivations');
+        event.preventDefault();
+    };
+
+    handleClick = () => {
+        const {motivations, type, masterMotivations, changeData} = this.props;
+        const list = Object.keys(motivations[type]);
+        let newKey = list[Math.floor(rng() * list.length)];
+        let newObj={...masterMotivations};
+        newObj[type]={key: newKey, description:motivations[type][newKey]};
+        changeData(newObj, 'masterMotivations')
+    };
 
   render() {
     const {type, masterMotivations, motivations} = this.props;
     const name = masterMotivations[type].key;
-    const description = masterMotivations[type].description;
+    const {description} = this.state;
     return (
     <div className='motivation-module'>
       <div className='motivation-title'>{type}:
@@ -47,7 +57,8 @@ class MotivationBlock extends React.Component {
             )}
           </select>
       </div>
-        <textarea onChange={this.handleChange}
+        <textarea onBlur={this.handleBlur}
+                  onChange={this.handleChange}
                   rows='10'
                   cols='45'
                   className='textField'

@@ -266,7 +266,7 @@ export default function () {
     },
     Stealth: {
       name: 'Stealth',
-      type: 'Genral',
+      type: 'General',
       characteristic: 'Agility',
       book: 'CRB',
       page: '64',

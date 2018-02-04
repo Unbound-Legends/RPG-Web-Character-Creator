@@ -8,8 +8,18 @@ import popup from "react-popup";
 import {skillDice} from "../reducers";
 
 class EquipmentLog extends React.Component {
+    state = {money: 0};
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({money: nextProps.money});
+    }
 
     handleChangeMoney = (event) => {
+        this.setState({money: event.target.value});
+        event.preventDefault();
+    };
+
+    handleBlurChangeMoney = (event) => {
         const {changeData} = this.props;
         changeData(event.target.value, 'money');
         event.preventDefault();
@@ -52,13 +62,14 @@ class EquipmentLog extends React.Component {
     };
 
     render() {
-        const {money, weapons, armor, gear, skills, skillDice} = this.props;
+        const {weapons, armor, gear, skills, skillDice} = this.props;
+        const {money} = this.state;
         return (
             <div className='module'>
                 <div className='module-header'>EQUIPMENT LOG</div>
                 <hr />
                 <div className='fieldLabel'>MONEY:
-                    <input type='number' value={money} maxLength='25' onChange={this.handleChangeMoney}/>
+                    <input type='number' value={money} maxLength='25' onBlur={this.handleBlurChangeMoney} onChange={this.handleChangeMoney}/>
                 </div>
                 <Tabs defaultIndex={0}>
                     <TabList>

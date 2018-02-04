@@ -4,17 +4,33 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import popup from 'react-popup';
 
-class RealGearStats extends React.Component {
+class GearStats extends React.Component {
+    state = {   armor: this.props.armor[this.props.keyID] ? this.props.armor[this.props.keyID] : {equipped: false, carried: true},
+                weapons: this.props.weapons[this.props.keyID] ? this.props.weapons[this.props.keyID] : {equipped: false, carried: true},
+                gear:this.props.gear[this.props.keyID] ? this.props.gear[this.props.keyID] : {equipped: false, carried: true}
+            };
 
     handleChange = (attrib, event) => {
-        const {changeData, armor, gear, weapons, type, keyID} = this.props;
+        const {type} = this.props;
+        const {armor, gear, weapons} = this.state;
         let newObj = {};
         if (type==='weapons') newObj = {...weapons};
         if (type==='armor') newObj = {...armor};
         if (type==='gear') newObj = {...gear};
-        if (!newObj[keyID]) newObj[keyID]={equipped: false, carried: true};
-        newObj[keyID][attrib] = event.target.value;
-        changeData(newObj, type);
+        newObj[attrib] = event.target.value;
+        this.setState({[type]: newObj});
+        event.preventDefault();
+    };
+
+    handleSubmit = (event) => {
+        const {type, changeData, armor, gear, weapons, keyID} = this.props;
+        let newObj = {};
+        if (type==='weapons') newObj = {...weapons};
+        if (type==='armor') newObj = {...armor};
+        if (type==='gear') newObj = {...gear};
+        newObj[keyID]=this.state[type];
+        changeData(newObj, `${type}`);
+        popup.close();
         event.preventDefault();
     };
 
@@ -31,9 +47,10 @@ class RealGearStats extends React.Component {
     };
 
     render() {
-        const {armor, weapons, gear, type, keyID} = this.props;
+        const {type} = this.props;
+        const {armor, gear, weapons} = this.state;
         if (type==='weapons') {
-            const weapon = weapons[keyID] ? weapons[keyID] : {};
+            const weapon = weapons;
             return (
                 <div>
                     <div>Name:</div>
@@ -67,54 +84,52 @@ class RealGearStats extends React.Component {
                     <input type='number' value={weapon.encumbrance ? weapon.encumbrance : ''} onChange={this.handleChange.bind(this, 'encumbrance')} />
                     <div>Special Qualities:</div>
                     <input type='text' value={weapon.qualities ? weapon.qualities : ''} onChange={this.handleChange.bind(this, 'qualities')} />
-                    <input type='submit' value='Enter' onClick={popup.close}/>
+                    <input type='submit' value='Enter' onClick={this.handleSubmit}/>
                     <input type='submit' value='Delete' onClick={this.handleDelete}/>
                 </div>
             );
         }
         if (type==='armor') {
-            const item = armor[keyID] ? armor[keyID] : {};
             return (
                 <div>
                     <div>Name:</div>
-                    <input type='text' value={item.name ? item.name : ''}
+                    <input type='text' value={armor.name}
                            onChange={this.handleChange.bind(this, 'name')}/>
                     <div>Soak:</div>
-                    <input type='number' value={item.soak ? item.soak : ''}
+                    <input type='number' value={armor.soak}
                            onChange={this.handleChange.bind(this, 'soak')}/>
                     <div>Defense:</div>
-                    <input type='number' value={item.defense ? item.defense : ''}
+                    <input type='number' value={armor.defense}
                            onChange={this.handleChange.bind(this, 'defense')}/>
                     <div>Ranged Defense:</div>
-                    <input type='number' value={item.rangedDefense ? item.rangedDefense : ''}
+                    <input type='number' value={armor.rangedDefense}
                            onChange={this.handleChange.bind(this, 'rangedDefense')}/>
                     <div>Melee Defense:</div>
-                    <input type='number' value={item.meleeDefense ? item.meleeDefense : ''}
+                    <input type='number' value={armor.meleeDefense}
                            onChange={this.handleChange.bind(this, 'meleeDefense')}/>
                     <div>Encumbrance:</div>
-                    <input type='number' value={item.encumbrance ? item.encumbrance : ''}
+                    <input type='number' value={armor.encumbrance}
                            onChange={this.handleChange.bind(this, 'encumbrance')}/>
                     <div>Special Qualities:</div>
-                    <input type='text' value={item.qualities ? item.qualities : ''}
+                    <input type='text' value={armor.qualities}
                            onChange={this.handleChange.bind(this, 'qualities')}/>
-                    <input type='submit' value='Enter' onClick={popup.close}/>
+                    <input type='submit' value='Enter' onClick={this.handleSubmit}/>
                     <input type='submit' value='Delete' onClick={this.handleDelete}/>
                 </div>
             );
         }
         if (type==='gear') {
-            const item = gear[keyID] ? gear[keyID] : {};
             return (
                 <div>
                     <div>Name:</div>
-                    <input type='text' value={item.name ? item.name : ''} onChange={this.handleChange.bind(this, 'name')} />
+                    <input type='text' value={gear.name ? gear.name : ''} onChange={this.handleChange.bind(this, 'name')} />
                     <div>Amount:</div>
-                    <input type='number' value={item.amount ? item.amount : ''} onChange={this.handleChange.bind(this, 'amount')} />
+                    <input type='number' value={gear.amount ? gear.amount : ''} onChange={this.handleChange.bind(this, 'amount')} />
                     <div>Encumbrance:</div>
-                    <input type='number' value={item.encumbrance ? item.encumbrance : ''} onChange={this.handleChange.bind(this, 'encumbrance')} />
+                    <input type='number' value={gear.encumbrance ? gear.encumbrance : ''} onChange={this.handleChange.bind(this, 'encumbrance')} />
                     <div>Special Qualities:</div>
-                    <input type='text' value={item.qualities ? item.qualities : ''} onChange={this.handleChange.bind(this, 'qualities')} />
-                    <input type='submit' value='Enter' onClick={popup.close}/>
+                    <input type='text' value={gear.qualities ? gear.qualities : ''} onChange={this.handleChange.bind(this, 'qualities')} />
+                    <input type='submit' value='Enter' onClick={this.handleSubmit}/>
                     <input type='submit' value='Delete' onClick={this.handleDelete}/>
                 </div>
             );
@@ -134,4 +149,4 @@ function matchDispatchToProps(dispatch){
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(RealGearStats);
+export default connect(mapStateToProps, matchDispatchToProps)(GearStats);
