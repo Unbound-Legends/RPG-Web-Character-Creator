@@ -8,16 +8,29 @@ import {
 } from "../reducers";
 
 class Attributes extends React.Component {
+    state = {currentStrain: 0, currentWound: 0};
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currentStrain !== this.props.currentStrain) this.setState({currentStrain: nextProps.currentStrain});
+        if (nextProps.currentWound !== this.props.currentWound)this.setState({currentWound: nextProps.currentWound});
+
+    }
 
     handleChange = (event) => {
+        this.setState({[event.target.name]: +event.target.value});
+        event.preventDefault();
+    };
+
+    handleBlur = (event) => {
         const {changeData} = this.props;
         let type = event.target.name;
-        let value = +event.target.value === '' ? 0 : +event.target.value;
+        let value = this.state[type];
         changeData(value, type);
     };
 
     render() {
-        const {currentWound, woundThreshold, currentStrain, strainThreshold, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
+        const {woundThreshold, strainThreshold, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
+        const {currentStrain, currentWound} = this.state;
         return (
             <div className='module'>
                 <div className='sectionheader'>ATTRIBUTES</div>
@@ -33,8 +46,8 @@ class Attributes extends React.Component {
                             maxLength='2'
                             className='doubleAttributeText editableAttributeText '
                             onChange={this.handleChange}
-                            onBlur={this.handleChange}
-                            placeholder={currentWound ? currentWound : 0}/>
+                            onBlur={this.handleBlur}
+                            placeholder={currentWound}/>
                     </div>
                 </div>
                 <div className={`singleAttribute Strain`}>
@@ -45,8 +58,8 @@ class Attributes extends React.Component {
                            maxLength='2'
                            className='doubleAttributeText editableAttributeText'
                            onChange={this.handleChange}
-                           onBlur={this.handleChange}
-                           placeholder={currentStrain ? currentStrain : 0}/>
+                           onBlur={this.handleBlur}
+                           placeholder={currentStrain}/>
                     </div>
                 </div>
                 <div className='singleAttribute Defense'>
