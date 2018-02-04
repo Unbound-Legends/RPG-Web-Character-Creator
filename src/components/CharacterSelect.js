@@ -6,10 +6,12 @@ import popup from 'react-popup';
 import {Archetype, Career} from './index';
 
 class CharacterSelect extends React.Component {
-    state = {name: this.props.description.name, playerName: this.props.description.playerName};
+    state = {name: this.props.description.name, playerName: this.props.description.playerName, character: ''};
 
     componentWillReceiveProps(nextProps) {
-        this.setState({name: nextProps.description.name, playerName: nextProps.description.playerName});
+        if (this.props.character !== nextProps.character) this.setState({character: nextProps.character});
+        if (this.props.description.playerName !== nextProps.description.playerName) this.setState({playerName: nextProps.description.playerName});
+        if (this.props.description.name !== nextProps.description.name) this.setState({name: nextProps.description.name});
     }
 
     handleClick = (type) => {
@@ -54,14 +56,13 @@ class CharacterSelect extends React.Component {
     };
 
     render() {
-        const {archetype, archetypes, careers, career, characterList, character} = this.props;
-        const {name, playerName} = this.state;
-        if (character===null || characterList === null) return <div/>;
+        const {archetype, archetypes, careers, career, characterList} = this.props;
+        const {name, playerName, character} = this.state;
         return (
             <div className='inlineblock' style={{width: '60%'}}>
                 <div className='module-header'>CHARACTER</div>
                 <hr />
-                <select value={character} onChange={this.handleSelect}>
+                <select value={character ? character : ''} onChange={this.handleSelect}>
                     {Object.keys(characterList).map((key)=>
                         <option value={key} key={key}>{characterList[key].description ? characterList[key].description.name : ''}</option>
                     )}
