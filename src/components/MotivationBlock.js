@@ -7,10 +7,10 @@ var rng = seedrandom('added entropy.', { entropy: true });
 
 
 class MotivationBlock extends React.Component {
-  state = {description: this.props.masterMotivations[this.props.type]};
+  state = {description: this.props.masterMotivations[this.props.type].description};
 
     componentWillReceiveProps(nextProps) {
-        nextProps.masterMotivations[nextProps.type] && this.setState({description: nextProps.masterMotivations[nextProps.type].description});
+        this.setState({description: nextProps.masterMotivations[nextProps.type].description});
     }
 
     handleChange = (event) => {
