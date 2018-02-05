@@ -46,7 +46,7 @@ class Attributes extends React.Component {
                             className='doubleAttributeText editableAttributeText '
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
-                            placeholder={currentWound}/>
+                            value={currentWound}/>
                     </div>
                 </div>
                 <div className={`singleAttribute Strain`}>
@@ -58,7 +58,7 @@ class Attributes extends React.Component {
                            className='doubleAttributeText editableAttributeText'
                            onChange={this.handleChange}
                            onBlur={this.handleBlur}
-                           placeholder={currentStrain}/>
+                           value={currentStrain}/>
                     </div>
                 </div>
                 <div className='singleAttribute Defense'>
