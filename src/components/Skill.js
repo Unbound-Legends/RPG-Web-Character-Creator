@@ -8,15 +8,15 @@ class Skill extends React.Component {
 
     render() {
         return (
-            <div className='module breakBefore breakAfter'>
+            <div className='module breakBefore breakAfter' style={{width: '96vw'}}>
                 <div className='sectionheader'>SKILLS</div>
                 <hr />
-                <div className='table table-module' style={{width: '96vw'}}>
-                    <div className='table-cell' style={{width: '50%%'}}>
+                <div className='table table-module'>
+                    <div className='table-cell mobileSkills'>
                         <SkillBlock type='General'
                         />
                     </div>
-                    <div className='table-cell' style={{width: '50%'}}>
+                    <div className='table-cell mobileSkills'>
                         {['Combat', 'Magic', 'Social', 'Knowledge'].map((type) =>
                             <SkillBlock key={type}
                                         type={type}

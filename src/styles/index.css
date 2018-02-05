@@ -456,7 +456,7 @@ input[type="number"] {
 }
 
 .table-module {
-    width: auto;
+    width: 100%;
 }
 
 .table-header {
@@ -529,6 +529,9 @@ input[type="number"] {
 .nobreak {
     break-inside: avoid;
 }
+.mobileSkills {
+    width: 50%
+}
 
 
 
@@ -540,6 +543,10 @@ input[type="number"] {
     }
     .module {
         width: 100%;
+    }
+    .mobileSkills {
+        display: block;
+        width: 100%
     }
 }
 
