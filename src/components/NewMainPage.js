@@ -74,22 +74,24 @@ class NewMainPage extends React.Component {
         return (
           <div>
               <Component.SignOut/>
-              <div className='inlineblock'>
+              <div className='module'>
                   <Component.CharacterSelect/>
                   <Component.CharacterImage/>
               </div>
               <Component.Attributes/>
               <Component.ShowCharacteristics/>
-              <Component.Skill/>
-
-              <Component.CarriedGear/>
-              <div className='inlineblock'>
+              <div className='module'>
                   <Component.XPTotal/>
                   <Component.XPAvailable/>
               </div>
+
+              <Component.Skill/>
+
+              <Component.CarriedGear/>
+
               <Component.Motivation/>
               <Component.EquipmentLog/>
-              <div className='inlineblock'>
+              <div className='module'>
                   <Component.CharacterDescription/>
                   <Component.Notes/>
               </div>

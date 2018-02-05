@@ -20,7 +20,7 @@ class SignOut extends React.Component {
 
     render() {
         return (
-          <div style={{textAlign: 'right'}}>
+          <div className='hidePrint' style={{textAlign: 'right'}}>
               <input type='button' onClick={this.handleDonate} value="Donate" />
               <button onClick={this.handleClick}>Sign Out</button>
           </div>
