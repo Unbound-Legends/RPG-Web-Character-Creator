@@ -6,12 +6,12 @@ import popup from 'react-popup';
 import {Archetype, Career} from './index';
 
 class CharacterSelect extends React.Component {
-    state = {name: this.props.description.name, playerName: this.props.description.playerName, character: ''};
+    state = {name: this.props.description.name, playerName: this.props.description.playerName, character: this.props.character};
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.character !== nextProps.character) this.setState({character: nextProps.character});
-        if (this.props.description.playerName !== nextProps.description.playerName) this.setState({playerName: nextProps.description.playerName});
-        if (this.props.description.name !== nextProps.description.name) this.setState({name: nextProps.description.name});
+        this.setState({character: nextProps.character});
+        this.setState({playerName: nextProps.description.playerName});
+        this.setState({name: nextProps.description.name});
     }
 
     handleClick = (type) => {

@@ -26,10 +26,11 @@ const dataTypes = [
 ];
 
 class NewMainPage extends React.Component {
+    state = {loading: false};
 
-  componentWillMount() {
-      const {user, changeCharacter, changeCharacterList, character} = this.props;
-      db.doc(`users/${user}/characters/characterList/`).get()
+    componentWillMount() {
+        const {user, changeCharacter, changeCharacterList, character} = this.props;
+        db.doc(`users/${user}/characters/characterList/`).get()
           .then(doc => {
               let key;
               if (!doc.exists) {
@@ -44,7 +45,7 @@ class NewMainPage extends React.Component {
                   changeCharacterList(doc.data());
               }
           })
-  }
+    }
 
 
 
@@ -52,6 +53,7 @@ class NewMainPage extends React.Component {
       if (nextProps === this.props) return;
       if (nextProps.character !== this.props.character) {
           console.log('new character');
+          this.setState({loading: true});
           db.doc(`users/${this.props.user}/characters/characterList/`).get()
               .then(doc => {
                   let key = nextProps.character;
@@ -61,13 +63,15 @@ class NewMainPage extends React.Component {
                       if (doc.data()[key][type]) data = doc.data()[key][type];
                       this.props.loadData(data, type)
                   })
+              this.setState({loading: false})
               })
         }
     }
 
 
     render() {
-      return (
+        if (this.state.loading) return <h1>LOADING</h1>
+        return (
           <div>
               <Component.SignOut/>
               <div className='inlineblock'>
@@ -97,7 +101,7 @@ class NewMainPage extends React.Component {
               <Component.About/>
           </div>
 
-      )}
+        )}
 }
 
 function mapStateToProps(state) {

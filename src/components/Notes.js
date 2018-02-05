@@ -7,7 +7,7 @@ class Notes extends React.Component {
     state = {notes: this.props.description.notes};
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.description.notes !== this.props.description.notes) this.setState({notes: nextProps.description.notes});
+        this.setState({notes: nextProps.description.notes});
     }
 
     handleBlur = (event) => {

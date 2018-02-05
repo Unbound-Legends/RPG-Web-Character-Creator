@@ -8,7 +8,7 @@ import {
 } from "../reducers";
 
 class Attributes extends React.Component {
-    state = {currentStrain: 0, currentWound: 0};
+    state = {currentStrain: this.props.currentStrain, currentWound: this.props.currentWound};
 
     componentWillReceiveProps(nextProps) {
         this.setState({currentStrain: nextProps.currentStrain});

@@ -8,7 +8,7 @@ import popup from "react-popup";
 import {skillDice} from "../reducers";
 
 class EquipmentLog extends React.Component {
-    state = {money: 0};
+    state = {money: this.props.money};
 
     componentWillReceiveProps(nextProps) {
         this.setState({money: nextProps.money});
