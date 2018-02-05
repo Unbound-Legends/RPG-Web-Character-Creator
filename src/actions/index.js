@@ -1,41 +1,15 @@
 import {db} from '../firestore/db';
 
-export const getData = () => {
-    return (dispatch, getState) => {
-        const user = getState().user;
-        return db.doc(`users/${user}/characters/characterList/`).onSnapshot(doc => {
-            let character = getState().character;
-            if (doc && doc.exists) {
-                dispatch({type: `characterList_Changed`, payload: doc.data()});
-                if (!Object.keys(doc.data()).includes(character)) {
-                    character = Object.keys(doc.data())[0];
-                    dispatch({type: `character_Changed`, payload: character});
-                }
-                if (Object.keys(doc.data()).includes(character)) {
-                    Object.keys(doc.data()[character]).forEach((type) => {
-                        let data = getState()[type];
-                        let payload = doc.data()[character][type] ? doc.data()[character][type] : null;
-                        if (data !== payload) dispatch({type: `${type}_Changed`, payload: payload})
-                    });
-                }
-            } else {
-                  let newObj = {};
-                  newObj[Math.random().toString(36).substr(2, 16)] = {};
-                  db.doc(`users/${user}/characters/characterList/`).set(newObj);
-            }
-        });
-    }
-};
 
 export const addCharacter = () => {
     return (dispatch, getState) => {
         const user = getState().user;
-        let newObj = {};
+        const characterList = {...getState().characterList};
         let newCharacter = Math.random().toString(36).substr(2, 16);
-        newObj[newCharacter] = {};
-        db.doc(`users/${user}/characters/characterList/`).update(newObj);
+        characterList[newCharacter] = {};
+        db.doc(`users/${user}/characters/characterList/`).update(characterList);
+        dispatch({type: `characterList_Changed`, payload: characterList});
         dispatch({type: `character_Changed`, payload: newCharacter});
-        dispatch({type: `Initialize_State`});
     }
 };
 
@@ -45,11 +19,15 @@ export const deleteCharacter = () => {
         const character = getState().character;
         let characterList = {...getState().characterList};
         delete characterList[character];
-        dispatch({type: `Initialize_State`});
         if (Object.keys(characterList).length===0) {
             db.doc(`users/${user}/characters/characterList`).delete();
+            window.location.reload();
         }
-        else db.doc(`users/${user}/characters/characterList/`).set(characterList);
+        else {
+            db.doc(`users/${user}/characters/characterList/`).set(characterList);
+            dispatch({type: `character_Changed`, payload: Object.keys(characterList)[0]});
+            dispatch({type: `characterList_Changed`, payload: characterList});
+        }
 
     }
 };
@@ -67,9 +45,18 @@ export const changeData = (data, type, merge = true) => {
         const character = getState().character;
         const dbRef = db.doc(`users/${user}/characters/characterList/`);
         dbRef.set ({[character]: {[type]: data}}, { merge: merge });
+        dispatch({type: `${type}_Changed`, payload: data})
     }
+};
+
+export const loadData = (data, type) => {
+    return {type: `${type}_Changed`, payload: data}
 };
 
 export const changeUser = (state) => {
     return {type: 'User_Changed', payload: state}
+};
+
+export const changeCharacterList = (state) => {
+    return {type: 'characterList_Changed', payload: state}
 };

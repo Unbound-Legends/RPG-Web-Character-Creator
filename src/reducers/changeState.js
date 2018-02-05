@@ -6,8 +6,9 @@ export const user = (state = null, action) =>{
 };
 
 export const character = (state = null, action) =>{
-    if (action.type === 'character_Changed') return action.payload;
-    if (action.type === 'Initialize_State')  return null;
+    if (action.type === 'character_Changed') {
+        return action.payload;
+    }
     return state;
 };
 
@@ -126,7 +127,7 @@ export const currentStrain = (state = 0, action) =>{
 
 export const critical = (state = [], action) =>{
     if (action.type === 'critical_Changed') {
-        if (action.payload===null) return 0;
+        if (action.payload===null) return [];
         else {
             action.payload.sort((a, b) =>  a - b);
             return action.payload;

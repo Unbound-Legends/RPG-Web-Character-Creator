@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeData, addCharacter, changeCharacter, getData, deleteCharacter} from '../actions';
+import {changeData, addCharacter, changeCharacter, deleteCharacter} from '../actions';
 import popup from 'react-popup';
 import {Archetype, Career} from './index';
 
@@ -27,18 +27,15 @@ class CharacterSelect extends React.Component {
 
     handleNewCharacter = () => {
         this.props.addCharacter();
-        this.props.getData();
     };
 
     handleDeleteCharacter = () => {
         this.props.deleteCharacter();
-        this.props.getData();
     };
 
     handleSelect = (event) => {
-        const {getData, changeCharacter} = this.props;
+        const {changeCharacter} = this.props;
         changeCharacter(event.target.value);
-        getData();
         event.preventDefault();
     };
 
@@ -64,7 +61,7 @@ class CharacterSelect extends React.Component {
                 <hr />
                 <select value={character ? character : ''} onChange={this.handleSelect}>
                     {Object.keys(characterList).map((key)=>
-                        <option value={key} key={key}>{characterList[key].description ? characterList[key].description.name : ''}</option>
+                        <option value={key} key={key}>{characterList[key].description ? characterList[key].description.name : key}</option>
                     )}
                 </select>
                 <button onClick={this.handleNewCharacter}>New Character</button>
@@ -103,7 +100,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({changeData, addCharacter, changeCharacter, getData, deleteCharacter}, dispatch);
+    return bindActionCreators({changeData, addCharacter, changeCharacter, deleteCharacter}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CharacterSelect);

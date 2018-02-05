@@ -11,9 +11,8 @@ class Attributes extends React.Component {
     state = {currentStrain: 0, currentWound: 0};
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.currentStrain !== this.props.currentStrain) this.setState({currentStrain: nextProps.currentStrain});
-        if (nextProps.currentWound !== this.props.currentWound)this.setState({currentWound: nextProps.currentWound});
-
+        this.setState({currentStrain: nextProps.currentStrain});
+        this.setState({currentWound: nextProps.currentWound});
     }
 
     handleChange = (event) => {
