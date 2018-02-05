@@ -13,10 +13,15 @@ class SignOut extends React.Component {
             });
     };
 
+    handleDonate = () => {
+        window.open('https://paypal.me/SkyJedi');
+    };
+
 
     render() {
         return (
           <div style={{textAlign: 'right'}}>
+              <input type='button' onClick={this.handleDonate} value="Donate" />
               <button onClick={this.handleClick}>Sign Out</button>
           </div>
 

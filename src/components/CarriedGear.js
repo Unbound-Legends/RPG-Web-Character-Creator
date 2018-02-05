@@ -15,7 +15,7 @@ class CarriedGear extends React.Component {
                 <hr />
                 {Object.keys(weapons).length > 0 &&
                 <div>
-                    <h3>Weapons:</h3>
+                    <h3 style={{textAlign: 'left'}}>Weapons:</h3>
                     <div className='table'>
                         <div className='table-header'>
                             <div className='table-header table-cell-bottom-border'>NAME</div>
@@ -45,14 +45,14 @@ class CarriedGear extends React.Component {
                 }
                 {Object.keys(armor).length > 0 &&
                 <div>
-                    <h3>Armor:</h3>
+                    <h3 style={{textAlign: 'left'}}>Armor:</h3>
                     <div className='table'>
                         <div className='table-header'>
                             <div className='table-header table-cell-bottom-border'>NAME</div>
                             <div className='table-header table-cell-bottom-border'>SOAK</div>
-                            <div className='table-header table-cell-bottom-border'>DEFENSE</div>
-                            <div className='table-header table-cell-bottom-border'>RANGED DEFENSE</div>
-                            <div className='table-header table-cell-bottom-border'>MELEE DEFENSE</div>
+                            <div className='table-header table-cell-bottom-border'>DEF</div>
+                            <div className='table-header table-cell-bottom-border'>RANGED DEF</div>
+                            <div className='table-header table-cell-bottom-border'>MELEE DEF</div>
                             <div className='table-header table-cell-bottom-border'>ENCUM</div>
                             <div className='table-header table-cell-bottom-border'>QUAL</div>
                         </div>
@@ -73,7 +73,7 @@ class CarriedGear extends React.Component {
                 }
                 {Object.keys(gear).length > 0 &&
                 <div>
-                    <h3>Gear:</h3>
+                    <h3 style={{textAlign: 'left'}}>Gear:</h3>
                     <div className='table'>
                         <div className='table-header'>
                             <div className='table-header table-cell-bottom-border'>NAME</div>

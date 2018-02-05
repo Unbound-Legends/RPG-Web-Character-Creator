@@ -70,10 +70,14 @@ class CharacterSelect extends React.Component {
                     <input type='text' value={name} maxLength='25' onChange={this.handleChange.bind(this, 'name')} onBlur={this.handleBlur.bind(this, 'name')}/>
                 </div>
                 <hr />
-                <div className='fieldLabel' onClick={this.handleClick.bind(this, 'archetype')}>ARCHETYPE: <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
+                <div className='fieldLabel' onClick={this.handleClick.bind(this, 'archetype')}>ARCHETYPE:
+                    <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
+                    <input type='button' onClick={this.handleClick.bind(this, 'archetype')} value='Edit' />
                 </div>
                 <hr />
-                <div className='fieldLabel'onClick={this.handleClick.bind(this, 'career')}>CAREER: <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
+                <div className='fieldLabel' onClick={this.handleClick.bind(this, 'career')}>CAREER:
+                    <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
+                    <input type='button' onClick={this.handleClick.bind(this, 'career')} value='Edit' />
                 </div>
                 <hr />
                 <div className='fieldLabel'>PLAYER NAME:

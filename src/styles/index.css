@@ -18,7 +18,7 @@ ul {
     margin: unset;
 }
 
-button, input, select {
+button, input {
     margin: 1vw;
 }
 
@@ -43,7 +43,7 @@ input[type="number"] {
 }
 
 .module {
-    margin: 1vw 0;
+    margin: 4vw 0;
     break-inside: avoid;
 }
 
@@ -300,6 +300,7 @@ input[type="number"] {
 .fieldData {
     display: inline-block;
     font-weight: 300;
+    margin: 0 1vw;
 }
 
 .characterImage {
@@ -477,6 +478,7 @@ input[type="number"] {
 
 .table-cell {
     display: table-cell;
+    vertical-align: middle;
     padding: 0 0.3vw;
     border: black solid 1px;
 }
@@ -486,10 +488,10 @@ input[type="number"] {
     padding: 0.3vw;
 }
 
-.table-cell-bottom-border{
+.table-cell-bottom-border {
     display: table-cell;
     padding: 0 1.5vw;
-    vertical-align: bottom;
+    vertical-align: middle;
     border-bottom: black solid 1px;
 }
 
@@ -523,17 +525,18 @@ input[type="number"] {
 .breakBefore {
     page-break-before: always;
 }
+
 .breakAfter {
     page-break-after: always;
 }
+
 .nobreak {
     break-inside: avoid;
 }
+
 .mobileSkills {
     width: 50%
 }
-
-
 
 
 @media only screen
@@ -547,6 +550,10 @@ input[type="number"] {
     .mobileSkills {
         display: block;
         width: 100%
+    }
+    .table-cell-bottom-border {
+        font-size: 2.5vw;
+        padding: 0 0.5vw;
     }
 }
 

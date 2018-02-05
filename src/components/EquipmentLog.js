@@ -81,7 +81,7 @@ class EquipmentLog extends React.Component {
                         {Object.keys(weapons).length > 0 &&
                             <div className='table'>
                                 <div className='table-header'>
-                                    <div className='table-header table-cell-bottom-border'>CARRIED</div>
+                                    <div className='table-header table-cell-bottom-border'>CARRY</div>
                                     <div className='table-header table-cell-bottom-border'>NAME</div>
                                     <div className='table-header table-cell-bottom-border'>DAM</div>
                                     <div className='table-header table-cell-bottom-border'>CRIT</div>
@@ -112,13 +112,13 @@ class EquipmentLog extends React.Component {
                         {Object.keys(armor).length > 0 &&
                         <div className='table'>
                             <div className='table-header'>
-                                <div className='table-header table-cell-bottom-border'>EQUIPPED</div>
-                                <div className='table-header table-cell-bottom-border'>CARRIED</div>
+                                <div className='table-header table-cell-bottom-border'>EQUIP</div>
+                                <div className='table-header table-cell-bottom-border'>CARRY</div>
                                 <div className='table-header table-cell-bottom-border'>NAME</div>
                                 <div className='table-header table-cell-bottom-border'>SOAK</div>
-                                <div className='table-header table-cell-bottom-border'>DEFENSE</div>
-                                <div className='table-header table-cell-bottom-border'>RANGED DEFENSE</div>
-                                <div className='table-header table-cell-bottom-border'>MELEE DEFENSE</div>
+                                <div className='table-header table-cell-bottom-border'>DEF</div>
+                                <div className='table-header table-cell-bottom-border'>RANGED DEF</div>
+                                <div className='table-header table-cell-bottom-border'>MELEE DEF</div>
                                 <div className='table-header table-cell-bottom-border'>ENCUM</div>
                                 <div className='table-header table-cell-bottom-border'>QUAL</div>
                             </div>
@@ -143,7 +143,7 @@ class EquipmentLog extends React.Component {
                         {Object.keys(gear).length > 0 &&
                         <div className='table'>
                             <div className='table-header'>
-                                <div className='table-header table-cell-bottom-border'>CARRIED</div>
+                                <div className='table-header table-cell-bottom-border'>CARRY</div>
                                 <div className='table-header table-cell-bottom-border'>NAME</div>
                                 <div className='table-header table-cell-bottom-border'>AMOUNT</div>
                                 <div className='table-header table-cell-bottom-border'>ENCUM</div>
