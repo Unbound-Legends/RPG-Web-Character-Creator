@@ -8,7 +8,7 @@ class Skill extends React.Component {
 
     render() {
         return (
-            <div className='module'>
+            <div className='module breakBefore breakAfter'>
                 <div className='sectionheader'>SKILLS</div>
                 <hr />
                 <div className='table table-module' style={{width: '96vw'}}>

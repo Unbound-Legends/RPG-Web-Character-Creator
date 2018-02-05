@@ -36,7 +36,6 @@ input[type="number"] {
 }
 
 .App {
-    display: inline-block;
     width: 95vw;
     text-align: center;
     margin: 1vw;
@@ -45,6 +44,7 @@ input[type="number"] {
 
 .module {
     margin: 1vw 0;
+    break-inside: avoid;
 }
 
 .inlineblock {
@@ -477,7 +477,7 @@ input[type="number"] {
 
 .table-cell {
     display: table-cell;
-    padding: 0.3vw;
+    padding: 0 0.3vw;
     border: black solid 1px;
 }
 
@@ -520,13 +520,31 @@ input[type="number"] {
     color: var(--lightblue);
 }
 
+.breakBefore {
+    page-break-before: always;
+}
+.breakAfter {
+    page-break-after: always;
+}
+.nobreak {
+    break-inside: avoid;
+}
+
+
+
 
 @media only screen
   and (max-width: 480px) {
     #root {
-      width: fit-content;
+        width: fit-content;
     }
     .module {
-      width: 100%;
+        width: 100%;
+    }
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust:exact;
     }
 }

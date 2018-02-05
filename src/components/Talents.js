@@ -19,7 +19,7 @@ class Talents extends React.Component {
   render() {
     const {masterTalents} = this.props;
     return (
-      <div className='module'>
+      <div className='module breakBefore'>
         <div className='module-header'>TALENTS</div>
         <hr />
         {Object.keys(masterTalents).map((row)=>

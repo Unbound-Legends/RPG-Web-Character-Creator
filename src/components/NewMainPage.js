@@ -80,7 +80,6 @@ class NewMainPage extends React.Component {
               </div>
               <Component.Attributes/>
               <Component.ShowCharacteristics/>
-
               <Component.Skill/>
 
               <Component.CarriedGear/>
