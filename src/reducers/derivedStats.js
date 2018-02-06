@@ -2,6 +2,8 @@ import {createSelector} from 'reselect';
 
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
+const career = state => state.career;
+const careers = state => state.careers;
 const masterSkills = state => state.masterSkills;
 const skills = state => state.skills;
 const careerSkills = state => state.careerSkills;
@@ -211,8 +213,8 @@ export const calcTotalEncumbrance = createSelector(
 
 
 export const calcUsedXP = createSelector(
-    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, careerSkills, calcArchetypeSkillRank, calcSkillRanks,
-    (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, careerSkills, archetypeSkillRank, skillRanks) => {
+    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkills, calcArchetypeSkillRank, calcSkillRanks,
+    (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkillsRank, archetypeSkillRank, skillRanks) => {
         if (archetype===null) return 0;
         //talent XP
         let talentXP = 0;
@@ -223,9 +225,10 @@ export const calcUsedXP = createSelector(
         });
         //skillXP
         let skillXP = 0;
+        let careerSkills = career ? careers[career].skills : [];
         Object.keys(masterSkills).forEach((skill)=>{
             let rank = skillRanks[skill];
-            for(let i=(careerSkills.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
+            for(let i=(careerSkillsRank.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
                 skillXP += (((i + 1) * 5) + (careerSkills.includes(skill) ? 0 : 5));
             }
         });

@@ -35,7 +35,7 @@ class SkillRow extends React.Component {
   };
 
   render() {
-    const {masterSkills, skills, skillKey, careerSkills, skillDice, skillRanks, archetypeSkillRank} = this.props;
+    const {masterSkills, skills, skillKey, careerSkills, skillDice, skillRanks, archetypeSkillRank, career, careers} = this.props;
     const skill = skills[skillKey];
     let ranks = [0, 1, 2, 3, 4, 5];
     if (careerSkills.includes(skillKey)) ranks.shift();
@@ -50,7 +50,7 @@ class SkillRow extends React.Component {
           {`${skill.name} (${this.shortCharacteristics()})`}
         </div>
         <div className='table-cell'>
-          <input type='checkbox' checked={careerSkills.includes(skillKey)} readOnly/>
+          <input type='checkbox' checked={career ? careers[career].skills.includes(skillKey) : false} readOnly/>
         </div>
         <div className='table-cell'>
           <select defaultValue={skillRanks[skillKey]} onChange={this.handleRankChange}>
@@ -70,6 +70,8 @@ function mapStateToProps(state) {
         masterSkills: state.masterSkills,
         skills: state.skills,
         careerSkills: state.careerSkills,
+        career: state.career,
+        careers: state.careers,
         skillDice: skillDice(state),
         skillRanks: skillRanks(state),
         archetypeSkillRank: archetypeSkillRank(state),
