@@ -52,6 +52,7 @@ export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
 export const totalXP = (state) => derivedStats.calcTotalXP(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const woundThreshold = (state) => derivedStats.calcWounds(state);
+export const characterExport = (state) => derivedStats.buildCharacterExport(state);
 
 
 export default allReducers;

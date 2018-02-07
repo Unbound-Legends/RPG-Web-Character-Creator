@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeUser} from '../actions';
 import firebase from 'firebase';
+import {characterExport} from '../reducers';
 
-class SignOut extends React.Component {
+class Buttons extends React.Component {
 
     handleClick = () => {
         firebase.auth().signOut()
@@ -17,10 +18,10 @@ class SignOut extends React.Component {
         window.open('https://paypal.me/SkyJedi');
     };
 
-
     render() {
         return (
           <div className='hidePrint' style={{textAlign: 'right'}}>
+              <a href={this.props.characterExport} download='character'><button type="button">Export</button></a>
               <input type='button' onClick={this.handleDonate} value="Donate" />
               <button onClick={this.handleClick}>Sign Out</button>
           </div>
@@ -32,10 +33,11 @@ class SignOut extends React.Component {
 function mapStateToProps(state) {
     return {
         channel: state.channel,
+        characterExport: characterExport(state),
     };
 }
 
 function matchDispatchToProps(dispatch){
     return bindActionCreators({changeUser}, dispatch);
 }
-export default connect(mapStateToProps, matchDispatchToProps)(SignOut);
+export default connect(mapStateToProps, matchDispatchToProps)(Buttons);

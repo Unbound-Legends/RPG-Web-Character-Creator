@@ -4,26 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as Component from './index';
 import {db} from "../firestore/db";
-const dataTypes = [
-    'archetype',
-    'archetypeSpecialSkills',
-    'armor',
-    'career',
-    'careerSkills',
-    'creationCharacteristics',
-    'critical',
-    'currentStrain',
-    'currentWound',
-    'description',
-    'earnedXP',
-    'gear',
-    'masterMotivations',
-    'masterSkills',
-    'masterTalents',
-    'talentModifiers',
-    'weapons',
-    'money'
-];
+import {dataTypes} from '../functions/lists';
 
 class NewMainPage extends React.Component {
     state = {loading: false};
@@ -52,7 +33,6 @@ class NewMainPage extends React.Component {
     componentWillReceiveProps(nextProps) {
       if (nextProps === this.props) return;
       if (nextProps.character !== this.props.character) {
-          console.log('new character');
           this.setState({loading: true});
           db.doc(`users/${this.props.user}/characters/characterList/`).get()
               .then(doc => {
@@ -62,7 +42,7 @@ class NewMainPage extends React.Component {
                       let data = null;
                       if (doc.data()[key][type]) data = doc.data()[key][type];
                       this.props.loadData(data, type)
-                  })
+                  });
               this.setState({loading: false})
               })
         }
@@ -73,14 +53,14 @@ class NewMainPage extends React.Component {
         if (this.state.loading) return <h1>LOADING</h1>
         return (
           <div>
-              <Component.SignOut/>
+              <Component.Buttons/>
               <div className='module'>
                   <Component.CharacterSelect/>
                   <Component.CharacterImage/>
               </div>
               <Component.Attributes/>
               <Component.ShowCharacteristics/>
-              <div className='module'>
+              <div className='module floatingXP'>
                   <Component.XPTotal/>
                   <Component.XPAvailable/>
               </div>

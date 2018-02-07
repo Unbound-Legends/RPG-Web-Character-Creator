@@ -20,7 +20,7 @@ export {default as Motivation} from './Motivation';
 export {default as MainPage} from './NewMainPage';
 export {default as Notes} from './Notes';
 export {default as ShowCharacteristics} from './ShowCharacteristics';
-export {default as SignOut} from './SignOut';
+export {default as Buttons} from './Buttons';
 export {default as SkillBlock} from './SkillBlock';
 export {default as SkillPopup} from './SkillPopup';
 export {default as SkillRow} from './SkillRow';

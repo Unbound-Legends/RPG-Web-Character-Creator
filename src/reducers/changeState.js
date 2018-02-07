@@ -130,9 +130,9 @@ export const money = (state = '', action) =>{
     return state;
 };
 
-export const earnedXP = (state = '', action) =>{
+export const earnedXP = (state = 0, action) =>{
     if (action.type === 'earnedXP_Changed'){
-        if (action.payload===null) return '';
+        if (action.payload===null) return 0;
         else return action.payload;
     }
     return state;

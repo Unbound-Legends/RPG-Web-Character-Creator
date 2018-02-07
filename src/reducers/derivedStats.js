@@ -1,4 +1,6 @@
 import {createSelector} from 'reselect';
+import {dataTypes} from '../functions/lists';
+
 
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
@@ -15,6 +17,8 @@ const armor = state => state.armor;
 const weapons = state => state.weapons;
 const gear = state => state.gear;
 const earnedXP = state => state.earnedXP;
+const state = state => state;
+
 
 
 
@@ -252,5 +256,19 @@ export const calcTotalXP = createSelector(
     (archetype, archetypes, earnedXP) => {
         if (archetype===null) return earnedXP;
         return +archetypes[archetype].experience + +earnedXP;
+    }
+);
+
+export const buildCharacterExport = createSelector(
+    state,
+    (state) => {
+            console.log("making file")
+            let file = {};
+            dataTypes.forEach((type)=>{
+                file[type] = state[type];
+            });
+            let json = JSON.stringify(file);
+            let blob = new Blob([json], {type: "application/json"});
+            return URL.createObjectURL(blob);
     }
 );

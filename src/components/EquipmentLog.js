@@ -65,7 +65,7 @@ class EquipmentLog extends React.Component {
         const {weapons, armor, gear, skills, skillDice} = this.props;
         const {money} = this.state;
         return (
-            <div className='module'>
+            <div className='module hidePrint'>
                 <div className='module-header'>EQUIPMENT LOG</div>
                 <hr />
                 <div className='fieldLabel'>MONEY:
