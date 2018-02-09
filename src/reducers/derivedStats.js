@@ -63,7 +63,7 @@ export const calcSkillRanks = createSelector(
   (masterSkills, skills, careerSkills, archetypeSkillRank) => {
     let skillRanks = {};
     Object.keys(skills).forEach((key)=>{
-      skillRanks[key] = (masterSkills[key].rank ? masterSkills[key].rank : 0) + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
+      skillRanks[key] = (masterSkills[key].rank ? masterSkills[key].rank : 0) + (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0) + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
     });
     return skillRanks;
   }
@@ -229,12 +229,13 @@ export const calcUsedXP = createSelector(
         });
         //skillXP
         let skillXP = 0;
-        let careerSkills = career ? careers[career].skills : [];
         Object.keys(masterSkills).forEach((skill)=>{
             let rank = skillRanks[skill];
-            for(let i=(careerSkillsRank.includes(skill) ? 1 : 0)+(archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
-                skillXP += (((i + 1) * 5) + (careerSkills.includes(skill) ? 0 : 5));
+
+            for(let i=(careerSkillsRank.includes(skill) ? 1 : 0) + (archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
+                skillXP += (i + 1) * 5;
             }
+            if (masterSkills[skill].rank) skillXP += masterSkills[skill].rank * 5;
         });
 
         //characteristicXP

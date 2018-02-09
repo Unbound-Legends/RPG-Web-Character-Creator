@@ -8,9 +8,10 @@ import {Description} from './index';
 class SkillRow extends React.Component {
 
   handleRankChange = (event) => {
-    const {masterSkills, skillKey, changeData, careerSkills, archetypeSkillRank} = this.props;
+    const {masterSkills, skillKey, changeData, careerSkills, archetypeSkillRank, career, careers} = this.props;
     let newObj = {...masterSkills};
-    newObj[skillKey].rank = +event.target.value - (careerSkills.includes(skillKey) ? 1 : 0) - (archetypeSkillRank[skillKey] ? archetypeSkillRank[skillKey].rank : 0);
+    let rankType = careers[career] ? careers[career].skills.includes(skillKey) ? 'careerRank' : 'rank' : 'rank';
+    newObj[skillKey][rankType] = +event.target.value - (careerSkills.includes(skillKey) ? 1 : 0) - (archetypeSkillRank[skillKey] ? archetypeSkillRank[skillKey].rank : 0);
     changeData(newObj, 'masterSkills');
   };
 
