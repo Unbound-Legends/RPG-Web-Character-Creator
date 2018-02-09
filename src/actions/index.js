@@ -1,12 +1,12 @@
 import {db} from '../firestore/db';
 
 
-export const addCharacter = () => {
+export const addCharacter = (character = {}) => {
     return (dispatch, getState) => {
         const user = getState().user;
         const characterList = {...getState().characterList};
         let newCharacter = Math.random().toString(36).substr(2, 16);
-        characterList[newCharacter] = {};
+        characterList[newCharacter] = character;
         db.doc(`users/${user}/characters/characterList/`).update(characterList);
         dispatch({type: `characterList_Changed`, payload: characterList});
         dispatch({type: `character_Changed`, payload: newCharacter});

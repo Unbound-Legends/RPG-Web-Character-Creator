@@ -105,7 +105,7 @@ export const calcTalentCount = createSelector(
         let talent = masterTalents[row][tier];
         if(talent!=='') count[talent] = count[talent] ? count[talent]+1 : 1;
       })
-    })
+    });
     return count;
   }
 );
@@ -262,13 +262,12 @@ export const calcTotalXP = createSelector(
 export const buildCharacterExport = createSelector(
     state,
     (state) => {
-            console.log("making file")
-            let file = {};
-            dataTypes.forEach((type)=>{
-                file[type] = state[type];
-            });
-            let json = JSON.stringify(file);
-            let blob = new Blob([json], {type: "application/json"});
-            return URL.createObjectURL(blob);
+        let file = {};
+        dataTypes.forEach((type)=>{
+            file[type] = state[type];
+        });
+        let json = JSON.stringify({character: file});
+        let blob = new Blob([json], {type: "application/json"});
+        return URL.createObjectURL(blob);
     }
 );
