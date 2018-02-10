@@ -4,125 +4,153 @@ import {dataTypes} from '../functions/lists';
 
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
+const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
+const armor = state => state.armor;
 const career = state => state.career;
 const careers = state => state.careers;
-const masterSkills = state => state.masterSkills;
-const skills = state => state.skills;
-const careerSkills = state => state.careerSkills;
-const masterTalents = state => state.masterTalents;
-const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
+const careerSkillsRank = state => state.careerSkillsRank;
 const creationCharacteristics = state => state.creationCharacteristics;
-const talentModifiers = state => state.talentModifiers;
-const armor = state => state.armor;
-const weapons = state => state.weapons;
-const gear = state => state.gear;
 const earnedXP = state => state.earnedXP;
+const gear = state => state.gear;
+const masterSkills = state => state.masterSkills;
+const masterTalents = state => state.masterTalents;
+const skills = state => state.skills;
 const state = state => state;
-
-
-
-
+const talents = state => state.talents;
+const talentModifiers = state => state.talentModifiers;
+const weapons = state => state.weapons;
 
 
 export const calcCharacteristics = createSelector(
     archetype, archetypes, creationCharacteristics, talentModifiers,
     (archetype, archetypes, creationCharacteristics, talentModifiers) => {
-      if (archetype===null) return creationCharacteristics;
-      //get the starting characteristics
-      let characteristics = {...archetypes[archetype].characteristics};
-      //add the creation characteristics
-      Object.keys(characteristics).forEach((characteristic)=>{
-        characteristics[characteristic] += creationCharacteristics[characteristic];
-      });
-      //add dedications talents
-      Object.values(talentModifiers.Dedication).forEach((characteristic)=>{
-        characteristics[characteristic]++;
-      });
-      return characteristics;
+        if (archetype === null) return creationCharacteristics;
+        //get the starting characteristics
+        let characteristics = {...archetypes[archetype].characteristics};
+        //add the creation characteristics
+        Object.keys(characteristics).forEach((characteristic) => {
+            characteristics[characteristic] += creationCharacteristics[characteristic];
+        });
+        //add dedications talents
+        Object.values(talentModifiers.Dedication).forEach((characteristic) => {
+            characteristics[characteristic]++;
+        });
+        return characteristics;
     }
 );
 
 export const calcArchetypeSkillRank = createSelector(
-  archetype, archetypes, skills, archetypeSpecialSkills,
-  (archetype, archetypes, skills, archetypeSpecialSkills) => {
-    if (archetype===null) return archetypeSpecialSkills;
-    const archetypeSkills = {...archetypes[archetype].skills}
-    let archetypeSkillRank = {};
-    if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
-    if (Object.keys(archetypeSkills).includes('careerSkills')) return archetypeSkillRank;
-    if (Object.keys(skills).includes(Object.keys(archetypeSkills)[0])) {
-      Object.keys(archetypeSkills).forEach((skillKey) => archetypeSkillRank[skillKey]={rank: archetypeSkills[skillKey]});
-      return archetypeSkillRank;
+    archetype, archetypes, skills, archetypeSpecialSkills,
+    (archetype, archetypes, skills, archetypeSpecialSkills) => {
+        if (archetype === null) return archetypeSpecialSkills;
+        const archetypeSkills = {...archetypes[archetype].skills}
+        let archetypeSkillRank = {};
+        if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
+        if (Object.keys(archetypeSkills).includes('careerSkills')) return archetypeSkillRank;
+        if (Object.keys(skills).includes(Object.keys(archetypeSkills)[0])) {
+            Object.keys(archetypeSkills).forEach((skillKey) => archetypeSkillRank[skillKey] = {rank: archetypeSkills[skillKey]});
+            return archetypeSkillRank;
+        }
+        return archetypeSpecialSkills;
     }
-    return archetypeSpecialSkills;
-  }
 );
 
 export const calcSkillRanks = createSelector(
-  masterSkills, skills, careerSkills, calcArchetypeSkillRank,
-  (masterSkills, skills, careerSkills, archetypeSkillRank) => {
-    let skillRanks = {};
-    Object.keys(skills).forEach((key)=>{
-      skillRanks[key] = (masterSkills[key].rank ? masterSkills[key].rank : 0) + (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0) + (careerSkills.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
-    });
-    return skillRanks;
-  }
-);
-
-export const calcSkillDice = createSelector(
-  calcCharacteristics, calcSkillRanks, skills,
-  (characteristics, skillRanks, skills) => {
-    if (characteristics===null || characteristics===undefined) return '';
-    let skillDice = {};
-    Object.keys(skills).forEach((key)=>{
-      let characteristic = characteristics[skills[key].characteristic];
-      let rank = skillRanks[key];
-      let dice, upgrade = 0;
-      let text = '';
-      if (characteristic>=rank) {
-        dice=characteristic;
-        upgrade=characteristic-rank;
-      } else {
-        dice=rank;
-        upgrade=rank-characteristic;
-      }
-      for (let i=dice; i>0; i--) {
-        if (i>upgrade) text += '[yellow] ';
-        else text += '[green] ';
-      }
-      skillDice[key] = text;
-    });
-    return skillDice;
-  }
+    masterSkills, skills, careerSkillsRank, calcArchetypeSkillRank,
+    (masterSkills, skills, careerSkillsRank, archetypeSkillRank) => {
+        let skillRanks = {};
+        Object.keys(skills).forEach((key) => {
+            skillRanks[key] = (masterSkills[key].rank ? masterSkills[key].rank : 0) + (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0) + (careerSkillsRank.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
+        });
+        return skillRanks;
+    }
 );
 
 export const calcTalentCount = createSelector(
-  masterTalents,
-  (masterTalents) => {
-    let count = {};
-    Object.keys(masterTalents).forEach((row)=>{
-      Object.keys(masterTalents[row]).forEach((tier)=>{
-        let talent = masterTalents[row][tier];
-        if(talent!=='') count[talent] = count[talent] ? count[talent]+1 : 1;
-      })
-    });
-    return count;
-  }
+    masterTalents,
+    (masterTalents) => {
+        let count = {};
+        Object.keys(masterTalents).forEach((row) => {
+            Object.keys(masterTalents[row]).forEach((tier) => {
+                let talent = masterTalents[row][tier];
+                if (talent !== '') count[talent] = count[talent] ? count[talent] + 1 : 1;
+            })
+        });
+        return count;
+    }
+);
+
+export const calcSkillDice = createSelector(
+    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount,
+    (characteristics, skillRanks, skills, talents, talentCount) => {
+        if (characteristics === null || characteristics === undefined) return '';
+        let skillDice = {};
+        Object.keys(skills).forEach((key) => {
+            let characteristic = characteristics[skills[key].characteristic];
+            let rank = skillRanks[key];
+            let dice, upgrade = 0;
+            let text = '';
+            if (characteristic >= rank) {
+                dice = characteristic;
+                upgrade = characteristic - rank;
+            } else {
+                dice = rank;
+                upgrade = rank - characteristic;
+            }
+            for (let i = dice; i > 0; i--) {
+                if (i > upgrade) text += '[yellow] ';
+                else text += '[green] ';
+            }
+            Object.keys(talentCount).forEach((talent)=>{
+                if (talents[talent].modifier) {
+                    if (talents[talent].modifier[key]) {
+                        for (let j=0; j<talentCount[talent]; j++) {
+                            text += talents[talent].modifier[key] + ' ';
+                        }
+                    }
+                }
+            });
+            skillDice[key] = text;
+        });
+        return skillDice;
+    }
 );
 
 export const calcMaxCareerSkills = createSelector(
-  archetype, archetypes,
-  (archetype, archetypes) => {
-    if (archetype===null) return 4;
-    const archetypeSkills = archetypes[archetype].skills;
-      return Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
-  }
+    archetype, archetypes,
+    (archetype, archetypes) => {
+        if (archetype === null) return 4;
+        const archetypeSkills = archetypes[archetype].skills;
+        return Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
+    }
+);
+
+export const calcCareerCheck = createSelector(
+    skills, career, careers, talents, calcTalentCount,
+    (skills, career, careers, talents, talentCount) => {
+        let careerSkillsList = {};
+        Object.keys(skills).forEach((skill) =>{
+            if (career) {
+                if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
+                else {
+                    Object.keys(talentCount).forEach((talent) => {
+                        if (talents[talent].modifier) {
+                            if (talents[talent].modifier.careerSkills) {
+                                if (talents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
+                            }
+                        }
+                    });
+                }
+            } else careerSkillsList[skill] = false;
+        });
+        return careerSkillsList;
+    }
 );
 
 export const calcWounds = createSelector(
-    archetype, archetypes, creationCharacteristics, calcTalentCount,
-    (archetype, archetypes, creationCharacteristics, talentCount) => {
-        if (archetype===null) return 0;
+    archetype, archetypes, talents, creationCharacteristics, calcTalentCount,
+    (archetype, archetypes, talents, creationCharacteristics, talentCount) => {
+        if (archetype === null) return 0;
         //get starting wounds
         let startingThreshold = archetypes[archetype].woundThreshold;
         //get starting brawn
@@ -130,16 +158,18 @@ export const calcWounds = createSelector(
         //get brawn added via creation
         let creationBrawn = creationCharacteristics.Brawn;
         //get wound modifier from talentModifier
-        let talentModifier = talentCount.Toughened ? talentCount.Toughened * 2 : 0;
-
+        let talentModifier=0;
+        Object.keys(talentCount).forEach((talent)=>{
+            if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.woundThreshold ? talents[talent].modifier.woundThreshold : 0) * talentCount[talent]);
+        });
         return startingThreshold + startingBrawn + creationBrawn + talentModifier;
     }
 );
 
 export const calcStrain = createSelector(
-    archetype, archetypes, creationCharacteristics, calcTalentCount,
-    (archetype, archetypes, creationCharacteristics, talentCount) => {
-        if (archetype===null) return 0;
+    archetype, archetypes, talents, creationCharacteristics, calcTalentCount,
+    (archetype, archetypes, talents, creationCharacteristics, talentCount) => {
+        if (archetype === null) return 0;
         //get starting wounds
         let startingThreshold = archetypes[archetype].strainThreshold;
         //get starting brawn
@@ -147,27 +177,31 @@ export const calcStrain = createSelector(
         //get brawn added via creation
         let creationBrawn = creationCharacteristics.Willpower;
         //get wound modifier from talentModifier
-        let talentModifier = talentCount.Grit ? talentCount.Grit * 2 : 0;
-
+        let talentModifier=0;
+        Object.keys(talentCount).forEach((talent)=>{
+            if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
+        });
         return startingThreshold + startingBrawn + creationBrawn + talentModifier;
     }
 );
 
 export const calcTotalSoak = createSelector(
-    calcCharacteristics, calcTalentCount, armor,
-    (characteristics, talentCount, armor) => {
-        if (archetype===null) return 0;
+    talents, calcCharacteristics, calcTalentCount, armor,
+    (talents, characteristics, talentCount, armor) => {
+        if (archetype === null) return 0;
         //get calcBrawn
         let Brawn = characteristics.Brawn;
         //get soak from armor
         let Armor = 0;
-        Object.keys(armor).forEach((key)=>{
-           if (armor[key].equipped) Armor += armor[key].soak ? +armor[key].soak : 0;
+        Object.keys(armor).forEach((key) => {
+            if (armor[key].equipped) Armor += armor[key].soak ? +armor[key].soak : 0;
         });
         //get soak from Enduring Talent
-        let Enduring = talentCount.Enduring ? talentCount.Enduring : 0;
-
-        return Brawn + Armor + Enduring;
+        let talentModifier=0;
+        Object.keys(talentCount).forEach((talent)=>{
+            if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.soak ? talents[talent].modifier.soak : 0) * talentCount[talent]);
+        });
+        return Brawn + Armor + talentModifier;
     }
 );
 
@@ -175,7 +209,7 @@ export const calcTotalDefense = createSelector(
     armor,
     (armor) => {
         let defense = {melee: 0, ranged: 0};
-        Object.keys(armor).forEach((key)=>{
+        Object.keys(armor).forEach((key) => {
             if (armor[key].equipped) {
                 defense.melee += (armor[key].meleeDefense ? +armor[key].meleeDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
                 defense.ranged += (armor[key].rangedDefense ? +armor[key].rangedDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
@@ -198,17 +232,17 @@ export const calcTotalEncumbrance = createSelector(
     (armor, weapons, gear) => {
         let encumbrance = 0;
         //get weapon encumbrance
-        Object.keys(weapons).forEach((item)=>{
+        Object.keys(weapons).forEach((item) => {
             if (weapons[item].carried) encumbrance += weapons[item].encumbrance ? +weapons[item].encumbrance : 0;
         });
         //get armor encumbrance
-        Object.keys(armor).forEach((item)=>{
+        Object.keys(armor).forEach((item) => {
             let armorEncum = +armor[item].encumbrance - (armor[item].equipped ? 3 : 0);
             if (armorEncum < 0 || !armorEncum) armorEncum = 0;
             if (armor[item].carried) encumbrance += armorEncum;
         });
         //get gear encumbrance
-        Object.keys(gear).forEach((item)=>{
+        Object.keys(gear).forEach((item) => {
             if (gear[item].carried) encumbrance += ((gear[item].encumbrance ? +gear[item].encumbrance : 0) * (gear[item].amount ? +gear[item].amount : 1));
         });
         return encumbrance;
@@ -217,22 +251,22 @@ export const calcTotalEncumbrance = createSelector(
 
 
 export const calcUsedXP = createSelector(
-    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkills, calcArchetypeSkillRank, calcSkillRanks,
+    masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkillsRank, calcArchetypeSkillRank, calcSkillRanks,
     (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkillsRank, archetypeSkillRank, skillRanks) => {
-        if (archetype===null) return 0;
+        if (archetype === null) return 0;
         //talent XP
         let talentXP = 0;
-        Object.keys(masterTalents).forEach((row)=>{
-            Object.keys(masterTalents[row]).forEach((tier)=>{
-                if (masterTalents[row][tier] !== '') talentXP = talentXP+(5*tier);
+        Object.keys(masterTalents).forEach((row) => {
+            Object.keys(masterTalents[row]).forEach((tier) => {
+                if (masterTalents[row][tier] !== '') talentXP = talentXP + (5 * tier);
             })
         });
         //skillXP
         let skillXP = 0;
-        Object.keys(masterSkills).forEach((skill)=>{
+        Object.keys(masterSkills).forEach((skill) => {
             let rank = skillRanks[skill];
 
-            for(let i=(careerSkillsRank.includes(skill) ? 1 : 0) + (archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank>i; i++){
+            for (let i = (careerSkillsRank.includes(skill) ? 1 : 0) + (archetypeSkillRank[skill] ? archetypeSkillRank[skill].rank : 0); rank > i; i++) {
                 skillXP += (i + 1) * 5;
             }
             if (masterSkills[skill].rank) skillXP += masterSkills[skill].rank * 5;
@@ -241,10 +275,10 @@ export const calcUsedXP = createSelector(
         //characteristicXP
         let characteristicXP = 0;
         //starting characteristics
-        Object.keys(creationCharacteristics).forEach((characteristic)=>{
+        Object.keys(creationCharacteristics).forEach((characteristic) => {
             let points = creationCharacteristics[characteristic];
-            for(let i=0; points>i; i++) {
-                characteristicXP += (archetypes[archetype].characteristics[characteristic]+i+1)*10;
+            for (let i = 0; points > i; i++) {
+                characteristicXP += (archetypes[archetype].characteristics[characteristic] + i + 1) * 10;
             }
         });
 
@@ -255,7 +289,7 @@ export const calcUsedXP = createSelector(
 export const calcTotalXP = createSelector(
     archetype, archetypes, earnedXP,
     (archetype, archetypes, earnedXP) => {
-        if (archetype===null) return earnedXP;
+        if (archetype === null) return earnedXP;
         return +archetypes[archetype].experience + +earnedXP;
     }
 );
@@ -264,7 +298,7 @@ export const buildCharacterExport = createSelector(
     state,
     (state) => {
         let file = {};
-        dataTypes.forEach((type)=>{
+        dataTypes.forEach((type) => {
             file[type] = state[type];
         });
         let json = JSON.stringify({character: file});
@@ -272,3 +306,4 @@ export const buildCharacterExport = createSelector(
         return URL.createObjectURL(blob);
     }
 );
+

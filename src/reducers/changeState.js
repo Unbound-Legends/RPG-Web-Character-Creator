@@ -47,8 +47,8 @@ export const career = (state = null, action) =>{
     return state;
 };
 
-export const careerSkills = (state = [], action) =>{
-    if (action.type === 'careerSkills_Changed') {
+export const careerSkillsRank = (state = [], action) =>{
+    if (action.type === 'careerSkillsRank_Changed') {
         if (action.payload===null) return [];
         else return action.payload;
     }

@@ -11,23 +11,23 @@ class Career extends React.Component {
   handleChange = (event) => {
     let value = event.target.value==='' ? null : event.target.value;
     this.props.changeData(value, 'career');
-    this.props.changeData([], 'careerSkills');
+    this.props.changeData([], 'careerSkillsRank');
     event.preventDefault();
   };
 
   handleCheck = (event) => {
-    let careerSkills = [...this.props.careerSkills];
-    if (careerSkills.includes(event.target.name)) {
-      careerSkills.forEach((skill, index)=>{
-        careerSkills[skill]===event.target.name && careerSkills.splice(index, 1);
+    let careerSkillsRank = [...this.props.careerSkillsRank];
+    if (careerSkillsRank.includes(event.target.name)) {
+      careerSkillsRank.forEach((skill, index)=>{
+        careerSkillsRank[skill]===event.target.name && careerSkillsRank.splice(index, 1);
       })
-    } else careerSkills.push(event.target.name);
-    if (this.props.maxCareerSkills>=careerSkills.length) this.props.changeData(careerSkills, 'careerSkills');
+    } else careerSkillsRank.push(event.target.name);
+    if (this.props.maxCareerSkills>=careerSkillsRank.length) this.props.changeData(careerSkillsRank, 'careerSkillsRank');
     else event.preventDefault();
   };
 
   render(){
-    const {career, careers, skills, careerSkills} = this.props;
+    const {career, careers, skills, careerSkillsRank} = this.props;
     const masterCareer = careers[career];
     return (
       <div className='module'>
@@ -43,7 +43,7 @@ class Career extends React.Component {
                 <h3>Career Skills:</h3>
                   <p>Select {this.props.maxCareerSkills} skills to start with 1 free rank</p>
                 {masterCareer.skills.map((skill)=>
-                  <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkills.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
+                  <div key={skill}><label><input type='checkbox' name={skill} checked={careerSkillsRank.includes(skill)} onChange={this.handleCheck} />{skills[skill].name}</label></div>
                 )}
                 <p><b>Setting:</b>&nbsp;{masterCareer.setting}</p>
                   <p><b>Description:</b></p>
@@ -59,7 +59,7 @@ class Career extends React.Component {
 function mapStateToProps(state) {
     return {
         career: state.career,
-        careerSkills: state.careerSkills,
+        careerSkillsRank: state.careerSkillsRank,
         careers: state.careers,
         skills: state.skills,
         maxCareerSkills: maxCareerSkills(state),

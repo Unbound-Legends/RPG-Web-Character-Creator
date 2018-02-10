@@ -15,7 +15,7 @@ const allReducers = combineReducers({
     armor: changeState.armor,
     career: changeState.career,
     careers: careers,
-    careerSkills: changeState.careerSkills,
+    careerSkillsRank: changeState.careerSkillsRank,
     character: changeState.character,
     characterList: changeState.characterList,
     creationCharacteristics: changeState.creationCharacteristics,
@@ -53,6 +53,6 @@ export const totalXP = (state) => derivedStats.calcTotalXP(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const woundThreshold = (state) => derivedStats.calcWounds(state);
 export const characterExport = (state) => derivedStats.buildCharacterExport(state);
-
+export const careerCheck = (state) => derivedStats.calcCareerCheck(state);
 
 export default allReducers;
