@@ -1,43 +1,3 @@
-export const masterSkills = {
-    Alchemy: {},
-    Arcana: {},
-    Astrocartography: {},
-    Athletics: {},
-    Brawl: {},
-    Charm: {},
-    Coercion: {},
-    Computers: {},
-    Cool: {},
-    Coordination: {},
-    Deception: {},
-    Discipline: {},
-    Divine: {},
-    Driving: {},
-    Gunnery: {},
-    Knowledge: {},
-    Leadership: {},
-    Mechanics: {},
-    Medicine: {},
-    Melee: {},
-    MeleeHeavy: {},
-    MeleeLight: {},
-    Negotiation: {},
-    Operating: {},
-    Perception: {},
-    Piloting: {},
-    Primal: {},
-    Ranged: {},
-    RangedHeavy: {},
-    RangedLight: {},
-    Resilience: {},
-    Riding: {},
-    Skullduggery: {},
-    Stealth: {},
-    Streetwise: {},
-    Survival: {},
-    Vigilance: {}
-};
-
 export const masterTalents = {
   1:{1:''}
 };
@@ -57,8 +17,6 @@ export const creationCharacteristics = {
 
 export const talentModifiers = {
   Dedication: {},
-  Toughened: 0,
-  Grit: 0
 };
 
 export const description = {
@@ -73,42 +31,15 @@ export const description = {
     features: ''
 };
 
-export const blankSkills = {
-  Alchemy: {},
-  Arcana: {},
-  Astrocartography: {},
-  Athletics: {},
-  Brawl: {},
-  Charm: {},
-  Coercion: {},
-  Computers: {},
-  Cool: {},
-  Coordination: {},
-  Deception: {},
-  Discipline: {},
-  Divine: {},
-  Driving: {},
-  Gunnery: {},
-  Knowledge: {},
-  Leadership: {},
-  Mechanics: {},
-  Medicine: {},
-  Melee: {},
-  MeleeHeavy: {},
-  MeleeLight: {},
-  Negotiation: {},
-  Operating: {},
-  Perception: {},
-  Piloting: {},
-  Primal: {},
-  Ranged: {},
-  RangedHeavy: {},
-  RangedLight: {},
-  Resilience: {},
-  Riding: {},
-  Skullduggery: {},
-  Stealth: {},
-  Streetwise: {},
-  Survival: {},
-  Vigilance: {}
-};
+export const customSkills = {
+    ButtStuff: {
+        name: 'Butt Stuff',
+        type: 'General',
+        characteristic: 'Cunning',
+        book: 'CRB',
+        page: '57',
+        setting: 'All'
+    }
+}
+
+

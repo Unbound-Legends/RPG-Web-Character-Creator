@@ -1,7 +1,6 @@
 import React from 'react';
 import {SkillBlock} from './index';
 import {connect} from "react-redux";
-import {skillRanks, archetypeSkillRank} from "../reducers";
 
 
 class Skill extends React.Component {
@@ -31,10 +30,6 @@ class Skill extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        masterSkills: state.masterSkills,
-        careerSkills: state.careerSkills,
-        skillRanks: skillRanks(state),
-        archetypeSkillRank: archetypeSkillRank(state),
     };
 }
 

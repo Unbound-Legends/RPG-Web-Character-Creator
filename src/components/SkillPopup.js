@@ -8,7 +8,8 @@ class SkillPopup extends React.Component {
   handleChange = () => {
     const {masterSkills, skillKey, changeData} = this.props;
     let newObj = {...masterSkills};
-    newObj[skillKey].hide = !masterSkills[skillKey].hide;
+    if (!newObj[skillKey]) newObj[skillKey] = {};
+    newObj[skillKey].hide = !newObj[skillKey].hide;
     changeData(newObj, 'masterSkills');
   };
 
@@ -18,7 +19,7 @@ class SkillPopup extends React.Component {
       <div className='table-row'>
         <div className='table-cell'>
           <form>
-            <input type='checkbox' checked={masterSkills[skillKey].hide ? false : true} onChange={this.handleChange}/>
+            <input type='checkbox' checked={masterSkills[skillKey] ? (!masterSkills[skillKey].hide) : true} onChange={this.handleChange}/>
           </form>
         </div>
         <div className='table-cell'>

@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {dataTypes} from '../functions/lists';
+import {dataTypes} from '../data/lists';
 
 
 const archetype = state => state.archetype;
@@ -60,7 +60,7 @@ export const calcSkillRanks = createSelector(
     (masterSkills, skills, careerSkillsRank, archetypeSkillRank) => {
         let skillRanks = {};
         Object.keys(skills).forEach((key) => {
-            skillRanks[key] = (masterSkills[key].rank ? masterSkills[key].rank : 0) + (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0) + (careerSkillsRank.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
+            skillRanks[key] = (masterSkills[key] ? ((masterSkills[key].rank ? masterSkills[key].rank : 0) + (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0)) : 0) + (careerSkillsRank.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
         });
         return skillRanks;
     }
@@ -82,7 +82,7 @@ export const calcTalentCount = createSelector(
 
 export const calcSkillDice = createSelector(
     calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount,
-    (characteristics, skillRanks, skills, talents, talentCount) => {
+    (characteristics, skillRanks, skills, talentCount) => {
         if (characteristics === null || characteristics === undefined) return '';
         let skillDice = {};
         Object.keys(skills).forEach((key) => {
@@ -102,10 +102,12 @@ export const calcSkillDice = createSelector(
                 else text += '[green] ';
             }
             Object.keys(talentCount).forEach((talent)=>{
-                if (talents[talent].modifier) {
-                    if (talents[talent].modifier[key]) {
-                        for (let j=0; j<talentCount[talent]; j++) {
-                            text += talents[talent].modifier[key] + ' ';
+                if (talents[talent]) {
+                    if (talents[talent].modifier) {
+                        if (talents[talent].modifier[key]) {
+                            for (let j = 0; j < talentCount[talent]; j++) {
+                                text += talents[talent].modifier[key] + ' ';
+                            }
                         }
                     }
                 }
@@ -126,11 +128,11 @@ export const calcMaxCareerSkills = createSelector(
 );
 
 export const calcCareerCheck = createSelector(
-    skills, career, careers, talents, calcTalentCount,
-    (skills, career, careers, talents, talentCount) => {
+    skills, careers, talents, calcTalentCount,
+    (skills, careers, talents, talentCount) => {
         let careerSkillsList = {};
         Object.keys(skills).forEach((skill) =>{
-            if (career) {
+            if (careers[career]) {
                 if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
                 else {
                     Object.keys(talentCount).forEach((talent) => {

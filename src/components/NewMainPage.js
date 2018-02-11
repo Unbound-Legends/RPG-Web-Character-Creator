@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as Component from './index';
 import {db} from "../firestore/db";
-import {dataTypes} from '../functions/lists';
+import {dataTypes} from '../data/lists';
 
 class NewMainPage extends React.Component {
     state = {loading: false};

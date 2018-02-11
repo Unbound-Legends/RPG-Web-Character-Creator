@@ -16,5 +16,7 @@ export const dataTypes = [
     'masterTalents',
     'talentModifiers',
     'weapons',
-    'money'
+    'money',
+    'skills',
+    'customSkills',
 ];

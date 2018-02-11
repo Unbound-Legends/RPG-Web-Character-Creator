@@ -1,20 +1,15 @@
 import {combineReducers} from 'redux';
-import archetypes from './archetypes';
-import careers from './careers';
-import motivations from './motivations';
-import skills from './skills';
-import talents from './talents';
 import * as criticals from './criticals';
 import * as derivedStats from './derivedStats';
 import * as changeState from './changeState';
 
 const allReducers = combineReducers({
     archetype: changeState.archetype,
-    archetypes: archetypes,
+    archetypes: changeState.archetypes,
     archetypeSpecialSkills: changeState.archetypeSpecialSkills,
     armor: changeState.armor,
     career: changeState.career,
-    careers: careers,
+    careers: changeState.careers,
     careerSkillsRank: changeState.careerSkillsRank,
     character: changeState.character,
     characterList: changeState.characterList,
@@ -22,6 +17,11 @@ const allReducers = combineReducers({
     critical: changeState.critical,
     currentStrain: changeState.currentStrain,
     currentWound: changeState.currentWound,
+    customArchetypes: changeState.customArchetypes,
+    customCareers: changeState.customCareers,
+    customMotivations: changeState.customMotivations,
+    customSkills: changeState.customSkills,
+    customTalents: changeState.customTalents,
     description: changeState.description,
     earnedXP: changeState.earnedXP,
     gear: changeState.gear,
@@ -29,12 +29,13 @@ const allReducers = combineReducers({
     masterSkills: changeState.masterSkills,
     masterTalents: changeState.masterTalents,
     money: changeState.money,
-    motivations: motivations,
-    skills: skills,
+    motivations: changeState.motivations,
+    skills: changeState.skills,
     talentModifiers: changeState.talentModifiers,
-    talents: talents,
+    talents: changeState.talents,
     user: changeState.user,
     weapons: changeState.weapons,
+
 });
 
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);

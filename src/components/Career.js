@@ -50,7 +50,7 @@ class Career extends React.Component {
                   <div style={{textIndent: '1em'}}><Description text={masterCareer.description}/></div>
               </div>
             }
-            <button onClick={popup.close}>Close</button>
+          <input type='submit' value='Submit' onClick={popup.close}/>
       </div>
     );
   }

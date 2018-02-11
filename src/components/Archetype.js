@@ -24,7 +24,7 @@ class Archetype extends React.Component {
           )}
         </select>
         <ArchetypeStats />
-          <button onClick={popup.close}>Close</button>
+          <input type='submit' value='Submit' onClick={popup.close}/>
       </div>
     );
   }

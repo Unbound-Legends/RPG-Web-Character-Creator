@@ -18,7 +18,7 @@ class SkillBlock extends React.Component {
             <div className='table-cell'>Show/Hide</div>
             <div className='table-cell'>Skill</div>
           </div>
-          {Object.keys(skills).map((key)=>
+          {Object.keys(skills).sort().map((key)=>
             skills[key].type===type && (
               <SkillPopup skillKey={key} key={key}/>
             ),
@@ -40,7 +40,7 @@ class SkillBlock extends React.Component {
               <div className='table-cell skill-block-rank'>Rank</div>
               <div className='table-cell skill-block-dice'>Dice Pool</div>
             </div>
-            {Object.keys(skills).map((skillKey)=>
+            {Object.keys(skills).sort().map((skillKey)=>
               skills[skillKey].type === type &&
                 <SkillRow skillKey={skillKey} key={skillKey}/>
             )}
@@ -52,7 +52,7 @@ class SkillBlock extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        skills: state.skills
+        skills: state.skills,
     };
 }
 
