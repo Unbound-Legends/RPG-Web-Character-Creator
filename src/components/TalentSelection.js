@@ -10,7 +10,7 @@ class TalentSelection extends React.Component {
     state = {
         talentSelection: this.props.talentKey,
         selection: this.props.talentModifiers.Dedication[this.props.row] ? this.props.talentModifiers.Dedication[this.props.row] : ''
-    }
+    };
 
     handleSubmit = () => {
         const {row, tier, masterTalents, talentModifiers, changeData} = this.props;

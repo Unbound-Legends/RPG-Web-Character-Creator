@@ -18,5 +18,4 @@ export const dataTypes = [
     'weapons',
     'money',
     'skills',
-    'customSkills',
 ];

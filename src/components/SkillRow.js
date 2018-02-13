@@ -57,7 +57,7 @@ class SkillRow extends React.Component {
                            readOnly/>
                 </div>
                 <div className='table-cell'>
-                    <select defaultValue={skillRanks[skillKey]} onChange={this.handleRankChange}>
+                    <select defaultValue={skillRanks[skillKey]} onChange={this.handleRankChange} style={{margin: '0'}}>
                         {ranks.map((key) => <option key={key} value={key}>{key}</option>)}
                     </select>
                 </div>

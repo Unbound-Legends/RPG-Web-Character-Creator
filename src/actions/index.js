@@ -7,7 +7,7 @@ export const addCharacter = (character = {}) => {
         const characterList = {...getState().characterList};
         let newCharacter = Math.random().toString(36).substr(2, 16);
         characterList[newCharacter] = character;
-        db.doc(`users/${user}/characters/characterList/`).update(characterList);
+        db.doc(`users/${user}/characters/characterList/`).update({[newCharacter]: character});
         dispatch({type: `characterList_Changed`, payload: characterList});
         dispatch({type: `character_Changed`, payload: newCharacter});
     }
@@ -45,6 +45,15 @@ export const changeData = (data, type, merge = true) => {
         const character = getState().character;
         const dbRef = db.doc(`users/${user}/characters/characterList/`);
         dbRef.set ({[character]: {[type]: data}}, { merge: merge });
+        dispatch({type: `${type}_Changed`, payload: data})
+    }
+};
+
+export const changeCustomData = (data, type, merge = true) => {
+    return (dispatch, getState) => {
+        const user = getState().user;
+        const dbRef = db.doc(`users/${user}/customData/data/`);
+        dbRef.set ({[type]: data}, { merge: merge });
         dispatch({type: `${type}_Changed`, payload: data})
     }
 };

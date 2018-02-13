@@ -112,9 +112,9 @@
             }
 
         .mm-popup__box__body {
-            padding: 20px;
+            padding: 2vw;
             line-height: 1.4;
-            font-size: 14px;
+            font-size: 2vw;
             color: #454B4D;
             background: #fff;
             position: relative;
@@ -178,7 +178,7 @@
 
 @media (max-width: 420px) {
     .mm-popup__box {
-        width: auto;
+        max-width: 98vw;
         left: 10px;
         right: 10px;
         top: 10px;

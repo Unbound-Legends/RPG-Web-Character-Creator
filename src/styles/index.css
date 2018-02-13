@@ -22,6 +22,10 @@ button, input {
     margin: 1vw;
 }
 
+select {
+    margin: 0 1vw;
+}
+
 textarea {
     resize: none;
 }
@@ -535,7 +539,8 @@ input[type="number"] {
 }
 
 .mobileSkills {
-    width: 50%
+    width: 50%;
+    vertical-align: top;
 }
 
 .floatingXP {

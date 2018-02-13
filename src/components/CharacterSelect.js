@@ -14,12 +14,12 @@ class CharacterSelect extends React.Component {
         this.setState({name: nextProps.description.name});
     }
 
-    handleClick = (type) => {
+    handleClick = (event) => {
         let content = <div/>;
-        if (type === 'archetype') content = <Archetype/>;
-        if (type === 'career') content = <Career/>;
+        if (event.target.name === 'archetype') content = <Archetype/>;
+        if (event.target.name === 'career') content = <Career/>;
         popup.create({
-            title: `Select ${type}`,
+            title: `Select ${event.target.name}`,
             className: 'alert',
             content: (content),
         })
@@ -39,13 +39,14 @@ class CharacterSelect extends React.Component {
         event.preventDefault();
     };
 
-    handleChange = (type, event) => {
-        this.setState({[type]: event.target.value});
+    handleChange = (event) => {
+        this.setState({[event.target.name]: event.target.value});
         event.preventDefault();
     };
 
-    handleBlur = (type, event) => {
+    handleBlur = (event) => {
         const {changeData, description} = this.props;
+        let type = event.target.name;
         let newObj = {...description};
         newObj[type] = this.state[type];
         changeData(newObj, 'description');
@@ -67,21 +68,21 @@ class CharacterSelect extends React.Component {
                 <button onClick={this.handleNewCharacter}>New Character</button>
                 <button onClick={this.handleDeleteCharacter}>Delete Character</button>
                 <div className='fieldLabel'>CHARACTER NAME:
-                    <input type='text' value={name} maxLength='25' onChange={this.handleChange.bind(this, 'name')} onBlur={this.handleBlur.bind(this, 'name')}/>
+                    <input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange} onBlur={this.handleBlur}/>
                 </div>
                 <hr />
                 <div className='fieldLabel'>ARCHETYPE:
                     <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
-                    <input type='button' onClick={this.handleClick.bind(this, 'archetype')} value='Edit' />
+                    <input type='button' name='archetype' onClick={this.handleClick} value='Edit' />
                 </div>
                 <hr />
                 <div className='fieldLabel'>CAREER:
                     <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
-                    <input type='button' onClick={this.handleClick.bind(this, 'career')} value='Edit' />
+                    <input type='button' name='career' onClick={this.handleClick} value='Edit' />
                 </div>
                 <hr />
                 <div className='fieldLabel'>PLAYER NAME:
-                    <input type='text' value={playerName} maxLength='25' onChange={this.handleChange.bind(this, 'playerName')} onBlur={this.handleBlur.bind(this, 'playerName')}/>
+                    <input type='text' value={playerName} maxLength='25' name='playerName' onChange={this.handleChange} onBlur={this.handleBlur}/>
                 </div>
                 <hr />
             </div>

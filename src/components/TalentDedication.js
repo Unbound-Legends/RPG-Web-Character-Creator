@@ -10,8 +10,10 @@ class TalentDedication extends React.Component {
   componentWillMount() {
     const {characteristics, talentModifiers, row} = this.props;
       let options = [];
-      Object.keys(characteristics).forEach((characteristic)=> 5>characteristics[characteristic] && options.push(characteristic))
-      talentModifiers.Dedication[row] && options.push(talentModifiers.Dedication[row])
+      Object.keys(characteristics).forEach((characteristic)=> {
+          if (5>characteristics[characteristic] && !Object.values(talentModifiers.Dedication).includes(characteristic)) options.push(characteristic);
+      });
+      talentModifiers.Dedication[row] && options.push(talentModifiers.Dedication[row]);
       options.sort();
       this.setState({options: options});
   }
