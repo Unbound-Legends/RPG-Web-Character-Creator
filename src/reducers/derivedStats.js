@@ -128,8 +128,8 @@ export const calcMaxCareerSkills = createSelector(
 );
 
 export const calcCareerCheck = createSelector(
-    skills, careers, talents, calcTalentCount,
-    (skills, careers, talents, talentCount) => {
+    skills, career, careers, talents, calcTalentCount,
+    (skills, career, careers, talents, talentCount) => {
         let careerSkillsList = {};
         Object.keys(skills).forEach((skill) =>{
             if (careers[career]) {
