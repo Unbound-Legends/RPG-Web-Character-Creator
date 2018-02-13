@@ -26,7 +26,7 @@ class Notes extends React.Component {
     render() {
         const {notes} = this.state;
         return (
-            <div className='inlineblock' style={{width: '46%', verticalAlign: 'top'}}>
+            <div className='inlineblock sideBySide'>
                 <div className='module-header'>NOTES: </div>
                 <hr />
                     <textarea onChange={this.handleChange}

@@ -20,7 +20,7 @@ class CharacterImage extends React.Component {
     render() {
         const {description} = this.props;
         return (
-            <div className='inlineblock' style={{width: '45%', verticalAlign: 'top'}}>
+            <div className='inlineblock sideBySide'>
                 <img className='characterImage' src={description.image ? description.image : ''} onClick={this.editImage} alt='not found' ref={img => this.img = img} onError={() => this.img.src ='images/png/Crest.png'} />
             </div>
 

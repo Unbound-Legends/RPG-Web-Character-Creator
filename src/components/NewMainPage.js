@@ -63,7 +63,7 @@ class NewMainPage extends React.Component {
         return (
             <div>
                 <Component.Buttons/>
-                <div className='module'>
+                <div className='module mobileModule'>
                     <Component.CharacterSelect/>
                     <Component.CharacterImage/>
                 </div>

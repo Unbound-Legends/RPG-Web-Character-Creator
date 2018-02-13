@@ -57,7 +57,7 @@ class CharacterSelect extends React.Component {
         const {archetype, archetypes, careers, career, characterList} = this.props;
         const {name, playerName, character} = this.state;
         return (
-            <div className='inlineblock' style={{width: '45%', textAlign: 'left'}}>
+            <div className='inlineblock sideBySide' style={{textAlign: 'left'}}>
                 <div className='module-header'>CHARACTER</div>
                 <hr />
                 <select value={character ? character : ''} onChange={this.handleSelect}>

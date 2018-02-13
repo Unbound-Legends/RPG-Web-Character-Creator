@@ -35,6 +35,7 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input[type="number"] {
     -moz-appearance: textfield;
 }
@@ -180,7 +181,6 @@ input[type="number"] {
     top: 20%;
     font-size: 1.8vw;
 }
-
 
 .characteristicsBackround {
     background-image: url(/images/png/characteristicsBackround.png);
@@ -403,7 +403,7 @@ input[type="number"] {
     padding: 0 2vw 0 0;
 }
 
-.talent-box-top{
+.talent-box-top {
     height: 4%;
     padding: 13% 0;
     background: var(--gray);
@@ -438,7 +438,6 @@ input[type="number"] {
     margin: 1vw 0;
     width: fit-content;
 }
-
 
 .motivation-module {
     display: inline-block;
@@ -487,7 +486,7 @@ input[type="number"] {
     border: black solid 1px;
 }
 
-.table-cell-no-border{
+.table-cell-no-border {
     display: table-cell;
     padding: 0.3vw;
 }
@@ -550,32 +549,51 @@ input[type="number"] {
     margin: 0;
 }
 
+.sideBySide {
+    width: 46%;
+    vertical-align: top;
+}
 
 @media only screen
-  and (max-width: 480px) {
+and (max-width: 480px) {
     #root {
         width: fit-content;
     }
+
     .module {
         width: 100%;
     }
+
+    .sideBySide {
+        display: block;
+        width: 98%;
+        vertical-align: top;
+    }
+
     .mobileSkills {
         display: block;
         width: 100%
     }
+
     .table-cell-bottom-border {
         font-size: 2.5vw;
         padding: 0 0.5vw;
+    }
+
+    .textSymbols {
+        height: 4vw;
     }
 }
 
 @media print {
     * {
-        -webkit-print-color-adjust:exact;
+        -webkit-print-color-adjust: exact;
     }
+
     .hidePrint {
         display: none;
     }
+
     .floatingXP {
         position: unset;
         bottom: unset;
