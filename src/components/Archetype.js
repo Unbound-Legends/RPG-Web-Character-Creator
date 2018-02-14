@@ -16,7 +16,7 @@ class Archetype extends React.Component {
   render() {
     const {archetype, archetypes} = this.props;
     return (
-      <div className='inlineblock' style={{textAlign: 'left'}}>
+      <div className='popupModule' style={{textAlign: 'left'}}>
         <select value={archetype ? archetype : ''} onChange={this.handleSelect}>
           <option value=''/>
           {Object.keys(archetypes).map((key)=>

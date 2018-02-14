@@ -29,11 +29,11 @@ class Career extends React.Component {
   render(){
     const {career, careers, skills, careerSkillsRank} = this.props;
     const masterCareer = careers[career];
-    return (
-      <div className='module'>
+      return (
+      <div className='popupModule'>
             <select defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
               <option value=''/>
-              {Object.keys(careers).map((key)=>
+              {Object.keys(careers).sort().map((key)=>
                 <option value={key} key={key}>{careers[key].name}</option>
               )}
             </select>

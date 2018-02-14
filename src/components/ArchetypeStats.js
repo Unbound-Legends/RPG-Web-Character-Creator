@@ -13,7 +13,7 @@ class ArchetypeStats extends React.Component {
         <h2>Archetype:&nbsp;<span className='title'>{masterArchetype.name}</span></h2>
         <p><b>Starting Stats: </b></p>
         <div className='archetype'>
-            <div className='characteristicsBackround' style={{height: '9vw'}}>
+            <div className='archetypePopup-characteristicsBackground'>
                 {Object.keys(masterArchetype.characteristics).map((stat)=>
                     <div key={stat} className={`characteristic`}>
                         <div className='characteristic-archetype-topText'>{masterArchetype.characteristics[stat]}</div>

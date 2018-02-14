@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData, addCharacter, changeCharacter, deleteCharacter} from '../actions';
 import popup from 'react-popup';
-import {Archetype, Career} from './index';
+import {Archetype, Career, CustomCareers} from './index';
 
 class CharacterSelect extends React.Component {
     state = {name: this.props.description.name, playerName: this.props.description.playerName, character: this.props.character};
@@ -23,14 +23,6 @@ class CharacterSelect extends React.Component {
             className: 'alert',
             content: (content),
         })
-    };
-
-    handleNewCharacter = () => {
-        this.props.addCharacter();
-    };
-
-    handleDeleteCharacter = () => {
-        this.props.deleteCharacter();
     };
 
     handleSelect = (event) => {
@@ -53,6 +45,14 @@ class CharacterSelect extends React.Component {
         event.preventDefault();
     };
 
+    handlePopup = () => {
+        popup.create({
+            title: `Customize Career`,
+            className: 'alert',
+            content: <CustomCareers />,
+        })
+    };
+
     render() {
         const {archetype, archetypes, careers, career, characterList} = this.props;
         const {name, playerName, character} = this.state;
@@ -65,20 +65,22 @@ class CharacterSelect extends React.Component {
                         <option value={key} key={key}>{characterList[key].description ? characterList[key].description.name : key}</option>
                     )}
                 </select>
-                <button onClick={this.handleNewCharacter}>New Character</button>
-                <button onClick={this.handleDeleteCharacter}>Delete Character</button>
+                <button onClick={() => this.props.addCharacter()}>New Character</button>
+                <button onClick={() => this.props.deleteCharacter()}>Delete Character</button>
                 <div className='fieldLabel'>CHARACTER NAME:
                     <input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange} onBlur={this.handleBlur}/>
                 </div>
                 <hr />
                 <div className='fieldLabel'>ARCHETYPE:
                     <div className='fieldData'>{archetype===null ? '' : archetypes[archetype].name}</div>
-                    <input type='button' name='archetype' onClick={this.handleClick} value='Edit' />
+                    <input type='button' name='archetype' onClick={this.handleClick} value='Select' />
                 </div>
                 <hr />
                 <div className='fieldLabel'>CAREER:
-                    <div className='fieldData'>{career===null ? '' : careers[career].name}</div>
-                    <input type='button' name='career' onClick={this.handleClick} value='Edit' />
+                    <div className='fieldData'>{careers[career] && careers[career].name}</div>
+                    <input type='button' name='career' onClick={this.handleClick} value='Select' />
+                    <input type='button' name='customCareer' onClick={this.handlePopup} value='Custom' />
+
                 </div>
                 <hr />
                 <div className='fieldLabel'>PLAYER NAME:

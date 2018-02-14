@@ -16,7 +16,7 @@ class CustomSkills extends React.Component {
         const {customSkills, changeCustomData} = this.props;
         const {name, type, characteristic} = this.state;
         let newObj = {...customSkills};
-        newObj[name.replace(/\s/g,'')] = {name: name, type: type, characteristic: characteristic};
+        newObj[name.replace(/\s/g,'')] = {name, type, characteristic};
         changeCustomData(newObj, 'customSkills');
         event.preventDefault();
     };

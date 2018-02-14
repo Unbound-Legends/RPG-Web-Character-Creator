@@ -20,7 +20,6 @@ const talents = state => state.talents;
 const talentModifiers = state => state.talentModifiers;
 const weapons = state => state.weapons;
 
-
 export const calcCharacteristics = createSelector(
     archetype, archetypes, creationCharacteristics, talentModifiers,
     (archetype, archetypes, creationCharacteristics, talentModifiers) => {

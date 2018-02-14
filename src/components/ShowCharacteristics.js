@@ -20,7 +20,7 @@ class ShowCharacteristics extends React.Component {
           <div className='module' onClick={this.handleClick}>
               <div className='sectionheader'>CHARACTERISTICS</div>
               <hr />
-              <div className='characteristicsBackround'>
+              <div className='characteristicsBackground'>
                   {Object.keys(characteristics).map((stat)=>
                     <div key={stat} className={`characteristic`}>
                         <div className='characteristic-topText'>{characteristics[stat]}</div>

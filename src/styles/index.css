@@ -52,6 +52,10 @@ input[type="number"] {
     break-inside: avoid;
 }
 
+.popupModule {
+
+}
+
 .inlineblock {
     display: inline-block;
     margin: 1vw;
@@ -99,6 +103,15 @@ input[type="number"] {
     line-height: 3vw;
     font-size: 2vw;
 }
+
+.archetypePopup-characteristicsBackground {
+    background-image: url(/images/png/characteristicsBackround.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    width: 98%;
+    height: 9vw;
+    text-align: center;}
 
 .characteristic {
     background-image: url(/images/png/Characteristic.png);
@@ -182,7 +195,7 @@ input[type="number"] {
     font-size: 1.8vw;
 }
 
-.characteristicsBackround {
+.characteristicsBackground {
     background-image: url(/images/png/characteristicsBackround.png);
     background-repeat: no-repeat;
     background-position: bottom;
@@ -562,6 +575,18 @@ and (max-width: 480px) {
 
     .module {
         width: 100%;
+    }
+
+    .archetype {
+        width: 100%;
+    }
+
+    .characteristic-archetype-topText {
+        font-size: 4.5vw;
+    }
+
+    .archetypePopup-characteristicsBackground {
+        height: 16vw;
     }
 
     .sideBySide {
