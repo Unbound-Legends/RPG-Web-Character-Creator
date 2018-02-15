@@ -639,7 +639,9 @@ export default {
         ranked: true,
         book: 'CRB',
         page: '80',
-        description: 'See CRB, page 80, for more details.'
+        description: 'See CRB, page 80, for more details.',
+        modifier: {defense: 1},
+
     },
     DefensiveDriving: {
         name: 'Defensive Driving',
@@ -650,7 +652,9 @@ export default {
         ranked: true,
         book: 'CRB',
         page: '80',
-        description: 'See CRB, page 80, for more details.'
+        description: 'See CRB, page 80, for more details.',
+        modifier: {vehicleDefense: 1},
+
     },
     Enduring: {
         name: 'Enduring',

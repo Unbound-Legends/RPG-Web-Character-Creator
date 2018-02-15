@@ -495,7 +495,7 @@ input[type="number"] {
 .table-cell {
     display: table-cell;
     vertical-align: middle;
-    padding: 0 0.3vw;
+    padding: 1vw 0.5vw;
     border: black solid 1px;
 }
 
@@ -599,7 +599,9 @@ and (max-width: 480px) {
         display: block;
         width: 100%
     }
-
+    .table-cell{
+        font-size: 3vw;
+    }
     .table-cell-bottom-border {
         font-size: 2.5vw;
         padding: 0 0.5vw;

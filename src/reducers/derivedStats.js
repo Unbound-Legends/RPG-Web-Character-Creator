@@ -80,8 +80,8 @@ export const calcTalentCount = createSelector(
 );
 
 export const calcSkillDice = createSelector(
-    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount,
-    (characteristics, skillRanks, skills, talentCount) => {
+    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount, archetype, archetypes,
+    (characteristics, skillRanks, skills, talents, talentCount, archetype, archetypes) => {
         if (characteristics === null || characteristics === undefined) return '';
         let skillDice = {};
         Object.keys(skills).forEach((key) => {
@@ -100,7 +100,9 @@ export const calcSkillDice = createSelector(
                 if (i > upgrade) text += '[yellow] ';
                 else text += '[green] ';
             }
-            Object.keys(talentCount).forEach((talent)=>{
+
+            //get any dice from talents
+            Object.keys(talentCount).forEach((talent) => {
                 if (talents[talent]) {
                     if (talents[talent].modifier) {
                         if (talents[talent].modifier[key]) {
@@ -111,6 +113,14 @@ export const calcSkillDice = createSelector(
                     }
                 }
             });
+
+            //get dice from archetype
+            if (archetypes[archetype]) {
+                if (archetypes[archetype].modifier) {
+                    if (archetypes[archetype].modifier[key]) text += archetypes[archetype].modifier[key] + ' ';
+                }
+            }
+
             skillDice[key] = text;
         });
         return skillDice;
@@ -130,7 +140,7 @@ export const calcCareerCheck = createSelector(
     skills, career, careers, talents, calcTalentCount,
     (skills, career, careers, talents, talentCount) => {
         let careerSkillsList = {};
-        Object.keys(skills).forEach((skill) =>{
+        Object.keys(skills).forEach((skill) => {
             if (careers[career]) {
                 if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
                 else {
@@ -159,8 +169,8 @@ export const calcWounds = createSelector(
         //get brawn added via creation
         let creationBrawn = creationCharacteristics.Brawn;
         //get wound modifier from talentModifier
-        let talentModifier=0;
-        Object.keys(talentCount).forEach((talent)=>{
+        let talentModifier = 0;
+        Object.keys(talentCount).forEach((talent) => {
             if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.woundThreshold ? talents[talent].modifier.woundThreshold : 0) * talentCount[talent]);
         });
         return startingThreshold + startingBrawn + creationBrawn + talentModifier;
@@ -178,8 +188,8 @@ export const calcStrain = createSelector(
         //get brawn added via creation
         let creationBrawn = creationCharacteristics.Willpower;
         //get wound modifier from talentModifier
-        let talentModifier=0;
-        Object.keys(talentCount).forEach((talent)=>{
+        let talentModifier = 0;
+        Object.keys(talentCount).forEach((talent) => {
             if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
         });
         return startingThreshold + startingBrawn + creationBrawn + talentModifier;
@@ -198,8 +208,8 @@ export const calcTotalSoak = createSelector(
             if (armor[key].equipped) Armor += armor[key].soak ? +armor[key].soak : 0;
         });
         //get soak from Enduring Talent
-        let talentModifier=0;
-        Object.keys(talentCount).forEach((talent)=>{
+        let talentModifier = 0;
+        Object.keys(talentCount).forEach((talent) => {
             if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.soak ? talents[talent].modifier.soak : 0) * talentCount[talent]);
         });
         return Brawn + Armor + talentModifier;
@@ -207,13 +217,31 @@ export const calcTotalSoak = createSelector(
 );
 
 export const calcTotalDefense = createSelector(
-    armor,
-    (armor) => {
+    armor, archetype, archetypes, talents, calcTalentCount,
+    (armor, archetype, archetypes, talents, talentCount) => {
         let defense = {melee: 0, ranged: 0};
+
+        //get defense from Archetype
+        if (archetypes[archetype]) {
+            if (archetypes[archetype].modifier) {
+                defense.melee += (archetypes[archetype].modifier.meleeDefense ? +archetypes[archetype].modifier.meleeDefense : 0) + (archetypes[archetype].modifier.defense ? +archetypes[archetype].modifier.defense : 0);
+                defense.ranged += (archetypes[archetype].modifier.rangedDefense ? +archetypes[archetype].modifier.rangedDefense : 0) + (archetypes[archetype].modifier.defense ? +archetypes[archetype].modifier.defense : 0);
+            }
+        }
+
+        //get defense from Armor
         Object.keys(armor).forEach((key) => {
             if (armor[key].equipped) {
                 defense.melee += (armor[key].meleeDefense ? +armor[key].meleeDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
                 defense.ranged += (armor[key].rangedDefense ? +armor[key].rangedDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
+            }
+        });
+
+        //get defense from talents
+        Object.keys(talentCount).forEach((talent) => {
+            if (talents[talent].modifier) {
+                defense.melee += ((talents[talent].modifier.meleeDefense ? +talents[talent].modifier.meleeDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
+                defense.ranged += ((talents[talent].modifier.rangedDefense ? +talents[talent].modifier.rangedDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
             }
         });
         return defense;

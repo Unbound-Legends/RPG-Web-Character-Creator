@@ -12,6 +12,8 @@ export default {
         talents: {
             readyforanything: {
                 name: 'Ready for Anything',
+                activation: true,
+                turn: 'Incidental, Out of Turn',
                 book: 'CRB',
                 page: '36',
                 description: 'See CRB, page 36, for more details.',
@@ -40,6 +42,8 @@ export default {
         talents: {
             toughasnails: {
                 name: 'Tough as Nails',
+                activation: true,
+                turn: 'Incidental, Out of Turn',
                 book: 'CRB',
                 page: '37',
                 description: 'See CRB, page 37, for more details.',
@@ -68,6 +72,8 @@ export default {
         talents: {
             brilliant: {
                 name: 'Brilliant!',
+                activation: true,
+                turn: 'Incidental',
                 book: 'CRB',
                 page: '38',
                 description: 'See CRB, page 38, for more details.',
@@ -96,6 +102,8 @@ export default {
         talents: {
             forcefulPersonality: {
                 name: 'Forceful Personality',
+                activation: true,
+                turn: 'Incidental',
                 book: 'CRB',
                 page: '39',
                 description: 'See CRB, page 39, for more details.',
@@ -123,15 +131,16 @@ export default {
         skills: {Perception: 1},
         talents: {
             nimble: {
-                skills: {
-                    meleeDefense: 1,
-                    rangedDefense: 1
-                },
                 name: 'Nimble',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '142',
                 description: 'See CRB, page 142, for more details.',
             }
+        },
+        modifier: {
+            defense: 1
         },
         characteristics: {
             Brawn: 2,
@@ -156,13 +165,18 @@ export default {
         talents: {
             darkvision: {
                 name: 'Dark Vision',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '142',
                 description: 'See CRB, page 142, for more details.',
             },
             toughasnails: {
                 name: 'Tough as Nails',
-                book: 'CRB', page: '37',
+                activation: true,
+                turn: 'Incidental, Out of Turn',
+                book: 'CRB',
+                page: '37',
                 description: 'See CRB, page 37, for more details.',
             }
         },
@@ -189,6 +203,8 @@ export default {
         talents: {
             battlerage: {
                 name: 'Battle Rage',
+                activation: true,
+                turn: 'Attack',
                 book: 'CRB',
                 page: '143',
                 description: 'See CRB, page 143, for more details.',
@@ -217,12 +233,16 @@ export default {
         talents: {
             thebeastwithin: {
                 name: 'The Beast Within',
+                activation: true,
+                turn: 'Incidental, Out of Turn',
                 book: 'CRB',
                 page: '152',
                 description: 'See CRB, page 152, for more details.',
             },
             thehumanspirt: {
                 name: 'The Human Spirit',
+                activation: true,
+                turn: 'Incidental, Out of Turn',
                 book: 'CRB',
                 page: '152',
                 description: 'See CRB, page 152, for more details.',
@@ -251,12 +271,16 @@ export default {
         talents: {
             reanimated: {
                 name: 'Reanimated',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '153',
                 description: 'See CRB, page 153, for more details.',
             },
             deadnerves: {
                 name: 'Dead Nerves',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '153',
                 description: 'See CRB, page 153, for more details.',
@@ -285,12 +309,16 @@ export default {
         talents: {
             robot: {
                 name: 'Robot',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '174',
                 description: 'See CRB, page 174, for more details.',
             },
             inorganic: {
                 name: 'Inorganic',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '174',
                 description: 'See CRB, page 174, for more details.',
@@ -319,6 +347,8 @@ export default {
         talents: {
             afaceinacrowd: {
                 name: 'A Face in a Crowd',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '174',
                 description: 'See CRB, page 174, for more details.',
@@ -352,6 +382,8 @@ export default {
         talents: {
             naturalweapons: {
                 name: 'Natural Weapons',
+                activation: false,
+                turn: 'Attack',
                 book: 'CRB',
                 page: '182',
                 description: 'See CRB, page 182, for more details.',
@@ -380,18 +412,24 @@ export default {
         talents: {
             mindreader: {
                 name: 'Mind Reader',
+                activation: true,
+                turn: 'Action',
                 book: 'CRB',
                 page: '182',
                 description: 'See CRB, page 182, for more details.',
             },
             mindshaper: {
                 name: 'Mind Shaper',
+                activation: true,
+                turn: 'Action',
                 book: 'CRB',
                 page: '182',
                 description: 'See CRB, page 182, for more details.',
             },
             mindbreaker: {
                 name: 'Mind Breaker',
+                activation: true,
+                turn: 'Action',
                 book: 'CRB',
                 page: '182',
                 description: 'See CRB, page 182, for more details.',
@@ -421,18 +459,24 @@ export default {
         talents: {
             robot: {
                 name: 'Robot',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '174',
                 description: 'See CRB, page 174, for more details.',
             },
             networkedintelligence: {
                 name: 'Networked Intelligence',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '183',
                 description: 'See CRB, page 183, for more details.',
             },
             inorganic: {
                 name: 'Inorganic',
+                activation: false,
+                turn: false,
                 book: 'CRB',
                 page: '174',
                 description: 'See CRB, page 174, for more details.',
@@ -461,15 +505,23 @@ export default {
         talents: {
             spaceisourbirthright: {
                 name: 'Space is our Birth Right',
+                activation: false,
+                turn: 'Action',
                 book: 'CRB',
                 page: '183',
                 description: 'See CRB, page 183, for more details.',
             },
             hightechbaubles: {
                 name: 'High Tech Baubles',
+                activation: false,
+                turn: false,
                 source: 'CRB page 183',
                 description: 'See CRB, page 183, for more details.',
             }
+        },
+        modifier: {
+            Astrocartography: '[advantage]',
+            Knowledge: '[advantage]'
         },
         characteristics: {
             Brawn: 2,
