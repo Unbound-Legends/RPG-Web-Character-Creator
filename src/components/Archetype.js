@@ -10,7 +10,7 @@ class Archetype extends React.Component {
   handleSelect = (event) => {
     let value = event.target.value==='' ? null : event.target.value;
     this.props.changeData(value, 'archetype');
-    this.props.changeData({}, 'archetypeSpecialSkills');
+    this.props.changeData('', 'archetypeSpecialSkills');
   };
 
   render() {
