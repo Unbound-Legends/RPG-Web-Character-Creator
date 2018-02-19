@@ -1,7 +1,6 @@
 import {createSelector} from 'reselect';
 import {dataTypes} from '../data/lists';
 
-
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
 const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
@@ -14,10 +13,11 @@ const earnedXP = state => state.earnedXP;
 const gear = state => state.gear;
 const masterSkills = state => state.masterSkills;
 const masterTalents = state => state.masterTalents;
+const qualities = state => state.qualities;
 const skills = state => state.skills;
 const state = state => state;
-const talents = state => state.talents;
 const talentModifiers = state => state.talentModifiers;
+const talents = state => state.talents;
 const weapons = state => state.weapons;
 
 export const calcCharacteristics = createSelector(
@@ -42,7 +42,7 @@ export const calcArchetypeSkillRank = createSelector(
     archetype, archetypes, skills, archetypeSpecialSkills,
     (archetype, archetypes, skills, archetypeSpecialSkills) => {
         if (archetype === null) return archetypeSpecialSkills;
-        const archetypeSkills = {...archetypes[archetype].skills}
+        const archetypeSkills = {...archetypes[archetype].skills};
         let archetypeSkillRank = {};
         if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
         if (Object.keys(archetypeSkills).includes('careerSkills')) return archetypeSkillRank;
@@ -124,6 +124,44 @@ export const calcSkillDice = createSelector(
             skillDice[key] = text;
         });
         return skillDice;
+    }
+);
+
+export const calcGearDice = createSelector(
+    calcSkillDice, weapons, armor, gear, qualities,
+    (skillDice, weapons, armor, gear, qualities) => {
+        let gearDice = {};
+        ['armor', 'weapons', 'gear'].forEach((type) =>{
+            let data;
+            if (type === 'armor') data = {...armor};
+            if (type === 'weapons') data = {...weapons};
+            if (type === 'gear') data = {...gear};
+            if (!gearDice[type]) gearDice[type] = {};
+            Object.keys(data).forEach((item) => {
+                let qualityDice = [];
+                if (data[item]) {
+                    if (data[item].qualitiesList) {
+                        data[item].qualitiesList.forEach((qualityData) => {
+                            let quality = Object.keys(qualityData)[0];
+                            let rank = Object.values(qualityData)[0] === '' ? 1 : Object.values(qualityData)[0];
+                            if (qualities[quality].modifier) {
+                                if (qualities[quality].modifier.check) {
+                                    for (let i = 0; i < rank; i++) {
+                                        qualityDice.push(qualities[quality].modifier.check);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+                gearDice[type][item] = skillDice[data[item].skill] + qualityDice.map((die) => `${die}`).sort((a, b) => {
+                    if(a.length < b.length) return -1;
+                    if(a.length > b.length) return 1;
+                    return 0;
+                }).join(' ');
+            })
+        });
+        return gearDice;
     }
 );
 
@@ -217,8 +255,8 @@ export const calcTotalSoak = createSelector(
 );
 
 export const calcTotalDefense = createSelector(
-    armor, archetype, archetypes, talents, calcTalentCount,
-    (armor, archetype, archetypes, talents, talentCount) => {
+    armor, weapons, gear, qualities, archetype, archetypes, talents, calcTalentCount,
+    (armor, weapons, gear, qualities, archetype, archetypes, talents, talentCount) => {
         let defense = {melee: 0, ranged: 0};
 
         //get defense from Archetype
@@ -244,6 +282,27 @@ export const calcTotalDefense = createSelector(
                 defense.ranged += ((talents[talent].modifier.rangedDefense ? +talents[talent].modifier.rangedDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
             }
         });
+
+        //get defense from gear
+        ['armor', 'weapons', 'gear'].forEach((type) => {
+            let data;
+            if (type === 'armor') data = {...armor};
+            if (type === 'weapons') data = {...weapons};
+            if (type === 'gear') data = {...gear};
+            Object.keys(data).forEach((item) => {
+                if (data[item].qualitiesList) {
+                    data[item].qualitiesList.forEach((qualityData) => {
+                        let quality = Object.keys(qualityData)[0];
+                        let rank = Object.values(qualityData)[0] === '' ? 1 : Object.values(qualityData)[0];
+                        if (qualities[quality].modifier) {
+                            if (qualities[quality].modifier.meleeDefense) defense.melee += +qualities[quality].modifier.meleeDefense * rank;
+                            if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank ;
+                        }
+                    });
+                }
+            })
+        });
+
         return defense;
     }
 );

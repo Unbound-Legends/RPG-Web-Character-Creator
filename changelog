@@ -1,6 +1,12 @@
+-fixed accidental deletion of characters and custom data
+-weapon/armor/gear qualities functional
+-better archetype skill selector
+-dice can be added via archetype modifier
+-defense can be added via archetype modifier
+-custom careers
 -custom skill module
 -disappearing talent fix
--customdata sets
+-custom data sets
 -split careerRank and rank in skills
 -import character
 -export character

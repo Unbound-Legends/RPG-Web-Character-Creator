@@ -23,9 +23,10 @@ class CustomSkills extends React.Component {
 
     handleDelete = (event) => {
         const {customSkills, changeCustomData} = this.props;
+        changeCustomData('', 'customSkills');
         let newObj = {...customSkills};
         delete newObj[event.target.name];
-        changeCustomData(newObj, 'customSkills', false);
+        changeCustomData(newObj, 'customSkills');
         event.preventDefault();
     };
 

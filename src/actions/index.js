@@ -39,21 +39,21 @@ export const changeCharacter = (state) => {
     }
 };
 
-export const changeData = (data, type, merge = true) => {
+export const changeData = (data, type) => {
     return (dispatch, getState) => {
         const user = getState().user;
         const character = getState().character;
         const dbRef = db.doc(`users/${user}/characters/characterList/`);
-        dbRef.set ({[character]: {[type]: data}}, { merge: merge });
+        dbRef.set ({[character]: {[type]: data}}, { merge: true });
         dispatch({type: `${type}_Changed`, payload: data})
     }
 };
 
-export const changeCustomData = (data, type, merge = true) => {
+export const changeCustomData = (data, type) => {
     return (dispatch, getState) => {
         const user = getState().user;
         const dbRef = db.doc(`users/${user}/customData/data/`);
-        dbRef.set ({[type]: data}, { merge: merge });
+        dbRef.set ({[type]: data}, { merge: true });
         dispatch({type: `${type}_Changed`, payload: data})
     }
 };

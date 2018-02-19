@@ -242,3 +242,11 @@ export const talents = (state = data.talents, action) => {
     }
     return state;
 };
+
+export const qualities = (state = data.qualities, action) => {
+    if (action.type === 'customQualities_Changed') {
+        if (action.payload === null) return data.qualities;
+        else return {...action.payload, ...data.qualities};
+    }
+    return state;
+};

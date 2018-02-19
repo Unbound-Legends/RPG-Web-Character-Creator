@@ -34,9 +34,10 @@ class CustomCareers extends React.Component {
     handleDelete = (event) => {
         const {customCareers, changeCustomData, career, changeData} = this.props;
         if (career===event.target.name) changeData('', 'career');
+        changeCustomData('', 'customCareers');
         let newObj = {...customCareers};
         delete newObj[event.target.name];
-        changeCustomData(newObj, 'customCareers', false);
+        changeCustomData(newObj, 'customCareers');
         event.preventDefault();
     };
 
