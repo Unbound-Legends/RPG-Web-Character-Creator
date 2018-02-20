@@ -1,61 +1,98 @@
 import React from 'react';
-import {getData} from '../actions';
+import {changeCharacter, changeCharacterList, loadData} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import * as Component from './index';
-
+import {db} from "../firestore/db";
+import {dataTypes} from '../data/lists';
 
 class MainPage extends React.Component {
+    state = {loading: false};
 
-  componentWillMount() {
-    this.props.getData();
-  }
+    componentWillMount() {
+        const {user, changeCharacter, changeCharacterList, character} = this.props;
+        db.doc(`users/${user}/characters/characterList/`).get()
+            .then(doc => {
+                let key;
+                if (!doc.exists) {
+                    key = Math.random().toString(36).substr(2, 16);
+                    let newObj = {[key]: {}};
+                    db.doc(`users/${user}/characters/characterList/`).set(newObj);
+                    changeCharacter(key);
+                    changeCharacterList(newObj);
+                } else {
+                    key = character ? character : Object.keys(doc.data())[0];
+                    if (!character) changeCharacter(key);
+                    changeCharacterList(doc.data());
+                }
+            });
+        db.doc(`users/${user}/customData/data/`).get()
+            .then(doc => {
+                ['customArchetypes', 'customCareers', 'customMotivations', 'customSkills', 'customTalents'].forEach((type) => {
+                    let data = null;
+                    if (doc.exists) {
+                        if (doc.data()[type]) data = doc.data()[type];
+                    }
+                    this.props.loadData(data, type)
+                });
+            })
+    }
 
-  render() {
-      return <Tabs defaultIndex={0}>
-          <TabList>
-              <Tab>Character Select</Tab>
-              <Tab>Character Description</Tab>
-              <Tab>Character Image</Tab>
-              <Tab>Attributes</Tab>
-              <Tab>Archetype</Tab>
-              <Tab>Characteristics</Tab>
-              <Tab>Career</Tab>
-              <Tab>Motivations</Tab>
-              <Tab>Skills</Tab>
-              <Tab>Talents</Tab>
-              <Tab>XP Available</Tab>
-              <Tab>XP Total</Tab>
-              <Tab>Critical</Tab>
-              <Tab>Equipment Log</Tab>
-              <Tab>Carried Gear</Tab>
-              <Tab>Notes</Tab>
-              <Tab>Show Characteristics</Tab>
-              <Tab>Sign Out</Tab>
-              <Tab>About</Tab>
-          </TabList>
-          <TabPanel> <Component.CharacterSelect/> </TabPanel>
-          <TabPanel> <Component.CharacterDescription/> </TabPanel>
-          <TabPanel> <Component.CharacterImage/> </TabPanel>
-          <TabPanel> <Component.Attributes/> </TabPanel>
-          <TabPanel> <Component.Archetype/> </TabPanel>
-          <TabPanel> <Component.Characteristics/> </TabPanel>
-          <TabPanel> <Component.Career/> </TabPanel>
-          <TabPanel> <Component.Motivation/> </TabPanel>
-          <TabPanel> <Component.Skill/> </TabPanel>
-          <TabPanel> <Component.Talents/> </TabPanel>
-          <TabPanel> <Component.XPAvailable/> </TabPanel>
-          <TabPanel> <Component.XPTotal/> </TabPanel>
-          <TabPanel> <Component.Critical/> </TabPanel>
-          <TabPanel> <Component.EquipmentLog/> </TabPanel>
-          <TabPanel> <Component.CarriedGear/> </TabPanel>
-          <TabPanel> <Component.Notes/> </TabPanel>
-          <TabPanel> <Component.ShowCharacteristics/> </TabPanel>
-          <TabPanel> <Component.SignOut/> </TabPanel>
-          <TabPanel> <Component.About/> </TabPanel>
-      </Tabs>
-  }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps === this.props) return;
+        if (nextProps.character !== this.props.character) {
+            this.setState({loading: true});
+            db.doc(`users/${this.props.user}/characters/characterList/`).get()
+                .then(doc => {
+                    let key = nextProps.character;
+                    changeCharacterList(doc.data());
+                    dataTypes.forEach((type) => {
+                        let data = null;
+                        if (doc.data()[key][type]) data = doc.data()[key][type];
+                        this.props.loadData(data, type)
+                    });
+                    this.setState({loading: false})
+                })
+        }
+    }
+
+
+    render() {
+        if (this.state.loading) return <h1>LOADING</h1>
+        return (
+            <div>
+                <Component.Buttons/>
+                <div className='module mobileModule'>
+                    <Component.CharacterSelect/>
+                    <Component.CharacterImage/>
+                </div>
+                <Component.Attributes/>
+                <Component.ShowCharacteristics/>
+                <div className='module floatingXP'>
+                    <Component.XPTotal/>
+                    <Component.XPAvailable/>
+                </div>
+
+                <Component.Skill/>
+
+                <Component.CarriedGear/>
+
+                <Component.Motivation/>
+                <Component.EquipmentLog/>
+                <div className='module'>
+                    <Component.CharacterDescription/>
+                    <Component.Notes/>
+                </div>
+                <Component.Critical/>
+                <Component.TalentList/>
+
+                <Component.Talents/>
+                <Component.About/>
+            </div>
+
+        )
+    }
 }
 
 function mapStateToProps(state) {
@@ -65,8 +102,8 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({getData}, dispatch);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({changeCharacter, changeCharacterList, loadData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MainPage);

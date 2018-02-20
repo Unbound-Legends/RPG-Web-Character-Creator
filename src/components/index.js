@@ -19,7 +19,7 @@ export {default as Description} from './Description';
 export {default as EquipmentLog} from './EquipmentLog';
 export {default as GearStats} from './GearStats';
 export {default as ImportExport} from './ImportExport';
-export {default as MainPage} from './NewMainPage';
+export {default as MainPage} from './MainPage';
 export {default as MotivationBlock} from './MotivationBlock';
 export {default as Motivation} from './Motivation';
 export {default as Notes} from './Notes';

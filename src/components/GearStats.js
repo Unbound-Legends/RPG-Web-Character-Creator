@@ -77,7 +77,8 @@ class GearStats extends React.Component {
             return (
                 <div>
                     <div>Name:</div>
-                    <input type='text' value={weapons.name ? weapons.name : ''} name='name' onChange={this.handleChange}/>
+                    <input type='text' value={weapons.name ? weapons.name : ''} name='name'
+                           onChange={this.handleChange}/>
                     <div>Damage:</div>
                     <input type='number' value={weapons.damage ? weapons.damage : ''} name='damage'
                            onChange={this.handleChange}/>
@@ -96,7 +97,7 @@ class GearStats extends React.Component {
                     <div>Skill:</div>
                     <select value={weapons.skill ? weapons.skill : ''} name='skill' onChange={this.handleChange}>
                         <option value=''/>
-                        {Object.keys(skills).sort().map((skillKey)=>
+                        {Object.keys(skills).sort().map((skillKey) =>
                             skills[skillKey].type === 'Combat' &&
                             <option value={skillKey} key={skillKey}>{skills[skillKey].name}</option>
                         )}
@@ -114,6 +115,8 @@ class GearStats extends React.Component {
                         )}
                     </select>
                     {weapons.qualities &&
+                    qualities[weapons.qualities] &&
+
                     qualities[weapons.qualities].ranked &&
                     <input type='number' className='shortTextBox' maxLength='2'
                            value={weapons.qualityRank ? weapons.qualityRank : ''} name='qualityRank'
@@ -164,6 +167,7 @@ class GearStats extends React.Component {
                         )}
                     </select>
                     {armor.qualities &&
+                    qualities[armor.qualities] &&
                     qualities[armor.qualities].ranked &&
                     <input type='number' className='shortTextBox' maxLength='2'
                            value={armor.qualityRank ? armor.qualityRank : ''} name='qualityRank'
@@ -201,6 +205,7 @@ class GearStats extends React.Component {
                         )}
                     </select>
                     {gear.qualities &&
+                    qualities[gear.qualities] &&
                     qualities[gear.qualities].ranked &&
                     <input type='number' className='shortTextBox' maxLength='2'
                            value={gear.qualityRank ? gear.qualityRank : ''} name='qualityRank'
