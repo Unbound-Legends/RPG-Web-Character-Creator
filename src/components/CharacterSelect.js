@@ -1,21 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeData, addCharacter, changeCharacter, deleteCharacter} from '../actions';
+import {changeData, addCharacter, changeCharacter, deleteCharacter, changeCharacterName, loadData} from '../actions';
 import popup from 'react-popup';
 import {Archetype, Career, CustomCareers} from './index';
 
 class CharacterSelect extends React.Component {
     state = {
-        name: this.props.description.name,
+        name: this.props.characterList ? this.props.characterList[this.props.character] : '',
         playerName: this.props.description.playerName,
-        character: this.props.character
     };
 
     componentWillReceiveProps(nextProps) {
-        this.setState({character: nextProps.character});
         this.setState({playerName: nextProps.description.playerName});
-        this.setState({name: nextProps.description.name});
+        if(this.props.characterList) this.setState({name: this.props.characterList[nextProps.character]});
+        if(nextProps.characterList) this.setState({name: nextProps.characterList[nextProps.character]});
     }
 
     handleClick = (event) => {
@@ -30,8 +29,9 @@ class CharacterSelect extends React.Component {
     };
 
     handleSelect = (event) => {
-        const {changeCharacter} = this.props;
+        const {changeCharacter, loadData} = this.props;
         changeCharacter(event.target.value);
+        loadData();
         event.preventDefault();
     };
 
@@ -65,33 +65,41 @@ class CharacterSelect extends React.Component {
                 <div>
                     <div>Are you super serious? This cannot be undone</div>
                     <input type='button' value='NO! I am not ready for this!' onClick={popup.close}/>
-                    <input type='button' value='YES! I no longer want this character in my life' onClick={() => {
-                        this.props.deleteCharacter();
-                        popup.close();
-                    }}/>
+                    <input type='button' value='YES! I no longer want this character in my life' onClick={this.confirmedDelete}/>
                 </div>
             ),
         })
     };
 
+    confirmedDelete = (event) => {
+        this.props.deleteCharacter();
+        event.preventDefault();
+        popup.close();
+    };
+
+    handleNameChange = (event) => {
+        event.preventDefault();
+        this.props.changeCharacterName(this.state.name);
+    };
+
     render() {
-        const {archetype, archetypes, careers, career, characterList} = this.props;
-        const {name, playerName, character} = this.state;
+        const {archetype, archetypes, careers, career, characterList, character} = this.props;
+        const {name, playerName} = this.state;
         return (
             <div className='inlineblock sideBySide' style={{textAlign: 'left'}}>
                 <div className='module-header'>CHARACTER</div>
                 <hr/>
-                <select value={character ? character : ''} onChange={this.handleSelect}>
-                    {Object.keys(characterList).map((key) =>
+                <select value={character} onChange={this.handleSelect}>
+                    {characterList && Object.keys(characterList).map((key) =>
                         <option value={key}
-                                key={key}>{characterList[key].description ? characterList[key].description.name : key}</option>
+                                key={key}>{characterList[key]}</option>
                     )}
                 </select>
-                <button onClick={() => this.props.addCharacter()}>New Character</button>
+                <button onClick={()=>this.props.addCharacter()}>New Character</button>
                 <button onClick={this.handleDelete}>Delete Character</button>
                 <div className='fieldLabel'>CHARACTER NAME:
                     <input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange}
-                           onBlur={this.handleBlur}/>
+                           onBlur={this.handleNameChange}/>
                 </div>
                 <hr/>
                 <div className='fieldLabel'>ARCHETYPE:
@@ -131,7 +139,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeData, addCharacter, changeCharacter, deleteCharacter}, dispatch);
+    return bindActionCreators({changeData, addCharacter, changeCharacter, deleteCharacter, changeCharacterName, loadData}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CharacterSelect);

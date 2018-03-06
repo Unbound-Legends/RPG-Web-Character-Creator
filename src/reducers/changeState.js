@@ -1,6 +1,10 @@
 import * as initialState from './initialState';
 import * as data from '../data';
 
+export const fix = (state = true, action) =>{
+    if (action.type === 'fix_Changed')  return action.payload;
+    return state;
+};
 
 export const user = (state = null, action) =>{
     if (action.type === 'User_Changed')  return action.payload;
@@ -8,17 +12,17 @@ export const user = (state = null, action) =>{
 };
 
 export const character = (state = null, action) =>{
-    if (action.type === 'character_Changed') {
-        return action.payload;
-    }
+    if (action.type === 'character_Changed') return action.payload;
     return state;
 };
 
-export const characterList = (state = {}, action) =>{
-    if (action.type === 'characterList_Changed') {
-        if (action.payload===null) return {};
-        else return action.payload;
-    }
+export const loading = (state = true, action) =>{
+    if (action.type === 'loading_Changed') return action.payload;
+    return state;
+};
+
+export const characterList = (state = null, action) =>{
+    if (action.type === 'characterList_Changed') return action.payload;
     return state;
 };
 
@@ -159,6 +163,20 @@ export const gear = (state = {}, action) =>{
     if (action.type === 'gear_Changed') {
         if (action.payload===null) return {};
         else return action.payload;
+    }
+    return state;
+};
+
+export const customDataList = (state = null, action) =>{
+    if (action.type === 'customDataList_Changed') {
+        return action.payload;
+    }
+    return state;
+};
+
+export const customDataSet = (state = null, action) =>{
+    if (action.type === 'customDataSet_Changed') {
+        return action.payload;
     }
     return state;
 };

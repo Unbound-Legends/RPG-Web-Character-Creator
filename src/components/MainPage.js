@@ -1,65 +1,24 @@
 import React from 'react';
-import {changeCharacter, changeCharacterList, loadData} from '../actions';
+import {changeCharacter, changeCharacterList, loadCharacterList, loadData, loadCustomDataList, loadCustomDataSet} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as Component from './index';
-import {db} from "../firestore/db";
-import {dataTypes} from '../data/lists';
 
 class MainPage extends React.Component {
-    state = {loading: false};
 
     componentWillMount() {
-        const {user, changeCharacter, changeCharacterList, character} = this.props;
-        db.doc(`users/${user}/characters/characterList/`).get()
-            .then(doc => {
-                let key;
-                if (!doc.exists) {
-                    key = Math.random().toString(36).substr(2, 16);
-                    let newObj = {[key]: {}};
-                    db.doc(`users/${user}/characters/characterList/`).set(newObj);
-                    changeCharacter(key);
-                    changeCharacterList(newObj);
-                } else {
-                    key = character ? character : Object.keys(doc.data())[0];
-                    if (!character) changeCharacter(key);
-                    changeCharacterList(doc.data());
-                }
-            });
-        db.doc(`users/${user}/customData/data/`).get()
-            .then(doc => {
-                ['customArchetypes', 'customCareers', 'customMotivations', 'customSkills', 'customTalents'].forEach((type) => {
-                    let data = null;
-                    if (doc.exists) {
-                        if (doc.data()[type]) data = doc.data()[type];
-                    }
-                    this.props.loadData(data, type)
-                });
-            })
+        const {loadCustomDataList, loadCharacterList} = this.props;
+        loadCharacterList();
+        loadCustomDataList();
     }
-
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps === this.props) return;
-        if (nextProps.character !== this.props.character) {
-            this.setState({loading: true});
-            db.doc(`users/${this.props.user}/characters/characterList/`).get()
-                .then(doc => {
-                    let key = nextProps.character;
-                    changeCharacterList(doc.data());
-                    dataTypes.forEach((type) => {
-                        let data = null;
-                        if (doc.data()[key][type]) data = doc.data()[key][type];
-                        this.props.loadData(data, type)
-                    });
-                    this.setState({loading: false})
-                })
-        }
+        if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
+        if (nextProps.customDataSet && nextProps.customDataSet !== this.props.customDataSet) this.props.loadCustomDataSet();
     }
 
-
     render() {
-        if (this.state.loading) return <h1>LOADING</h1>
+        if (this.props.loading) return <h1>LOADING</h1>;
         return (
             <div>
                 <Component.Buttons/>
@@ -99,11 +58,13 @@ function mapStateToProps(state) {
     return {
         user: state.user,
         character: state.character,
+        loading: state.loading,
+        customDataSet: state.customDataSet,
     };
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeCharacter, changeCharacterList, loadData}, dispatch);
+    return bindActionCreators({changeCharacter, changeCharacterList, loadCharacterList, loadData, loadCustomDataList, loadCustomDataSet}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MainPage);

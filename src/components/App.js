@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeUser} from '../actions';
-import {User, MainPage} from './index';
+import {User, MainPage, Fix} from './index';
 import firebase from 'firebase';
 
 class App extends React.Component {
@@ -24,7 +24,7 @@ class App extends React.Component {
         if (loading) return <div> </div>;
         return (
           <div className='App'>
-            {this.props.user === null ? <User /> : <MainPage />}
+            {this.props.user === null ? <User /> : (this.props.fix ? <Fix/> : <MainPage />)}
           </div>
 
         );
@@ -34,6 +34,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
+        fix: state.fix,
     };
 }
 

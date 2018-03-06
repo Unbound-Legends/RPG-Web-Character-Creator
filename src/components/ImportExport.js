@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addCharacter} from '../actions';
+import {importCharacter} from '../actions';
 import {characterExport} from '../reducers';
 
 
@@ -17,7 +17,7 @@ class ImportExport extends React.Component {
                     switch (newData) {
                         case 'character':
                             let importCharacter = data[newData];
-                            this.props.addCharacter(importCharacter);
+                            this.props.importCharacter(importCharacter);
                             alert('Character Imported!');
                             break;
                         default:
@@ -51,6 +51,6 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({addCharacter}, dispatch);
+    return bindActionCreators({importCharacter}, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(ImportExport);

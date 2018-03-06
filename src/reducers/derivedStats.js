@@ -8,6 +8,8 @@ const armor = state => state.armor;
 const career = state => state.career;
 const careers = state => state.careers;
 const careerSkillsRank = state => state.careerSkillsRank;
+const character = state => state.character;
+const characterList = state => state.characterList;
 const creationCharacteristics = state => state.creationCharacteristics;
 const earnedXP = state => state.earnedXP;
 const gear = state => state.gear;
@@ -383,12 +385,13 @@ export const calcTotalXP = createSelector(
 );
 
 export const buildCharacterExport = createSelector(
-    state,
-    (state) => {
+    state, character, characterList,
+    (state, character, characterList) => {
         let file = {};
         dataTypes.forEach((type) => {
             file[type] = state[type];
         });
+        file.name = characterList[character];
         let json = JSON.stringify({character: file});
         let blob = new Blob([json], {type: "application/json"});
         return URL.createObjectURL(blob);

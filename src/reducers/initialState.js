@@ -31,15 +31,4 @@ export const description = {
     features: ''
 };
 
-export const customSkills = {
-    ButtStuff: {
-        name: 'Butt Stuff',
-        type: 'General',
-        characteristic: 'Cunning',
-        book: 'CRB',
-        page: '57',
-        setting: 'All'
-    }
-}
-
 

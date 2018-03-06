@@ -18,3 +18,11 @@ export const dataTypes = [
     'talentModifiers',
     'weapons',
 ];
+
+export const customDataTypes = [
+    'customArchetypes',
+    'customCareers',
+    'customMotivations',
+    'customSkills',
+    'customTalents'
+];
