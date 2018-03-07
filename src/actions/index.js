@@ -149,6 +149,7 @@ export const changeCustomData = (data, type, merge = true) => {
 
 
 export const changeUser = (state) => {
+    console.log(`UserID: ${state}`);
     return {type: 'User_Changed', payload: state}
 };
 
@@ -196,7 +197,6 @@ export const fixDataStructure = () => {
                             let key = Math.random().toString(36).substr(2, 16);
                             db.doc(`users/${user}/data/customDataList`).set({[key]: 'New Dataset'});
                             let oldData = doc.data();
-                            console.log(oldData);
                             Object.keys(oldData).forEach((customSkill, index) => {
                                 let data = oldData[customSkill];
                                 db.doc(`users/${user}/data/customDataSets/${key}/${customSkill}/`).set({data});

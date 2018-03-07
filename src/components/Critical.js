@@ -11,7 +11,7 @@ class Critical extends React.Component {
 
     handleSubmit = (event) => {
         let newArr = [...this.props.critical];
-        let value = this.state.value.replace(/\D/g, '');
+        let value = this.state.value;
         if (value !== '') {
             newArr.push(value);
             this.props.changeData(newArr, 'critical');
@@ -21,7 +21,9 @@ class Critical extends React.Component {
     };
 
     handleChange = (event) => {
-        this.setState({value: event.target.value});
+        console.log(event.target.type)
+        let number = +event.target.value.replace(/\D+/g, '');
+        if (!(number>999)) this.setState({value: number});
         event.preventDefault();
     };
 
@@ -55,7 +57,7 @@ class Critical extends React.Component {
           <div className='module-header'>CRITICAL INJURIES</div>
           <hr />
             <div>Add a critical:
-                <input className='shortTextBox' type='text' name='critical' maxLength='3' value={value} onChange={this.handleChange}/>
+                <input className='shortTextBox' type='number' name='critical' maxLength='3' value={value} onChange={this.handleChange}/>
                 <input type='submit' onClick={this.handleSubmit}/>
             </div>
             {critical.map((critRoll, index)=>

@@ -16,7 +16,7 @@ class Attributes extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState({[event.target.name]: +event.target.value});
+        this.setState({[event.target.name]: +event.target.value.replace(/\D+/g, '')});
         event.preventDefault();
     };
 

@@ -15,7 +15,8 @@ class EquipmentLog extends React.Component {
     }
 
     handleChangeMoney = (event) => {
-        this.setState({money: event.target.value});
+        let number = +event.target.value.replace(/\D+/g, '');
+        if (!(number>9999999999)) this.setState({money: number});
         event.preventDefault();
     };
 

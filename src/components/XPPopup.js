@@ -13,8 +13,9 @@ class XPPopup extends React.Component {
 
     handleChange = (event) => {
         let xp = event.target.value;
-        if (event.target.value.includes('+')) xp = +xp.replace(/\D+/g, '') + +this.state.earnedXP;
-        this.setState({earnedXP: xp});
+        if (xp>999) return;
+        if (xp.includes('+')) xp = +xp.replace(/\D+/g, '') + +this.state.earnedXP;
+        this.setState({earnedXP: +xp});
         event.preventDefault();
     };
 

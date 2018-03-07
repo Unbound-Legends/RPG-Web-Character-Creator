@@ -20,11 +20,16 @@ class GearStats extends React.Component {
     handleChange = (event) => {
         const {type} = this.props;
         const {armor, gear, weapons} = this.state;
+        let value = event.target.value;
+        if (event.target.type==='number') {
+            value = +value.replace(/\D+/g, '');
+            if (value>99) return;
+        }
         let newObj = {};
         if (type === 'weapons') newObj = {...weapons};
         if (type === 'armor') newObj = {...armor};
         if (type === 'gear') newObj = {...gear};
-        newObj[event.target.name] = event.target.value;
+        newObj[event.target.name] = value;
         this.setState({[type]: newObj});
         event.preventDefault();
     };
@@ -140,7 +145,7 @@ class GearStats extends React.Component {
             return (
                 <div>
                     <div>Name:</div>
-                    <input type='text' value={armor.name} name='name'
+                    <input type='text' maxLength='20' value={armor.name} name='name'
                            onChange={this.handleChange}/>
                     <div>Soak:</div>
                     <input type='number' value={armor.soak} name='soak'

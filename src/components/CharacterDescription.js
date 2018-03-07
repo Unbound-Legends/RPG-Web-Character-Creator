@@ -45,6 +45,7 @@ class CharacterDescription extends React.Component {
                           onBlur={this.handleBlur.bind(this, 'features')}
                           rows='10'
                           cols='45'
+                          maxLength='1000'
                           className='textField'
                           value={description.features ? description.features : ''}/>
             </div>

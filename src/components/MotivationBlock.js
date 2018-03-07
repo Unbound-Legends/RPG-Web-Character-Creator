@@ -62,6 +62,7 @@ class MotivationBlock extends React.Component {
                   rows='10'
                   cols='45'
                   className='textField'
+                  maxLength='1000'
                   placeholder={description ? '' : `Enter your ${type}...`}
                   value={description ? description : ''}>
         </textarea>

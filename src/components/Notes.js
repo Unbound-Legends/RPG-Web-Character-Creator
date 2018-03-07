@@ -33,6 +33,7 @@ class Notes extends React.Component {
                               onBlur={this.handleBlur}
                               rows='38'
                               cols='45'
+                              maxLength='1000'
                               className='textField'
                               value={notes}/>
             </div>

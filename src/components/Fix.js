@@ -11,7 +11,7 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <h1>Fixing your broken data structure</h1>
+            <h1>Checking data structure</h1>
         )
     }
 }
