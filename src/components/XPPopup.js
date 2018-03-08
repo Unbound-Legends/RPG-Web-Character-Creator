@@ -13,7 +13,7 @@ class XPPopup extends React.Component {
 
     handleChange = (event) => {
         let xp = event.target.value;
-        if (xp>999) return;
+        if (xp > 9999) return;
         if (xp.includes('+')) xp = +xp.replace(/\D+/g, '') + +this.state.earnedXP;
         this.setState({earnedXP: +xp});
         event.preventDefault();
