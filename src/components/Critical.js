@@ -21,9 +21,8 @@ class Critical extends React.Component {
     };
 
     handleChange = (event) => {
-        console.log(event.target.type)
         let number = +event.target.value.replace(/\D+/g, '');
-        if (!(number>999)) this.setState({value: number});
+        if (!(number > 999)) this.setState({value: number});
         event.preventDefault();
     };
 
@@ -50,23 +49,24 @@ class Critical extends React.Component {
 
 
     render() {
-    const {value} = this.state;
-    const {critical} = this.props;
-    return (
-      <div className='module' style={{textAlign: 'left'}}>
-          <div className='module-header'>CRITICAL INJURIES</div>
-          <hr />
-            <div>Add a critical:
-                <input className='shortTextBox' type='number' name='critical' maxLength='3' value={value} onChange={this.handleChange}/>
-                <input type='submit' onClick={this.handleSubmit}/>
-            </div>
-            {critical.map((critRoll, index)=>
-                <div key={index} onClick={this.criticalPopup.bind(this, index)}>
-                    <Description text={criticalText(critRoll)} />
+        const {value} = this.state;
+        const {critical} = this.props;
+        return (
+            <div className='module' style={{textAlign: 'left'}}>
+                <div className='module-header'>CRITICAL INJURIES</div>
+                <hr/>
+                <div>Add a critical:
+                    <input className='shortTextBox' type='number' name='critical' value={value > 0 ? value : ''}
+                           onChange={this.handleChange}/>
+                    <input type='submit' onClick={this.handleSubmit}/>
                 </div>
-            )}
-      </div>
-    );
+                {critical.map((critRoll, index) =>
+                    <div key={index} onClick={this.criticalPopup.bind(this, index)}>
+                        <Description text={criticalText(critRoll)}/>
+                    </div>
+                )}
+            </div>
+        );
     }
 }
 
@@ -78,7 +78,7 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 

@@ -3,7 +3,11 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
 import {
-    encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, totalSoak,
+    encumbranceLimit,
+    strainThreshold,
+    totalDefense,
+    totalEncumbrance,
+    totalSoak,
     woundThreshold
 } from "../reducers";
 
@@ -16,6 +20,7 @@ class Attributes extends React.Component {
     }
 
     handleChange = (event) => {
+        if (+event.target.value > 99) return;
         this.setState({[event.target.name]: +event.target.value.replace(/\D+/g, '')});
         event.preventDefault();
     };
@@ -33,7 +38,7 @@ class Attributes extends React.Component {
         return (
             <div className='module'>
                 <div className='sectionheader'>ATTRIBUTES</div>
-                <hr />
+                <hr/>
                 <div className='singleAttribute Soak'>
                     <div className='AttributeText'>{totalSoak}</div>
                 </div>
@@ -41,32 +46,40 @@ class Attributes extends React.Component {
                     <div className='AttributeText'>
                         <div className='editableAttributeText doubleAttributeText'>{woundThreshold}</div>
                         <input type='number'
-                            name='currentWound'
-                            maxLength='2'
-                            className='doubleAttributeText editableAttributeText '
-                            onChange={this.handleChange}
-                            onBlur={this.handleBlur}
-                            value={currentWound}/>
+                               name='currentWound'
+                               maxLength='2'
+                               className='doubleAttributeText editableAttributeText '
+                               onChange={this.handleChange}
+                               onBlur={this.handleBlur}
+                               placeholder={currentWound}
+                               value={currentWound > 0 ? currentWound : ''}/>
                     </div>
                 </div>
                 <div className={`singleAttribute Strain`}>
                     <div className='AttributeText'>
                         <div className='editableAttributeText doubleAttributeText'>{strainThreshold}</div>
                         <input type='number'
-                           name='currentStrain'
-                           maxLength='2'
-                           className='doubleAttributeText editableAttributeText'
-                           onChange={this.handleChange}
-                           onBlur={this.handleBlur}
-                           value={currentStrain}/>
+                               name='currentStrain'
+                               maxLength='2'
+                               className='doubleAttributeText editableAttributeText'
+                               onChange={this.handleChange}
+                               onBlur={this.handleBlur}
+                               placeholder={currentStrain}
+                               value={currentStrain > 0 ? currentStrain : ''}/>
                     </div>
                 </div>
                 <div className='singleAttribute Defense'>
-                    <div className='AttributeText'><div className='doubleAttributeText'>{totalDefense.ranged}</div><div className='doubleAttributeText'>{totalDefense.melee}</div> </div>
+                    <div className='AttributeText'>
+                        <div className='doubleAttributeText'>{totalDefense.ranged}</div>
+                        <div className='doubleAttributeText'>{totalDefense.melee}</div>
+                    </div>
                 </div>
                 <div className='singleAttribute DoubleAttribute'>
                     <div className='singleAttribute-topText'>ENCUMBRANCE</div>
-                    <div className='singleAttribute-bottomText'><div className='doubleAttributeText'>{encumbranceLimit}</div><div className='doubleAttributeText'>{totalEncumbrance}</div></div>
+                    <div className='singleAttribute-bottomText'>
+                        <div className='doubleAttributeText'>{encumbranceLimit}</div>
+                        <div className='doubleAttributeText'>{totalEncumbrance}</div>
+                    </div>
                 </div>
             </div>
         )
@@ -88,7 +101,7 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 

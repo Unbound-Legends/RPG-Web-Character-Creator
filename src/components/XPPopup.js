@@ -31,7 +31,7 @@ class XPPopup extends React.Component {
         return(
             <div>
                 <div>Earned XP:</div>
-                <input type='number' value={earnedXP} onChange={this.handleChange} />
+                <input type='number' value={earnedXP > 0 ? earnedXP : ''} onChange={this.handleChange}/>
                 <input type='submit' value='+5' onClick={this.handleChange}/>
                 <input type='submit' value='+10' onClick={this.handleChange}/>
                 <input type='submit' value='Submit' onClick={this.handleSubmit}/>

@@ -2,10 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import {GearStats, Description} from "./index";
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
+import {Description, GearStats} from "./index";
 import popup from "react-popup";
-import {skillDice, gearDice} from "../reducers";
+import {gearDice, skillDice} from "../reducers";
 
 class EquipmentLog extends React.Component {
     state = {money: this.props.money};
@@ -16,7 +16,7 @@ class EquipmentLog extends React.Component {
 
     handleChangeMoney = (event) => {
         let number = +event.target.value.replace(/\D+/g, '');
-        if (!(number>9999999999)) this.setState({money: number});
+        if (!(number > 9999999999)) this.setState({money: number});
         event.preventDefault();
     };
 
@@ -70,7 +70,8 @@ class EquipmentLog extends React.Component {
                 <div className='module-header'>EQUIPMENT LOG</div>
                 <hr/>
                 <div className='fieldLabel'>MONEY:
-                    <input type='number' value={money} maxLength='25' onBlur={this.handleBlurChangeMoney}
+                    <input type='number' value={money > 0 ? money : ''}
+                           onBlur={this.handleBlurChangeMoney}
                            onChange={this.handleChangeMoney}/>
                 </div>
                 <Tabs defaultIndex={0}>
@@ -108,7 +109,7 @@ class EquipmentLog extends React.Component {
                                     <div className='table-cell-bottom-border'
                                          onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].range}</div>
                                     <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '' ) : ''}</div>
+                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '') : ''}</div>
                                     <div className='table-cell-bottom-border'
                                          onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].encumbrance}</div>
                                     <div className='table-cell-bottom-border'
