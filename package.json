@@ -20,6 +20,8 @@
     "url": "https://github.com/SkyJedi/RPG-Web-Character-Creator/issues"
   },
   "dependencies": {
+    "ajv": "^6.2.1",
+    "deepmerge": "^2.1.0",
     "firebase": "^4.10.1",
     "firebase-admin": "^5.9.0",
     "keymaster": "^1.6.2",
