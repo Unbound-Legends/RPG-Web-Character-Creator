@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {importCharacter} from '../actions';
 import {characterExport} from '../reducers';
+import {Button, Col, Input, Label} from 'reactstrap';
 
 
 class ImportExport extends React.Component {
@@ -13,7 +14,7 @@ class ImportExport extends React.Component {
         reader.onload = (event) => {
             try {
                 let data = JSON.parse(event.target.result);
-                Object.keys(data).forEach((newData)=> {
+                Object.keys(data).forEach((newData) => {
                     switch (newData) {
                         case 'character':
                             let importCharacter = data[newData];
@@ -25,7 +26,7 @@ class ImportExport extends React.Component {
                             break;
                     }
                 });
-            } catch(e) {
+            } catch (e) {
                 alert(e);
             }
         };
@@ -35,10 +36,13 @@ class ImportExport extends React.Component {
 
     render() {
         return (
-          <div style={{textAlign: 'left', display: 'inline-block'}}>
-              Export Character:<a href={this.props.characterExport} download='character'><button type="button">export</button></a>
-              Import Character:<input type='file' accept='.json' onChange={this.handleFile}/>
-          </div>
+            <Col sm='auto' className='align-self-end align-self-middle'>
+                <Button color='link' className='p-0 m-2 align-middle' href={this.props.characterExport}
+                        download='character'>Export Character</Button>
+                {' '}
+                <Label for='importCharacter' className='btn-link p-0 m-2 align-middle'>Import Character</Label>
+                <Input type='file' accept='.json' onChange={this.handleFile} id='importCharacter' hidden/>
+            </Col>
 
         );
     }
@@ -50,7 +54,8 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({importCharacter}, dispatch);
 }
+
 export default connect(mapStateToProps, matchDispatchToProps)(ImportExport);

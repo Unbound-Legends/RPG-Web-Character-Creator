@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeUser} from '../actions';
-import {User, MainPage, Fix} from './index';
+import {Fix, MainPage, User} from './index';
 import firebase from 'firebase';
 
 class App extends React.Component {
@@ -22,12 +22,9 @@ class App extends React.Component {
     render() {
         const {loading} = this.state;
         if (loading) return <div> </div>;
-        return (
-          <div className='App'>
-            {this.props.user === null ? <User /> : (this.props.fix ? <Fix/> : <MainPage />)}
-          </div>
-
-        );
+        if (!(this.props.user)) return <User/>;
+        if (this.props.fix) return <Fix/>;
+        else return <MainPage/>;
     }
 }
 

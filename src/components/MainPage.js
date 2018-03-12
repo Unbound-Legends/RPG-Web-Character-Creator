@@ -1,8 +1,34 @@
 import React from 'react';
-import {changeCharacter, changeCharacterList, loadCharacterList, loadData, loadCustomDataList, loadCustomDataSet} from '../actions';
+import {
+    changeCharacter,
+    changeCharacterList,
+    loadCharacterList,
+    loadCustomDataList,
+    loadCustomDataSet,
+    loadData
+} from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as Component from './index';
+import {Container, Row} from 'reactstrap';
+import {
+    About,
+    Attributes,
+    Buttons,
+    CarriedGear,
+    CharacterDescription,
+    CharacterImage,
+    CharacterSelect,
+    Critical,
+    EquipmentLog,
+    Motivation,
+    Notes,
+    ShowCharacteristics,
+    Skill,
+    TalentList,
+    Talents,
+    XPAvailable,
+    XPTotal
+} from './index';
 
 class MainPage extends React.Component {
 
@@ -20,36 +46,27 @@ class MainPage extends React.Component {
     render() {
         if (this.props.loading) return <h1>LOADING</h1>;
         return (
-            <div>
-                <Component.Buttons/>
-                <div className='module mobileModule'>
-                    <Component.CharacterSelect/>
-                    <Component.CharacterImage/>
-                </div>
-                <Component.Attributes/>
-                <Component.ShowCharacteristics/>
-                <div className='module floatingXP'>
-                    <Component.XPTotal/>
-                    <Component.XPAvailable/>
-                </div>
-
-                <Component.Skill/>
-
-                <Component.CarriedGear/>
-
-                <Component.Motivation/>
-                <Component.EquipmentLog/>
-                <div className='module'>
-                    <Component.CharacterDescription/>
-                    <Component.Notes/>
-                </div>
-                <Component.Critical/>
-                <Component.TalentList/>
-
-                <Component.Talents/>
-                <Component.About/>
-            </div>
-
+            <Container className='mx-2 my-1'>
+                <Buttons/>
+                <Row className='my-1 '>
+                    <CharacterSelect/>
+                    <CharacterImage/>
+                </Row>
+                <Attributes/>
+                <ShowCharacteristics/>
+                <XPTotal/>
+                <XPAvailable/>
+                <Skill/>
+                <CarriedGear/>
+                <Motivation/>
+                <EquipmentLog/>
+                <CharacterDescription/>
+                <Notes/>
+                <Critical/>
+                <TalentList/>
+                <Talents/>
+                <About/>
+            </Container>
         )
     }
 }
@@ -64,7 +81,14 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeCharacter, changeCharacterList, loadCharacterList, loadData, loadCustomDataList, loadCustomDataSet}, dispatch);
+    return bindActionCreators({
+        changeCharacter,
+        changeCharacterList,
+        loadCharacterList,
+        loadData,
+        loadCustomDataList,
+        loadCustomDataSet
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(MainPage);

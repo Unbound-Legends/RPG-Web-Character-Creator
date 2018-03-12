@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {Col} from 'reactstrap';
 import {changeData} from '../actions';
 import popup from 'react-popup';
 import {CharacterImagePopup} from "./index";
@@ -15,14 +16,15 @@ class CharacterImage extends React.Component {
                 <CharacterImagePopup/>
             )
         })
-    }
+    };
 
     render() {
         const {description} = this.props;
         return (
-            <div className='inlineblock sideBySide'>
-                <img className='characterImage' src={description.image ? description.image : ''} onClick={this.editImage} alt='not found' ref={img => this.img = img} onError={() => this.img.src ='images/png/Crest.png'} />
-            </div>
+            <Col sm='5' className='align-items-center'>
+                <img className='img-fluid' src={description.image ? description.image : ''} onClick={this.editImage}
+                     alt='not found' ref={img => this.img = img} onError={() => this.img.src = 'images/png/Crest.png'}/>
+            </Col>
 
         );
     }

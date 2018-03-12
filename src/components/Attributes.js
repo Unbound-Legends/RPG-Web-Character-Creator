@@ -2,6 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
+import {Card, CardBody, CardHeader, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 import {
     encumbranceLimit,
     strainThreshold,
@@ -36,52 +37,67 @@ class Attributes extends React.Component {
         const {woundThreshold, strainThreshold, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
         const {currentStrain, currentWound} = this.state;
         return (
-            <div className='module'>
-                <div className='sectionheader'>ATTRIBUTES</div>
+            <Col lg='12'>
+                <Row className='justify-content-end'><b>ATTRIBUTES</b></Row>
                 <hr/>
-                <div className='singleAttribute Soak'>
-                    <div className='AttributeText'>{totalSoak}</div>
-                </div>
-                <div className={`singleAttribute Wounds`}>
-                    <div className='AttributeText'>
-                        <div className='editableAttributeText doubleAttributeText'>{woundThreshold}</div>
-                        <input type='number'
-                               name='currentWound'
-                               maxLength='2'
-                               className='doubleAttributeText editableAttributeText '
-                               onChange={this.handleChange}
-                               onBlur={this.handleBlur}
-                               placeholder={currentWound}
-                               value={currentWound > 0 ? currentWound : ''}/>
-                    </div>
-                </div>
-                <div className={`singleAttribute Strain`}>
-                    <div className='AttributeText'>
-                        <div className='editableAttributeText doubleAttributeText'>{strainThreshold}</div>
-                        <input type='number'
-                               name='currentStrain'
-                               maxLength='2'
-                               className='doubleAttributeText editableAttributeText'
-                               onChange={this.handleChange}
-                               onBlur={this.handleBlur}
-                               placeholder={currentStrain}
-                               value={currentStrain > 0 ? currentStrain : ''}/>
-                    </div>
-                </div>
-                <div className='singleAttribute Defense'>
-                    <div className='AttributeText'>
-                        <div className='doubleAttributeText'>{totalDefense.ranged}</div>
-                        <div className='doubleAttributeText'>{totalDefense.melee}</div>
-                    </div>
-                </div>
-                <div className='singleAttribute DoubleAttribute'>
-                    <div className='singleAttribute-topText'>ENCUMBRANCE</div>
-                    <div className='singleAttribute-bottomText'>
-                        <div className='doubleAttributeText'>{encumbranceLimit}</div>
-                        <div className='doubleAttributeText'>{totalEncumbrance}</div>
-                    </div>
-                </div>
-            </div>
+                <Row className='my-2'>
+                    <Col>
+                        <Card className='text-center h-100'>
+                            <CardHeader>SOAK</CardHeader>
+                            <CardBody>{totalSoak}</CardBody>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card className='text-center h-100'>
+                            <CardHeader>WOUNDS</CardHeader>
+                            <CardBody>
+                                <InputGroup>
+                                    <InputGroupAddon addonType='prepend'>{woundThreshold} {' | '} </InputGroupAddon>
+
+                                    <Input type='number'
+                                           name='currentWound'
+                                           maxLength='2'
+                                           className='p-0'
+                                           onChange={this.handleChange}
+                                           onBlur={this.handleBlur}
+                                           placeholder={currentWound}
+                                           value={currentWound > 0 ? currentWound : ''}/>
+                                </InputGroup>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card className='text-center h-100'>
+                            <CardHeader>STRAIN</CardHeader>
+                            <CardBody>
+                                <InputGroup>
+                                    <InputGroupAddon addonType='prepend'>{strainThreshold} {' | '} </InputGroupAddon>
+                                    <Input type='number'
+                                           name='currentStrain'
+                                           maxLength='2'
+                                           className='p-0'
+                                           onChange={this.handleChange}
+                                           onBlur={this.handleBlur}
+                                           placeholder={currentStrain}
+                                           value={currentStrain > 0 ? currentStrain : ''}/>
+                                </InputGroup>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card className='text-center h-100'>
+                            <CardHeader>DEFENSE</CardHeader>
+                            <CardBody>{totalDefense.ranged} {' | '} {totalDefense.melee}</CardBody>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card className='text-center h-100'>
+                            <CardHeader>ENCUMBRANCE</CardHeader>
+                            <CardBody>{encumbranceLimit} {' | '} {totalEncumbrance}</CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+            </Col>
         )
     }
 

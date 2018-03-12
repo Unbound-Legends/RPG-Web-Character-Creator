@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeData, addCharacter, changeCharacter, deleteCharacter, changeCharacterName, loadData} from '../actions';
+import {Button, ButtonGroup, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
+import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
 import popup from 'react-popup';
 import {Archetype, Career, CustomCareers} from './index';
 
@@ -9,24 +10,15 @@ class CharacterSelect extends React.Component {
     state = {
         name: this.props.characterList ? this.props.characterList[this.props.character] : '',
         playerName: this.props.description.playerName,
+        archetypeModal: false,
+        careerModal: false,
     };
 
     componentWillReceiveProps(nextProps) {
         this.setState({playerName: nextProps.description.playerName});
-        if(this.props.characterList) this.setState({name: this.props.characterList[nextProps.character]});
-        if(nextProps.characterList) this.setState({name: nextProps.characterList[nextProps.character]});
+        if (this.props.characterList) this.setState({name: this.props.characterList[nextProps.character]});
+        if (nextProps.characterList) this.setState({name: nextProps.characterList[nextProps.character]});
     }
-
-    handleClick = (event) => {
-        let content = <div/>;
-        if (event.target.name === 'archetype') content = <Archetype/>;
-        if (event.target.name === 'career') content = <Career/>;
-        popup.create({
-            title: `Select ${event.target.name}`,
-            className: 'alert',
-            content: (content),
-        })
-    };
 
     handleSelect = (event) => {
         const {changeCharacter, loadData} = this.props;
@@ -65,7 +57,8 @@ class CharacterSelect extends React.Component {
                 <div>
                     <div>Are you super serious? This cannot be undone</div>
                     <input type='button' value='NO! I am not ready for this!' onClick={popup.close}/>
-                    <input type='button' value='YES! I no longer want this character in my life' onClick={this.confirmedDelete}/>
+                    <input type='button' value='YES! I no longer want this character in my life'
+                           onClick={this.confirmedDelete}/>
                 </div>
             ),
         })
@@ -84,42 +77,68 @@ class CharacterSelect extends React.Component {
 
     render() {
         const {archetype, archetypes, careers, career, characterList, character} = this.props;
-        const {name, playerName} = this.state;
+        const {name, playerName, archetypeModal, careerModal} = this.state;
         return (
-            <div className='inlineblock sideBySide' style={{textAlign: 'left'}}>
-                <div className='module-header'>CHARACTER</div>
+            <Col sm='7'>
+                <Row className='justify-content-end'><b>CHARACTER</b></Row>
                 <hr/>
-                <select value={character} onChange={this.handleSelect}>
-                    {characterList && Object.keys(characterList).map((key) =>
-                        <option value={key}
-                                key={key}>{characterList[key]}</option>
-                    )}
-                </select>
-                <button onClick={()=>this.props.addCharacter()}>New Character</button>
-                <button onClick={this.handleDelete}>Delete Character</button>
-                <div className='fieldLabel'>CHARACTER NAME:
-                    <input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange}
-                           onBlur={this.handleNameChange}/>
-                </div>
+                <Row className='my-2'>
+                    <Col>
+                        <InputGroup>
+                            <Input type='select' value={character} onChange={this.handleSelect}>
+                                {characterList && Object.keys(characterList).map((key) =>
+                                    <option value={key}
+                                            key={key}>{characterList[key]}</option>
+                                )}
+                            </Input>
+                            <InputGroupAddon addonType='append'>
+                                <ButtonGroup>
+                                    <Button onClick={() => this.props.addCharacter()}>New</Button>
+                                    <Button onClick={this.handleDelete}>Delete</Button>
+                                </ButtonGroup>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </Col>
+                </Row>
+                <Row className='my-2'>
+                    <Col>
+                        <b>CHARACTER NAME:</b>
+                        <Input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange}
+                               onBlur={this.handleNameChange}/>
+                    </Col>
+                </Row>
                 <hr/>
-                <div className='fieldLabel'>ARCHETYPE:
-                    <div className='fieldData'>{archetype === null ? '' : archetypes[archetype].name}</div>
-                    <input type='button' name='archetype' onClick={this.handleClick} value='Select'/>
-                </div>
+                <Row>
+                    <Col>
+                        <b>ARCHETYPE:</b> {archetype === null ? '' : archetypes[archetype].name} {' '}
+                        <Button name='archetype'
+                                onClick={() => this.setState({archetypeModal: !this.state.archetypeModal})}>Select</Button>
+                    </Col>
+                </Row>
                 <hr/>
-                <div className='fieldLabel'>CAREER:
-                    <div className='fieldData'>{careers[career] && careers[career].name}</div>
-                    <input type='button' name='career' onClick={this.handleClick} value='Select'/>
-                    <input type='button' name='customCareer' onClick={this.handlePopup} value='Custom'/>
+                <Row>
+                    <Col>
+                        <b>CAREER:</b> {careers[career] && careers[career].name} {' '}
+                        <ButtonGroup>
+                            <Button name='career'
+                                    onClick={() => this.setState({careerModal: !this.state.careerModal})}>Select</Button>
+                            <Button name='customCareer' onClick={this.handlePopup}>Custom</Button>
+                        </ButtonGroup>
+                    </Col>
+                </Row>
+                <hr/>
+                <Row>
+                    <Col>
+                        <b>NAME:</b> <Input type='text' value={playerName} maxLength='25' name='playerName'
+                                            onChange={this.handleChange}
+                                            onBlur={this.handleBlur}/>
+                    </Col>
+                </Row>
+                <hr/>
+                <Archetype modal={archetypeModal} handleClose={() => this.setState({archetypeModal: false})}/>
+                <Career modal={careerModal} handleClose={() => this.setState({careerModal: false})}/>
 
-                </div>
-                <hr/>
-                <div className='fieldLabel'>PLAYER NAME:
-                    <input type='text' value={playerName} maxLength='25' name='playerName' onChange={this.handleChange}
-                           onBlur={this.handleBlur}/>
-                </div>
-                <hr/>
-            </div>
+            </Col>
 
         );
     }
@@ -139,7 +158,14 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeData, addCharacter, changeCharacter, deleteCharacter, changeCharacterName, loadData}, dispatch);
+    return bindActionCreators({
+        changeData,
+        addCharacter,
+        changeCharacter,
+        deleteCharacter,
+        changeCharacterName,
+        loadData
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CharacterSelect);

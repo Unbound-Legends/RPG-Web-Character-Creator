@@ -1,9 +1,9 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { changeData } from '../actions';
+import {changeData} from '../actions';
 import {ArchetypeStats} from './index';
-import popup from 'react-popup';
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
 class Archetype extends React.Component {
 
@@ -14,18 +14,23 @@ class Archetype extends React.Component {
   };
 
   render() {
-    const {archetype, archetypes} = this.props;
+      const {archetype, archetypes, handleClose, modal} = this.props;
     return (
-      <div className='popupModule' style={{textAlign: 'left'}}>
-        <select value={archetype ? archetype : ''} onChange={this.handleSelect}>
-          <option value=''/>
-          {Object.keys(archetypes).map((key)=>
-            <option value={key} key={key}>{archetypes[key].name}</option>
-          )}
-        </select>
-        <ArchetypeStats />
-          <input type='submit' value='Submit' onClick={popup.close}/>
-      </div>
+        <Modal isOpen={modal} toggle={handleClose}>
+            <ModalHeader toggle={handleClose}>Select Archetype</ModalHeader>
+            <ModalBody>
+                <Input type='select' value={archetype ? archetype : ''} onChange={this.handleSelect}>
+                    <option value=''/>
+                    {Object.keys(archetypes).map((key) =>
+                        <option value={key} key={key}>{archetypes[key].name}</option>
+                    )}
+                </Input>
+                <ArchetypeStats/>
+            </ModalBody>
+            <ModalFooter>
+                <Button color='secondary' onClick={handleClose}>Close</Button>
+            </ModalFooter>
+        </Modal>
     );
   }
 }

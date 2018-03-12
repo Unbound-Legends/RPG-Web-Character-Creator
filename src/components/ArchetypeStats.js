@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Description, ArchetypeSkills} from './index';
+import {Col, Row} from 'reactstrap';
+import {ArchetypeSkills, Description} from './index';
 
 class ArchetypeStats extends React.Component {
 
@@ -9,9 +10,9 @@ class ArchetypeStats extends React.Component {
     const masterArchetype = archetypes[archetype];
     if (!archetype) return <div/>;
     return (
-      <div>
+        <Col>
         <h2>Archetype:&nbsp;<span className='title'>{masterArchetype.name}</span></h2>
-        <p><b>Starting Stats: </b></p>
+            <Row><b>Starting Stats: </b></Row>
         <div className='archetype'>
             <div className='archetypePopup-characteristicsBackground'>
                 {Object.keys(masterArchetype.characteristics).map((stat)=>
@@ -41,7 +42,7 @@ class ArchetypeStats extends React.Component {
         </div>
         <div>
           <b>Starting Talents:</b>
-          {Object.keys(masterArchetype.talents : '').map((talent)=>
+            {Object.keys(masterArchetype.talents) : '').map((talent)=>
             <div key={talent} style={{textIndent: '1em'}}>
               <p><b>{masterArchetype.talents[talent].name}</b></p>
               <Description text={masterArchetype.talents[talent].description}/>
@@ -52,7 +53,7 @@ class ArchetypeStats extends React.Component {
 
           <p><b>Description:</b></p>
           <div style={{textIndent: '1em'}}><Description text={masterArchetype.description} /></div>
-      </div>
+        </Col>
     );
   }
 }

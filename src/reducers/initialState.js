@@ -1,7 +1,3 @@
-export const masterTalents = {
-  1:{1:''}
-};
-
 export const masterMotivations = {
   Desire: {}, Fear: {}, Strength: {}, Flaw: {}
 };
@@ -22,13 +18,10 @@ export const talentModifiers = {
 export const description = {
     name: 'New Character',
     playerName: 'Enter Player Name',
-    gender: '',
-    age: '',
-    height: '',
-    build: '',
-    hair: '',
-    eyes: '',
-    features: ''
 };
 
+export function masterTalents() {
+    let talent = {1: ''};
+    return {1: talent};
+}
 

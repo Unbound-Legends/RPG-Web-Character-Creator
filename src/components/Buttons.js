@@ -1,13 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeUser, addCharacter} from '../actions';
+import {addCharacter, changeUser} from '../actions';
 import firebase from 'firebase';
+import {Button, Col, Row} from 'reactstrap';
 import {ImportExport} from './index';
 
 class Buttons extends React.Component {
-
-
 
     handleClick = () => {
         firebase.auth().signOut()
@@ -22,11 +21,14 @@ class Buttons extends React.Component {
 
     render() {
         return (
-          <div className='hidePrint' style={{textAlign: 'right'}}>
-              <ImportExport />
-              <input type='button' onClick={this.handleDonate} value="Donate" />
-              <button onClick={this.handleClick}>Sign Out</button>
-          </div>
+            <Row className='justify-content-end align-items-center'>
+                <ImportExport/>
+                <Col sm='auto'>
+                    <Button size='sm' onClick={this.handleDonate}>Donate</Button>
+                    {' '}
+                    <Button size='sm' onClick={this.handleClick}>Sign Out</Button>
+                </Col>
+            </Row>
 
         );
     }
@@ -38,7 +40,8 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeUser, addCharacter}, dispatch);
 }
+
 export default connect(mapStateToProps, matchDispatchToProps)(Buttons);

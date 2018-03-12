@@ -69,9 +69,9 @@ export const masterSkills = (state = {}, action) =>{
     return state;
 };
 
-export const masterTalents = (state = {...initialState.masterTalents}, action) =>{
+export const masterTalents = (state = {...initialState.masterTalents()}, action) => {
     if (action.type === 'masterTalents_Changed') {
-        if (action.payload===null) return {...initialState.masterTalents};
+        if (action.payload === null) return {...initialState.masterTalents()};
         else return action.payload;
     }
     return state;
@@ -176,9 +176,7 @@ export const customDataList = (state = null, action) =>{
 };
 
 export const customDataSet = (state = null, action) =>{
-    if (action.type === 'customDataSet_Changed') {
-        return action.payload;
-    }
+    if (action.type === 'customDataSet_Changed') return action.payload;
     return state;
 };
 
