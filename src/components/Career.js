@@ -16,13 +16,13 @@ class Career extends React.Component {
     };
 
     handleCheck = (event) => {
-        let careerSkillsRank = [...this.props.careerSkillsRank];
-        if (careerSkillsRank.includes(event.target.name)) {
-            careerSkillsRank.forEach((skill, index) => {
-                careerSkillsRank[skill] === event.target.name && careerSkillsRank.splice(index, 1);
+        let arr = [...this.props.careerSkillsRank];
+        if (arr.includes(event.target.name)) {
+            arr.forEach((skill, index) => {
+                if (arr[index] === event.target.name) arr.splice(index, 1);
             })
-        } else careerSkillsRank.push(event.target.name);
-        if (this.props.maxCareerSkills >= careerSkillsRank.length) this.props.changeData(careerSkillsRank, 'careerSkillsRank');
+        } else arr.push(event.target.name);
+        if (this.props.maxCareerSkills >= arr.length) this.props.changeData(arr, 'careerSkillsRank');
         else event.preventDefault();
     };
 

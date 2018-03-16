@@ -108,7 +108,7 @@ class TalentSelection extends React.Component {
 
                 <ModalFooter>
                     <Button disabled={talentSelection === 'Dedication' && selection === ''}
-                            onClick={this.handleSubmit}>Sumbit</Button>
+                            onClick={this.handleSubmit}>Enter</Button>
                     <Button onClick={handleClose}>Cancel</Button>
                 </ModalFooter>
             </Modal>

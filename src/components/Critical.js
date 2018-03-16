@@ -41,10 +41,10 @@ class Critical extends React.Component {
                 <Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
                 <hr/>
                 <Row className='my-2'>
-                    <b className='my-auto'>Add a critical:&nbsp;</b>
-                    <Input className='shortTextBox w-25' type='number' name='critical' value={value > 0 ? value : ''}
+                    <b className='my-auto'>Add a critical:</b>
+                    <Input className='w-10 mx-2' type='number' name='critical' value={value > 0 ? value : ''}
                            onChange={this.handleChange}/>
-                    <Button onClick={this.handleSubmit}>Add Critical</Button>
+                    <Button size='sm' onClick={this.handleSubmit}>Add Critical</Button>
                 </Row>
                 {critical.map((critRoll, index) =>
                     <Row className='my-2' key={index} onClick={() => this.setState({modal: index})}>

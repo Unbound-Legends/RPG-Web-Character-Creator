@@ -53,7 +53,7 @@ class MotivationBlock extends React.Component {
         const name = masterMotivations[type].key;
         const {description} = this.state;
         return (
-            <Card>
+            <Card className='m-2' style={{width: '350px'}}>
                 <CardHeader>
                     <InputGroup>
                         <InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>

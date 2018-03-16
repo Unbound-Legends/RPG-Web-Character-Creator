@@ -3,7 +3,7 @@ export const dataTypes = [
     'archetypeSpecialSkills',
     'armor',
     'career',
-    'careerSkills',
+    'careerSkillsRank',
     'creationCharacteristics',
     'critical',
     'currentStrain',

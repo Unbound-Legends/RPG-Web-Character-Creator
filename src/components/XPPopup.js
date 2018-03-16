@@ -38,7 +38,7 @@ class XPPopup extends React.Component {
                     <ButtonGroup>
                         <Button value='+5' onClick={this.handleChange}>+5</Button>
                         <Button value='+10' onClick={this.handleChange}>+10</Button>
-                        <Button value='Submit' onClick={this.handleSubmit}>Submit</Button>
+                        <Button onClick={this.handleSubmit}>Enter</Button>
                     </ButtonGroup>
                 </ModalBody>
             </Modal>

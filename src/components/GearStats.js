@@ -103,7 +103,7 @@ class GearStats extends React.Component {
                                 Damage:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={weapons.damage ? weapons.damage : ''}
+                                <Input type='number' value={weapons.damage ? weapons.damage : 0}
                                        name='damage'
                                        onChange={this.handleChange}/>
                             </Col>
@@ -113,7 +113,7 @@ class GearStats extends React.Component {
                                 Critical Rating:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={weapons.critical ? weapons.critical : ''}
+                                <Input type='number' value={weapons.critical ? weapons.critical : 0}
                                        name='critical'
                                        onChange={this.handleChange}/>
                             </Col>
@@ -157,7 +157,7 @@ class GearStats extends React.Component {
                             </Col>
                             <Col sm='4'>
                                 <Input type='number'
-                                       value={weapons.encumbrance ? weapons.encumbrance : ''}
+                                       value={weapons.encumbrance ? weapons.encumbrance : 0}
                                        name='encumbrance'
                                        onChange={this.handleChange}/>
                             </Col>
@@ -196,7 +196,7 @@ class GearStats extends React.Component {
                         </Row>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.handleSubmit}>Sumbit</Button>
+                        <Button onClick={this.handleSubmit}>Enter</Button>
                         <Button onClick={this.handleDelete}>Delete</Button>
                     </ModalFooter>
                 </Modal>
@@ -212,7 +212,7 @@ class GearStats extends React.Component {
                                 Name:
                             </Col>
                             <Col sm='4'>
-                                <Input type='text' maxLength='20' value={armor.name} name='name'
+                                <Input type='text' maxLength='20' value={armor.name ? armor.name : ''} name='name'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
@@ -221,7 +221,7 @@ class GearStats extends React.Component {
                                 Soak:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={armor.soak} name='soak'
+                                <Input type='number' value={armor.soak ? armor.soak : 0} name='soak'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
@@ -230,7 +230,7 @@ class GearStats extends React.Component {
                                 Defense:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={armor.defense} name='defense'
+                                <Input type='number' value={armor.defense ? armor.defense : 0} name='defense'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
@@ -239,7 +239,8 @@ class GearStats extends React.Component {
                                 Ranged Defense:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={armor.rangedDefense} name='rangedDefense'
+                                <Input type='number' value={armor.rangedDefense ? armor.rangedDefense : 0}
+                                       name='rangedDefense'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
@@ -248,7 +249,8 @@ class GearStats extends React.Component {
                                 Melee Defense:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={armor.meleeDefense} name='meleeDefense'
+                                <Input type='number' value={armor.meleeDefense ? armor.meleeDefense : 0}
+                                       name='meleeDefense'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
@@ -257,7 +259,8 @@ class GearStats extends React.Component {
                                 Encumbrance:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={armor.encumbrance} name='encumbrance'
+                                <Input type='number' value={armor.encumbrance ? armor.encumbrance : 0}
+                                       name='encumbrance'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
@@ -323,7 +326,7 @@ class GearStats extends React.Component {
                                 Amount:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={gear.amount ? gear.amount : ''}
+                                <Input type='number' value={gear.amount ? gear.amount : 0}
                                        name='amount'
                                        onChange={this.handleChange}/>
                             </Col>
@@ -333,7 +336,7 @@ class GearStats extends React.Component {
                                 Encumbrance:
                             </Col>
                             <Col sm='4'>
-                                <Input type='number' value={gear.encumbrance ? gear.encumbrance : ''}
+                                <Input type='number' value={gear.encumbrance ? gear.encumbrance : 0}
                                        name='encumbrance'
                                        onChange={this.handleChange}/>
                             </Col>

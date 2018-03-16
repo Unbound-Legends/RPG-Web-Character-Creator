@@ -11,11 +11,9 @@ class Motivation extends React.Component {
             <Col xl='12'>
                 <Row className='justify-content-end'><h5>MOTIVATIONS</h5></Row>
                 <hr/>
-                <Row>
+                <Row className='justify-content-center'>
                     {Object.keys(masterMotivations).map((type) =>
-                        <Col className='my-2' key={type}>
                             <MotivationBlock key={type} type={type}/>
-                        </Col>
                     )}
                 </Row>
             </Col>

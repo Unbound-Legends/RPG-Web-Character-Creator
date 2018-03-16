@@ -22,11 +22,11 @@ class TalentBlock extends React.Component {
         return (
             <Card onClick={() => this.setState({modal: true})} className='m-1 talentCard'>
                 <CardHeader className='p-1 text-center' style={{backgroundColor: color}}>
-                    <DynamicFont content={talent && talent.name}/>
+                    <DynamicFont content={talent ? talent.name : 'inactive'}/>
                 </CardHeader>
                 <CardBody className='p-1'>
                     <CardText>
-                        {(talent ? talent.description + '\n' + (talent.activation ? talent.turn : '') : 'inactive')}
+                        {(talent ? talent.description + '\n' + (talent.activation ? talent.turn : '') : '')}
                     </CardText>
                 </CardBody>
                 <TalentSelection modal={this.state.modal}

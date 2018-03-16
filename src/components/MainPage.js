@@ -47,25 +47,25 @@ class MainPage extends React.Component {
         return (
             <Container className='mx-2'>
                 <Buttons/>
-                <Row className='m-1'>
+                <Row className='m-1 no-break'>
                     <CharacterSelect/>
                     <CharacterImage/>
                 </Row>
-                <Row className='m-1'><Attributes/></Row>
-                <Row className='m-1'><ShowCharacteristics/></Row>
-                <Row className='m-1'><Critical/></Row>
-                <Row className='m-1'><CarriedGear/></Row>
-                <Row className='m-1 '><XPBoxes/></Row>
-                <Row className='m-1 breakBefore'><Skill/></Row>
-                <Row className='m-1 breakBefore'><Motivation/></Row>
+                <Row className='m-1 no-break'><Attributes/></Row>
+                <Row className='m-1 no-break'><ShowCharacteristics/></Row>
+                <Row className='m-1 no-break'><Critical/></Row>
+                <Row className='m-1 no-break'><CarriedGear/></Row>
+                <Row className='m-1 no-break'><XPBoxes/></Row>
+                <Row className='m-1 no-break'><Skill/></Row>
+                <Row className='m-1 no-break'><Motivation/></Row>
                 <Row className='m-1'><EquipmentLog/></Row>
-                <Row className='m-1 justify-content-around'>
+                <Row className='m-1 justify-content-around no-break'>
                     <CharacterDescription/>
                     <Notes/>
                 </Row>
-                <Row className='m-1 '><TalentList/></Row>
-                <Row className='m-1 breakBefore'><Talents/></Row>
-                <Row className='m-1 justify-content-center'><About/></Row>
+                <Row className='m-1 no-break'><TalentList/></Row>
+                <Row className='m-1 no-break'><Talents/></Row>
+                <Row className='m-1 justify-content-center no-break'><About/></Row>
             </Container>
         )
     }

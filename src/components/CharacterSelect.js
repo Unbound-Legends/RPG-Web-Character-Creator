@@ -93,7 +93,8 @@ class CharacterSelect extends React.Component {
                 <Row className='my-2'>
                     <Col className='m-auto'>
                         <b>CHARACTER NAME:</b>
-                        <Input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange}
+                        <Input type='text' value={name ? name : 'New Character'} maxLength='25' name='name'
+                               onChange={this.handleChange}
                                onBlur={this.handleNameChange}/>
                     </Col>
                 </Row>
