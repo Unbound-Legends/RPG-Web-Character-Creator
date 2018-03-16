@@ -26,8 +26,7 @@ import {
     Skill,
     TalentList,
     Talents,
-    XPAvailable,
-    XPTotal
+    XPBoxes,
 } from './index';
 
 class MainPage extends React.Component {
@@ -44,28 +43,29 @@ class MainPage extends React.Component {
     }
 
     render() {
-        if (this.props.loading) return <h1>LOADING</h1>;
+        if (this.props.loading) return <h1 style={{textAlign: 'center', marginTop: '2rem'}}>LOADING</h1>;
         return (
-            <Container className='mx-2 my-1'>
+            <Container className='mx-2'>
                 <Buttons/>
-                <Row className='my-1 '>
+                <Row className='m-1'>
                     <CharacterSelect/>
                     <CharacterImage/>
                 </Row>
-                <Attributes/>
-                <ShowCharacteristics/>
-                <XPTotal/>
-                <XPAvailable/>
-                <Skill/>
-                <CarriedGear/>
-                <Motivation/>
-                <EquipmentLog/>
-                <CharacterDescription/>
-                <Notes/>
-                <Critical/>
-                <TalentList/>
-                <Talents/>
-                <About/>
+                <Row className='m-1'><Attributes/></Row>
+                <Row className='m-1'><ShowCharacteristics/></Row>
+                <Row className='m-1'><Critical/></Row>
+                <Row className='m-1'><CarriedGear/></Row>
+                <Row className='m-1 '><XPBoxes/></Row>
+                <Row className='m-1 breakBefore'><Skill/></Row>
+                <Row className='m-1 breakBefore'><Motivation/></Row>
+                <Row className='m-1'><EquipmentLog/></Row>
+                <Row className='m-1 justify-content-around'>
+                    <CharacterDescription/>
+                    <Notes/>
+                </Row>
+                <Row className='m-1 '><TalentList/></Row>
+                <Row className='m-1 breakBefore'><Talents/></Row>
+                <Row className='m-1 justify-content-center'><About/></Row>
             </Container>
         )
     }

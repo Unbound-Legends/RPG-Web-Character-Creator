@@ -31,8 +31,10 @@ export default class User extends Component {
                             <Button color='primary' onClick={this.handleClick}>Sign In with Google</Button>
                         </ButtonGroup>
                     </Row>
+                    <Row className='justify-content-center'>
+                        <About/>
+                    </Row>
                 </Container>
-                <About/>
             </div>
         );
     }

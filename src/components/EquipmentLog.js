@@ -2,13 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
+import {Button, Col, Input, Row, Table} from 'reactstrap';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Description, GearStats} from "./index";
-import popup from "react-popup";
 import {gearDice, skillDice} from "../reducers";
 
 class EquipmentLog extends React.Component {
-    state = {money: this.props.money};
+    state = {money: this.props.money, weaponsModal: false, armorModal: false, gearModal: false};
 
     componentWillReceiveProps(nextProps) {
         this.setState({money: nextProps.money});
@@ -28,22 +28,12 @@ class EquipmentLog extends React.Component {
 
     addGear = (type, event) => {
         let key = Math.random().toString(36).substr(2, 16);
-        let content = <GearStats keyID={key} type={type}/>;
-        popup.create({
-            title: `New ${type}`,
-            className: 'alert',
-            content: content
-        });
+        this.setState({[`${type}Modal`]: key});
         event.preventDefault();
     };
 
     editGear = (type, key, event) => {
-        let content = <GearStats keyID={key} type={type}/>;
-        popup.create({
-            title: `Edit ${type}`,
-            className: 'alert',
-            content: content
-        });
+        this.setState({[`${type}Modal`]: key});
         event.preventDefault();
     };
 
@@ -66,15 +56,17 @@ class EquipmentLog extends React.Component {
         const {weapons, armor, gear, skills, gearDice, qualities} = this.props;
         const {money} = this.state;
         return (
-            <div className='module hidePrint'>
-                <div className='module-header'>EQUIPMENT LOG</div>
+            <Col lg='12' onClick={this.handleClick}>
+                <Row className='justify-content-end'><h5>EQUIPMENT LOG</h5></Row>
                 <hr/>
-                <div className='fieldLabel'>MONEY:
-                    <input type='number' value={money > 0 ? money : ''}
+                <Row className='my-2'>
+                    <b className='my-auto'>MONEY:&nbsp;</b>
+                    <Input type='number' value={money > 0 ? money : ''}
                            onBlur={this.handleBlurChangeMoney}
-                           onChange={this.handleChangeMoney}/>
-                </div>
-                <Tabs defaultIndex={0}>
+                           onChange={this.handleChangeMoney}
+                           className='w-25'/>
+                </Row>
+                <Tabs defaultIndex={0} className='d-print-none'>
                     <TabList>
                         <Tab>WEAPONS</Tab>
                         <Tab>ARMOR</Tab>
@@ -82,126 +74,146 @@ class EquipmentLog extends React.Component {
                     </TabList>
                     <TabPanel>
                         {Object.keys(weapons).length > 0 &&
-                        <div className='table'>
-                            <div className='table-header'>
-                                <div className='table-header table-cell-bottom-border'>CARRY</div>
-                                <div className='table-header table-cell-bottom-border'>NAME</div>
-                                <div className='table-header table-cell-bottom-border'>DAM</div>
-                                <div className='table-header table-cell-bottom-border'>CRIT</div>
-                                <div className='table-header table-cell-bottom-border'>RANGE</div>
-                                <div className='table-header table-cell-bottom-border'>SKILL</div>
-                                <div className='table-header table-cell-bottom-border'>ENCUM</div>
-                                <div className='table-header table-cell-bottom-border'>QUAL</div>
-                                <div className='table-header table-cell-bottom-border'>DICE</div>
-                            </div>
+                        <Table className='text-center'>
+                            <thead>
+                            <tr>
+                                <th>CARRY</th>
+                                <th>NAME</th>
+                                <th>DAM</th>
+                                <th>CRIT</th>
+                                <th>RANGE</th>
+                                <th>SKILL</th>
+                                <th>ENCUM</th>
+                                <th>QUAL</th>
+                                <th>DICE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             {Object.keys(weapons).map((key) =>
-                                <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox'
-                                                                                     checked={weapons[key].carried}
-                                                                                     onChange={this.handleStatus.bind(this, 'weapons', key, 'carried')}/>
-                                    </div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].name}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].damage}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].critical}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].range}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '') : ''}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].encumbrance}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}>{weapons[key].qualitiesList && weapons[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'weapons', key)}><Description
-                                        text={gearDice.weapons[key]}/></div>
-                                </div>
+                                <tr key={key}>
+                                    <td>
+                                        <input type='checkbox'
+                                               className='text-center'
+                                               checked={weapons[key].carried}
+                                               onChange={this.handleStatus.bind(this, 'weapons', key, 'carried')}/>
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}>
+                                        {weapons[key].name}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}
+                                        className='text-center'>
+                                        {weapons[key].damage}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}
+                                        className='text-center'>
+                                        {weapons[key].critical}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}>
+                                        {weapons[key].range}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}>
+                                        {weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '') : ''}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}
+                                        className='text-center'>
+                                        {weapons[key].encumbrance}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}>
+                                        {weapons[key].qualitiesList && weapons[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'weapons', key)}>
+                                        <Description text={gearDice.weapons[key]}/>
+                                    </td>
+                                </tr>
                             )}
-                        </div>
+                            </tbody>
+                        </Table>
                         }
-                        <input type='submit' value='Add Weapon' onClick={this.addGear.bind(this, 'weapons')}/>
+                        <Button onClick={this.addGear.bind(this, 'weapons')}>Add Weapon</Button>
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(armor).length > 0 &&
-                        <div className='table'>
-                            <div className='table-header'>
-                                <div className='table-header table-cell-bottom-border'>EQUIP</div>
-                                <div className='table-header table-cell-bottom-border'>CARRY</div>
-                                <div className='table-header table-cell-bottom-border'>NAME</div>
-                                <div className='table-header table-cell-bottom-border'>SOAK</div>
-                                <div className='table-header table-cell-bottom-border'>DEF</div>
-                                <div className='table-header table-cell-bottom-border'>RANGED DEF</div>
-                                <div className='table-header table-cell-bottom-border'>MELEE DEF</div>
-                                <div className='table-header table-cell-bottom-border'>ENCUM</div>
-                                <div className='table-header table-cell-bottom-border'>QUAL</div>
-                            </div>
+                        <Table className='text-center'>
+                            <thead>
+                            <tr>
+                                <th>EQUIP</th>
+                                <th>CARRY</th>
+                                <th>NAME</th>
+                                <th>SOAK</th>
+                                <th>DEF</th>
+                                <th>RANGED DEF</th>
+                                <th>MELEE DEF</th>
+                                <th>ENCUM</th>
+                                <th>QUAL</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             {Object.keys(armor).map((key) =>
-                                <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox'
-                                                                                     checked={armor[key].equipped}
-                                                                                     onChange={this.handleStatus.bind(this, 'armor', key, 'equipped')}/>
-                                    </div>
-                                    <div className='table-cell-bottom-border'><input type='checkbox'
-                                                                                     checked={armor[key].carried}
-                                                                                     onChange={this.handleStatus.bind(this, 'armor', key, 'carried')}/>
-                                    </div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].name}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].soak}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].defense}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].rangedDefense}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].meleeDefense}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].encumbrance}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].qualitiesList && armor[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</div>
-                                </div>
+                                <tr key={key}>
+                                    <td>
+                                        <input type='checkbox'
+                                               checked={armor[key].equipped}
+                                               onChange={this.handleStatus.bind(this, 'armor', key, 'equipped')}/>
+                                    </td>
+                                    <td>
+                                        <input type='checkbox'
+                                               checked={armor[key].carried}
+                                               onChange={this.handleStatus.bind(this, 'armor', key, 'carried')}/>
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].name}</td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].soak}</td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].defense}</td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].rangedDefense}</td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].meleeDefense}</td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].encumbrance}</td>
+                                    <td onClick={this.editGear.bind(this, 'armor', key)}>{armor[key].qualitiesList && armor[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                </tr>
                             )}
-                        </div>
+                            </tbody>
+                        </Table>
                         }
-                        <input type='submit' value='Add Armor' onClick={this.addGear.bind(this, 'armor')}/>
+                        <Button onClick={this.addGear.bind(this, 'armor')}>Add Armor</Button>
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(gear).length > 0 &&
-                        <div className='table'>
-                            <div className='table-header'>
-                                <div className='table-header table-cell-bottom-border'>CARRY</div>
-                                <div className='table-header table-cell-bottom-border'>NAME</div>
-                                <div className='table-header table-cell-bottom-border'>AMOUNT</div>
-                                <div className='table-header table-cell-bottom-border'>ENCUM</div>
-                                <div className='table-header table-cell-bottom-border'>QUAL</div>
-                            </div>
+                        <Table className='text-center'>
+                            <thead>
+                            <tr>
+                                <th>CARRY</th>
+                                <th>NAME</th>
+                                <th>AMOUNT</th>
+                                <th>ENCUM</th>
+                                <th>QUAL</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             {Object.keys(gear).map((key) =>
-                                <div className='table-row' key={key}>
-                                    <div className='table-cell-bottom-border'><input type='checkbox'
-                                                                                     checked={gear[key].carried}
-                                                                                     onChange={this.handleStatus.bind(this, 'gear', key, 'carried')}/>
-                                    </div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].name}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].amount}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].encumbrance}</div>
-                                    <div className='table-cell-bottom-border'
-                                         onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].qualitiesList && gear[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</div>
-                                </div>
+                                <tr key={key}>
+                                    <td>
+                                        <input type='checkbox'
+                                               checked={gear[key].carried}
+                                               onChange={this.handleStatus.bind(this, 'gear', key, 'carried')}/>
+                                    </td>
+                                    <td onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].name}</td>
+                                    <td onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].amount}</td>
+                                    <td onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].encumbrance}</td>
+                                    <td onClick={this.editGear.bind(this, 'gear', key)}>{gear[key].qualitiesList && gear[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                </tr>
                             )}
-                        </div>
+                            </tbody>
+                        </Table>
                         }
-                        <input type='submit' value='Add Gear' onClick={this.addGear.bind(this, 'gear')}/>
+                        <Button onClick={this.addGear.bind(this, 'gear')}>Add Gear</Button>
                     </TabPanel>
                 </Tabs>
-                <hr/>
-            </div>
+                <GearStats modal={this.state.weaponsModal} keyID={this.state.weaponsModal} type='weapons'
+                           handleClose={() => this.setState({weaponsModal: false})}/>
+                <GearStats modal={this.state.armorModal} keyID={this.state.armorModal} type='armor'
+                           handleClose={() => this.setState({armorModal: false})}/>
+                <GearStats modal={this.state.gearModal} keyID={this.state.gearModal} type='gear'
+                           handleClose={() => this.setState({gearModal: false})}/>
 
-
+            </Col>
         );
     }
 }

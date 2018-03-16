@@ -11,7 +11,12 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <h1>Checking data structure</h1>
+            <div style={{textAlign: 'center', marginTop: '2rem'}}>
+                <h1>Checking data structure</h1>
+                <img
+                    src={'https://cdn.discordapp.com/attachments/405723206880591876/423977724663824387/underconstruction-72327f17c652569bab9a33536622841bf905d145ee673a3e9d065fae9cabfe4f.gif'}
+                    alt=''/>
+            </div>
         )
     }
 }

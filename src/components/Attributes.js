@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
-import {Card, CardBody, CardHeader, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
+import {Col, Input, Row} from 'reactstrap';
 import {
     encumbranceLimit,
     strainThreshold,
@@ -38,71 +38,62 @@ class Attributes extends React.Component {
         const {currentStrain, currentWound} = this.state;
         return (
             <Col lg='12'>
-                <Row className='justify-content-end'><b>ATTRIBUTES</b></Row>
+                <Row className='justify-content-end'><h5>ATTRIBUTES</h5></Row>
                 <hr/>
-                <Row className='my-2'>
-                    <Col>
-                        <Card className='text-center h-100'>
-                            <CardHeader>SOAK</CardHeader>
-                            <CardBody>{totalSoak}</CardBody>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className='text-center h-100'>
-                            <CardHeader>WOUNDS</CardHeader>
-                            <CardBody>
-                                <InputGroup>
-                                    <InputGroupAddon addonType='prepend'>{woundThreshold} {' | '} </InputGroupAddon>
-
-                                    <Input type='number'
-                                           name='currentWound'
-                                           maxLength='2'
-                                           className='p-0'
-                                           onChange={this.handleChange}
-                                           onBlur={this.handleBlur}
-                                           placeholder={currentWound}
-                                           value={currentWound > 0 ? currentWound : ''}/>
-                                </InputGroup>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className='text-center h-100'>
-                            <CardHeader>STRAIN</CardHeader>
-                            <CardBody>
-                                <InputGroup>
-                                    <InputGroupAddon addonType='prepend'>{strainThreshold} {' | '} </InputGroupAddon>
-                                    <Input type='number'
-                                           name='currentStrain'
-                                           maxLength='2'
-                                           className='p-0'
-                                           onChange={this.handleChange}
-                                           onBlur={this.handleBlur}
-                                           placeholder={currentStrain}
-                                           value={currentStrain > 0 ? currentStrain : ''}/>
-                                </InputGroup>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className='text-center h-100'>
-                            <CardHeader>DEFENSE</CardHeader>
-                            <CardBody>{totalDefense.ranged} {' | '} {totalDefense.melee}</CardBody>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className='text-center h-100'>
-                            <CardHeader>ENCUMBRANCE</CardHeader>
-                            <CardBody>{encumbranceLimit} {' | '} {totalEncumbrance}</CardBody>
-                        </Card>
-                    </Col>
+                <Row className='my-2 justify-content-center'>
+                    <div className='imageBox attribute'>
+                        <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
+                        <Row className='attributeTitle'>WOUNDS</Row>
+                        <Row className='attributeValue' style={{left: '65%'}}>
+                            {woundThreshold} {' | '}
+                            <Input type='number'
+                                   style={{fontSize: '20px', width: '35px'}}
+                                   name='currentWound'
+                                   maxLength='2'
+                                   className='py-0 px-1 mx-1'
+                                   onChange={this.handleChange}
+                                   onBlur={this.handleBlur}
+                                   placeholder={currentWound}
+                                   value={currentWound > 0 ? currentWound : ''}/>
+                        </Row>
+                    </div>
+                    <div className='imageBox attribute'>
+                        <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
+                        <Row className='attributeTitle'>STRAIN</Row>
+                        <Row className='attributeValue' style={{left: '65%'}}>
+                            {strainThreshold} {' | '}
+                            <Input type='number'
+                                   style={{fontSize: '20px', width: '35px'}}
+                                   name='currentStrain'
+                                   maxLength='2'
+                                   className='py-0 px-1 mx-1'
+                                   onChange={this.handleChange}
+                                   onBlur={this.handleBlur}
+                                   placeholder={currentStrain}
+                                   value={currentStrain > 0 ? currentStrain : ''}/>
+                        </Row>
+                    </div>
+                    <div className='imageBox attribute'>
+                        <img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
+                        <Row className='attributeTitle'>SOAK</Row>
+                        <Row className='attributeValue'>{totalSoak}</Row>
+                    </div>
+                    <div className='imageBox attribute'>
+                        <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
+                        <Row className='attributeTitle'>DEFENSE</Row>
+                        <Row className='attributeValue'>{totalDefense.ranged} {' | '} {totalDefense.melee}</Row>
+                    </div>
+                    <div className='imageBox attribute'>
+                        <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
+                        <Row className='attributeTitle'>ENCUMBRANCE</Row>
+                        <Row className='attributeValue'>{encumbranceLimit} {' | '} {totalEncumbrance}</Row>
+                    </div>
                 </Row>
             </Col>
         )
     }
 
 }
-
 
 function mapStateToProps(state) {
     return {

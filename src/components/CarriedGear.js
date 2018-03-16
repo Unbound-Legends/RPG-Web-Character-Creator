@@ -1,103 +1,112 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {Col, Row, Table} from 'reactstrap';
 import {changeData} from '../actions';
 import {Description} from "./index";
-import {skillDice, gearDice} from "../reducers";
+import {gearDice, skillDice} from "../reducers";
 
 class CarriedGear extends React.Component {
 
     render() {
         const {weapons, armor, gear, skills, qualities, gearDice} = this.props;
         return (
-            <div className='module'>
-                <div className='module-header'>CARRIED GEAR</div>
+            <Col xl='12'>
+                <Row className='justify-content-end'><h5>CARRIED GEAR</h5></Row>
                 <hr/>
                 {Object.keys(weapons).length > 0 &&
                 <div>
-                    <h3 style={{textAlign: 'left'}}>Weapons:</h3>
-                    <div className='table'>
-                        <div className='table-header'>
-                            <div className='table-header table-cell-bottom-border'>NAME</div>
-                            <div className='table-header table-cell-bottom-border'>DAM</div>
-                            <div className='table-header table-cell-bottom-border'>CRIT</div>
-                            <div className='table-header table-cell-bottom-border'>RANGE</div>
-                            <div className='table-header table-cell-bottom-border'>SKILL</div>
-                            <div className='table-header table-cell-bottom-border'>ENCUM</div>
-                            <div className='table-header table-cell-bottom-border'>QUAL</div>
-                            <div className='table-header table-cell-bottom-border'>DICE</div>
-                        </div>
+                    <h5 style={{textAlign: 'left'}}>Weapons:</h5>
+                    <Table className='text-center'>
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>DAM</th>
+                            <th>CRIT</th>
+                            <th>RANGE</th>
+                            <th>SKILL</th>
+                            <th>ENCUM</th>
+                            <th>QUAL</th>
+                            <th>DICE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         {Object.keys(weapons).map((key) =>
                             weapons[key].carried &&
-                            <div className='table-row' key={key}>
-                                <div className='table-cell-bottom-border'>{weapons[key].name}</div>
-                                <div className='table-cell-bottom-border'>{weapons[key].damage}</div>
-                                <div className='table-cell-bottom-border'>{weapons[key].critical}</div>
-                                <div className='table-cell-bottom-border'>{weapons[key].range}</div>
-                                <div
-                                    className='table-cell-bottom-border'>{weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '' ) : ''}</div>
-                                <div className='table-cell-bottom-border'>{weapons[key].encumbrance}</div>
-                                <div
-                                    className='table-cell-bottom-border'>{weapons[key].qualitiesList && weapons[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</div>
-                                <div className='table-cell-bottom-border'><Description
-                                    text={gearDice.weapons[key]}/></div>
-                            </div>
+                            <tr key={key}>
+                                <td>{weapons[key].name}</td>
+                                <td>{weapons[key].damage}</td>
+                                <td>{weapons[key].critical}</td>
+                                <td>{weapons[key].range}</td>
+                                <td>{weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '') : ''}</td>
+                                <td>{weapons[key].encumbrance}</td>
+                                <td>{weapons[key].qualitiesList && weapons[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                <td><Description text={gearDice.weapons[key]}/></td>
+                            </tr>
                         )}
-                    </div>
+                        </tbody>
+                    </Table>
                 </div>
                 }
                 {Object.keys(armor).length > 0 &&
                 <div>
-                    <h3 style={{textAlign: 'left'}}>Armor:</h3>
-                    <div className='table'>
-                        <div className='table-header'>
-                            <div className='table-header table-cell-bottom-border'>NAME</div>
-                            <div className='table-header table-cell-bottom-border'>SOAK</div>
-                            <div className='table-header table-cell-bottom-border'>DEF</div>
-                            <div className='table-header table-cell-bottom-border'>RANGED DEF</div>
-                            <div className='table-header table-cell-bottom-border'>MELEE DEF</div>
-                            <div className='table-header table-cell-bottom-border'>ENCUM</div>
-                            <div className='table-header table-cell-bottom-border'>QUAL</div>
-                        </div>
+                    <h5 style={{textAlign: 'left'}}>Armor:</h5>
+                    <Table className='text-center'>
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>SOAK</th>
+                            <th>DEF</th>
+                            <th>RANGED DEF</th>
+                            <th>MELEE DEF</th>
+                            <th>ENCUM</th>
+                            <th>QUAL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         {Object.keys(armor).map((key) =>
                             armor[key].carried &&
-                            <div className='table-row' key={key}>
-                                <div className='table-cell-bottom-border'>{armor[key].name}</div>
-                                <div className='table-cell-bottom-border'>{armor[key].soak}</div>
-                                <div className='table-cell-bottom-border'>{armor[key].defense}</div>
-                                <div className='table-cell-bottom-border'>{armor[key].rangedDefense}</div>
-                                <div className='table-cell-bottom-border'>{armor[key].meleeDefense}</div>
-                                <div className='table-cell-bottom-border'>{armor[key].encumbrance}</div>
-                                <div
-                                    className='table-cell-bottom-border'>{armor[key].qualitiesList && armor[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</div>
-                            </div>
+                            <tr className='table-row' key={key}>
+                                <td>{armor[key].name}</td>
+                                <td>{armor[key].soak}</td>
+                                <td>{armor[key].defense}</td>
+                                <td>{armor[key].rangedDefense}</td>
+                                <td>{armor[key].meleeDefense}</td>
+                                <td>{armor[key].encumbrance}</td>
+                                <td>{armor[key].qualitiesList && armor[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                            </tr>
                         )}
-                    </div>
+                        </tbody>
+                    </Table>
                 </div>
                 }
                 {Object.keys(gear).length > 0 &&
                 <div>
-                    <h3 style={{textAlign: 'left'}}>Gear:</h3>
-                    <div className='table'>
-                        <div className='table-header'>
-                            <div className='table-header table-cell-bottom-border'>NAME</div>
-                            <div className='table-header table-cell-bottom-border'>AMOUNT</div>
-                            <div className='table-header table-cell-bottom-border'>ENCUM</div>
-                            <div className='table-header table-cell-bottom-border'>QUAL</div>
-                        </div>
+                    <h5 style={{textAlign: 'left'}}>Gear:</h5>
+                    <Table className='text-center'>
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>AMOUNT</th>
+                            <th>ENCUM</th>
+                            <th>QUAL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         {Object.keys(gear).map((key) =>
                             gear[key].carried &&
-                            <div className='table-row' key={key}>
-                                <div className='table-cell-bottom-border'>{gear[key].name}</div>
-                                <div className='table-cell-bottom-border'>{gear[key].amount}</div>
-                                <div className='table-cell-bottom-border'>{gear[key].encumbrance}</div>
-                                <div className='table-cell-bottom-border'>{gear[key].qualitiesList && gear[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</div>
-                            </div>
+                            <tr key={key}>
+                                <td>{gear[key].name}</td>
+                                <td>{gear[key].amount}</td>
+                                <td>{gear[key].encumbrance}</td>
+                                <td>{gear[key].qualitiesList && gear[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                            </tr>
                         )}
-                    </div>
+                        </tbody>
+                    </Table>
                 </div>
                 }
-            </div>
+            </Col>
         );
     }
 }

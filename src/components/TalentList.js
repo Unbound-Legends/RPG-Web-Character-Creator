@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Col, Row, Table} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {Description} from './index'
 
@@ -8,35 +9,39 @@ class TalentList extends React.Component {
     render() {
         const {archetype, archetypes, talents, talentCount} = this.props;
         return (
-            <div className='module'>
-                <div className='module-header'>TALENT LIST</div>
+            <Col lg='12'>
+                <Row className='justify-content-end'><h5>TALENT LIST</h5></Row>
                 <hr/>
-                <div className='table'>
-                    <div className='table-header'>
+                <Table>
+                    <thead>
+                    <tr className='text-center'>
                         {['Talent', 'Rank', 'Activation', 'Type', 'Description'].map((heading) =>
-                            <div className='table-cell' key={heading}>{heading}</div>
+                            <th key={heading}>{heading}</th>
                         )}
-                    </div>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {archetypes[archetype] && Object.keys(archetypes[archetype].talents).sort().map((key) =>
-                        <div className='table-row' key={key}>
-                            <div className='table-cell'>{archetypes[archetype].talents[key].name}</div>
-                            <div className='table-cell'/>
-                            <div className='table-cell'>{archetypes[archetype].talents[key].activation ? 'Active' : 'Passive'}</div>
-                            <div className='table-cell'>{archetypes[archetype].talents[key].turn}</div>
-                            <div className='table-cell'><Description text={archetypes[archetype].talents[key].description}/></div>
-                        </div>
+                        <tr key={key}>
+                            <td>{archetypes[archetype].talents[key].name}</td>
+                            <td/>
+                            <td className='text-center'>{archetypes[archetype].talents[key].activation ? 'Active' : 'Passive'}</td>
+                            <td className='text-center'>{archetypes[archetype].talents[key].turn}</td>
+                            <td><Description text={archetypes[archetype].talents[key].description}/></td>
+                        </tr>
                     )}
                     {Object.keys(talentCount).sort().map((key) =>
-                        <div className='table-row' key={key}>
-                            <div className='table-cell'>{talents[key].name}</div>
-                            <div className='table-cell'>{talentCount[key]}</div>
-                            <div className='table-cell'>{talents[key].activation ? 'Active' : 'Passive'}</div>
-                            <div className='table-cell'>{talents[key].turn}</div>
-                            <div className='table-cell'><Description text={talents[key].description}/></div>
-                        </div>
+                        <tr key={key}>
+                            <td>{talents[key].name}</td>
+                            <td className='text-center'>{talentCount[key]}</td>
+                            <td className='text-center'>{talents[key].activation ? 'Active' : 'Passive'}</td>
+                            <td className='text-center'>{talents[key].turn}</td>
+                            <td><Description text={talents[key].description}/></td>
+                        </tr>
                     )}
-                </div>
-            </div>
+                    </tbody>
+                </Table>
+            </Col>
         )
     };
 }

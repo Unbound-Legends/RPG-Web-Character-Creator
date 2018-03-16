@@ -21,7 +21,7 @@ class Buttons extends React.Component {
 
     render() {
         return (
-            <Row className='justify-content-end align-items-center'>
+            <Row className='justify-content-end align-items-center d-print-none'>
                 <ImportExport/>
                 <Col sm='auto'>
                     <Button size='sm' onClick={this.handleDonate}>Donate</Button>

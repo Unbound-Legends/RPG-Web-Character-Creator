@@ -1,7 +1,7 @@
 import React from 'react';
-import popup from 'react-popup';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {talentCount} from '../reducers';
 import {Description, TalentDedication} from './index';
@@ -9,11 +9,33 @@ import {Description, TalentDedication} from './index';
 class TalentSelection extends React.Component {
     state = {
         talentSelection: this.props.talentKey,
-        selection: this.props.talentModifiers.Dedication[this.props.row] ? this.props.talentModifiers.Dedication[this.props.row] : ''
+        selection: this.props.talentModifiers.Dedication[this.props.row] ? this.props.talentModifiers.Dedication[this.props.row] : '',
+    };
+
+    makeOptions = () => {
+        const {tier, talentCount, talentKey, talents} = this.props;
+        let options = [];
+        Object.keys(talents).forEach((key) => {
+            //checked to make sure the improved and supreme talensts aren't selected first
+            if (key.includes('Improved') || key.includes('Supreme')) {
+                if ((key.includes('Improved') && talentCount[key.slice(0, -8)]) ||
+                    (key.includes('Supreme') && talentCount[key.slice(0, -7)])) {
+                    if (tier === talents[key].tier && !talentCount[key]) options.push(key);
+                }
+            }
+            //talent from this tier and has not been selected already
+            else if (tier === talents[key].tier && !talentCount[key]) options.push(key);
+            //talent is ranked and has been selected enough for this tier
+            else if (talents[key].ranked && ((talents[key].tier + talentCount[key]) === tier)) options.push(key);
+            if (key === talentKey) options.push(key);
+        });
+        if (tier === 5 && !options.includes('Dedication')) options.push('Dedication');
+        options.sort();
+        return options;
     };
 
     handleSubmit = () => {
-        const {row, tier, masterTalents, talentModifiers, changeData} = this.props;
+        const {row, tier, masterTalents, talentModifiers, changeData, handleClose} = this.props;
         const {talentSelection, selection} = this.state;
         let newObj = {...masterTalents};
         newObj[row][tier] = talentSelection;
@@ -40,19 +62,11 @@ class TalentSelection extends React.Component {
             newObj2.Dedication[row] = selection;
             changeData(newObj2, 'talentModifiers');
         }
-
-        popup.close();
-        this.setState({talentSelection: ''});
-        this.setState({selection: ''});
+        handleClose();
     };
 
     handleChange = (event) => {
-        this.setState({talentSelection: event.target.value})
-        event.preventDefault();
-    };
-
-    handleCancel = (event) => {
-        popup.close();
+        this.setState({talentSelection: event.target.value});
         event.preventDefault();
     };
 
@@ -61,39 +75,43 @@ class TalentSelection extends React.Component {
     };
 
     render() {
-        const {talents, options, talentKey, row} = this.props;
+        const {talents, talentKey, row, handleClose, modal} = this.props;
         const {talentSelection, selection} = this.state;
         const talent = talents[talentSelection];
         return (
-            <div>
-                <select defaultValue={talentKey} className='popup-select' onChange={this.handleChange}>
-                    <option value=''/>
-                    {options.map((key) =>
-                        <option value={key} key={key}>{talents[key].name}</option>
-                    )}
-                </select>
-                {talent &&
-                <div>
-                    <br/>
-                    <p><b>Name:</b> {talent.name}</p>
-                    <p><b>Tier:</b> {talent.tier}</p>
-                    <p><b>Activation:</b> {talent.activation ? 'Active' : 'Passive'}</p>
-                    {talent.turn ? <p>{talent.turn}</p> : null}
-                    {talent.ranked ? <p><b>Ranked</b></p> : <p><b>Not Ranked</b></p>}
-                    <p><b>Setting:</b> {talent.setting}</p>
-                    <p><b>Description:</b></p>
-                    <div style={{textIndent: '1em'}}><Description text={talent.description}/></div>
-                    {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection}
-                                                                           handleDedicationChange={this.handleDedicationChange}/>}
+            <Modal isOpen={modal} toggle={handleClose}>
+                <ModalHeader toggle={handleClose}>Select a Talent</ModalHeader>
+                <ModalBody className='m-4'>
+                    <Row>
+                        <Input type='select' defaultValue={talentKey} onChange={this.handleChange}>
+                            <option value=''/>
+                            {this.makeOptions().map((key) =>
+                                <option value={key} key={key}>{talents[key].name}</option>
+                            )}
+                        </Input>
+                    </Row>
+                    {talent &&
+                    <div>
+                        <Row><b>Name:&nbsp;</b> {talent.name}</Row>
+                        <Row><b>Tier:&nbsp;</b> {talent.tier}</Row>
+                        <Row><b>Activation:&nbsp;</b> {talent.activation ? 'Active' : 'Passive'}</Row>
+                        {talent.turn ? <Row>{talent.turn}</Row> : null}
+                        {talent.ranked ? <Row><b>Ranked</b></Row> : <Row><b>Not Ranked</b></Row>}
+                        <Row><b>Setting:&nbsp;</b> {talent.setting}</Row>
+                        <Row><b>Description:</b></Row>
+                        <Row><Description text={talent.description}/></Row>
+                        {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection}
+                                                                               handleDedicationChange={this.handleDedicationChange}/>}
+                    </div>
+                    }
+                </ModalBody>
 
-                </div>
-                }
-                <div>
-                    <input disabled={talentSelection === 'Dedication' && selection === ''} type='submit' value='Submit'
-                           onClick={this.handleSubmit}/>
-                    <button value='Clear' onClick={this.handleCancel}>Cancel</button>
-                </div>
-            </div>
+                <ModalFooter>
+                    <Button disabled={talentSelection === 'Dedication' && selection === ''}
+                            onClick={this.handleSubmit}>Sumbit</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
         )
     }
 }

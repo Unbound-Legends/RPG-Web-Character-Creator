@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -28,28 +29,29 @@ class CharacterDescription extends React.Component {
     render() {
         const {description} = this.state;
         return (
-            <div className='inlineblock sideBySide'>
-                <div className='module-header'>CHARACTER DESCRIPTION</div>
-                <hr />
-                {['gender', 'age', 'height', 'build', 'hair', 'eyes'].map((aspect)=>
-                    <div className='fieldLabel' key={aspect}>{aspect.toLocaleUpperCase()}:
-                        <input type='text' value={description[aspect]}
+            <Col className='m-1'>
+                <Row className='justify-content-end'><h5>CHARACTER DESCRIPTION</h5></Row>
+                <hr/>
+                {['gender', 'age', 'height', 'build', 'hair', 'eyes'].map((aspect) =>
+                    <Row key={aspect} className='my-2'>
+                        <b>{aspect.toLocaleUpperCase()}:</b>
+                        <Input value={description[aspect]}
                                maxLength='25'
                                onBlur={this.handleBlur.bind(this, `${aspect}`)}
                                onChange={this.handleChange.bind(this, `${aspect}`)}/>
-                        <hr />
-                    </div>
+                        <hr/>
+                    </Row>
                 )}
-                <div className='fieldLabel'>NOTABLE FEATURES:</div>
-                <textarea onChange={this.handleChange.bind(this, 'features')}
-                          onBlur={this.handleBlur.bind(this, 'features')}
-                          rows='10'
-                          cols='45'
-                          maxLength='1000'
-                          className='textField'
-                          value={description.features ? description.features : ''}/>
-            </div>
-
+                <Row className='my-2'>
+                    <b>NOTABLE FEATURES:</b>
+                    <textarea onChange={this.handleChange.bind(this, 'features')}
+                              onBlur={this.handleBlur.bind(this, 'features')}
+                              rows='12'
+                              className='w-100'
+                              maxLength='1000'
+                              value={description.features ? description.features : ''}/>
+                </Row>
+            </Col>
         );
     }
 }
@@ -60,7 +62,7 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 

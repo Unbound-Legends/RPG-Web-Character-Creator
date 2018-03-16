@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Button, ButtonGroup, Modal, ModalBody, ModalHeader} from 'reactstrap';
 import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
-import popup from 'react-popup';
 
 class XPPopup extends React.Component {
     state = {earnedXP: this.props.earnedXP};
@@ -22,20 +22,26 @@ class XPPopup extends React.Component {
     handleSubmit = (event) => {
         const {earnedXP} = this.state;
         this.props.changeData(earnedXP, 'earnedXP');
-        popup.close();
+        this.props.handleClose();
         event.preventDefault();
     };
 
     render() {
         const {earnedXP} = this.state;
-        return(
-            <div>
-                <div>Earned XP:</div>
-                <input type='number' value={earnedXP > 0 ? earnedXP : ''} onChange={this.handleChange}/>
-                <input type='submit' value='+5' onClick={this.handleChange}/>
-                <input type='submit' value='+10' onClick={this.handleChange}/>
-                <input type='submit' value='Submit' onClick={this.handleSubmit}/>
-            </div>
+        const {handleClose, modal} = this.props;
+        return (
+            <Modal isOpen={modal} toggle={handleClose}>
+                <ModalHeader toggle={handleClose}>Earned XP</ModalHeader>
+                <ModalBody className='m-4'>
+                    <input type='number' value={earnedXP > 0 ? earnedXP : ''} onChange={this.handleChange}/>
+                    &emsp;
+                    <ButtonGroup>
+                        <Button value='+5' onClick={this.handleChange}>+5</Button>
+                        <Button value='+10' onClick={this.handleChange}>+10</Button>
+                        <Button value='Submit' onClick={this.handleSubmit}>Submit</Button>
+                    </ButtonGroup>
+                </ModalBody>
+            </Modal>
         )
     }
 }
@@ -46,7 +52,7 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 

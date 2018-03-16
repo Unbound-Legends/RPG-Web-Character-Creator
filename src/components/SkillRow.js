@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
-import {archetypeSkillRank, skillDice, skillRanks, careerCheck} from '../reducers';
+import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../reducers';
 import {Description} from './index';
 
 class SkillRow extends React.Component {
@@ -47,24 +47,23 @@ class SkillRow extends React.Component {
             }
         }
         return (
-            <div
-                className={masterSkills[skillKey] ? (masterSkills[skillKey].hide ? 'table-row-hide' : 'table-row') : 'table-row'}>
-                <div className='table-cell' style={{textAlign: 'left'}}>
+            <tr className={masterSkills[skillKey] ? (masterSkills[skillKey].hide ? 'row-hide' : '') : ''}>
+                <td className='table-name'>
                     {`${skill.name} (${this.shortCharacteristics()})`}
-                </div>
-                <div className='table-cell'>
+                </td>
+                <td className='table-career'>
                     <input type='checkbox' checked={!!careerCheck[skillKey]}
                            readOnly/>
-                </div>
-                <div className='table-cell'>
+                </td>
+                <td>
                     <select defaultValue={skillRanks[skillKey]} onChange={this.handleRankChange} style={{margin: '0'}}>
                         {ranks.map((key) => <option key={key} value={key}>{key}</option>)}
                     </select>
-                </div>
-                <div className='table-cell'>
+                </td>
+                <td className='table-dice'>
                     <Description text={skillDice[skillKey]}/>
-                </div>
-            </div>
+                </td>
+            </tr>
         )
     }
 }

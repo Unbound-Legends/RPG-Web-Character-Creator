@@ -1,29 +1,45 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Col} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
-import popup from 'react-popup';
-import {CharacterImagePopup} from "./index";
 
 class CharacterImage extends React.Component {
+    state = {modal: false, text: this.props.description.image};
 
-    editImage = () => {
-        popup.create({
-            title: `Edit Character Image`,
-            className: 'alert',
-            content: (
-                <CharacterImagePopup/>
-            )
-        })
+    handleChange = (event) => {
+        this.setState({text: event.target.value});
+        event.preventDefault();
+    };
+
+    handleBlur = (event) => {
+        const {changeData, description} = this.props;
+        let obj = {...description};
+        obj.image = this.state.text;
+        changeData(obj, 'description');
+        event.preventDefault();
     };
 
     render() {
         const {description} = this.props;
+        const {modal, text} = this.state;
         return (
-            <Col sm='5' className='align-items-center'>
-                <img className='img-fluid' src={description.image ? description.image : ''} onClick={this.editImage}
+            <Col className='align-items-center m-auto'>
+                <img className='img-fluid' src={description.image ? description.image : ''}
+                     onClick={() => this.setState({modal: true})}
                      alt='not found' ref={img => this.img = img} onError={() => this.img.src = 'images/png/Crest.png'}/>
+                <Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
+                    <ModalHeader toggle={() => this.setState({modal: false})}>Edit Character Image</ModalHeader>
+                    <ModalBody className='m-3'>
+                        <div>
+                            <Row>CHARACTER IMAGE URL:</Row>
+                            <Input type='text' value={text} onBlur={this.handleBlur} onChange={this.handleChange}/>
+                        </div>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={() => this.setState({modal: false})}>Close</Button>
+                    </ModalFooter>
+                </Modal>
             </Col>
 
         );
@@ -36,7 +52,7 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 

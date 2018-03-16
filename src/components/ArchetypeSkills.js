@@ -1,5 +1,6 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
+import {Button, Input, Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
 
@@ -12,7 +13,7 @@ class ArchetypeSkills extends React.Component {
         if (masterArchetypeSkills.choice > Object.keys(archetypeSpecialSkills).length) {
             newObj = {...archetypeSpecialSkills};
         } else changeData('', 'archetypeSpecialSkills');
-        newObj[event.target.value] = {rank: Object.keys(masterArchetypeSkills).includes('any') ? masterArchetypeSkills.any : masterArchetypeSkills[event.target.name]};
+        newObj[event.target.value] = {rank: Object.keys(masterArchetypeSkills).includes('any') ? masterArchetypeSkills.any : masterArchetypeSkills[event.target.value]};
         changeData(newObj, 'archetypeSpecialSkills');
     };
 
@@ -24,18 +25,22 @@ class ArchetypeSkills extends React.Component {
         if (archetype === null) return <div/>;
         if (Object.keys(masterArchetype.skills).includes('choice')) {
             return (
-                <div>
-                    <p>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
-                        get {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : 1} {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:</p>
-                    <select value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
+                <div className='ml-3'>
+                    <Row>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
+                        get {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : 1} {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:</Row>
+                    <Input type='select' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
                         <option value=''/>
                         {list.map((key) =>
-                            (skills[key] && !Object.keys(archetypeSpecialSkills).includes(key)) && <option value={key} name={key} key={key}>{skills[key].name}</option>
+                            (skills[key] && !Object.keys(archetypeSpecialSkills).includes(key)) &&
+                            <option value={key} name={key} key={key}>{skills[key].name}</option>
                         )}
-                    </select>
-                    <input type='button' onClick={() => this.props.changeData('', 'archetypeSpecialSkills')}
-                           value='Clear'/>
-                    {Object.keys(archetypeSpecialSkills).map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
+                    </Input>
+                    <Row>
+                        {Object.keys(archetypeSpecialSkills).map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
+                    </Row>
+                    <Row className='my-2'>
+                        <Button onClick={() => this.props.changeData('', 'archetypeSpecialSkills')}>Clear</Button>
+                    </Row>
                 </div>
 
             )
@@ -43,7 +48,7 @@ class ArchetypeSkills extends React.Component {
         return (
             <div>
                 {list.map((key) =>
-                    <p key={key} style={{textIndent: '1em'}}>{masterArchetype.skills[key]} rank in {key}</p>
+                    <Row key={key} style={{textIndent: '1em'}}>{masterArchetype.skills[key]} rank in {key}</Row>
                 )}
             </div>
         );

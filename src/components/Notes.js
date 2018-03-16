@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Col, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -26,17 +27,18 @@ class Notes extends React.Component {
     render() {
         const {notes} = this.state;
         return (
-            <div className='inlineblock sideBySide'>
-                <div className='module-header'>NOTES: </div>
-                <hr />
-                    <textarea onChange={this.handleChange}
-                              onBlur={this.handleBlur}
-                              rows='38'
-                              cols='45'
-                              maxLength='1000'
-                              className='textField'
-                              value={notes}/>
-            </div>
+            <Col className='m-2' onClick={this.handleClick}>
+                <Row className='justify-content-end'><h5>NOTES</h5></Row>
+                <hr/>
+                <Row>
+                        <textarea onChange={this.handleChange}
+                                  onBlur={this.handleBlur}
+                                  className='w-100'
+                                  rows='31'
+                                  maxLength='1000'
+                                  value={notes}/>
+                </Row>
+            </Col>
 
         );
     }
@@ -48,7 +50,7 @@ function mapStateToProps(state) {
     };
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 

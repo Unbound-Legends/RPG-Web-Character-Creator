@@ -1,13 +1,13 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import popup from 'react-popup';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {criticalText} from '../reducers';
 import {Description} from './index';
 
 class Critical extends React.Component {
-    state = {value: ''};
+    state = {value: '', modal: false};
 
     handleSubmit = (event) => {
         let newArr = [...this.props.critical];
@@ -26,46 +26,43 @@ class Critical extends React.Component {
         event.preventDefault();
     };
 
-    removeCritical = (index) => {
+    removeCritical = () => {
         let newArr = [...this.props.critical];
-        newArr.splice(index, 1);
+        newArr.splice(this.state.modal, 1);
         this.props.changeData(newArr, 'critical');
-        popup.close();
+        this.setState({modal: false});
     };
-
-    criticalPopup = (index) => {
-        popup.create({
-            title: `Critical Injury`,
-            className: 'alert',
-            content: (
-                <div>
-                    <div>Remove Critical Injury?</div>
-                    <button onClick={this.removeCritical.bind(this, index)}>Remove Critical</button>
-                    <button onClick={popup.close}>Cancel</button>
-                </div>
-            )
-        })
-    };
-
 
     render() {
-        const {value} = this.state;
+        const {value, modal} = this.state;
         const {critical} = this.props;
         return (
-            <div className='module' style={{textAlign: 'left'}}>
-                <div className='module-header'>CRITICAL INJURIES</div>
+            <Col lg='12'>
+                <Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
                 <hr/>
-                <div>Add a critical:
-                    <input className='shortTextBox' type='number' name='critical' value={value > 0 ? value : ''}
+                <Row className='my-2'>
+                    <b className='my-auto'>Add a critical:&nbsp;</b>
+                    <Input className='shortTextBox w-25' type='number' name='critical' value={value > 0 ? value : ''}
                            onChange={this.handleChange}/>
-                    <input type='submit' onClick={this.handleSubmit}/>
-                </div>
+                    <Button onClick={this.handleSubmit}>Add Critical</Button>
+                </Row>
                 {critical.map((critRoll, index) =>
-                    <div key={index} onClick={this.criticalPopup.bind(this, index)}>
-                        <Description text={criticalText(critRoll)}/>
-                    </div>
+                    <Row className='my-2' key={index} onClick={() => this.setState({modal: index})}>
+                        <span>{critRoll}:&emsp;<Description text={criticalText(critRoll)}/></span>
+                        <hr/>
+                    </Row>
                 )}
-            </div>
+                <Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
+                    <ModalHeader toggle={() => this.setState({modal: false})}>Remove Critical Injury?</ModalHeader>
+                    <ModalBody>
+                        <span>{critical[modal]}:&emsp;<Description text={criticalText(critical[modal])}/></span>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={this.removeCritical}>Remove Critical</Button>
+                        <Button onClick={() => this.setState({modal: false})}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
+            </Col>
         );
     }
 }

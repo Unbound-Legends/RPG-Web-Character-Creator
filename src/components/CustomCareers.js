@@ -1,8 +1,8 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Button, ButtonGroup, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData, changeData} from '../actions';
-import popup from 'react-popup';
 
 class CustomCareers extends React.Component {
     state = {name: '', selectedSkills: []};
@@ -33,7 +33,7 @@ class CustomCareers extends React.Component {
 
     handleDelete = (event) => {
         const {customCareers, changeCustomData, career, changeData} = this.props;
-        if (career===event.target.name) changeData('', 'career');
+        if (career === event.target.name) changeData('', 'career');
         changeCustomData('', 'customCareers');
         let newObj = {...customCareers};
         delete newObj[event.target.name];
@@ -48,51 +48,59 @@ class CustomCareers extends React.Component {
     };
 
     render() {
-        const {skills, customCareers} = this.props;
+        const {skills, customCareers, modal, handleClose} = this.props;
         const {name, selectedSkills} = this.state;
         return (
-            <div style={{textAlign: 'left'}}>
-                <div>Name:<input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
-                </div>
-                <div>Career Skills:
+            <Modal isOpen={modal} toggle={handleClose}>
+                <ModalHeader toggle={handleClose}>Custom Careers</ModalHeader>
+                <ModalBody className='m-3 text-left'>
+                    <Row className='my-1'>
+                        Name:
+                        <Input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
+                    </Row>
+                    <Row className='my-1'>
+                        Career Skills:
+                        <Input type='select' value='' name='selectedSkills' onChange={this.handleSelect}>
+                            <option value=''/>
+                            {this.createOptions().map((key) =>
+                                <option value={key} key={key}>{skills[key].name}</option>
+                            )}
+                        </Input>
+                    </Row>
+                    <Row className='my-1'>
+                        <span className='my-auto'>{selectedSkills.length} skills&emsp;</span>
+                        <ButtonGroup>
+                            <Button onClick={() => this.setState({selectedSkills: []})}>Clear</Button>
+                            <Button onClick={this.addCustomCareer} disabled={name === ''}>Add</Button>
+                        </ButtonGroup>
+                    </Row>
+                    <Row className='my-1'>
+                        {selectedSkills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
 
-                    <select value='' name='selectedSkills' onChange={this.handleSelect}>
-                        <option value=''/>
-                        {this.createOptions().map((key) =>
-                            <option value={key} key={key}>{skills[key].name}</option>
+                    </Row>
+                    <Table>
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>SKILLS</th>
+                            <th/>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {Object.keys(customCareers).map((key) =>
+                            <tr key={key} style={{textAlign: 'left'}}>
+                                <td>{customCareers[key].name}</td>
+                                <td>{customCareers[key].skills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}</td>
+                                <td><Button name={key} onClick={this.handleDelete}>Delete</Button></td>
+                            </tr>
                         )}
-                    </select>
-                    {selectedSkills.length} skills
-                    <input type='button' onClick={() => this.setState({selectedSkills: []})} value='Clear'/>
-                    <input type='button' onClick={this.addCustomCareer} value='Add'/>
-                </div>
-                <div>
-                    {selectedSkills.map((skill)=>skills[skill] ? skills[skill].name : skill).join(', ')}
-
-                </div>
-                <div className='table'>
-                    <div className='table-header'>
-                        <div className='table-cell-no-border'>NAME</div>
-                        <div className='table-cell-no-border'>SKILLS</div>
-                        <div className='table-cell-no-border'/>
-
-                    </div>
-                    {Object.keys(customCareers).map((key) =>
-                        <div key={key} className='table-row' style={{textAlign: 'left'}}>
-                            <div className='table-cell-bottom-border'>
-                                {customCareers[key].name}
-                            </div>
-                            <div className='table-cell-bottom-border'>
-                                {customCareers[key].skills.map((skill)=>skills[skill] ? skills[skill].name : skill).join(', ')}
-                            </div>
-                            <div className='table-cell-bottom-border'>
-                                <button type='sumbit' name={key} onClick={this.handleDelete}>Delete</button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-                <input type='button' onClick={popup.close} value='Close'/>
-            </div>
+                        </tbody>
+                    </Table>
+                </ModalBody>
+                <ModalFooter>
+                    <Button onClick={handleClose}>Close</Button>
+                </ModalFooter>
+            </Modal>
         )
             ;
     }

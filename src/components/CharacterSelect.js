@@ -1,9 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Button, ButtonGroup, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
+import {
+    Button,
+    ButtonGroup,
+    Col,
+    Input,
+    InputGroup,
+    InputGroupAddon,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    Row
+} from 'reactstrap';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
-import popup from 'react-popup';
 import {Archetype, Career, CustomCareers} from './index';
 
 class CharacterSelect extends React.Component {
@@ -12,6 +23,8 @@ class CharacterSelect extends React.Component {
         playerName: this.props.description.playerName,
         archetypeModal: false,
         careerModal: false,
+        customCareersModal: false,
+        deleteModal: false,
     };
 
     componentWillReceiveProps(nextProps) {
@@ -41,33 +54,10 @@ class CharacterSelect extends React.Component {
         event.preventDefault();
     };
 
-    handlePopup = () => {
-        popup.create({
-            title: `Customize Career`,
-            className: 'alert',
-            content: <CustomCareers/>,
-        })
-    };
-
-    handleDelete = () => {
-        popup.create({
-            title: `BALETED WARNING`,
-            className: 'alert',
-            content: (
-                <div>
-                    <div>Are you super serious? This cannot be undone</div>
-                    <input type='button' value='NO! I am not ready for this!' onClick={popup.close}/>
-                    <input type='button' value='YES! I no longer want this character in my life'
-                           onClick={this.confirmedDelete}/>
-                </div>
-            ),
-        })
-    };
-
     confirmedDelete = (event) => {
         this.props.deleteCharacter();
+        this.setState({deleteModal: false});
         event.preventDefault();
-        popup.close();
     };
 
     handleNameChange = (event) => {
@@ -77,13 +67,13 @@ class CharacterSelect extends React.Component {
 
     render() {
         const {archetype, archetypes, careers, career, characterList, character} = this.props;
-        const {name, playerName, archetypeModal, careerModal} = this.state;
+        const {name, playerName, archetypeModal, careerModal, customCareersModal, deleteModal} = this.state;
         return (
-            <Col sm='7'>
-                <Row className='justify-content-end'><b>CHARACTER</b></Row>
+            <Col>
+                <Row className='justify-content-end'><h5>CHARACTER</h5></Row>
                 <hr/>
                 <Row className='my-2'>
-                    <Col>
+                    <Col className='m-auto'>
                         <InputGroup>
                             <Input type='select' value={character} onChange={this.handleSelect}>
                                 {characterList && Object.keys(characterList).map((key) =>
@@ -94,14 +84,14 @@ class CharacterSelect extends React.Component {
                             <InputGroupAddon addonType='append'>
                                 <ButtonGroup>
                                     <Button onClick={() => this.props.addCharacter()}>New</Button>
-                                    <Button onClick={this.handleDelete}>Delete</Button>
+                                    <Button onClick={() => this.setState({deleteModal: true})}>Delete</Button>
                                 </ButtonGroup>
                             </InputGroupAddon>
                         </InputGroup>
                     </Col>
                 </Row>
                 <Row className='my-2'>
-                    <Col>
+                    <Col className='m-auto'>
                         <b>CHARACTER NAME:</b>
                         <Input type='text' value={name} maxLength='25' name='name' onChange={this.handleChange}
                                onBlur={this.handleNameChange}/>
@@ -109,26 +99,31 @@ class CharacterSelect extends React.Component {
                 </Row>
                 <hr/>
                 <Row>
-                    <Col>
-                        <b>ARCHETYPE:</b> {archetype === null ? '' : archetypes[archetype].name} {' '}
+                    <Col sm='4' className='m-auto'>
+                        <b>ARCHETYPE:</b>{' '}{archetype === null ? '' : archetypes[archetype].name}
+                    </Col>
+                    <Col className='m-auto'>
                         <Button name='archetype'
-                                onClick={() => this.setState({archetypeModal: !this.state.archetypeModal})}>Select</Button>
+                                onClick={() => this.setState({archetypeModal: true})}>Select</Button>
                     </Col>
                 </Row>
                 <hr/>
                 <Row>
-                    <Col>
-                        <b>CAREER:</b> {careers[career] && careers[career].name} {' '}
+                    <Col sm='4' className='m-auto'>
+                        <b>CAREER:</b> {' '} {careers[career] && careers[career].name}
+                    </Col>
+                    <Col className='m-auto'>
                         <ButtonGroup>
                             <Button name='career'
-                                    onClick={() => this.setState({careerModal: !this.state.careerModal})}>Select</Button>
-                            <Button name='customCareer' onClick={this.handlePopup}>Custom</Button>
+                                    onClick={() => this.setState({careerModal: true})}>Select</Button>
+                            <Button name='customCareer'
+                                    onClick={() => this.setState({customCareersModal: true})}>Custom</Button>
                         </ButtonGroup>
                     </Col>
                 </Row>
                 <hr/>
                 <Row>
-                    <Col>
+                    <Col className='m-auto'>
                         <b>NAME:</b> <Input type='text' value={playerName} maxLength='25' name='playerName'
                                             onChange={this.handleChange}
                                             onBlur={this.handleBlur}/>
@@ -137,7 +132,20 @@ class CharacterSelect extends React.Component {
                 <hr/>
                 <Archetype modal={archetypeModal} handleClose={() => this.setState({archetypeModal: false})}/>
                 <Career modal={careerModal} handleClose={() => this.setState({careerModal: false})}/>
+                <CustomCareers modal={customCareersModal}
+                               handleClose={() => this.setState({customCareersModal: false})}/>
+                <Modal isOpen={deleteModal} toggle={() => this.setState({deleteModal: false})}>
+                    <ModalHeader toggle={() => this.setState({deleteModal: false})}>BALETED WARNING</ModalHeader>
+                    <ModalBody>
+                        <div>Are you super serious? This cannot be undone</div>
 
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={() => this.setState({deleteModal: false})}>NO!</Button>
+                        <Button color='danger' onClick={this.confirmedDelete}>YES! I no longer want this
+                            character!</Button>
+                    </ModalFooter>
+                </Modal>
             </Col>
 
         );

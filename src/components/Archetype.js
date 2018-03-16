@@ -18,7 +18,7 @@ class Archetype extends React.Component {
     return (
         <Modal isOpen={modal} toggle={handleClose}>
             <ModalHeader toggle={handleClose}>Select Archetype</ModalHeader>
-            <ModalBody>
+            <ModalBody className='mx-2'>
                 <Input type='select' value={archetype ? archetype : ''} onChange={this.handleSelect}>
                     <option value=''/>
                     {Object.keys(archetypes).map((key) =>

@@ -1,34 +1,31 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import popup from 'react-popup';
+import {Col, Row} from 'reactstrap';
 import {characteristics} from '../reducers'
 import {Characteristics} from './index';
 
 class ShowCharacteristics extends React.Component {
-
-    handleClick = () => {
-        popup.create({
-            title: `Modifiy Characteristics`,
-            className: 'alert',
-            content: <Characteristics/>,
-        })
-    };
+    state = {modal: false};
 
     render() {
         const {characteristics} = this.props;
         return (
-          <div className='module' onClick={this.handleClick}>
-              <div className='sectionheader'>CHARACTERISTICS</div>
-              <hr />
-              <div className='characteristicsBackground'>
-                  {Object.keys(characteristics).map((stat)=>
-                    <div key={stat} className={`characteristic`}>
-                        <div className='characteristic-topText'>{characteristics[stat]}</div>
-                        <div className='characteristic-bottomText'>{stat}</div>
-                    </div>
-                  )}
-              </div>
-          </div>
+            <Col lg='12' onClick={() => this.setState({modal: true})}>
+                <Row className='justify-content-end'><h5>CHARACTERISTICS</h5></Row>
+                <hr/>
+                <Row className='justify-content-center'>
+
+                    {Object.keys(characteristics).map((stat) =>
+                        <div className='imageBox' key={stat}>
+                            <img src={'/images/png/Characteristic.png'} alt='' className='png'/>
+
+                            <Row className='characteristicValue'>{characteristics[stat]}</Row>
+                            <Row className='characteristicTitle'>{stat}</Row>
+                        </div>
+                    )}
+                </Row>
+                <Characteristics modal={this.state.modal} handleClose={() => this.setState({modal: false})}/>
+            </Col>
         );
     }
 }

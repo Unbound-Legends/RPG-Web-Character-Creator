@@ -1,59 +1,106 @@
 import React from 'react';
-import popup from 'react-popup';
 import {connect} from 'react-redux';
-import {SkillRow, SkillPopup} from './index';
+import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Table} from 'reactstrap';
+import {SkillRow} from './index';
+import {changeData} from '../actions';
+import {bindActionCreators} from 'redux';
 
 class SkillBlock extends React.Component {
 
+    state = {modal: false};
 
-  handleClick = () => {
-    const {type, skills} = this.props;
+    handleChange = (event) => {
+        const {masterSkills, changeData} = this.props;
+        let newObj = {...masterSkills};
+        if (!newObj[event.target.name]) newObj[event.target.name] = {};
+        newObj[event.target.name].hide = !newObj[event.target.name].hide;
+        changeData(newObj, 'masterSkills');
+    };
 
-    popup.create({
-      title: `${type} Skills`,
-      className: 'alert',
-      content: (
-        <div className='table'>
-          <div className='table-header'>
-            <div className='table-cell'>Show/Hide</div>
-            <div className='table-cell'>Skill</div>
-          </div>
-          {Object.keys(skills).sort().map((key)=>
-            skills[key].type===type && (
-              <SkillPopup skillKey={key} key={key}/>
-            ),
-          )}
-        </div>
-      )
-    })
-  };
+    render() {
+        const {type, skills, masterSkills} = this.props;
+        const {modal} = this.state;
+        return (
+            <Table className='m-1'>
+                <thead onClick={() => this.setState({modal: true})}>
+                <tr>
+                    <th className='p-0'>
+                        {type}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <Table>
+                            <thead>
+                            <tr>
+                                <th className='table-name'>Skill</th>
+                                <th className='table-career'>Career</th>
+                                <th>Rank</th>
+                                <th className='table-dice'>Dice Pool</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {Object.keys(skills).sort().map((skillKey) =>
+                                skills[skillKey].type === type &&
+                                <SkillRow skillKey={skillKey} key={skillKey}/>
+                            )}
+                            </tbody>
+                        </Table>
+                    </td>
+                </tr>
+                </tbody>
 
-  render() {
-    const {type, skills} = this.props;
-    return (
-        <div className='table-table'>
-          <div className='table-heading' onClick={this.handleClick}>{type}</div>
-          <div className='table'>
-            <div className='table-header'>
-              <div className='table-cell skill-block-name'>Skill</div>
-              <div className='table-cell skill-block-career'>Career</div>
-              <div className='table-cell skill-block-rank'>Rank</div>
-              <div className='table-cell skill-block-dice'>Dice Pool</div>
-            </div>
-            {Object.keys(skills).sort().map((skillKey)=>
-              skills[skillKey].type === type &&
-                <SkillRow skillKey={skillKey} key={skillKey}/>
-            )}
-          </div>
-        </div>
-    )
-  }
+                <Modal isOpen={modal} toggle={() => this.setState({modal: false})}>
+                    <ModalHeader toggle={() => this.setState({modal: false})}>{`${type} Skills`}</ModalHeader>
+                    <ModalBody className=''>
+                        <Table>
+                            <thead>
+                            <tr>
+                                <th>Show/Hide</th>
+                                <th>Skill</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {Object.keys(skills).sort().map((key) =>
+                                skills[key].type === type && (
+                                    <tr key={key}>
+                                        <td>
+                                            <input type='checkbox'
+                                                   name={key}
+                                                   checked={masterSkills[key] ? (!masterSkills[key].hide) : true}
+                                                   onChange={this.handleChange}/>
+                                        </td>
+                                        <td>
+                                            {skills[key].name}
+                                        </td>
+                                    </tr>
+                                ),
+                            )}
+                            </tbody>
+                        </Table>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={() => this.setState({modal: false})}>Close</Button>
+                    </ModalFooter>
+                </Modal>
+
+
+            </Table>
+        )
+    }
 }
 
 function mapStateToProps(state) {
     return {
         skills: state.skills,
+        masterSkills: state.masterSkills,
     };
 }
 
-export default connect(mapStateToProps)(SkillBlock);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({changeData}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(SkillBlock);

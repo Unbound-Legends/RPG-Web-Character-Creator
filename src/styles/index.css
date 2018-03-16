@@ -14,6 +14,32 @@ body {
     background-image: url(/images/background.png);
 }
 
+hr {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+h5 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+.table th {
+    padding: 0.4rem 0.2rem;
+}
+
+.table td {
+    padding: 0.4rem 0.2rem;
+    vertical-align: middle;
+}
+
+thead {
+    font-weight: 600;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -24,35 +50,168 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.w-40 {
+    width: 40%;
+}
+
 .textSymbols {
     height: 20px;
 }
 
-.singleAttribute {
-    background-image: url(/images/png/SingleAttribute.png);
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: 100% auto;
-    height: 120px;
+.imageBox {
+    position: relative;
+    text-align: center;
+    color: black;
+    padding: 0;
+    margin: 0.15rem;
+    width: 100px;
 }
 
-.Soak {
-    background-image: url(/images/png/Soak.png);
+.attribute {
+    width: 140px;
 }
 
-.Defense {
-    background-image: url(/images/png/Defense.png);
+.xpBox {
+    width: 140px;
 }
 
-.Strain {
-    background-image: url(/images/png/Strain.png);
+.png {
+    width: 100%;
 }
 
-.Wounds {
-    background-image: url(/images/png/Wounds.png);
+.absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.doubleAttribute {
-    background-image: url(/images/png/DoubleAttribute.png);
+.attributeTitle {
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 17%;
+    left: 58%;
+    transform: translate(-50%, -50%);
 }
 
+.attributeValue {
+    position: absolute;
+    font-size: 20px;
+    top: 51%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    flex: unset;
+}
+
+.characteristicTitle {
+    position: absolute;
+    font-size: 17px;
+    color: white;
+    font-weight: 600;
+    top: 84%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+}
+
+.characteristicValue {
+    position: absolute;
+    font-size: 40px;
+    font-weight: 600;
+    top: 35%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    flex: unset;
+}
+
+.xpValue {
+    position: absolute;
+    font-size: 40px;
+    font-weight: 600;
+    top: 45%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    flex: unset;
+}
+
+.totalXP {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    z-index: 1;
+}
+
+.availableXP {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: 1;
+}
+
+.table-dice {
+    width: 130px;
+}
+
+.table-career {
+    text-align: center;
+}
+
+.table-name {
+    width: 150px;
+    text-align: left;
+}
+
+.row-hide {
+    display: none;
+}
+
+.talentCard {
+    width: 150px;
+    height: 160px;
+}
+
+.breakBefore {
+    page-break-before: always;
+}
+
+.breakAfter {
+    page-break-after: always;
+}
+
+.nobreak {
+    break-inside: avoid;
+}
+
+@media only screen
+and (max-width: 480px) {
+
+    .table {
+        font-size: 10px;
+    }
+
+    .talentCard {
+        width: 16vw;
+        height: 24vw;
+        font-size: 2vw;
+    }
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact;
+    }
+
+    .totalXP {
+        display: inline-block;
+        position: relative;
+        bottom: 5px;
+        left: 0;
+    }
+
+    .availableXP {
+        display: inline-block;
+        position: relative;
+        bottom: 5px;
+        right: 0;
+    }
+}

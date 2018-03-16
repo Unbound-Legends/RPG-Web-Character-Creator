@@ -1,41 +1,36 @@
 import React from 'react';
-import {SkillBlock, CustomSkills} from './index';
+import {CustomSkills, SkillBlock} from './index';
 import {connect} from "react-redux";
-import popup from "react-popup";
-
+import {Col, Row} from 'reactstrap';
 
 class Skill extends React.Component {
-
-    handleClick = () => {
-        popup.create({
-            title: `Customize Skills`,
-            className: 'alert',
-            content: <CustomSkills />,
-        })
-    };
+    state = {modal: false};
 
     render() {
         return (
-            <div className='module breakBefore breakAfter' style={{width: '96vw'}}>
-                <div className='sectionheader' onClick={this.handleClick}>SKILLS</div>
-                <hr />
-                <div className='table table-module'>
-                    <div className='table-cell mobileSkills'>
+            <Col xl='12'>
+                <Row className='justify-content-end' onClick={() => this.setState({modal: true})}><h5>SKILLS</h5></Row>
+                <hr/>
+                <Row>
+                    <Col className='px-1'>
                         <SkillBlock type='General'
                         />
-                    </div>
-                    <div className='table-cell mobileSkills'>
+                    </Col>
+                    <Col className='px-1'>
                         {['Combat', 'Magic', 'Social', 'Knowledge'].map((type) =>
                             <SkillBlock key={type}
                                         type={type}
                             />
                         )}
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+
+                <CustomSkills modal={this.state.modal} handleClose={() => this.setState({modal: false})}/>
+
+            </Col>
         )
     }
-  }
+}
 
 function mapStateToProps(state) {
     return {

@@ -1,8 +1,8 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Table} from 'reactstrap';
 import {changeCustomData} from '../actions';
-import popup from 'react-popup';
 
 class CustomSkills extends React.Component {
     state = {name: '', type: '', characteristic: ''};
@@ -16,8 +16,9 @@ class CustomSkills extends React.Component {
         const {customSkills, changeCustomData} = this.props;
         const {name, type, characteristic} = this.state;
         let newObj = {...customSkills};
-        newObj[name.replace(/\s/g,'')] = {name, type, characteristic};
+        newObj[name.replace(/\s/g, '')] = {name, type, characteristic};
         changeCustomData(newObj, 'customSkills');
+        this.setState({name: '', type: '', characteristic: ''});
         event.preventDefault();
     };
 
@@ -31,62 +32,73 @@ class CustomSkills extends React.Component {
     };
 
     render() {
-        const {customSkills} = this.props;
+        const {customSkills, handleClose, modal} = this.props;
         const {name, type, characteristic} = this.state;
         return (
-            <div style={{textAlign: 'left'}}>
-                <div className='table'>
-                    <div className='table-header'>
-                        <div className='table-cell-no-border'>NAME</div>
-                        <div className='table-cell-no-border'>TYPE</div>
-                        <div className='table-cell-no-border'>CHAR</div>
-                        <div className='table-cell-no-border'/>
+            <Modal isOpen={modal} toggle={handleClose}>
+                <ModalHeader toggle={handleClose}>Custom Skills</ModalHeader>
+                <ModalBody className='m-1 text-left'>
+                    <Table>
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>TYPE</th>
+                            <th>CHAR</th>
+                            <th/>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <Input type='text' value={name} name='name' maxLength='25'
+                                       onChange={this.handleChange}/>
+                            </td>
+                            <td>
 
-                    </div>
-                    <div className='table-row'>
-                        <div className='table-cell-no-border'>
-                            <input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
-                        </div>
-                        <div className='table-cell-no-border'>
-
-                            <select value={type} name='type' onChange={this.handleChange}>
-                                <option value=''/>
-                                {['General', 'Combat', 'Social', 'Magic', 'Knowledge'].map((key) =>
-                                    <option value={key} key={key}>{key}</option>
-                                )}
-                            </select>
-                        </div>
-                        <div className='table-cell-no-border'>
-                            <select value={characteristic} name='characteristic' onChange={this.handleChange}>
-                                <option value=''/>
-                                {['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'].map((key) =>
-                                    <option value={key} key={key}>{key}</option>
-                                )}
-                            </select>
-                        </div>
-                        <div className='table-cell-no-border'>
-                            <button type='sumbit' onClick={this.handleSet}>Add</button>
-                        </div>
-                    </div>
-                    {Object.keys(customSkills).map((key)=>
-                    <div key={key} className='table-row'>
-                        <div className='table-cell-bottom-border'>
-                            {customSkills[key].name}
-                        </div>
-                        <div className='table-cell-bottom-border'>
-                            {customSkills[key].type}
-                        </div>
-                        <div className='table-cell-bottom-border'>
-                            {customSkills[key].characteristic}
-                        </div>
-                        <div className='table-cell-bottom-border'>
-                            <button type='sumbit' name={key} onClick={this.handleDelete}>Delete</button>
-                        </div>
-                    </div>
-                    )}
-                </div>
-                <button onClick={popup.close}>Close</button>
-            </div>
+                                <Input type='select' value={type} name='type' onChange={this.handleChange}>
+                                    <option value=''/>
+                                    {['General', 'Combat', 'Social', 'Magic', 'Knowledge'].map((key) =>
+                                        <option value={key} key={key}>{key}</option>
+                                    )}
+                                </Input>
+                            </td>
+                            <td>
+                                <Input type='select' value={characteristic} name='characteristic'
+                                       onChange={this.handleChange}>
+                                    <option value=''/>
+                                    {['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'].map((key) =>
+                                        <option value={key} key={key}>{key}</option>
+                                    )}
+                                </Input>
+                            </td>
+                            <td>
+                                <Button onClick={this.handleSet}
+                                        disabled={name === '' || type === '' || characteristic === ''}>Add</Button>
+                            </td>
+                        </tr>
+                        {Object.keys(customSkills).map((key) =>
+                            <tr key={key}>
+                                <td>
+                                    {customSkills[key].name}
+                                </td>
+                                <td>
+                                    {customSkills[key].type}
+                                </td>
+                                <td>
+                                    {customSkills[key].characteristic}
+                                </td>
+                                <td>
+                                    <Button name={key} onClick={this.handleDelete}>Delete</Button>
+                                </td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </Table>
+                </ModalBody>
+                <ModalFooter>
+                    <Button onClick={handleClose}>Close</Button>
+                </ModalFooter>
+            </Modal>
         )
             ;
     }
