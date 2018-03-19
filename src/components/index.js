@@ -13,6 +13,7 @@ export {default as Characteristics} from './Characteristics';
 export {default as CharacterSelect} from './CharacterSelect';
 export {default as Critical} from './Critical';
 export {default as CustomCareers} from './CustomCareers';
+export {default as CustomArchetypes} from './CustomArchetypes';
 export {default as CustomSkills} from './CustomSkills';
 export {default as Description} from './Description';
 export {default as EquipmentLog} from './EquipmentLog';

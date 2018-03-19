@@ -24,9 +24,9 @@ class CustomCareers extends React.Component {
         const {customCareers, changeCustomData} = this.props;
         const {name, selectedSkills} = this.state;
         if (name === "" || 0 >= selectedSkills.length) return;
-        let newObj = {...customCareers};
-        newObj[name.replace(/\s/g, '')] = {name, skills: selectedSkills};
-        changeCustomData(newObj, 'customCareers');
+        let Obj = {...customCareers};
+        Obj[name.replace(/\s/g, '')] = {name, skills: selectedSkills};
+        changeCustomData(Obj, 'customCareers');
         this.setState({name: '', selectedSkills: []});
         event.preventDefault();
     };
@@ -34,10 +34,9 @@ class CustomCareers extends React.Component {
     handleDelete = (event) => {
         const {customCareers, changeCustomData, career, changeData} = this.props;
         if (career === event.target.name) changeData('', 'career');
-        changeCustomData('', 'customCareers');
-        let newObj = {...customCareers};
-        delete newObj[event.target.name];
-        changeCustomData(newObj, 'customCareers');
+        let Obj = {...customCareers};
+        delete Obj[event.target.name];
+        changeCustomData(Obj, 'customCareers', false);
         event.preventDefault();
     };
 

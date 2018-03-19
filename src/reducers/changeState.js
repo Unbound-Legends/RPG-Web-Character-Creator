@@ -17,8 +17,13 @@ export const character = (state = null, action) =>{
     return state;
 };
 
-export const loading = (state = true, action) =>{
-    if (action.type === 'loading_Changed') return action.payload;
+export const loadingData = (state = true, action) => {
+    if (action.type === 'loadingData_Changed') return action.payload;
+    return state;
+};
+
+export const loadingCustomData = (state = true, action) => {
+    if (action.type === 'loadingCustomData_Changed') return action.payload;
     return state;
 };
 
@@ -36,7 +41,10 @@ export const description = (state = {...initialState.description}, action) =>{
 };
 
 export const archetype = (state = null, action) => {
-    if (action.type === 'archetype_Changed') return action.payload;
+    if (action.type === 'archetype_Changed') {
+        if (action.payload === '') return null;
+        return action.payload;
+    }
     return state;
 };
 

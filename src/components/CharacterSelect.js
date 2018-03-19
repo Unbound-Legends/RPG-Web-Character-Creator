@@ -15,7 +15,7 @@ import {
     Row
 } from 'reactstrap';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
-import {Archetype, Career, CustomCareers} from './index';
+import {Archetype, Career, CustomArchetypes, CustomCareers} from './index';
 
 class CharacterSelect extends React.Component {
     state = {
@@ -24,6 +24,7 @@ class CharacterSelect extends React.Component {
         archetypeModal: false,
         careerModal: false,
         customCareersModal: false,
+        customArchetypeModal: false,
         deleteModal: false,
     };
 
@@ -67,7 +68,7 @@ class CharacterSelect extends React.Component {
 
     render() {
         const {archetype, archetypes, careers, career, characterList, character} = this.props;
-        const {name, playerName, archetypeModal, careerModal, customCareersModal, deleteModal} = this.state;
+        const {name, playerName, archetypeModal, careerModal, customCareersModal, customArchetypeModal, deleteModal} = this.state;
         return (
             <Col>
                 <Row className='justify-content-end'><h5>CHARACTER</h5></Row>
@@ -101,11 +102,15 @@ class CharacterSelect extends React.Component {
                 <hr/>
                 <Row>
                     <Col sm='4' className='m-auto'>
-                        <b>ARCHETYPE:</b>{' '}{archetype === null ? '' : archetypes[archetype].name}
+                        <b>ARCHETYPE:</b>{' '}{archetypes[archetype] ? archetypes[archetype].name : ''}
                     </Col>
                     <Col className='m-auto'>
-                        <Button name='archetype'
-                                onClick={() => this.setState({archetypeModal: true})}>Select</Button>
+                        <ButtonGroup>
+                            <Button name='archetype'
+                                    onClick={() => this.setState({archetypeModal: true})}>Select</Button>
+                            <Button name='customArchetype'
+                                    onClick={() => this.setState({customArchetypeModal: true})}>Custom</Button>
+                        </ButtonGroup>
                     </Col>
                 </Row>
                 <hr/>
@@ -135,6 +140,9 @@ class CharacterSelect extends React.Component {
                 <Career modal={careerModal} handleClose={() => this.setState({careerModal: false})}/>
                 <CustomCareers modal={customCareersModal}
                                handleClose={() => this.setState({customCareersModal: false})}/>
+                <CustomArchetypes modal={customArchetypeModal}
+                                  handleClose={() => this.setState({customArchetypeModal: false})}/>
+
                 <Modal isOpen={deleteModal} toggle={() => this.setState({deleteModal: false})}>
                     <ModalHeader toggle={() => this.setState({deleteModal: false})}>BALETED WARNING</ModalHeader>
                     <ModalBody>

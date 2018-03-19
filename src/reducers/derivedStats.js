@@ -25,7 +25,7 @@ const weapons = state => state.weapons;
 export const calcCharacteristics = createSelector(
     archetype, archetypes, creationCharacteristics, talentModifiers,
     (archetype, archetypes, creationCharacteristics, talentModifiers) => {
-        if (archetype === null) return creationCharacteristics;
+        if (!archetype || !archetypes[archetype]) return creationCharacteristics;
         //get the starting characteristics
         let characteristics = {...archetypes[archetype].characteristics};
         //add the creation characteristics
@@ -43,7 +43,7 @@ export const calcCharacteristics = createSelector(
 export const calcArchetypeSkillRank = createSelector(
     archetype, archetypes, skills, archetypeSpecialSkills,
     (archetype, archetypes, skills, archetypeSpecialSkills) => {
-        if (archetype === null) return archetypeSpecialSkills;
+        if (!archetype || !archetypes[archetype]) return archetypeSpecialSkills;
         const archetypeSkills = {...archetypes[archetype].skills};
         let archetypeSkillRank = {};
         if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
@@ -170,7 +170,7 @@ export const calcGearDice = createSelector(
 export const calcMaxCareerSkills = createSelector(
     archetype, archetypes,
     (archetype, archetypes) => {
-        if (archetype === null) return 4;
+        if (!archetype || !archetypes[archetype]) return 4;
         const archetypeSkills = archetypes[archetype].skills;
         return Object.keys(archetypeSkills).includes('careerSkills') ? 6 : 4;
     }
@@ -201,7 +201,7 @@ export const calcCareerCheck = createSelector(
 export const calcWounds = createSelector(
     archetype, archetypes, talents, creationCharacteristics, calcTalentCount,
     (archetype, archetypes, talents, creationCharacteristics, talentCount) => {
-        if (archetype === null) return 0;
+        if (!archetype || !archetypes[archetype]) return 0;
         //get starting wounds
         let startingThreshold = archetypes[archetype].woundThreshold;
         //get starting brawn
@@ -220,7 +220,7 @@ export const calcWounds = createSelector(
 export const calcStrain = createSelector(
     archetype, archetypes, talents, creationCharacteristics, calcTalentCount,
     (archetype, archetypes, talents, creationCharacteristics, talentCount) => {
-        if (archetype === null) return 0;
+        if (!archetype || !archetypes[archetype]) return 0;
         //get starting wounds
         let startingThreshold = archetypes[archetype].strainThreshold;
         //get starting brawn
@@ -239,7 +239,7 @@ export const calcStrain = createSelector(
 export const calcTotalSoak = createSelector(
     talents, calcCharacteristics, calcTalentCount, armor,
     (talents, characteristics, talentCount, armor) => {
-        if (archetype === null) return 0;
+        if (!archetype || !archetypes[archetype]) return 0;
         //get calcBrawn
         let Brawn = characteristics.Brawn;
         //get soak from armor
@@ -343,7 +343,7 @@ export const calcTotalEncumbrance = createSelector(
 export const calcUsedXP = createSelector(
     masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkillsRank, calcArchetypeSkillRank, calcSkillRanks,
     (masterTalents, creationCharacteristics, archetype, archetypes, masterSkills, career, careers, careerSkillsRank, archetypeSkillRank, skillRanks) => {
-        if (archetype === null) return 0;
+        if (!archetype || !archetypes[archetype]) return 0;
         //talent XP
         let talentXP = 0;
         Object.keys(masterTalents).forEach((row) => {
@@ -379,7 +379,7 @@ export const calcUsedXP = createSelector(
 export const calcTotalXP = createSelector(
     archetype, archetypes, earnedXP,
     (archetype, archetypes, earnedXP) => {
-        if (archetype === null) return earnedXP;
+        if (!archetype || !archetypes[archetype]) return earnedXP;
         return +archetypes[archetype].experience + +earnedXP;
     }
 );

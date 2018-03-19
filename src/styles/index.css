@@ -11,7 +11,7 @@ body {
     --ability: rgb(70, 172, 78);
     --proficiency: rgb(254, 240, 53);
     font-family: 'Avenir Next', sans-serif !important;
-    background-image: url(/images/background.png);
+    background-image: url('/images/background.png');
 }
 
 hr {
@@ -126,6 +126,7 @@ input[type="number"] {
 .attributeValue {
     position: absolute;
     font-size: 20px;
+    font-weight: 600;
     top: 51%;
     left: 60%;
     transform: translate(-50%, -50%);

@@ -21,7 +21,8 @@ class TalentList extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {archetypes[archetype] && Object.keys(archetypes[archetype].talents).sort().map((key) =>
+                    {(archetypes[archetype] && archetypes[archetype].talents) &&
+                    Object.keys(archetypes[archetype].talents).sort().map((key) =>
                         <tr key={key}>
                             <td>{archetypes[archetype].talents[key].name}</td>
                             <td/>

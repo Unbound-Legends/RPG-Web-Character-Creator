@@ -53,7 +53,6 @@ class Attributes extends React.Component {
                                    className='py-0 px-1 mx-1'
                                    onChange={this.handleChange}
                                    onBlur={this.handleBlur}
-                                   placeholder={currentWound}
                                    value={currentWound > 0 ? currentWound : ''}/>
                         </Row>
                     </div>
@@ -69,7 +68,6 @@ class Attributes extends React.Component {
                                    className='py-0 px-1 mx-1'
                                    onChange={this.handleChange}
                                    onBlur={this.handleBlur}
-                                   placeholder={currentStrain}
                                    value={currentStrain > 0 ? currentStrain : ''}/>
                         </Row>
                     </div>

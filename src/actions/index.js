@@ -1,5 +1,5 @@
 import {db} from '../firestore/db';
-import {dataTypes, customDataTypes} from '../data/lists';
+import {customDataTypes, dataTypes} from '../data/lists';
 
 export const loadCharacterList = () => {
     return (dispatch, getState) => {
@@ -75,14 +75,14 @@ export const changeCharacterName = (data) => {
 
 export const loadData = () => {
     return (dispatch, getState) => {
-        dispatch({type: 'loading_Changed', payload: true});
+        dispatch({type: 'loadingData_Changed', payload: true});
         const user = getState().user;
         const character = getState().character;
         dataTypes.forEach((type, index) => {
             db.doc(`users/${user}/data/characters/${character}/${type}/`).onSnapshot(doc => {
                 if (doc.exists) dispatch({type: `${type}_Changed`, payload: doc.data().data});
                 else dispatch({type: `${type}_Changed`, payload: null});
-                if (index + 1 >= dataTypes.length) dispatch({type: 'loading_Changed', payload: false});
+                if (index + 1 >= dataTypes.length) dispatch({type: 'loadingData_Changed', payload: false});
             }, err => {
                 console.log(`Encountered error: ${err}`);
             });
@@ -122,14 +122,14 @@ export const loadCustomDataList = () => {
 };
 export const loadCustomDataSet = () => {
     return (dispatch, getState) => {
-        dispatch({type: 'loading_Changed', payload: true});
+        dispatch({type: 'loadingCustomData_Changed', payload: true});
         const user = getState().user;
         const customDataSet = getState().customDataSet;
         customDataTypes.forEach((type, index) => {
             db.doc(`users/${user}/data/customDataSets/${customDataSet}/${type}/`).onSnapshot(doc => {
                 if (doc.exists) dispatch({type: `${type}_Changed`, payload: doc.data().data});
                 else dispatch({type: `${type}_Changed`, payload: null});
-                if (index + 1 >= dataTypes.length) dispatch({type: 'loading_Changed', payload: false});
+                if (index + 1 >= customDataTypes.length) dispatch({type: 'loadingCustomData_Changed', payload: false});
             }, err => {
                 console.log(`Encountered error: ${err}`);
             });

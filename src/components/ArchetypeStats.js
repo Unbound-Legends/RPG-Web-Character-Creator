@@ -8,7 +8,7 @@ class ArchetypeStats extends React.Component {
     render() {
         const {archetype, archetypes} = this.props;
         const masterArchetype = archetypes[archetype];
-        if (!archetype) return <div/>;
+        if (!archetype || !archetypes[archetype]) return <div/>;
         return (
             <div>
                 <Row><b>Starting Stats: </b></Row>
@@ -45,7 +45,8 @@ class ArchetypeStats extends React.Component {
                 <Row>
                     <b>Starting Talents:</b>
                 </Row>
-                {Object.keys(masterArchetype.talents : '').map((talent)=>
+                {masterArchetype.talents &&
+                Object.keys(masterArchetype.talents).map((talent) =>
                     <Row key={talent} className='ml-3'>
                     <b>{masterArchetype.talents[talent].name}:</b>&emsp;
                     <Description text={masterArchetype.talents[talent].description}/>

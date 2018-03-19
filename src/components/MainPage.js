@@ -43,7 +43,8 @@ class MainPage extends React.Component {
     }
 
     render() {
-        if (this.props.loading) return <h1 style={{textAlign: 'center', marginTop: '2rem'}}>LOADING</h1>;
+        if (this.props.loadingCustomData || this.props.loadingData) return <h1
+            style={{textAlign: 'center', marginTop: '2rem'}}>LOADING</h1>;
         return (
             <Container className='mx-2'>
                 <Buttons/>
@@ -75,7 +76,8 @@ function mapStateToProps(state) {
     return {
         user: state.user,
         character: state.character,
-        loading: state.loading,
+        loadingData: state.loadingData,
+        loadingCustomData: state.loadingCustomData,
         customDataSet: state.customDataSet,
     };
 }
