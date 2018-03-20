@@ -32,6 +32,7 @@ class TalentList extends React.Component {
                         </tr>
                     )}
                     {Object.keys(talentCount).sort().map((key) =>
+                        talents[key] &&
                         <tr key={key}>
                             <td>{talents[key].name}</td>
                             <td className='text-center'>{talentCount[key]}</td>

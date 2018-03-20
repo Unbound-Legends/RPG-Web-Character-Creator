@@ -20,6 +20,7 @@ class CustomArchetypes extends React.Component {
         strainThreshold: 10,
         XP: 100,
         selectedSkill: '',
+        description: '',
     };
 
     handleChange = (event) => {
@@ -41,7 +42,7 @@ class CustomArchetypes extends React.Component {
     };
 
     handleSubmit = () => {
-        const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, selectedSkill} = this.state;
+        const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, selectedSkill, description} = this.state;
         const {customArchetypes, changeCustomData} = this.props;
         let Obj = {...customArchetypes};
         Obj[name.replace(/\s/g, '')] = {
@@ -59,6 +60,7 @@ class CustomArchetypes extends React.Component {
             experience: XP,
             skills: {[selectedSkill]: 1},
             talents: {},
+            description,
         };
         changeCustomData(Obj, 'customArchetypes');
         this.setState({
@@ -73,6 +75,7 @@ class CustomArchetypes extends React.Component {
             strainThreshold: 10,
             XP: 100,
             selectedSkill: '',
+            description: ''
         });
     };
 
@@ -87,7 +90,7 @@ class CustomArchetypes extends React.Component {
 
     render() {
         const {customArchetypes, modal, handleClose, skills} = this.props;
-        const {name, woundThreshold, strainThreshold, selectedSkill, XP} = this.state;
+        const {name, woundThreshold, strainThreshold, selectedSkill, XP, description} = this.state;
         return (
             <Modal isOpen={modal} toggle={handleClose}>
                 <ModalHeader toggle={handleClose}>Custom Archetypes</ModalHeader>
@@ -110,9 +113,8 @@ class CustomArchetypes extends React.Component {
                                    onChange={this.handleChange}/>
                         </Col>
                     </Row>
-                    <hr/>
                     <Row className='mt-2'>
-                        <b className='text-left'>Starting Characteristics</b>
+                        <b className='text-left'>Starting Characteristics:</b>
                     </Row>
                     <Row className='justify-content-center'>
                         {chars.map((stat) =>
@@ -129,9 +131,8 @@ class CustomArchetypes extends React.Component {
                             </div>
                         )}
                     </Row>
-                    <hr/>
                     <Row className='mt-2'>
-                        <b className='text-left'>Starting Attributes</b>
+                        <b className='text-left'>Starting Attributes:</b>
                     </Row>
                     <Row className='justify-content-center'>
                         <div className='justify-content-center text-center'>
@@ -157,7 +158,6 @@ class CustomArchetypes extends React.Component {
                             </ButtonGroup>
                         </div>
                     </Row>
-                    <hr/>
                     <Row className='mt-2'>
                         <Col xs='5' className='my-auto'>
                             <b>One free rank in:</b>
@@ -173,11 +173,23 @@ class CustomArchetypes extends React.Component {
                             </Input>
                         </Col>
                     </Row>
+                    <Row className='mt-2'>
+                        <Col xs='4'>
+                            <b>Description:</b>
+                        </Col>
+                        <Col>
+                            <textarea onChange={this.handleChange}
+                                      name='description'
+                                      rows='8'
+                                      maxLength='200'
+                                      className='w-100'
+                                      value={description}/>
+                        </Col>
+                    </Row>
                     <Row className='my-4 justify-content-end'>
                         <Button onClick={this.handleSubmit} disabled={name === '' || selectedSkill === '' || XP === ''}>Add
                             Archetype</Button>
                     </Row>
-                    <hr/>
                     <Table>
                         <thead>
                         <tr>

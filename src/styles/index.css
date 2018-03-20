@@ -177,6 +177,11 @@ input[type="number"] {
     z-index: 1;
 }
 
+.talentDesc {
+    overflow-y: auto;
+    white-space: pre-line;
+}
+
 .table-dice {
     width: 130px;
 }

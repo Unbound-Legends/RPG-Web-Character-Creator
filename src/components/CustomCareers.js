@@ -1,11 +1,11 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Button, ButtonGroup, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData, changeData} from '../actions';
 
 class CustomCareers extends React.Component {
-    state = {name: '', selectedSkills: []};
+    state = {name: '', selectedSkills: [], description: ''};
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
@@ -22,12 +22,11 @@ class CustomCareers extends React.Component {
 
     addCustomCareer = (event) => {
         const {customCareers, changeCustomData} = this.props;
-        const {name, selectedSkills} = this.state;
-        if (name === "" || 0 >= selectedSkills.length) return;
+        const {name, selectedSkills, description} = this.state;
         let Obj = {...customCareers};
-        Obj[name.replace(/\s/g, '')] = {name, skills: selectedSkills};
+        Obj[name.replace(/\s/g, '')] = {name, skills: selectedSkills, description};
         changeCustomData(Obj, 'customCareers');
-        this.setState({name: '', selectedSkills: []});
+        this.setState({name: '', selectedSkills: [], description: ''});
         event.preventDefault();
     };
 
@@ -48,34 +47,55 @@ class CustomCareers extends React.Component {
 
     render() {
         const {skills, customCareers, modal, handleClose} = this.props;
-        const {name, selectedSkills} = this.state;
+        const {name, selectedSkills, description} = this.state;
         return (
             <Modal isOpen={modal} toggle={handleClose}>
                 <ModalHeader toggle={handleClose}>Custom Careers</ModalHeader>
                 <ModalBody className='m-3 text-left'>
-                    <Row className='my-1'>
-                        Name:
-                        <Input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
+                    <Row className='mt-2'>
+                        <Col xs='4' className='my-auto'>
+                            <b>Name:</b>
+                        </Col>
+                        <Col>
+                            <Input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
+                        </Col>
                     </Row>
-                    <Row className='my-1'>
-                        Career Skills:
-                        <Input type='select' value='' name='selectedSkills' onChange={this.handleSelect}>
-                            <option value=''/>
-                            {this.createOptions().map((key) =>
-                                <option value={key} key={key}>{skills[key].name}</option>
-                            )}
-                        </Input>
+                    <Row className='mt-2'>
+                        <Col xs='4' className='my-auto'>
+                            <b>Career Skills:</b>
+                        </Col>
+                        <Col>
+                            <Input type='select' value='' name='selectedSkills' onChange={this.handleSelect}>
+                                <option value=''/>
+                                {this.createOptions().map((key) =>
+                                    <option value={key} key={key}>{skills[key].name}</option>
+                                )}
+                            </Input>
+                        </Col>
                     </Row>
-                    <Row className='my-1'>
+                    <Row className='mt-2 mx-2'>
                         <span className='my-auto'>{selectedSkills.length} skills&emsp;</span>
-                        <ButtonGroup>
-                            <Button onClick={() => this.setState({selectedSkills: []})}>Clear</Button>
-                            <Button onClick={this.addCustomCareer} disabled={name === ''}>Add</Button>
-                        </ButtonGroup>
+                        <Button onClick={() => this.setState({selectedSkills: []})}>Clear</Button>
                     </Row>
-                    <Row className='my-1'>
+                    <Row className='mt-2'>
                         {selectedSkills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
-
+                    </Row>
+                    <Row className='mt-2'>
+                        <Col xs='4'>
+                            <b>Description:</b>
+                        </Col>
+                        <Col>
+                            <textarea onChange={this.handleChange}
+                                      name='description'
+                                      rows='8'
+                                      maxLength='200'
+                                      className='w-100'
+                                      value={description}/>
+                        </Col>
+                    </Row>
+                    <Row className='my-4 justify-content-end'>
+                        <Button onClick={this.addCustomCareer}
+                                disabled={name === '' || 0 >= selectedSkills.length}>Add</Button>
                     </Row>
                     <Table>
                         <thead>

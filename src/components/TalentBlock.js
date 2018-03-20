@@ -11,6 +11,7 @@ class TalentBlock extends React.Component {
     activation = () => {
         const {talents, talentKey} = this.props;
         if (talentKey === '') return 'var(--light)';
+        if (!talents[talentKey]) return 'var(--red)';
         if (talents[talentKey].activation) return 'var(--orange)';
         else return 'var(--lightblue)';
     };
@@ -24,9 +25,9 @@ class TalentBlock extends React.Component {
                 <CardHeader className='p-1 text-center' style={{backgroundColor: color}}>
                     <DynamicFont content={talent ? talent.name : 'inactive'}/>
                 </CardHeader>
-                <CardBody className='p-1'>
+                <CardBody className='p-1 talentDesc'>
                     <CardText>
-                        {(talent ? talent.description + '\n' + (talent.activation ? talent.turn : '') : '')}
+                        {(talent ? talent.description + '\n\n' + (talent.activation ? talent.turn : '') : '')}
                     </CardText>
                 </CardBody>
                 <TalentSelection modal={this.state.modal}

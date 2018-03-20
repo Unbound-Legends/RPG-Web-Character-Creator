@@ -15,6 +15,7 @@ export {default as Critical} from './Critical';
 export {default as CustomCareers} from './CustomCareers';
 export {default as CustomArchetypes} from './CustomArchetypes';
 export {default as CustomSkills} from './CustomSkills';
+export {default as CustomTalents} from './CustomTalents';
 export {default as Description} from './Description';
 export {default as EquipmentLog} from './EquipmentLog';
 export {default as Fix} from './Fix';

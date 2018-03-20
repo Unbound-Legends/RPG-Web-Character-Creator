@@ -133,7 +133,7 @@ export const calcGearDice = createSelector(
     calcSkillDice, weapons, armor, gear, qualities,
     (skillDice, weapons, armor, gear, qualities) => {
         let gearDice = {};
-        ['armor', 'weapons', 'gear'].forEach((type) =>{
+        ['armor', 'weapons', 'gear'].forEach((type) => {
             let data;
             if (type === 'armor') data = {...armor};
             if (type === 'weapons') data = {...weapons};
@@ -157,8 +157,8 @@ export const calcGearDice = createSelector(
                     }
                 }
                 gearDice[type][item] = skillDice[data[item].skill] + qualityDice.map((die) => `${die}`).sort((a, b) => {
-                    if(a.length < b.length) return -1;
-                    if(a.length > b.length) return 1;
+                    if (a.length < b.length) return -1;
+                    if (a.length > b.length) return 1;
                     return 0;
                 }).join(' ');
             })
@@ -185,9 +185,11 @@ export const calcCareerCheck = createSelector(
                 if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
                 else {
                     Object.keys(talentCount).forEach((talent) => {
-                        if (talents[talent].modifier) {
-                            if (talents[talent].modifier.careerSkills) {
-                                if (talents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
+                        if (talents[talent]) {
+                            if (talents[talent].modifier) {
+                                if (talents[talent].modifier.careerSkills) {
+                                    if (talents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
+                                }
                             }
                         }
                     });
@@ -211,7 +213,9 @@ export const calcWounds = createSelector(
         //get wound modifier from talentModifier
         let talentModifier = 0;
         Object.keys(talentCount).forEach((talent) => {
-            if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.woundThreshold ? talents[talent].modifier.woundThreshold : 0) * talentCount[talent]);
+            if (talents[talent]) {
+                if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.woundThreshold ? talents[talent].modifier.woundThreshold : 0) * talentCount[talent]);
+            }
         });
         return startingThreshold + startingBrawn + creationBrawn + talentModifier;
     }
@@ -230,7 +234,9 @@ export const calcStrain = createSelector(
         //get wound modifier from talentModifier
         let talentModifier = 0;
         Object.keys(talentCount).forEach((talent) => {
-            if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
+            if (talents[talent]) {
+                if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
+            }
         });
         return startingThreshold + startingBrawn + creationBrawn + talentModifier;
     }
@@ -279,9 +285,11 @@ export const calcTotalDefense = createSelector(
 
         //get defense from talents
         Object.keys(talentCount).forEach((talent) => {
-            if (talents[talent].modifier) {
-                defense.melee += ((talents[talent].modifier.meleeDefense ? +talents[talent].modifier.meleeDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
-                defense.ranged += ((talents[talent].modifier.rangedDefense ? +talents[talent].modifier.rangedDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
+            if (talents[talent]) {
+                if (talents[talent].modifier) {
+                    defense.melee += ((talents[talent].modifier.meleeDefense ? +talents[talent].modifier.meleeDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
+                    defense.ranged += ((talents[talent].modifier.rangedDefense ? +talents[talent].modifier.rangedDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
+                }
             }
         });
 
@@ -298,7 +306,7 @@ export const calcTotalDefense = createSelector(
                         let rank = Object.values(qualityData)[0] === '' ? 1 : Object.values(qualityData)[0];
                         if (qualities[quality].modifier) {
                             if (qualities[quality].modifier.meleeDefense) defense.melee += +qualities[quality].modifier.meleeDefense * rank;
-                            if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank ;
+                            if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank;
                         }
                     });
                 }
