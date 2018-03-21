@@ -4,6 +4,7 @@ import {dataTypes} from '../data/lists';
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
 const archetypeSpecialSkills = state => state.archetypeSpecialSkills;
+const archetypeTalents = state => state.archetypeTalents;
 const armor = state => state.armor;
 const career = state => state.career;
 const careers = state => state.careers;
@@ -82,11 +83,11 @@ export const calcTalentCount = createSelector(
 );
 
 export const calcSkillDice = createSelector(
-    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount, archetype, archetypes,
-    (characteristics, skillRanks, skills, talents, talentCount, archetype, archetypes) => {
-        if (characteristics === null || characteristics === undefined) return '';
+    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount, archetype, archetypes, archetypeTalents,
+    (characteristics, skillRanks, skills, talents, talentCount, archetype, archetypes, archetypeTalents) => {
+        if (!characteristics) return '';
         let skillDice = {};
-        Object.keys(skills).forEach((key) => {
+        Object.keys(skills).forEach(key => {
             let characteristic = characteristics[skills[key].characteristic];
             let rank = skillRanks[key];
             let dice, upgrade = 0;
@@ -104,7 +105,7 @@ export const calcSkillDice = createSelector(
             }
 
             //get any dice from talents
-            Object.keys(talentCount).forEach((talent) => {
+            Object.keys(talentCount).forEach(talent => {
                 if (talents[talent]) {
                     if (talents[talent].modifier) {
                         if (talents[talent].modifier[key]) {
@@ -116,13 +117,16 @@ export const calcSkillDice = createSelector(
                 }
             });
 
-            //get dice from archetype
+            //get dice from archetype talents
             if (archetypes[archetype]) {
-                if (archetypes[archetype].modifier) {
-                    if (archetypes[archetype].modifier[key]) text += archetypes[archetype].modifier[key] + ' ';
+                if (archetypes[archetype].talents) {
+                    archetypes[archetype].talents.forEach(key2 => {
+                        if (archetypeTalents[key2].modifier) {
+                            if (archetypeTalents[key2].modifier[key]) text += archetypeTalents[key2].modifier[key] + ' ';
+                        }
+                    });
                 }
             }
-
             skillDice[key] = text;
         });
         return skillDice;
@@ -263,15 +267,20 @@ export const calcTotalSoak = createSelector(
 );
 
 export const calcTotalDefense = createSelector(
-    armor, weapons, gear, qualities, archetype, archetypes, talents, calcTalentCount,
-    (armor, weapons, gear, qualities, archetype, archetypes, talents, talentCount) => {
+    armor, weapons, gear, qualities, archetype, archetypes, archetypeTalents, talents, calcTalentCount,
+    (armor, weapons, gear, qualities, archetype, archetypes, archetypeTalents, talents, talentCount) => {
         let defense = {melee: 0, ranged: 0};
 
         //get defense from Archetype
         if (archetypes[archetype]) {
-            if (archetypes[archetype].modifier) {
-                defense.melee += (archetypes[archetype].modifier.meleeDefense ? +archetypes[archetype].modifier.meleeDefense : 0) + (archetypes[archetype].modifier.defense ? +archetypes[archetype].modifier.defense : 0);
-                defense.ranged += (archetypes[archetype].modifier.rangedDefense ? +archetypes[archetype].modifier.rangedDefense : 0) + (archetypes[archetype].modifier.defense ? +archetypes[archetype].modifier.defense : 0);
+            if (archetypes[archetype].talents) {
+                archetypes[archetype].talents.forEach(key => {
+                    if (archetypeTalents[key].modifier) {
+                        let target = {...archetypeTalents[key].modifier};
+                        defense.melee += (target.meleeDefense ? +target.meleeDefense : 0) + (target.defense ? +target.defense : 0);
+                        defense.ranged += (target.rangedDefense ? +target.rangedDefense : 0) + (target.defense ? +target.defense : 0);
+                    }
+                });
             }
         }
 

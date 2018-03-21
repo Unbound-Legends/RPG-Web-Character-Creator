@@ -443,8 +443,8 @@ export default {
         page: '77',
         description: 'See CRB, page 77, for more details.'
     },
-    BarrellRoll: {
-        name: 'Barrell Roll',
+    BarrelRoll: {
+        name: 'Barrel Roll',
         setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
         tier: 3,
         activation: true,
@@ -454,8 +454,8 @@ export default {
         page: '77',
         description: 'See CRB, page 77, for more details.'
     },
-    DistintiveStyle: {
-        name: 'Distintive Style',
+    DistinctiveStyle: {
+        name: 'Distinctive Style',
         setting: 'Modern Day, Science Fiction, Space Opera',
         tier: 3,
         activation: true,

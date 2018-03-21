@@ -26,7 +26,8 @@ class ArchetypeSkills extends React.Component {
         if (Object.keys(masterArchetype.skills).includes('choice')) {
             return (
                 <div className='ml-3'>
-                    <Row>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
+                    <Row
+                        className='mt-2'>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
                         get {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : 1} {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:</Row>
                     <Input type='select' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
                         <option value=''/>
@@ -35,10 +36,10 @@ class ArchetypeSkills extends React.Component {
                             <option value={key} name={key} key={key}>{skills[key].name}</option>
                         )}
                     </Input>
-                    <Row>
+                    <Row className='mt-2'>
                         {Object.keys(archetypeSpecialSkills).map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
                     </Row>
-                    <Row className='my-2'>
+                    <Row className='mt-2'>
                         <Button onClick={() => this.props.changeData('', 'archetypeSpecialSkills')}>Clear</Button>
                     </Row>
                 </div>

@@ -7,7 +7,7 @@ import {Description} from './index'
 class TalentList extends React.Component {
 
     render() {
-        const {archetype, archetypes, talents, talentCount} = this.props;
+        const {archetype, archetypes, archetypeTalents, talents, talentCount} = this.props;
         return (
             <Col lg='12'>
                 <Row className='justify-content-end'><h5>TALENT LIST</h5></Row>
@@ -22,16 +22,17 @@ class TalentList extends React.Component {
                     </thead>
                     <tbody>
                     {(archetypes[archetype] && archetypes[archetype].talents) &&
-                    Object.keys(archetypes[archetype].talents).sort().map((key) =>
+                    archetypes[archetype].talents.sort().map(key =>
+                        archetypeTalents[key] &&
                         <tr key={key}>
-                            <td>{archetypes[archetype].talents[key].name}</td>
+                            <td>{archetypeTalents[key].name}</td>
                             <td/>
-                            <td className='text-center'>{archetypes[archetype].talents[key].activation ? 'Active' : 'Passive'}</td>
-                            <td className='text-center'>{archetypes[archetype].talents[key].turn}</td>
-                            <td><Description text={archetypes[archetype].talents[key].description}/></td>
+                            <td className='text-center'>{archetypeTalents[key].activation ? 'Active' : 'Passive'}</td>
+                            <td className='text-center'>{archetypeTalents[key].turn}</td>
+                            <td><Description text={archetypeTalents[key].description}/></td>
                         </tr>
                     )}
-                    {Object.keys(talentCount).sort().map((key) =>
+                    {Object.keys(talentCount).sort().map(key =>
                         talents[key] &&
                         <tr key={key}>
                             <td>{talents[key].name}</td>
@@ -53,6 +54,7 @@ function mapStateToProps(state) {
         talents: state.talents,
         archetype: state.archetype,
         archetypes: state.archetypes,
+        archetypeTalents: state.archetypeTalents,
         talentCount: talentCount(state),
     };
 }

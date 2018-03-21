@@ -268,6 +268,14 @@ export const talents = (state = data.talents, action) => {
     return state;
 };
 
+export const archetypeTalents = (state = data.archetypeTalents, action) => {
+    if (action.type === 'customArchetypeTalents_Changed') {
+        if (action.payload === null) return data.archetypeTalents;
+        else return merge(data.talents, action.payload);
+    }
+    return state;
+};
+
 export const qualities = (state = data.qualities, action) => {
     if (action.type === 'customQualities_Changed') {
         if (action.payload === null) return data.qualities;

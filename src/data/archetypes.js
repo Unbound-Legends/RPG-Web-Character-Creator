@@ -9,16 +9,7 @@ export default {
         strainThreshold: 10,
         experience: 110,
         skills: {choice: 2, any: 1},
-        talents: {
-            readyforanything: {
-                name: 'Ready for Anything',
-                activation: true,
-                turn: 'Incidental, Out of Turn',
-                book: 'CRB',
-                page: '36',
-                description: 'See CRB, page 36, for more details.',
-            }
-        },
+        talents: ['readyforanything'],
         characteristics: {
             Brawn: 2,
             Agility: 2,
@@ -39,16 +30,7 @@ export default {
         strainThreshold: 8,
         experience: 100,
         skills: {Athletics: 1},
-        talents: {
-            toughasnails: {
-                name: 'Tough as Nails',
-                activation: true,
-                turn: 'Incidental, Out of Turn',
-                book: 'CRB',
-                page: '37',
-                description: 'See CRB, page 37, for more details.',
-            }
-        },
+        talents: ['toughasnails'],
         characteristics: {
             Brawn: 3,
             Agility: 2,
@@ -69,16 +51,7 @@ export default {
         strainThreshold: 12,
         experience: 100,
         skills: {Knowledge: 1},
-        talents: {
-            brilliant: {
-                name: 'Brilliant!',
-                activation: true,
-                turn: 'Incidental',
-                book: 'CRB',
-                page: '38',
-                description: 'See CRB, page 38, for more details.',
-            }
-        },
+        talents: ['brilliant'],
         characteristics: {
             Brawn: 2,
             Agility: 1,
@@ -99,16 +72,7 @@ export default {
         strainThreshold: 10,
         experience: 100,
         skills: {Cool: 1},
-        talents: {
-            forcefulPersonality: {
-                name: 'Forceful Personality',
-                activation: true,
-                turn: 'Incidental',
-                book: 'CRB',
-                page: '39',
-                description: 'See CRB, page 39, for more details.',
-            }
-        },
+        talents: ['forcefulPersonality'],
         characteristics: {
             Brawn: 1,
             Agility: 2,
@@ -118,7 +82,6 @@ export default {
             Presence: 3
         }
     },
-
     Elf: {
         name: 'Elf',
         book: 'CRB',
@@ -129,19 +92,7 @@ export default {
         strainThreshold: 10,
         experience: 90,
         skills: {Perception: 1},
-        talents: {
-            nimble: {
-                name: 'Nimble',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '142',
-                description: 'See CRB, page 142, for more details.',
-            }
-        },
-        modifier: {
-            defense: 1
-        },
+        talents: ['nimble'],
         characteristics: {
             Brawn: 2,
             Agility: 3,
@@ -162,24 +113,7 @@ export default {
         strainThreshold: 10,
         experience: 90,
         skills: {Resilience: 1},
-        talents: {
-            darkvision: {
-                name: 'Dark Vision',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '142',
-                description: 'See CRB, page 142, for more details.',
-            },
-            toughasnails: {
-                name: 'Tough as Nails',
-                activation: true,
-                turn: 'Incidental, Out of Turn',
-                book: 'CRB',
-                page: '37',
-                description: 'See CRB, page 37, for more details.',
-            }
-        },
+        talents: ['darkvision', 'toughasnails'],
         characteristics: {
             Brawn: 2,
             Agility: 1,
@@ -200,16 +134,7 @@ export default {
         strainThreshold: 8,
         experience: 100,
         skills: {Coercion: 1},
-        talents: {
-            battlerage: {
-                name: 'Battle Rage',
-                activation: true,
-                turn: 'Attack',
-                book: 'CRB',
-                page: '143',
-                description: 'See CRB, page 143, for more details.',
-            }
-        },
+        talents: ['battlerage'],
         characteristics: {
             Brawn: 3,
             Agility: 2,
@@ -230,24 +155,7 @@ export default {
         strainThreshold: 8,
         experience: 100,
         skills: {Discipline: 1},
-        talents: {
-            thebeastwithin: {
-                name: 'The Beast Within',
-                activation: true,
-                turn: 'Incidental, Out of Turn',
-                book: 'CRB',
-                page: '152',
-                description: 'See CRB, page 152, for more details.',
-            },
-            thehumanspirt: {
-                name: 'The Human Spirit',
-                activation: true,
-                turn: 'Incidental, Out of Turn',
-                book: 'CRB',
-                page: '152',
-                description: 'See CRB, page 152, for more details.',
-            }
-        },
+        talents: ['thebeastwithin', 'thehumanspirit'],
         characteristics: {
             Brawn: 2,
             Agility: 2,
@@ -268,24 +176,7 @@ export default {
         strainThreshold: 9,
         experience: 100,
         skills: {Coercion: 1},
-        talents: {
-            reanimated: {
-                name: 'Reanimated',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '153',
-                description: 'See CRB, page 153, for more details.',
-            },
-            deadnerves: {
-                name: 'Dead Nerves',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '153',
-                description: 'See CRB, page 153, for more details.',
-            }
-        },
+        talents: ['reanimated', 'deadnerves'],
         characteristics: {
             Brawn: 3,
             Agility: 2,
@@ -306,24 +197,7 @@ export default {
         strainThreshold: 8,
         experience: 155,
         skills: {},
-        talents: {
-            robot: {
-                name: 'Robot',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '174',
-                description: 'See CRB, page 174, for more details.',
-            },
-            inorganic: {
-                name: 'Inorganic',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '174',
-                description: 'See CRB, page 174, for more details.',
-            }
-        },
+        talents: ['robot', 'inorganic'],
         characteristics: {
             Brawn: 3,
             Agility: 1,
@@ -344,16 +218,7 @@ export default {
         strainThreshold: 10,
         experience: 80,
         skills: {choice: 2, any: 2},
-        talents: {
-            afaceinacrowd: {
-                name: 'A Face in a Crowd',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '174',
-                description: 'See CRB, page 174, for more details.',
-            }
-        },
+        talents: ['afaceinacrowd'],
         characteristics: {
             Brawn: 2,
             Agility: 2,
@@ -379,16 +244,7 @@ export default {
             Coordination: 1,
             Resilience: 1
         },
-        talents: {
-            naturalweapons: {
-                name: 'Natural Weapons',
-                activation: false,
-                turn: 'Attack',
-                book: 'CRB',
-                page: '182',
-                description: 'See CRB, page 182, for more details.',
-            }
-        },
+        talents: ['naturalweapons'],
         characteristics: {
             Brawn: 3,
             Agility: 3,
@@ -409,33 +265,7 @@ export default {
         strainThreshold: 11,
         experience: 70,
         skills: {},
-        talents: {
-            mindreader: {
-                name: 'Mind Reader',
-                activation: true,
-                turn: 'Action',
-                book: 'CRB',
-                page: '182',
-                description: 'See CRB, page 182, for more details.',
-            },
-            mindshaper: {
-                name: 'Mind Shaper',
-                activation: true,
-                turn: 'Action',
-                book: 'CRB',
-                page: '182',
-                description: 'See CRB, page 182, for more details.',
-            },
-            mindbreaker: {
-                name: 'Mind Breaker',
-                activation: true,
-                turn: 'Action',
-                book: 'CRB',
-                page: '182',
-                description: 'See CRB, page 182, for more details.',
-            },
-
-        },
+        talents: ['mindreader', 'mindshaper', 'mindbreaker'],
         characteristics: {
             Brawn: 2,
             Agility: 2,
@@ -456,32 +286,7 @@ export default {
         strainThreshold: 10,
         experience: 175,
         skills: {careerSkills: 6},
-        talents: {
-            robot: {
-                name: 'Robot',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '174',
-                description: 'See CRB, page 174, for more details.',
-            },
-            networkedintelligence: {
-                name: 'Networked Intelligence',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '183',
-                description: 'See CRB, page 183, for more details.',
-            },
-            inorganic: {
-                name: 'Inorganic',
-                activation: false,
-                turn: false,
-                book: 'CRB',
-                page: '174',
-                description: 'See CRB, page 174, for more details.',
-            }
-        },
+        talents: ['robot', 'networkedintelligence', 'inorganic'],
         characteristics: {
             Brawn: 1,
             Agility: 1,
@@ -502,27 +307,7 @@ export default {
         strainThreshold: 9,
         experience: 100,
         skills: {Knowledge: 1},
-        talents: {
-            spaceisourbirthright: {
-                name: 'Space is our Birth Right',
-                activation: false,
-                turn: 'Action',
-                book: 'CRB',
-                page: '183',
-                description: 'See CRB, page 183, for more details.',
-            },
-            hightechbaubles: {
-                name: 'High Tech Baubles',
-                activation: false,
-                turn: false,
-                source: 'CRB page 183',
-                description: 'See CRB, page 183, for more details.',
-            }
-        },
-        modifier: {
-            Astrocartography: '[advantage]',
-            Knowledge: '[advantage]'
-        },
+        talents: ['spaceisourbirthright', 'hightechbaubles'],
         characteristics: {
             Brawn: 2,
             Agility: 2,

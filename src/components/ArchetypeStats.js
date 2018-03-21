@@ -6,7 +6,7 @@ import {ArchetypeSkills, Description} from './index';
 class ArchetypeStats extends React.Component {
 
     render() {
-        const {archetype, archetypes} = this.props;
+        const {archetype, archetypes, archetypeTalents} = this.props;
         const masterArchetype = archetypes[archetype];
         if (!archetype || !archetypes[archetype]) return <div/>;
         return (
@@ -46,10 +46,10 @@ class ArchetypeStats extends React.Component {
                     <b>Starting Talents:</b>
                 </Row>
                 {masterArchetype.talents &&
-                Object.keys(masterArchetype.talents).map((talent) =>
+                masterArchetype.talents.map((talent) =>
                     <Row key={talent} className='ml-3'>
-                    <b>{masterArchetype.talents[talent].name}:</b>&emsp;
-                    <Description text={masterArchetype.talents[talent].description}/>
+                        <b>{archetypeTalents[talent].name}:</b>&emsp;
+                        <Description text={archetypeTalents[talent].description}/>
                     </Row>
                     )}
                 <Row><b>Setting:</b>&emsp;{masterArchetype.setting}</Row>
@@ -66,7 +66,8 @@ class ArchetypeStats extends React.Component {
 function mapStateToProps(state) {
     return {
         archetype: state.archetype,
-        archetypes: state.archetypes
+        archetypes: state.archetypes,
+        archetypeTalents: state.archetypeTalents,
     };
 }
 

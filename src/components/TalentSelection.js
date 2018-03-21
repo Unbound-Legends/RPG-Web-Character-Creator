@@ -20,13 +20,13 @@ class TalentSelection extends React.Component {
             if (key.includes('Improved') || key.includes('Supreme')) {
                 if ((key.includes('Improved') && talentCount[key.slice(0, -8)]) ||
                     (key.includes('Supreme') && talentCount[key.slice(0, -7)])) {
-                    if (tier === talents[key].tier && !talentCount[key]) options.push(key);
+                    if (+tier === talents[key].tier && !talentCount[key]) options.push(key);
                 }
             }
             //talent from this tier and has not been selected already
-            else if (tier === talents[key].tier && !talentCount[key]) options.push(key);
+            else if (tier === +talents[key].tier && !talentCount[key]) options.push(key);
             //talent is ranked and has been selected enough for this tier
-            else if (talents[key].ranked && ((talents[key].tier + talentCount[key]) === tier)) options.push(key);
+            else if (talents[key].ranked && ((+talents[key].tier + talentCount[key]) === tier)) options.push(key);
             if (key === talentKey) options.push(key);
         });
         if (tier === 5 && !options.includes('Dedication')) options.push('Dedication');

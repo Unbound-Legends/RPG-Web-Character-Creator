@@ -21,6 +21,7 @@ export const dataTypes = [
 
 export const customDataTypes = [
     'customArchetypes',
+    'customArchetypeTalents',
     'customCareers',
     'customMotivations',
     'customSkills',

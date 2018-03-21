@@ -18,16 +18,16 @@ class CustomTalents extends React.Component {
         let value = event.target.value;
         if (value === 'true') value = true;
         if (value === 'false') value = false;
+        if (event.target.name === 'tier') value = +value;
         this.setState({[event.target.name]: value});
         event.preventDefault();
     };
-
 
     handleSubmit = () => {
         const {name, tier, activation, turn, ranked, description} = this.state;
         const {customTalents, changeCustomData} = this.props;
         let Obj = {...customTalents};
-        Obj[name.replace(/\s/g, '')] = {
+        Obj[name.replace(/\s/g, '').replace(/[{()}]/g, '')] = {
             name, tier, activation, turn, ranked, description
         };
         changeCustomData(Obj, 'customTalents');

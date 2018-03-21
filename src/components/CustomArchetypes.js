@@ -21,6 +21,8 @@ class CustomArchetypes extends React.Component {
         XP: 100,
         selectedSkill: '',
         description: '',
+        setting: '',
+        talents: [],
     };
 
     handleChange = (event) => {
@@ -41,8 +43,16 @@ class CustomArchetypes extends React.Component {
         this.setState({[event.target.name]: value})
     };
 
+    handleSelect = (event) => {
+        let talents = [...this.state.talents];
+        talents.push(event.target.value);
+        talents.sort();
+        this.setState({talents});
+        event.preventDefault();
+    };
+
     handleSubmit = () => {
-        const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, selectedSkill, description} = this.state;
+        const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, selectedSkill, description, talents, setting} = this.state;
         const {customArchetypes, changeCustomData} = this.props;
         let Obj = {...customArchetypes};
         Obj[name.replace(/\s/g, '')] = {
@@ -59,7 +69,8 @@ class CustomArchetypes extends React.Component {
             strainThreshold,
             experience: XP,
             skills: {[selectedSkill]: 1},
-            talents: {},
+            talents,
+            setting,
             description,
         };
         changeCustomData(Obj, 'customArchetypes');
@@ -75,7 +86,9 @@ class CustomArchetypes extends React.Component {
             strainThreshold: 10,
             XP: 100,
             selectedSkill: '',
-            description: ''
+            description: '',
+            setting: '',
+            talents: [],
         });
     };
 
@@ -89,8 +102,8 @@ class CustomArchetypes extends React.Component {
     };
 
     render() {
-        const {customArchetypes, modal, handleClose, skills} = this.props;
-        const {name, woundThreshold, strainThreshold, selectedSkill, XP, description} = this.state;
+        const {customArchetypes, modal, handleClose, skills, archetypeTalents} = this.props;
+        const {name, woundThreshold, strainThreshold, selectedSkill, XP, description, talents, setting} = this.state;
         return (
             <Modal isOpen={modal} toggle={handleClose}>
                 <ModalHeader toggle={handleClose}>Custom Archetypes</ModalHeader>
@@ -114,7 +127,18 @@ class CustomArchetypes extends React.Component {
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <b className='text-left'>Starting Characteristics:</b>
+                        <Col xs='4' className='my-auto'>
+                            <b>Setting:</b>
+                        </Col>
+                        <Col>
+                            <Input className='my-auto' type='text' value={setting} name='setting' maxLength='25'
+                                   onChange={this.handleChange}/>
+                        </Col>
+                    </Row>
+                    <Row className='mt-2'>
+                        <Col xs='4' className='my-auto'>
+                            <b className='text-left'>Starting Characteristics:</b>
+                        </Col>
                     </Row>
                     <Row className='justify-content-center'>
                         {chars.map((stat) =>
@@ -132,7 +156,9 @@ class CustomArchetypes extends React.Component {
                         )}
                     </Row>
                     <Row className='mt-2'>
-                        <b className='text-left'>Starting Attributes:</b>
+                        <Col xs='4' className='my-auto'>
+                            <b className='text-left'>Starting Attributes:</b>
+                        </Col>
                     </Row>
                     <Row className='justify-content-center'>
                         <div className='justify-content-center text-center'>
@@ -166,13 +192,39 @@ class CustomArchetypes extends React.Component {
                             <Input type='select' name='selectedSkill' value={selectedSkill}
                                    onChange={this.handleChange}>
                                 <option value=''/>
-                                {Object.keys(skills).map((key) =>
+                                {Object.keys(skills).map(key =>
                                     <option value={key} key={key}>{skills[key].name}</option>
                                 )}
 
                             </Input>
                         </Col>
                     </Row>
+                    <Row className='mt-2'>
+                        <Col xs='5' className='my-auto'>
+                            <b>Archetype Talents:</b>
+                        </Col>
+                        <Col>
+                            <Input type='select' name='talents' value=''
+                                   onChange={this.handleSelect}>
+                                <option value=''/>
+                                {Object.keys(archetypeTalents).map(key =>
+                                    <option value={key} key={key}>{archetypeTalents[key].name}</option>
+                                )}
+                            </Input>
+                        </Col>
+                    </Row>
+                    <Row className='mt-2'>
+                        <Col className='my-auto'>
+                            {talents.map(key => archetypeTalents[key] ? archetypeTalents[key].name : key).join(', ')}
+                        </Col>
+                    </Row>
+                    <Row className='mt-2'>
+                        <Col xs='5' className='my-auto'>
+                            <span className='my-auto'>{talents.length} Talents&emsp;</span>
+                            <Button onClick={() => this.setState({talents: []})}>Clear</Button>
+                        </Col>
+                    </Row>
+
                     <Row className='mt-2'>
                         <Col xs='4'>
                             <b>Description:</b>
@@ -194,10 +246,6 @@ class CustomArchetypes extends React.Component {
                         <thead>
                         <tr>
                             <th>NAME</th>
-                            <th>XP</th>
-                            <th>WOUNDS</th>
-                            <th>STRAIN</th>
-                            <th>SKILL</th>
                             <th/>
                         </tr>
                         </thead>
@@ -206,11 +254,8 @@ class CustomArchetypes extends React.Component {
                         Object.keys(customArchetypes).map(slot =>
                             <tr key={slot}>
                                 <td>{customArchetypes[slot].name}</td>
-                                <td>{customArchetypes[slot].experience}</td>
-                                <td>{customArchetypes[slot].woundThreshold}</td>
-                                <td>{customArchetypes[slot].strainThreshold}</td>
-                                <td>{Object.keys(customArchetypes[slot].skills)[0]}</td>
-                                <td><Button name={slot} onClick={this.handleDelete}>Delete</Button></td>
+                                <td className='text-right'><Button name={slot}
+                                                                   onClick={this.handleDelete}>Delete</Button></td>
                             </tr>
                         )
                         }
@@ -231,6 +276,7 @@ function mapStateToProps(state) {
         customArchetypes: state.customArchetypes,
         archetypes: state.archetypes,
         archetype: state.archetype,
+        archetypeTalents: state.archetypeTalents,
         skills: state.skills,
     };
 }
