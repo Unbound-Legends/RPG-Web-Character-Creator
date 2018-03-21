@@ -5,7 +5,7 @@ import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Tab
 import {changeCustomData, changeData} from '../actions';
 
 class CustomCareers extends React.Component {
-    state = {name: '', selectedSkills: [], description: ''};
+    state = {name: '', selectedSkills: [], description: '', setting: ''};
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
@@ -22,11 +22,11 @@ class CustomCareers extends React.Component {
 
     addCustomCareer = (event) => {
         const {customCareers, changeCustomData} = this.props;
-        const {name, selectedSkills, description} = this.state;
+        const {name, selectedSkills, description, setting} = this.state;
         let Obj = {...customCareers};
-        Obj[name.replace(/\s/g, '')] = {name, skills: selectedSkills, description};
+        Obj[name.replace(/\s/g, '')] = {name, skills: selectedSkills, description, setting};
         changeCustomData(Obj, 'customCareers');
-        this.setState({name: '', selectedSkills: [], description: ''});
+        this.setState({name: '', selectedSkills: [], description: '', setting: ''});
         event.preventDefault();
     };
 
@@ -47,7 +47,7 @@ class CustomCareers extends React.Component {
 
     render() {
         const {skills, customCareers, modal, handleClose} = this.props;
-        const {name, selectedSkills, description} = this.state;
+        const {name, selectedSkills, description, setting} = this.state;
         return (
             <Modal isOpen={modal} toggle={handleClose}>
                 <ModalHeader toggle={handleClose}>Custom Careers</ModalHeader>
@@ -58,6 +58,15 @@ class CustomCareers extends React.Component {
                         </Col>
                         <Col>
                             <Input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
+                        </Col>
+                    </Row>
+                    <Row className='mt-2'>
+                        <Col xs='4' className='my-auto'>
+                            <b>Setting:</b>
+                        </Col>
+                        <Col>
+                            <Input className='my-auto' type='text' value={setting} name='setting' maxLength='25'
+                                   onChange={this.handleChange}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
