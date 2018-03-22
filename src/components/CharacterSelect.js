@@ -102,7 +102,7 @@ class CharacterSelect extends React.Component {
                 <hr/>
                 <Row>
                     <Col sm='4' className='m-auto'>
-                        <b>ARCHETYPE:</b>{' '}{archetypes[archetype] ? archetypes[archetype].name : ''}
+                        <b>ARCHETYPE:</b>{' '}{archetype === '' ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
                     </Col>
                     <Col className='m-auto'>
                         <ButtonGroup>
@@ -116,7 +116,7 @@ class CharacterSelect extends React.Component {
                 <hr/>
                 <Row>
                     <Col sm='4' className='m-auto'>
-                        <b>CAREER:</b> {' '} {careers[career] && careers[career].name}
+                        <b>CAREER:</b> {' '} {career === '' ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
                     </Col>
                     <Col className='m-auto'>
                         <ButtonGroup>

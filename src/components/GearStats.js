@@ -186,6 +186,8 @@ class GearStats extends React.Component {
                                        value={weapons.qualityRank ? weapons.qualityRank : ''} name='qualityRank'
                                        onChange={this.handleChange}/>
                                 }
+                            </Col>
+                            <Col className='text-right'>
                                 <Button onClick={this.handleAddQuality}>Add</Button>
                             </Col>
                         </Row>
@@ -194,6 +196,7 @@ class GearStats extends React.Component {
                                 `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`
                             ).sort().join(', ')}
                         </Row>
+
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={this.handleSubmit}>Enter</Button>

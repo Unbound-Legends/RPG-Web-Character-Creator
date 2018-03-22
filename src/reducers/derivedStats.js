@@ -247,8 +247,8 @@ export const calcStrain = createSelector(
 );
 
 export const calcTotalSoak = createSelector(
-    talents, calcCharacteristics, calcTalentCount, armor,
-    (talents, characteristics, talentCount, armor) => {
+    archetype, archetypes, talents, calcCharacteristics, calcTalentCount, armor,
+    (archetype, archetypes, talents, characteristics, talentCount, armor) => {
         if (!archetype || !archetypes[archetype]) return 0;
         //get calcBrawn
         let Brawn = characteristics.Brawn;
@@ -260,7 +260,9 @@ export const calcTotalSoak = createSelector(
         //get soak from Enduring Talent
         let talentModifier = 0;
         Object.keys(talentCount).forEach((talent) => {
-            if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.soak ? talents[talent].modifier.soak : 0) * talentCount[talent]);
+            if (talents[talent]) {
+                if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.soak ? talents[talent].modifier.soak : 0) * talentCount[talent]);
+            }
         });
         return Brawn + Armor + talentModifier;
     }
