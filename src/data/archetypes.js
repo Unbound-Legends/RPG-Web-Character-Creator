@@ -271,8 +271,8 @@ export default {
             Agility: 2,
             Intellect: 2,
             Cunning: 2,
-            Willpower: 2,
-            Presence: 2
+            Willpower: 3,
+            Presence: 1
         }
     },
 
