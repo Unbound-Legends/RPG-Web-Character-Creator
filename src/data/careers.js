@@ -117,7 +117,7 @@ export default {
         book: 'CRB',
         page: '43',
         description: 'See CRB, page 43, for more details.',
-        skills: ['Computers', 'Discipline', 'Gunnery', 'Knowledge', 'Leadership', 'Mechanics', 'Operating', 'Astrocartography']
+        skills: ['Computers', 'Discipline', 'Gunnery', 'Knowledge', 'Leadership', 'Mechanics', 'Operating', 'Perception', 'Astrocartography']
     },
     Wizard: {
         name: 'Wizard',

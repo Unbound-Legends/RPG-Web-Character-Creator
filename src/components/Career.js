@@ -47,7 +47,7 @@ class Career extends React.Component {
                         <Row><h3>Career Skills:</h3></Row>
                         <Row>Select {this.props.maxCareerSkills} skills to start with 1 free rank</Row>
                         <Col sm={{size: 6, offset: 1}}>
-                            {masterCareer.skills.map((skill) =>
+                            {masterCareer.skills.sort().map((skill) =>
                                 <Row key={skill}><Label><Input type='checkbox' name={skill}
                                                                checked={careerSkillsRank.includes(skill)}
                                                                onChange={this.handleCheck}/>{skills[skill].name}
