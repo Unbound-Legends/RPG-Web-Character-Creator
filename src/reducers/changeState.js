@@ -2,11 +2,6 @@ import * as initialState from './initialState';
 import * as data from '../data';
 import merge from 'deepmerge';
 
-export const fix = (state = true, action) =>{
-    if (action.type === 'fix_Changed')  return action.payload;
-    return state;
-};
-
 export const user = (state = null, action) =>{
     if (action.type === 'User_Changed')  return action.payload;
     return state;

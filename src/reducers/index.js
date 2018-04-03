@@ -27,7 +27,6 @@ const allReducers = combineReducers({
     customTalents: changeState.customTalents,
     description: changeState.description,
     earnedXP: changeState.earnedXP,
-    fix: changeState.fix,
     gear: changeState.gear,
     loadingCustomData: changeState.loadingCustomData,
     loadingData: changeState.loadingData,
