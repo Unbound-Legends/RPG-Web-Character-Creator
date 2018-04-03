@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {characteristics} from '../reducers';
+import {chars} from '../data/lists';
 
 class Characteristics extends React.Component {
 
@@ -46,7 +47,6 @@ class Characteristics extends React.Component {
 
     render() {
         const {characteristics, modal, handleClose} = this.props;
-        const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
         return (
             <Modal isOpen={modal} toggle={handleClose}>
                 <ModalHeader toggle={handleClose}>Modify Characteristics</ModalHeader>

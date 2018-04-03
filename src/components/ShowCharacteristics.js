@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Col, Row} from 'reactstrap';
 import {characteristics} from '../reducers'
 import {Characteristics} from './index';
+import {chars} from '../data/lists';
 
 class ShowCharacteristics extends React.Component {
     state = {modal: false};
@@ -15,7 +16,7 @@ class ShowCharacteristics extends React.Component {
                 <hr/>
                 <Row className='justify-content-center'>
 
-                    {Object.keys(characteristics).map((stat) =>
+                    {chars.map((stat) =>
                         <div className='imageBox' key={stat}>
                             <img src={'/images/png/Characteristic.png'} alt='' className='png'/>
 

@@ -27,3 +27,5 @@ export const customDataTypes = [
     'customSkills',
     'customTalents'
 ];
+
+export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
