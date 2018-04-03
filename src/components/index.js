@@ -18,7 +18,6 @@ export {default as CustomSkills} from './CustomSkills';
 export {default as CustomTalents} from './CustomTalents';
 export {default as Description} from './Description';
 export {default as EquipmentLog} from './EquipmentLog';
-export {default as Fix} from './Fix';
 export {default as GearStats} from './GearStats';
 export {default as ImportExport} from './ImportExport';
 export {default as MainPage} from './MainPage';
