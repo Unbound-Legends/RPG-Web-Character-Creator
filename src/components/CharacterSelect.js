@@ -94,7 +94,7 @@ class CharacterSelect extends React.Component {
                 <Row className='my-2'>
                     <Col className='m-auto'>
                         <b>CHARACTER NAME:</b>
-                        <Input type='text' value={name ? name : 'New Character'} maxLength='25' name='name'
+                        <Input type='text' value={name ? name : ''} maxLength='50' name='name'
                                onChange={this.handleChange}
                                onBlur={this.handleNameChange}/>
                     </Col>
@@ -102,7 +102,7 @@ class CharacterSelect extends React.Component {
                 <hr/>
                 <Row>
                     <Col sm='4' className='m-auto'>
-                        <b>ARCHETYPE:</b>{' '}{archetype === '' ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
+                        <b>ARCHETYPE:</b>{' '}{archetype === null ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
                     </Col>
                     <Col className='m-auto'>
                         <ButtonGroup>
@@ -116,7 +116,7 @@ class CharacterSelect extends React.Component {
                 <hr/>
                 <Row>
                     <Col sm='4' className='m-auto'>
-                        <b>CAREER:</b> {' '} {career === '' ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
+                        <b>CAREER:</b> {' '} {career === null ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
                     </Col>
                     <Col className='m-auto'>
                         <ButtonGroup>

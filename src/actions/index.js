@@ -11,7 +11,7 @@ export const loadCharacterList = () => {
             if (!doc.exists) {
                 key = Math.random().toString(36).substr(2, 16);
                 newObj = {[key]: 'New Character'};
-                db.doc(`users/${user}/data/characterList`).set(newObj);
+                db.doc(`users/${user}/data/characterList`).set(newObj, {merge: true});
             } else {
                 dispatch({type: `characterList_Changed`, payload: doc.data()});
                 if (!character) dispatch({type: `character_Changed`, payload: Object.keys(doc.data())[0]});
@@ -110,7 +110,7 @@ export const loadCustomDataList = () => {
             if (!doc.exists) {
                 key = Math.random().toString(36).substr(2, 16);
                 newObj = {[key]: 'New Dataset'};
-                db.doc(`users/${user}/data/customDataList`).set(newObj);
+                db.doc(`users/${user}/data/customDataList`).set(newObj, {merge: true});
             } else {
                 if (!customDataSet) dispatch({type: `customDataSet_Changed`, payload: Object.keys(doc.data())[0]});
                 dispatch({type: `customDataList_Changed`, payload: doc.data()});
