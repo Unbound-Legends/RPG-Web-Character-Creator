@@ -1,5 +1,4 @@
 import {createSelector} from 'reselect';
-import {dataTypes} from '../data/lists';
 
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
@@ -9,8 +8,6 @@ const armor = state => state.armor;
 const career = state => state.career;
 const careers = state => state.careers;
 const careerSkillsRank = state => state.careerSkillsRank;
-const character = state => state.character;
-const characterList = state => state.characterList;
 const creationCharacteristics = state => state.creationCharacteristics;
 const earnedXP = state => state.earnedXP;
 const gear = state => state.gear;
@@ -18,7 +15,6 @@ const masterSkills = state => state.masterSkills;
 const masterTalents = state => state.masterTalents;
 const qualities = state => state.qualities;
 const skills = state => state.skills;
-const state = state => state;
 const talentModifiers = state => state.talentModifiers;
 const talents = state => state.talents;
 const weapons = state => state.weapons;
@@ -400,20 +396,6 @@ export const calcTotalXP = createSelector(
     (archetype, archetypes, earnedXP) => {
         if (!archetype || !archetypes[archetype]) return earnedXP;
         return +archetypes[archetype].experience + +earnedXP;
-    }
-);
-
-export const buildCharacterExport = createSelector(
-    state, character, characterList,
-    (state, character, characterList) => {
-        let file = {};
-        dataTypes.forEach((type) => {
-            file[type] = state[type];
-        });
-        file.name = characterList[character];
-        let json = JSON.stringify({character: file});
-        let blob = new Blob([json], {type: "application/json"});
-        return URL.createObjectURL(blob);
     }
 );
 

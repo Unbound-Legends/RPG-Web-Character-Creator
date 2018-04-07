@@ -43,8 +43,7 @@ class MainPage extends React.Component {
     }
 
     render() {
-        if (this.props.loadingCustomData || this.props.loadingData) return <h1
-            style={{textAlign: 'center', marginTop: '2rem'}}>LOADING</h1>;
+        if (this.props.loadingCustomData || this.props.loadingData) return <h1 className='text-center mt-3'>LOADING</h1>
         return (
             <Container className='mx-2'>
                 <Buttons/>

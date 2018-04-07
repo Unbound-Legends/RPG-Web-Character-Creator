@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import {addCharacter, changeUser} from '../actions';
 import firebase from 'firebase';
 import {Button, Col, Row} from 'reactstrap';
-import {ImportExport} from './index';
 
 class Buttons extends React.Component {
 
@@ -22,7 +21,6 @@ class Buttons extends React.Component {
     render() {
         return (
             <Row className='justify-content-end align-items-center d-print-none'>
-                <ImportExport/>
                 <Col sm='auto'>
                     <Button size='sm' onClick={this.handleDonate}>Donate</Button>
                     {' '}

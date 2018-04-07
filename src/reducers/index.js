@@ -46,7 +46,6 @@ const allReducers = combineReducers({
 
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
 export const careerCheck = (state) => derivedStats.calcCareerCheck(state);
-export const characterExport = (state) => derivedStats.buildCharacterExport(state);
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);
 export const criticalText = (state) => criticals.criticalText(state);
 export const encumbranceLimit = (state) => derivedStats.calcEncumbranceLimit(state);

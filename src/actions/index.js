@@ -34,13 +34,16 @@ export const addCharacter = () => {
 
 export const deleteCharacter = () => {
     return (dispatch, getState) => {
+        dispatch({type: 'loading_Changed', payload: true});
         const user = getState().user;
         const character = getState().character;
         let characterList = {...getState().characterList};
         delete characterList[character];
         dataTypes.forEach((type) => db.doc(`users/${user}/data/characters/${character}/${type}`).delete());
         if (Object.keys(characterList).length === 0) {
-            db.doc(`users/${user}/data/characterList`).delete();
+            let newCharacter = Math.random().toString(36).substr(2, 16);
+            db.doc(`users/${user}/data/characterList`).set({[newCharacter]: 'New Character'});
+            dispatch({type: `character_Changed`, payload: newCharacter});
         }
         else {
             db.doc(`users/${user}/data/characterList`).set(characterList);
@@ -53,14 +56,12 @@ export const deleteCharacter = () => {
 export const importCharacter = (characterImport) => {
     return (dispatch, getState) => {
         const user = getState().user;
-        dispatch({type: 'loading_Changed', payload: true});
         let key = Math.random().toString(36).substr(2, 16);
         db.doc(`users/${user}/data/characterList`).update({[key]: characterImport.name});
         Object.keys(characterImport).forEach((type) => {
             let data = characterImport[type];
             if (type !== 'name') db.doc(`users/${user}/data/characters/${key}/${type}/`).set({data});
         });
-        dispatch({type: `character_Changed`, payload: key});
     }
 };
 

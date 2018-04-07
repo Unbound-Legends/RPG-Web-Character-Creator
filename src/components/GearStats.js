@@ -167,7 +167,8 @@ class GearStats extends React.Component {
                                 Special Qualities:
                             </Col>
                             <Col sm='4'>
-                                <Input type='select' value={weapons.qualities ? weapons.qualities : ''}
+                                <Input type='select'
+                                       value={weapons.qualities ? weapons.qualities : ''}
                                        name='qualities'
                                        onChange={this.handleChange}>
                                     <option value=''/>
@@ -183,12 +184,15 @@ class GearStats extends React.Component {
 
                                 qualities[weapons.qualities].ranked &&
                                 <Input type='number' maxLength='2'
-                                       value={weapons.qualityRank ? weapons.qualityRank : ''} name='qualityRank'
+                                       value={weapons.qualityRank ? weapons.qualityRank : ''}
+                                       name='qualityRank'
                                        onChange={this.handleChange}/>
                                 }
                             </Col>
                             <Col className='text-right'>
+                                {weapons.qualities &&
                                 <Button onClick={this.handleAddQuality}>Add</Button>
+                                }
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -284,7 +288,6 @@ class GearStats extends React.Component {
                                 </Input>
                             </Col>
                             <Col sm='4'>
-
                                 {armor.qualities &&
                                 qualities[armor.qualities] &&
                                 qualities[armor.qualities].ranked &&
@@ -293,7 +296,9 @@ class GearStats extends React.Component {
                                        name='qualityRank'
                                        onChange={this.handleChange}/>
                                 }
+                                {armor.qualities &&
                                 <Button onClick={this.handleAddQuality}>Add</Button>
+                                }
                             </Col>
 
                         </Row>
@@ -367,7 +372,9 @@ class GearStats extends React.Component {
                                        value={gear.qualityRank ? gear.qualityRank : ''} name='qualityRank'
                                        onChange={this.handleChange}/>
                                 }
+                                {gear.qualities &&
                                 <Button onClick={this.handleAddQuality}>Add</Button>
+                                }
                             </Col>
                         </Row>
                         <Row className='my-2'>
