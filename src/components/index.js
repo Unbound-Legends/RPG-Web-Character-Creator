@@ -12,8 +12,9 @@ export {default as CharacterImage} from './CharacterImage';
 export {default as Characteristics} from './Characteristics';
 export {default as CharacterSelect} from './CharacterSelect';
 export {default as Critical} from './Critical';
-export {default as CustomCareers} from './CustomCareers';
 export {default as CustomArchetypes} from './CustomArchetypes';
+export {default as CustomCareers} from './CustomCareers';
+export {default as CustomDataSelect} from './CustomDataSelect';
 export {default as CustomSkills} from './CustomSkills';
 export {default as CustomTalents} from './CustomTalents';
 export {default as DataPage} from './DataPage';
@@ -35,6 +36,6 @@ export {default as TalentList} from './TalentList';
 export {default as TalentSelection} from './TalentSelection';
 export {default as Talents} from './Talents';
 export {default as User} from './User';
-export {default as XPPopup} from './XPPopup';
 export {default as XPBoxes} from './XPBoxes';
+export {default as XPPopup} from './XPPopup';
 

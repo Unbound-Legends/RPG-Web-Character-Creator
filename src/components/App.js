@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeUser} from '../actions';
+import {changeUser, loadCharacterList, loadCustomDataList, loadCustomDataSet, loadData} from '../actions';
 import {DataPage, MainPage, User} from './index';
 import firebase from 'firebase';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
@@ -17,15 +17,28 @@ class App extends React.Component {
                 this.setState({loading: false});
             }
             else this.setState({loading: false});
-        })
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {loadCustomDataList, loadCharacterList, user} = this.props;
+        if (nextProps.user && user !== nextProps.user) {
+            loadCharacterList();
+            loadCustomDataList();
+        }
+        if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
+        if (nextProps.customDataSet && nextProps.customDataSet !== this.props.customDataSet) this.props.loadCustomDataSet();
     }
 
     render() {
         const {loading} = this.state;
-        if (loading) return <h1 className='text-center mt-3'>LOADING</h1>;
+        const {loadingCustomData, loadingData} = this.props;
+        const loadingPage = <h1 className='text-center mt-3'>LOADING</h1>;
+        if (loading) return loadingPage;
         if (!(this.props.user)) return <User/>;
+        if (loadingCustomData || loadingData) return loadingPage;
         else return (
-            <Tabs defaultIndex={0} className='m-1'>
+            <Tabs defaultIndex={1} className='m-1'>
                 <TabList>
                     <Tab>CHARACTERS</Tab>
                     <Tab>EXPORT / IMPORT</Tab>
@@ -44,11 +57,21 @@ class App extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
+        character: state.character,
+        loadingData: state.loadingData,
+        loadingCustomData: state.loadingCustomData,
+        customDataSet: state.customDataSet,
     };
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeUser}, dispatch);
+    return bindActionCreators({
+        changeUser,
+        loadCharacterList,
+        loadData,
+        loadCustomDataList,
+        loadCustomDataSet
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(App);

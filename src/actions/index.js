@@ -69,7 +69,6 @@ export const changeCharacterName = (data) => {
     return (dispatch, getState) => {
         const user = getState().user;
         const character = getState().character;
-        dispatch({type: `character_Changed`, payload: character});
         db.doc(`users/${user}/data/characterList`).update({[character]: data});
     }
 };
@@ -110,7 +109,7 @@ export const loadCustomDataList = () => {
             let newObj = null;
             if (!doc.exists) {
                 key = Math.random().toString(36).substr(2, 16);
-                newObj = {[key]: 'New Dataset'};
+                newObj = {[key]: 'New Custom Dataset'};
                 db.doc(`users/${user}/data/customDataList`).set(newObj, {merge: true});
             } else {
                 if (!customDataSet) dispatch({type: `customDataSet_Changed`, payload: Object.keys(doc.data())[0]});
@@ -138,6 +137,64 @@ export const loadCustomDataSet = () => {
     }
 };
 
+export const addCustomDataSet = () => {
+    return (dispatch, getState) => {
+        const user = getState().user;
+        dispatch({type: 'loadingCustomData_Changed', payload: true});
+        let key = Math.random().toString(36).substr(2, 16);
+        db.doc(`users/${user}/data/customDataList`).update({[key]: 'New Custom Dataset'});
+        dispatch({type: `customDataSet_Changed`, payload: key});
+    }
+};
+
+export const deleteCustomDataSet = () => {
+    return (dispatch, getState) => {
+        dispatch({type: 'loadingCustomData_Changed', payload: true});
+        const user = getState().user;
+        const customDataSet = getState().customDataSet;
+        let customDataList = {...getState().customDataList};
+        delete customDataList[customDataSet];
+        dataTypes.forEach((type) => db.doc(`users/${user}/data/customDataSets/${customDataSet}/${type}/`).delete());
+        if (Object.keys(customDataList).length === 0) {
+            let key = Math.random().toString(36).substr(2, 16);
+            db.doc(`users/${user}/data/customDataList`).set({[key]: 'New Custom Dataset'});
+            dispatch({type: `customDataSet_Changed`, payload: key});
+        }
+        else {
+            db.doc(`users/${user}/data/customDataList`).set(customDataList);
+            dispatch({type: `customDataSet_Changed`, payload: Object.keys(customDataList)[0]});
+        }
+
+    }
+};
+
+export const changeCustomDataSet = (state) => {
+    return (dispatch) => {
+        dispatch({type: 'customDataSet_Changed', payload: state});
+    }
+};
+
+export const changeCustomDataSetName = (data) => {
+    return (dispatch, getState) => {
+        const user = getState().user;
+        const customDataSet = getState().customDataSet;
+        db.doc(`users/${user}/data/customDataList`).update({[customDataSet]: data});
+    }
+};
+
+export const importCustomDataSet = (customDataSetImport) => {
+    return (dispatch, getState) => {
+        const user = getState().user;
+        let key = Math.random().toString(36).substr(2, 16);
+        db.doc(`users/${user}/data/customDataList`).update({[key]: customDataSetImport.name});
+        Object.keys(customDataSetImport).forEach((type) => {
+            let data = customDataSetImport[type];
+            if (type !== 'name') db.doc(`users/${user}/data/customDataSets/${key}/${type}/`).set({data});
+        });
+    }
+};
+
+
 export const changeCustomData = (data, type, merge = true) => {
     return (dispatch, getState) => {
         const user = getState().user;
@@ -148,14 +205,9 @@ export const changeCustomData = (data, type, merge = true) => {
     }
 };
 
-
 export const changeUser = (state) => {
     console.log(`UserID: ${state}`);
     return {type: 'User_Changed', payload: state}
-};
-
-export const changeCharacterList = (state) => {
-    return {type: 'characterList_Changed', payload: state}
 };
 
 export const changeCharacter = (state) => {

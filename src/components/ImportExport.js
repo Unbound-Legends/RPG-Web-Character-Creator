@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {importCharacter} from '../actions';
+import {importCharacter, importCustomDataSet} from '../actions';
 import {Button, Col, FormGroup, Input, Label, Row} from 'reactstrap';
-import {dataTypes} from "../data/lists";
+import {customDataTypes, dataTypes} from "../data/lists";
 import {db} from "../firestore/db";
 
 class ImportExport extends React.Component {
-    state = {characters: []};
+    state = {characters: [], customDataSets: []};
 
     generateFileName = () => {
         let time = new Date(Date.now())
@@ -19,8 +19,8 @@ class ImportExport extends React.Component {
     };
 
     generateExport = () => {
-        const {characterList, user} = this.props;
-        const {characters} = this.state;
+        const {characterList, customDataList, user} = this.props;
+        const {characters, customDataSets} = this.state;
         new Promise(resolve => {
             let final = [];
             characters.forEach(character => {
@@ -32,7 +32,22 @@ class ImportExport extends React.Component {
                             if (doc.exists) file[type] = doc.data().data;
                             else file[type] = null;
                             if (index + 1 >= dataTypes.length) final.push({character: file});
-                            if (final.length === characters.length) resolve(final);
+                            if (final.length === characters.length + customDataSets.length) resolve(final);
+                        }, err => {
+                            console.log(`Encountered error: ${err}`);
+                        });
+                });
+            });
+            customDataSets.forEach(customDataSet => {
+                let file = {};
+                file.name = customDataList[customDataSet];
+                customDataTypes.forEach((type, index) => {
+                    db.doc(`users/${user}/data/customDataSets/${customDataSet}/${type}/`).get()
+                        .then(doc => {
+                            if (doc.exists) file[type] = doc.data().data;
+                            else file[type] = null;
+                            if (index + 1 >= customDataTypes.length) final.push({customDataSet: file});
+                            if (final.length === characters.length + customDataSets.length) resolve(final);
                         }, err => {
                             console.log(`Encountered error: ${err}`);
                         });
@@ -48,16 +63,25 @@ class ImportExport extends React.Component {
     };
 
     handleChange = (event) => {
-        const {characters} = this.state;
-        const {characterList} = this.props;
+        const {characterList, customDataList} = this.props;
         let type = event.target.name;
         let value = event.target.value;
+        let list;
         let arr = [];
+        switch (type) {
+            case 'characters':
+                list = {...characterList};
+                break;
+            case 'customDataSets':
+                list = {...customDataList};
+                break;
+            default:
+                break;
+        }
+
         if (value === 'all') {
-            if (type === 'characters') {
-                if (characters.length === Object.keys(characterList).length) arr = [];
-                else arr = Object.keys(characterList);
-            }
+            if (this.state[type].length === Object.keys(list).length) arr = [];
+            else arr = Object.keys(list);
         } else {
             arr = this.state[type];
             if (arr.includes(value)) arr.splice(arr.indexOf(value), 1);
@@ -80,6 +104,10 @@ class ImportExport extends React.Component {
                             this.props.importCharacter(data.character);
                             alert(`${data.character.name} Imported!`);
                             break;
+                        case 'customDataSet':
+                            this.props.importCustomDataSet(data.customDataSet);
+                            alert(`${data.customDataSet.name} Imported!`);
+                            break;
                         default:
                             alert('No Data Imported.');
                             break;
@@ -95,35 +123,45 @@ class ImportExport extends React.Component {
     };
 
     render() {
-        const {characterList} = this.props;
-        const {characters} = this.state;
+        const {characterList, customDataList} = this.props;
         return (
             <Col sm='auto' className='align-self-end align-self-middle'>
                 <FormGroup check>
-                    <Row>
-                        <Label check>
-                            <Input type="checkbox"
-                                   value='all'
-                                   name='characters'
-                                   checked={characters.length === Object.keys(characterList).length}
-                                   onChange={this.handleChange}
-                            />
-                            {' '} <b>All Characters</b>
-                        </Label>
-                    </Row>
-                    {Object.keys(characterList).sort().map(character =>
-                        <Row className='ml-2' key={character}>
-                            <Label check>
-                                <Input type='checkbox'
-                                       checked={characters.includes(character)}
-                                       value={character}
-                                       name='characters'
-                                       onChange={this.handleChange}
-                                />
-                                {' '} {characterList[character]}
-                            </Label>
-                        </Row>
-                    )}
+                    {['characters', 'customDataSets'].map(type => {
+                        let list;
+                        if (type === 'characters') list = {...characterList};
+                        if (type === 'customDataSets') list = {...customDataList};
+
+                        return (
+                            <div key={type}>
+                                <Row>
+                                    <Label check>
+                                        <Input type="checkbox"
+                                               value='all'
+                                               name={type}
+                                               checked={this.state[type].length === Object.keys(list).length}
+                                               onChange={this.handleChange}
+                                        />
+                                        {' '} <b>All {type}</b>
+                                    </Label>
+                                </Row>
+                                {Object.keys(list).sort().map(item =>
+                                    <Row className='ml-2' key={item}>
+                                        <Label check>
+                                            <Input type='checkbox'
+                                                   checked={this.state[type].includes(item)}
+                                                   value={item}
+                                                   name={type}
+                                                   onChange={this.handleChange}
+                                            />
+                                            {' '} {list[item]}
+                                        </Label>
+                                    </Row>
+                                )}
+                            </div>
+                        )
+                    })}
+
                 </FormGroup>
 
                 <Row>
@@ -141,12 +179,13 @@ class ImportExport extends React.Component {
 function mapStateToProps(state) {
     return {
         characterList: state.characterList,
+        customDataList: state.customDataList,
         user: state.user,
     };
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({importCharacter}, dispatch);
+    return bindActionCreators({importCharacter, importCustomDataSet}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ImportExport);
