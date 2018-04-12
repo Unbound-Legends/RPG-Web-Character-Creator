@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Row} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 import {ArchetypeSkills, Description} from './index';
 
 class ArchetypeStats extends React.Component {
@@ -11,7 +11,9 @@ class ArchetypeStats extends React.Component {
         if (!archetype || !archetypes[archetype]) return <div/>;
         return (
             <div>
-                <Row><b>Starting Stats: </b></Row>
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Starting Stats: </b></Col>
+                </Row>
                 <Row className='justify-content-center my-2'>
                     {Object.keys(masterArchetype.characteristics).map((stat) =>
                         <div className='imageBox' key={stat}>
@@ -35,29 +37,38 @@ class ArchetypeStats extends React.Component {
                     </div>
                 </Row>
                 }
-                <Row><b>Starting XP:</b>&emsp;{masterArchetype.experience}</Row>
-                <Row>
-                    <b>Starting Skills:</b>
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Starting XP:</b></Col>
+                    <Col className='align-self-center'>{masterArchetype.experience}</Col>
                 </Row>
-                <Row>
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Starting Skills:</b></Col>
                     <ArchetypeSkills/>
                 </Row>
-                <Row>
-                    <b>Starting Talents:</b>
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Starting Talents:</b></Col>
                 </Row>
                 {masterArchetype.talents &&
                 masterArchetype.talents.map((talent) =>
-                    <Row key={talent} className='ml-3'>
-                        <b>{archetypeTalents[talent].name}:</b>&emsp;
-                        <Description text={archetypeTalents[talent].description}/>
+                    <Row key={talent} className='ml-4'>
+                        <Col><b>{archetypeTalents[talent].name}:</b></Col>
+                        <Col><Description text={archetypeTalents[talent].description}/></Col>
                     </Row>
-                    )}
-                <Row><b>Setting:</b>&emsp;{masterArchetype.setting}</Row>
-
-                <Row>
-                    <b>Description:</b>&emsp;
-                    <Description text={masterArchetype.description}/>
+                )}
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Setting:</b></Col>
+                    <Col>{masterArchetype.setting}</Col></Row>
+                {masterArchetype.book &&
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Book:</b></Col>
+                    <Col><Description text={`${masterArchetype.book}: ${masterArchetype.page}`}/></Col>
                 </Row>
+                }
+                <Row className='my-2'>
+                    <Col xs='4 text-right align-self-start'><b>Description:</b></Col>
+                    <Col> <Description text={masterArchetype.description}/></Col>
+                </Row>
+
             </div>
         );
     }

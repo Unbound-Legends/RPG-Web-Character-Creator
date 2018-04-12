@@ -28,6 +28,7 @@ class App extends React.Component {
         }
         if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
         if (nextProps.customDataSet && nextProps.customDataSet !== this.props.customDataSet) this.props.loadCustomDataSet();
+        if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 300);
     }
 
     render() {
@@ -38,7 +39,8 @@ class App extends React.Component {
         if (!(this.props.user)) return <User/>;
         if (loadingCustomData || loadingData) return loadingPage;
         else return (
-            <Tabs defaultIndex={1} className='m-1'>
+            <div>
+                <Tabs defaultIndex={0} className='m-1 d-print-none'>
                 <TabList>
                     <Tab>CHARACTERS</Tab>
                     <Tab>EXPORT / IMPORT</Tab>
@@ -50,6 +52,8 @@ class App extends React.Component {
                     <DataPage/>
                 </TabPanel>
             </Tabs>
+                <div className='d-none d-print-block'>{this.props.printContent}</div>
+            </div>
         );
     }
 }
@@ -61,6 +65,7 @@ function mapStateToProps(state) {
         loadingData: state.loadingData,
         loadingCustomData: state.loadingCustomData,
         customDataSet: state.customDataSet,
+        printContent: state.printContent,
     };
 }
 

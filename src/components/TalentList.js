@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Col, Row, Table} from 'reactstrap';
+import {Row, Table} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {Description} from './index'
 
@@ -9,7 +9,7 @@ class TalentList extends React.Component {
     render() {
         const {archetype, archetypes, archetypeTalents, talents, talentCount} = this.props;
         return (
-            <Col lg='12'>
+            <div className='w-100 no-break'>
                 <Row className='justify-content-end'><h5>TALENT LIST</h5></Row>
                 <hr/>
                 <Table>
@@ -44,7 +44,7 @@ class TalentList extends React.Component {
                     )}
                     </tbody>
                 </Table>
-            </Col>
+            </div>
         )
     };
 }

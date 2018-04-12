@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {criticalText} from '../reducers';
 import {Description} from './index';
@@ -37,7 +37,7 @@ class Critical extends React.Component {
         const {value, modal} = this.state;
         const {critical} = this.props;
         return (
-            <Col lg='12'>
+            <div className='w-100'>
                 <Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
                 <hr/>
                 <Row className='my-2'>
@@ -62,7 +62,7 @@ class Critical extends React.Component {
                         <Button onClick={() => this.setState({modal: false})}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
-            </Col>
+            </div>
         );
     }
 }

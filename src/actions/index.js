@@ -215,3 +215,9 @@ export const changeCharacter = (state) => {
         dispatch({type: 'character_Changed', payload: state});
     }
 };
+
+export const changePrintContent = (state) => {
+    return (dispatch) => {
+        dispatch({type: 'printContent_Changed', payload: state});
+    }
+};

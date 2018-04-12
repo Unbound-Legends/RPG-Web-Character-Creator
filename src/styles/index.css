@@ -24,7 +24,7 @@ hr {
 h5 {
     font-size: 1.25rem;
     margin-bottom: 0;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .table th {
@@ -177,6 +177,20 @@ input[type="number"] {
     z-index: 1;
 }
 
+.print-totalXP {
+    display: inline-block;
+    position: relative;
+    bottom: 5px;
+    left: 0;
+}
+
+.print-availableXP {
+    display: inline-block;
+    position: relative;
+    bottom: 5px;
+    right: 0;
+}
+
 .talentDesc {
     overflow-y: auto;
     white-space: pre-line;
@@ -204,9 +218,6 @@ input[type="number"] {
     height: 160px;
 }
 
-.no-break {
-    break-inside: avoid;
-}
 
 @media only screen
 and (max-width: 480px) {
@@ -227,17 +238,31 @@ and (max-width: 480px) {
         -webkit-print-color-adjust: exact;
     }
 
-    .totalXP {
-        display: inline-block;
-        position: relative;
-        bottom: 5px;
-        left: 0;
+    h5 {
+        font-size: 1rem;
+        margin-top: 0.25rem;
+        font-weight: 600;
     }
 
-    .availableXP {
-        display: inline-block;
-        position: relative;
-        bottom: 5px;
-        right: 0;
+    .no-break {
+        break-inside: avoid;
     }
+
+    .break-after {
+        page-break-after: always;
+    }
+
+    .break-before {
+        page-break-before: always;
+    }
+
+    .table th {
+        padding: 0.2rem;
+    }
+
+    .table td {
+        padding: 0.2rem;
+        vertical-align: middle;
+    }
+
 }

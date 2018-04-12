@@ -2,6 +2,11 @@ import * as initialState from './initialState';
 import * as data from '../data';
 import merge from 'deepmerge';
 
+export const printContent = (state = initialState.printContent, action) => {
+    if (action.type === 'printContent_Changed') return action.payload;
+    return state;
+};
+
 export const user = (state = null, action) =>{
     if (action.type === 'User_Changed')  return action.payload;
     return state;

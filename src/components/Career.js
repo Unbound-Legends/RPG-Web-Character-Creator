@@ -43,30 +43,48 @@ class Career extends React.Component {
                     <hr/>
 
                     {masterCareer &&
-                    <Col className='mt-2'>
+                    <div className='mt-2 px-2'>
                         <Row><h3>Career Skills:</h3></Row>
-                        <Row>Select {this.props.maxCareerSkills} skills to start with 1 free rank</Row>
-                        <Col sm={{size: 6, offset: 1}}>
-                            {masterCareer.skills.sort().map((skill) =>
-                                <Row key={skill}><Label><Input type='checkbox' name={skill}
-                                                               checked={careerSkillsRank.includes(skill)}
-                                                               onChange={this.handleCheck}/>{skills[skill].name}
-                                </Label></Row>
+                        <div className='px-3'>
+                            <Row>Select {this.props.maxCareerSkills} skills to start with 1 free rank</Row>
+                            {masterCareer.skills.sort().map(skill =>
+                                <Row key={skill} className='ml-3'>
+                                    <Label>
+                                        <Input type='checkbox' name={skill}
+                                               checked={careerSkillsRank.includes(skill)}
+                                               onChange={this.handleCheck}/>{skills[skill].name}
+                                    </Label>
+                                </Row>
                             )}
-                        </Col>
+                        </div>
+
                         <Row>
-                            <b>Setting:</b>
+                            <Col xs='4 text-right align-self-start'>
+                                <b>Setting:</b>
+                            </Col>
                             <Col sm='6'>
                                 {masterCareer.setting}
                             </Col>
                         </Row>
+                        {masterCareer.book &&
+                        <Row className='my-2'>
+                            <Col xs='4 text-right align-self-start'>
+                                <b>Book:</b>
+                            </Col>
+                            <Col>
+                                <Description text={`${masterCareer.book}: ${masterCareer.page}`}/>
+                            </Col>
+                        </Row>
+                        }
                         <Row>
-                            <b>Description:</b>
+                            <Col xs='4 text-right align-self-start'>
+                                <b>Description:</b>
+                            </Col>
                             <Col sm='6'>
                                 <Description text={masterCareer.description}/>
                             </Col>
                         </Row>
-                    </Col>
+                    </div>
                     }
                 </ModalBody>
                 <ModalFooter>

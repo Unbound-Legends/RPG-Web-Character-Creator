@@ -79,12 +79,12 @@ class Attributes extends React.Component {
                     <div className='imageBox attribute'>
                         <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
                         <Row className='attributeTitle'>DEFENSE</Row>
-                        <Row className='attributeValue'>{totalDefense.ranged} {' | '} {totalDefense.melee}</Row>
+                        <Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
                     </div>
                     <div className='imageBox attribute'>
                         <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
                         <Row className='attributeTitle'>ENCUMBRANCE</Row>
-                        <Row className='attributeValue'>{encumbranceLimit} {' | '} {totalEncumbrance}</Row>
+                        <Row className='attributeValue'>{`${encumbranceLimit}  |   ${totalEncumbrance}`}</Row>
                     </div>
                 </Row>
             </Col>

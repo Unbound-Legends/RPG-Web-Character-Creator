@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {talentCount} from '../reducers';
 import {Description, TalentDedication} from './index';
@@ -92,14 +92,35 @@ class TalentSelection extends React.Component {
                     </Row>
                     {talent &&
                     <div>
-                        <Row><b>Name:&nbsp;</b> {talent.name}</Row>
-                        <Row><b>Tier:&nbsp;</b> {talent.tier}</Row>
-                        <Row><b>Activation:&nbsp;</b> {talent.activation ? 'Active' : 'Passive'}</Row>
-                        {talent.turn ? <Row>{talent.turn}</Row> : null}
-                        {talent.ranked ? <Row><b>Ranked</b></Row> : <Row><b>Not Ranked</b></Row>}
-                        <Row><b>Setting:&nbsp;</b> {talent.setting}</Row>
-                        <Row><b>Description:</b></Row>
-                        <Row><Description text={talent.description}/></Row>
+                        <Row>
+                            <Col sm='3 '><b>Name:</b></Col>
+                            <Col>{talent.name}</Col>
+                        </Row>
+                        <Row>
+                            <Col sm='3 '><b>Tier:</b></Col>
+                            <Col>{talent.tier}</Col>
+                        </Row>
+                        <Row>
+                            <Col sm='3 '><b>Activation:&nbsp;</b></Col>
+                            <Col>{talent.activation ? 'Active' : 'Passive'}</Col>
+                        </Row>
+                        {talent.turn ? <Row><Col sm='6'>{talent.turn}</Col></Row> : null}
+                        {talent.ranked ? <Row><Col sm='6'><b>Ranked</b></Col></Row> :
+                            <Row><Col sm='6'><b>Not Ranked</b></Col></Row>}
+                        <Row>
+                            <Col sm='3 '><b>Setting:</b></Col>
+                            <Col>{talent.setting}</Col>
+                        </Row>
+                        {talent.book &&
+                        <Row className='my-2'>
+                            <Col sm='3'> <b>Book:</b></Col>
+                            <Col><Description text={`${talent.book}: ${talent.page}`}/></Col>
+                        </Row>
+                        }
+                        <Row>
+                            <Col sm='3 '><b>Description:</b></Col>
+                            <Col><Description text={talent.description}/></Col>
+                        </Row>
                         {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection}
                                                                                handleDedicationChange={this.handleDedicationChange}/>}
                     </div>

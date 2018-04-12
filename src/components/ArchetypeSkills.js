@@ -1,6 +1,6 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import {Button, Input, Row} from 'reactstrap';
+import {Button, Col, Input, Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
 
@@ -25,9 +25,8 @@ class ArchetypeSkills extends React.Component {
         if (archetype === null) return <div/>;
         if (Object.keys(masterArchetype.skills).includes('choice')) {
             return (
-                <div className='ml-3'>
-                    <Row
-                        className='mt-2'>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
+                <Col>
+                    <Row>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
                         get {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : 1} {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:</Row>
                     <Input type='select' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
                         <option value=''/>
@@ -36,20 +35,20 @@ class ArchetypeSkills extends React.Component {
                             <option value={key} name={key} key={key}>{skills[key].name}</option>
                         )}
                     </Input>
-                    <Row className='mt-2'>
+                    <Row className='my-2'>
                         {Object.keys(archetypeSpecialSkills).map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
                     </Row>
-                    <Row className='mt-2'>
+                    <Row className='my-2'>
                         <Button onClick={() => this.props.changeData('', 'archetypeSpecialSkills')}>Clear</Button>
                     </Row>
-                </div>
+                </Col>
 
             )
         }
         return (
             <div>
                 {list.map((key) =>
-                    <Row key={key} style={{textIndent: '1em'}}>{masterArchetype.skills[key]} rank in {key}</Row>
+                    <Row key={key}><Col>{masterArchetype.skills[key]} rank in {key}</Col></Row>
                 )}
             </div>
         );

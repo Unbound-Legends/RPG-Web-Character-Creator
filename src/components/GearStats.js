@@ -29,7 +29,7 @@ class GearStats extends React.Component {
         let value = event.target.value;
         if (event.target.type === 'number') {
             value = +value.replace(/\D+/g, '');
-            if (value > 99) return;
+            if (value > 99 && event.target.name !== 'price') return;
         }
         let newObj = {};
         if (type === 'weapons') newObj = {...weapons};
@@ -164,6 +164,16 @@ class GearStats extends React.Component {
                         </Row>
                         <Row className='my-2'>
                             <Col sm='4' className='my-auto'>
+                                Price:
+                            </Col>
+                            <Col sm='4'>
+                                <Input type='number' value={weapons.price ? weapons.price : 0}
+                                       name='price'
+                                       onChange={this.handleChange}/>
+                            </Col>
+                        </Row>
+                        <Row className='my-2'>
+                            <Col sm='4' className='my-auto'>
                                 Special Qualities:
                             </Col>
                             <Col sm='4'>
@@ -273,6 +283,16 @@ class GearStats extends React.Component {
                         </Row>
                         <Row className='my-2'>
                             <Col sm='4' className='my-auto'>
+                                Price:
+                            </Col>
+                            <Col sm='4'>
+                                <Input type='number' value={armor.price ? armor.price : 0}
+                                       name='price'
+                                       onChange={this.handleChange}/>
+                            </Col>
+                        </Row>
+                        <Row className='my-2'>
+                            <Col sm='4' className='my-auto'>
                                 Special Qualities:
                             </Col>
                             <Col sm='4'>
@@ -346,6 +366,16 @@ class GearStats extends React.Component {
                             <Col sm='4'>
                                 <Input type='number' value={gear.encumbrance ? gear.encumbrance : 0}
                                        name='encumbrance'
+                                       onChange={this.handleChange}/>
+                            </Col>
+                        </Row>
+                        <Row className='my-2'>
+                            <Col sm='4' className='my-auto'>
+                                Price:
+                            </Col>
+                            <Col sm='4'>
+                                <Input type='number' value={gear.price ? gear.price : 0}
+                                       name='price'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>

@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addCharacter, changeUser} from '../actions';
+import {addCharacter, changePrintContent, changeUser} from '../actions';
 import firebase from 'firebase';
 import {Button, Col, Row} from 'reactstrap';
+import {PrintLayout} from './printLayout/index';
+
 
 class Buttons extends React.Component {
 
@@ -18,10 +20,16 @@ class Buttons extends React.Component {
         window.open('https://paypal.me/SkyJedi');
     };
 
+    handlePrint = () => {
+        this.props.changePrintContent(<PrintLayout/>)
+    };
+
     render() {
         return (
             <Row className='justify-content-end align-items-center d-print-none'>
                 <Col sm='auto'>
+                    <Button size='sm' onClick={this.handlePrint}>Print</Button>
+                    {' '}
                     <Button size='sm' onClick={this.handleDonate}>Donate</Button>
                     {' '}
                     <Button size='sm' onClick={this.handleClick}>Sign Out</Button>
@@ -39,7 +47,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeUser, addCharacter}, dispatch);
+    return bindActionCreators({changeUser, addCharacter, changePrintContent}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Buttons);

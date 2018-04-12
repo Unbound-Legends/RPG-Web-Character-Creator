@@ -1,25 +1,28 @@
 import React from 'react';
+import {Col, Row, Table} from 'reactstrap';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {Row, Table} from 'reactstrap';
-import {changeData} from '../actions';
-import {Description} from "./index";
-import {gearDice, skillDice} from "../reducers";
+import {Description} from "../index";
+import {gearDice, skillDice} from "../../reducers";
 
-class CarriedGear extends React.Component {
+class Gear extends React.Component {
 
     render() {
-        const {weapons, armor, gear, skills, qualities, gearDice} = this.props;
+        const {weapons, armor, gear, skills, qualities, gearDice, money} = this.props;
         return (
             <div className='w-100'>
-                <Row className='justify-content-end'><h5>CARRIED GEAR</h5></Row>
+                <Row className='justify-content-end'><h5>GEAR</h5></Row>
                 <hr/>
+                <Row className='my-2'>
+                    <Col xs='1'><b className='my-auto'>MONEY:</b></Col>
+                    <Col>{money > 0 ? money : ''}</Col>
+                </Row>
                 {Object.keys(weapons).length > 0 &&
-                <div>
+                <Row>
                     <h5 style={{textAlign: 'left'}}>Weapons:</h5>
                     <Table className='text-center'>
                         <thead>
                         <tr>
+                            <th>CARRIED</th>
                             <th>NAME</th>
                             <th>DAM</th>
                             <th>CRIT</th>
@@ -32,8 +35,12 @@ class CarriedGear extends React.Component {
                         </thead>
                         <tbody>
                         {Object.keys(weapons).map((key) =>
-                            weapons[key].carried &&
                             <tr key={key}>
+                                <td><input type='checkbox'
+                                           className='text-center'
+                                           checked={weapons[key].carried}
+                                           readOnly/>
+                                </td>
                                 <td>{weapons[key].name}</td>
                                 <td>{weapons[key].damage}</td>
                                 <td>{weapons[key].critical}</td>
@@ -46,14 +53,15 @@ class CarriedGear extends React.Component {
                         )}
                         </tbody>
                     </Table>
-                </div>
+                </Row>
                 }
                 {Object.keys(armor).length > 0 &&
-                <div>
+                <Row>
                     <h5 style={{textAlign: 'left'}}>Armor:</h5>
                     <Table className='text-center'>
                         <thead>
                         <tr>
+                            <th>CARRIED</th>
                             <th>NAME</th>
                             <th>SOAK</th>
                             <th>DEF</th>
@@ -65,8 +73,12 @@ class CarriedGear extends React.Component {
                         </thead>
                         <tbody>
                         {Object.keys(armor).map((key) =>
-                            armor[key].carried &&
                             <tr className='table-row' key={key}>
+                                <td><input type='checkbox'
+                                           className='text-center'
+                                           checked={armor[key].carried}
+                                           readOnly/>
+                                </td>
                                 <td>{armor[key].name}</td>
                                 <td>{armor[key].soak}</td>
                                 <td>{armor[key].defense}</td>
@@ -78,14 +90,15 @@ class CarriedGear extends React.Component {
                         )}
                         </tbody>
                     </Table>
-                </div>
+                </Row>
                 }
                 {Object.keys(gear).length > 0 &&
-                <div>
+                <Row>
                     <h5 style={{textAlign: 'left'}}>Gear:</h5>
                     <Table className='text-center'>
                         <thead>
                         <tr>
+                            <th>CARRRIED</th>
                             <th>NAME</th>
                             <th>AMOUNT</th>
                             <th>ENCUM</th>
@@ -94,8 +107,12 @@ class CarriedGear extends React.Component {
                         </thead>
                         <tbody>
                         {Object.keys(gear).map((key) =>
-                            gear[key].carried &&
                             <tr key={key}>
+                                <td><input type='checkbox'
+                                           className='text-center'
+                                           checked={gear[key].carried}
+                                           readOnly/>
+                                </td>
                                 <td>{gear[key].name}</td>
                                 <td>{gear[key].amount}</td>
                                 <td>{gear[key].encumbrance}</td>
@@ -104,7 +121,7 @@ class CarriedGear extends React.Component {
                         )}
                         </tbody>
                     </Table>
-                </div>
+                </Row>
                 }
             </div>
         );
@@ -120,11 +137,9 @@ function mapStateToProps(state) {
         skillDice: skillDice(state),
         skills: state.skills,
         weapons: state.weapons,
+        money: state.money,
     };
 }
 
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeData}, dispatch);
-}
 
-export default connect(mapStateToProps, matchDispatchToProps)(CarriedGear);
+export default connect(mapStateToProps)(Gear);
