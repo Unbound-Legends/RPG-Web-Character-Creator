@@ -28,55 +28,55 @@ class GearStats extends React.Component {
         const {armor, gear, weapons} = this.state;
         let value = event.target.value;
         if (event.target.type === 'number') {
-            value = +value.replace(/\D+/g, '');
+            value = +value.replace(/[^\d+]/g, '');
             if (value > 99 && event.target.name !== 'price') return;
         }
-        let newObj = {};
-        if (type === 'weapons') newObj = {...weapons};
-        if (type === 'armor') newObj = {...armor};
-        if (type === 'gear') newObj = {...gear};
-        newObj[event.target.name] = value;
-        this.setState({[type]: newObj});
+        let obj = {};
+        if (type === 'weapons') obj = {...weapons};
+        if (type === 'armor') obj = {...armor};
+        if (type === 'gear') obj = {...gear};
+        obj[event.target.name] = value;
+        this.setState({[type]: obj});
         event.preventDefault();
     };
 
     handleAddQuality = () => {
         const {type} = this.props;
         const {armor, gear, weapons} = this.state;
-        let newObj = {};
-        if (type === 'weapons') newObj = {...weapons};
-        if (type === 'armor') newObj = {...armor};
-        if (type === 'gear') newObj = {...gear};
-        if (!newObj.qualitiesList) newObj.qualitiesList = [];
-        if (!newObj.qualityRank) newObj.qualityRank = '';
-        newObj.qualitiesList.push({[newObj.qualities]: newObj.qualityRank});
-        delete newObj.qualities;
-        delete newObj.qualityRank;
-        this.setState({[type]: newObj});
+        let obj = {};
+        if (type === 'weapons') obj = {...weapons};
+        if (type === 'armor') obj = {...armor};
+        if (type === 'gear') obj = {...gear};
+        if (!obj.qualitiesList) obj.qualitiesList = [];
+        if (!obj.qualityRank) obj.qualityRank = '';
+        obj.qualitiesList.push({[obj.qualities]: obj.qualityRank});
+        delete obj.qualities;
+        delete obj.qualityRank;
+        this.setState({[type]: obj});
     };
 
 
     handleSubmit = (event) => {
         const {type, changeData, armor, gear, weapons, keyID, handleClose} = this.props;
-        let newObj = {};
-        if (type === 'weapons') newObj = {...weapons};
-        if (type === 'armor') newObj = {...armor};
-        if (type === 'gear') newObj = {...gear};
-        newObj[keyID] = this.state[type];
-        changeData(newObj, `${type}`);
+        let obj = {};
+        if (type === 'weapons') obj = {...weapons};
+        if (type === 'armor') obj = {...armor};
+        if (type === 'gear') obj = {...gear};
+        obj[keyID] = this.state[type];
+        changeData(obj, `${type}`);
         handleClose();
         event.preventDefault();
     };
 
     handleDelete = (event) => {
         const {changeData, armor, gear, weapons, type, keyID, handleClose} = this.props;
-        let newObj = {};
-        if (type === 'weapons') newObj = {...weapons};
-        if (type === 'armor') newObj = {...armor};
-        if (type === 'gear') newObj = {...gear};
+        let obj = {};
+        if (type === 'weapons') obj = {...weapons};
+        if (type === 'armor') obj = {...armor};
+        if (type === 'gear') obj = {...gear};
         changeData('', type);
-        delete newObj[keyID];
-        changeData(newObj, type);
+        delete obj[keyID];
+        changeData(obj, type);
         handleClose();
         event.preventDefault();
     };
@@ -90,38 +90,30 @@ class GearStats extends React.Component {
                     <ModalHeader toggle={handleClose}>Weapons</ModalHeader>
                     <ModalBody className='m-4'>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Name:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Name:</Col>
                             <Col sm='4'>
                                 <Input type='text' value={weapons.name ? weapons.name : ''} name='name'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Damage:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Damage:</Col>
                             <Col sm='4'>
-                                <Input type='number' value={weapons.damage ? weapons.damage : 0}
+                                <Input value={weapons.damage ? weapons.damage : ''}
                                        name='damage'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Critical Rating:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Critical Rating:</Col>
                             <Col sm='4'>
-                                <Input type='number' value={weapons.critical ? weapons.critical : 0}
+                                <Input type='number' value={weapons.critical ? weapons.critical : ''}
                                        name='critical'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Range:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Range:</Col>
                             <Col sm='4'>
                                 <Input type='select' value={weapons.range ? weapons.range : ''}
                                        name='range'
@@ -136,9 +128,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Skill:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Skill:</Col>
                             <Col sm='4'>
                                 <Input type='select' value={weapons.skill ? weapons.skill : ''}
                                        name='skill'
@@ -152,30 +142,24 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Encumbrance:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Encumbrance:</Col>
                             <Col sm='4'>
                                 <Input type='number'
-                                       value={weapons.encumbrance ? weapons.encumbrance : 0}
+                                       value={weapons.encumbrance ? weapons.encumbrance : ''}
                                        name='encumbrance'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Price:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Price:</Col>
                             <Col sm='4'>
-                                <Input type='number' value={weapons.price ? weapons.price : 0}
+                                <Input type='number' value={weapons.price ? weapons.price : ''}
                                        name='price'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Special Qualities:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Special Qualities:</Col>
                             <Col sm='4'>
                                 <Input type='select'
                                        value={weapons.qualities ? weapons.qualities : ''}
@@ -225,36 +209,28 @@ class GearStats extends React.Component {
                     <ModalHeader toggle={handleClose}>Armor</ModalHeader>
                     <ModalBody className='m-4'>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Name:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Name:</Col>
                             <Col sm='4'>
                                 <Input type='text' maxLength='20' value={armor.name ? armor.name : ''} name='name'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Soak:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Soak:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={armor.soak ? armor.soak : 0} name='soak'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Defense:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Defense:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={armor.defense ? armor.defense : 0} name='defense'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Ranged Defense:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Ranged Defense:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={armor.rangedDefense ? armor.rangedDefense : 0}
                                        name='rangedDefense'
@@ -262,9 +238,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Melee Defense:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Melee Defense:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={armor.meleeDefense ? armor.meleeDefense : 0}
                                        name='meleeDefense'
@@ -272,9 +246,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Encumbrance:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Encumbrance:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={armor.encumbrance ? armor.encumbrance : 0}
                                        name='encumbrance'
@@ -282,9 +254,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Price:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Price:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={armor.price ? armor.price : 0}
                                        name='price'
@@ -341,18 +311,14 @@ class GearStats extends React.Component {
                     <ModalHeader toggle={handleClose}>Gear</ModalHeader>
                     <ModalBody className='m-4'>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Name:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Name:</Col>
                             <Col sm='4'>
                                 <Input type='text' value={gear.name ? gear.name : ''} name='name'
                                        onChange={this.handleChange}/>
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Amount:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Amount:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={gear.amount ? gear.amount : 0}
                                        name='amount'
@@ -360,9 +326,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Encumbrance:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Encumbrance:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={gear.encumbrance ? gear.encumbrance : 0}
                                        name='encumbrance'
@@ -370,9 +334,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Price:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Price:</Col>
                             <Col sm='4'>
                                 <Input type='number' value={gear.price ? gear.price : 0}
                                        name='price'
@@ -380,9 +342,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Special Qualities:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Special Qualities:</Col>
                             <Col sm='4'>
                                 <Input type='select' value={gear.qualities ? gear.qualities : ''}
                                        name='qualities'
