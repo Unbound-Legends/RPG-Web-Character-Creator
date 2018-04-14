@@ -39,6 +39,18 @@ class CustomCareers extends React.Component {
         event.preventDefault();
     };
 
+    handleEdit = (event) => {
+        const {customCareers} = this.props;
+        const career = customCareers[event.target.name];
+        this.setState({
+            name: career.name,
+            selectedSkills: career.skills,
+            description: career.description,
+            setting: career.setting
+        });
+    };
+
+
     createOptions = () => {
         const {skills} = this.props;
         const {selectedSkills} = this.state;
@@ -53,26 +65,20 @@ class CustomCareers extends React.Component {
                 <ModalHeader toggle={handleClose}>Custom Careers</ModalHeader>
                 <ModalBody className='m-3 text-left'>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b>Name:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b>Name:</b></Col>
                         <Col>
                             <Input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b>Setting:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b>Setting:</b></Col>
                         <Col>
                             <Input className='my-auto' type='text' value={setting} name='setting' maxLength='25'
                                    onChange={this.handleChange}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b>Career Skills:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b>Career Skills:</b></Col>
                         <Col>
                             <Input type='select' value='' name='selectedSkills' onChange={this.handleSelect}>
                                 <option value=''/>
@@ -90,9 +96,7 @@ class CustomCareers extends React.Component {
                         {selectedSkills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4'>
-                            <b>Description:</b>
-                        </Col>
+                        <Col xs='4'><b>Description:</b></Col>
                         <Col>
                             <textarea onChange={this.handleChange}
                                       name='description'
@@ -112,6 +116,7 @@ class CustomCareers extends React.Component {
                             <th>NAME</th>
                             <th>SKILLS</th>
                             <th/>
+                            <th/>
                         </tr>
                         </thead>
                         <tbody>
@@ -119,6 +124,7 @@ class CustomCareers extends React.Component {
                             <tr key={key} style={{textAlign: 'left'}}>
                                 <td>{customCareers[key].name}</td>
                                 <td>{customCareers[key].skills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}</td>
+                                <td><Button name={key} onClick={this.handleEdit}>Edit</Button></td>
                                 <td><Button name={key} onClick={this.handleDelete}>Delete</Button></td>
                             </tr>
                         )}

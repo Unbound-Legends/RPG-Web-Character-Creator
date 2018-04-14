@@ -77,8 +77,7 @@ class Attributes extends React.Component {
                         <Row className='attributeValue'>{totalSoak}</Row>
                     </div>
                     <div className='imageBox attribute'>
-                        <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
-                        <Row className='attributeTitle'>DEFENSE</Row>
+                        <img src={'/images/png/Defense.png'} alt='' className='png'/>
                         <Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
                     </div>
                     <div className='imageBox attribute'>

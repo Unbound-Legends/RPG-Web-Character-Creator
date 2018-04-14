@@ -92,6 +92,28 @@ class CustomArchetypes extends React.Component {
         });
     };
 
+
+    handleEdit = (event) => {
+        const {customArchetypes} = this.props;
+        const archetype = customArchetypes[event.target.name];
+        this.setState({
+            name: archetype.name,
+            Brawn: archetype.characteristics.Brawn,
+            Agility: archetype.characteristics.Agility,
+            Intellect: archetype.characteristics.Intellect,
+            Cunning: archetype.characteristics.Cunning,
+            Willpower: archetype.characteristics.Willpower,
+            Presence: archetype.characteristics.Presence,
+            woundThreshold: archetype.woundThreshold,
+            strainThreshold: archetype.strainThreshold,
+            XP: archetype.experience,
+            selectedSkill: Object.keys(archetype.skills)[0],
+            description: archetype.description,
+            setting: archetype.setting,
+            talents: archetype.talents,
+        });
+    };
+
     handleDelete = (event) => {
         const {customArchetypes, changeCustomData, archetype, changeData} = this.props;
         if (archetype === event.target.name) changeData('', 'archetype');
@@ -109,36 +131,28 @@ class CustomArchetypes extends React.Component {
                 <ModalHeader toggle={handleClose}>Custom Archetypes</ModalHeader>
                 <ModalBody className='m-3 text-left'>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b>Name:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b>Name:</b></Col>
                         <Col>
                             <Input className='my-auto' type='text' value={name} name='name' maxLength='25'
                                    onChange={this.handleChange}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b>Starting XP:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b>Starting XP:</b></Col>
                         <Col>
                             <Input className='w-50 my-auto' type='number' value={XP} name='XP' maxLength='3'
                                    onChange={this.handleChange}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b>Setting:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b>Setting:</b></Col>
                         <Col>
                             <Input className='my-auto' type='text' value={setting} name='setting' maxLength='25'
                                    onChange={this.handleChange}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b className='text-left'>Starting Characteristics:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b className='text-left'>Starting Characteristics:</b></Col>
                     </Row>
                     <Row className='justify-content-center'>
                         {chars.map((stat) =>
@@ -156,9 +170,7 @@ class CustomArchetypes extends React.Component {
                         )}
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='4' className='my-auto'>
-                            <b className='text-left'>Starting Attributes:</b>
-                        </Col>
+                        <Col xs='4' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
                     </Row>
                     <Row className='justify-content-center'>
                         <div className='justify-content-center text-center'>
@@ -185,9 +197,7 @@ class CustomArchetypes extends React.Component {
                         </div>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='5' className='my-auto'>
-                            <b>One free rank in:</b>
-                        </Col>
+                        <Col xs='5' className='my-auto'><b>One free rank in:</b></Col>
                         <Col>
                             <Input type='select' name='selectedSkill' value={selectedSkill}
                                    onChange={this.handleChange}>
@@ -200,9 +210,7 @@ class CustomArchetypes extends React.Component {
                         </Col>
                     </Row>
                     <Row className='mt-2'>
-                        <Col xs='5' className='my-auto'>
-                            <b>Archetype Talents:</b>
-                        </Col>
+                        <Col xs='5' className='my-auto'><b>Archetype Talents:</b></Col>
                         <Col>
                             <Input type='select' name='talents' value=''
                                    onChange={this.handleSelect}>
@@ -226,9 +234,7 @@ class CustomArchetypes extends React.Component {
                     </Row>
 
                     <Row className='mt-2'>
-                        <Col xs='4'>
-                            <b>Description:</b>
-                        </Col>
+                        <Col xs='4'><b>Description:</b></Col>
                         <Col>
                             <textarea onChange={this.handleChange}
                                       name='description'
@@ -247,6 +253,7 @@ class CustomArchetypes extends React.Component {
                         <tr>
                             <th>NAME</th>
                             <th/>
+                            <th/>
                         </tr>
                         </thead>
                         <tbody>
@@ -254,8 +261,12 @@ class CustomArchetypes extends React.Component {
                         Object.keys(customArchetypes).map(slot =>
                             <tr key={slot}>
                                 <td>{customArchetypes[slot].name}</td>
-                                <td className='text-right'><Button name={slot}
-                                                                   onClick={this.handleDelete}>Delete</Button></td>
+                                <td className='text-right'>
+                                    <Button name={slot} onClick={this.handleEdit}>Edit</Button>
+                                </td>
+                                <td className='text-right'>
+                                    <Button name={slot} onClick={this.handleDelete}>Delete</Button>
+                                </td>
                             </tr>
                         )
                         }

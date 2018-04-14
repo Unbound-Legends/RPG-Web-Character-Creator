@@ -66,6 +66,22 @@ class CustomTalents extends React.Component {
         event.preventDefault();
     };
 
+    handleEdit = (event) => {
+        const {customTalents} = this.props;
+        const talent = customTalents[event.target.name];
+        this.setState({
+            name: talent.name,
+            tier: talent.tier,
+            activation: talent.activation,
+            turn: talent.turn,
+            ranked: talent.ranked,
+            description: talent.description,
+            setting: talent.setting,
+            modifier: Object.keys(talent.modifier)[0],
+            modifierValue: Object.values(talent.modifier)[0],
+        });
+    };
+
     render() {
         const {customTalents, modal, handleClose, skills} = this.props;
         const {name, tier, ranked, activation, turn, description, setting, modifier, modifierValue} = this.state;
@@ -222,6 +238,7 @@ class CustomTalents extends React.Component {
                             <th>NAME</th>
                             <th>TIER</th>
                             <th/>
+                            <th/>
                         </tr>
                         </thead>
                         <tbody>
@@ -230,6 +247,7 @@ class CustomTalents extends React.Component {
                             <tr key={key}>
                                 <td>{customTalents[key].name}</td>
                                 <td>{customTalents[key].tier}</td>
+                                <td><Button name={key} onClick={this.handleEdit}>Edit</Button></td>
                                 <td><Button name={key} onClick={this.handleDelete}>Delete</Button></td>
                             </tr>
                         )

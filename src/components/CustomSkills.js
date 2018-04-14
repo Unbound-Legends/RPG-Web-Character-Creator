@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Table} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData} from '../actions';
 
 class CustomSkills extends React.Component {
@@ -15,9 +15,9 @@ class CustomSkills extends React.Component {
     handleSet = (event) => {
         const {customSkills, changeCustomData} = this.props;
         const {name, type, characteristic} = this.state;
-        let newObj = {...customSkills};
-        newObj[name.replace(/\s/g, '')] = {name, type, characteristic};
-        changeCustomData(newObj, 'customSkills');
+        let obj = {...customSkills};
+        obj[name.replace(/\s/g, '')] = {name, type, characteristic};
+        changeCustomData(obj, 'customSkills');
         this.setState({name: '', type: '', characteristic: ''});
         event.preventDefault();
     };
@@ -25,10 +25,16 @@ class CustomSkills extends React.Component {
     handleDelete = (event) => {
         const {customSkills, changeCustomData} = this.props;
         changeCustomData('', 'customSkills');
-        let newObj = {...customSkills};
-        delete newObj[event.target.name];
-        changeCustomData(newObj, 'customSkills');
+        let obj = {...customSkills};
+        delete obj[event.target.name];
+        changeCustomData(obj, 'customSkills');
         event.preventDefault();
+    };
+
+    handleEdit = (event) => {
+        const {customSkills} = this.props;
+        const skill = customSkills[event.target.name];
+        this.setState({name: skill.name, type: skill.type, characteristic: skill.characteristic});
     };
 
     render() {
@@ -38,6 +44,41 @@ class CustomSkills extends React.Component {
             <Modal isOpen={modal} toggle={handleClose}>
                 <ModalHeader toggle={handleClose}>Custom Skills</ModalHeader>
                 <ModalBody className='m-1 text-left'>
+                    <Row className='m-1 align-items-center'>
+                        <Col sm='3'><b>NAME:</b></Col>
+                        <Col>
+                            <Input type='text' value={name} name='name' maxLength='25'
+                                   onChange={this.handleChange}/>
+                        </Col>
+                    </Row>
+                    <Row className='m-1 align-items-center'>
+                        <Col sm='3'><b>TYPE:</b></Col>
+                        <Col>
+                            <Input type='select' value={type} name='type' onChange={this.handleChange}>
+                                <option value=''/>
+                                {['General', 'Combat', 'Social', 'Magic', 'Knowledge'].map((key) =>
+                                    <option value={key} key={key}>{key}</option>
+                                )}
+                            </Input>
+                        </Col>
+                    </Row>
+                    <Row className='m-1 align-items-center'>
+                        <Col sm='3'><b>CHAR:</b></Col>
+                        <Col>
+                            <Input type='select' value={characteristic} name='characteristic'
+                                   onChange={this.handleChange}>
+                                <option value=''/>
+                                {['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'].map((key) =>
+                                    <option value={key} key={key}>{key}</option>
+                                )}
+                            </Input>
+                        </Col>
+                    </Row>
+                    <Row className='m-1 justify-content-end'>
+                        <Button onClick={this.handleSet}
+                                disabled={name === '' || type === '' || characteristic === ''}>Add</Button>
+                    </Row>
+
                     <Table>
                         <thead>
                         <tr>
@@ -45,37 +86,10 @@ class CustomSkills extends React.Component {
                             <th>TYPE</th>
                             <th>CHAR</th>
                             <th/>
+                            <th/>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <Input type='text' value={name} name='name' maxLength='25'
-                                       onChange={this.handleChange}/>
-                            </td>
-                            <td>
-
-                                <Input type='select' value={type} name='type' onChange={this.handleChange}>
-                                    <option value=''/>
-                                    {['General', 'Combat', 'Social', 'Magic', 'Knowledge'].map((key) =>
-                                        <option value={key} key={key}>{key}</option>
-                                    )}
-                                </Input>
-                            </td>
-                            <td>
-                                <Input type='select' value={characteristic} name='characteristic'
-                                       onChange={this.handleChange}>
-                                    <option value=''/>
-                                    {['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'].map((key) =>
-                                        <option value={key} key={key}>{key}</option>
-                                    )}
-                                </Input>
-                            </td>
-                            <td>
-                                <Button onClick={this.handleSet}
-                                        disabled={name === '' || type === '' || characteristic === ''}>Add</Button>
-                            </td>
-                        </tr>
                         {Object.keys(customSkills).map((key) =>
                             <tr key={key}>
                                 <td>
@@ -86,6 +100,9 @@ class CustomSkills extends React.Component {
                                 </td>
                                 <td>
                                     {customSkills[key].characteristic}
+                                </td>
+                                <td>
+                                    <Button name={key} onClick={this.handleEdit}>Edit</Button>
                                 </td>
                                 <td>
                                     <Button name={key} onClick={this.handleDelete}>Delete</Button>

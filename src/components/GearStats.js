@@ -30,6 +30,7 @@ class GearStats extends React.Component {
         if (event.target.type === 'number') {
             value = +value.replace(/(?!^-+)[^0-9]/g, '');
             if (value > 99 && event.target.name !== 'price') return;
+            if (value < -20) return;
         }
         let obj = {};
         if (type === 'weapons') obj = {...weapons};
