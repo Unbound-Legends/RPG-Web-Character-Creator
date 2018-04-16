@@ -263,12 +263,17 @@ and (max-width: 480px) {
     }
 
     .table th {
-        padding: 0.2rem;
+        padding: 0.1rem;
     }
 
     .table td {
-        padding: 0.2rem;
+        padding: 0.1rem;
         vertical-align: middle;
+        font-size: 0.6rem;
+    }
+
+    .ffi {
+        font-size: 1rem;
     }
 
 }
