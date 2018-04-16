@@ -218,6 +218,12 @@ input[type="number"] {
     height: 160px;
 }
 
+.ffi {
+    vertical-align: middle;
+    font-size: 1.4rem;
+    letter-spacing: -3px;
+}
+
 
 @media only screen
 and (max-width: 480px) {

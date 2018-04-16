@@ -9,7 +9,8 @@ import {App} from './components/index';
 require('./styles/tabs.css');
 require('bootstrap/dist/css/bootstrap.css');
 require('./styles/index.css');
-
+require('sw-rpg-icons/css/sw-rpg-colors.min.css');
+require('sw-rpg-icons/css/sw-rpg-icons.min.css');
 
 export const store = createStore(allReducers, {}, applyMiddleware(thunk));
 
