@@ -294,5 +294,56 @@ export default {
         book: 'CRB',
         page: '65',
         setting: 'All'
-    }
+    },
+
+    //Realm of Terrinoth
+
+    KnowledgeAdventuring: {
+        name: 'Knowledge Adventuring',
+        type: 'Knowledge',
+        characteristic: 'Intellect',
+        book: 'ROT',
+        page: '81',
+        setting: 'Fantasy'
+    },
+    KnowledgeForbidden: {
+        name: 'Knowledge Forbidden',
+        type: 'Knowledge',
+        characteristic: 'Intellect',
+        book: 'ROT',
+        page: '81',
+        setting: 'Fantasy'
+    },
+    KnowledgeGeography: {
+        name: 'Knowledge Geography',
+        type: 'Knowledge',
+        characteristic: 'Intellect',
+        book: 'ROT',
+        page: '81',
+        setting: 'Fantasy'
+    },
+    KnowledgeLore: {
+        name: 'Knowledge Lore',
+        type: 'Knowledge',
+        characteristic: 'Intellect',
+        book: 'ROT',
+        page: '82',
+        setting: 'Fantasy'
+    },
+    Runes: {
+        name: 'Runes',
+        type: 'Magic',
+        characteristic: 'Intellect',
+        book: 'ROT',
+        page: '83',
+        setting: 'Fantasy'
+    },
+    Verse: {
+        name: 'Verse',
+        type: 'Magic',
+        characteristic: 'Presence',
+        book: 'ROT',
+        page: '83',
+        setting: 'Fantasy'
+    },
 }

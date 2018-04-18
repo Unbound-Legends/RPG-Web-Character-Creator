@@ -6,7 +6,7 @@ import {SkillRow} from './index';
 class SkillBlock extends React.Component {
 
     render() {
-        const {type, skills} = this.props;
+        const {type, skills, index} = this.props;
         return (
             <Table className='m-0'>
                 <thead>
@@ -18,6 +18,7 @@ class SkillBlock extends React.Component {
                 <tr>
                     <td>
                         <Table>
+                            {0 >= index &&
                             <thead>
                             <tr className='py-0'>
                                 <th className='table-name'>Skill</th>
@@ -26,6 +27,7 @@ class SkillBlock extends React.Component {
                                 <th className='table-dice'>Dice Pool</th>
                             </tr>
                             </thead>
+                            }
                             <tbody>
                             {Object.keys(skills).sort().map((skillKey) =>
                                 skills[skillKey].type === type &&

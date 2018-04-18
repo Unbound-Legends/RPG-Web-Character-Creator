@@ -12,15 +12,18 @@ class Skill extends React.Component {
                 <Row className='justify-content-end' onClick={() => this.setState({modal: true})}><h5>SKILLS</h5></Row>
                 <hr/>
                 <Row>
-                    <Col className='px-1'>
-                        <SkillBlock type='General'
-                        />
-                    </Col>
-                    <Col className='px-1'>
-                        {['Combat', 'Magic', 'Social', 'Knowledge'].map((type) =>
+                    <Col>
+                        {['General', 'Magic'].map((type, index) =>
                             <SkillBlock key={type}
                                         type={type}
-                            />
+                                        index={index}/>
+                        )}
+                    </Col>
+                    <Col>
+                        {['Combat', 'Social', 'Knowledge'].map((type, index) =>
+                            <SkillBlock key={type}
+                                        type={type}
+                                        index={index}/>
                         )}
                     </Col>
                 </Row>
