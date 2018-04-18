@@ -13,30 +13,30 @@ export default class Description extends React.Component {
                     break;
                 case word === '[blue]':
                 case word === '[boost]':
-                    newString.push('<i class="ffi ffi-d6 ffi-grpg-boost-color"></i>');
+                    newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"></i>');
                     break;
                 case word === '[green]':
                 case word === '[ability]':
-                    newString.push('<i class="ffi ffi-d8 ffi-grpg-ability-color"></i>');
+                    newString.push('<i class="ffi  ffi-d8 ffi-border ffi-grpg-ability-color"></i>');
                     break;
                 case word === '[yellow]':
                 case word === '[proficiency]':
-                    newString.push('<i class="ffi ffi-d12 ffi-grpg-proficiency-color"></i>');
+                    newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-proficiency-color"></i>');
                     break;
                 case word === '[black]':
                 case word === '[setback]':
-                    newString.push('<i class="ffi ffi-d6 ffi-grpg-setback-color"></i>');
+                    newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i>');
                     break;
                 case word === '[purple]':
                 case word === '[difficulty]':
-                    newString.push('<i class="ffi ffi-d8 ffi-grpg-difficulty-color"></i>');
+                    newString.push('<i class="ffi ffi-d8 ffi-border ffi-grpg-difficulty-color"></i>');
                     break;
                 case word === '[red]':
                 case word === '[challenge]':
-                    newString.push('<i class="ffi ffi-d12 ffi-grpg-challenge-color"></i>');
+                    newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-challenge-color"></i>');
                     break;
                 case word === '[white]':
-                    newString.push('<i class="ffi ffi-d12"></i>');
+                    newString.push('<i class="ffi ffi-d12 ffi-border"></i>');
                     break;
                 case word === '[advantage]':
                 case word === '[adv]':

@@ -224,6 +224,11 @@ input[type="number"] {
     letter-spacing: -3px;
 }
 
+.ffi-border {
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 2px;
+}
+
 
 @media only screen
 and (max-width: 480px) {

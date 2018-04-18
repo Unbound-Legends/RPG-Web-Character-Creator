@@ -52,7 +52,7 @@ class Career extends React.Component {
                                     <Label>
                                         <Input type='checkbox' name={skill}
                                                checked={careerSkillsRank.includes(skill)}
-                                               onChange={this.handleCheck}/>{skills[skill].name}
+                                               onChange={this.handleCheck}/>{skills[skill] ? skills[skill].name : ''}
                                     </Label>
                                 </Row>
                             )}
