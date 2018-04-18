@@ -316,6 +316,8 @@ export default {
             Presence: 3
         }
     },
+    //Realms of Terrinoth Archetypes
+
     DeepElf: {
         name: 'Deep Elf',
         book: 'ROT',
@@ -325,7 +327,7 @@ export default {
         woundThreshold: 9,
         strainThreshold: 10,
         experience: 90,
-        skills: {discipline: 1},
+        skills: {Discipline: 1},
         talents: ['ynfernaelore'],
         characteristics: {
             Brawn: 2,
@@ -345,7 +347,7 @@ export default {
         woundThreshold: 9,
         strainThreshold: 10,
         experience: 90,
-        skills: {streetwise: 1},
+        skills: {Streetwise: 1},
         talents: ['nimble'],
         characteristics: {
             Brawn: 2,
@@ -365,7 +367,7 @@ export default {
         woundThreshold: 9,
         strainThreshold: 10,
         experience: 90,
-        skills: {negotiation: 1},
+        skills: {Negotiation: 1},
         talents: ['empyreanmagic'],
         characteristics: {
             Brawn: 2,
@@ -385,7 +387,7 @@ export default {
         woundThreshold: 9,
         strainThreshold: 10,
         experience: 90,
-        skills: {survival: 1},
+        skills: {Survival: 1},
         talents: ['nimble'],
         characteristics: {
             Brawn: 2,
@@ -405,7 +407,7 @@ export default {
         woundThreshold: 11,
         strainThreshold: 10,
         experience: 90,
-        skills: {resilience: 1},
+        skills: {Resilience: 1},
         talents: ['darkvision', 'toughasnails'],
         characteristics: {
             Brawn: 2,
@@ -445,7 +447,7 @@ export default {
         woundThreshold: 12,
         strainThreshold: 8,
         experience: 100,
-        skills: {coercion: 1},
+        skills: {Coercion: 1},
         talents: ['battlerage'],
         characteristics: {
             Brawn: 3,
@@ -465,7 +467,7 @@ export default {
         woundThreshold: 12,
         strainThreshold: 8,
         experience: 100,
-        skills: {cool: 1},
+        skills: {Cool: 1},
         talents: ['hottempered'],
         characteristics: {
             Brawn: 3,
@@ -485,7 +487,7 @@ export default {
         woundThreshold: 12,
         strainThreshold: 8,
         experience: 100,
-        skills: {alchemy: 1},
+        skills: {Alchemy: 1},
         talents: ['tenacious'],
         characteristics: {
             Brawn: 3,
@@ -505,7 +507,7 @@ export default {
         woundThreshold: 9,
         strainThreshold: 8,
         experience: 90,
-        skills: {perception: 1},
+        skills: {Perception: 1},
         talents: ['claws', 'fleetofpaw'],
         characteristics: {
             Brawn: 2,
@@ -525,7 +527,7 @@ export default {
         woundThreshold: 10,
         strainThreshold: 9,
         experience: 100,
-        skills: {cool: 1},
+        skills: {Cool: 1},
         talents: ['catancestry'],
         characteristics: {
             Brawn: 2,
@@ -545,7 +547,7 @@ export default {
         woundThreshold: 6,
         strainThreshold: 11,
         experience: 90,
-        skills: {charm: 1, resilience: 1},
+        skills: {Charm: 1, Resilience: 1},
         talents: ['small', 'militiatraining'],
         characteristics: {
             Brawn: 1,
@@ -565,7 +567,7 @@ export default {
         woundThreshold: 6,
         strainThreshold: 11,
         experience: 90,
-        skills: {charm: 1, stealth: 1},
+        skills: {Charm: 1, Stealth: 1},
         talents: ['tricksy'],
         characteristics: {
             Brawn: 1,
