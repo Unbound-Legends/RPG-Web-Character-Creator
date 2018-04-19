@@ -342,7 +342,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '76',
-        description: 'See CRB, page 76, for more details.'
+        description: 'See CRB, page 76, for more details.',
+        prerequisite: 'DefensiveSysops'
     },
     DualWielder: {
         name: 'Dual Wielder',
@@ -540,7 +541,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '78',
-        description: 'See CRB, page 78, for more details.'
+        description: 'See CRB, page 78, for more details.',
+        prerequisite: 'InspiringRhetoric'
     },
     PainkillerSpecialization: {
         name: 'Painkiller Specialization',
@@ -562,7 +564,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '79',
-        description: 'See CRB, page 79, for more details.'
+        description: 'See CRB, page 79, for more details.',
+        prerequisite: 'ScathingTirade'
     },
     HeroicWill: {
         name: 'Heroic Will',
@@ -606,7 +609,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '79',
-        description: 'See CRB, page 79, for more details.'
+        description: 'See CRB, page 79, for more details.',
+        prerequisite: 'Parry'
     },
     CantWeTalkAboutThis: {
         name: 'Can\'t We Talk About This?',
@@ -677,7 +681,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '80',
-        description: 'See CRB, page 80, for more details.'
+        description: 'See CRB, page 80, for more details.',
+        prerequisite: 'FieldCommander'
     },
     HowConvenient: {
         name: 'How Convenient!',
@@ -699,7 +704,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '80',
-        description: 'See CRB, page 80, for more details.'
+        description: 'See CRB, page 80, for more details.',
+        prerequisite: 'InspiringRhetoric'
     },
     MadInventor: {
         name: 'Mad Inventor',
@@ -732,7 +738,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '81',
-        description: 'See CRB, page 81, for more details.'
+        description: 'See CRB, page 81, for more details.',
+        prerequisite: 'ScathingTirade'
     },
     Dedication: {
         name: 'Dedication',
@@ -776,7 +783,8 @@ export default {
         ranked: false,
         book: 'CRB',
         page: '81',
-        description: 'See CRB, page 81, for more details.'
+        description: 'See CRB, page 81, for more details.',
+        prerequisite: 'Overcharge'
     },
     RuinousRepartee: {
         name: 'Ruinous Repartee',
@@ -1019,7 +1027,7 @@ export default {
         description: 'See ROT, page 88, for more details.',
         modifier: {careerSkills: ['Verse', 'KnowledgeLore']}
     },
-    DominionOFTheDimora: {
+    DominionOfTheDimora: {
         name: 'Dominion of the Dimora',
         setting: 'Fantasy',
         tier: 2,
@@ -1053,7 +1061,7 @@ export default {
         page: '88',
         description: 'See ROT, page 88, for more details.',
     },
-    FavorOFTheFae: {
+    FavorOfTheFae: {
         name: 'Favor of the Fae',
         setting: 'Fantasy',
         tier: 2,
@@ -1063,7 +1071,7 @@ export default {
         book: 'ROT',
         page: '88',
         description: 'See ROT, page 88, for more details.',
-        antirequisite: 'DominionOFTheDimora'
+        antirequisite: 'DominionOfTheDimora'
     },
     FlamesofKellos: {
         name: 'Flames of Kellos',
@@ -1179,7 +1187,7 @@ export default {
         description: 'See ROT, page 89, for more details.',
     },
     TemplarImproved: {
-        name: 'Reckless Charge',
+        name: 'Templar (Improved)',
         setting: 'Fantasy',
         tier: 2,
         activation: false,
@@ -1188,6 +1196,7 @@ export default {
         book: 'ROT',
         page: '89',
         description: 'See ROT, page 89, for more details.',
+        prerequisite: 'Templar'
     },
     Threaten: {
         name: 'Threaten',

@@ -16,19 +16,23 @@ class TalentSelection extends React.Component {
         const {tier, talentCount, talentKey, talents} = this.props;
         let options = [];
         Object.keys(talents).forEach((key) => {
-            //checked to make sure the improved and supreme talensts aren't selected first
-            if (key.includes('Improved') || key.includes('Supreme')) {
-                if ((key.includes('Improved') && talentCount[key.slice(0, -8)]) ||
-                    (key.includes('Supreme') && talentCount[key.slice(0, -7)])) {
-                    if (+tier === talents[key].tier && !talentCount[key]) options.push(key);
+            //check for antirequisite
+            if (!talents[key].antirequisite) {
+                //prerequisite check
+                if (talents[key].prerequisite) {
+                    if (+tier === +talents[key].tier && talentCount[talents[key].prerequisite]) options.push(key);
                 }
+                //talent from this tier and has not been selected already
+                else if (+tier === +talents[key].tier && !talentCount[key]) options.push(key);
+                //talent is ranked and has been selected enough for this tier
+                else if (talents[key].ranked && ((+talents[key].tier + talentCount[key]) === tier)) options.push(key);
+            } else {
+                if (+tier === talents[key].tier && !talentCount[talents[key].antirequisite] && !talentCount[key]) options.push(key);
             }
-            //talent from this tier and has not been selected already
-            else if (tier === +talents[key].tier && !talentCount[key]) options.push(key);
-            //talent is ranked and has been selected enough for this tier
-            else if (talents[key].ranked && ((+talents[key].tier + talentCount[key]) === tier)) options.push(key);
             if (key === talentKey) options.push(key);
+
         });
+
         if (tier === 5 && !options.includes('Dedication')) options.push('Dedication');
         options.sort();
         return options;

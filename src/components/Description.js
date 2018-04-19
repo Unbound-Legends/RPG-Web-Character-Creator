@@ -16,54 +16,54 @@ export default class Description extends React.Component {
                     break;
                 case word === '[blue]':
                 case word === '[boost]':
-                    newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"></i>');
+                    newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"/>');
                     break;
                 case word === '[green]':
                 case word === '[ability]':
-                    newString.push('<i class="ffi  ffi-d8 ffi-border ffi-grpg-ability-color"></i>');
+                    newString.push('<i class="ffi  ffi-d8 ffi-border ffi-grpg-ability-color"/>');
                     break;
                 case word === '[yellow]':
                 case word === '[proficiency]':
-                    newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-proficiency-color"></i>');
+                    newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-proficiency-color"/>');
                     break;
                 case word === '[black]':
                 case word === '[setback]':
-                    newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i>');
+                    newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"/>');
                     break;
                 case word === '[purple]':
                 case word === '[difficulty]':
-                    newString.push('<i class="ffi ffi-d8 ffi-border ffi-grpg-difficulty-color"></i>');
+                    newString.push('<i class="ffi ffi-d8 ffi-border ffi-grpg-difficulty-color"/>');
                     break;
                 case word === '[red]':
                 case word === '[challenge]':
-                    newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-challenge-color"></i>');
+                    newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-challenge-color"/>');
                     break;
                 case word === '[white]':
-                    newString.push('<i class="ffi ffi-d12 ffi-border"></i>');
+                    newString.push('<i class="ffi ffi-d12 ffi-border"/>');
                     break;
                 case word === '[advantage]':
                 case word === '[adv]':
-                    newString.push('<i class="ffi ffi-grpg-advantage"></i>');
+                    newString.push('<i class="ffi ffi-grpg-advantage"/>');
                     break;
                 case word === '[success]':
                 case word === '[suc]':
-                    newString.push('<i class="ffi ffi-grpg-success"></i>');
+                    newString.push('<i class="ffi ffi-grpg-success"/>');
                     break;
                 case word === '[triumph]':
                 case word === '[tri]':
-                    newString.push('<i class="ffi ffi-grpg-triumph"></i>');
+                    newString.push('<i class="ffi ffi-grpg-triumph"/>');
                     break;
                 case word === '[threat]':
                 case word === '[thr]':
-                    newString.push('<i class="ffi ffi-grpg-threat"></i>');
+                    newString.push('<i class="ffi ffi-grpg-threat"/>');
                     break;
                 case word === '[failure]':
                 case word === '[fail]':
-                    newString.push('<i class="ffi ffi-grpg-failure"></i>');
+                    newString.push('<i class="ffi ffi-grpg-failure"/>');
                     break;
                 case word === '[despair]':
                 case word === '[des]':
-                    newString.push('<i class="ffi ffi-grpg-despair"></i>');
+                    newString.push('<i class="ffi ffi-grpg-despair"/>');
                     break;
                 default:
                     newString.push(`${word} `);
