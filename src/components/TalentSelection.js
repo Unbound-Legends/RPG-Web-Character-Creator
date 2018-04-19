@@ -97,32 +97,32 @@ class TalentSelection extends React.Component {
                     {talent &&
                     <div>
                         <Row>
-                            <Col sm='3 '><b>Name:</b></Col>
+                            <Col sm='4'><b>Name:</b></Col>
                             <Col>{talent.name}</Col>
                         </Row>
                         <Row>
-                            <Col sm='3 '><b>Tier:</b></Col>
+                            <Col sm='4'><b>Tier:</b></Col>
                             <Col>{talent.tier}</Col>
                         </Row>
                         <Row>
-                            <Col sm='3 '><b>Activation:&nbsp;</b></Col>
+                            <Col sm='4'><b>Activation:&nbsp;</b></Col>
                             <Col>{talent.activation ? 'Active' : 'Passive'}</Col>
                         </Row>
-                        {talent.turn ? <Row><Col sm='6'>{talent.turn}</Col></Row> : null}
+                        {talent.turn && <Row><Col>{talent.turn}</Col></Row>}
                         {talent.ranked ? <Row><Col sm='6'><b>Ranked</b></Col></Row> :
                             <Row><Col sm='6'><b>Not Ranked</b></Col></Row>}
                         <Row>
-                            <Col sm='3 '><b>Setting:</b></Col>
+                            <Col sm='4'><b>Setting:</b></Col>
                             <Col>{talent.setting}</Col>
                         </Row>
                         {talent.book &&
                         <Row className='my-2'>
-                            <Col sm='3'> <b>Book:</b></Col>
+                            <Col sm='4'> <b>Book:</b></Col>
                             <Col><Description text={`${talent.book}: ${talent.page}`}/></Col>
                         </Row>
                         }
                         <Row>
-                            <Col sm='3 '><b>Description:</b></Col>
+                            <Col sm='4'><b>Description:</b></Col>
                             <Col><Description text={talent.description}/></Col>
                         </Row>
                         {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection}

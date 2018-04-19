@@ -263,9 +263,7 @@ class GearStats extends React.Component {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col sm='4' className='my-auto'>
-                                Special Qualities:
-                            </Col>
+                            <Col sm='4' className='my-auto'>Special Qualities:</Col>
                             <Col sm='4'>
                                 <Input type='select' value={armor.qualities ? armor.qualities : ''}
                                        name='qualities'
