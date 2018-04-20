@@ -59,7 +59,7 @@ class Career extends React.Component {
                         </div>
 
                         <Row>
-                            <Col xs='4 text-right align-self-start'>
+                            <Col xs='4'>
                                 <b>Setting:</b>
                             </Col>
                             <Col sm='6'>
@@ -68,7 +68,7 @@ class Career extends React.Component {
                         </Row>
                         {masterCareer.book &&
                         <Row className='my-2'>
-                            <Col xs='4 text-right align-self-start'>
+                            <Col xs='4'>
                                 <b>Book:</b>
                             </Col>
                             <Col>
@@ -77,7 +77,7 @@ class Career extends React.Component {
                         </Row>
                         }
                         <Row>
-                            <Col xs='4 text-right align-self-start'>
+                            <Col xs='4'>
                                 <b>Description:</b>
                             </Col>
                             <Col sm='6'>

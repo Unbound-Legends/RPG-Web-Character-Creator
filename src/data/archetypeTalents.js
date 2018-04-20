@@ -38,9 +38,7 @@ export default {
         book: 'CRB',
         page: '142',
         description: 'See CRB, page 142, for more details.',
-        modifier: {
-            defense: 1
-        },
+        modifier: {defense: 1},
     },
     darkvision: {
         name: 'Dark Vision',
@@ -183,6 +181,8 @@ export default {
         book: 'ROT',
         page: '63',
         description: 'See ROT, page 63, for more details.',
+        modifier: {careerSkills: ['KnowledgeForbidden'], KnowledgeForbidden: 2}
+
     },
     empyreanmagic: {
         name: 'Empyrean Magic',
@@ -191,6 +191,8 @@ export default {
         book: 'ROT',
         page: '63',
         description: 'See ROT, page 63, for more details.',
+        modifier: {careerSkills: ['Divine'], Divine: 1}
+
     },
     stubborn: {
         name: 'Stubborn',

@@ -38,18 +38,29 @@ export const calcCharacteristics = createSelector(
 );
 
 export const calcArchetypeSkillRank = createSelector(
-    archetype, archetypes, skills, archetypeSpecialSkills,
-    (archetype, archetypes, skills, archetypeSpecialSkills) => {
+    archetype, archetypes, archetypeTalents, skills, archetypeSpecialSkills,
+    (archetype, archetypes, archetypeTalents, skills, archetypeSpecialSkills) => {
         if (!archetype || !archetypes[archetype]) return archetypeSpecialSkills;
-        const archetypeSkills = {...archetypes[archetype].skills};
-        let archetypeSkillRank = {};
-        if (Object.keys(archetypeSkills).includes('choice')) return archetypeSpecialSkills;
-        if (Object.keys(archetypeSkills).includes('careerSkills')) return archetypeSkillRank;
-        if (Object.keys(skills).includes(Object.keys(archetypeSkills)[0])) {
-            Object.keys(archetypeSkills).forEach((skillKey) => archetypeSkillRank[skillKey] = {rank: archetypeSkills[skillKey]});
-            return archetypeSkillRank;
+        let archetypeSkillRank = {...archetypeSpecialSkills};
+        //add any starting skills based on archetype skills
+        Object.keys(archetypes[archetype].skills).forEach(key => {
+            if (Object.keys(skills).includes(key)) archetypeSkillRank[key] = {rank: archetypes[archetype].skills[key]};
+        });
+        //add any starting skills based on archetype talents
+        if (archetypes[archetype].talents) {
+            archetypes[archetype].talents.forEach(talent => {
+                if (archetypeTalents[talent]) {
+                    if (archetypeTalents[talent].modifier) {
+                        Object.keys(archetypeTalents[talent].modifier).forEach(key => {
+                            if (Object.keys(skills).includes(key) && Number.isInteger(archetypeTalents[talent].modifier[key])) {
+                                archetypeSkillRank[key] = {rank: archetypeTalents[talent].modifier[key]};
+                            }
+                        })
+                    }
+                }
+            });
         }
-        return archetypeSpecialSkills;
+        return archetypeSkillRank;
     }
 );
 
@@ -57,8 +68,12 @@ export const calcSkillRanks = createSelector(
     masterSkills, skills, careerSkillsRank, calcArchetypeSkillRank,
     (masterSkills, skills, careerSkillsRank, archetypeSkillRank) => {
         let skillRanks = {};
-        Object.keys(skills).forEach((key) => {
-            skillRanks[key] = (masterSkills[key] ? ((masterSkills[key].rank ? masterSkills[key].rank : 0) + (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0)) : 0) + (careerSkillsRank.includes(key) ? 1 : 0) + (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
+        Object.keys(skills).forEach(key => {
+            skillRanks[key] = (
+                    masterSkills[key] ? ((masterSkills[key].rank ? masterSkills[key].rank : 0) +
+                        (masterSkills[key].careerRank ? masterSkills[key].careerRank : 0)) : 0) +
+                (careerSkillsRank.includes(key) ? 1 : 0) +
+                (Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
         });
         return skillRanks;
     }
@@ -118,7 +133,7 @@ export const calcSkillDice = createSelector(
                 if (archetypes[archetype].talents) {
                     archetypes[archetype].talents.forEach(key2 => {
                         if (archetypeTalents[key2].modifier) {
-                            if (archetypeTalents[key2].modifier[key]) text += archetypeTalents[key2].modifier[key] + ' ';
+                            if (archetypeTalents[key2].modifier[key] && !Number.isInteger(archetypeTalents[key2].modifier[key])) text += archetypeTalents[key2].modifier[key] + ' ';
                         }
                     });
                 }
@@ -177,14 +192,15 @@ export const calcMaxCareerSkills = createSelector(
 );
 
 export const calcCareerCheck = createSelector(
-    skills, career, careers, talents, calcTalentCount,
-    (skills, career, careers, talents, talentCount) => {
+    archetype, archetypes, archetypeTalents, skills, career, careers, talents, calcTalentCount,
+    (archetype, archetypes, archetypeTalents, skills, career, careers, talents, talentCount) => {
         let careerSkillsList = {};
-        Object.keys(skills).forEach((skill) => {
+        Object.keys(skills).forEach(skill => {
+            careerSkillsList[skill] = false;
             if (careers[career]) {
                 if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
                 else {
-                    Object.keys(talentCount).forEach((talent) => {
+                    Object.keys(talentCount).forEach(talent => {
                         if (talents[talent]) {
                             if (talents[talent].modifier) {
                                 if (talents[talent].modifier.careerSkills) {
@@ -194,7 +210,20 @@ export const calcCareerCheck = createSelector(
                         }
                     });
                 }
-            } else careerSkillsList[skill] = false;
+            }
+            if (archetypes[archetype]) {
+                if (archetypes[archetype].talents) {
+                    archetypes[archetype].talents.forEach(talent => {
+                        if (archetypeTalents[talent]) {
+                            if (archetypeTalents[talent].modifier) {
+                                if (archetypeTalents[talent].modifier.careerSkills) {
+                                    if (archetypeTalents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
+                                }
+                            }
+                        }
+                    });
+                }
+            }
         });
         return careerSkillsList;
     }

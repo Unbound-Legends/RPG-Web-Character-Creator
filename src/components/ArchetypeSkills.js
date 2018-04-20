@@ -48,7 +48,7 @@ class ArchetypeSkills extends React.Component {
         return (
             <div>
                 {list.map((key) =>
-                    <Row key={key}><Col>{masterArchetype.skills[key]} rank in {key}</Col></Row>
+                    <Col key={key}>{masterArchetype.skills[key]} rank in {key}</Col>
                 )}
             </div>
         );

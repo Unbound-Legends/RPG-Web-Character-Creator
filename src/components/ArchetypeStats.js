@@ -11,9 +11,7 @@ class ArchetypeStats extends React.Component {
         if (!archetype || !archetypes[archetype]) return <div/>;
         return (
             <div>
-                <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Starting Stats: </b></Col>
-                </Row>
+                <Row className='my-2'><Col sm='5'><b>Starting Stats: </b></Col></Row>
                 <Row className='justify-content-center my-2'>
                     {Object.keys(masterArchetype.characteristics).map((stat) =>
                         <div className='imageBox' key={stat}>
@@ -38,34 +36,34 @@ class ArchetypeStats extends React.Component {
                 </Row>
                 }
                 <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Starting XP:</b></Col>
-                    <Col className='align-self-center'>{masterArchetype.experience}</Col>
+                    <Col sm='5'><b>Starting XP:</b></Col>
+                    <Col>{masterArchetype.experience}</Col>
                 </Row>
                 <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Starting Skills:</b></Col>
+                    <Col sm='5'><b>Starting Skills:</b></Col>
                     <ArchetypeSkills/>
                 </Row>
                 <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Starting Talents:</b></Col>
+                    <Col sm='5'><b>Starting Talents:</b></Col>
                 </Row>
                 {masterArchetype.talents &&
                 masterArchetype.talents.map((talent) =>
                     <Row key={talent} className='ml-4'>
-                        <Col><b>{archetypeTalents[talent].name}:</b></Col>
+                        <Col sm='5'><b>{archetypeTalents[talent].name}:</b></Col>
                         <Col><Description text={archetypeTalents[talent].description}/></Col>
                     </Row>
                 )}
                 <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Setting:</b></Col>
+                    <Col sm='5'><b>Setting:</b></Col>
                     <Col>{masterArchetype.setting}</Col></Row>
                 {masterArchetype.book &&
                 <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Book:</b></Col>
-                    <Col><Description text={`${masterArchetype.book}: ${masterArchetype.page}`}/></Col>
+                    <Col sm='5'><b>Book:</b></Col>
+                    <Col><Description text={`${masterArchetype.book}: Page ${masterArchetype.page}`}/></Col>
                 </Row>
                 }
                 <Row className='my-2'>
-                    <Col xs='4 text-right align-self-start'><b>Description:</b></Col>
+                    <Col sm='5'><b>Description:</b></Col>
                     <Col> <Description text={masterArchetype.description}/></Col>
                 </Row>
 

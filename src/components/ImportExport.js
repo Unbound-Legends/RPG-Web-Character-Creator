@@ -58,7 +58,9 @@ class ImportExport extends React.Component {
             let file = new Blob([JSON.stringify(finalExport)], {type: "application/json"});
             element.href = URL.createObjectURL(file);
             element.download = this.generateFileName();
+            document.body.appendChild(element);
             element.click();
+            document.body.removeChild(element);
         });
     };
 
