@@ -1,5 +1,5 @@
 import {db} from '../firestore/db';
-import {customDataTypes, dataTypes} from '../data/lists';
+import {customDataTypes, dataTypes} from '../data';
 
 export const loadCharacterList = () => {
     return (dispatch, getState) => {

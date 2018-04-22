@@ -1,7 +1,8 @@
-export {default as skills} from './skills';
-export {default as archetypes} from './archetypes';
-export {default as careers} from './careers';
-export {default as motivations} from './motivations';
-export {default as talents} from './talents/';
-export {default as qualities} from './qualities';
-export {default as archetypeTalents} from './archetypeTalents';
+export {skills} from './skills';
+export {archetypes} from './archetypes/';
+export {careers} from './careers/';
+export {motivations} from './motivations';
+export {talents} from './talents/';
+export {qualities} from './qualities';
+export {archetypeTalents} from './archetypeTalents/';
+export {dataTypes, customDataTypes, chars} from './lists'

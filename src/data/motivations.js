@@ -1,4 +1,4 @@
-export default {
+export const motivations = {
     Desire: {
         Ambition: 'Your character craves power and authority over others. The character may pursue privilege, social status, or rank to achieve this goal.',
         Belonging: 'Your character seeks to be liked by others and goes out of the way to make a good impression. Your character seeks to be accepted by a community or faction.',
@@ -47,4 +47,4 @@ export default {
         Recklessness: 'Your character shows little regard for how their actions may a ect themself or others, due either to low self- esteem or lack of forethought. They are especially prone to dangerous or inconsiderate actions.',
         Timid: 'Your character is extremely risk averse, opting instead to take more thorough or tried-and-true approaches. They may take too long to act or may be unable to act at all in the face of new or intimidating challenges.'
     }
-}
+};

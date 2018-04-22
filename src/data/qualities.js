@@ -1,4 +1,4 @@
-export default {
+export const qualities = {
     Accurate: {
         name: 'Accurate',
         ranked: true,
@@ -275,7 +275,7 @@ export default {
         type: ['weapons'],
         activation: false,
     },
-}
+};
 
 
 

@@ -1,4 +1,4 @@
-export default {
+export const skills = {
     Alchemy: {
         name: 'Alchemy',
         type: 'General',
@@ -296,7 +296,7 @@ export default {
         setting: 'All'
     },
 
-    //Realm of Terrinoth
+    //Realms of Terrinoth
 
     KnowledgeAdventuring: {
         name: 'Knowledge Adventuring',
@@ -346,4 +346,4 @@ export default {
         page: '83',
         setting: 'Fantasy'
     },
-}
+};
