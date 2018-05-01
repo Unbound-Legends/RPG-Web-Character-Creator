@@ -56,7 +56,7 @@ class SkillRow extends React.Component {
                            readOnly/>
                 </td>
                 <td>
-                    <select defaultValue={skillRanks[skillKey]} onChange={this.handleRankChange} style={{margin: '0'}}>
+                    <select value={skillRanks[skillKey]} onChange={this.handleRankChange} style={{margin: '0'}}>
                         {ranks.map((key) => <option key={key} value={key}>{key}</option>)}
                     </select>
                 </td>

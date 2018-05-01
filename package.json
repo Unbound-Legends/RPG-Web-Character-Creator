@@ -22,6 +22,7 @@
   "dependencies": {
     "ajv": "^6.4.0",
     "bootstrap": "^4.1.0",
+    "core-js": "^2.5.5",
     "deepmerge": "^2.1.0",
     "firebase": "^4.12.1",
     "firebase-admin": "^5.12.0",

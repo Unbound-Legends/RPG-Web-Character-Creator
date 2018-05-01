@@ -238,9 +238,9 @@ and (max-width: 480px) {
     }
 
     .talentCard {
-        width: 16vw;
-        height: 24vw;
-        font-size: 2vw;
+        width: 14vw;
+        height: 12vh;
+        font-size: 0.4rem;
     }
 }
 

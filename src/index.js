@@ -5,6 +5,9 @@ import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import allReducers from './reducers';
 import {App} from './components/index';
+import 'core-js/es7/array';
+import 'core-js/fn/string/includes';
+import 'core-js/fn/object/values';
 
 require('./styles/tabs.css');
 require('bootstrap/dist/css/bootstrap.css');
