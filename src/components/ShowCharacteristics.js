@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Col, Row} from 'reactstrap';
+import {Button, Col, Row} from 'reactstrap';
 import {characteristics} from '../reducers'
 import {Characteristics} from './index';
 import {chars} from '../data/lists';
@@ -11,8 +11,10 @@ class ShowCharacteristics extends React.Component {
     render() {
         const {characteristics} = this.props;
         return (
-            <Col lg='12' onClick={() => this.setState({modal: true})}>
-                <Row className='justify-content-end'><h5>CHARACTERISTICS</h5></Row>
+            <Col lg='12'>
+                <Row className='justify-content-end'><h5>CHARACTERISTICS</h5><Button color='link'
+                                                                                     className='noUnderLine p-0'
+                                                                                     onClick={() => this.setState({modal: true})}>⚙</Button></Row>
                 <hr/>
                 <Row className='justify-content-center'>
 

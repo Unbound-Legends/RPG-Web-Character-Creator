@@ -22,10 +22,11 @@ class SkillBlock extends React.Component {
         const {modal} = this.state;
         return (
             <Table className='m-1'>
-                <thead onClick={() => this.setState({modal: true})}>
+                <thead>
                 <tr>
                     <th className='p-0'>
-                        {type}
+                        {type}<Button color='link' className='noUnderLine p-0'
+                                      onClick={() => this.setState({modal: true})}>⚙</Button>
                     </th>
                 </tr>
                 </thead>

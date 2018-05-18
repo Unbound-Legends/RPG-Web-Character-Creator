@@ -35,7 +35,7 @@ class Notes extends React.Component {
                                   onBlur={this.handleBlur}
                                   className='w-100'
                                   rows='31'
-                                  maxLength='1000'
+                                  maxLength='5000'
                                   value={notes}/>
                 </Row>
             </Col>

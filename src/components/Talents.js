@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Col, Row} from 'reactstrap';
+import {Button, Col, Row} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {CustomTalents, TalentBlock} from './index';
 
@@ -11,7 +11,9 @@ class Talents extends React.Component {
         const {masterTalents} = this.props;
         return (
             <Col lg='12'>
-                <Row className='justify-content-end' onClick={() => this.setState({modal: true})}><h5>TALENTS</h5></Row>
+                <Row className='justify-content-end'><h5>TALENTS</h5><Button color='link'
+                                                                             className='noUnderLine p-0 mt-1'
+                                                                             onClick={() => this.setState({modal: true})}>⚙</Button></Row>
                 <hr/>
                 {Object.keys(masterTalents).map((row) =>
                     <Row key={row} className=''>

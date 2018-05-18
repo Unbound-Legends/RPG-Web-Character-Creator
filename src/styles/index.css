@@ -82,6 +82,10 @@ input[type="number"] {
     width: 90%;
 }
 
+.noUnderLine, .noUnderLine:hover, .noUnderLine:focus {
+    text-decoration: none;
+}
+
 .textSymbols {
     height: 20px;
 }

@@ -239,7 +239,7 @@ class CustomArchetypes extends React.Component {
                             <textarea onChange={this.handleChange}
                                       name='description'
                                       rows='8'
-                                      maxLength='200'
+                                      maxLength='1000'
                                       className='w-100'
                                       value={description}/>
                         </Col>

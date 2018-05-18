@@ -25,8 +25,10 @@ class CharacterImage extends React.Component {
         const {modal, text} = this.state;
         return (
             <Col className='align-items-center m-auto'>
+                <Row className='justify-content-end'><h5>CHARACTER IMAGE</h5><Button color='link'
+                                                                                     className='noUnderLine p-0'
+                                                                                     onClick={() => this.setState({modal: true})}>⚙</Button></Row>
                 <img className='img-fluid' src={description.image ? description.image : ''}
-                     onClick={() => this.setState({modal: true})}
                      alt='not found' ref={img => this.img = img} onError={() => this.img.src = 'images/png/Crest.png'}/>
                 <Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
                     <ModalHeader toggle={() => this.setState({modal: false})}>Edit Character Image</ModalHeader>
