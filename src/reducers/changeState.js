@@ -283,3 +283,10 @@ export const qualities = (state = data.qualities, action) => {
     }
     return state;
 };
+
+export const misc = (state = null, action) => {
+    if (action.type === 'misc_Changed') {
+        return action.payload;
+    }
+    return state;
+};

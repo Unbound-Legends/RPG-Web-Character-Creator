@@ -7,7 +7,7 @@ import {Description} from './index'
 class TalentList extends React.Component {
 
     render() {
-        const {archetype, archetypes, archetypeTalents, talents, talentCount} = this.props;
+        const {archetype, archetypes, archetypeTalents, talents, talentCount, misc} = this.props;
         return (
             <div className='w-100 no-break'>
                 <Row className='justify-content-end'><h5>TALENT LIST</h5></Row>
@@ -32,6 +32,17 @@ class TalentList extends React.Component {
                             <td><Description text={archetypeTalents[key].description}/></td>
                         </tr>
                     )}
+                    {misc &&
+                    misc.archetypeTalents &&
+                    archetypeTalents[misc.archetypeTalents] &&
+                    <tr>
+                        <td>{archetypeTalents[misc.archetypeTalents].name}</td>
+                        <td/>
+                        <td className='text-center'>{archetypeTalents[misc.archetypeTalents].activation ? 'Active' : 'Passive'}</td>
+                        <td className='text-center'>{archetypeTalents[misc.archetypeTalents].turn}</td>
+                        <td><Description text={archetypeTalents[misc.archetypeTalents].description}/></td>
+                    </tr>
+                    }
                     {Object.keys(talentCount).sort().map(key =>
                         talents[key] &&
                         <tr key={key}>
@@ -55,6 +66,7 @@ function mapStateToProps(state) {
         archetype: state.archetype,
         archetypes: state.archetypes,
         archetypeTalents: state.archetypeTalents,
+        misc: state.misc,
         talentCount: talentCount(state),
     };
 }

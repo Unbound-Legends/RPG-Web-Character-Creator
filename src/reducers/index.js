@@ -33,6 +33,7 @@ const allReducers = combineReducers({
     masterMotivations: changeState.masterMotivations,
     masterSkills: changeState.masterSkills,
     masterTalents: changeState.masterTalents,
+    misc: changeState.misc,
     money: changeState.money,
     motivations: changeState.motivations,
     printContent: changeState.printContent,

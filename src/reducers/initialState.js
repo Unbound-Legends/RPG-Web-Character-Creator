@@ -21,6 +21,7 @@ export const talentModifiers = {
 export const description = {
     name: 'New Character',
     playerName: 'Enter Player Name',
+    setting: '',
 };
 
 export function masterTalents() {

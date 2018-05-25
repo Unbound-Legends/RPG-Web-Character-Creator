@@ -1,12 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Col, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
+import {Col, Input, Row} from 'reactstrap';
 import {ArchetypeSkills, Description} from './index';
+import {changeData} from "../actions";
 
 class ArchetypeStats extends React.Component {
 
+    handleSelect = (event) => {
+        let obj = {...this.props.misc};
+        obj.archetypeTalents = event.target.value;
+        this.props.changeData(obj, 'misc');
+    };
+
     render() {
-        const {archetype, archetypes, archetypeTalents} = this.props;
+        const {archetype, archetypes, archetypeTalents, misc} = this.props;
         const masterArchetype = archetypes[archetype];
         if (!archetype || !archetypes[archetype]) return <div/>;
         return (
@@ -48,10 +56,28 @@ class ArchetypeStats extends React.Component {
                 </Row>
                 {masterArchetype.talents &&
                 masterArchetype.talents.map((talent) =>
-                    <Row key={talent} className='ml-4'>
+                    <div key={talent}>
+                        <Row className='ml-4'>
                         <Col sm='5'><b>{archetypeTalents[talent].name}:</b></Col>
                         <Col><Description text={archetypeTalents[talent].description}/></Col>
                     </Row>
+                        {archetypeTalents[talent].modifier &&
+                        <Row className='ml-4'>
+                            <Col sm='5'><b>Select One:</b></Col>
+                            <Col>
+                                <Input type='select' value={misc ? misc.archetypeTalents : ''}
+                                       onChange={this.handleSelect}>
+                                    <option value=''/>
+                                    {archetypeTalents[talent].modifier.archetypeTalents.sort().map((key) =>
+                                        <option value={key} key={key}>{archetypeTalents[key].name}</option>
+                                    )}
+                                </Input>
+                            </Col>
+
+
+                        </Row>
+                        }
+                    </div>
                 )}
                 <Row className='my-2'>
                     <Col sm='5'><b>Setting:</b></Col>
@@ -77,7 +103,12 @@ function mapStateToProps(state) {
         archetype: state.archetype,
         archetypes: state.archetypes,
         archetypeTalents: state.archetypeTalents,
+        misc: state.misc,
     };
 }
 
-export default connect(mapStateToProps)(ArchetypeStats);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({changeData}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ArchetypeStats);

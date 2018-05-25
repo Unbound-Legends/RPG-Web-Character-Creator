@@ -14,6 +14,7 @@ export const dataTypes = [
     'masterMotivations',
     'masterSkills',
     'masterTalents',
+    'misc',
     'money',
     'talentModifiers',
     'weapons',

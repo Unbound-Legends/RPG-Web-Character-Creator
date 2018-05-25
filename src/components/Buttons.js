@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addCharacter, changePrintContent, changeUser} from '../actions';
-import firebase from 'firebase';
+import firebase from '@firebase/app';
+import '@firebase/auth';
 import {Button, Col, Row} from 'reactstrap';
 import {PrintLayout} from './printLayout/index';
 

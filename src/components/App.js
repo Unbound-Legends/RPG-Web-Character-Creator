@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadCustomDataList, loadCustomDataSet, loadData} from '../actions';
 import {DataPage, MainPage, User} from './index';
-import firebase from 'firebase';
+import firebase from '@firebase/app';
+import '@firebase/auth';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
 

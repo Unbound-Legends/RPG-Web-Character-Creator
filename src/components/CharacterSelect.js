@@ -21,6 +21,7 @@ class CharacterSelect extends React.Component {
     state = {
         name: this.props.characterList ? this.props.characterList[this.props.character] : '',
         playerName: this.props.description.playerName,
+        setting: this.props.description.setting,
         archetypeModal: false,
         careerModal: false,
         customCareersModal: false,
@@ -68,7 +69,7 @@ class CharacterSelect extends React.Component {
 
     render() {
         const {archetype, archetypes, careers, career, characterList, character} = this.props;
-        const {name, playerName, archetypeModal, careerModal, customCareersModal, customArchetypeModal, deleteModal} = this.state;
+        const {name, playerName, archetypeModal, careerModal, customCareersModal, customArchetypeModal, deleteModal, setting} = this.state;
         return (
             <Col>
                 <Row className='justify-content-end'><h5>CHARACTER</h5></Row>
@@ -125,6 +126,14 @@ class CharacterSelect extends React.Component {
                             <Button name='customCareer'
                                     onClick={() => this.setState({customCareersModal: true})}>Custom</Button>
                         </ButtonGroup>
+                    </Col>
+                </Row>
+                <hr/>
+                <Row>
+                    <Col className='m-auto'>
+                        <b>SETTING:</b> <Input type='text' value={setting} maxLength='25' name='setting'
+                                               onChange={this.handleChange}
+                                               onBlur={this.handleBlur}/>
                     </Col>
                 </Row>
                 <hr/>

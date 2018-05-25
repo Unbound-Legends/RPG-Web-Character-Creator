@@ -67,6 +67,7 @@ export default {
         turn: false,
         book: 'ROT',
         page: '68',
+        modifier: {archetypeTalents: ['fleetofpaw', 'claws']},
         description: 'See ROT, page 68, for more details.',
     },
     small: {
