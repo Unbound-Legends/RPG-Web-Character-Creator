@@ -68,7 +68,8 @@ class ArchetypeStats extends React.Component {
                                 <Input type='select' value={misc ? misc.archetypeTalents : ''}
                                        onChange={this.handleSelect}>
                                     <option value=''/>
-                                    {archetypeTalents[talent].modifier.archetypeTalents.sort().map((key) =>
+                                    {archetypeTalents[talent].modifier.archetypeTalents &&
+                                    archetypeTalents[talent].modifier.archetypeTalents.sort().map((key) =>
                                         <option value={key} key={key}>{archetypeTalents[key].name}</option>
                                     )}
                                 </Input>

@@ -21,21 +21,23 @@ class TalentBlock extends React.Component {
         const talent = talents[talentKey];
         const color = this.activation();
         return (
-            <Card onClick={() => this.setState({modal: true})} className='m-1 talentCard'>
-                <CardHeader className='p-1 text-center' style={{backgroundColor: color}}>
-                    <DynamicFont content={talentKey === '' ? 'inactive' : talent ? talent.name : 'Missing Talent'}/>
-                </CardHeader>
-                <CardBody className='p-1 talentDesc'>
-                    <CardText>
-                        {(talent ? talent.description + '\n\n' + (talent.activation ? talent.turn : '') : '')}
-                    </CardText>
-                </CardBody>
+            <div>
                 <TalentSelection modal={this.state.modal}
                                  handleClose={() => this.setState({modal: false})}
                                  row={row}
                                  tier={tier}
                                  talentKey={talentKey}/>
-            </Card>
+                <Card onClick={() => this.setState({modal: true})} className='m-1 talentCard'>
+                    <CardHeader className='p-1 text-center' style={{backgroundColor: color}}>
+                        <DynamicFont content={talentKey === '' ? 'inactive' : talent ? talent.name : 'Missing Talent'}/>
+                    </CardHeader>
+                    <CardBody className='p-1 talentDesc'>
+                        <CardText>
+                            {(talent ? talent.description + '\n\n' + (talent.activation ? talent.turn : '') : '')}
+                        </CardText>
+                    </CardBody>
+                </Card>
+            </div>
         )
     }
 }
