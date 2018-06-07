@@ -6,6 +6,15 @@ import {changeData} from '../actions';
 import {talentCount} from '../reducers';
 import {Description, TalentDedication} from './index';
 
+const modifiableAttributes = {
+    woundThreshold: 'Wound Threshold',
+    strainThreshold: 'Stain Threshold',
+    Soak: 'Soak',
+    meleeDefense: 'Melee Defense',
+    rangedDefense: 'Ranged Defense',
+    defense: 'Defense'
+};
+
 class TalentSelection extends React.Component {
     state = {
         talentSelection: this.props.talentKey,
@@ -79,7 +88,7 @@ class TalentSelection extends React.Component {
     };
 
     render() {
-        const {talents, talentKey, row, handleClose, modal} = this.props;
+        const {talents, talentKey, row, handleClose, modal, skills} = this.props;
         const {talentSelection, selection} = this.state;
         const talent = talents[talentSelection];
         return (
@@ -89,7 +98,7 @@ class TalentSelection extends React.Component {
                     <Row>
                         <Input type='select' defaultValue={talentKey} onChange={this.handleChange}>
                             <option value=''/>
-                            {this.makeOptions().map((key) =>
+                            {this.makeOptions().sort().map((key) =>
                                 <option value={key} key={key}>{talents[key].name}</option>
                             )}
                         </Input>
@@ -105,26 +114,57 @@ class TalentSelection extends React.Component {
                             <Col>{talent.tier}</Col>
                         </Row>
                         <Row>
-                            <Col sm='4'><b>Activation:&nbsp;</b></Col>
+                            <Col sm='4'><b>Activation:</b></Col>
                             <Col>{talent.activation ? 'Active' : 'Passive'}</Col>
                         </Row>
-                        {talent.turn && <Row><Col>{talent.turn}</Col></Row>}
+                        {talent.turn && <Row><Col sm='4'/><Col>{talent.turn}</Col></Row>}
                         {talent.ranked ? <Row><Col sm='6'><b>Ranked</b></Col></Row> :
                             <Row><Col sm='6'><b>Not Ranked</b></Col></Row>}
+                        {talent.setting &&
                         <Row>
                             <Col sm='4'><b>Setting:</b></Col>
                             <Col>{talent.setting}</Col>
-                        </Row>
+                        </Row>}
                         {talent.book &&
                         <Row className='my-2'>
                             <Col sm='4'> <b>Book:</b></Col>
                             <Col><Description text={`${talent.book}: ${talent.page}`}/></Col>
                         </Row>
                         }
+                        {talent.prerequisite &&
+                        <Row className='my-2'>
+                            <Col sm='4'> <b>Prerequisite Talent:</b></Col>
+                            <Col className='m-auto'>{talent.prerequisite}</Col>
+                        </Row>
+                        }
+                        {talent.antirequisite &&
+                        <Row className='my-2'>
+                            <Col sm='4'> <b>Antirequisite Talent:</b></Col>
+                            <Col className='m-auto'>{talent.antirequisite}</Col>
+                        </Row>
+                        }
+                        {talent.modifier &&
+                        <Row className='my-2'>
+                            <Col sm='4'> <b>Modifier:</b></Col>
+                            {Object.keys(talent.modifier)[0] === 'careerSkills' &&
+                            <Col>Adds {talent.modifier.careerSkills.map(skill => skills[skill] ? skills[skill].name : skill).sort().join(', ')} as
+                                Career Skill(s)</Col>
+                            }
+                            {Object.keys(skills).includes(Object.keys(talent.modifier)[0]) &&
+                            <Col><Description
+                                text={`Adds ${Object.values(talent.modifier)[0]}  to ${skills[Object.keys(talent.modifier)[0]].name} checks.`}/></Col>
+                            }
+                            {Object.keys(modifiableAttributes).includes(Object.keys(talent.modifier)[0]) &&
+                            <Col>Adds {Object.values(talent.modifier)[0]} to {modifiableAttributes[Object.keys(talent.modifier)[0]]}</Col>
+                            }
+                        </Row>
+                        }
+                        {talent.description &&
                         <Row>
                             <Col sm='4'><b>Description:</b></Col>
-                            <Col><Description text={talent.description}/></Col>
+                            <Col><Description text={talent.description ? talent.description : ''}/></Col>
                         </Row>
+                        }
                         {talentSelection === 'Dedication' && <TalentDedication row={row} selection={selection}
                                                                                handleDedicationChange={this.handleDedicationChange}/>}
                     </div>
@@ -147,6 +187,7 @@ function mapStateToProps(state) {
         talentCount: talentCount(state),
         talents: state.talents,
         talentModifiers: state.talentModifiers,
+        skills: state.skills,
     };
 }
 

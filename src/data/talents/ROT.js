@@ -226,7 +226,6 @@ export default {
         book: 'ROT',
         page: '88',
         description: 'See ROT, page 88, for more details.',
-        modifier: {careerSkills: ['Verse', 'KnowledgeLore']}
     },
     DominionOfTheDimora: {
         name: 'Dominion of the Dimora',

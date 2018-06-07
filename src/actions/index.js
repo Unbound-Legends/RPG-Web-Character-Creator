@@ -154,7 +154,7 @@ export const deleteCustomDataSet = () => {
         const customDataSet = getState().customDataSet;
         let customDataList = {...getState().customDataList};
         delete customDataList[customDataSet];
-        dataTypes.forEach((type) => db.doc(`users/${user}/data/customDataSets/${customDataSet}/${type}/`).delete());
+        customDataTypes.forEach((type) => db.doc(`users/${user}/data/customDataSets/${customDataSet}/${type}/`).delete());
         if (Object.keys(customDataList).length === 0) {
             let key = Math.random().toString(36).substr(2, 16);
             db.doc(`users/${user}/data/customDataList`).set({[key]: 'New Custom Dataset'});

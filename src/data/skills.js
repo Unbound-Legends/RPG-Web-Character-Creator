@@ -256,7 +256,7 @@ export const skills = {
         setting: 'Fantasy, Steampunk'
     },
     Skullduggery: {
-        name: 'Skullduggery',
+        name: 'Skulduggery',
         type: 'General',
         characteristic: 'Cunning',
         book: 'CRB',

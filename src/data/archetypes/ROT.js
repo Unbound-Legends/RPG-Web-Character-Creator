@@ -109,7 +109,7 @@ export default {
         woundThreshold: 11,
         strainThreshold: 10,
         experience: 90,
-        skills: {negotiation: 1},
+        skills: {Negotiation: 1},
         talents: ['stubborn', 'toughasnails'],
         characteristics: {
             Brawn: 2,

@@ -50,7 +50,7 @@ class TalentList extends React.Component {
                             <td className='text-center'>{talentCount[key]}</td>
                             <td className='text-center'>{talents[key].activation ? 'Active' : 'Passive'}</td>
                             <td className='text-center'>{talents[key].turn}</td>
-                            <td><Description text={talents[key].description}/></td>
+                            <td><Description text={talents[key].description ? talents[key].description : ''}/></td>
                         </tr>
                     )}
                     </tbody>

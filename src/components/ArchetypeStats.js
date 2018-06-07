@@ -62,6 +62,7 @@ class ArchetypeStats extends React.Component {
                         <Col><Description text={archetypeTalents[talent].description}/></Col>
                     </Row>
                         {archetypeTalents[talent].modifier &&
+                        archetypeTalents[talent].modifier.archetypeTalents &&
                         <Row className='ml-4'>
                             <Col sm='5'><b>Select One:</b></Col>
                             <Col>
