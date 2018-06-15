@@ -37,7 +37,7 @@ class SkillRow extends React.Component {
     };
 
     render() {
-        const {masterSkills, skills, skillKey, careerSkillsRank, skillDice, skillRanks, archetypeSkillRank, careerCheck} = this.props;
+        const {archetype, career, masterSkills, skills, skillKey, careerSkillsRank, skillDice, skillRanks, archetypeSkillRank, careerCheck} = this.props;
         const skill = skills[skillKey];
         let ranks = [0, 1, 2, 3, 4, 5];
         if (careerSkillsRank.includes(skillKey)) ranks.shift();
@@ -56,7 +56,8 @@ class SkillRow extends React.Component {
                            readOnly/>
                 </td>
                 <td>
-                    <select value={skillRanks[skillKey]} onChange={this.handleRankChange} style={{margin: '0'}}>
+                    <select disabled={!archetype || !career} value={skillRanks[skillKey]}
+                            onChange={this.handleRankChange} style={{margin: '0'}}>
                         {ranks.map((key) => <option key={key} value={key}>{key}</option>)}
                     </select>
                 </td>
@@ -70,6 +71,7 @@ class SkillRow extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        archetype: state.archetype,
         masterSkills: state.masterSkills,
         skills: state.skills,
         careerSkillsRank: state.careerSkillsRank,

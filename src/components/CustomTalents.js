@@ -186,7 +186,7 @@ class CustomTalents extends React.Component {
                             <textarea onChange={this.handleChange}
                                       name='description'
                                       rows='8'
-                                      maxLength='200'
+                                      maxLength='2000'
                                       className='w-100'
                                       value={description}/>
                         </Col>
