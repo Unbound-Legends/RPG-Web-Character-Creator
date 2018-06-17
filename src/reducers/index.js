@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import * as criticals from './criticals';
 import * as derivedStats from './derivedStats';
 import * as changeState from './changeState';
+import * as equipmentFilter from './equipmentFilter';
 
 const allReducers = combineReducers({
     archetype: changeState.archetype,
@@ -63,6 +64,7 @@ export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
 export const totalXP = (state) => derivedStats.calcTotalXP(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const woundThreshold = (state) => derivedStats.calcWounds(state);
+export const getEquipment = (state, props) => equipmentFilter.equipmentFilter(state, props)
 
 
 export default allReducers;
