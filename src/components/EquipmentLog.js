@@ -136,6 +136,7 @@ class EquipmentLog extends React.Component {
                         </Table>
                         }
                         <Button onClick={this.addGear.bind(this, 'weapons')}>Add Weapon</Button>
+                        <Button onClick={(e) => this.handleOpenEquipmentModal('weapons', e)}>View All Weapons</Button>
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(armor).length > 0 &&
@@ -179,6 +180,7 @@ class EquipmentLog extends React.Component {
                         </Table>
                         }
                         <Button onClick={this.addGear.bind(this, 'armor')}>Add Armor</Button>
+                        <Button onClick={(e) => this.handleOpenEquipmentModal('armor', e)}>View All Armor</Button>
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(gear).length > 0 &&
@@ -220,7 +222,6 @@ class EquipmentLog extends React.Component {
                            handleClose={() => this.setState({gearModal: false})}/>
                 <EquipmentList type={this.state.equipmentListModal} 
                            handleClose={() => this.setState({equipmentListModal: ''})} />
-                <Button onClick={(e) => this.handleOpenEquipmentModal('weapons', e)}>View All Equipment</Button>
             </Col>
         );
     }

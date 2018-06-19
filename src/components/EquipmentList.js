@@ -9,79 +9,138 @@ class EquipmentList extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            modal: props.type
+            modalOpen: !!props.type,
+            modalType: props.type
         }
 
         this.handleUseClick = this.handleUseClick.bind(this)
-        this.generateEquipmentTable = this.generateEquipmentTable.bind(this)
+        this.generateEquipmentTableHeader = this.generateEquipmentTableHeader.bind(this)
+        this.generateEquipmentTableBody = this.generateEquipmentTableBody.bind(this)
         this.toggle = this.toggle.bind(this)
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({modal: nextProps.type})
+        this.setState({modalOpen: !!nextProps.type, modalType: nextProps.type})
     }
 
     handleUseClick = (key, e) => {
         this.props.changeData(
             {[key]: this.props.equipment[key]},
-            this.state.modal
+            this.state.modalType
         )
         e.preventDefault()
     }
 
     toggle() {
-        this.setState({modal: !this.state.modal})
+        this.setState({modalOpen: !this.state.modalOpen})
     }
 
-    generateEquipmentTable = (equipment) => {
-        return (
-            <Table>
-            <thead>
-            <tr>
-                <th>Use?</th>
-                <th>Name</th>
-                <th>Skill</th>
-                <th>Book</th>
-                <th>Setting</th>
-            </tr>
-            </thead>
-            <tbody>
-                {Object.keys(equipment).map((piece,i) => {
-                    let item = equipment[piece]
-                    return (
-                        <tr key={i}>
-                            <td>   
-                            {
-                                <Button color='secondary' onClick={(e) => {this.handleUseClick(piece, e)}} >
-                                    <svg 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        width="12" 
-                                        height="12" 
-                                        viewBox="0 0 24 24"
-                                        className='plus-icon'>
-                                            <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-                                    </svg>
-                                </Button>
-                            }
-                            </td>
-                            <td>{item.name}</td>
-                            <td>{item.skill}</td>
-                            <td>{item.book}</td>
-                            <td>{item.setting}</td>
-                        </tr>
-                    )
-                })}
-        </tbody>
-        </Table>
-        )
+    generateEquipmentTableHeader = (type) => {
+        switch (type) {
+            case "weapons": 
+                return (
+                    <thead>
+                    <tr>
+                        <th>Use?</th>
+                        <th>Name</th>
+                        <th>Skill</th>
+                        <th>Book</th>
+                        <th>Setting</th>
+                    </tr>
+                    </thead>
+                )
+            case "armor":
+                return (
+                    <thead>
+                    <tr>
+                        <th>Use?</th>
+                        <th>Name</th>
+                        <th>Soak</th>
+                        <th>Defense</th>
+                        <th>Book</th>
+                        <th>Setting</th>
+                    </tr>
+                    </thead>
+                )
+        }
+    }
+
+    generateEquipmentTableBody = (equipment, type) => {
+        switch (type) {
+            case "weapons":
+                return (
+                    <tbody>
+                        {Object.keys(equipment).map((piece,i) => {
+                            let item = equipment[piece]
+                            return (
+                                <tr key={i}>
+                                    <td>   
+                                    {
+                                        <Button color='secondary' onClick={(e) => {this.handleUseClick(piece, e)}} >
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                width="12" 
+                                                height="12" 
+                                                viewBox="0 0 24 24"
+                                                className='plus-icon'>
+                                                    <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+                                            </svg>
+                                        </Button>
+                                    }
+                                    </td>
+                                    <td>{item.name}</td>
+                                    <td>{item.skill}</td>
+                                    <td>{item.book}</td>
+                                    <td>{item.setting}</td>
+                                </tr>
+                            )
+                        })}
+                </tbody>
+            )
+
+            case "armor":
+                return (
+                    <tbody>
+                        {Object.keys(equipment).map((piece,i) => {
+                            let item = equipment[piece]
+                            return (
+                                <tr key={i}>
+                                    <td>   
+                                    {
+                                        <Button color='secondary' onClick={(e) => {this.handleUseClick(piece, e)}} >
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                width="12" 
+                                                height="12" 
+                                                viewBox="0 0 24 24"
+                                                className='plus-icon'>
+                                                    <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+                                            </svg>
+                                        </Button>
+                                    }
+                                    </td>
+                                    <td>{item.name}</td>
+                                    <td>{item.soak}</td>
+                                    <td>{item.defense}</td>
+                                    <td>{item.book}</td>
+                                    <td>{item.setting}</td>
+                                </tr>
+                            )
+                        })}
+                </tbody>
+            )
+        }
     }
 
     render() {
         return (
-            <Modal isOpen={!!this.state.modal} backdrop={true} toggle={this.toggle}>
+            <Modal isOpen={this.state.modalOpen} backdrop={true} toggle={this.toggle}>
                 <ModalHeader>Equipment</ModalHeader>
                 <ModalBody>
-                   {this.generateEquipmentTable(this.props.equipment)}
+                    <Table>
+                        {this.generateEquipmentTableHeader(this.state.modalType)}
+                        {this.generateEquipmentTableBody(this.props.equipment, this.state.modalType)}
+                   </Table>
                 </ModalBody>
             </Modal>
         )

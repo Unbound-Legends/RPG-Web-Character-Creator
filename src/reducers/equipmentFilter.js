@@ -1,15 +1,25 @@
 import {createSelector} from 'reselect';
-import {weapons} from '../data/equipment'
+import {weapons} from '../data/equipment';
+import {armor} from '../data/equipment';
 
 // for now, using the raw data rather than from state, since it won't change
 // const equipmentSelector = (state,props) => state[props.type]
-const equipmentSelector = () => weapons
+const equipmentSelector = (_,props) => {
+    switch (props.type) {
+        case "weapons":
+            return weapons
+        case "armor": 
+            return armor
+        default:
+            return {}
+    }
+}
 const filterBy = (_, props) => props.filterBy
 
 export const equipmentFilter = createSelector(
     equipmentSelector,
     (equipment) => {
-        let filteredKeys= Object.keys(equipment).filter(itemKey => {
+        let filteredKeys = Object.keys(equipment).filter(itemKey => {
             let validItems = Object.keys(filterBy).map(filterKey => {
                 if (filterBy[filterKey] === equipment[itemKey][filterKey]) {
                     return true

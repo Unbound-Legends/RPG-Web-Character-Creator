@@ -1,4 +1,5 @@
-export {weapons} from './weapons/index.js'
+export {weapons} from './weapons'
+export {armor} from './armor'
 
 /*const equipmentTypes = ["weapons"]
 
