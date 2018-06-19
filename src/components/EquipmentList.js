@@ -62,6 +62,17 @@ class EquipmentList extends React.Component {
                     </tr>
                     </thead>
                 )
+            
+            case "gear":
+                return (
+                    <thead>
+                        <th>Use?</th>
+                        <th>Name</th>
+                        <th>Encumbrace</th>
+                        <th>Book</th>
+                        <th>Setting</th>
+                    </thead>
+                )
         }
     }
 
@@ -99,6 +110,37 @@ class EquipmentList extends React.Component {
             )
 
             case "armor":
+                return (
+                    <tbody>
+                        {Object.keys(equipment).map((piece,i) => {
+                            let item = equipment[piece]
+                            return (
+                                <tr key={i}>
+                                    <td>   
+                                    {
+                                        <Button color='secondary' onClick={(e) => {this.handleUseClick(piece, e)}} >
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                width="12" 
+                                                height="12" 
+                                                viewBox="0 0 24 24"
+                                                className='plus-icon'>
+                                                    <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+                                            </svg>
+                                        </Button>
+                                    }
+                                    </td>
+                                    <td>{item.name}</td>
+                                    <td>{item.encumbrance}</td>
+                                    <td>{item.book}</td>
+                                    <td>{item.setting}</td>
+                                </tr>
+                            )
+                        })}
+                </tbody>
+            )
+
+            case "gear":
                 return (
                     <tbody>
                         {Object.keys(equipment).map((piece,i) => {

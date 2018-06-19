@@ -1,6 +1,7 @@
 import {createSelector} from 'reselect';
 import {weapons} from '../data/equipment';
 import {armor} from '../data/equipment';
+import {gear} from '../data/equipment';
 
 // for now, using the raw data rather than from state, since it won't change
 // const equipmentSelector = (state,props) => state[props.type]
@@ -10,6 +11,8 @@ const equipmentSelector = (_,props) => {
             return weapons
         case "armor": 
             return armor
+        case "gear":
+            return gear
         default:
             return {}
     }

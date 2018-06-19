@@ -212,6 +212,7 @@ class EquipmentLog extends React.Component {
                         </Table>
                         }
                         <Button onClick={this.addGear.bind(this, 'gear')}>Add Gear</Button>
+                        <Button onClick={(e) => this.handleOpenEquipmentModal('gear', e)}>View All Gear</Button>
                     </TabPanel>
                 </Tabs>
                 <GearStats modal={this.state.weaponsModal} keyID={this.state.weaponsModal} type='weapons'
