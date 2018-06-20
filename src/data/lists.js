@@ -1,7 +1,6 @@
 export const dataTypes = [
     'archetype',
     'archetypeSpecialSkills',
-    'armor',
     'career',
     'careerSkillsRank',
     'creationCharacteristics',
@@ -10,14 +9,15 @@ export const dataTypes = [
     'currentWound',
     'description',
     'earnedXP',
-    'gear',
+    'equipmentArmor',
+    'equipmentGear',
+    'equipmentWeapons',
     'masterMotivations',
     'masterSkills',
     'masterTalents',
     'misc',
     'money',
     'talentModifiers',
-    'weapons',
 ];
 
 export const customDataTypes = [

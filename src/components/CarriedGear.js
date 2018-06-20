@@ -9,12 +9,12 @@ import {gearDice, skillDice} from "../reducers";
 class CarriedGear extends React.Component {
 
     render() {
-        const {weapons, armor, gear, skills, qualities, gearDice} = this.props;
+        const {weapons, armor, gear, skills, qualities, gearDice, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
         return (
             <div className='w-100'>
                 <Row className='justify-content-end'><h5>CARRIED GEAR</h5></Row>
                 <hr/>
-                {Object.keys(weapons).length > 0 &&
+                {Object.keys(equipmentWeapons).length > 0 &&
                 <div>
                     <h5 style={{textAlign: 'left'}}>Weapons:</h5>
                     <Table className='text-center'>
@@ -31,8 +31,8 @@ class CarriedGear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(weapons).map((key) =>
-                            weapons[key].carried &&
+                        {Object.keys(equipmentWeapons).map((key) =>
+                            equipmentWeapons[key].carried &&
                             <tr key={key}>
                                 <td>{weapons[key].name}</td>
                                 <td>{weapons[key].damage}</td>
@@ -48,7 +48,7 @@ class CarriedGear extends React.Component {
                     </Table>
                 </div>
                 }
-                {Object.keys(armor).length > 0 &&
+                {Object.keys(equipmentArmor).length > 0 &&
                 <div>
                     <h5 style={{textAlign: 'left'}}>Armor:</h5>
                     <Table className='text-center'>
@@ -64,8 +64,8 @@ class CarriedGear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(armor).map((key) =>
-                            armor[key].carried &&
+                        {Object.keys(equipmentArmor).map((key) =>
+                            equipmentArmor[key].carried &&
                             <tr className='table-row' key={key}>
                                 <td>{armor[key].name}</td>
                                 <td>{armor[key].soak}</td>
@@ -80,7 +80,7 @@ class CarriedGear extends React.Component {
                     </Table>
                 </div>
                 }
-                {Object.keys(gear).length > 0 &&
+                {Object.keys(equipmentGear).length > 0 &&
                 <div>
                     <h5 style={{textAlign: 'left'}}>Gear:</h5>
                     <Table className='text-center'>
@@ -93,8 +93,8 @@ class CarriedGear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(gear).map((key) =>
-                            gear[key].carried &&
+                        {Object.keys(equipmentGear).map((key) =>
+                            equipmentGear[key].carried &&
                             <tr key={key}>
                                 <td>{gear[key].name}</td>
                                 <td>{gear[key].amount}</td>
@@ -120,6 +120,9 @@ function mapStateToProps(state) {
         skillDice: skillDice(state),
         skills: state.skills,
         weapons: state.weapons,
+        equipmentArmor: state.equipmentArmor,
+        equipmentGear: state.equipmentGear,
+        equipmentWeapons: state.equipmentWeapons,
     };
 }
 

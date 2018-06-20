@@ -7,12 +7,12 @@ import {gearDice} from "../../reducers";
 class EquippedWeapons extends React.Component {
 
     render() {
-        const {weapons, skills, qualities, gearDice} = this.props;
+        const {equipmentWeapons, skills, qualities, gearDice, weapons} = this.props;
         return (
             <div className='w-100'>
                 <Row className='justify-content-end'><h5>EQUIPPED WEAPONS</h5></Row>
                 <hr/>
-                {Object.keys(weapons).length > 0 &&
+                {Object.keys(equipmentWeapons).length > 0 &&
                 <Row>
                     <Table className='text-center'>
                         <thead>
@@ -28,8 +28,8 @@ class EquippedWeapons extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(weapons).map(key =>
-                            weapons[key].carried &&
+                        {Object.keys(equipmentWeapons).map(key =>
+                            equipmentWeapons[key].carried &&
                             <tr key={key}>
                                 <td>{weapons[key].name}</td>
                                 <td>{weapons[key].damage}</td>
@@ -55,6 +55,7 @@ function mapStateToProps(state) {
         gearDice: gearDice(state),
         qualities: state.qualities,
         skills: state.skills,
+        equipmentWeapons: state.equipmentWeapons,
         weapons: state.weapons,
     };
 }

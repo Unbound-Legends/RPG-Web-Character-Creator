@@ -13,7 +13,7 @@ class GearStats extends React.Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.modal !== false) {
+        if (!!nextProps.modal) {
             this.setState({
                 [nextProps.type]:
                     nextProps[nextProps.type][nextProps.keyID] ?
@@ -87,7 +87,7 @@ class GearStats extends React.Component {
         const {armor, gear, weapons} = this.state;
         if (type === 'weapons') {
             return (
-                <Modal isOpen={modal !== false} toggle={handleClose}>
+                <Modal isOpen={!!modal} toggle={handleClose}>
                     <ModalHeader toggle={handleClose}>Weapons</ModalHeader>
                     <ModalBody className='m-4'>
                         <Row className='my-2'>
@@ -221,7 +221,7 @@ class GearStats extends React.Component {
         }
         if (type === 'armor') {
             return (
-                <Modal isOpen={modal !== false} toggle={handleClose}>
+                <Modal isOpen={!!modal} toggle={handleClose}>
                     <ModalHeader toggle={handleClose}>Armor</ModalHeader>
                     <ModalBody className='m-4'>
                         <Row className='my-2'>
@@ -336,7 +336,7 @@ class GearStats extends React.Component {
         }
         if (type === 'gear') {
             return (
-                <Modal isOpen={modal !== false} toggle={handleClose}>
+                <Modal isOpen={!!modal} toggle={handleClose}>
                     <ModalHeader toggle={handleClose}>Gear</ModalHeader>
                     <ModalBody className='m-4'>
                         <Row className='my-2'>

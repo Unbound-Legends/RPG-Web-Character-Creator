@@ -152,29 +152,30 @@ export const earnedXP = (state = 0, action) =>{
     return state;
 };
 
-export const weapons = (state = {}, action) =>{
-    if (action.type === 'weapons_Changed'){
-        if (action.payload===null) return {};
-        else return action.payload;
+export const equipmentArmor = (state = {}, action) => {
+    if (action.type === 'equipmentArmor_Changed') {
+        if (action.payload === null) return {};
+        return action.payload;
     }
     return state;
 };
 
-export const armor = (state = {}, action) =>{
-    if (action.type === 'armor_Changed'){
-        if (action.payload===null) return {};
-        else return action.payload;
+export const equipmentWeapons = (state = {}, action) => {
+    if (action.type === 'equipmentWeapons_Changed') {
+        if (action.payload === null) return {};
+        return action.payload;
     }
     return state;
 };
 
-export const gear = (state = {}, action) =>{
-    if (action.type === 'gear_Changed') {
-        if (action.payload===null) return {};
-        else return action.payload;
+export const equipmentGear = (state = {}, action) => {
+    if (action.type === 'equipmentGear_Changed') {
+        if (action.payload === null) return {};
+        return action.payload;
     }
     return state;
 };
+
 
 export const customDataList = (state = null, action) =>{
     if (action.type === 'customDataList_Changed') {
@@ -228,6 +229,30 @@ export const customTalents = (state = {}, action) =>{
     return state;
 };
 
+export const customWeapons = (state = {}, action) => {
+    if (action.type === 'customWeapons_Changed') {
+        if (action.payload === null) return {};
+        else return action.payload;
+    }
+    return state;
+};
+
+export const customArmor = (state = {}, action) => {
+    if (action.type === 'customArmor_Changed') {
+        if (action.payload === null) return {};
+        else return action.payload;
+    }
+    return state;
+};
+
+export const customGear = (state = {}, action) => {
+    if (action.type === 'customGear_Changed') {
+        if (action.payload === null) return {};
+        else return action.payload;
+    }
+    return state;
+};
+
 export const skills = (state = data.skills, action) => {
     if (action.type === 'customSkills_Changed') {
         if (action.payload === null) return data.skills;
@@ -264,6 +289,31 @@ export const talents = (state = data.talents, action) => {
     if (action.type === 'customTalents_Changed') {
         if (action.payload === null) return data.talents;
         else return merge(data.talents, action.payload);
+    }
+    return state;
+};
+
+export const weapons = (state = data.weapons, action) => {
+    if (action.type === 'customWeapons_Changed') {
+        if (action.payload === null) return data.weapons;
+        else return merge(data.weapons, action.payload);
+    }
+    return state;
+};
+
+
+export const armor = (state = data.armor, action) => {
+    if (action.type === 'customArmor_Changed') {
+        if (action.payload === null) return data.armor;
+        else return merge(data.armor, action.payload);
+    }
+    return state;
+
+};
+export const gear = (state = data.gear, action) => {
+    if (action.type === 'customGear_Changed') {
+        if (action.payload === null) return data.gear;
+        else return merge(data.gear, action.payload);
     }
     return state;
 };

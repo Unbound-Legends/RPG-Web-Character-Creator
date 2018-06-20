@@ -7,7 +7,7 @@ import {gearDice, skillDice} from "../../reducers";
 class Gear extends React.Component {
 
     render() {
-        const {weapons, armor, gear, skills, qualities, gearDice, money} = this.props;
+        const {weapons, armor, gear, skills, qualities, gearDice, money, equipmentArmor, equipmentGear, equipmentWeapons} = this.props;
         return (
             <div className='w-100'>
                 <Row className='justify-content-end'><h5>GEAR</h5></Row>
@@ -16,7 +16,7 @@ class Gear extends React.Component {
                     <Col xs='1'><b className='my-auto'>MONEY:</b></Col>
                     <Col>{money > 0 ? money : ''}</Col>
                 </Row>
-                {Object.keys(weapons).length > 0 &&
+                {Object.keys(equipmentWeapons).length > 0 &&
                 <Row>
                     <h5 style={{textAlign: 'left'}}>Weapons:</h5>
                     <Table className='text-center'>
@@ -34,11 +34,11 @@ class Gear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(weapons).map((key) =>
+                        {Object.keys(equipmentWeapons).map((key) =>
                             <tr key={key}>
                                 <td><input type='checkbox'
                                            className='text-center'
-                                           checked={weapons[key].carried}
+                                           checked={equipmentWeapons[key].carried}
                                            readOnly/>
                                 </td>
                                 <td>{weapons[key].name}</td>
@@ -55,7 +55,7 @@ class Gear extends React.Component {
                     </Table>
                 </Row>
                 }
-                {Object.keys(armor).length > 0 &&
+                {Object.keys(equipmentArmor).length > 0 &&
                 <Row>
                     <h5 style={{textAlign: 'left'}}>Armor:</h5>
                     <Table className='text-center'>
@@ -72,11 +72,11 @@ class Gear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(armor).map((key) =>
+                        {Object.keys(equipmentArmor).map((key) =>
                             <tr className='table-row' key={key}>
                                 <td><input type='checkbox'
                                            className='text-center'
-                                           checked={armor[key].carried}
+                                           checked={equipmentArmor[key].carried}
                                            readOnly/>
                                 </td>
                                 <td>{armor[key].name}</td>
@@ -92,7 +92,7 @@ class Gear extends React.Component {
                     </Table>
                 </Row>
                 }
-                {Object.keys(gear).length > 0 &&
+                {Object.keys(equipmentGear).length > 0 &&
                 <Row>
                     <h5 style={{textAlign: 'left'}}>Gear:</h5>
                     <Table className='text-center'>
@@ -106,11 +106,11 @@ class Gear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(gear).map((key) =>
+                        {Object.keys(equipmentGear).map((key) =>
                             <tr key={key}>
                                 <td><input type='checkbox'
                                            className='text-center'
-                                           checked={gear[key].carried}
+                                           checked={equipmentGear[key].carried}
                                            readOnly/>
                                 </td>
                                 <td>{gear[key].name}</td>
@@ -132,6 +132,9 @@ function mapStateToProps(state) {
     return {
         armor: state.armor,
         gear: state.gear,
+        equipmentArmor: state.equipmentArmor,
+        equipmentGear: state.equipmentGear,
+        equipmentWeapons: state.equipmentWeapons,
         gearDice: gearDice(state),
         qualities: state.qualities,
         skillDice: skillDice(state),

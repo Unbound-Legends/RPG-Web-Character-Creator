@@ -10,6 +10,9 @@ const careers = state => state.careers;
 const careerSkillsRank = state => state.careerSkillsRank;
 const creationCharacteristics = state => state.creationCharacteristics;
 const earnedXP = state => state.earnedXP;
+const equipmentArmor = state => state.equipmentArmor;
+const equipmentGear = state => state.equipmentGear;
+const equipmentWeapons = state => state.equipmentWeapons;
 const gear = state => state.gear;
 const masterSkills = state => state.masterSkills;
 const masterTalents = state => state.masterTalents;
@@ -145,33 +148,45 @@ export const calcSkillDice = createSelector(
 );
 
 export const calcGearDice = createSelector(
-    calcSkillDice, weapons, armor, gear, qualities,
-    (skillDice, weapons, armor, gear, qualities) => {
+    calcSkillDice, weapons, armor, gear, qualities, equipmentWeapons, equipmentArmor, equipmentGear,
+    (skillDice, weapons, armor, gear, qualities, equipmentWeapons, equipmentArmor, equipmentGear,) => {
         let gearDice = {};
-        ['armor', 'weapons', 'gear'].forEach((type) => {
+
+        ['armor', 'weapons', 'gear'].forEach(type => {
             let data;
-            if (type === 'armor') data = {...armor};
-            if (type === 'weapons') data = {...weapons};
-            if (type === 'gear') data = {...gear};
+            if (type === 'armor') data = {...equipmentArmor};
+            if (type === 'weapons') data = {...equipmentWeapons};
+            if (type === 'gear') data = {...equipmentGear};
             if (!gearDice[type]) gearDice[type] = {};
-            Object.keys(data).forEach((item) => {
+            Object.keys(data).forEach(item => {
+                let list, skill;
+                if (type === 'armor') {
+                    list = armor[item].qualities;
+                    skill = armor[item].skill;
+                }
+                if (type === 'weapons') {
+                    list = weapons[item].qualities;
+                    skill = weapons[item].skill
+                }
+                if (type === 'gear') {
+                    list = gear[item].qualities;
+                    skill = gear[item].skill
+                }
                 let qualityDice = [];
-                if (data[item]) {
-                    if (data[item].qualitiesList) {
-                        data[item].qualitiesList.forEach((qualityData) => {
-                            let quality = Object.keys(qualityData)[0];
-                            let rank = Object.values(qualityData)[0] === '' ? 1 : Object.values(qualityData)[0];
-                            if (qualities[quality].modifier) {
-                                if (qualities[quality].modifier.check) {
-                                    for (let i = 0; i < rank; i++) {
-                                        qualityDice.push(qualities[quality].modifier.check);
-                                    }
+                if (list) {
+                    Object.keys(list).forEach(quality => {
+                        let rank = list[quality] === '' ? 1 : list[quality];
+                        if (qualities[quality].modifier) {
+                            if (qualities[quality].modifier.check) {
+                                for (let i = 0; i < rank; i++) {
+                                    qualityDice.push(qualities[quality].modifier.check);
                                 }
                             }
-                        });
-                    }
+                        }
+                    });
                 }
-                gearDice[type][item] = skillDice[data[item].skill] + qualityDice.map((die) => `${die}`).sort((a, b) => {
+
+                gearDice[type][item] = skillDice[skill] + qualityDice.map(die => `${die}`).sort((a, b) => {
                     if (a.length < b.length) return -1;
                     if (a.length > b.length) return 1;
                     return 0;
@@ -294,8 +309,8 @@ export const calcTotalSoak = createSelector(
 );
 
 export const calcTotalDefense = createSelector(
-    armor, weapons, gear, qualities, archetype, archetypes, archetypeTalents, talents, calcTalentCount,
-    (armor, weapons, gear, qualities, archetype, archetypes, archetypeTalents, talents, talentCount) => {
+    armor, weapons, gear, equipmentWeapons, equipmentArmor, equipmentGear, qualities, archetype, archetypes, archetypeTalents, talents, calcTalentCount,
+    (armor, weapons, gear, equipmentWeapons, equipmentArmor, equipmentGear, qualities, archetype, archetypes, archetypeTalents, talents, talentCount) => {
         let defense = {melee: 0, ranged: 0};
 
         //get defense from Archetype
@@ -312,15 +327,15 @@ export const calcTotalDefense = createSelector(
         }
 
         //get defense from Armor
-        Object.keys(armor).forEach((key) => {
-            if (armor[key].equipped) {
+        Object.keys(equipmentArmor).forEach(key => {
+            if (equipmentArmor[key].equipped) {
                 defense.melee += (armor[key].meleeDefense ? +armor[key].meleeDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
                 defense.ranged += (armor[key].rangedDefense ? +armor[key].rangedDefense : 0) + (armor[key].defense ? +armor[key].defense : 0);
             }
         });
 
         //get defense from talents
-        Object.keys(talentCount).forEach((talent) => {
+        Object.keys(talentCount).forEach(talent => {
             if (talents[talent]) {
                 if (talents[talent].modifier) {
                     defense.melee += ((talents[talent].modifier.meleeDefense ? +talents[talent].modifier.meleeDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
@@ -330,16 +345,15 @@ export const calcTotalDefense = createSelector(
         });
 
         //get defense from gear
-        ['armor', 'weapons', 'gear'].forEach((type) => {
-            let data;
-            if (type === 'armor') data = {...armor};
-            if (type === 'weapons') data = {...weapons};
-            if (type === 'gear') data = {...gear};
-            Object.keys(data).forEach((item) => {
-                if (data[item].qualitiesList) {
-                    data[item].qualitiesList.forEach((qualityData) => {
-                        let quality = Object.keys(qualityData)[0];
-                        let rank = Object.values(qualityData)[0] === '' ? 1 : Object.values(qualityData)[0];
+        [equipmentArmor, equipmentWeapons, equipmentGear].forEach(type => {
+            Object.keys(type).forEach(item => {
+                let list;
+                if (type === equipmentArmor) list = armor[item].qualities;
+                if (type === equipmentWeapons) list = weapons[item].qualities;
+                if (type === equipmentGear) list = gear[item].qualities;
+                if (list) {
+                    Object.keys(list).forEach(quality => {
+                        let rank = list[quality] === '' ? 1 : list[quality];
                         if (qualities[quality].modifier) {
                             if (qualities[quality].modifier.meleeDefense) defense.melee += +qualities[quality].modifier.meleeDefense * rank;
                             if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank;
@@ -362,22 +376,22 @@ export const calcEncumbranceLimit = createSelector(
 );
 
 export const calcTotalEncumbrance = createSelector(
-    armor, weapons, gear,
-    (armor, weapons, gear) => {
+    armor, weapons, gear, equipmentWeapons, equipmentArmor, equipmentGear,
+    (armor, weapons, gear, equipmentWeapons, equipmentArmor, equipmentGear) => {
         let encumbrance = 0;
         //get weapon encumbrance
-        Object.keys(weapons).forEach((item) => {
-            if (weapons[item].carried) encumbrance += weapons[item].encumbrance ? +weapons[item].encumbrance : 0;
+        Object.keys(equipmentWeapons).forEach(item => {
+            if (equipmentWeapons[item].carried) encumbrance += weapons[item].encumbrance ? +weapons[item].encumbrance : 0;
         });
         //get armor encumbrance
-        Object.keys(armor).forEach((item) => {
-            let armorEncum = +armor[item].encumbrance - (armor[item].equipped ? 3 : 0);
+        Object.keys(equipmentArmor).forEach(item => {
+            let armorEncum = +armor[item].encumbrance - (equipmentArmor[item].equipped ? 3 : 0);
             if (armorEncum < 0 || !armorEncum) armorEncum = 0;
-            if (armor[item].carried) encumbrance += armorEncum;
+            if (equipmentArmor[item].carried) encumbrance += armorEncum;
         });
         //get gear encumbrance
-        Object.keys(gear).forEach((item) => {
-            if (gear[item].carried) encumbrance += ((gear[item].encumbrance ? +gear[item].encumbrance : 0) * (gear[item].amount ? +gear[item].amount : 1));
+        Object.keys(equipmentGear).forEach(item => {
+            if (equipmentGear[item].carried) encumbrance += ((gear[item].encumbrance ? +gear[item].encumbrance : 0) * (equipmentGear[item].amount ? +equipmentGear[item].amount : 1));
         });
         return encumbrance;
     }

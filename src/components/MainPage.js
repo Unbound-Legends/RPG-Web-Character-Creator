@@ -9,7 +9,7 @@ import {
     CharacterImage,
     CharacterSelect,
     Critical,
-    EquipmentLog,
+    Equipment,
     Motivation,
     Notes,
     ShowCharacteristics,
@@ -34,7 +34,7 @@ const MainPage = () => {
             <Row className='m-1 no-break'><XPBoxes/></Row>
             <Row className='m-1 no-break'><Skill/></Row>
             <Row className='m-1 no-break'><Motivation/></Row>
-            <Row className='m-1'><EquipmentLog/></Row>
+            <Row className='m-1'><Equipment/></Row>
             <Row className='m-1 justify-content-around no-break'>
                 <CharacterDescription/>
                 <Notes/>

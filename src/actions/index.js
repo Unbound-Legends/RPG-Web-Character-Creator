@@ -206,7 +206,6 @@ export const changeCustomData = (data, type, merge = true) => {
 };
 
 export const changeUser = (state) => {
-    console.log(`UserID: ${state}`);
     return {type: 'User_Changed', payload: state}
 };
 

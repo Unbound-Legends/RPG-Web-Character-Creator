@@ -63,7 +63,7 @@ export default {
         encumbrance: 3,
         price: 300,
         rarity: 4,
-        qualities: {Defensive: 1, Pierce: 1, Unwieldly: 3},
+        qualities: {Defensive: 1, Pierce: 1, Unwieldy: 3},
         book: 'CRB',
         page: 144,
         setting: 'Fantasy'
@@ -272,7 +272,7 @@ export default {
         encumbrance: 3,
         price: 400,
         rarity: 0,
-        qualities: {Knockdown: '', limitedAmmo: 1, Prepare: 1},
+        qualities: {Knockdown: '', LimitedAmmo: 1, Prepare: 1},
         book: 'CRB',
         page: 154,
         setting: 'Steampunk'
@@ -507,7 +507,7 @@ export default {
         encumbrance: 8,
         price: 100000,
         rarity: 8,
-        qualities: {Blast: 10, breach: 2, Cumbersome: 3, Guided: 3, limitedAmmo: 1, Prepare: 1},
+        qualities: {Blast: 10, Breach: 2, Cumbersome: 3, Guided: 3, LimitedAmmo: 1, Prepare: 1},
         book: 'CRB',
         page: 166,
         setting: 'Modern'

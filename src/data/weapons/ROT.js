@@ -78,7 +78,7 @@ export default {
         encumbrance: 3,
         price: 300,
         rarity: 4,
-        qualities: {Defensive: 1, Pierce: 1, Unwieldly: 3},
+        qualities: {Defensive: 1, Pierce: 1, Unwieldy: 3},
         book: 'ROT',
         page: 92,
         setting: 'Fantasy'

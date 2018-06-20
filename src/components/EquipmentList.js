@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getEquipment} from '../reducers';
-import {Table, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import {Button, Modal, ModalBody, ModalHeader, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -62,6 +61,8 @@ class EquipmentList extends React.Component {
                     </tr>
                     </thead>
                 )
+            default:
+                break;
         }
     }
 
@@ -129,6 +130,8 @@ class EquipmentList extends React.Component {
                         })}
                 </tbody>
             )
+            default:
+                break;
         }
     }
 
@@ -149,7 +152,6 @@ class EquipmentList extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        equipment: getEquipment(state, ownProps)
     };
 }
 

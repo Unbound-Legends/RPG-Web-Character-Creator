@@ -2,7 +2,6 @@ import {combineReducers} from 'redux';
 import * as criticals from './criticals';
 import * as derivedStats from './derivedStats';
 import * as changeState from './changeState';
-import * as equipmentFilter from './equipmentFilter';
 
 const allReducers = combineReducers({
     archetype: changeState.archetype,
@@ -20,14 +19,20 @@ const allReducers = combineReducers({
     currentStrain: changeState.currentStrain,
     currentWound: changeState.currentWound,
     customArchetypes: changeState.customArchetypes,
+    customArmor: changeState.customArmor,
     customCareers: changeState.customCareers,
     customDataList: changeState.customDataList,
     customDataSet: changeState.customDataSet,
+    customGear: changeState.customGear,
     customMotivations: changeState.customMotivations,
     customSkills: changeState.customSkills,
     customTalents: changeState.customTalents,
+    customWeapons: changeState.customWeapons,
     description: changeState.description,
     earnedXP: changeState.earnedXP,
+    equipmentArmor: changeState.equipmentArmor,
+    equipmentGear: changeState.equipmentGear,
+    equipmentWeapons: changeState.equipmentWeapons,
     gear: changeState.gear,
     loadingCustomData: changeState.loadingCustomData,
     loadingData: changeState.loadingData,
@@ -64,7 +69,6 @@ export const totalSoak = (state) => derivedStats.calcTotalSoak(state);
 export const totalXP = (state) => derivedStats.calcTotalXP(state);
 export const usedXP = (state) => derivedStats.calcUsedXP(state);
 export const woundThreshold = (state) => derivedStats.calcWounds(state);
-export const getEquipment = (state, props) => equipmentFilter.equipmentFilter(state, props)
 
 
 export default allReducers;

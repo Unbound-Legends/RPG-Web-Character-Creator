@@ -164,6 +164,16 @@ export const qualities = {
         type: ['weapons'],
         activation: true,
     },
+    LimitedAmmo: {
+        name: 'Limited Ammo',
+        ranked: false,
+        description: 'See CRB, page 88, for more details.',
+        book: 'CRB',
+        page: '88',
+        setting: 'All',
+        type: ['weapons'],
+        activation: false,
+    },
     Pierce: {
         name: 'Pierce',
         ranked: true,

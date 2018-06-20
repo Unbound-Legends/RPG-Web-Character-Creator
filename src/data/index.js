@@ -5,4 +5,7 @@ export {motivations} from './motivations';
 export {talents} from './talents/';
 export {qualities} from './qualities';
 export {archetypeTalents} from './archetypeTalents/';
-export {dataTypes, customDataTypes, chars} from './lists'
+export {dataTypes, customDataTypes, chars} from './lists';
+export {weapons} from './weapons';
+export {armor} from './armor';
+export {gear} from './gear';
