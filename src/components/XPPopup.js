@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, ButtonGroup, Modal, ModalBody, ModalHeader} from 'reactstrap';
+import {Button, ButtonGroup, Modal, ModalBody, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
 
@@ -31,15 +31,18 @@ class XPPopup extends React.Component {
         const {handleClose, modal} = this.props;
         return (
             <Modal isOpen={modal} toggle={handleClose}>
-                <ModalHeader toggle={handleClose}>Earned XP</ModalHeader>
+                <ModalHeader toggle={handleClose}>{`Earned XP:  ${earnedXP}`}</ModalHeader>
                 <ModalBody className='m-4'>
-                    <input type='number' value={earnedXP > 0 ? earnedXP : ''} onChange={this.handleChange}/>
-                    &emsp;
-                    <ButtonGroup>
-                        <Button value='+5' onClick={this.handleChange}>+5</Button>
-                        <Button value='+10' onClick={this.handleChange}>+10</Button>
-                        <Button onClick={this.handleSubmit}>Enter</Button>
-                    </ButtonGroup>
+                    <Row className='my-2'>
+                        <input type='number' value={earnedXP > 0 ? earnedXP : ''} onChange={this.handleChange}/>
+                    </Row>
+                    <Row className='my-2'>
+                        <ButtonGroup>
+                            <Button value='+5' onClick={this.handleChange}>+5</Button>
+                            <Button value='+10' onClick={this.handleChange}>+10</Button>
+                            <Button onClick={this.handleSubmit}>Enter</Button>
+                        </ButtonGroup>
+                    </Row>
                 </ModalBody>
             </Modal>
         )

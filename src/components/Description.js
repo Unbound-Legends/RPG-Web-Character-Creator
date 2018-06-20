@@ -65,6 +65,10 @@ export default class Description extends React.Component {
                 case word === '[des]':
                     newString.push('<i class="ffi ffi-grpg-despair"></i>');
                     break;
+                case word === '[rmsetback]':
+                case word === '[rmblack]':
+                    newString.push(`<b>(- </b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b> )</b>`);
+                    break;
                 default:
                     newString.push(`${word} `);
                     break;
