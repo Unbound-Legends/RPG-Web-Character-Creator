@@ -225,18 +225,12 @@ input[type="number"] {
 .ffi {
     vertical-align: middle;
     font-size: 1.4rem;
-    letter-spacing: -3px;
 }
 
 .ffi-border {
     -webkit-text-stroke-color: black;
     -webkit-text-stroke-width: 2px;
 }
-
-.plus-icon {
-    fill: white
-}
-
 
 @media only screen
 and (max-width: 480px) {
@@ -249,6 +243,10 @@ and (max-width: 480px) {
         width: 14vw;
         height: 12vh;
         font-size: 0.4rem;
+    }
+
+    .ffi {
+        font-size: 0.8rem;
     }
 }
 

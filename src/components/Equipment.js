@@ -2,13 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-import {Button, Col, Input, Row, Table} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
-import {Description} from "./index";
+import {Description, Gear} from "./index";
 import {gearDice, skillDice} from "../reducers";
 
-class EquipmentLog extends React.Component {
-    state = {money: this.props.money, weaponsModal: false, armorModal: false, gearModal: false};
+class Equipment extends React.Component {
+
+    state = {
+        money: this.props.money,
+        equipmentWeaponsModal: false,
+        equipmentArmorModal: false,
+        equipmentGearModal: false,
+        deleteModal: false
+    };
 
     componentWillReceiveProps(nextProps) {
         this.setState({money: nextProps.money});
@@ -26,35 +33,38 @@ class EquipmentLog extends React.Component {
         event.preventDefault();
     };
 
-    addGear = (type, event) => {
-        let key = Math.random().toString(36).substr(2, 16);
-        this.setState({[`${type}Modal`]: key});
-        event.preventDefault();
-    };
-
-    editGear = (type, key, event) => {
-        this.setState({[`${type}Modal`]: key});
-        event.preventDefault();
-    };
-
     handleStatus = (type, key, status) => {
         const {changeData, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
-        let newObj = {};
-        if (type === 'equipmentWeapons') newObj = {...equipmentWeapons};
-        if (type === 'equipmentArmor') newObj = {...equipmentArmor};
-        if (type === 'equipmentGear') newObj = {...equipmentGear};
-        if (status === 'equipped' && !newObj[key].equipped) newObj[key].carried = true;
-        if (status === 'carried' && newObj[key].equipped) {
-            alert(`${newObj[key].name} is equipped and cannot be dropped!`);
+        let obj = {};
+        if (type === 'equipmentWeapons') obj = {...equipmentWeapons};
+        if (type === 'equipmentArmor') obj = {...equipmentArmor};
+        if (type === 'equipmentGear') obj = {...equipmentGear};
+        if (status === 'equipped' && !obj[key].equipped) obj[key].carried = true;
+        if (status === 'carried' && obj[key].equipped) {
+            alert(`${obj[key].name} is equipped and cannot be dropped!`);
             return;
         }
-        newObj[key][status] = !newObj[key][status];
-        changeData(newObj, type);
+        obj[key][status] = !obj[key][status];
+        changeData(obj, type);
+    };
+
+    confirmedDelete = () => {
+        const {changeData, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
+        const {deleteModal} = this.state;
+        const type = deleteModal.type;
+        const key = deleteModal.key;
+        let obj = {};
+        if (type === 'equipmentWeapons') obj = {...equipmentWeapons};
+        if (type === 'equipmentArmor') obj = {...equipmentArmor};
+        if (type === 'equipmentGear') obj = {...equipmentGear};
+        delete obj[key];
+        changeData(obj, type, false);
+        this.setState({deleteModal: false});
     };
 
     render() {
         const {weapons, armor, gear, skills, gearDice, qualities, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
-        const {money} = this.state;
+        const {money, deleteModal} = this.state;
         return (
             <Col lg='12' onClick={this.handleClick}>
                 <Row className='justify-content-end'><h5>EQUIPMENT LOG</h5></Row>
@@ -86,10 +96,11 @@ class EquipmentLog extends React.Component {
                                 <th>ENCUM</th>
                                 <th>QUAL</th>
                                 <th>DICE</th>
+                                <th>REMOVE</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {Object.keys(equipmentWeapons).map((key) =>
+                            {Object.keys(equipmentWeapons).map(key =>
                                 <tr key={key}>
                                     <td>
                                         <input type='checkbox'
@@ -98,34 +109,40 @@ class EquipmentLog extends React.Component {
                                                onChange={this.handleStatus.bind(this, 'equipmentWeapons', key, 'carried')}/>
                                     </td>
                                     <td>
-                                        {weapons[key].name}
+                                        {weapons[equipmentWeapons[key].id].name}
                                     </td>
                                     <td className='text-center'>
-                                        {weapons[key].damage}
+                                        {weapons[equipmentWeapons[key].id].damage}
                                     </td>
                                     <td className='text-center'>
-                                        {weapons[key].critical}
+                                        {weapons[equipmentWeapons[key].id].critical}
                                     </td>
-                                    <td> {weapons[key].range}
+                                    <td> {weapons[equipmentWeapons[key].id].range}
                                     </td>
                                     <td>
-                                        {weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '') : ''}
+                                        {weapons[equipmentWeapons[key].id].skill ? (skills[weapons[equipmentWeapons[key].id].skill] ? skills[weapons[equipmentWeapons[key].id].skill].name : '') : ''}
                                     </td>
                                     <td className='text-center'>
-                                        {weapons[key].encumbrance}
+                                        {weapons[equipmentWeapons[key].id].encumbrance}
                                     </td>
                                     <td>
-                                        {weapons[key].qualitiesList && weapons[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}
+                                        {weapons[equipmentWeapons[key].id].qualitiesList && weapons[equipmentWeapons[key].id].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}
                                     </td>
                                     <td>
                                         <Description text={gearDice.weapons[key]}/>
                                     </td>
+                                    <td><Button onClick={() => this.setState({
+                                        deleteModal: {
+                                            type: 'equipmentWeapons',
+                                            key: key
+                                        }
+                                    })}>X</Button></td>
                                 </tr>
                             )}
                             </tbody>
                         </Table>
                         }
-                        <Button onClick={this.addGear.bind(this, 'equipmentWeapons')}>Add Weapon</Button>
+                        <Button onClick={() => this.setState({equipmentWeaponsModal: true})}>Add Weapon</Button>
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(equipmentArmor).length > 0 &&
@@ -148,27 +165,33 @@ class EquipmentLog extends React.Component {
                                 <tr key={key}>
                                     <td>
                                         <input type='checkbox'
-                                               checked={armor[key].equipped}
+                                               checked={equipmentArmor[key].equipped}
                                                onChange={this.handleStatus.bind(this, 'equipmentArmor', key, 'equipped')}/>
                                     </td>
                                     <td>
                                         <input type='checkbox'
-                                               checked={armor[key].carried}
+                                               checked={equipmentArmor[key].carried}
                                                onChange={this.handleStatus.bind(this, 'equipmentArmor', key, 'carried')}/>
                                     </td>
-                                    <td>{armor[key].name}</td>
-                                    <td>{armor[key].soak}</td>
-                                    <td>{armor[key].defense}</td>
-                                    <td>{armor[key].rangedDefense}</td>
-                                    <td>{armor[key].meleeDefense}</td>
-                                    <td>{armor[key].encumbrance}</td>
-                                    <td>{armor[key].qualitiesList && armor[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                    <td>{armor[equipmentArmor[key].id].name}</td>
+                                    <td>{armor[equipmentArmor[key].id].soak}</td>
+                                    <td>{armor[equipmentArmor[key].id].defense}</td>
+                                    <td>{armor[equipmentArmor[key].id].rangedDefense}</td>
+                                    <td>{armor[equipmentArmor[key].id].meleeDefense}</td>
+                                    <td>{armor[equipmentArmor[key].id].encumbrance}</td>
+                                    <td>{armor[equipmentArmor[key].id].qualitiesList && armor[equipmentArmor[key].id].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                    <td><Button onClick={() => this.setState({
+                                        deleteModal: {
+                                            type: 'equipmentArmor',
+                                            key: key
+                                        }
+                                    })}>X</Button></td>
                                 </tr>
                             )}
                             </tbody>
                         </Table>
                         }
-                        <Button onClick={this.addGear.bind(this, 'equipmentArmor')}>Add Armor</Button>
+                        <Button onClick={() => this.setState({equipmentArmorModal: true})}>Add Armor</Button>
                     </TabPanel>
                     <TabPanel>
                         {Object.keys(equipmentGear).length > 0 &&
@@ -190,26 +213,41 @@ class EquipmentLog extends React.Component {
                                                checked={equipmentGear[key].carried}
                                                onChange={this.handleStatus.bind(this, 'equipmentGear', key, 'carried')}/>
                                     </td>
-                                    <td>{gear[key].name}</td>
-                                    <td>{gear[key].amount}</td>
-                                    <td>{gear[key].encumbrance}</td>
-                                    <td>{gear[key].qualitiesList && gear[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                    <td>{gear[equipmentGear[key].id].name}</td>
+                                    <td>{gear[equipmentGear[key].id].amount}</td>
+                                    <td>{gear[equipmentGear[key].id].encumbrance}</td>
+                                    <td>{gear[equipmentGear[key].id].qualitiesList && gear[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                    <td><Button onClick={() => this.setState({
+                                        deleteModal: {
+                                            type: 'equipmentGear',
+                                            key: key
+                                        }
+                                    })}>X</Button></td>
+
                                 </tr>
                             )}
                             </tbody>
                         </Table>
                         }
-                        <Button onClick={this.addGear.bind(this, 'equipmentGear')}>Add Gear</Button>
+                        <Button onClick={() => this.setState({equipmentGearModal: true})}>Add Gear</Button>
                     </TabPanel>
                 </Tabs>
-                {/*<GearStats modal={this.state.weaponsModal} keyID={this.state.weaponsModal} type='equipmentWeapons'
-                           handleClose={() => this.setState({weaponsModal: false})}/>
-                <GearStats modal={this.state.armorModal} keyID={this.state.armorModal} type='equipmentArmor'
-                           handleClose={() => this.setState({armorModal: false})}/>
-                <GearStats modal={this.state.gearModal} keyID={this.state.gearModal} type='equipmentGear'
-                           handleClose={() => this.setState({gearModal: false})}/>
-                <EquipmentList type={this.state.equipmentListModal} 
-                           handleClose={() => this.setState({equipmentListModal: ''})} />*/}
+                <Gear modal={this.state.equipmentWeaponsModal} type='equipmentWeapons'
+                      handleClose={() => this.setState({equipmentWeaponsModal: false})}/>
+                <Gear modal={this.state.equipmentArmorModal} type='equipmentArmor'
+                      handleClose={() => this.setState({equipmentArmorModal: false})}/>
+                <Gear modal={this.state.equipmentGearModal} type='equipmentGear'
+                      handleClose={() => this.setState({equipmentGearModal: false})}/>
+                <Modal isOpen={!!deleteModal} toggle={() => this.setState({deleteModal: false})}>
+                    <ModalHeader toggle={() => this.setState({deleteModal: false})}>BALETED WARNING</ModalHeader>
+                    <ModalBody>
+                        <div>Are you super serious? This cannot be undone</div>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={() => this.setState({deleteModal: false})}>NO!</Button>
+                        <Button color='danger' onClick={this.confirmedDelete}>YES! I no longer want this item!</Button>
+                    </ModalFooter>
+                </Modal>
             </Col>
         );
     }
@@ -235,4 +273,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(EquipmentLog);
+export default connect(mapStateToProps, matchDispatchToProps)(Equipment);

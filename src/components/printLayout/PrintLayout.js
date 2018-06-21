@@ -7,7 +7,6 @@ import {
     CharacterImage,
     Characteristics,
     Critical,
-    EquippedWeapons,
     Gear,
     Motivations,
     Notes,
@@ -22,15 +21,19 @@ export const PrintLayout = () => {
     return (
         <Container style={{fontSize: '0.8rem'}}>
             <Character/>
-            <Attributes/>
-            <Characteristics/>
+            <Row>
+                <Col sm='7'>
+                    <Attributes/>
+                </Col>
+                <Col sm='5'>
+                    <Characteristics/>
+                </Col>
+            </Row>
             <Skill/>
-            <EquippedWeapons/>
             <XP/>
             <Row>
                 <Col sm='8'>
                     <Motivations/>
-                    <Notes/>
                 </Col>
                 <Col sm='4'>
                     <CharacterImage/>
@@ -41,6 +44,7 @@ export const PrintLayout = () => {
             <Gear/>
             <TalentList/>
             <TalentPyramid/>
+            <Notes/>
         </Container>
     )
 };

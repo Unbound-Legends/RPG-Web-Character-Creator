@@ -31,13 +31,13 @@ class EquippedWeapons extends React.Component {
                         {Object.keys(equipmentWeapons).map(key =>
                             equipmentWeapons[key].carried &&
                             <tr key={key}>
-                                <td>{weapons[key].name}</td>
-                                <td>{weapons[key].damage}</td>
-                                <td>{weapons[key].critical}</td>
-                                <td>{weapons[key].range}</td>
-                                <td>{weapons[key].skill ? (skills[weapons[key].skill] ? skills[weapons[key].skill].name : '') : ''}</td>
-                                <td>{weapons[key].encumbrance}</td>
-                                <td>{weapons[key].qualitiesList && weapons[key].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                <td>{weapons[equipmentWeapons[key].id].name}</td>
+                                <td>{weapons[equipmentWeapons[key].id].damage}</td>
+                                <td>{weapons[equipmentWeapons[key].id].critical}</td>
+                                <td>{weapons[equipmentWeapons[key].id].range}</td>
+                                <td>{weapons[equipmentWeapons[key].id].skill ? (skills[weapons[equipmentWeapons[key].id].skill] ? skills[weapons[equipmentWeapons[key].id].skill].name : '') : ''}</td>
+                                <td>{weapons[equipmentWeapons[key].id].encumbrance}</td>
+                                <td>{weapons[equipmentWeapons[key].id].qualitiesList && weapons[equipmentWeapons[key].id].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
                                 <td><Description text={gearDice.weapons[key]}/></td>
                             </tr>
                         )}
