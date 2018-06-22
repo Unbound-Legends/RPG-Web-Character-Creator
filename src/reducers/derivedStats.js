@@ -372,10 +372,26 @@ export const calcTotalDefense = createSelector(
 );
 
 export const calcEncumbranceLimit = createSelector(
-    calcCharacteristics,
-    (characteristics) => {
+    calcCharacteristics, equipmentGear, gear,
+    (characteristics, equipmentGear, gear) => {
         let Brawn = characteristics.Brawn;
-        return Brawn + 5;
+        let gearModifier = 0;
+
+        //get gear modifier
+        Object.keys(equipmentGear).forEach(item => {
+            let id = equipmentGear[item].id;
+            if (equipmentGear[item].carried) {
+                if (gear[id]) {
+                    if (gear[id].modifier) {
+                        if (gear[id].modifier.maxEncumbrance) {
+                            gearModifier += gear[id].modifier.maxEncumbrance;
+                        }
+                    }
+                }
+            }
+        });
+
+        return Brawn + gearModifier + 5;
     }
 );
 

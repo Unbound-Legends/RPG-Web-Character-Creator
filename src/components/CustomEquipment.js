@@ -232,7 +232,6 @@ class CustomEquipment extends React.Component {
                     <Row className='justify-content-end'>
                         <Button onClick={this.handleSubmit}>Add {type.toString().slice(6)}</Button>
                     </Row>
-
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={this.handleClose}>Close</Button>

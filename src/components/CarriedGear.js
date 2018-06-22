@@ -8,8 +8,64 @@ import {gearDice, skillDice} from "../reducers";
 
 class CarriedGear extends React.Component {
 
+    getLabel = (type, block, key) => {
+        const {equipmentArmor, equipmentWeapons, equipmentGear, weapons, armor, gear, skills, qualities, gearDice} = this.props;
+        let data, equipment;
+        if (type === 'equipmentWeapons') {
+            equipment = {...equipmentWeapons};
+            data = {...weapons};
+        }
+        if (type === 'equipmentArmor') {
+            equipment = {...equipmentArmor};
+            data = {...armor};
+        }
+        if (type === 'equipmentGear') {
+            equipment = {...equipmentGear};
+            data = {...gear};
+        }
+        let item = data[equipment[key].id];
+        if (!item && block !== 'deleteButton') return <td key={type + key + block}>MissingData</td>;
+        switch (block) {
+            case 'name':
+            case 'damage':
+            case 'critical':
+            case 'range':
+            case 'encumbrance':
+            case 'soak':
+            case 'defense':
+            case 'rangedDefense':
+            case 'meleeDefense':
+            case 'amount':
+                return (
+                    <td key={type + key + block}>
+                        {item[block]}
+                    </td>
+                );
+            case 'skill':
+                return (
+                    <td key={type + key + block}>
+                        {item.skill ? (skills[item.skill] ? skills[item.skill].name : '') : ''}
+                    </td>
+                );
+            case 'qualities':
+                return (
+                    <td key={type + key + block}>
+                        {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality].name} ${item[block][quality]}`).sort().join(', ')}
+                    </td>
+                );
+            case 'gearDice':
+                return (
+                    <td key={type + key + block}>
+                        <Description text={gearDice.weapons[key]}/>
+                    </td>
+                );
+            default:
+                return <td key={type + key}/>;
+        }
+    };
+
     render() {
-        const {weapons, armor, gear, skills, qualities, gearDice, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
+        const {equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
         return (
             <div className='w-100'>
                 <Row className='justify-content-end'><h5>CARRIED GEAR</h5></Row>
@@ -31,18 +87,12 @@ class CarriedGear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(equipmentWeapons).map((key) =>
+                        {Object.keys(equipmentWeapons).map(key =>
                             equipmentWeapons[key].carried &&
-                            weapons[equipmentWeapons[key].id] &&
                             <tr key={key}>
-                                <td>{weapons[equipmentWeapons[key].id].name}</td>
-                                <td>{weapons[equipmentWeapons[key].id].damage}</td>
-                                <td>{weapons[equipmentWeapons[key].id].critical}</td>
-                                <td>{weapons[equipmentWeapons[key].id].range}</td>
-                                <td>{weapons[equipmentWeapons[key].id].skill ? (skills[weapons[equipmentWeapons[key].id].skill] ? skills[weapons[equipmentWeapons[key].id].skill].name : '') : ''}</td>
-                                <td>{weapons[equipmentWeapons[key].id].encumbrance}</td>
-                                <td>{weapons[equipmentWeapons[key].id].qualitiesList && weapons[equipmentWeapons[key].id].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
-                                <td><Description text={gearDice.weapons[key]}/></td>
+                                {['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice'].map(block =>
+                                    this.getLabel('equipmentWeapons', block, key)
+                                )}
                             </tr>
                         )}
                         </tbody>
@@ -67,15 +117,10 @@ class CarriedGear extends React.Component {
                         <tbody>
                         {Object.keys(equipmentArmor).map(key =>
                             equipmentArmor[key].carried &&
-                            armor[equipmentArmor[key].id] &&
-                            <tr className='table-row' key={key}>
-                                <td>{armor[equipmentArmor[key].id].name}</td>
-                                <td>{armor[equipmentArmor[key].id].soak}</td>
-                                <td>{armor[equipmentArmor[key].id].defense}</td>
-                                <td>{armor[equipmentArmor[key].id].rangedDefense}</td>
-                                <td>{armor[equipmentArmor[key].id].meleeDefense}</td>
-                                <td>{armor[equipmentArmor[key].id].encumbrance}</td>
-                                <td>{armor[equipmentArmor[key].id].qualitiesList && armor[equipmentArmor[key].id].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                            <tr key={key}>
+                                {['name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities'].map(block =>
+                                    this.getLabel('equipmentArmor', block, key)
+                                )}
                             </tr>
                         )}
                         </tbody>
@@ -97,12 +142,10 @@ class CarriedGear extends React.Component {
                         <tbody>
                         {Object.keys(equipmentGear).map((key) =>
                             equipmentGear[key].carried &&
-                            gear[equipmentGear[key].id] &&
                             <tr key={key}>
-                                <td>{gear[equipmentGear[key].id].name}</td>
-                                <td>{gear[equipmentGear[key].id].amount}</td>
-                                <td>{gear[equipmentGear[key].id].encumbrance}</td>
-                                <td>{gear[equipmentGear[key].id].qualitiesList && gear[equipmentGear[key].id].qualitiesList.map((quality) => `${qualities[Object.keys(quality)[0]].name} ${Object.values(quality)[0]}`).sort().join(', ')}</td>
+                                {['name', 'amount', 'encumbrance', 'qualities'].map(block =>
+                                    this.getLabel('equipmentGear', block, key)
+                                )}
                             </tr>
                         )}
                         </tbody>
