@@ -33,6 +33,7 @@ class CarriedGear extends React.Component {
                         <tbody>
                         {Object.keys(equipmentWeapons).map((key) =>
                             equipmentWeapons[key].carried &&
+                            weapons[equipmentWeapons[key].id] &&
                             <tr key={key}>
                                 <td>{weapons[equipmentWeapons[key].id].name}</td>
                                 <td>{weapons[equipmentWeapons[key].id].damage}</td>
@@ -64,8 +65,9 @@ class CarriedGear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(equipmentArmor).map((key) =>
+                        {Object.keys(equipmentArmor).map(key =>
                             equipmentArmor[key].carried &&
+                            armor[equipmentArmor[key].id] &&
                             <tr className='table-row' key={key}>
                                 <td>{armor[equipmentArmor[key].id].name}</td>
                                 <td>{armor[equipmentArmor[key].id].soak}</td>
@@ -95,6 +97,7 @@ class CarriedGear extends React.Component {
                         <tbody>
                         {Object.keys(equipmentGear).map((key) =>
                             equipmentGear[key].carried &&
+                            gear[equipmentGear[key].id] &&
                             <tr key={key}>
                                 <td>{gear[equipmentGear[key].id].name}</td>
                                 <td>{gear[equipmentGear[key].id].amount}</td>

@@ -34,7 +34,8 @@ class Gear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(equipmentWeapons).map((key) =>
+                        {Object.keys(equipmentWeapons).map(key =>
+                            weapons[equipmentWeapons[key].id] &&
                             <tr key={key}>
                                 <td><input type='checkbox'
                                            className='text-center'
@@ -72,7 +73,8 @@ class Gear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(equipmentArmor).map((key) =>
+                        {Object.keys(equipmentArmor).map(key =>
+                            armor[equipmentArmor[key].id] &&
                             <tr className='table-row' key={key}>
                                 <td><input type='checkbox'
                                            className='text-center'
@@ -106,7 +108,8 @@ class Gear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(equipmentGear).map((key) =>
+                        {Object.keys(equipmentGear).map(key =>
+                            gear[equipmentGear[key].id] &&
                             <tr key={key}>
                                 <td><input type='checkbox'
                                            className='text-center'

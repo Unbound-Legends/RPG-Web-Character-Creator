@@ -160,16 +160,16 @@ export const calcGearDice = createSelector(
             if (!gearDice[type]) gearDice[type] = {};
             Object.keys(data).forEach(item => {
                 let list, skill;
-                let id = data[item].id
-                if (type === 'armor') {
+                let id = data[item].id;
+                if (type === 'armor' && armor[id]) {
                     list = armor[id].qualities;
                     skill = armor[id].skill;
                 }
-                if (type === 'weapons') {
+                if (type === 'weapons' && weapons[id]) {
                     list = weapons[id].qualities;
                     skill = weapons[id].skill
                 }
-                if (type === 'gear') {
+                if (type === 'gear' && gear[id]) {
                     list = gear[id].qualities;
                     skill = gear[id].skill
                 }
@@ -352,9 +352,9 @@ export const calcTotalDefense = createSelector(
             Object.keys(type).forEach(item => {
                 let list;
                 let id = type[item].id;
-                if (type === equipmentArmor) list = armor[id].qualities;
-                if (type === equipmentWeapons) list = weapons[id].qualities;
-                if (type === equipmentGear) list = gear[id].qualities;
+                if (type === equipmentArmor) list = armor[id] && armor[id].qualities;
+                if (type === equipmentWeapons) list = weapons[id] && weapons[id].qualities;
+                if (type === equipmentGear) list = gear[id] && gear[id].qualities;
                 if (list) {
                     Object.keys(list).forEach(quality => {
                         let rank = list[quality] === '' ? 1 : list[quality];
@@ -385,18 +385,24 @@ export const calcTotalEncumbrance = createSelector(
         let encumbrance = 0;
         //get weapon encumbrance
         Object.keys(equipmentWeapons).forEach(item => {
-            if (equipmentWeapons[item].carried) encumbrance += weapons[equipmentWeapons[item].id].encumbrance ? +weapons[equipmentWeapons[item].id].encumbrance : 0;
+            if (weapons[equipmentWeapons[item].id]) {
+                if (equipmentWeapons[item].carried) encumbrance += weapons[equipmentWeapons[item].id].encumbrance ? +weapons[equipmentWeapons[item].id].encumbrance : 0;
+            }
         });
         //get armor encumbrance
         Object.keys(equipmentArmor).forEach(item => {
-            let armorEncum = +armor[equipmentArmor[item].id].encumbrance - (equipmentArmor[item].equipped ? 3 : 0);
-            if (armorEncum < 0 || !armorEncum) armorEncum = 0;
-            if (equipmentArmor[item].carried) encumbrance += armorEncum;
+            if (armor[equipmentArmor[item].id]) {
+                let armorEncum = +armor[equipmentArmor[item].id].encumbrance - (equipmentArmor[item].equipped ? 3 : 0);
+                if (armorEncum < 0 || !armorEncum) armorEncum = 0;
+                if (equipmentArmor[item].carried) encumbrance += armorEncum;
+            }
         });
         //get gear encumbrance
         Object.keys(equipmentGear).forEach(item => {
             let id = equipmentGear[item].id;
-            if (equipmentGear[item].carried) encumbrance += ((gear[id].encumbrance ? +gear[id].encumbrance : 0) * (equipmentGear[item].amount ? +equipmentGear[item].amount : 1));
+            if (gear[id]) {
+                if (equipmentGear[item].carried) encumbrance += ((gear[id].encumbrance ? +gear[id].encumbrance : 0) * (equipmentGear[item].amount ? +equipmentGear[item].amount : 1));
+            }
         });
         return encumbrance;
     }

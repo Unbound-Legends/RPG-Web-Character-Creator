@@ -225,6 +225,11 @@ input[type="number"] {
 .ffi {
     vertical-align: middle;
     font-size: 1.4rem;
+    letter-spacing: -3px;
+}
+
+.ffi-d6 {
+    letter-spacing: 0px;
 }
 
 .ffi-border {

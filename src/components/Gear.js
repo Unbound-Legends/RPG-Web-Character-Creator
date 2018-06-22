@@ -50,6 +50,14 @@ class Gear extends React.Component {
                         <th>Setting</th>
                     </tr>
                 );
+            case 'equipmentGear':
+                return (
+                    <tr className='text-center'>
+                        <th>Add</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                );
             default:
                 break;
         }
@@ -84,6 +92,16 @@ class Gear extends React.Component {
                         <td>{armor[item].setting}</td>
                     </tr>
                 );
+            case 'equipmentGear':
+                return (
+                    <tr key={item}>
+                        <td>
+                            <Button color='secondary' name={item} onClick={this.handleAdd}>+</Button>
+                        </td>
+                        <td>{gear[item].name}</td>
+                        <td className='text-center'>{gear[item].price}</td>
+                    </tr>
+                );
             default:
                 break;
         }
@@ -115,7 +133,8 @@ class Gear extends React.Component {
                             {this.generateEquipmentTableHeader()}
                             </thead>
                             <tbody>
-                            {Object.keys(data).sort().map(item =>
+                            {data &&
+                            Object.keys(data).sort().map(item =>
                                 this.generateEquipmentTableBody(item)
                             )}
                             </tbody>

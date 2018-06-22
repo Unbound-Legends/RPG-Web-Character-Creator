@@ -15,6 +15,7 @@ export {default as Critical} from './Critical';
 export {default as CustomArchetypes} from './CustomArchetypes';
 export {default as CustomCareers} from './CustomCareers';
 export {default as CustomDataSelect} from './CustomDataSelect';
+export {default as CustomEquipment} from './CustomEquipment';
 export {default as CustomSkills} from './CustomSkills';
 export {default as CustomTalents} from './CustomTalents';
 export {default as DataPage} from './DataPage';
