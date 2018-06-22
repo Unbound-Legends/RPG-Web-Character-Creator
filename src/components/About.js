@@ -14,8 +14,7 @@ const About = () => {
                             className='p-0'>Donate</Button>
                 </Row>
                 <Row className='justify-content-center'>
-                    Contributions by&nbsp;<a href="https://www.google.com" target="_blank"
-                                             rel="noopener noreferrer">HolmstN</a>.&nbsp;
+                    Contributions by Nick Holmstead.
                 </Row>
                 <Row className='justify-content-center'>
                     Images by&nbsp;<a href="https://www.reddit.com/user/DrainSmith" target="_blank"
