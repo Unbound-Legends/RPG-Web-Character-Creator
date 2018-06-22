@@ -229,7 +229,9 @@ class CustomEquipment extends React.Component {
                         </Row>
                     )}
                     {this.buildField('specialQualities')}
-                    <Button onClick={this.handleSubmit}>Add</Button>
+                    <Row className='justify-content-end'>
+                        <Button onClick={this.handleSubmit}>Add {type.toString().slice(6)}</Button>
+                    </Row>
 
                 </ModalBody>
                 <ModalFooter>
