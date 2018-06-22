@@ -1,12 +1,10 @@
 import React from 'react';
+import {Col, Row, Table} from 'reactstrap';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {Row, Table} from 'reactstrap';
-import {changeData} from '../actions';
-import {Description} from "./index";
-import {gearDice, skillDice} from "../reducers";
+import {Description} from "../index";
+import {gearDice, skillDice} from "../../reducers";
 
-class CarriedGear extends React.Component {
+class Equipment extends React.Component {
 
     getLabel = (type, block, key) => {
         const {equipmentArmor, equipmentWeapons, equipmentGear, weapons, armor, gear, skills, qualities, gearDice} = this.props;
@@ -26,6 +24,17 @@ class CarriedGear extends React.Component {
         let item = data[equipment[key].id];
         if (!item && block !== 'deleteButton') return <td key={type + key + block}>MissingData</td>;
         switch (block) {
+            case 'carried':
+            case 'equipped':
+                return (
+                    <td key={type + key + block}>
+                        <input type='checkbox'
+                               className='text-center'
+                               checked={equipment[key][block]}
+                               readOnly
+                        />
+                    </td>
+                );
             case 'name':
             case 'damage':
             case 'critical':
@@ -65,17 +74,22 @@ class CarriedGear extends React.Component {
     };
 
     render() {
-        const {equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
+        const {money, equipmentArmor, equipmentGear, equipmentWeapons} = this.props;
         return (
             <div className='w-100'>
-                <Row className='justify-content-end'><h5>CARRIED GEAR</h5></Row>
+                <Row className='justify-content-end'><h5>GEAR</h5></Row>
                 <hr/>
+                <Row className='my-2'>
+                    <Col xs='1'><b className='my-auto'>MONEY:</b></Col>
+                    <Col>{money > 0 ? money : ''}</Col>
+                </Row>
                 {Object.keys(equipmentWeapons).length > 0 &&
-                <div>
+                <Row>
                     <h5 style={{textAlign: 'left'}}>Weapons:</h5>
                     <Table className='text-center'>
                         <thead>
                         <tr>
+                            <th>CARRIED</th>
                             <th>NAME</th>
                             <th>DAM</th>
                             <th>CRIT</th>
@@ -88,23 +102,24 @@ class CarriedGear extends React.Component {
                         </thead>
                         <tbody>
                         {Object.keys(equipmentWeapons).map(key =>
-                            equipmentWeapons[key].carried &&
                             <tr key={key}>
-                                {['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice'].map(block =>
+                                {['carried', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice'].map(block =>
                                     this.getLabel('equipmentWeapons', block, key)
                                 )}
                             </tr>
                         )}
                         </tbody>
                     </Table>
-                </div>
+                </Row>
                 }
                 {Object.keys(equipmentArmor).length > 0 &&
-                <div>
+                <Row>
                     <h5 style={{textAlign: 'left'}}>Armor:</h5>
                     <Table className='text-center'>
                         <thead>
                         <tr>
+                            <th>EQUIPPED</th>
+                            <th>CARRIED</th>
                             <th>NAME</th>
                             <th>SOAK</th>
                             <th>DEF</th>
@@ -116,23 +131,23 @@ class CarriedGear extends React.Component {
                         </thead>
                         <tbody>
                         {Object.keys(equipmentArmor).map(key =>
-                            equipmentArmor[key].carried &&
                             <tr key={key}>
-                                {['name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities'].map(block =>
+                                {['equipped', 'carried', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities'].map(block =>
                                     this.getLabel('equipmentArmor', block, key)
                                 )}
                             </tr>
                         )}
                         </tbody>
                     </Table>
-                </div>
+                </Row>
                 }
                 {Object.keys(equipmentGear).length > 0 &&
-                <div>
+                <Row>
                     <h5 style={{textAlign: 'left'}}>Gear:</h5>
                     <Table className='text-center'>
                         <thead>
                         <tr>
+                            <th>CARRRIED</th>
                             <th>NAME</th>
                             <th>AMOUNT</th>
                             <th>ENCUM</th>
@@ -140,17 +155,16 @@ class CarriedGear extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.keys(equipmentGear).map((key) =>
-                            equipmentGear[key].carried &&
+                        {Object.keys(equipmentGear).map(key =>
                             <tr key={key}>
-                                {['name', 'amount', 'encumbrance', 'qualities'].map(block =>
+                                {['carried', 'name', 'amount', 'encumbrance', 'qualities'].map(block =>
                                     this.getLabel('equipmentGear', block, key)
                                 )}
                             </tr>
                         )}
                         </tbody>
                     </Table>
-                </div>
+                </Row>
                 }
             </div>
         );
@@ -161,19 +175,17 @@ function mapStateToProps(state) {
     return {
         armor: state.armor,
         gear: state.gear,
+        equipmentArmor: state.equipmentArmor,
+        equipmentGear: state.equipmentGear,
+        equipmentWeapons: state.equipmentWeapons,
         gearDice: gearDice(state),
         qualities: state.qualities,
         skillDice: skillDice(state),
         skills: state.skills,
         weapons: state.weapons,
-        equipmentArmor: state.equipmentArmor,
-        equipmentGear: state.equipmentGear,
-        equipmentWeapons: state.equipmentWeapons,
+        money: state.money,
     };
 }
 
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({changeData}, dispatch);
-}
 
-export default connect(mapStateToProps, matchDispatchToProps)(CarriedGear);
+export default connect(mapStateToProps)(Equipment);

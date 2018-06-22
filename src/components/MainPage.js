@@ -4,7 +4,6 @@ import {
     About,
     Attributes,
     Buttons,
-    CarriedGear,
     CharacterDescription,
     CharacterImage,
     CharacterSelect,
@@ -23,25 +22,24 @@ const MainPage = () => {
     return (
         <Container className='mx-2'>
             <Buttons/>
-            <Row className='m-1 no-break'>
+            <Row className='m-1'>
                 <CharacterSelect/>
                 <CharacterImage/>
             </Row>
-            <Row className='m-1 no-break'><Attributes/></Row>
-            <Row className='m-1 no-break'><ShowCharacteristics/></Row>
-            <Row className='m-1 no-break'><Critical/></Row>
-            <Row className='m-1 no-break'><CarriedGear/></Row>
-            <Row className='m-1 no-break'><XPBoxes/></Row>
-            <Row className='m-1 no-break'><Skill/></Row>
-            <Row className='m-1 no-break'><Motivation/></Row>
+            <Row className='m-1'><Attributes/></Row>
+            <Row className='m-1'><ShowCharacteristics/></Row>
+            <Row className='m-1'><Critical/></Row>
+            <Row className='m-1'><XPBoxes/></Row>
+            <Row className='m-1'><Skill/></Row>
+            <Row className='m-1'><Motivation/></Row>
             <Row className='m-1'><Equipment/></Row>
-            <Row className='m-1 justify-content-around no-break'>
+            <Row className='m-1 justify-content-around'>
                 <CharacterDescription/>
                 <Notes/>
             </Row>
-            <Row className='m-1 no-break'><TalentList/></Row>
-            <Row className='m-1 no-break'><Talents/></Row>
-            <Row className='m-1 justify-content-center no-break'><About/></Row>
+            <Row className='m-1'><TalentList/></Row>
+            <Row className='m-1'><Talents/></Row>
+            <Row className='m-1 justify-content-center'><About/></Row>
         </Container>
     );
 };

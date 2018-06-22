@@ -7,7 +7,7 @@ import {
     CharacterImage,
     Characteristics,
     Critical,
-    Gear,
+    Equipment,
     Motivations,
     Notes,
     Skill,
@@ -41,7 +41,7 @@ export const PrintLayout = () => {
                     <Critical/>
                 </Col>
             </Row>
-            <Gear/>
+            <Equipment/>
             <TalentList/>
             <TalentPyramid/>
             <Notes/>

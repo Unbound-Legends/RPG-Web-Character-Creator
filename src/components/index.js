@@ -6,7 +6,6 @@ export {default as Archetype} from './Archetype';
 export {default as Attributes} from './Attributes';
 export {default as Buttons} from './Buttons';
 export {default as Career} from './Career';
-export {default as CarriedGear} from './CarriedGear';
 export {default as CharacterDescription} from './CharacterDescription';
 export {default as CharacterImage} from './CharacterImage';
 export {default as Characteristics} from './Characteristics';
