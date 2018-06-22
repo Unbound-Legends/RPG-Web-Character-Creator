@@ -71,14 +71,14 @@ export default {
         page: 100,
         setting: 'Fantasy'
     },
-    emptyFlask: {
-        name: 'Flask (Empty)',
+    flask: {
+        name: 'Flask',
         encumbrance: 0,
         price: 1,
         rarity: 1,
         book: 'ROT',
         page: 100,
-        setting: 'Fantasy'
+        setting: 'Fantasy',
     },
     flintAndSteel: {
         name: 'Flint and Steel',

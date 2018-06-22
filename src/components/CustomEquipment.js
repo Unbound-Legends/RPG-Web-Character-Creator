@@ -192,6 +192,11 @@ class CustomEquipment extends React.Component {
                             ).sort().join(', ')
                             }
                         </Row>
+                        {Object.keys(this.state.qualityList).length > 0 &&
+                        <Row className='text-right'>
+                            <Button onClick={() => this.setState({qualityList: {}})}>Clear</Button>
+                        </Row>
+                        }
                     </div>
                 );
             case 'description':
