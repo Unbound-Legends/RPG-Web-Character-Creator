@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeCustomData} from '../actions';
 
@@ -237,6 +237,30 @@ class CustomEquipment extends React.Component {
                     <Row className='justify-content-end'>
                         <Button onClick={this.handleSubmit}>Add {type.toString().slice(6)}</Button>
                     </Row>
+                    <Table>
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th/>
+                            <th/>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {type &&
+                        Object.keys(this.props[type]).map(key =>
+                            <tr key={key}>
+                                <td>{this.props[type][key].name}</td>
+                                <td className='text-right'>
+                                    <Button name={key} onClick={this.handleEdit}>Edit</Button>
+                                </td>
+                                <td className='text-right'>
+                                    <Button name={key} onClick={this.handleDelete}>Delete</Button>
+                                </td>
+                            </tr>
+                        )
+                        }
+                        </tbody>
+                    </Table>
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={this.handleClose}>Close</Button>
