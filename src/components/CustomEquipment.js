@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeCustomData} from '../actions';
+import {ControlButtonSet} from './ControlButtonSet';
+import DeleteButton from './DeleteButton';
+import {omit} from 'lodash-es';
 
 class CustomEquipment extends React.Component {
     state = {
@@ -24,6 +27,7 @@ class CustomEquipment extends React.Component {
         amount: '',
         specialQualities: '',
         qualityList: {},
+        mode: 'add'
     };
 
     initState = () => {
@@ -99,15 +103,39 @@ class CustomEquipment extends React.Component {
         event.preventDefault();
     };
 
-    handleDelete = (event) => {
-        this.handleClose();
+    handleDelete = (event, key) => {
+        const {type, changeCustomData} = this.props;
+        changeCustomData(omit(this.props[type], key), type, false)
         event.preventDefault();
     };
+
+    handleEdit = (e, equipment) => {
+        e.preventDefault();
+        this.setState({...equipment, mode: 'edit'})
+    }
+
+    handleEditSubmit = (e) => {
+        this.handleSubmit(e);
+        this.setState({mode: 'add'})
+    }
+
+    handleEditCancel = () => {
+        this.initState();
+        this.setState({mode: 'add'})
+    }
 
     buildField = (field) => {
         const {type, skills, qualities} = this.props;
         switch (field) {
             case 'name':
+                if (this.state.mode === 'add') {
+                    return (
+                        <Input type='text' value={this.state[field]} name={field}
+                               onChange={this.handleChange}/>
+                    );
+                }
+                return <Input type='text' value={this.state[field]} name={field}
+                              onChange={this.handleChange} disabled/>
             case 'damage':
                 return (
                     <Input type='text' value={this.state[field]} name={field}
@@ -234,9 +262,12 @@ class CustomEquipment extends React.Component {
                         </Row>
                     )}
                     {this.buildField('specialQualities')}
-                    <Row className='justify-content-end'>
-                        <Button onClick={this.handleSubmit}>Add {type.toString().slice(6)}</Button>
-                    </Row>
+                    <ControlButtonSet 
+                        mode={this.state.mode}
+                        type={this.props.type}
+                        handleSubmit={this.handleSubmit}
+                        onEditSubmit={this.handleEditSubmit}
+                        onEditCancel={this.handleEditCancel} />
                     <Table>
                         <thead>
                         <tr>
@@ -251,10 +282,10 @@ class CustomEquipment extends React.Component {
                             <tr key={key}>
                                 <td>{this.props[type][key].name}</td>
                                 <td className='text-right'>
-                                    <Button name={key} onClick={this.handleEdit}>Edit</Button>
+                                    <Button name={key} onClick={(e) => this.handleEdit(e, this.props[type][key])}>Edit</Button>
                                 </td>
                                 <td className='text-right'>
-                                    <Button name={key} onClick={this.handleDelete}>Delete</Button>
+                                    <DeleteButton name={key} onClick={(e) => this.handleDelete(e, key)} />
                                 </td>
                             </tr>
                         )
