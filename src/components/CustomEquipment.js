@@ -103,9 +103,9 @@ class CustomEquipment extends React.Component {
         event.preventDefault();
     };
 
-    handleDelete = (event, key) => {
+    handleDelete = (event) => {
         const {type, changeCustomData} = this.props;
-        changeCustomData(omit(this.props[type], key), type, false)
+        changeCustomData(omit(this.props[type], event.target.name), type, false)
         event.preventDefault();
     };
 
@@ -285,7 +285,7 @@ class CustomEquipment extends React.Component {
                                     <Button name={key} onClick={(e) => this.handleEdit(e, this.props[type][key])}>Edit</Button>
                                 </td>
                                 <td className='text-right'>
-                                    <DeleteButton name={key} onClick={(e) => this.handleDelete(e, key)} />
+                                    <DeleteButton name={key} onClick={this.handleDelete} />
                                 </td>
                             </tr>
                         )
