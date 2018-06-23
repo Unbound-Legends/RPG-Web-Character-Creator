@@ -1,0 +1,18 @@
+.button-success {
+  background-color: #42a513;
+  fill: #fff;
+  border: none;
+  margin: 0 0.25em;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: none; }
+  .button-success:hover {
+    background-color: #398e10; }
+
+.button-cancel {
+  background-color: #ec6763;
+  border: none;
+  margin: 0 0.25em; }
+  .button-cancel:hover {
+    background-color: #e9514c; }

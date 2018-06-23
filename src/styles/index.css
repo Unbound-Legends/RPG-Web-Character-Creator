@@ -1,3 +1,5 @@
+@import 'buttons.css';
+
 body {
     --orange: rgb(245, 142, 32);
     --lightblue: rgb(181, 224, 232);

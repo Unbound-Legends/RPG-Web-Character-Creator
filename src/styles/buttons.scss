@@ -1,0 +1,24 @@
+@import 'colors';
+
+.button-success {
+    background-color: $success;
+    fill: #fff;
+    border: none;
+    margin: 0 0.25em;
+    -webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+    box-shadow: none !important;
+    outline: none;
+    &:hover {
+        background-color: darken($success, 5%)
+    }
+}
+
+.button-cancel {
+    background-color: $warning;
+    border: none;
+    margin: 0 0.25em;
+    &:hover {
+        background-color: darken($warning, 5%);
+    }
+}
