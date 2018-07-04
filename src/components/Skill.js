@@ -3,7 +3,7 @@ import {CustomSkills, SkillBlock} from './index';
 import {connect} from "react-redux";
 import {Button, Col, Row} from 'reactstrap';
 
-class Skill extends React.Component {
+class Component extends React.Component {
     state = {modal: false};
 
     render() {
@@ -43,4 +43,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Skill);
+export const Skill = connect(mapStateToProps)(Component);

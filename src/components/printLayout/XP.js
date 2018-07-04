@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
 import {totalXP, usedXP} from '../../reducers';
 
-class XP extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {totalXP, usedXP} = this.props;
@@ -33,4 +33,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(XP);
+export const XP = connect(mapStateToProps)(Component);

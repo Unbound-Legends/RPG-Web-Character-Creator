@@ -6,7 +6,7 @@ import {maxCareerSkills} from '../reducers';
 import {Description} from './index';
 import {Button, Col, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 
-class Career extends React.Component {
+class Component extends React.Component {
 
     handleChange = (event) => {
         let value = event.target.value === '' ? null : event.target.value;
@@ -109,4 +109,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Career);
+export const Career = connect(mapStateToProps, matchDispatchToProps)(Component);

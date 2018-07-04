@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Description extends React.Component {
+export class Description extends React.Component {
 
     checkText = () => {
         if (this.props.text === null || this.props.text === undefined) return '';

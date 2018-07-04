@@ -15,7 +15,7 @@ const modifiableAttributes = {
     defense: 'Defense'
 };
 
-class TalentSelection extends React.Component {
+class Component extends React.Component {
     state = {
         talentSelection: this.props.talentKey,
         selection: this.props.talentModifiers.Dedication[this.props.row] ? this.props.talentModifiers.Dedication[this.props.row] : '',
@@ -195,4 +195,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(TalentSelection);
+export const TalentSelection = connect(mapStateToProps, matchDispatchToProps)(Component);

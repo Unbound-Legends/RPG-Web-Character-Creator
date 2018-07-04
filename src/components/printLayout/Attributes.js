@@ -10,7 +10,7 @@ import {
     woundThreshold
 } from "../../reducers";
 
-class Attributes extends React.Component {
+class Component extends React.Component {
 
 
     render() {
@@ -70,4 +70,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Attributes);
+export const Attributes = connect(mapStateToProps)(Component);

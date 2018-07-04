@@ -2,17 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-import {Button, ButtonGroup, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
+import {Button, ButtonGroup, Col, Input, Row, Table} from 'reactstrap';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
-import {CustomEquipment, Description, Gear} from "./index";
+import {CustomEquipment, DeleteButton, Description, Gear} from "./index";
 import {gearDice, skillDice} from "../reducers";
+import {omit} from 'lodash-es';
 
-class Equipment extends React.Component {
-
+class Component extends React.Component {
     state = {
         money: this.props.money,
         equipModal: false,
-        deleteModal: false,
         customEquipmentModal: false,
     };
 
@@ -47,18 +46,10 @@ class Equipment extends React.Component {
         changeData(obj, type);
     };
 
-    confirmedDelete = () => {
-        const {changeData, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
-        const {deleteModal} = this.state;
-        const type = deleteModal.type;
-        const key = deleteModal.key;
-        let obj = {};
-        if (type === 'equipmentWeapons') obj = {...equipmentWeapons};
-        if (type === 'equipmentArmor') obj = {...equipmentArmor};
-        if (type === 'equipmentGear') obj = {...equipmentGear};
-        delete obj[key];
-        changeData(obj, type, false);
-        this.setState({deleteModal: false});
+    handleDelete = (event) => {
+        const type = event.target.value;
+        const key = event.target.name;
+        this.props.changeData(omit(this.props[type], key), type, false);
     };
 
     buttons = (type) => {
@@ -108,7 +99,6 @@ class Equipment extends React.Component {
             case 'defense':
             case 'rangedDefense':
             case 'meleeDefense':
-            case 'amount':
                 return (
                     <td key={type + key + block}>
                         {item[block]}
@@ -135,13 +125,10 @@ class Equipment extends React.Component {
             case 'deleteButton':
                 return (
                     <td key={type + key + block}>
-                        <Button onClick={() => this.setState({
-                            deleteModal: {
-                                type: type,
-                                key: key
-                            }
-                        })}>X</Button></td>
+                        <DeleteButton name={key} value={type} onClick={this.handleDelete}/>
+                    </td>
                 );
+            case 'amount':
             default:
                 return <td key={type + key}/>;
         }
@@ -149,7 +136,7 @@ class Equipment extends React.Component {
 
     render() {
         const {equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
-        const {money, deleteModal, equipModal, customEquipmentModal} = this.state;
+        const {money, equipModal, customEquipmentModal} = this.state;
         return (
             <Col lg='12' onClick={this.handleClick}>
                 <Row className='justify-content-end'><h5>EQUIPMENT LOG</h5></Row>
@@ -234,7 +221,6 @@ class Equipment extends React.Component {
                             <tr>
                                 <th>CARRY</th>
                                 <th>NAME</th>
-                                <th>AMOUNT</th>
                                 <th>ENCUM</th>
                                 <th>QUAL</th>
                                 <th>REMOVE</th>
@@ -242,11 +228,11 @@ class Equipment extends React.Component {
                             </thead>
                             <tbody>
                             {Object.keys(equipmentGear).map(key =>
-                                    <tr key={key}>
-                                        {['carried', 'name', 'amount', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
-                                            this.getLabel('equipmentGear', block, key)
-                                        )}
-                                    </tr>
+                                <tr key={key}>
+                                    {['carried', 'name', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
+                                        this.getLabel('equipmentGear', block, key)
+                                    )}
+                                </tr>
                             )}
                             </tbody>
                         </Table>
@@ -258,16 +244,6 @@ class Equipment extends React.Component {
                       handleClose={() => this.setState({equipModal: false})}/>
                 <CustomEquipment modal={!!customEquipmentModal} type={customEquipmentModal}
                                  handleClose={() => this.setState({customEquipmentModal: false})}/>
-                <Modal isOpen={!!deleteModal} toggle={() => this.setState({deleteModal: false})}>
-                    <ModalHeader toggle={() => this.setState({deleteModal: false})}>BALETED WARNING</ModalHeader>
-                    <ModalBody>
-                        <div>Are you super serious? This cannot be undone</div>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={() => this.setState({deleteModal: false})}>NO!</Button>
-                        <Button color='danger' onClick={this.confirmedDelete}>YES! I no longer want this item!</Button>
-                    </ModalFooter>
-                </Modal>
             </Col>
         );
     }
@@ -293,4 +269,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Equipment);
+export const Equipment = connect(mapStateToProps, matchDispatchToProps)(Component);

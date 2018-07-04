@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import DynamicFont from 'react-dynamic-font';
 import {talentCount} from "../../reducers";
 
-class TalentPyramid extends React.Component {
+class Component extends React.Component {
 
     activation = (talentKey) => {
         const {talents} = this.props;
@@ -57,4 +57,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(TalentPyramid);
+export const TalentPyramid = connect(mapStateToProps)(Component);

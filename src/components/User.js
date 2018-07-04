@@ -4,7 +4,7 @@ import firebase from '@firebase/app';
 import '@firebase/auth';
 import {About} from './index';
 
-export default class User extends Component {
+export class User extends Component {
 
     handleClick = () => {
         const provider = new firebase.auth.GoogleAuthProvider();

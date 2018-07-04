@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Table} from 'reactstrap';
 import {SkillRow} from './index';
 
-class SkillBlock extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {type, skills, index} = this.props;
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(SkillBlock);
+export const SkillBlock = connect(mapStateToProps)(Component);

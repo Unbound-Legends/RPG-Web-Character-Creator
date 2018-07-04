@@ -18,7 +18,7 @@ import {
     XPBoxes,
 } from './index';
 
-const MainPage = () => {
+export const MainPage = () => {
     return (
         <Container className='mx-2'>
             <Buttons/>
@@ -43,6 +43,3 @@ const MainPage = () => {
         </Container>
     );
 };
-
-export default MainPage;
-

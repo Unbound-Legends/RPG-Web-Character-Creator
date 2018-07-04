@@ -4,7 +4,7 @@ import {Button, Col, Row} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {CustomTalents, TalentBlock} from './index';
 
-class Talents extends React.Component {
+class Component extends React.Component {
     state = {modal: false};
 
     render() {
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Talents);
+export const Talents = connect(mapStateToProps)(Component);

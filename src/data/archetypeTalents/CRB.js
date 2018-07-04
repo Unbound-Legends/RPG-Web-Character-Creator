@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
     readyforanything: {
         name: 'Ready for Anything',
         activation: true,
@@ -171,4 +171,4 @@ export default {
         source: 'CRB page 183',
         description: 'See CRB, page 183, for more details.',
     }
-}
+};

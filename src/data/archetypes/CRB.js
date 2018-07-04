@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
     AverageHuman: {
         name: 'Average Human',
         book: 'CRB',
@@ -316,4 +316,4 @@ export default {
             Presence: 3
         }
     }
-}
+};

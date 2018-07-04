@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
     BoughtInfo: {
         name: 'Bought Info',
         setting: 'All',
@@ -797,4 +797,4 @@ export default {
         page: '81',
         description: 'See CRB, page 81, for more details.'
     },
-}
+};

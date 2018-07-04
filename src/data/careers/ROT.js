@@ -1,6 +1,6 @@
 //Realms of Terrinoth careers
 
-export default {
+export const ROT = {
     Disciple: {
         name: 'Disciple',
         setting: 'Fantasy',
@@ -57,4 +57,4 @@ export default {
         description: 'See ROT, page 73, for more details.',
         skills: ['Brawl', 'Coercion', 'Leadership', 'MeleeHeavy', 'MeleeLight', 'Resilience', 'Riding', 'Vigilance']
     }
-}
+};

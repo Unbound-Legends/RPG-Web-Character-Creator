@@ -5,7 +5,7 @@ import {changeData} from '../actions';
 import {ArchetypeStats} from './index';
 import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
-class Archetype extends React.Component {
+class Component extends React.Component {
 
     handleSelect = (event) => {
         let value = event.target.value === '' ? null : event.target.value;
@@ -53,4 +53,4 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(Archetype)
+export const Archetype = connect(mapStateToProps, matchDispatchToProps)(Component);

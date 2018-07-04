@@ -1,4 +1,4 @@
-export default {
+export const ROT = {
     axe: {
         name: 'Axe',
         skill: 'MeleeLight',
@@ -376,4 +376,4 @@ export default {
         page: 95,
         setting: 'Fantasy'
     }
-}
+};

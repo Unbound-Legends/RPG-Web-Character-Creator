@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Col, Row} from 'reactstrap';
 import {MotivationBlock} from './index';
 
-class Motivation extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {masterMotivations} = this.props;
@@ -27,4 +27,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Motivation);
+export const Motivation = connect(mapStateToProps)(Component);

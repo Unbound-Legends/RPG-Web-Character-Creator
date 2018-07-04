@@ -4,7 +4,7 @@ import {Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
-class CharacterDescription extends React.Component {
+class Component extends React.Component {
     state = {description: this.props.description};
 
     componentWillReceiveProps(nextProps) {
@@ -66,4 +66,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(CharacterDescription);
+export const CharacterDescription = connect(mapStateToProps, matchDispatchToProps)(Component);

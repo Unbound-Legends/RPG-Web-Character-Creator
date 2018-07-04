@@ -4,7 +4,7 @@ import {Col, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
-class Notes extends React.Component {
+class Component extends React.Component {
     state = {notes: this.props.description.notes};
 
     componentWillReceiveProps(nextProps) {
@@ -54,4 +54,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Notes);
+export const Notes = connect(mapStateToProps, matchDispatchToProps)(Component);

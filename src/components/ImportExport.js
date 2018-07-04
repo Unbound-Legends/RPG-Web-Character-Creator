@@ -6,7 +6,7 @@ import {Button, Col, FormGroup, Input, Label, Row} from 'reactstrap';
 import {customDataTypes, dataTypes} from "../data/lists";
 import {db} from "../firestore/db";
 
-class ImportExport extends React.Component {
+class Component extends React.Component {
     state = {characters: [], customDataSets: []};
 
     generateFileName = () => {
@@ -190,4 +190,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({importCharacter, importCustomDataSet}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(ImportExport);
+export const ImportExport = connect(mapStateToProps, matchDispatchToProps)(Component);

@@ -2,7 +2,7 @@ import React from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
 
-class Notes extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {description} = this.props;
@@ -26,4 +26,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Notes);
+export const Notes = connect(mapStateToProps)(Component);

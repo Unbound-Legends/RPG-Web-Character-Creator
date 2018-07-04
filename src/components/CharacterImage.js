@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 
-class CharacterImage extends React.Component {
+class Component extends React.Component {
     state = {modal: false, text: this.props.description.image};
 
     handleChange = (event) => {
@@ -58,4 +58,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(CharacterImage);
+export const CharacterImage = connect(mapStateToProps, matchDispatchToProps)(Component);

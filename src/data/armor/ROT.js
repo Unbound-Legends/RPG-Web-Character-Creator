@@ -1,4 +1,4 @@
-export default {
+export const ROT = {
     brigandine: {
         name: 'Brigandine',
         defense: 1,
@@ -19,7 +19,8 @@ export default {
         rarity: 4,
         book: 'ROT',
         page: 96,
-        setting: 'Fantasy'
+        setting: 'Fantasy',
+        modifier: {Stealth: '[black]'},
     },
     heavyRobes: {
         name: 'Heavy Robes',
@@ -63,7 +64,9 @@ export default {
         rarity: 6,
         book: 'ROT',
         page: 97,
-        setting: 'Fantasy'
+        setting: 'Fantasy',
+        modifier: {Stealth: '[black] [black]'},
+
     },
     scale: {
         name: 'Scale',
@@ -74,6 +77,7 @@ export default {
         rarity: 4,
         book: 'ROT',
         page: 97,
-        setting: 'Fantasy'
+        setting: 'Fantasy',
+        modifier: {Stealth: '[black]'},
     }
-}
+};

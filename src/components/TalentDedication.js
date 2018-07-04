@@ -5,7 +5,7 @@ import {Input, Row} from 'reactstrap';
 import {changeData} from '../actions';
 import {characteristics} from '../reducers';
 
-class TalentDedication extends React.Component {
+class Component extends React.Component {
     state = {options: []};
 
     componentWillMount() {
@@ -57,4 +57,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData: changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(TalentDedication);
+export const TalentDedication = connect(mapStateToProps, matchDispatchToProps)(Component);

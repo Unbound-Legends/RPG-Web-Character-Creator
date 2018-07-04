@@ -6,7 +6,7 @@ import {changeData} from '../actions';
 import {criticalText} from '../reducers';
 import {Description} from './index';
 
-class Critical extends React.Component {
+class Component extends React.Component {
     state = {value: '', modal: false};
 
     handleSubmit = (event) => {
@@ -79,4 +79,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Critical);
+export const Critical = connect(mapStateToProps, matchDispatchToProps)(Component);

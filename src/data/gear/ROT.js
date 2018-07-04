@@ -1,4 +1,4 @@
-export default {
+export const ROT = {
     alchemistKit: {
         name: 'Alchemist\'s Kit',
         encumbrance: 3,
@@ -26,14 +26,16 @@ export default {
         page: 100,
         setting: 'Fantasy'
     },
-    Backpack: {
-        name: 'Alchemist\'s Kit',
-        encumbrance: "+4",
+    backpack: {
+        name: 'Backpack',
+        encumbrance: 0,
         price: 50,
         rarity: 3,
         book: 'ROT',
         page: 100,
-        setting: 'Fantasy'
+        setting: 'Fantasy',
+        modifier: {maxEncumbrance: 4}
+
     },
     bedroll: {
         name: 'Bedroll',
@@ -179,4 +181,4 @@ export default {
         page: 101,
         setting: 'Fantasy'
     }
-}
+};

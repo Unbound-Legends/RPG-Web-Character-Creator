@@ -97,8 +97,8 @@ export const calcTalentCount = createSelector(
 );
 
 export const calcSkillDice = createSelector(
-    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount, archetype, archetypes, archetypeTalents,
-    (characteristics, skillRanks, skills, talents, talentCount, archetype, archetypes, archetypeTalents) => {
+    calcCharacteristics, calcSkillRanks, skills, talents, calcTalentCount, archetype, archetypes, archetypeTalents, weapons, armor, gear, equipmentWeapons, equipmentArmor, equipmentGear,
+    (characteristics, skillRanks, skills, talents, talentCount, archetype, archetypes, archetypeTalents, weapons, armor, gear, equipmentWeapons, equipmentArmor, equipmentGear) => {
         if (!characteristics) return '';
         let skillDice = {};
         Object.keys(skills).forEach(key => {
@@ -141,6 +141,29 @@ export const calcSkillDice = createSelector(
                     });
                 }
             }
+
+            //get dice from equipment
+            ['armor', 'weapons', 'gear'].forEach(type => {
+                let data;
+                if (type === 'armor') data = {...equipmentArmor};
+                if (type === 'weapons') data = {...equipmentWeapons};
+                if (type === 'gear') data = {...equipmentGear};
+                Object.keys(data).forEach(item => {
+                    if (data[item].equipped) {
+                        let list;
+                        let id = data[item].id;
+                        if (type === 'armor' && armor[id]) list = armor[id].modifier;
+                        if (type === 'weapons' && weapons[id]) list = weapons[id].modifier;
+                        if (type === 'gear' && gear[id]) list = gear[id].modifier;
+                        if (list) {
+                            Object.keys(list).forEach(modifier => {
+                                if (modifier === key) text += list[modifier] + ' ';
+                            });
+                        }
+                    }
+                })
+            });
+
             skillDice[key] = text;
         });
         return skillDice;

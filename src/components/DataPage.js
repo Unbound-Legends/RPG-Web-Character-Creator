@@ -2,7 +2,7 @@ import React from 'react';
 import {Col, Container, Row} from 'reactstrap';
 import {CustomDataSelect, ImportExport} from './index';
 
-const DataPage = () => {
+export const DataPage = () => {
     return (
         <Container className='mx-2'>
             <Row>
@@ -16,5 +16,3 @@ const DataPage = () => {
         </Container>
     )
 };
-
-export default DataPage;

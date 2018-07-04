@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData} from '../actions';
 
-class CustomSkills extends React.Component {
+class Component extends React.Component {
     state = {name: '', type: '', characteristic: ''};
 
     handleChange = (event) => {
@@ -132,4 +132,4 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(CustomSkills)
+export const CustomSkills = connect(mapStateToProps, matchDispatchToProps)(Component);

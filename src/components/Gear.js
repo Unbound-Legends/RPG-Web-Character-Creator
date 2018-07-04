@@ -4,7 +4,7 @@ import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 're
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
-class Gear extends React.Component {
+class Component extends React.Component {
 
     handleAdd = (event) => {
         const {type, changeData} = this.props;
@@ -33,8 +33,8 @@ class Gear extends React.Component {
                 return (
                     <tr className='text-center'>
                         <th>Add</th>
-                        <th>Name</th>
-                        <th>Skill</th>
+                        <th className='text-left'>Name</th>
+                        <th className='text-left'>Skill</th>
                         <th>DAM</th>
                         <th>CRIT</th>
                     </tr>
@@ -43,18 +43,16 @@ class Gear extends React.Component {
                 return (
                     <tr className='text-center'>
                         <th>Add</th>
-                        <th>Name</th>
+                        <th className='text-left'>Name</th>
                         <th>Soak</th>
                         <th>Defense</th>
-                        <th>Book</th>
-                        <th>Setting</th>
                     </tr>
                 );
             case 'equipmentGear':
                 return (
                     <tr className='text-center'>
                         <th>Add</th>
-                        <th>Name</th>
+                        <th className='text-left'>Name</th>
                         <th>Price</th>
                     </tr>
                 );
@@ -73,7 +71,7 @@ class Gear extends React.Component {
                             <Button color='secondary' name={item} onClick={this.handleAdd}>+</Button>
                         </td>
                         <td>{weapons[item].name}</td>
-                        <td>{skills[weapons[item].skill].name}</td>
+                        <td>{skills[weapons[item].skill] && skills[weapons[item].skill].name}</td>
                         <td className='text-center'>{weapons[item].damage}</td>
                         <td className='text-center'>{weapons[item].critical}</td>
                     </tr>
@@ -88,8 +86,6 @@ class Gear extends React.Component {
                         <td>{armor[item].name}</td>
                         <td className='text-center'>{armor[item].soak}</td>
                         <td className='text-center'>{armor[item].defense}</td>
-                        <td>{armor[item].book}</td>
-                        <td>{armor[item].setting}</td>
                     </tr>
                 );
             case 'equipmentGear':
@@ -167,4 +163,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Gear);
+export const Gear = connect(mapStateToProps, matchDispatchToProps)(Component);

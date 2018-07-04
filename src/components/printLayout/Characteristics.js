@@ -4,7 +4,7 @@ import {Row} from 'reactstrap';
 import {characteristics} from "../../reducers";
 import {chars} from '../../data/lists';
 
-class Characteristics extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {characteristics} = this.props;
@@ -33,4 +33,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Characteristics);
+export const Characteristics = connect(mapStateToProps)(Component);

@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
 
     Entertainer: {
         name: 'Entertainer',
@@ -128,4 +128,4 @@ export default {
         description: 'See CRB, page 43, for more details.',
         skills: ['Arcana', 'Coercion', 'Discipline', 'Knowledge', 'Leadership', 'Skullduggery', 'Stealth', 'Vigilance', 'Alchemy']
     }
-}
+};

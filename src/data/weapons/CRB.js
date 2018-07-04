@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
     knife: {
         name: 'Knife',
         skill: 'Melee',
@@ -847,4 +847,4 @@ export default {
         page: 184,
         setting: 'Space Opera'
     }
-}
+};

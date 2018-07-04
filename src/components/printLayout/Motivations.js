@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Card, CardBody, CardHeader, Row} from 'reactstrap';
 
-class Motivations extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {masterMotivations} = this.props;
@@ -38,4 +38,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Motivations);
+export const Motivations = connect(mapStateToProps)(Component);

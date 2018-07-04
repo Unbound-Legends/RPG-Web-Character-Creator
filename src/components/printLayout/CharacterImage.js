@@ -2,7 +2,7 @@ import React from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
 
-class CharacterImage extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {description} = this.props;
@@ -24,4 +24,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(CharacterImage);
+export const CharacterImage = connect(mapStateToProps)(Component);

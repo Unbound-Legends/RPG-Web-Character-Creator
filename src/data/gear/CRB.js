@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
     backpack: {
         name: 'Backpack',
         encumbrance: 0,
@@ -27,4 +27,4 @@ export default {
         page: 94,
         setting: 'Fantasy'
     }
-}
+};

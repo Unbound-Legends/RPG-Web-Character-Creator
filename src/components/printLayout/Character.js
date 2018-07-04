@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Col, Row} from 'reactstrap';
 
-class Character extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {archetype, archetypes, careers, career, characterList, character, description} = this.props;
@@ -68,4 +68,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Character);
+export const Character = connect(mapStateToProps)(Component);

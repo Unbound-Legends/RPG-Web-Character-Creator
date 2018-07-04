@@ -8,7 +8,7 @@ import {Button, Col, Row} from 'reactstrap';
 import {PrintLayout} from './printLayout/index';
 
 
-class Buttons extends React.Component {
+class Component extends React.Component {
 
     handleClick = () => {
         firebase.auth().signOut()
@@ -51,4 +51,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeUser, addCharacter, changePrintContent}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Buttons);
+export const Buttons = connect(mapStateToProps, matchDispatchToProps)(Component);

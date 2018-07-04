@@ -1,5 +1,5 @@
 //Realms of Terrinoth Archetypes
-export default {
+export const ROT = {
     DeepElf: {
         name: 'Deep Elf',
         book: 'ROT',
@@ -260,4 +260,4 @@ export default {
             Presence: 3
         }
     }
-}
+};

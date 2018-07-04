@@ -8,7 +8,7 @@ const seedrandom = require('seedrandom');
 let rng = seedrandom('added entropy.', {entropy: true});
 
 
-class MotivationBlock extends React.Component {
+class Component extends React.Component {
     state = {description: this.props.masterMotivations[this.props.type].description};
 
     componentWillReceiveProps(nextProps) {
@@ -95,4 +95,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(MotivationBlock);
+export const MotivationBlock = connect(mapStateToProps, matchDispatchToProps)(Component);

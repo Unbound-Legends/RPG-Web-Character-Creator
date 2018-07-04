@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Col, Row} from 'reactstrap';
 
-const About = () => {
+export const About = () => {
     return (
         <div className='d-print-none m-2'>
             <Col>
@@ -35,4 +35,3 @@ const About = () => {
         </div>
     )
 };
-export default About;

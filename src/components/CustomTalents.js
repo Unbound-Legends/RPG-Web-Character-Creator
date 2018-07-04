@@ -6,7 +6,7 @@ import {changeCustomData, changeData} from '../actions';
 
 const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'];
 
-class CustomTalents extends React.Component {
+class Component extends React.Component {
     state = {
         name: '',
         tier: '',
@@ -351,4 +351,4 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(CustomTalents)
+export const CustomTalents = connect(mapStateToProps, matchDispatchToProps)(Component);

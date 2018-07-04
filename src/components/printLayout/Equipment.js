@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Description} from "../index";
 import {gearDice, skillDice} from "../../reducers";
 
-class Equipment extends React.Component {
+class Component extends React.Component {
 
     getLabel = (type, block, key) => {
         const {equipmentArmor, equipmentWeapons, equipmentGear, weapons, armor, gear, skills, qualities, gearDice} = this.props;
@@ -188,4 +188,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Equipment);
+export const Equipment = connect(mapStateToProps)(Component);

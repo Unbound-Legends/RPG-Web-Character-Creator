@@ -5,7 +5,7 @@ import {characteristics} from '../reducers'
 import {Characteristics} from './index';
 import {chars} from '../data/lists';
 
-class ShowCharacteristics extends React.Component {
+class Component extends React.Component {
     state = {modal: false};
 
     render() {
@@ -39,4 +39,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(ShowCharacteristics);
+export const ShowCharacteristics = connect(mapStateToProps)(Component);

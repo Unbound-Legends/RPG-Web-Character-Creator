@@ -2,7 +2,7 @@ import React from 'react';
 import {Col, Row} from 'reactstrap';
 import {connect} from 'react-redux';
 
-class CharacterDescription extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {description} = this.props;
@@ -41,4 +41,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(CharacterDescription);
+export const CharacterDescription = connect(mapStateToProps)(Component);

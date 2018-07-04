@@ -1,5 +1,5 @@
-import {default as CRB} from './CRB'
-import {default as ROT} from './ROT'
+import {CRB} from './CRB'
+import {ROT} from './ROT'
 import merge from 'deepmerge';
 //import { intersection } from 'lodash-es'
 

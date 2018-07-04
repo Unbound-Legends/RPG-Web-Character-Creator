@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData, changeData} from '../actions';
 
-class CustomCareers extends React.Component {
+class Component extends React.Component {
     state = {name: '', selectedSkills: [], description: '', setting: ''};
 
     handleChange = (event) => {
@@ -153,4 +153,4 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(CustomCareers)
+export const CustomCareers = connect(mapStateToProps, matchDispatchToProps)(Component);

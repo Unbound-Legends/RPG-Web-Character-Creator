@@ -1,6 +1,5 @@
 //Realms of Terrinoth Skills
-
-export default {
+export const ROT = {
     ynfernaelore: {
         name: 'Ynfernael Lore',
         activation: false,
@@ -94,4 +93,4 @@ export default {
         page: '69',
         description: 'See ROT, page 69, for more details.',
     }
-}
+};

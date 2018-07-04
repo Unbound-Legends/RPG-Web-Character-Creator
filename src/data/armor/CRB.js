@@ -1,4 +1,4 @@
-export default {
+export const CRB = {
     heavyJacket: {
         name: 'Heavy Jacket',
         defense: 0,
@@ -10,4 +10,4 @@ export default {
         page: 92,
         setting: 'All'
     }
-}
+};

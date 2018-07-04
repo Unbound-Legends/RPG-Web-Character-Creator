@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../../reducers/index';
 import {Description} from '../index';
 
-class SkillRow extends React.Component {
+class Component extends React.Component {
 
     shortCharacteristics = () => {
         const {skillKey, skills} = this.props;
@@ -69,4 +69,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(SkillRow);
+export const SkillRow = connect(mapStateToProps)(Component);

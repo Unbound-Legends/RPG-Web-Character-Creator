@@ -4,7 +4,7 @@ import {Col, Row} from 'reactstrap';
 import {criticalText} from '../../reducers';
 import {Description} from '../index';
 
-class Critical extends React.Component {
+class Component extends React.Component {
 
     render() {
         const {critical} = this.props;
@@ -36,4 +36,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Critical);
+export const Critical = connect(mapStateToProps)(Component);

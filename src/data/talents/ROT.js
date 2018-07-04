@@ -1,4 +1,4 @@
-export default {
+export const ROT = {
     //Realms of Terrinoth
     Apothecary: {
         name: 'Apothecary',
@@ -710,4 +710,4 @@ export default {
         page: '91',
         description: 'See ROT, page 91, for more details.',
     },
-}
+};
