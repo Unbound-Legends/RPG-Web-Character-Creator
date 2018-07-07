@@ -320,7 +320,7 @@ export const calcTotalSoak = createSelector(
         let Armor = 0;
         Object.keys(equipmentArmor).forEach(key => {
             let id = equipmentArmor[key].id;
-            if (equipmentArmor[key].equipped) Armor += armor[id].soak ? +armor[id].soak : 0;
+            if (equipmentArmor[key].equipped) Armor += armor[id] ? (armor[id].soak ? +armor[id].soak : 0) : 0;
         });
         //get soak from Enduring Talent
         let talentModifier = 0;
@@ -355,8 +355,8 @@ export const calcTotalDefense = createSelector(
         Object.keys(equipmentArmor).forEach(key => {
             if (equipmentArmor[key].equipped) {
                 let id = equipmentArmor[key].id;
-                defense.melee += (armor[id].meleeDefense ? +armor[id].meleeDefense : 0) + (armor[id].defense ? +armor[id].defense : 0);
-                defense.ranged += (armor[id].rangedDefense ? +armor[id].rangedDefense : 0) + (armor[id].defense ? +armor[id].defense : 0);
+                defense.melee += armor[id] ? ((armor[id].meleeDefense ? +armor[id].meleeDefense : 0) + (armor[id].defense ? +armor[id].defense : 0)) : 0;
+                defense.ranged += armor[id] ? ((armor[id].rangedDefense ? +armor[id].rangedDefense : 0) + (armor[id].defense ? +armor[id].defense : 0)) : 0;
             }
         });
 

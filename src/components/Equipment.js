@@ -139,7 +139,7 @@ class Component extends React.Component {
         const {money, equipModal, customEquipmentModal} = this.state;
         return (
             <Col lg='12' onClick={this.handleClick}>
-                <Row className='justify-content-end'><h5>EQUIPMENT LOG</h5></Row>
+                <Row className='justify-content-end'><h5>EQUIPMENT</h5></Row>
                 <hr/>
                 <Row className='my-2'>
                     <b className='my-auto'>MONEY:&nbsp;</b>
