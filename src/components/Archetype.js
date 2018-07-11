@@ -4,18 +4,15 @@ import {connect} from 'react-redux';
 import {changeData} from '../actions';
 import {ArchetypeStats} from './index';
 import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {omit} from 'lodash-es';
 
-class Component extends React.Component {
+class ArchetypeComponent extends React.Component {
 
     handleSelect = (event) => {
         let value = event.target.value === '' ? null : event.target.value;
-        let obj = this.props.misc;
-        if (obj) {
-            if (obj.archetypeTalents) delete obj.archetypeTalents;
-        }
         this.props.changeData(value, 'archetype');
         this.props.changeData('', 'archetypeSpecialSkills');
-        this.props.changeData(obj, 'misc');
+        this.props.changeData(omit(this.props.misc, 'archetypeTalents'), 'misc', false);
     };
 
     render() {
@@ -53,4 +50,4 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-export const Archetype = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const Archetype = connect(mapStateToProps, matchDispatchToProps)(ArchetypeComponent);

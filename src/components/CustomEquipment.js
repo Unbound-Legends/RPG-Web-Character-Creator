@@ -6,7 +6,7 @@ import {changeCustomData} from '../actions';
 import {ControlButtonSet, DeleteButton} from './index';
 import {omit} from 'lodash-es';
 
-class Component extends React.Component {
+class CustomEquipmentComponent extends React.Component {
     state = {
         name: '',
         damage: '',
@@ -308,4 +308,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeCustomData}, dispatch);
 }
 
-export const CustomEquipment = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const CustomEquipment = connect(mapStateToProps, matchDispatchToProps)(CustomEquipmentComponent);

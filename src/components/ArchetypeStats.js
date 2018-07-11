@@ -5,7 +5,7 @@ import {Col, Input, Row} from 'reactstrap';
 import {ArchetypeSkills, Description} from './index';
 import {changeData} from "../actions";
 
-class Component extends React.Component {
+class ArchetypeStatsComponent extends React.Component {
 
     handleSelect = (event) => {
         let obj = {...this.props.misc};
@@ -113,4 +113,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const ArchetypeStats = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const ArchetypeStats = connect(mapStateToProps, matchDispatchToProps)(ArchetypeStatsComponent);

@@ -5,7 +5,7 @@ import {Card, CardBody, CardHeader, CardText} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {TalentSelection} from './index';
 
-class Component extends React.Component {
+class TalentBlockComponent extends React.Component {
     state = {modal: false};
 
     activation = () => {
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
     };
 }
 
-export const TalentBlock = connect(mapStateToProps)(Component);
+export const TalentBlock = connect(mapStateToProps)(TalentBlockComponent);

@@ -12,7 +12,7 @@ import {
     woundThreshold
 } from "../reducers";
 
-class Component extends React.Component {
+class AttributesComponent extends React.Component {
     state = {currentStrain: this.props.currentStrain, currentWound: this.props.currentWound};
 
     componentWillReceiveProps(nextProps) {
@@ -109,4 +109,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const Attributes = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const Attributes = connect(mapStateToProps, matchDispatchToProps)(AttributesComponent);

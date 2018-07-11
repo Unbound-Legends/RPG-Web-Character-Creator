@@ -4,7 +4,10 @@ import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 're
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
-class Component extends React.Component {
+const clone = require('clone');
+
+
+class GearComponent extends React.Component {
 
     handleAdd = (event) => {
         const {type, changeData} = this.props;
@@ -108,13 +111,13 @@ class Component extends React.Component {
         let data;
         switch (type) {
             case 'equipmentWeapons':
-                data = {...weapons};
+                data = clone(weapons);
                 break;
             case 'equipmentArmor':
-                data = {...armor};
+                data = clone(armor);
                 break;
             case 'equipmentGear':
-                data = {...gear};
+                data = clone(gear);
                 break;
             default:
                 break;
@@ -163,4 +166,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const Gear = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const Gear = connect(mapStateToProps, matchDispatchToProps)(GearComponent);

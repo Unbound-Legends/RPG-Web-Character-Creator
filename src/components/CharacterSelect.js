@@ -17,7 +17,7 @@ import {
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
 import {Archetype, Career, CustomArchetypes, CustomCareers} from './index';
 
-class Component extends React.Component {
+class CharacterSelectComponent extends React.Component {
     state = {
         name: this.props.characterList ? this.props.characterList[this.props.character] : '',
         playerName: this.props.description.playerName,
@@ -194,4 +194,4 @@ function matchDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export const CharacterSelect = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const CharacterSelect = connect(mapStateToProps, matchDispatchToProps)(CharacterSelectComponent);

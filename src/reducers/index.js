@@ -14,6 +14,7 @@ const allReducers = combineReducers({
     careerSkillsRank: changeState.careerSkillsRank,
     character: changeState.character,
     characterList: changeState.characterList,
+    craftsmanship: changeState.craftsmanship,
     creationCharacteristics: changeState.creationCharacteristics,
     critical: changeState.critical,
     currentStrain: changeState.currentStrain,
@@ -49,7 +50,6 @@ const allReducers = combineReducers({
     talents: changeState.talents,
     user: changeState.user,
     weapons: changeState.weapons,
-
 });
 
 export const archetypeSkillRank = (state) => derivedStats.calcArchetypeSkillRank(state);
@@ -57,6 +57,7 @@ export const careerCheck = (state) => derivedStats.calcCareerCheck(state);
 export const characteristics = (state) => derivedStats.calcCharacteristics(state);
 export const criticalText = (state) => criticals.criticalText(state);
 export const encumbranceLimit = (state) => derivedStats.calcEncumbranceLimit(state);
+export const equipmentStats = (state) => derivedStats.calcEquipmentStats(state);
 export const gearDice = (state) => derivedStats.calcGearDice(state);
 export const maxCareerSkills = (state) => derivedStats.calcMaxCareerSkills(state);
 export const skillDice = (state) => derivedStats.calcSkillDice(state);

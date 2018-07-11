@@ -5,7 +5,7 @@ import {SkillRow} from './index';
 import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
 
-class Component extends React.Component {
+class SkillBlockComponent extends React.Component {
 
     state = {modal: false};
 
@@ -106,4 +106,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const SkillBlock = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const SkillBlock = connect(mapStateToProps, matchDispatchToProps)(SkillBlockComponent);

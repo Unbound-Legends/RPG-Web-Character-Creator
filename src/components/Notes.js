@@ -4,7 +4,10 @@ import {Col, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
-class Component extends React.Component {
+const clone = require('clone');
+
+
+class NotesComponent extends React.Component {
     state = {notes: this.props.description.notes};
 
     componentWillReceiveProps(nextProps) {
@@ -13,9 +16,9 @@ class Component extends React.Component {
 
     handleBlur = (event) => {
         const {changeData, description} = this.props;
-        let newObj = {...description};
-        newObj.notes = this.state.notes;
-        changeData(newObj, 'description');
+        let obj = clone(description);
+        obj.notes = this.state.notes;
+        changeData(obj, 'description');
         event.preventDefault();
     };
 
@@ -54,4 +57,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const Notes = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const Notes = connect(mapStateToProps, matchDispatchToProps)(NotesComponent);

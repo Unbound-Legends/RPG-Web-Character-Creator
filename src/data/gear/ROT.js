@@ -8,7 +8,7 @@ export const ROT = {
         page: 100,
         setting: 'Fantasy'
     },
-    alchemistLab: {
+    AlchemistLab: {
         name: 'Alchemist\'s Lab',
         encumbrance: 8,
         price: 600,

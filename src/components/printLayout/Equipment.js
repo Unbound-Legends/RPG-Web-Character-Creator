@@ -59,7 +59,7 @@ class Component extends React.Component {
             case 'qualities':
                 return (
                     <td key={type + key + block}>
-                        {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality].name} ${item[block][quality]}`).sort().join(', ')}
+                        {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality] ? qualities[quality].name : 'Quality not found'} ${item[block][quality]}`).sort().join(', ')}
                     </td>
                 );
             case 'gearDice':

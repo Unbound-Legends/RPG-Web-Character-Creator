@@ -6,6 +6,9 @@ import {changeData} from '../actions';
 import {talentCount} from '../reducers';
 import {Description, TalentDedication} from './index';
 
+const clone = require('clone');
+
+
 const modifiableAttributes = {
     woundThreshold: 'Wound Threshold',
     strainThreshold: 'Stain Threshold',
@@ -15,7 +18,7 @@ const modifiableAttributes = {
     defense: 'Defense'
 };
 
-class Component extends React.Component {
+class TalentSelectionComponent extends React.Component {
     state = {
         talentSelection: this.props.talentKey,
         selection: this.props.talentModifiers.Dedication[this.props.row] ? this.props.talentModifiers.Dedication[this.props.row] : '',
@@ -50,30 +53,30 @@ class Component extends React.Component {
     handleSubmit = () => {
         const {row, tier, masterTalents, talentModifiers, changeData, handleClose} = this.props;
         const {talentSelection, selection} = this.state;
-        let newObj = {...masterTalents};
-        newObj[row][tier] = talentSelection;
+        let obj = clone(masterTalents);
+        obj[row][tier] = talentSelection;
         //if the new talents isn't blank make a new empty block
         if (talentSelection !== '') {
             //select tier 1 talent, add the next tier 1 row
-            if (tier === 1 && !newObj[row + 1]) newObj[row + 1] = {1: ''};
+            if (tier === 1 && !obj[row + 1]) obj[row + 1] = {1: ''};
             //if the row allows, add the next tier
             if (row > tier && 5 > tier) {
-                if (masterTalents[row - 1][tier + 1] !== '' && !newObj[row][tier + 1]) newObj[row][tier + 1] = '';
+                if (masterTalents[row - 1][tier + 1] !== '' && !obj[row][tier + 1]) obj[row][tier + 1] = '';
             }
             //add the same tier in the next row if it wasn't allowed in a previous select
             if (masterTalents[row + 1]) {
                 if (!masterTalents[row + 1][tier]) {
-                    if (masterTalents[row + 1][tier - 1] && masterTalents[row + 1][tier - 1] !== '') newObj[row + 1][tier] = '';
+                    if (masterTalents[row + 1][tier - 1] && masterTalents[row + 1][tier - 1] !== '') obj[row + 1][tier] = '';
                 }
             }
         }
 
-        changeData(newObj, 'masterTalents');
+        changeData(obj, 'masterTalents');
         //add dedication info to talentModifiers
         if (selection !== '') {
-            let newObj2 = {...talentModifiers};
-            newObj2.Dedication[row] = selection;
-            changeData(newObj2, 'talentModifiers');
+            let obj2 = clone(talentModifiers);
+            obj2.Dedication[row] = selection;
+            changeData(obj2, 'talentModifiers');
         }
         handleClose();
     };
@@ -195,4 +198,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const TalentSelection = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const TalentSelection = connect(mapStateToProps, matchDispatchToProps)(TalentSelectionComponent);

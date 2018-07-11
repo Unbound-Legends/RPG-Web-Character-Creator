@@ -6,7 +6,7 @@ import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
 import {XPPopup} from './index';
 
-class Component extends React.Component {
+class XPBoxesComponent extends React.Component {
     state = {modal: false};
 
     render() {
@@ -41,4 +41,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const XPBoxes = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const XPBoxes = connect(mapStateToProps, matchDispatchToProps)(XPBoxesComponent);

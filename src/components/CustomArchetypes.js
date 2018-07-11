@@ -7,7 +7,7 @@ import {changeCustomData, changeData} from '../actions';
 const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
 
 
-class Component extends React.Component {
+class CustomArchetypesComponent extends React.Component {
     state = {
         name: '',
         Brawn: 2,
@@ -297,4 +297,4 @@ function matchDispatchToProps(dispatch) {
 }
 
 
-export const CustomArchetypes = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const CustomArchetypes = connect(mapStateToProps, matchDispatchToProps)(CustomArchetypesComponent);

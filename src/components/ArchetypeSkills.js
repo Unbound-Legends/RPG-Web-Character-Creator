@@ -4,7 +4,7 @@ import {Button, Col, Input, Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
 
-class Component extends React.Component {
+class ArchetypeSkillsComponent extends React.Component {
 
     handleCheck = (event) => {
         const {archetype, changeData, archetypeSpecialSkills, archetypes} = this.props;
@@ -68,4 +68,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const ArchetypeSkills = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const ArchetypeSkills = connect(mapStateToProps, matchDispatchToProps)(ArchetypeSkillsComponent);

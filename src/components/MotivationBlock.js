@@ -4,11 +4,14 @@ import {connect} from 'react-redux';
 import {Card, CardBody, CardFooter, CardHeader, Input, InputGroup, InputGroupAddon} from 'reactstrap';
 import {changeData} from '../actions';
 
+const clone = require('clone');
+
+
 const seedrandom = require('seedrandom');
 let rng = seedrandom('added entropy.', {entropy: true});
 
 
-class Component extends React.Component {
+class MotivationBlockComponent extends React.Component {
     state = {description: this.props.masterMotivations[this.props.type].description};
 
     componentWillReceiveProps(nextProps) {
@@ -22,20 +25,20 @@ class Component extends React.Component {
 
     handleSelect = (event) => {
         const {masterMotivations, type, motivations, changeData} = this.props;
-        let newObj = {...masterMotivations};
-        newObj[type] = {
+        let obj = clone(masterMotivations);
+        obj[type] = {
             key: event.target.value,
             description: motivations[type][event.target.value] ? motivations[type][event.target.value] : ''
         };
-        changeData(newObj, 'masterMotivations');
+        changeData(obj, 'masterMotivations');
         event.preventDefault();
     };
 
     handleBlur = (event) => {
         const {masterMotivations, type, changeData} = this.props;
-        let newObj = {...masterMotivations};
-        newObj[type].description = this.state.description;
-        changeData(newObj, 'masterMotivations');
+        let obj = clone(masterMotivations);
+        obj[type].description = this.state.description;
+        changeData(obj, 'masterMotivations');
         event.preventDefault();
     };
 
@@ -43,9 +46,9 @@ class Component extends React.Component {
         const {motivations, type, masterMotivations, changeData} = this.props;
         const list = Object.keys(motivations[type]);
         let newKey = list[Math.floor(rng() * list.length)];
-        let newObj = {...masterMotivations};
-        newObj[type] = {key: newKey, description: motivations[type][newKey]};
-        changeData(newObj, 'masterMotivations')
+        let obj = clone(masterMotivations);
+        obj[type] = {key: newKey, description: motivations[type][newKey]};
+        changeData(obj, 'masterMotivations', false)
     };
 
     render() {
@@ -59,7 +62,7 @@ class Component extends React.Component {
                         <InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>
                         <Input type='select' onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
                             <option value=''/>
-                            {Object.keys(motivations[type]).map((key) =>
+                            {Object.keys(motivations[type]).map(key =>
                                 <option key={key} value={key}>{key}</option>
                             )}
                         </Input>
@@ -73,7 +76,7 @@ class Component extends React.Component {
                               className='textField'
                               maxLength='1000'
                               placeholder={description ? '' : `Enter your ${type}...`}
-                              value={description ? description : ''}>
+                              value={description}>
                     </textarea>
                 </CardBody>
                 <CardFooter>
@@ -95,4 +98,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const MotivationBlock = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const MotivationBlock = connect(mapStateToProps, matchDispatchToProps)(MotivationBlockComponent);

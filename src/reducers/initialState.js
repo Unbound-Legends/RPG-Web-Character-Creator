@@ -1,10 +1,9 @@
 import React from 'react';
 
-
-export const masterMotivations = {
-    Desire: {}, Fear: {}, Strength: {}, Flaw: {}
-};
-
+export const archetype = null;
+export const archetypeSpecialSkills = {};
+export const career = null;
+export const careerSkillsRank = [];
 export const creationCharacteristics = {
     Brawn: 0,
     Agility: 0,
@@ -13,21 +12,24 @@ export const creationCharacteristics = {
     Willpower: 0,
     Presence: 0
 };
-
-export const talentModifiers = {
-    Dedication: {},
-};
-
+export const critical = [];
+export const currentWound = 0;
+export const currentStrain = 0;
 export const description = {
     name: 'New Character',
     playerName: 'Enter Player Name',
-    setting: '',
+    setting: 'all',
 };
-
-export function masterTalents() {
-    let talent = {1: ''};
-    return {1: talent};
-}
+export const earnedXP = 0;
+export const equipmentArmor = {};
+export const equipmentGear = {};
+export const equipmentWeapons = {};
+export const masterMotivations = {Desire: {}, Fear: {}, Strength: {}, Flaw: {}};
+export const masterSkills = {};
+export const masterTalents = {1: {1: ''}};
+export const misc = null;
+export const money = 0;
+export const talentModifiers = {Dedication: {},};
 
 export const printContent = <h1 className='text-left m-3' style={{whiteSpace: 'pre-line'}}>
     {`You savage. I made print button and you dare to use the print function in the browser?!?!\n
@@ -36,3 +38,7 @@ export const printContent = <h1 className='text-left m-3' style={{whiteSpace: 'p
     PROBABLY!\n\n
     -Sky`}
 </h1>;
+
+
+
+

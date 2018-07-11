@@ -22,7 +22,7 @@ import {
     loadCustomDataSet
 } from '../actions';
 
-class Component extends React.Component {
+class CustomDataSelectComponent extends React.Component {
     state = {
         name: this.props.customDataList ? this.props.customDataList[this.props.customDataSet] : '',
         deleteModal: false,
@@ -126,4 +126,4 @@ function matchDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export const CustomDataSelect = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const CustomDataSelect = connect(mapStateToProps, matchDispatchToProps)(CustomDataSelectComponent);

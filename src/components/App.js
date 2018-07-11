@@ -8,7 +8,7 @@ import '@firebase/auth';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
 
-class Component extends React.Component {
+class AppComponent extends React.Component {
     state = {loading: true};
 
     componentWillMount() {
@@ -80,4 +80,4 @@ function matchDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export const App = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const App = connect(mapStateToProps, matchDispatchToProps)(AppComponent);

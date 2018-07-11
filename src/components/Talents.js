@@ -4,7 +4,7 @@ import {Button, Col, Row} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {CustomTalents, TalentBlock} from './index';
 
-class Component extends React.Component {
+class TalentsComponent extends React.Component {
     state = {modal: false};
 
     render() {
@@ -15,9 +15,9 @@ class Component extends React.Component {
                                                                              className='noUnderLine p-0 mt-1'
                                                                              onClick={() => this.setState({modal: true})}>⚙</Button></Row>
                 <hr/>
-                {Object.keys(masterTalents).map((row) =>
+                {Object.keys(masterTalents).map(row =>
                     <Row key={row} className=''>
-                        {Object.keys(masterTalents[row]).map((tier) =>
+                        {Object.keys(masterTalents[row]).map(tier =>
                             <TalentBlock key={row + tier}
                                          row={+row}
                                          tier={+tier}
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
     };
 }
 
-export const Talents = connect(mapStateToProps)(Component);
+export const Talents = connect(mapStateToProps)(TalentsComponent);

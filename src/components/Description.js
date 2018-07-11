@@ -6,7 +6,7 @@ export class Description extends React.Component {
         if (this.props.text === null || this.props.text === undefined) return '';
         let text = this.props.text.split(' ');
         let newString = [];
-        text.forEach((word) => {
+        text.forEach(word => {
             switch (true) {
                 case word.includes('CRB'):
                     newString.push(`<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">${word}</a> `);

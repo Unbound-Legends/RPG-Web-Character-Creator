@@ -4,7 +4,7 @@ import {Button, ButtonGroup, Modal, ModalBody, ModalHeader, Row} from 'reactstra
 import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
 
-class Component extends React.Component {
+class XPPopupComponent extends React.Component {
     state = {earnedXP: this.props.earnedXP};
 
     componentWillReceiveProps(nextProps) {
@@ -59,4 +59,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const XPPopup = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const XPPopup = connect(mapStateToProps, matchDispatchToProps)(XPPopupComponent);

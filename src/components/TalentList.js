@@ -4,7 +4,7 @@ import {Row, Table} from 'reactstrap';
 import {talentCount} from '../reducers';
 import {Description} from './index'
 
-class Component extends React.Component {
+class TalentListComponent extends React.Component {
 
     render() {
         const {archetype, archetypes, archetypeTalents, talents, talentCount, misc} = this.props;
@@ -71,4 +71,4 @@ function mapStateToProps(state) {
     };
 }
 
-export const TalentList = connect(mapStateToProps)(Component);
+export const TalentList = connect(mapStateToProps)(TalentListComponent);

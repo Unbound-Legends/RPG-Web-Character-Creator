@@ -5,7 +5,7 @@ import {changeData} from '../actions';
 import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../reducers';
 import {Description} from './index';
 
-class Component extends React.Component {
+class SkillRowComponent extends React.Component {
 
     handleRankChange = (event) => {
         const {masterSkills, skillKey, changeData, careerSkillsRank, archetypeSkillRank, careerCheck} = this.props;
@@ -88,4 +88,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const SkillRow = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const SkillRow = connect(mapStateToProps, matchDispatchToProps)(SkillRowComponent);

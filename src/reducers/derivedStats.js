@@ -1,4 +1,7 @@
 import {createSelector} from 'reselect';
+import {lowerCase, replace} from 'lodash-es';
+
+const clone = require('clone');
 
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
@@ -8,6 +11,7 @@ const armor = state => state.armor;
 const career = state => state.career;
 const careers = state => state.careers;
 const careerSkillsRank = state => state.careerSkillsRank;
+const craftsmanship = state => state.craftsmanship;
 const creationCharacteristics = state => state.creationCharacteristics;
 const earnedXP = state => state.earnedXP;
 const equipmentArmor = state => state.equipmentArmor;
@@ -200,10 +204,12 @@ export const calcGearDice = createSelector(
                 if (list) {
                     Object.keys(list).forEach(quality => {
                         let rank = list[quality] === '' ? 1 : list[quality];
-                        if (qualities[quality].modifier) {
-                            if (qualities[quality].modifier.check) {
-                                for (let i = 0; i < rank; i++) {
-                                    qualityDice.push(qualities[quality].modifier.check);
+                        if (qualities[quality]) {
+                            if (qualities[quality].modifier) {
+                                if (qualities[quality].modifier.check) {
+                                    for (let i = 0; i < rank; i++) {
+                                        qualityDice.push(qualities[quality].modifier.check);
+                                    }
                                 }
                             }
                         }
@@ -381,9 +387,11 @@ export const calcTotalDefense = createSelector(
                 if (list) {
                     Object.keys(list).forEach(quality => {
                         let rank = list[quality] === '' ? 1 : list[quality];
-                        if (qualities[quality].modifier) {
-                            if (qualities[quality].modifier.meleeDefense) defense.melee += +qualities[quality].modifier.meleeDefense * rank;
-                            if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank;
+                        if (qualities[quality]) {
+                            if (qualities[quality].modifier) {
+                                if (qualities[quality].modifier.meleeDefense) defense.melee += +qualities[quality].modifier.meleeDefense * rank;
+                                if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank;
+                            }
                         }
                     });
                 }
@@ -489,6 +497,62 @@ export const calcTotalXP = createSelector(
     (archetype, archetypes, earnedXP) => {
         if (!archetype || !archetypes[archetype]) return earnedXP;
         return +archetypes[archetype].experience + +earnedXP;
+    }
+);
+
+export const calcEquipmentStats = createSelector(
+    armor, gear, weapons, equipmentArmor, equipmentGear, equipmentWeapons, craftsmanship,
+    (armor, gear, weapons, equipmentArmor, equipmentGear, equipmentWeapons, craftsmanship) => {
+        let final = {};
+        ['equipmentArmor', 'equipmentGear', 'equipmentWeapons'].forEach(equipments => {
+            let data, inventory;
+            let type = `${lowerCase(replace(equipments, 'equipment', ''))}`;
+            switch (equipments) {
+                case 'equipmentWeapons':
+                    data = clone(weapons);
+                    inventory = clone(equipmentWeapons);
+                    break;
+                case "equipmentArmor":
+                    data = clone(armor);
+                    inventory = clone(equipmentArmor);
+                    break;
+                case 'equipmentGear':
+                    data = clone(gear);
+                    inventory = clone(equipmentGear);
+                    break;
+                default:
+                    break;
+            }
+            Object.keys(inventory).forEach(item => {
+                let derivedStats = clone(data[inventory[item].id]);
+                let craftType = inventory[item].craftsmanship;
+                if (craftType) {
+                    let craftModifier = clone(craftsmanship[craftType]);
+                    Object.keys(craftModifier[type]).forEach(field => {
+                        if (typeof craftModifier[type][field] === 'object') {
+                            Object.keys(craftModifier[type][field]).forEach(modifier => {
+                                if (typeof craftModifier[type][field][modifier] === 'string') {
+                                    if (!derivedStats[field]) derivedStats[field] = {};
+                                    if (!derivedStats[field][modifier]) derivedStats[field][modifier] = '';
+                                    derivedStats[field][modifier] += ` ${craftModifier[type][field][modifier]}`;
+                                }
+                                else derivedStats[field][modifier] = +craftModifier[type][field][modifier] + derivedStats[field][modifier]
+                            });
+                        }
+                        else derivedStats[field] = +derivedStats[field] + +craftModifier[type][field];
+                    });
+                    if (craftModifier.price && derivedStats.price) derivedStats.price = +craftModifier.price * +derivedStats.price;
+                    if (craftModifier.rarity && derivedStats.rarity) {
+                        derivedStats.rarity = +craftModifier.rarity + +derivedStats.rarity;
+                        if (derivedStats.rarity > 10) derivedStats.rarity = 10;
+                    }
+
+                }
+
+                final[item] = derivedStats;
+            });
+        });
+        return final;
     }
 );
 

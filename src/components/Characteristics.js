@@ -6,7 +6,7 @@ import {changeData} from '../actions';
 import {characteristics} from '../reducers';
 import {chars} from '../data/lists';
 
-class Component extends React.Component {
+class CharacteristicsComponent extends React.Component {
 
     countXP = () => {
         const {archetypes, archetype, creationCharacteristics} = this.props;
@@ -89,4 +89,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const Characteristics = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const Characteristics = connect(mapStateToProps, matchDispatchToProps)(CharacteristicsComponent);

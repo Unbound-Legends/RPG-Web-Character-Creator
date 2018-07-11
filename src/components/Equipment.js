@@ -5,10 +5,13 @@ import {changeData} from '../actions';
 import {Button, ButtonGroup, Col, Input, Row, Table} from 'reactstrap';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {CustomEquipment, DeleteButton, Description, Gear} from "./index";
-import {gearDice, skillDice} from "../reducers";
+import {equipmentStats, gearDice, skillDice} from "../reducers";
 import {omit} from 'lodash-es';
 
-class Component extends React.Component {
+const clone = require('clone');
+
+
+class EquipmentComponent extends React.Component {
     state = {
         money: this.props.money,
         equipModal: false,
@@ -34,9 +37,19 @@ class Component extends React.Component {
     handleStatus = (type, key, status) => {
         const {changeData, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
         let obj = {};
-        if (type === 'equipmentWeapons') obj = {...equipmentWeapons};
-        if (type === 'equipmentArmor') obj = {...equipmentArmor};
-        if (type === 'equipmentGear') obj = {...equipmentGear};
+        switch (type) {
+            case 'equipmentWeapons':
+                obj = clone(equipmentWeapons);
+                break;
+            case "equipmentArmor":
+                obj = clone(equipmentArmor);
+                break;
+            case 'equipmentGear':
+                obj = clone(equipmentGear);
+                break;
+            default:
+                break;
+        }
         if (status === 'equipped' && !obj[key].equipped) obj[key].carried = true;
         if (status === 'carried' && obj[key].equipped) {
             alert(`${obj[key].name} is equipped and cannot be dropped!`);
@@ -65,17 +78,22 @@ class Component extends React.Component {
     getLabel = (type, block, key) => {
         const {equipmentArmor, equipmentWeapons, equipmentGear, weapons, armor, gear, skills, qualities, gearDice} = this.props;
         let data, equipment;
-        if (type === 'equipmentWeapons') {
-            equipment = {...equipmentWeapons};
-            data = {...weapons};
-        }
-        if (type === 'equipmentArmor') {
-            equipment = {...equipmentArmor};
-            data = {...armor};
-        }
-        if (type === 'equipmentGear') {
-            equipment = {...equipmentGear};
-            data = {...gear};
+        switch (type) {
+            case 'equipmentWeapons':
+                equipment = clone(equipmentWeapons);
+                data = clone(weapons);
+                break;
+            case "equipmentArmor":
+                equipment = clone(equipmentArmor);
+                data = clone(armor);
+                break;
+            case 'equipmentGear':
+                equipment = clone(equipmentGear);
+                data = clone(gear);
+                break;
+            default:
+                break;
+
         }
         let item = data[equipment[key].id];
         if (!item && block !== 'deleteButton') return <td key={type + key + block}>MissingData</td>;
@@ -113,7 +131,7 @@ class Component extends React.Component {
             case 'qualities':
                 return (
                     <td key={type + key + block}>
-                        {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality].name} ${item[block][quality]}`).sort().join(', ')}
+                        {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality] ? qualities[quality].name : 'Quality not found'} ${item[block][quality]}`).sort().join(', ')}
                     </td>
                 );
             case 'gearDice':
@@ -252,6 +270,7 @@ class Component extends React.Component {
 function mapStateToProps(state) {
     return {
         armor: state.armor,
+        equipmentStats: equipmentStats(state),
         equipmentArmor: state.equipmentArmor,
         equipmentGear: state.equipmentGear,
         equipmentWeapons: state.equipmentWeapons,
@@ -269,4 +288,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({changeData}, dispatch);
 }
 
-export const Equipment = connect(mapStateToProps, matchDispatchToProps)(Component);
+export const Equipment = connect(mapStateToProps, matchDispatchToProps)(EquipmentComponent);
