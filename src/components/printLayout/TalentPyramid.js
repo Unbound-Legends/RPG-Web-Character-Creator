@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardHeader, CardText, Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import DynamicFont from 'react-dynamic-font';
-import {talentCount} from "../../reducers";
+import {talentCount} from '../../selectors';
 
 class Component extends React.Component {
 

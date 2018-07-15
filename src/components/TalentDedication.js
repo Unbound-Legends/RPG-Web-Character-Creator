@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Input, Row} from 'reactstrap';
 import {changeData} from '../actions';
-import {characteristics} from '../reducers';
+import {characteristics} from '../selectors';
 
 class TalentDedicationComponent extends React.Component {
     state = {options: []};

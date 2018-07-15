@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
-import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../reducers';
+import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../selectors';
 import {Description} from './index';
 
 class SkillRowComponent extends React.Component {

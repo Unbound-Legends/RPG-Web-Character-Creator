@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
-import {totalXP, usedXP} from '../../reducers';
+import {totalXP, usedXP} from '../../selectors';
 
 class Component extends React.Component {
 

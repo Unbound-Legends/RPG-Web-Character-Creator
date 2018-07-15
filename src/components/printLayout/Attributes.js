@@ -7,8 +7,9 @@ import {
     totalDefense,
     totalEncumbrance,
     totalSoak,
-    woundThreshold
-} from "../../reducers";
+    woundThreshold,
+} from "../../selectors";
+
 
 class Component extends React.Component {
 

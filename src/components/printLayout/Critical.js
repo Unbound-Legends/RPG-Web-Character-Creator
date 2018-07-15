@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Col, Row} from 'reactstrap';
-import {criticalText} from '../../reducers';
+import {criticalText} from '../../selectors';
 import {Description} from '../index';
 
 class Component extends React.Component {
@@ -31,8 +31,6 @@ class Component extends React.Component {
 function mapStateToProps(state) {
     return {
         critical: state.critical,
-        criticalText: criticalText(state),
-
     };
 }
 

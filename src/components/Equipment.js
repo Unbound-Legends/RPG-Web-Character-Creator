@@ -5,7 +5,15 @@ import {changeData} from '../actions';
 import {Button, ButtonGroup, Col, Input, Row, Table} from 'reactstrap';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {CustomEquipment, DeleteButton, Description, Gear} from "./index";
-import {equipmentStats, gearDice, skillDice} from "../reducers";
+import {
+    encumbranceLimit,
+    equipmentStats,
+    gearDice,
+    skillDice,
+    totalDefense,
+    totalEncumbrance,
+    totalSoak,
+} from '../selectors';
 import {omit} from 'lodash-es';
 
 const clone = require('clone');
@@ -35,27 +43,26 @@ class EquipmentComponent extends React.Component {
     };
 
     handleStatus = (type, key, status) => {
-        const {changeData, equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
-        let obj = {};
-        switch (type) {
-            case 'equipmentWeapons':
-                obj = clone(equipmentWeapons);
-                break;
-            case "equipmentArmor":
-                obj = clone(equipmentArmor);
-                break;
-            case 'equipmentGear':
-                obj = clone(equipmentGear);
-                break;
-            default:
-                break;
-        }
-        if (status === 'equipped' && !obj[key].equipped) obj[key].carried = true;
+        const {changeData, equipmentStats} = this.props;
+        let obj = clone(this.props[type]);
         if (status === 'carried' && obj[key].equipped) {
-            alert(`${obj[key].name} is equipped and cannot be dropped!`);
+            alert(`${equipmentStats[key].name} is equipped and cannot be dropped!`);
             return;
         }
+        if (status === 'equipped' && !obj[key][status]) {
+            if (Object.keys(obj).some(key => obj[key].equipped)) {
+                alert(`${equipmentStats[key].name} cannot be equipped.  Another piece of armor is already equipped`);
+                return;
+            }
+        }
         obj[key][status] = !obj[key][status];
+        changeData(obj, type);
+    };
+
+    handleSelect = (type, key, event) => {
+        const {changeData} = this.props;
+        let obj = clone(this.props[type]);
+        obj[key].craftsmanship = event.target.value;
         changeData(obj, type);
     };
 
@@ -76,26 +83,10 @@ class EquipmentComponent extends React.Component {
     };
 
     getLabel = (type, block, key) => {
-        const {equipmentArmor, equipmentWeapons, equipmentGear, weapons, armor, gear, skills, qualities, gearDice} = this.props;
-        let data, equipment;
-        switch (type) {
-            case 'equipmentWeapons':
-                equipment = clone(equipmentWeapons);
-                data = clone(weapons);
-                break;
-            case "equipmentArmor":
-                equipment = clone(equipmentArmor);
-                data = clone(armor);
-                break;
-            case 'equipmentGear':
-                equipment = clone(equipmentGear);
-                data = clone(gear);
-                break;
-            default:
-                break;
+        const {skills, qualities, gearDice, equipmentStats, craftsmanship} = this.props;
+        let equipment = clone(this.props[type]);
+        let item = equipmentStats[key];
 
-        }
-        let item = data[equipment[key].id];
         if (!item && block !== 'deleteButton') return <td key={type + key + block}>MissingData</td>;
         switch (block) {
             case 'carried':
@@ -109,9 +100,14 @@ class EquipmentComponent extends React.Component {
                     </td>
                 );
             case 'name':
+            case 'range':
+                return (
+                    <td key={type + key + block}>
+                        {item[block]}
+                    </td>
+                );
             case 'damage':
             case 'critical':
-            case 'range':
             case 'encumbrance':
             case 'soak':
             case 'defense':
@@ -119,7 +115,7 @@ class EquipmentComponent extends React.Component {
             case 'meleeDefense':
                 return (
                     <td key={type + key + block}>
-                        {item[block]}
+                        {item[block] ? item[block] : 0}
                     </td>
                 );
             case 'skill':
@@ -147,13 +143,27 @@ class EquipmentComponent extends React.Component {
                     </td>
                 );
             case 'amount':
+                return;
+            case 'craftsmanship':
+                return (
+                    <td key={type + key + block}>
+                        <Input type='select' value={this.props[type][key].craftsmanship}
+                               onChange={this.handleSelect.bind(this, type, key)}>
+                            <option value=''/>
+                            {Object.keys(craftsmanship).map(craft =>
+                                <option value={craft} key={craft}>{craft}</option>
+                            )}
+
+                        </Input>
+                    </td>
+                );
             default:
                 return <td key={type + key}/>;
         }
     };
 
     render() {
-        const {equipmentWeapons, equipmentArmor, equipmentGear} = this.props;
+        const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense} = this.props;
         const {money, equipModal, customEquipmentModal} = this.state;
         return (
             <Col lg='12' onClick={this.handleClick}>
@@ -165,6 +175,17 @@ class EquipmentComponent extends React.Component {
                            onBlur={this.handleBlurChangeMoney}
                            onChange={this.handleChangeMoney}
                            className='w-25'/>
+                </Row>
+                <Row className='m-1'>
+                    <Col>
+                        Encumbrance: <b>{totalEncumbrance}/{encumbranceLimit}</b>
+                    </Col>
+                    <Col>
+                        Soak: <b>{totalSoak}</b>
+                    </Col>
+                    <Col>
+                        Ranged: <b>{totalDefense.ranged}</b> Melee: <b>{totalDefense.melee}</b>
+                    </Col>
                 </Row>
                 <Tabs defaultIndex={0} className='d-print-none'>
                     <TabList>
@@ -178,6 +199,7 @@ class EquipmentComponent extends React.Component {
                             <thead>
                             <tr>
                                 <th>CARRY</th>
+                                <th>CRAFT</th>
                                 <th>NAME</th>
                                 <th>DAM</th>
                                 <th>CRIT</th>
@@ -192,7 +214,7 @@ class EquipmentComponent extends React.Component {
                             <tbody>
                             {Object.keys(equipmentWeapons).map(key =>
                                 <tr key={key}>
-                                    {['carried', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice', 'deleteButton'].map(block =>
+                                    {['carried', 'craftsmanship', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice', 'deleteButton'].map(block =>
                                         this.getLabel('equipmentWeapons', block, key)
                                     )}
                                 </tr>
@@ -209,6 +231,7 @@ class EquipmentComponent extends React.Component {
                             <tr>
                                 <th>EQUIP</th>
                                 <th>CARRY</th>
+                                <th>CRAFT</th>
                                 <th>NAME</th>
                                 <th>SOAK</th>
                                 <th>DEF</th>
@@ -222,7 +245,7 @@ class EquipmentComponent extends React.Component {
                             <tbody>
                             {Object.keys(equipmentArmor).map(key =>
                                 <tr key={key}>
-                                    {['equipped', 'carried', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
+                                    {['equipped', 'carried', 'craftsmanship', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
                                         this.getLabel('equipmentArmor', block, key)
                                     )}
                                 </tr>
@@ -258,9 +281,9 @@ class EquipmentComponent extends React.Component {
                         {this.buttons('equipmentGear')}
                     </TabPanel>
                 </Tabs>
-                <Gear modal={!!equipModal} type={equipModal}
+                <Gear modal={equipModal} type={equipModal}
                       handleClose={() => this.setState({equipModal: false})}/>
-                <CustomEquipment modal={!!customEquipmentModal} type={customEquipmentModal}
+                <CustomEquipment modal={customEquipmentModal} type={customEquipmentModal}
                                  handleClose={() => this.setState({customEquipmentModal: false})}/>
             </Col>
         );
@@ -270,9 +293,11 @@ class EquipmentComponent extends React.Component {
 function mapStateToProps(state) {
     return {
         armor: state.armor,
-        equipmentStats: equipmentStats(state),
+        craftsmanship: state.craftsmanship,
+        encumbranceLimit: encumbranceLimit(state),
         equipmentArmor: state.equipmentArmor,
         equipmentGear: state.equipmentGear,
+        equipmentStats: equipmentStats(state),
         equipmentWeapons: state.equipmentWeapons,
         gear: state.gear,
         gearDice: gearDice(state),
@@ -280,6 +305,9 @@ function mapStateToProps(state) {
         qualities: state.qualities,
         skillDice: skillDice(state),
         skills: state.skills,
+        totalDefense: totalDefense(state),
+        totalEncumbrance: totalEncumbrance(state),
+        totalSoak: totalSoak(state),
         weapons: state.weapons,
     };
 }

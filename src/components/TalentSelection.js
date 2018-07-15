@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
-import {talentCount} from '../reducers';
+import {talentCount} from '../selectors';
 import {Description, TalentDedication} from './index';
 
 const clone = require('clone');

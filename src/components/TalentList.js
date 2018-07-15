@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row, Table} from 'reactstrap';
-import {talentCount} from '../reducers';
+import {talentCount} from '../selectors';
 import {Description} from './index'
 
 class TalentListComponent extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import {Col, Row, Table} from 'reactstrap';
 import {connect} from 'react-redux';
 import {Description} from "../index";
-import {gearDice, skillDice} from "../../reducers";
+import {gearDice, skillDice} from '../../selectors';
 
 class Component extends React.Component {
 

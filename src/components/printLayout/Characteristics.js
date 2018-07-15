@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
-import {characteristics} from "../../reducers";
+import {characteristics} from '../../selectors';
 import {chars} from '../../data/lists';
 
 class Component extends React.Component {

@@ -1,4 +1,6 @@
-export function criticalText(total) {
+export const criticalText = (state) => CriticalText(state);
+
+const CriticalText = (total) => {
     let textCrit = '';
     switch (true) {
         case (total < 5):
@@ -92,4 +94,4 @@ export function criticalText(total) {
             break;
     }
     return textCrit;
-}
+};

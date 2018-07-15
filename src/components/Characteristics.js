@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
-import {characteristics} from '../reducers';
+import {characteristics} from '../selectors';
 import {chars} from '../data/lists';
 
 class CharacteristicsComponent extends React.Component {

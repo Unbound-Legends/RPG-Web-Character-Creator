@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../../reducers/index';
+import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../../selectors';
 import {Description} from '../index';
 
 class Component extends React.Component {

@@ -3,14 +3,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {changeData} from '../actions';
 import {Col, Input, Row} from 'reactstrap';
-import {
-    encumbranceLimit,
-    strainThreshold,
-    totalDefense,
-    totalEncumbrance,
-    totalSoak,
-    woundThreshold
-} from "../reducers";
+import * as selectors from '../selectors';
+
 
 class AttributesComponent extends React.Component {
     state = {currentStrain: this.props.currentStrain, currentWound: this.props.currentWound};
@@ -94,12 +88,12 @@ class AttributesComponent extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        woundThreshold: woundThreshold(state),
-        strainThreshold: strainThreshold(state),
-        totalSoak: totalSoak(state),
-        totalDefense: totalDefense(state),
-        totalEncumbrance: totalEncumbrance(state),
-        encumbranceLimit: encumbranceLimit(state),
+        woundThreshold: selectors.woundThreshold(state),
+        strainThreshold: selectors.strainThreshold(state),
+        totalSoak: selectors.totalSoak(state),
+        totalDefense: selectors.totalDefense(state),
+        totalEncumbrance: selectors.totalEncumbrance(state),
+        encumbranceLimit: selectors.encumbranceLimit(state),
         currentWound: state.currentWound,
         currentStrain: state.currentStrain,
     };

@@ -1,9 +1,9 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
-import {criticalText} from '../reducers';
+import {criticalText} from '../selectors';
 import {Description} from './index';
 
 class CriticalComponent extends React.Component {
@@ -48,14 +48,18 @@ class CriticalComponent extends React.Component {
                 </Row>
                 {critical.map((critRoll, index) =>
                     <Row className='my-2' key={index} onClick={() => this.setState({modal: index})}>
-                        <span>{critRoll}:&emsp;<Description text={criticalText(critRoll)}/></span>
+                        <Col xs='1' className='text-right p-0'><b>{critRoll}:</b></Col>
+                        <Col className='p-0'><Description text={criticalText(critRoll)}/></Col>
                         <hr/>
                     </Row>
                 )}
                 <Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
                     <ModalHeader toggle={() => this.setState({modal: false})}>Remove Critical Injury?</ModalHeader>
                     <ModalBody>
-                        <span>{critical[modal]}:&emsp;<Description text={criticalText(critical[modal])}/></span>
+                        <Row>
+                            <Col xs='1' className='text-right p-0'><b>{critical[modal]}:</b></Col>
+                            <Col className='p-0'><Description text={criticalText(critical[modal])}/></Col>
+                        </Row>
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={this.removeCritical}>Remove Critical</Button>
@@ -70,8 +74,6 @@ class CriticalComponent extends React.Component {
 function mapStateToProps(state) {
     return {
         critical: state.critical,
-        criticalText: criticalText(state),
-
     };
 }
 

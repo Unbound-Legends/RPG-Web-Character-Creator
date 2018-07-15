@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import DynamicFont from 'react-dynamic-font';
 import {Card, CardBody, CardHeader, CardText} from 'reactstrap';
-import {talentCount} from '../reducers';
+import {talentCount} from '../selectors';
 import {TalentSelection} from './index';
 
 class TalentBlockComponent extends React.Component {
