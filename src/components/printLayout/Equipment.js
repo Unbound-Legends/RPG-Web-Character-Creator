@@ -2,35 +2,22 @@ import React from 'react';
 import {Col, Row, Table} from 'reactstrap';
 import {connect} from 'react-redux';
 import {Description} from "../index";
-import {gearDice, skillDice} from '../../selectors';
+import {equipmentStats, gearDice, skillDice} from '../../selectors';
 
 class Component extends React.Component {
 
-    getLabel = (type, block, key) => {
-        const {equipmentArmor, equipmentWeapons, equipmentGear, weapons, armor, gear, skills, qualities, gearDice} = this.props;
-        let data, equipment;
-        if (type === 'equipmentWeapons') {
-            equipment = {...equipmentWeapons};
-            data = {...weapons};
-        }
-        if (type === 'equipmentArmor') {
-            equipment = {...equipmentArmor};
-            data = {...armor};
-        }
-        if (type === 'equipmentGear') {
-            equipment = {...equipmentGear};
-            data = {...gear};
-        }
-        let item = data[equipment[key].id];
-        if (!item && block !== 'deleteButton') return <td key={type + key + block}>MissingData</td>;
+    getLabel = (block, key) => {
+        const {skills, qualities, gearDice, equipmentStats} = this.props;
+        let item = equipmentStats[key];
+        if (!item && block !== 'deleteButton') return <td key={key + block}>MissingData</td>;
         switch (block) {
             case 'carried':
             case 'equipped':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         <input type='checkbox'
                                className='text-center'
-                               checked={equipment[key][block]}
+                               checked={equipmentStats[key][block]}
                                readOnly
                         />
                     </td>
@@ -46,30 +33,36 @@ class Component extends React.Component {
             case 'meleeDefense':
             case 'amount':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item[block]}
                     </td>
                 );
             case 'skill':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item.skill ? (skills[item.skill] ? skills[item.skill].name : '') : ''}
                     </td>
                 );
             case 'qualities':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality] ? qualities[quality].name : 'Quality not found'} ${item[block][quality]}`).sort().join(', ')}
                     </td>
                 );
             case 'gearDice':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         <Description text={gearDice.weapons[key]}/>
                     </td>
                 );
+            case 'craftsmanship':
+                return (
+                    <td key={key + block}>
+                        {item[block]}
+                    </td>
+                );
             default:
-                return <td key={type + key}/>;
+                return <td key={key}/>;
         }
     };
 
@@ -90,6 +83,7 @@ class Component extends React.Component {
                         <thead>
                         <tr>
                             <th>CARRIED</th>
+                            <th>CRAFT</th>
                             <th>NAME</th>
                             <th>DAM</th>
                             <th>CRIT</th>
@@ -103,8 +97,8 @@ class Component extends React.Component {
                         <tbody>
                         {Object.keys(equipmentWeapons).map(key =>
                             <tr key={key}>
-                                {['carried', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice'].map(block =>
-                                    this.getLabel('equipmentWeapons', block, key)
+                                {['carried', 'craftsmanship', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice'].map(block =>
+                                    this.getLabel(block, key)
                                 )}
                             </tr>
                         )}
@@ -120,6 +114,7 @@ class Component extends React.Component {
                         <tr>
                             <th>EQUIPPED</th>
                             <th>CARRIED</th>
+                            <th>CRAFT</th>
                             <th>NAME</th>
                             <th>SOAK</th>
                             <th>DEF</th>
@@ -132,8 +127,8 @@ class Component extends React.Component {
                         <tbody>
                         {Object.keys(equipmentArmor).map(key =>
                             <tr key={key}>
-                                {['equipped', 'carried', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities'].map(block =>
-                                    this.getLabel('equipmentArmor', block, key)
+                                {['equipped', 'carried', 'craftsmanship', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities'].map(block =>
+                                    this.getLabel(block, key)
                                 )}
                             </tr>
                         )}
@@ -158,7 +153,7 @@ class Component extends React.Component {
                         {Object.keys(equipmentGear).map(key =>
                             <tr key={key}>
                                 {['carried', 'name', 'amount', 'encumbrance', 'qualities'].map(block =>
-                                    this.getLabel('equipmentGear', block, key)
+                                    this.getLabel(block, key)
                                 )}
                             </tr>
                         )}
@@ -177,6 +172,7 @@ function mapStateToProps(state) {
         gear: state.gear,
         equipmentArmor: state.equipmentArmor,
         equipmentGear: state.equipmentGear,
+        equipmentStats: equipmentStats(state),
         equipmentWeapons: state.equipmentWeapons,
         gearDice: gearDice(state),
         qualities: state.qualities,

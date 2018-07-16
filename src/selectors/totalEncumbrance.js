@@ -9,7 +9,7 @@ const calcTotalEncumbrance = createSelector(
         let encumbrance = 0;
         Object.keys(equipmentStats).forEach(key => {
             let item = equipmentStats[key];
-            if (item.carried) {
+            if (item.carried && item.encumbrance) {
                 encumbrance += +item.encumbrance;
                 if (item.type === 'armor' && item.equipped) encumbrance -= item.encumbrance < 3 ? item.encumbrance : 3;
             }

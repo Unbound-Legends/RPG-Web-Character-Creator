@@ -6,6 +6,9 @@ import {changeCustomData} from '../actions';
 import {ControlButtonSet, DeleteButton} from './index';
 import {omit} from 'lodash-es';
 
+const clone = require('clone');
+
+
 class CustomEquipmentComponent extends React.Component {
     state = {
         name: '',
@@ -17,7 +20,7 @@ class CustomEquipmentComponent extends React.Component {
         price: '',
         soak: '',
         defense: '',
-        setting: '',
+        setting: 'All',
         meleeDefense: '',
         rangedDefense: '',
         qualitiesList: '',
@@ -34,7 +37,7 @@ class CustomEquipmentComponent extends React.Component {
             name: '',
             damage: '',
             range: '',
-            skill: '',
+            skill: 'All',
             critical: '',
             encumbrance: '',
             price: '',
@@ -62,7 +65,7 @@ class CustomEquipmentComponent extends React.Component {
     };
 
     handleAddQuality = () => {
-        let obj = {...this.state.qualityList};
+        let obj = clone(this.state.qualityList);
         obj[this.state.specialQualities] = this.state.qualityRank ? +this.state.qualityRank : '';
         this.setState({qualityList: obj, specialQualities: '', qualityRank: ''});
 
@@ -71,7 +74,7 @@ class CustomEquipmentComponent extends React.Component {
     handleSubmit = (event) => {
         const {type, changeCustomData} = this.props;
         const {name, range, damage, skill, critical, encumbrance, price, soak, defense, meleeDefense, rangedDefense, description, qualityList, setting} = this.state;
-        let obj = {...this.props[type]};
+        let obj = clone(this.props[type]);
         let key = name.replace(/\s/g, '').replace(/[{()}]/g, '');
         if (type === 'customWeapons') obj[key] = {
             name,
@@ -111,21 +114,15 @@ class CustomEquipmentComponent extends React.Component {
 
     handleEdit = (event, equipment) => {
         event.preventDefault();
-        this.setState({...equipment, mode: 'edit'})
+        this.setState({...equipment, qualityList: equipment.qualities ? equipment.qualities : {}, mode: 'edit'})
     };
 
     buildField = (field) => {
         const {type, skills, qualities} = this.props;
         switch (field) {
             case 'name':
-                if (this.state.mode === 'add') {
-                    return (
-                        <Input type='text' value={this.state[field]} name={field}
-                               onChange={this.handleChange}/>
-                    );
-                }
                 return <Input type='text' value={this.state[field]} name={field}
-                              onChange={this.handleChange} disabled/>;
+                              onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>;
             case 'damage':
                 return (
                     <Input type='text' value={this.state[field]} name={field}
@@ -254,7 +251,7 @@ class CustomEquipmentComponent extends React.Component {
                     {this.buildField('specialQualities')}
                     <ControlButtonSet
                         mode={this.state.mode}
-                        type={this.props.type}
+                        type={type.toString().slice(6)}
                         handleSubmit={this.handleSubmit}
                         onEditSubmit={this.handleSubmit}
                         onEditCancel={this.initState}/>

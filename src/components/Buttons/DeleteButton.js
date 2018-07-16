@@ -6,8 +6,12 @@ export class DeleteButton extends React.Component {
 
     confirmDelete = () => {
         this.setState({confirmation: true});
-        setTimeout(() => this.setState({confirmation: false}), 2000);
+        this.timer = setTimeout(() => this.setState({confirmation: false}), 2000);
     };
+
+    componentWillUnmount() {
+        clearTimeout(this.timer)
+    }
 
     render() {
         if (this.state.confirmation) {

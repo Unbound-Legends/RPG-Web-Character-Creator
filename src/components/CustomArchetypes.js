@@ -1,8 +1,12 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {omit} from 'lodash-es';
 import {Button, ButtonGroup, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData, changeData} from '../actions';
+import {ControlButtonSet, DeleteButton} from './';
+
+const clone = require('clone');
 
 const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
 
@@ -21,8 +25,34 @@ class CustomArchetypesComponent extends React.Component {
         XP: 100,
         selectedSkill: '',
         description: '',
-        setting: '',
+        setting: 'All',
         talents: [],
+        mode: 'add',
+    };
+
+    initState = () => {
+        this.setState({
+            name: '',
+            Brawn: 2,
+            Agility: 2,
+            Intellect: 2,
+            Cunning: 2,
+            Willpower: 2,
+            Presence: 2,
+            woundThreshold: 10,
+            strainThreshold: 10,
+            XP: 100,
+            selectedSkill: '',
+            description: '',
+            setting: 'All',
+            talents: [],
+            mode: 'add',
+        });
+    };
+
+    handleClose = () => {
+        this.initState();
+        this.props.handleClose();
     };
 
     handleChange = (event) => {
@@ -54,8 +84,8 @@ class CustomArchetypesComponent extends React.Component {
     handleSubmit = () => {
         const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, selectedSkill, description, talents, setting} = this.state;
         const {customArchetypes, changeCustomData} = this.props;
-        let Obj = {...customArchetypes};
-        Obj[name.replace(/\s/g, '')] = {
+        let obj = clone(customArchetypes);
+        obj[name.replace(/\s/g, '')] = {
             name,
             characteristics: {
                 Brawn,
@@ -73,23 +103,8 @@ class CustomArchetypesComponent extends React.Component {
             setting,
             description,
         };
-        changeCustomData(Obj, 'customArchetypes');
-        this.setState({
-            name: '',
-            Brawn: 2,
-            Agility: 2,
-            Intellect: 2,
-            Cunning: 2,
-            Willpower: 2,
-            Presence: 2,
-            woundThreshold: 10,
-            strainThreshold: 10,
-            XP: 100,
-            selectedSkill: '',
-            description: '',
-            setting: '',
-            talents: [],
-        });
+        changeCustomData(obj, 'customArchetypes');
+        this.initState();
     };
 
 
@@ -111,15 +126,14 @@ class CustomArchetypesComponent extends React.Component {
             description: archetype.description,
             setting: archetype.setting,
             talents: archetype.talents,
+            mode: 'edit',
         });
     };
 
     handleDelete = (event) => {
         const {customArchetypes, changeCustomData, archetype, changeData} = this.props;
         if (archetype === event.target.name) changeData('', 'archetype');
-        let Obj = {...customArchetypes};
-        delete Obj[event.target.name];
-        changeCustomData(Obj, 'customArchetypes', false);
+        changeCustomData(omit(customArchetypes, event.target.name), 'customArchetypes', false);
         event.preventDefault();
     };
 
@@ -127,14 +141,14 @@ class CustomArchetypesComponent extends React.Component {
         const {customArchetypes, modal, handleClose, skills, archetypeTalents} = this.props;
         const {name, woundThreshold, strainThreshold, selectedSkill, XP, description, talents, setting} = this.state;
         return (
-            <Modal isOpen={modal} toggle={handleClose}>
+            <Modal isOpen={modal} toggle={this.handleClose}>
                 <ModalHeader toggle={handleClose}>Custom Archetypes</ModalHeader>
                 <ModalBody className='m-3 text-left'>
                     <Row className='mt-2'>
                         <Col xs='4' className='my-auto'><b>Name:</b></Col>
                         <Col>
                             <Input className='my-auto' type='text' value={name} name='name' maxLength='25'
-                                   onChange={this.handleChange}/>
+                                   onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
@@ -245,8 +259,13 @@ class CustomArchetypesComponent extends React.Component {
                         </Col>
                     </Row>
                     <Row className='my-4 justify-content-end'>
-                        <Button onClick={this.handleSubmit} disabled={name === '' || selectedSkill === '' || XP === ''}>Add
-                            Archetype</Button>
+                        <ControlButtonSet
+                            mode={this.state.mode}
+                            type={'Archetype'}
+                            handleSubmit={this.handleSubmit}
+                            onEditSubmit={this.handleSubmit}
+                            onEditCancel={this.initState}
+                            disabled={name === '' || selectedSkill === '' || XP === ''}/>
                     </Row>
                     <Table>
                         <thead>
@@ -265,7 +284,7 @@ class CustomArchetypesComponent extends React.Component {
                                     <Button name={slot} onClick={this.handleEdit}>Edit</Button>
                                 </td>
                                 <td className='text-right'>
-                                    <Button name={slot} onClick={this.handleDelete}>Delete</Button>
+                                    <DeleteButton name={slot} onClick={this.handleDelete}/>
                                 </td>
                             </tr>
                         )

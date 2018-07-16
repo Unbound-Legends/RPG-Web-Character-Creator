@@ -10,6 +10,7 @@ export {CharacterDescription} from './CharacterDescription';
 export {CharacterImage} from './CharacterImage';
 export {Characteristics} from './Characteristics';
 export {CharacterSelect} from './CharacterSelect';
+export {ControlButtonSet} from './Buttons/ControlButtonSet';
 export {Critical} from './Critical';
 export {CustomArchetypes} from './CustomArchetypes';
 export {CustomCareers} from './CustomCareers';
@@ -18,6 +19,7 @@ export {CustomEquipment} from './CustomEquipment';
 export {CustomSkills} from './CustomSkills';
 export {CustomTalents} from './CustomTalents';
 export {DataPage} from './DataPage';
+export {DeleteButton} from './Buttons/DeleteButton';
 export {Description} from './Description';
 export {Equipment} from './Equipment';
 export {Gear} from './Gear';
@@ -38,8 +40,7 @@ export {Talents} from './Talents';
 export {User} from './User';
 export {XPBoxes} from './XPBoxes';
 export {XPPopup} from './XPPopup';
-export {DeleteButton} from './Buttons/DeleteButton';
-export {ControlButtonSet} from './Buttons/ControlButtonSet';
+export {ModalDeleteConfirm} from './ModalDeleteConfirm';
 
 
 

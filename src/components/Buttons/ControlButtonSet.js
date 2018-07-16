@@ -1,20 +1,23 @@
 import React from 'react';
 import {Button, ButtonGroup, Row} from 'reactstrap';
 
-export const ControlButtonSet = ({mode, type, handleSubmit, onEditSubmit, onEditCancel}) => {
+export const ControlButtonSet = ({mode, type, handleSubmit, onEditSubmit, onEditCancel, disabled}) => {
     switch (mode) {
         case 'add':
             return (
                 <Row className='justify-content-end my-1'>
-                    <Button onClick={handleSubmit}>Add {type.toString().slice(6)}</Button>
+                    <ButtonGroup>
+                        <Button onClick={onEditCancel}>Clear</Button>
+                        <Button onClick={handleSubmit} disabled={disabled}>Add {type}</Button>
+                    </ButtonGroup>
                 </Row>
             );
         case 'edit':
             return (
                 <Row className='justify-content-end my-1'>
                     <ButtonGroup>
-                        <Button onClick={onEditSubmit} className='btn btn-success'>Submit Changes</Button>
                         <Button onClick={onEditCancel} className='btn btn-warning'>Cancel</Button>
+                        <Button onClick={onEditSubmit} className='btn btn-success'>Submit Changes</Button>
                     </ButtonGroup>
                 </Row>
             );

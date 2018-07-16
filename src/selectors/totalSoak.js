@@ -19,7 +19,7 @@ const calcTotalSoak = createSelector(
         Object.keys(equipmentStats).forEach(key => {
             if (equipmentStats[key].type === 'armor') {
                 let item = equipmentStats[key];
-                if (item.equipped) Armor += +item.soak;
+                if (item.equipped && item.soak) Armor += +item.soak;
             }
         });
         //get soak from Enduring Talent

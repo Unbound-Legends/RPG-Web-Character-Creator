@@ -18,7 +18,6 @@ import {omit} from 'lodash-es';
 
 const clone = require('clone');
 
-
 class EquipmentComponent extends React.Component {
     state = {
         money: this.props.money,
@@ -84,25 +83,23 @@ class EquipmentComponent extends React.Component {
 
     getLabel = (type, block, key) => {
         const {skills, qualities, gearDice, equipmentStats, craftsmanship} = this.props;
-        let equipment = clone(this.props[type]);
         let item = equipmentStats[key];
-
-        if (!item && block !== 'deleteButton') return <td key={type + key + block}>MissingData</td>;
+        if (!item && block !== 'deleteButton') return <td key={key + block}>MissingData</td>;
         switch (block) {
             case 'carried':
             case 'equipped':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         <input type='checkbox'
                                className='text-center'
-                               checked={equipment[key][block]}
+                               checked={equipmentStats[key][block]}
                                onChange={this.handleStatus.bind(this, type, key, block)}/>
                     </td>
                 );
             case 'name':
             case 'range':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item[block]}
                     </td>
                 );
@@ -114,31 +111,31 @@ class EquipmentComponent extends React.Component {
             case 'rangedDefense':
             case 'meleeDefense':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item[block] ? item[block] : 0}
                     </td>
                 );
             case 'skill':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item.skill ? (skills[item.skill] ? skills[item.skill].name : '') : ''}
                     </td>
                 );
             case 'qualities':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         {item[block] && Object.keys(item[block]).map(quality => `${qualities[quality] ? qualities[quality].name : 'Quality not found'} ${item[block][quality]}`).sort().join(', ')}
                     </td>
                 );
             case 'gearDice':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         <Description text={gearDice.weapons[key]}/>
                     </td>
                 );
             case 'deleteButton':
                 return (
-                    <td key={type + key + block}>
+                    <td key={key + block}>
                         <DeleteButton name={key} value={type} onClick={this.handleDelete}/>
                     </td>
                 );
@@ -146,8 +143,8 @@ class EquipmentComponent extends React.Component {
                 return;
             case 'craftsmanship':
                 return (
-                    <td key={type + key + block}>
-                        <Input type='select' value={this.props[type][key].craftsmanship}
+                    <td key={key + block}>
+                        <Input type='select' value={equipmentStats[key].craftsmanship}
                                onChange={this.handleSelect.bind(this, type, key)}>
                             <option value=''/>
                             {Object.keys(craftsmanship).map(craft =>
@@ -158,7 +155,7 @@ class EquipmentComponent extends React.Component {
                     </td>
                 );
             default:
-                return <td key={type + key}/>;
+                return <td key={key}/>;
         }
     };
 
@@ -178,7 +175,8 @@ class EquipmentComponent extends React.Component {
                 </Row>
                 <Row className='m-1'>
                     <Col>
-                        Encumbrance: <b>{totalEncumbrance}/{encumbranceLimit}</b>
+                        Encumbrance: <b
+                        className={`text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>{encumbranceLimit}/{totalEncumbrance}</b>
                     </Col>
                     <Col>
                         Soak: <b>{totalSoak}</b>

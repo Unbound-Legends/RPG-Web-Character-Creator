@@ -77,7 +77,8 @@ class AttributesComponent extends React.Component {
                     <div className='imageBox attribute'>
                         <img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
                         <Row className='attributeTitle'>ENCUMBRANCE</Row>
-                        <Row className='attributeValue'>{`${encumbranceLimit}  |   ${totalEncumbrance}`}</Row>
+                        <Row
+                            className={`attributeValue text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>{`${encumbranceLimit}  |   ${totalEncumbrance}`}</Row>
                     </div>
                 </Row>
             </Col>

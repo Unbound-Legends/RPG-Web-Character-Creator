@@ -3,6 +3,10 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {changeCustomData, changeData} from '../actions';
+import {ControlButtonSet, DeleteButton} from './';
+import {omit} from 'lodash-es';
+
+const clone = require('clone');
 
 const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'];
 
@@ -14,11 +18,12 @@ class CustomTalentsComponent extends React.Component {
         turn: '',
         ranked: '',
         description: '',
-        setting: '',
+        setting: 'All',
         modifier: false,
         modifierValue: '',
         prerequisite: '',
-        antirequisite: ''
+        antirequisite: '',
+        mode: 'add'
     };
 
     initState = () => {
@@ -29,11 +34,12 @@ class CustomTalentsComponent extends React.Component {
             turn: '',
             ranked: '',
             description: '',
-            setting: '',
+            setting: 'All',
             modifier: false,
             modifierValue: '',
             prerequisite: '',
-            antirequisite: ''
+            antirequisite: '',
+            mode: 'add'
         });
     };
 
@@ -61,7 +67,7 @@ class CustomTalentsComponent extends React.Component {
     handleSubmit = () => {
         const {name, modifier, modifierValue} = this.state;
         const {customTalents, changeCustomData} = this.props;
-        let Obj = {...customTalents};
+        let Obj = clone(customTalents);
         let key = name.replace(/\s/g, '').replace(/[{()}]/g, '');
         Obj[key] = {};
         ['name', 'tier', 'activation', 'turn', 'ranked', 'description', 'setting', 'prerequisite', 'antirequisite'].forEach(stat => {
@@ -74,9 +80,7 @@ class CustomTalentsComponent extends React.Component {
 
     handleDelete = (event) => {
         const {customTalents, changeCustomData} = this.props;
-        let Obj = {...customTalents};
-        delete Obj[event.target.name];
-        changeCustomData(Obj, 'customTalents', false);
+        changeCustomData(omit(customTalents, event.target.name), 'customTalents', false);
         event.preventDefault();
     };
 
@@ -91,15 +95,16 @@ class CustomTalentsComponent extends React.Component {
         this.setState({
             name: talent.name ? talent.name : '',
             tier: talent.tier ? talent.tier : '',
-            activation: talent.activation !== undefined ? talent.activation : '',
-            turn: talent.turn !== undefined ? talent.turn : '',
-            ranked: talent.ranked !== undefined ? talent.ranked : '',
-            description: talent.description !== undefined ? talent.description : '',
-            setting: talent.setting !== undefined ? talent.setting : '',
+            activation: talent.activation ? talent.activation : '',
+            turn: talent.turn ? talent.turn : '',
+            ranked: talent.ranked ? talent.ranked : '',
+            description: talent.description ? talent.description : '',
+            setting: talent.setting ? talent.setting : 'All',
             prerequisite: talent.prerequisite ? talent.prerequisite : '',
             antirequisite: talent.antirequisite ? talent.antirequisite : '',
-            modifier: talent.modifier !== undefined ? Object.keys(talent.modifier)[0] : false,
-            modifierValue: talent.modifier !== undefined ? Object.values(talent.modifier)[0] : '',
+            modifier: talent.modifier ? Object.keys(talent.modifier)[0] : false,
+            modifierValue: talent.modifier ? Object.values(talent.modifier)[0] : '',
+            mode: 'edit'
         });
     };
 
@@ -116,7 +121,7 @@ class CustomTalentsComponent extends React.Component {
                         </Col>
                         <Col>
                             <Input className='my-auto' type='text' value={name} name='name' maxLength='25'
-                                   onChange={this.handleChange}/>
+                                   onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
@@ -224,7 +229,7 @@ class CustomTalentsComponent extends React.Component {
                             <b>Modifier:</b>
                         </Col>
                         <Col>
-                            <Input type='select' className='my-auto' value={!!modifier} name='modifier'
+                            <Input type='select' className='my-auto' value={modifier} name='modifier'
                                    onChange={this.handleChange}>
                                 <option value={true}>Yes</option>
                                 <option value={false}>No</option>
@@ -303,8 +308,14 @@ class CustomTalentsComponent extends React.Component {
                     }
                     <hr/>
                     <Row className='my-4 justify-content-end'>
-                        <Button onClick={() => this.initState()} className='mx-1'>Clear</Button>
-                        <Button onClick={this.handleSubmit} disabled={name === ''}>Add Talent</Button>
+                        <ControlButtonSet
+                            mode={this.state.mode}
+                            type={'Talent'}
+                            handleSubmit={this.handleSubmit}
+                            onEditSubmit={this.handleSubmit}
+                            onEditCancel={this.initState}
+                            disabled={name === '' || tier === '' || ranked === '' || activation === ''}/>
+
                     </Row>
                     <Table>
                         <thead>
@@ -322,7 +333,7 @@ class CustomTalentsComponent extends React.Component {
                                 <td>{customTalents[key].name}</td>
                                 <td>{customTalents[key].tier}</td>
                                 <td><Button name={key} onClick={this.handleEdit}>Edit</Button></td>
-                                <td><Button name={key} onClick={this.handleDelete}>Delete</Button></td>
+                                <td><DeleteButton name={key} onClick={this.handleDelete}/></td>
                             </tr>
                         )
                         }

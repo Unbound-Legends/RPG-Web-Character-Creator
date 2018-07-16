@@ -1,19 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {
-    Button,
-    ButtonGroup,
-    Col,
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    Modal,
-    ModalBody,
-    ModalFooter,
-    ModalHeader,
-    Row
-} from 'reactstrap';
+import {Button, ButtonGroup, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 import {
     addCustomDataSet,
     changeCustomDataSet,
@@ -21,6 +9,7 @@ import {
     deleteCustomDataSet,
     loadCustomDataSet
 } from '../actions';
+import {ModalDeleteConfirm} from './';
 
 class CustomDataSelectComponent extends React.Component {
     state = {
@@ -91,18 +80,10 @@ class CustomDataSelectComponent extends React.Component {
                     </Col>
                 </Row>
                 <hr/>
-
-                <Modal isOpen={deleteModal} toggle={() => this.setState({deleteModal: false})}>
-                    <ModalHeader toggle={() => this.setState({deleteModal: false})}>BALETED WARNING</ModalHeader>
-                    <ModalBody>
-                        <div>Are you super serious? This cannot be undone</div>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={() => this.setState({deleteModal: false})}>NO!</Button>
-                        <Button color='danger' onClick={this.confirmedDelete}>YES! I no longer want this
-                            Dataset!</Button>
-                    </ModalFooter>
-                </Modal>
+                <ModalDeleteConfirm deleteModal={deleteModal}
+                                    confirmedDelete={this.confirmedDelete}
+                                    handleClose={() => this.setState({deleteModal: false})}
+                                    type='Dataset'/>
             </Col>
 
         );

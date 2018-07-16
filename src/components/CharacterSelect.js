@@ -1,21 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {
-    Button,
-    ButtonGroup,
-    Col,
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    Modal,
-    ModalBody,
-    ModalFooter,
-    ModalHeader,
-    Row
-} from 'reactstrap';
+import {Button, ButtonGroup, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
-import {Archetype, Career, CustomArchetypes, CustomCareers} from './index';
+import {Archetype, Career, CustomArchetypes, CustomCareers, ModalDeleteConfirm} from './';
 
 class CharacterSelectComponent extends React.Component {
     state = {
@@ -152,18 +140,10 @@ class CharacterSelectComponent extends React.Component {
                 <CustomArchetypes modal={customArchetypeModal}
                                   handleClose={() => this.setState({customArchetypeModal: false})}/>
 
-                <Modal isOpen={deleteModal} toggle={() => this.setState({deleteModal: false})}>
-                    <ModalHeader toggle={() => this.setState({deleteModal: false})}>BALETED WARNING</ModalHeader>
-                    <ModalBody>
-                        <div>Are you super serious? This cannot be undone</div>
-
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={() => this.setState({deleteModal: false})}>NO!</Button>
-                        <Button color='danger' onClick={this.confirmedDelete}>YES! I no longer want this
-                            character!</Button>
-                    </ModalFooter>
-                </Modal>
+                <ModalDeleteConfirm deleteModal={deleteModal}
+                                    confirmedDelete={this.confirmedDelete}
+                                    handleClose={() => this.setState({deleteModal: false})}
+                                    type='Character'/>
             </Col>
 
         );
