@@ -40,7 +40,7 @@ export const critical = (state = clone(initialState.critical), action) => charac
 }, 'critical');
 export const currentStrain = (state = clone(initialState.currentStrain), action) => characterReducer(state, action, 'currentStrain');
 export const currentWound = (state = clone(initialState.currentWound), action) => characterReducer(state, action, 'currentWounds');
-export const description = (state = clone(initialState.description), action) => characterReducer(state, action, 'desciption');
+export const description = (state = clone(initialState.description), action) => characterReducer(state, action, 'description');
 export const earnedXP = (state = clone(initialState.earnedXP), action) => characterReducer(state, action, 'earnedXP');
 export const equipmentArmor = (state = clone(initialState.equipmentArmor), action) => characterReducer(state, action, 'equipmentArmor');
 export const equipmentGear = (state = clone(initialState.equipmentGear), action) => characterReducer(state, action, 'equipmentGear');

@@ -12,10 +12,10 @@ let rng = seedrandom('added entropy.', {entropy: true});
 
 
 class MotivationBlockComponent extends React.Component {
-    state = {description: this.props.masterMotivations[this.props.type].description};
+    state = {description: this.props.masterMotivations[this.props.type] ? this.props.masterMotivations[this.props.type].description : ''};
 
     componentWillReceiveProps(nextProps) {
-        this.setState({description: nextProps.masterMotivations[nextProps.type].description});
+        this.setState({description: nextProps.masterMotivations[this.props.type] ? nextProps.masterMotivations[this.props.type].description : ''});
     }
 
     handleChange = (event) => {
@@ -53,7 +53,7 @@ class MotivationBlockComponent extends React.Component {
 
     render() {
         const {type, masterMotivations, motivations} = this.props;
-        const name = masterMotivations[type].key;
+        const name = masterMotivations[type] ? masterMotivations[type].key : '';
         const {description} = this.state;
         return (
             <Card className='m-2' style={{width: '350px'}}>
