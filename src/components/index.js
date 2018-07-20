@@ -14,7 +14,6 @@ export {ControlButtonSet} from './Buttons/ControlButtonSet';
 export {Critical} from './Critical';
 export {CustomArchetypes} from './CustomArchetypes';
 export {CustomCareers} from './CustomCareers';
-export {CustomDataSelect} from './CustomDataSelect';
 export {CustomEquipment} from './CustomEquipment';
 export {CustomSkills} from './CustomSkills';
 export {CustomTalents} from './CustomTalents';

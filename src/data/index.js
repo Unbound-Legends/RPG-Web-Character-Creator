@@ -8,5 +8,6 @@ export {gear} from './gear';
 export {motivations} from './motivations';
 export {qualities} from './qualities';
 export {skills} from './skills';
+export {settings} from './settings';
 export {talents} from './talents';
 export {weapons} from './weapons';

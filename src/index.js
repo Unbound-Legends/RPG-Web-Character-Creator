@@ -18,8 +18,8 @@ require('sw-rpg-icons/css/sw-rpg-icons.min.css');
 export const store = createStore(allReducers, {}, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
-    document.getElementById('root')
+	<Provider store={store}>
+		<App/>
+	</Provider>,
+	document.getElementById('root')
 );

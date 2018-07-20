@@ -1,296 +1,296 @@
 
 body {
-    --orange: rgb(245, 142, 32);
-    --lightblue: rgb(181, 224, 232);
-    --darkblue: rgb(83, 136, 187);
-    --gray: rgb(247, 245, 242);
-    --brown: rgb(179, 151, 123);
-    --red: rgb(148, 45, 37);
-    --difficulty: rgb(82, 40, 126);
-    --challenge: rgb(117, 19, 23);
-    --boost: rgb(118, 205, 219);
-    --ability: rgb(70, 172, 78);
-    --proficiency: rgb(254, 240, 53);
-    font-family: 'Avenir Next', sans-serif !important;
-    background-image: url('/images/background.png');
+	--orange: rgb(245, 142, 32);
+	--lightblue: rgb(181, 224, 232);
+	--darkblue: rgb(83, 136, 187);
+	--gray: rgb(247, 245, 242);
+	--brown: rgb(179, 151, 123);
+	--red: rgb(148, 45, 37);
+	--difficulty: rgb(82, 40, 126);
+	--challenge: rgb(117, 19, 23);
+	--boost: rgb(118, 205, 219);
+	--ability: rgb(70, 172, 78);
+	--proficiency: rgb(254, 240, 53);
+	font-family: 'Avenir Next', sans-serif !important;
+	background-image: url('/images/background.png');
 }
 
 hr {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-    border: 0;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
+	border: 0;
+	border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 h5 {
-    font-size: 1.25rem;
-    margin-bottom: 0;
-    margin-top: 0.5rem;
+	font-size: 1.25rem;
+	margin-bottom: 0;
+	margin-top: 0.5rem;
 }
 
 .table th {
-    padding: 0.4rem 0.2rem;
+	padding: 0.4rem 0.2rem;
 }
 
 .table td {
-    padding: 0.4rem 0.2rem;
-    vertical-align: middle;
+	padding: 0.4rem 0.2rem;
+	vertical-align: middle;
 }
 
 thead {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }
 
 .w-10 {
-    width: 10%;
+	width: 10%;
 }
 
 .w-20 {
-    width: 20%;
+	width: 20%;
 }
 
 .w-30 {
-    width: 30%;
+	width: 30%;
 }
 
 .w-40 {
-    width: 40%;
+	width: 40%;
 }
 
 .w-60 {
-    width: 60%;
+	width: 60%;
 }
 
 .w-70 {
-    width: 70%;
+	width: 70%;
 }
 
 .w-80 {
-    width: 80%;
+	width: 80%;
 }
 
 .w-90 {
-    width: 90%;
+	width: 90%;
 }
 
 .noUnderLine, .noUnderLine:hover, .noUnderLine:focus {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .textSymbols {
-    height: 20px;
+	height: 20px;
 }
 
 .imageBox {
-    position: relative;
-    text-align: center;
-    color: black;
-    padding: 0;
-    margin: 0.15rem;
-    width: 100px;
+	position: relative;
+	text-align: center;
+	color: black;
+	padding: 0;
+	margin: 0.15rem;
+	width: 100px;
 }
 
 .attribute {
-    width: 140px;
+	width: 140px;
 }
 
 .xpBox {
-    width: 140px;
+	width: 140px;
 }
 
 .png {
-    width: 100%;
+	width: 100%;
 }
 
 .absolute {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .attributeTitle {
-    position: absolute;
-    color: white;
-    font-size: 12px;
-    top: 17%;
-    left: 58%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	color: white;
+	font-size: 12px;
+	top: 17%;
+	left: 58%;
+	transform: translate(-50%, -50%);
 }
 
 .attributeValue {
-    position: absolute;
-    font-size: 20px;
-    font-weight: 600;
-    top: 51%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    flex: unset;
+	position: absolute;
+	font-size: 20px;
+	font-weight: 600;
+	top: 51%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	flex: unset;
 }
 
 .characteristicTitle {
-    position: absolute;
-    font-size: 17px;
-    color: white;
-    font-weight: 600;
-    top: 84%;
-    left: 65%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	font-size: 17px;
+	color: white;
+	font-weight: 600;
+	top: 84%;
+	left: 65%;
+	transform: translate(-50%, -50%);
 }
 
 .characteristicValue {
-    position: absolute;
-    font-size: 40px;
-    font-weight: 600;
-    top: 35%;
-    left: 65%;
-    transform: translate(-50%, -50%);
-    flex: unset;
+	position: absolute;
+	font-size: 40px;
+	font-weight: 600;
+	top: 35%;
+	left: 65%;
+	transform: translate(-50%, -50%);
+	flex: unset;
 }
 
 .xpValue {
-    position: absolute;
-    font-size: 40px;
-    font-weight: 600;
-    top: 45%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    flex: unset;
+	position: absolute;
+	font-size: 40px;
+	font-weight: 600;
+	top: 45%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	flex: unset;
 }
 
 .totalXP {
-    position: fixed;
-    bottom: 5px;
-    left: 5px;
-    z-index: 1;
+	position: fixed;
+	bottom: 5px;
+	left: 5px;
+	z-index: 1;
 }
 
 .availableXP {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-    z-index: 1;
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+	z-index: 1;
 }
 
 .print-totalXP {
-    display: inline-block;
-    position: relative;
-    bottom: 5px;
-    left: 0;
+	display: inline-block;
+	position: relative;
+	bottom: 5px;
+	left: 0;
 }
 
 .print-availableXP {
-    display: inline-block;
-    position: relative;
-    bottom: 5px;
-    right: 0;
+	display: inline-block;
+	position: relative;
+	bottom: 5px;
+	right: 0;
 }
 
 .talentDesc {
-    overflow-y: auto;
-    white-space: pre-line;
+	overflow-y: auto;
+	white-space: pre-line;
 }
 
 .table-dice {
-    width: 130px;
+	width: 130px;
 }
 
 .table-career {
-    text-align: center;
+	text-align: center;
 }
 
 .table-name {
-    width: 150px;
-    text-align: left;
+	width: 150px;
+	text-align: left;
 }
 
 .row-hide {
-    display: none;
+	display: none;
 }
 
 .talentCard {
-    width: 150px;
-    height: 160px;
+	width: 150px;
+	height: 160px;
 }
 
 .ffi {
-    vertical-align: middle;
-    font-size: 1.4rem;
-    letter-spacing: -3px;
+	vertical-align: middle;
+	font-size: 1.4rem;
+	letter-spacing: -3px;
 }
 
 .ffi-d6 {
-    letter-spacing: 0;
+	letter-spacing: 0;
 }
 
 .ffi-border {
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: black;
+	-webkit-text-stroke-width: 2px;
 }
 
 @media only screen
 and (max-width: 480px) {
 
-    .table {
-        font-size: 10px;
-    }
+	.table {
+		font-size: 10px;
+	}
 
-    .talentCard {
-        width: 14vw;
-        height: 12vh;
-        font-size: 0.4rem;
-    }
+	.talentCard {
+		width: 14vw;
+		height: 12vh;
+		font-size: 0.4rem;
+	}
 
-    .ffi {
-        font-size: 0.8rem;
-    }
+	.ffi {
+		font-size: 0.8rem;
+	}
 }
 
 @media print {
-    * {
-        -webkit-print-color-adjust: exact;
-    }
+	* {
+		-webkit-print-color-adjust: exact;
+	}
 
-    h5 {
-        font-size: 1rem;
-        margin-top: 0.25rem;
-        font-weight: 600;
-    }
+	h5 {
+		font-size: 1rem;
+		margin-top: 0.25rem;
+		font-weight: 600;
+	}
 
-    .no-break {
-        break-inside: avoid;
-    }
+	.no-break {
+		break-inside: avoid;
+	}
 
-    .break-after {
-        page-break-after: always;
-    }
+	.break-after {
+		page-break-after: always;
+	}
 
-    .break-before {
-        page-break-before: always;
-    }
+	.break-before {
+		page-break-before: always;
+	}
 
-    .table th {
-        padding: 0.1rem;
-    }
+	.table th {
+		padding: 0.1rem;
+	}
 
-    .table td {
-        padding: 0.1rem;
-        vertical-align: middle;
-        font-size: 0.6rem;
-    }
+	.table td {
+		padding: 0.1rem;
+		vertical-align: middle;
+		font-size: 0.6rem;
+	}
 
-    .ffi {
-        font-size: 1rem;
-    }
+	.ffi {
+		font-size: 1rem;
+	}
 
 }
