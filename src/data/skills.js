@@ -336,7 +336,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'ROT',
 		page: '83',
-		setting: 'Fantasy'
+		setting: 'Magic'
 	},
 	Verse: {
 		name: 'Verse',
@@ -344,6 +344,6 @@ export const skills = {
 		characteristic: 'Presence',
 		book: 'ROT',
 		page: '83',
-		setting: 'Fantasy'
+		setting: 'Magic'
 	},
 };
