@@ -1,16 +1,16 @@
 import React from 'react';
+import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
+import {Button, ButtonGroup, Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {Button, ButtonGroup, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
 import {Archetype, Career, CustomArchetypes, CustomCareers, ModalDeleteConfirm} from './';
-import {startCase} from 'lodash-es';
 
 class CharacterSelectComponent extends React.Component {
 	state = {
 		name: this.props.characterList ? this.props.characterList[this.props.character] : '',
 		playerName: this.props.description.playerName,
-		setting: this.props.setting.join(', '),
+		setting: this.props.setting,
 		archetypeModal: false,
 		careerModal: false,
 		customCareersModal: false,
@@ -20,7 +20,7 @@ class CharacterSelectComponent extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({playerName: nextProps.description.playerName});
-		this.setState({setting: nextProps.setting.join(', ')});
+		this.setState({setting: nextProps.setting});
 		if (this.props.characterList) this.setState({name: this.props.characterList[nextProps.character]});
 		if (nextProps.characterList) this.setState({name: nextProps.characterList[nextProps.character]});
 	}
@@ -53,44 +53,48 @@ class CharacterSelectComponent extends React.Component {
 	};
 
 	render() {
-		const {archetype, archetypes, careers, career, characterList, character, changeData} = this.props;
+		const {archetype, archetypes, careers, career, characterList, character, changeData, settings} = this.props;
 		const {name, playerName, archetypeModal, careerModal, customCareersModal, customArchetypeModal, deleteModal, setting} = this.state;
 		return (
-			<Col>
+			<div className='w-100'>
 				<Row className='justify-content-end'><h5>CHARACTER</h5></Row>
 				<hr/>
-				<Row className='my-2'>
-					<Col className='m-auto'>
-						<InputGroup>
-							<Input type='select' value={character} onChange={this.handleSelect}>
-								{characterList && Object.keys(characterList).map((key) =>
-									<option value={key}
-											key={key}>{characterList[key]}</option>
-								)}
-							</Input>
-							<InputGroupAddon addonType='append'>
-								<ButtonGroup>
-									<Button onClick={() => this.props.addCharacter()}>New</Button>
-									<Button onClick={() => this.setState({deleteModal: true})}>Delete</Button>
-								</ButtonGroup>
-							</InputGroupAddon>
-						</InputGroup>
+				<Row className='align-items-center'>
+					<Col className='my-2'>
+						<Input className='p-0' type='select' value={character} onChange={this.handleSelect}>
+							{characterList && Object.keys(characterList).map((key) =>
+								<option value={key}
+										key={key}>{characterList[key]}</option>
+							)}
+						</Input>
 					</Col>
-				</Row>
-				<Row className='my-2'>
-					<Col className='m-auto'>
-						<b>CHARACTER NAME:</b>
-						<Input type='text' value={name ? name : ''} maxLength='50' name='name'
-							   onChange={this.handleChange}
-							   onBlur={() =>this.props.changeCharacterName(name)}/>
+					<Col md='auto'>
+						<ButtonGroup>
+							<Button onClick={() => this.props.addCharacter()}>New</Button>
+							<Button onClick={() => this.setState({deleteModal: true})} color='danger'>Delete</Button>
+						</ButtonGroup>
 					</Col>
 				</Row>
 				<hr/>
-				<Row>
+				<Row className='align-items-center'>
 					<Col sm='4' className='m-auto'>
-						<b>ARCHETYPE:</b>{' '}{archetype === null ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
+						<b>CHARACTER NAME:</b>
 					</Col>
 					<Col className='m-auto'>
+						<Input type='text' value={name ? name : ''} maxLength='50' name='name'
+							   onChange={this.handleChange}
+							   onBlur={() => this.props.changeCharacterName(name)}/>
+					</Col>
+				</Row>
+				<hr/>
+				<Row className='align-items-center'>
+					<Col sm='4' className='m-auto'>
+						<b>ARCHETYPE:</b>
+					</Col>
+					<Col>
+						{archetype === null ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
+					</Col>
+					<Col>
 						<ButtonGroup>
 							<Button name='archetype'
 									onClick={() => this.setState({archetypeModal: true})}>Select</Button>
@@ -100,11 +104,14 @@ class CharacterSelectComponent extends React.Component {
 					</Col>
 				</Row>
 				<hr/>
-				<Row>
-					<Col sm='4' className='m-auto'>
-						<b>CAREER:</b> {' '} {career === null ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
+				<Row className='align-items-center'>
+					<Col sm='4'>
+						<b>CAREER:</b>
 					</Col>
-					<Col className='m-auto'>
+					<Col>
+						{career === null ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
+					</Col>
+					<Col>
 						<ButtonGroup>
 							<Button name='career'
 									onClick={() => this.setState({careerModal: true})}>Select</Button>
@@ -114,19 +121,31 @@ class CharacterSelectComponent extends React.Component {
 					</Col>
 				</Row>
 				<hr/>
-				<Row>
-					<Col className='m-auto'>
-						<b>SETTING:</b> <Input type='text' value={setting} maxLength='50' name='setting'
-											   onChange={this.handleChange}
-											   onBlur={() => changeData((setting).split(',').map(x => startCase(x.trim())), 'setting', false)}/>
+				<Row className='align-items-center'>
+					<Col sm='4'>
+						<b>SETTING:</b>
+					</Col>
+					<Col>
+						<Typeahead
+							multiple
+							options={settings}
+							name='setting'
+							selected={setting}
+							placeholder="Choose a Setting..."
+							onChange={(selected) => this.setState({setting: selected})}
+							onBlur={() => changeData(setting, 'setting', false)}
+						/>
 					</Col>
 				</Row>
 				<hr/>
-				<Row>
+				<Row className='align-items-center'>
+					<Col sm='4'>
+						<b>PLAYER NAME:</b>
+					</Col>
 					<Col className='m-auto'>
-						<b>PLAYER NAME:</b> <Input type='text' value={playerName} maxLength='25' name='playerName'
-												   onChange={this.handleChange}
-												   onBlur={this.handleBlur}/>
+						<Input type='text' value={playerName} maxLength='25' name='playerName'
+							   onChange={this.handleChange}
+							   onBlur={this.handleBlur}/>
 					</Col>
 				</Row>
 				<hr/>
@@ -141,7 +160,7 @@ class CharacterSelectComponent extends React.Component {
 									confirmedDelete={this.confirmedDelete}
 									handleClose={() => this.setState({deleteModal: false})}
 									type='Character'/>
-			</Col>
+			</div>
 
 		);
 	}
@@ -158,6 +177,7 @@ function mapStateToProps(state) {
 		description: state.description,
 		setting: state.setting,
 		user: state.user,
+		settings: state.settings,
 	};
 }
 

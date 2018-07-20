@@ -1,14 +1,14 @@
 import React from 'react';
-import {CustomSkills, SkillBlock} from './index';
 import {connect} from "react-redux";
 import {Button, Col, Row} from 'reactstrap';
+import {CustomSkills, SkillBlock} from './index';
 
 class SkillComponent extends React.Component {
 	state = {modal: false};
 
 	render() {
 		return (
-			<Col xl='12'>
+			<div className='w-100'>
 				<Row className='justify-content-end'><h5>SKILLS</h5> <Button color='link'
 																			 className='noUnderLine p-0 mt-1'
 																			 onClick={() => this.setState({modal: true})}>⚙</Button></Row>
@@ -32,7 +32,7 @@ class SkillComponent extends React.Component {
 
 				<CustomSkills modal={this.state.modal} handleClose={() => this.setState({modal: false})}/>
 
-			</Col>
+			</div>
 		)
 	}
 }

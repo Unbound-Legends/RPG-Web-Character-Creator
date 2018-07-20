@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Row} from 'reactstrap';
+import {Button, Row} from 'reactstrap';
+import {chars} from '../data/lists';
 import {characteristics} from '../selectors'
 import {Characteristics} from './index';
-import {chars} from '../data/lists';
 
 class ShowCharacteristicsComponent extends React.Component {
 	state = {modal: false};
@@ -11,10 +11,12 @@ class ShowCharacteristicsComponent extends React.Component {
 	render() {
 		const {characteristics} = this.props;
 		return (
-			<Col lg='12'>
-				<Row className='justify-content-end'><h5>CHARACTERISTICS</h5><Button color='link'
-																					 className='noUnderLine p-0'
-																					 onClick={() => this.setState({modal: true})}>⚙</Button></Row>
+			<div className='w-100'>
+				<Row className='justify-content-end'>
+					<h5>CHARACTERISTICS</h5>
+					<Button color='link'
+							className='noUnderLine p-0'
+							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
 				<hr/>
 				<Row className='justify-content-center'>
 
@@ -28,7 +30,7 @@ class ShowCharacteristicsComponent extends React.Component {
 					)}
 				</Row>
 				<Characteristics modal={this.state.modal} handleClose={() => this.setState({modal: false})}/>
-			</Col>
+			</div>
 		);
 	}
 }

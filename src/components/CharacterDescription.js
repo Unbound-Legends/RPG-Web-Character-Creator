@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Col, Input, Row} from 'reactstrap';
+import {Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -31,7 +31,7 @@ class CharacterDescriptionComponent extends React.Component {
 	render() {
 		const {description} = this.state;
 		return (
-			<Col className='m-1'>
+			<div className='w-100 m-1'>
 				<Row className='justify-content-end'><h5>CHARACTER DESCRIPTION</h5></Row>
 				<hr/>
 				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map(aspect =>
@@ -55,7 +55,7 @@ class CharacterDescriptionComponent extends React.Component {
 							  name='features'
 							  value={description.features ? description.features : ''}/>
 				</Row>
-			</Col>
+			</div>
 		);
 	}
 }

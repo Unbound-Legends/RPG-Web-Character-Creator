@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Col, Row} from 'reactstrap';
+import {Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -29,10 +29,11 @@ class NotesComponent extends React.Component {
 	render() {
 		const {notes} = this.state;
 		return (
-			<Col className='m-2' onClick={this.handleClick}>
-				<Row className='justify-content-end'><h5>NOTES</h5></Row>
+			<div className='m-1'>
+				<Row className='justify-content-end'>
+					<h5>NOTES</h5></Row>
 				<hr/>
-				<Row>
+				<Row className='justify-content-center mx-auto'>
                         <textarea onChange={this.handleChange}
 								  onBlur={this.handleBlur}
 								  className='w-100'
@@ -40,7 +41,7 @@ class NotesComponent extends React.Component {
 								  maxLength='5000'
 								  value={notes}/>
 				</Row>
-			</Col>
+			</div>
 
 		);
 	}

@@ -1,8 +1,8 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Input, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-import {Col, Input, Row} from 'reactstrap';
 import * as selectors from '../selectors';
 
 class AttributesComponent extends React.Component {
@@ -30,7 +30,7 @@ class AttributesComponent extends React.Component {
 		const {woundThreshold, strainThreshold, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
 		const {currentStrain, currentWound} = this.state;
 		return (
-			<Col lg='12'>
+			<div className='w-100'>
 				<Row className='justify-content-end'><h5>ATTRIBUTES</h5></Row>
 				<hr/>
 				<Row className='my-2 justify-content-center'>
@@ -80,7 +80,7 @@ class AttributesComponent extends React.Component {
 							className={`attributeValue text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>{`${encumbranceLimit}  |   ${totalEncumbrance}`}</Row>
 					</div>
 				</Row>
-			</Col>
+			</div>
 		)
 	}
 

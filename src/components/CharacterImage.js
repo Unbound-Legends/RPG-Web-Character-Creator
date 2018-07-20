@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {changeData} from '../actions';
 
 class CharacterImageComponent extends React.Component {
@@ -24,12 +24,18 @@ class CharacterImageComponent extends React.Component {
 		const {description} = this.props;
 		const {modal, text} = this.state;
 		return (
-			<Col className='align-items-center m-auto'>
-				<Row className='justify-content-end'><h5>CHARACTER IMAGE</h5><Button color='link'
-																					 className='noUnderLine p-0'
-																					 onClick={() => this.setState({modal: true})}>⚙</Button></Row>
-				<img className='img-fluid' src={description.image ? description.image : ''}
-					 alt='not found' ref={img => this.img = img} onError={() => this.img.src = 'images/png/Crest.png'}/>
+			<div className='align-items-center m-auto'>
+				<Row className='justify-content-end'>
+					<h5>CHARACTER IMAGE</h5>
+					<Button color='link'
+							className='noUnderLine p-0'
+							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
+				<Row className='justify-content-center'>
+					<img className='img-fluid w-100 h-100' style={{maxWidth: 'unset'}}
+						 src={description.image ? description.image : ''}
+						 alt='not found' ref={img => this.img = img}
+						 onError={() => this.img.src = 'images/png/Crest.png'}/>
+				</Row>
 				<Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
 					<ModalHeader toggle={() => this.setState({modal: false})}>Edit Character Image</ModalHeader>
 					<ModalBody className='m-3'>
@@ -42,7 +48,7 @@ class CharacterImageComponent extends React.Component {
 						<Button onClick={() => this.setState({modal: false})}>Close</Button>
 					</ModalFooter>
 				</Modal>
-			</Col>
+			</div>
 
 		);
 	}

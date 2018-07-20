@@ -163,7 +163,7 @@ class EquipmentComponent extends React.Component {
 		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense} = this.props;
 		const {money, equipModal, customEquipmentModal} = this.state;
 		return (
-			<Col lg='12' onClick={this.handleClick}>
+			<div className='w-100'>
 				<Row className='justify-content-end'><h5>EQUIPMENT</h5></Row>
 				<hr/>
 				<Row className='my-2'>
@@ -185,105 +185,107 @@ class EquipmentComponent extends React.Component {
 						Ranged: <b>{totalDefense.ranged}</b> Melee: <b>{totalDefense.melee}</b>
 					</Col>
 				</Row>
-				<Tabs defaultIndex={0} className='d-print-none'>
-					<TabList>
-						<Tab>WEAPONS</Tab>
-						<Tab>ARMOR</Tab>
-						<Tab>GEAR</Tab>
-					</TabList>
-					<TabPanel>
-						{Object.keys(equipmentWeapons).length > 0 &&
-						<Table className='text-center'>
-							<thead>
-							<tr>
-								<th>CARRY</th>
-								<th>CRAFT</th>
-								<th>NAME</th>
-								<th>DAM</th>
-								<th>CRIT</th>
-								<th>RANGE</th>
-								<th>SKILL</th>
-								<th>ENCUM</th>
-								<th>QUAL</th>
-								<th>DICE</th>
-								<th/>
-							</tr>
-							</thead>
-							<tbody>
-							{Object.keys(equipmentWeapons).map(key =>
-								<tr key={key}>
-									{['carried', 'craftsmanship', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice', 'deleteButton'].map(block =>
-										this.getLabel('equipmentWeapons', block, key)
-									)}
+				<Row>
+					<Tabs defaultIndex={0} className='d-print-none'>
+						<TabList>
+							<Tab>WEAPONS</Tab>
+							<Tab>ARMOR</Tab>
+							<Tab>GEAR</Tab>
+						</TabList>
+						<TabPanel>
+							{Object.keys(equipmentWeapons).length > 0 &&
+							<Table className='text-center'>
+								<thead>
+								<tr>
+									<th>CARRY</th>
+									<th>CRAFT</th>
+									<th>NAME</th>
+									<th>DAM</th>
+									<th>CRIT</th>
+									<th>RANGE</th>
+									<th>SKILL</th>
+									<th>ENCUM</th>
+									<th>QUAL</th>
+									<th>DICE</th>
+									<th/>
 								</tr>
-							)}
-							</tbody>
-						</Table>
-						}
-						{this.buttons('equipmentWeapons')}
-					</TabPanel>
-					<TabPanel>
-						{Object.keys(equipmentArmor).length > 0 &&
-						<Table className='text-center'>
-							<thead>
-							<tr>
-								<th>EQUIP</th>
-								<th>CARRY</th>
-								<th>CRAFT</th>
-								<th>NAME</th>
-								<th>SOAK</th>
-								<th>DEFENSE</th>
-								<th>RANGED</th>
-								<th>MELEE</th>
-								<th>ENCUM</th>
-								<th>QUAL</th>
-								<th/>
-							</tr>
-							</thead>
-							<tbody>
-							{Object.keys(equipmentArmor).map(key =>
-								<tr key={key}>
-									{['equipped', 'carried', 'craftsmanship', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
-										this.getLabel('equipmentArmor', block, key)
-									)}
+								</thead>
+								<tbody>
+								{Object.keys(equipmentWeapons).map(key =>
+									<tr key={key}>
+										{['carried', 'craftsmanship', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice', 'deleteButton'].map(block =>
+											this.getLabel('equipmentWeapons', block, key)
+										)}
+									</tr>
+								)}
+								</tbody>
+							</Table>
+							}
+							{this.buttons('equipmentWeapons')}
+						</TabPanel>
+						<TabPanel>
+							{Object.keys(equipmentArmor).length > 0 &&
+							<Table className='text-center'>
+								<thead>
+								<tr>
+									<th>EQUIP</th>
+									<th>CARRY</th>
+									<th>CRAFT</th>
+									<th>NAME</th>
+									<th>SOAK</th>
+									<th>DEFENSE</th>
+									<th>RANGED</th>
+									<th>MELEE</th>
+									<th>ENCUM</th>
+									<th>QUAL</th>
+									<th/>
 								</tr>
-							)}
-							</tbody>
-						</Table>
-						}
-						{this.buttons('equipmentArmor')}
-					</TabPanel>
-					<TabPanel>
-						{Object.keys(equipmentGear).length > 0 &&
-						<Table className='text-center'>
-							<thead>
-							<tr>
-								<th>CARRY</th>
-								<th>NAME</th>
-								<th>ENCUM</th>
-								<th>QUAL</th>
-								<th/>
-							</tr>
-							</thead>
-							<tbody>
-							{Object.keys(equipmentGear).map(key =>
-								<tr key={key}>
-									{['carried', 'name', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
-										this.getLabel('equipmentGear', block, key)
-									)}
+								</thead>
+								<tbody>
+								{Object.keys(equipmentArmor).map(key =>
+									<tr key={key}>
+										{['equipped', 'carried', 'craftsmanship', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
+											this.getLabel('equipmentArmor', block, key)
+										)}
+									</tr>
+								)}
+								</tbody>
+							</Table>
+							}
+							{this.buttons('equipmentArmor')}
+						</TabPanel>
+						<TabPanel>
+							{Object.keys(equipmentGear).length > 0 &&
+							<Table className='text-center'>
+								<thead>
+								<tr>
+									<th>CARRY</th>
+									<th>NAME</th>
+									<th>ENCUM</th>
+									<th>QUAL</th>
+									<th/>
 								</tr>
-							)}
-							</tbody>
-						</Table>
-						}
-						{this.buttons('equipmentGear')}
-					</TabPanel>
-				</Tabs>
+								</thead>
+								<tbody>
+								{Object.keys(equipmentGear).map(key =>
+									<tr key={key}>
+										{['carried', 'name', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
+											this.getLabel('equipmentGear', block, key)
+										)}
+									</tr>
+								)}
+								</tbody>
+							</Table>
+							}
+							{this.buttons('equipmentGear')}
+						</TabPanel>
+					</Tabs>
+				</Row>
 				<Gear modal={equipModal} type={equipModal}
 					  handleClose={() => this.setState({equipModal: false})}/>
 				<CustomEquipment modal={customEquipmentModal} type={customEquipmentModal}
 								 handleClose={() => this.setState({customEquipmentModal: false})}/>
-			</Col>
+			</div>
 		);
 	}
 }

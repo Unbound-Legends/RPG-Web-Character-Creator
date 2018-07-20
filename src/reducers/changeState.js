@@ -1,7 +1,7 @@
-import * as initialState from './initialState';
-import * as data from '../data';
 import merge from 'deepmerge';
 import {upperFirst} from 'lodash';
+import * as data from '../data';
+import * as initialState from './initialState';
 
 const clone = require('clone');
 
@@ -56,7 +56,7 @@ const databaseReducer = (state, action, type) => {
 	if (action.type === `custom${upperFirst(type)}_Changed`) {
 		let obj = data[type];
 		if (action.payload) obj = merge(data[type], action.payload);
-		if (action.setting && action.setting.length > 0 && !action.setting.includes('All')) {
+		if (action.setting && action.setting.length > 0 && !action.setting.includes('All') && type !== 'settings') {
 			let filter = {};
 			Object.keys(obj).forEach(key => {
 				if (obj[key].setting) {

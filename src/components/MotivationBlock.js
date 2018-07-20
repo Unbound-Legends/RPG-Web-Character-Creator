@@ -1,7 +1,7 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Card, CardBody, CardFooter, CardHeader, Input, InputGroup, InputGroupAddon} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
 const clone = require('clone');
@@ -54,7 +54,7 @@ class MotivationBlockComponent extends React.Component {
         const name = masterMotivations[type] ? masterMotivations[type].key : '';
         const {description} = this.state;
         return (
-            <Card className='m-2' style={{width: '350px'}}>
+			<Card className='m-2' style={{minWidth: '45%'}}>
                 <CardHeader>
                     <InputGroup>
                         <InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>

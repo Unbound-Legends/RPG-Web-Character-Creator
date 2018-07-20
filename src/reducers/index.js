@@ -43,6 +43,7 @@ const allReducers = combineReducers({
 	printContent: changeState.printContent,
 	qualities: changeState.qualities,
 	setting: changeState.setting,
+	settings: changeState.settings,
 	skills: changeState.skills,
 	talentModifiers: changeState.talentModifiers,
 	talents: changeState.talents,

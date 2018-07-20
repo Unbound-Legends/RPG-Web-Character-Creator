@@ -1,10 +1,10 @@
 import React from 'react';
-import {Col, Row} from 'reactstrap';
+import {Row} from 'reactstrap';
 import {MotivationBlock} from './index';
 
 export const Motivation = () => {
 	return (
-		<Col xl='12'>
+		<div className='w-100'>
 			<Row className='justify-content-end'><h5>MOTIVATIONS</h5></Row>
 			<hr/>
 			<Row className='justify-content-center'>
@@ -12,7 +12,7 @@ export const Motivation = () => {
 					<MotivationBlock key={type} type={type}/>
 				)}
 			</Row>
-		</Col>
+		</div>
 	)
 };
 

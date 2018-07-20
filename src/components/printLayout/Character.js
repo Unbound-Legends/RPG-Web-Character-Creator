@@ -9,16 +9,16 @@ class Component extends React.Component {
 		return (
 			<Row>
 				<Col sm='6'>
-					<Row className='justify-content-end'><h5>CHARACTER</h5></Row>
+					<Row className='justify-content-end align-items-center'><h5>CHARACTER</h5></Row>
 					<hr/>
-					<Row>
+					<Row className='align-items-center'>
 						<Col sm='4'>
 							<b>CHARACTER NAME:</b>
 						</Col>
 						<Col>{characterList[character]}</Col>
 					</Row>
 					<hr/>
-					<Row>
+					<Row className='align-items-center'>
 						<Col sm='4'>
 							<b>ARCHETYPE:</b>
 						</Col>
@@ -27,7 +27,7 @@ class Component extends React.Component {
 						</Col>
 					</Row>
 					<hr/>
-					<Row>
+					<Row className='align-items-center'>
 						<Col sm='4'>
 							<b>CAREER:</b>
 						</Col>
@@ -36,14 +36,15 @@ class Component extends React.Component {
 						</Col>
 					</Row>
 					<hr/>
-					<Row>
+					<Row className='align-items-center'>
 						<Col sm='4'>
 							<b>SETTING:</b>
 						</Col>
 						<Col>
 							{setting.join(', ')}
 						</Col>
-					</Row><Row>
+					</Row>
+					<Row className='align-items-center'>
 						<Col sm='4'>
 							<b>PLAYER NAME:</b>
 						</Col>

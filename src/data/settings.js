@@ -1,1 +1,1 @@
-export const settings = ['All', 'Science Fiction', 'Fantasy', 'Modern Day', 'Space Opera,', 'Steampunk', 'Weird War', 'Hacking', 'Vehicle', 'Magic'];
+export const settings = ['All', 'Science Fiction', 'Fantasy', 'Modern Day', 'Space Opera', 'Steampunk', 'Weird War', 'Hacking', 'Vehicle', 'Magic'];

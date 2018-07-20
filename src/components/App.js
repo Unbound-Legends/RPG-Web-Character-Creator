@@ -1,16 +1,12 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {
-	changeUser,
-	loadCharacterList,
-	loadData,
-	loadCustomData
-} from '../actions';
-import {DataPage, MainPage, User} from './index';
 import firebase from '@firebase/app';
 import '@firebase/auth';
+import React from 'react';
+import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
+import {Container} from 'reactstrap';
+import {bindActionCreators} from 'redux';
+import {changeUser, loadCharacterList, loadCustomData, loadData} from '../actions';
+import {DataPage, MainPage, User} from './index';
 
 class AppComponent extends React.Component {
 	state = {loading: true};
@@ -44,21 +40,21 @@ class AppComponent extends React.Component {
 		if (!(this.props.user)) return <User/>;
 		if (loadingCustomData || loadingData) return loadingPage;
 		else return (
-			<div>
+			<Container className='ml-1 '>
 				<Tabs defaultIndex={0} className='m-1 d-print-none'>
 					<TabList>
 						<Tab>CHARACTERS</Tab>
 						<Tab>EXPORT / IMPORT</Tab>
 					</TabList>
-					<TabPanel>
+					<TabPanel className='w-100'>
 						<MainPage/>
 					</TabPanel>
-					<TabPanel>
+					<TabPanel className='w-100'>
 						<DataPage/>
 					</TabPanel>
 				</Tabs>
 				<div className='d-none d-print-block'>{this.props.printContent}</div>
-			</div>
+			</Container>
 		);
 	}
 }
