@@ -6,7 +6,8 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadCustomData, loadData} from '../actions';
-import {DataPage, MainPage, User} from './index';
+import {DataPage, MainPage, User} from './';
+import {CustomData} from './CustomData';
 
 class AppComponent extends React.Component {
 	state = {loading: true};
@@ -40,14 +41,18 @@ class AppComponent extends React.Component {
 		if (!(this.props.user)) return <User/>;
 		if (loadingCustomData || loadingData) return loadingPage;
 		else return (
-			<Container className='ml-1 '>
+			<Container className='ml-1' style={{marginBottom: '8rem'}}>
 				<Tabs defaultIndex={0} className='m-1 d-print-none'>
 					<TabList>
 						<Tab>CHARACTERS</Tab>
+						<Tab>CUSTOM DATA</Tab>
 						<Tab>EXPORT / IMPORT</Tab>
 					</TabList>
 					<TabPanel className='w-100'>
 						<MainPage/>
+					</TabPanel>
+					<TabPanel className='w-100'>
+						<CustomData/>
 					</TabPanel>
 					<TabPanel className='w-100'>
 						<DataPage/>

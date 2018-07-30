@@ -1,9 +1,9 @@
+import {startCase} from 'lodash-es'
 import React from 'react';
 import {connect} from 'react-redux';
+import {Button, Col, FormGroup, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {importCharacter, importCustomData} from '../actions';
-import {Button, Col, FormGroup, Input, Label, Row} from 'reactstrap';
-import {startCase} from 'lodash-es'
 import {customDataTypes, dataTypes} from '../data/lists';
 import {db} from '../firestore/db';
 
@@ -35,7 +35,7 @@ class ImportExportComponent extends React.Component {
 							if (doc.exists) file[type] = clone(doc.data().data);
 							else file[type] = null;
 							if (index + 1 >= dataTypes.length) final.push({character: file});
-							if (final.length === characters.length + Object.keys(customData).length) resolve(final);
+							if (final.length === characters.length + (Object.keys(customData).length > 0 ? 1 : 0)) resolve(final);
 						}, err => {
 							console.log(`Encountered error: ${err}`);
 						});
@@ -43,7 +43,7 @@ class ImportExportComponent extends React.Component {
 			});
 			let file = {};
 			Object.keys(customData).forEach((type, index) => {
-				file[type]= {};
+				file[type] = {};
 				db.doc(`users/${user}/customData/${type}/`).get()
 					.then(doc => {
 						if (doc.exists) {
@@ -56,7 +56,7 @@ class ImportExportComponent extends React.Component {
 						}
 						else file[type] = null;
 						if (index + 1 >= Object.keys(customData).length) final.push({customData: file});
-						if (final.length === characters.length + Object.keys(customData).length) resolve(final);
+						if (final.length === characters.length + (Object.keys(customData).length > 0 ? 1 : 0)) resolve(final);
 					}, err => {
 						console.log(`Encountered error: ${err}`);
 					});
@@ -197,7 +197,7 @@ class ImportExportComponent extends React.Component {
 														   name={type}
 														   onChange={this.handleChange}
 													/>
-													{' '} {this.props[item][key].name}
+													{' '} {this.props[item][key].name ? this.props[item][key].name : this.props[item][key]}
 												</Label>
 											</Row>
 										)}
@@ -240,6 +240,7 @@ function mapStateToProps(state) {
 		customSkills: state.customSkills,
 		customTalents: state.customTalents,
 		customWeapons: state.customWeapons,
+		customSettings: state.customSettings,
 	};
 }
 

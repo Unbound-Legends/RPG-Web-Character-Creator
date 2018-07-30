@@ -16,6 +16,7 @@ class CharacterSelectComponent extends React.Component {
 		customCareersModal: false,
 		customArchetypeModal: false,
 		deleteModal: false,
+		customSettingModal: false,
 	};
 
 	componentWillReceiveProps(nextProps) {
@@ -61,7 +62,7 @@ class CharacterSelectComponent extends React.Component {
 				<hr/>
 				<Row className='align-items-center'>
 					<Col className='my-2'>
-						<Input className='p-0' type='select' value={character} onChange={this.handleSelect}>
+						<Input type='select' value={character} onChange={this.handleSelect}>
 							{characterList && Object.keys(characterList).map((key) =>
 								<option value={key}
 										key={key}>{characterList[key]}</option>
@@ -128,7 +129,7 @@ class CharacterSelectComponent extends React.Component {
 					<Col>
 						<Typeahead
 							multiple
-							options={settings}
+							options={Object.values(settings)}
 							name='setting'
 							selected={setting}
 							placeholder="Choose a Setting..."
@@ -155,7 +156,6 @@ class CharacterSelectComponent extends React.Component {
 							   handleClose={() => this.setState({customCareersModal: false})}/>
 				<CustomArchetypes modal={customArchetypeModal}
 								  handleClose={() => this.setState({customArchetypeModal: false})}/>
-
 				<ModalDeleteConfirm deleteModal={deleteModal}
 									confirmedDelete={this.confirmedDelete}
 									handleClose={() => this.setState({deleteModal: false})}

@@ -156,7 +156,7 @@ export const qualities = {
 	},
 	Linked: {
 		name: 'Linked',
-		ranked: false,
+		ranked: true,
 		description: 'See CRB, page 88, for more details.',
 		book: 'CRB',
 		page: '88',

@@ -44,6 +44,7 @@ class Component extends React.Component {
 							{setting.join(', ')}
 						</Col>
 					</Row>
+					<hr/>
 					<Row className='align-items-center'>
 						<Col sm='4'>
 							<b>PLAYER NAME:</b>

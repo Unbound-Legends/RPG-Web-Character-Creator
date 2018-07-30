@@ -24,6 +24,7 @@ const allReducers = combineReducers({
 	customGear: changeState.customGear,
 	customMotivations: changeState.customMotivations,
 	customSkills: changeState.customSkills,
+	customSettings: changeState.customSettings,
 	customTalents: changeState.customTalents,
 	customWeapons: changeState.customWeapons,
 	description: changeState.description,
