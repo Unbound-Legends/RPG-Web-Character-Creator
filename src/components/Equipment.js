@@ -2,7 +2,7 @@ import {omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
-import {Button, ButtonGroup, Col, Input, Row, Table} from 'reactstrap';
+import {Button, Col, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {
@@ -14,7 +14,7 @@ import {
 	totalEncumbrance,
 	totalSoak,
 } from '../selectors';
-import {CustomEquipment, DeleteButton, Description, Gear} from "./index";
+import {DeleteButton, Description, Gear} from "./index";
 
 const clone = require('clone');
 
@@ -22,7 +22,6 @@ class EquipmentComponent extends React.Component {
 	state = {
 		money: this.props.money,
 		equipModal: false,
-		customEquipmentModal: false,
 	};
 
 	componentWillReceiveProps(nextProps) {
@@ -72,13 +71,7 @@ class EquipmentComponent extends React.Component {
 	};
 
 	buttons = (type) => {
-		return (
-			<ButtonGroup>
-				<Button onClick={() => this.setState({equipModal: type})}>Add {type.toString().slice(9)}</Button>
-				<Button
-					onClick={() => this.setState({customEquipmentModal: `custom${type.toString().slice(9)}`})}>Custom {type.toString().slice(9)}</Button>
-			</ButtonGroup>
-		)
+		return <Button onClick={() => this.setState({equipModal: type})}>Add {type.toString().slice(9)}</Button>
 	};
 
 	getLabel = (type, block, key) => {
@@ -161,7 +154,7 @@ class EquipmentComponent extends React.Component {
 
 	render() {
 		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense} = this.props;
-		const {money, equipModal, customEquipmentModal} = this.state;
+		const {money, equipModal} = this.state;
 		return (
 			<div className='w-100'>
 				<Row className='justify-content-end'><h5>EQUIPMENT</h5></Row>
@@ -283,8 +276,6 @@ class EquipmentComponent extends React.Component {
 				</Row>
 				<Gear modal={equipModal} type={equipModal}
 					  handleClose={() => this.setState({equipModal: false})}/>
-				<CustomEquipment modal={customEquipmentModal} type={customEquipmentModal}
-								 handleClose={() => this.setState({customEquipmentModal: false})}/>
 			</div>
 		);
 	}

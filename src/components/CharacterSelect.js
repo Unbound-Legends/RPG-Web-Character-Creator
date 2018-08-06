@@ -1,10 +1,10 @@
 import React from 'react';
 import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
-import {Button, ButtonGroup, Col, Input, Row} from 'reactstrap';
+import {Button, Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
-import {Archetype, Career, CustomArchetypes, CustomCareers, ModalDeleteConfirm} from './';
+import {Archetype, Career, ModalDeleteConfirm} from './';
 
 class CharacterSelectComponent extends React.Component {
 	state = {
@@ -13,10 +13,7 @@ class CharacterSelectComponent extends React.Component {
 		setting: this.props.setting,
 		archetypeModal: false,
 		careerModal: false,
-		customCareersModal: false,
-		customArchetypeModal: false,
 		deleteModal: false,
-		customSettingModal: false,
 	};
 
 	componentWillReceiveProps(nextProps) {
@@ -55,7 +52,7 @@ class CharacterSelectComponent extends React.Component {
 
 	render() {
 		const {archetype, archetypes, careers, career, characterList, character, changeData, settings} = this.props;
-		const {name, playerName, archetypeModal, careerModal, customCareersModal, customArchetypeModal, deleteModal, setting} = this.state;
+		const {name, playerName, archetypeModal, careerModal, deleteModal, setting} = this.state;
 		return (
 			<div className='w-100'>
 				<Row className='justify-content-end'><h5>CHARACTER</h5></Row>
@@ -70,10 +67,7 @@ class CharacterSelectComponent extends React.Component {
 						</Input>
 					</Col>
 					<Col md='auto'>
-						<ButtonGroup>
-							<Button onClick={() => this.props.addCharacter()}>New</Button>
-							<Button onClick={() => this.setState({deleteModal: true})} color='danger'>Delete</Button>
-						</ButtonGroup>
+						<Button onClick={() => this.props.addCharacter()}>New</Button>
 					</Col>
 				</Row>
 				<hr/>
@@ -96,12 +90,8 @@ class CharacterSelectComponent extends React.Component {
 						{archetype === null ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
 					</Col>
 					<Col>
-						<ButtonGroup>
-							<Button name='archetype'
-									onClick={() => this.setState({archetypeModal: true})}>Select</Button>
-							<Button name='customArchetype'
-									onClick={() => this.setState({customArchetypeModal: true})}>Custom</Button>
-						</ButtonGroup>
+						<Button name='archetype'
+								onClick={() => this.setState({archetypeModal: true})}>Select</Button>
 					</Col>
 				</Row>
 				<hr/>
@@ -113,12 +103,8 @@ class CharacterSelectComponent extends React.Component {
 						{career === null ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
 					</Col>
 					<Col>
-						<ButtonGroup>
-							<Button name='career'
-									onClick={() => this.setState({careerModal: true})}>Select</Button>
-							<Button name='customCareer'
-									onClick={() => this.setState({customCareersModal: true})}>Custom</Button>
-						</ButtonGroup>
+						<Button name='career'
+								onClick={() => this.setState({careerModal: true})}>Select</Button>
 					</Col>
 				</Row>
 				<hr/>
@@ -128,14 +114,14 @@ class CharacterSelectComponent extends React.Component {
 					</Col>
 					<Col>
 						<Typeahead
-							multiple
+							multiple={true}
 							options={Object.values(settings)}
 							name='setting'
 							selected={setting}
 							placeholder="Choose a Setting..."
-							onChange={(selected) => this.setState({setting: selected})}
-							onBlur={() => changeData(setting, 'setting', false)}
-						/>
+							clearButton={true}
+							onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}
+							onBlur={() => changeData(setting, 'setting', false)}/>
 					</Col>
 				</Row>
 				<hr/>
@@ -152,10 +138,6 @@ class CharacterSelectComponent extends React.Component {
 				<hr/>
 				<Archetype modal={archetypeModal} handleClose={() => this.setState({archetypeModal: false})}/>
 				<Career modal={careerModal} handleClose={() => this.setState({careerModal: false})}/>
-				<CustomCareers modal={customCareersModal}
-							   handleClose={() => this.setState({customCareersModal: false})}/>
-				<CustomArchetypes modal={customArchetypeModal}
-								  handleClose={() => this.setState({customArchetypeModal: false})}/>
 				<ModalDeleteConfirm deleteModal={deleteModal}
 									confirmedDelete={this.confirmedDelete}
 									handleClose={() => this.setState({deleteModal: false})}

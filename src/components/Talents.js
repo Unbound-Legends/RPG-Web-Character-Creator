@@ -1,21 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Row} from 'reactstrap';
+import {Row} from 'reactstrap';
 import {talentCount} from '../selectors';
-import {CustomTalents, TalentBlock} from './index';
+import {TalentBlock} from './';
 
 class TalentsComponent extends React.Component {
-	state = {modal: false};
-
 	render() {
 		const {masterTalents} = this.props;
 		return (
 			<div className='w-100'>
 				<Row className='justify-content-end'>
 					<h5>TALENTS</h5>
-					<Button color='link'
-							className='noUnderLine p-0 mt-1'
-							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
+				</Row>
 				<hr/>
 				{Object.keys(masterTalents).map(row =>
 					<Row key={row} className=''>
@@ -27,8 +23,6 @@ class TalentsComponent extends React.Component {
 						)}
 					</Row>
 				)}
-				<CustomTalents modal={this.state.modal} handleClose={() => this.setState({modal: false})}/>
-
 			</div>
 		)
 	}

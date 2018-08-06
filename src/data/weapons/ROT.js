@@ -16,8 +16,8 @@ export const ROT = {
 	cestus: {
 		name: 'Cestus',
 		skill: 'Brawl',
-		damage: '+3',
-		critical: 3,
+		damage: '+1',
+		critical: 4,
 		range: 'Engaged',
 		encumbrance: 2,
 		price: 150,

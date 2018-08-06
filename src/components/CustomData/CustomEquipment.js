@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
+import {Button, Col, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeCustomData} from '../actions';
-import {ControlButtonSet, DeleteButton} from './index';
+import {changeCustomData} from '../../actions';
+import {ControlButtonSet, DeleteButton} from '..';
 import {omit} from 'lodash-es';
+import {Typeahead} from 'react-bootstrap-typeahead';
 
 const clone = require('clone');
 
@@ -19,7 +20,7 @@ class CustomEquipmentComponent extends React.Component {
 		price: '',
 		soak: '',
 		defense: '',
-		setting: 'All',
+		setting: [],
 		meleeDefense: '',
 		rangedDefense: '',
 		qualitiesList: '',
@@ -42,7 +43,7 @@ class CustomEquipmentComponent extends React.Component {
 			price: '',
 			soak: '',
 			defense: '',
-			setting: '',
+			setting: [],
 			meleeDefense: '',
 			rangedDefense: '',
 			qualityRank: '',
@@ -113,11 +114,12 @@ class CustomEquipmentComponent extends React.Component {
 
 	handleEdit = (event, equipment) => {
 		event.preventDefault();
-		this.setState({...equipment, qualityList: equipment.qualities ? equipment.qualities : {}, mode: 'edit'})
+		this.setState({...equipment, setting: typeof equipment.setting === 'string' ? equipment.setting.split(', ') : equipment.setting,
+			qualityList: equipment.qualities ? equipment.qualities : {}, mode: 'edit'})
 	};
 
 	buildField = (field) => {
-		const {type, skills, qualities} = this.props;
+		const {type, skills, qualities, settings} = this.props;
 		switch (field) {
 			case 'name':
 				return <Input type='text' value={this.state[field]} name={field}
@@ -126,6 +128,17 @@ class CustomEquipmentComponent extends React.Component {
 				return (
 					<Input type='text' value={this.state[field]} name={field}
 						   onChange={this.handleChange}/>
+				);
+			case 'setting':
+				return (
+					<Typeahead
+						multiple={true}
+						options={Object.values(settings)}
+						name='setting'
+						selected={this.state.setting}
+						placeholder='Choose a Setting...'
+						clearButton={true}
+						onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
 				);
 			case 'critical':
 			case 'encumbrance':
@@ -167,7 +180,7 @@ class CustomEquipmentComponent extends React.Component {
 				return (
 					<div>
 						<Row className='mt-2'>
-							<Col sm='4' className='my-auto'>Special Qualities:</Col>
+							<Col sm='4' className='my-auto'><b>Special Qualities:</b></Col>
 							<Col>
 								<Input type='select'
 									   value={this.state[field]}
@@ -228,62 +241,56 @@ class CustomEquipmentComponent extends React.Component {
 	};
 
 	render() {
-		const {type, modal} = this.props;
+		const {type} = this.props;
 		let fields = [];
-		if (type === 'customWeapons') fields = ['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'price', 'description'];
-		if (type === 'customArmor') fields = ['name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'price', 'description'];
-		if (type === 'customGear') fields = ['name', 'encumbrance', 'price', 'description'];
+		if (type === 'customWeapons') fields = ['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'price', 'description', 'setting'];
+		if (type === 'customArmor') fields = ['name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'price', 'description', 'setting'];
+		if (type === 'customGear') fields = ['name', 'encumbrance', 'price', 'description', 'setting'];
 
 		if (!type) return <div/>;
 		return (
-			<Modal isOpen={!!modal} toggle={this.handleClose}>
-				<ModalHeader toggle={this.handleClose}>{`Custom ${type.toString().slice(6)}`}</ModalHeader>
-				<ModalBody className='m-4'>
-					{fields.map(field =>
-						<Row className='mt-2' key={field}>
-							<Col sm='4' className='my-auto'>{field.charAt(0).toUpperCase() + field.slice(1)}:</Col>
-							<Col>
-								{this.buildField(field)}
-							</Col>
-						</Row>
-					)}
-					{this.buildField('specialQualities')}
-					<ControlButtonSet
-						mode={this.state.mode}
-						type={type.toString().slice(6)}
-						handleSubmit={this.handleSubmit}
-						onEditSubmit={this.handleSubmit}
-						onEditCancel={this.initState}/>
-					<Table>
-						<thead>
-						<tr>
-							<th>NAME</th>
-							<th/>
-							<th/>
+			<div>
+				{fields.map(field =>
+					<Row className='mt-2' key={field}>
+						<Col sm='4' className='my-auto'><b>{field.charAt(0).toUpperCase() + field.slice(1)}:</b></Col>
+						<Col>
+							{this.buildField(field)}
+						</Col>
+					</Row>
+				)}
+				{this.buildField('specialQualities')}
+				<ControlButtonSet
+					mode={this.state.mode}
+					type={type.toString().slice(6)}
+					handleSubmit={this.handleSubmit}
+					onEditSubmit={this.handleSubmit}
+					onEditCancel={this.initState}/>
+				<Table>
+					<thead>
+					<tr>
+						<th>NAME</th>
+						<th/>
+						<th/>
+					</tr>
+					</thead>
+					<tbody>
+					{type &&
+					Object.keys(this.props[type]).map(key =>
+						<tr key={key}>
+							<td>{this.props[type][key].name}</td>
+							<td className='text-right'>
+								<Button name={key}
+										onClick={(e) => this.handleEdit(e, this.props[type][key])}>Edit</Button>
+							</td>
+							<td className='text-right'>
+								<DeleteButton name={key} onClick={this.handleDelete}/>
+							</td>
 						</tr>
-						</thead>
-						<tbody>
-						{type &&
-						Object.keys(this.props[type]).map(key =>
-							<tr key={key}>
-								<td>{this.props[type][key].name}</td>
-								<td className='text-right'>
-									<Button name={key}
-											onClick={(e) => this.handleEdit(e, this.props[type][key])}>Edit</Button>
-								</td>
-								<td className='text-right'>
-									<DeleteButton name={key} onClick={this.handleDelete}/>
-								</td>
-							</tr>
-						)
-						}
-						</tbody>
-					</Table>
-				</ModalBody>
-				<ModalFooter>
-					<Button onClick={this.handleClose}>Close</Button>
-				</ModalFooter>
-			</Modal>
+					)
+					}
+					</tbody>
+				</Table>
+			</div>
 		);
 	}
 }
@@ -298,6 +305,7 @@ function mapStateToProps(state) {
 		customWeapons: state.customWeapons,
 		customGear: state.customGear,
 		customArmor: state.customArmor,
+		settings: state.settings,
 	};
 }
 

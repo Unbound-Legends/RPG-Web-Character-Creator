@@ -2,9 +2,10 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {omit} from 'lodash-es';
-import {Button, ButtonGroup, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
-import {changeCustomData, changeData} from '../actions';
-import {ControlButtonSet, DeleteButton} from './';
+import {Typeahead} from 'react-bootstrap-typeahead';
+import {Button, ButtonGroup, Col, Input, Row, Table} from 'reactstrap';
+import {changeCustomData, changeData} from '../../actions';
+import {ControlButtonSet, DeleteButton} from '../';
 
 const clone = require('clone');
 
@@ -24,7 +25,7 @@ class CustomArchetypesComponent extends React.Component {
 		XP: 100,
 		selectedSkill: '',
 		description: '',
-		setting: 'All',
+		setting: [],
 		talents: [],
 		mode: 'add',
 	};
@@ -43,7 +44,7 @@ class CustomArchetypesComponent extends React.Component {
 			XP: 100,
 			selectedSkill: '',
 			description: '',
-			setting: 'All',
+			setting: [],
 			talents: [],
 			mode: 'add',
 		});
@@ -122,7 +123,7 @@ class CustomArchetypesComponent extends React.Component {
 			XP: archetype.experience,
 			selectedSkill: Object.keys(archetype.skills)[0],
 			description: archetype.description,
-			setting: archetype.setting,
+			setting: typeof archetype.setting === 'string' ? archetype.setting.split(', ') : archetype.setting,
 			talents: archetype.talents,
 			mode: 'edit',
 		});
@@ -136,12 +137,10 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	render() {
-		const {customArchetypes, modal, handleClose, skills, archetypeTalents} = this.props;
+		const {customArchetypes, skills, archetypeTalents, settings} = this.props;
 		const {name, woundThreshold, strainThreshold, selectedSkill, XP, description, talents, setting} = this.state;
 		return (
-			<Modal isOpen={modal} toggle={this.handleClose}>
-				<ModalHeader toggle={handleClose}>Custom Archetypes</ModalHeader>
-				<ModalBody className='m-3 text-left'>
+			<div>
 					<Row className='mt-2'>
 						<Col xs='4' className='my-auto'><b>Name:</b></Col>
 						<Col>
@@ -159,8 +158,14 @@ class CustomArchetypesComponent extends React.Component {
 					<Row className='mt-2'>
 						<Col xs='4' className='my-auto'><b>Setting:</b></Col>
 						<Col>
-							<Input className='my-auto' type='text' value={setting} name='setting' maxLength='25'
-								   onChange={this.handleChange}/>
+							<Typeahead
+								multiple={true}
+								options={Object.values(settings)}
+								name='setting'
+								selected={setting}
+								placeholder='Choose a Setting...'
+								clearButton={true}
+								onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
 						</Col>
 					</Row>
 					<Row className='mt-2'>
@@ -289,13 +294,8 @@ class CustomArchetypesComponent extends React.Component {
 						}
 						</tbody>
 					</Table>
-				</ModalBody>
-				<ModalFooter>
-					<Button onClick={handleClose}>Close</Button>
-				</ModalFooter>
-			</Modal>
+			</div>
 		)
-			;
 	}
 }
 
@@ -306,6 +306,7 @@ function mapStateToProps(state) {
 		archetype: state.archetype,
 		archetypeTalents: state.archetypeTalents,
 		skills: state.skills,
+		settings: state.settings,
 	};
 }
 
