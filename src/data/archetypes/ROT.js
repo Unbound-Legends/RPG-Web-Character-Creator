@@ -250,7 +250,7 @@ export const ROT = {
 		strainThreshold: 11,
 		experience: 90,
 		skills: {Charm: 1, Stealth: 1},
-		talents: ['tricksy'],
+		talents: ['small', 'tricksy'],
 		characteristics: {
 			Brawn: 1,
 			Agility: 2,

@@ -1,11 +1,11 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Typeahead} from 'react-bootstrap-typeahead';
-import {Button, Col, Input, Row, Table} from 'reactstrap';
-import {changeCustomData, changeData} from '../../actions';
-import {ControlButtonSet, DeleteButton} from '../';
 import {omit} from 'lodash-es';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Button, Col, Input, Row, Table} from 'reactstrap';
+import {bindActionCreators} from 'redux';
+import {ControlButtonSet, DeleteButton} from '../';
+import {changeCustomData, changeData} from '../../actions';
+import {Fragment} from './';
 
 const clone = require('clone');
 
@@ -110,34 +110,12 @@ class CustomTalentsComponent extends React.Component {
 	};
 
 	render() {
-		const {customTalents, skills, talents, settings} = this.props;
-		const {name, tier, ranked, activation, turn, description, setting, modifier, modifierValue, prerequisite, antirequisite} = this.state;
+		const {customTalents, skills, talents} = this.props;
+		const {name, tier, ranked, activation, turn, description, setting, modifier, modifierValue, prerequisite, antirequisite, mode} = this.state;
 		return (
 			<div>
-				<Row className='mt-2'>
-					<Col xs='4' className='my-auto'>
-						<b>Name:</b>
-					</Col>
-					<Col>
-						<Input className='my-auto' type='text' value={name} name='name' maxLength='25'
-							   onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>
-					</Col>
-				</Row>
-				<Row className='mt-2'>
-					<Col xs='4' className='my-auto'>
-						<b>Setting:</b>
-					</Col>
-					<Col>
-						<Typeahead
-							multiple={true}
-							options={Object.values(settings)}
-							name='setting'
-							selected={setting}
-							placeholder='Choose a Setting...'
-							clearButton={true}
-							onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
-					</Col>
-				</Row>
+				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
+				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 				<Row className='mt-2'>
 					<Col xs='4' className='my-auto'>
 						<b>Tier:</b>
@@ -188,19 +166,7 @@ class CustomTalentsComponent extends React.Component {
 						</Input>
 					</Col>
 				</Row>
-				<Row className='mt-2'>
-					<Col xs='4'>
-						<b>Description:</b>
-					</Col>
-					<Col>
-                            <textarea onChange={this.handleChange}
-									  name='description'
-									  rows='8'
-									  maxLength='2000'
-									  className='w-100'
-									  value={description}/>
-					</Col>
-				</Row>
+				<Fragment type='description' value={description} handleChange={this.handleChange}/>
 				<Row className='mt-2'>
 					<Col xs='4' className='my-auto'>
 						<b>Prerequisite Talent:</b>
@@ -312,16 +278,14 @@ class CustomTalentsComponent extends React.Component {
 				</Row>
 				}
 				<hr/>
-				<Row className='my-4 justify-content-end'>
-					<ControlButtonSet
-						mode={this.state.mode}
-						type={'Talent'}
-						handleSubmit={this.handleSubmit}
-						onEditSubmit={this.handleSubmit}
-						onEditCancel={this.initState}
-						disabled={name === '' || tier === '' || ranked === '' || activation === ''}/>
+				<ControlButtonSet
+					mode={this.state.mode}
+					type={'Talent'}
+					handleSubmit={this.handleSubmit}
+					onEditSubmit={this.handleSubmit}
+					onEditCancel={this.initState}
+					disabled={name === '' || tier === '' || ranked === '' || activation === ''}/>
 
-				</Row>
 				<Table>
 					<thead>
 					<tr>
@@ -355,7 +319,6 @@ function mapStateToProps(state) {
 		customTalents: state.customTalents,
 		talents: state.talents,
 		skills: state.skills,
-		settings: state.settings,
 	};
 }
 

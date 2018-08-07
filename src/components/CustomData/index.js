@@ -5,3 +5,4 @@ export {CustomCareers} from './CustomCareers';
 export {CustomEquipment} from './CustomEquipment';
 export {CustomSkills} from './CustomSkills';
 export {CustomTalents} from './CustomTalents';
+export {Fragment} from './Fragments';

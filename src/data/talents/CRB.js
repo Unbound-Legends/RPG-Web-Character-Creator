@@ -527,7 +527,7 @@ export const CRB = {
 		tier: 3,
 		activation: true,
 		turn: 'Incidental',
-		ranked: true,
+		ranked: false,
 		book: 'CRB',
 		page: '78',
 		description: 'See CRB, page 78, for more details.'

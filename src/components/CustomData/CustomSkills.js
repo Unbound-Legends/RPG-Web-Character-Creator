@@ -1,11 +1,12 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Typeahead} from 'react-bootstrap-typeahead';
-import {Button, Col, Input, Row, Table} from 'reactstrap';
-import {changeCustomData} from '../../actions';
-import {ControlButtonSet, DeleteButton} from '../';
 import {omit} from 'lodash-es';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Button, Table} from 'reactstrap';
+import {bindActionCreators} from 'redux';
+import {ControlButtonSet, DeleteButton} from '../';
+import {changeCustomData} from '../../actions';
+import {chars} from '../../data/lists'
+import {Fragment} from './';
 
 const clone = require('clone');
 
@@ -55,62 +56,22 @@ class CustomSkillsComponent extends React.Component {
 	};
 
 	render() {
-		const {customSkills, settings} = this.props;
-		const {name, type, characteristic, setting} = this.state;
+		const {customSkills} = this.props;
+		const {name, type, characteristic, setting, mode} = this.state;
 		return (
 			<div>
-				<Row className='m-1 align-items-center'>
-					<Col sm='3'><b>NAME:</b></Col>
-					<Col>
-						<Input type='text' value={name} name='name' maxLength='25'
-							   onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>
-					</Col>
-				</Row>
-				<Row className='m-1 align-items-center'>
-					<Col sm='3'><b>TYPE:</b></Col>
-					<Col>
-						<Input type='select' value={type} name='type' onChange={this.handleChange}>
-							<option value=''/>
-							{['General', 'Combat', 'Social', 'Magic', 'Knowledge'].map((key) =>
-								<option value={key} key={key}>{key}</option>
-							)}
-						</Input>
-					</Col>
-				</Row>
-				<Row className='m-1 align-items-center'>
-					<Col sm='3'><b>CHAR:</b></Col>
-					<Col>
-						<Input type='select' value={characteristic} name='characteristic'
-							   onChange={this.handleChange}>
-							<option value=''/>
-							{['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'].map((key) =>
-								<option value={key} key={key}>{key}</option>
-							)}
-						</Input>
-					</Col>
-				</Row>
-				<Row className='m-1 align-items-center'>
-					<Col sm='3'><b>SETTING:</b></Col>
-					<Col>
-						<Typeahead
-							multiple={true}
-							options={Object.values(settings)}
-							name='setting'
-							selected={setting}
-							placeholder='Choose a Setting...'
-							clearButton={true}
-							onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
-					</Col>
-				</Row>
-				<Row className='m-1 justify-content-end'>
-					<ControlButtonSet
-						mode={this.state.mode}
-						type={'Skill'}
-						handleSubmit={this.handleSubmit}
-						onEditSubmit={this.handleSubmit}
-						onEditCancel={this.initState}
-						disabled={name === '' || type === '' || characteristic === ''}/>
-				</Row>
+				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
+				<Fragment type='type' value={type} array={['General', 'Combat', 'Social', 'Magic', 'Knowledge']}
+						  handleChange={this.handleChange}/>
+				<Fragment type='characteristic' value={characteristic} array={chars} handleChange={this.handleChange}/>
+				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
+				<ControlButtonSet
+					mode={this.state.mode}
+					type={'Skill'}
+					handleSubmit={this.handleSubmit}
+					onEditSubmit={this.handleSubmit}
+					onEditCancel={this.initState}
+					disabled={name === '' || type === '' || characteristic === ''}/>
 
 				<Table>
 					<thead>
@@ -153,7 +114,6 @@ class CustomSkillsComponent extends React.Component {
 function mapStateToProps(state) {
 	return {
 		customSkills: state.customSkills,
-		settings: state.settings,
 	};
 }
 

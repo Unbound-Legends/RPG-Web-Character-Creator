@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Row} from 'reactstrap';
+import {Button, ButtonGroup, Col, Input, InputGroupAddon, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
 import {Archetype, Career, ModalDeleteConfirm} from './';
@@ -67,8 +67,12 @@ class CharacterSelectComponent extends React.Component {
 						</Input>
 					</Col>
 					<Col md='auto'>
-						<Button onClick={() => this.props.addCharacter()}>New</Button>
-					</Col>
+						<InputGroupAddon addonType='append'>
+							<ButtonGroup>
+								<Button onClick={() => this.props.addCharacter()}>New</Button>
+								<Button onClick={() => this.setState({deleteModal: true})}>Delete</Button>
+							</ButtonGroup>
+						</InputGroupAddon> </Col>
 				</Row>
 				<hr/>
 				<Row className='align-items-center'>

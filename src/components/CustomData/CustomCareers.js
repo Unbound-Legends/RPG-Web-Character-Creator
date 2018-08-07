@@ -1,11 +1,11 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Typeahead} from 'react-bootstrap-typeahead';
-import {Button, Col, Input, Row, Table} from 'reactstrap';
-import {changeCustomData, changeData} from '../../actions';
-import {ControlButtonSet, DeleteButton} from '../';
 import {omit} from 'lodash-es';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Button, Col, Row, Table} from 'reactstrap';
+import {bindActionCreators} from 'redux';
+import {ControlButtonSet, DeleteButton} from '../';
+import {changeCustomData, changeData} from '../../actions';
+import {Fragment} from './';
 
 class CustomCareersComponent extends React.Component {
 	state = {name: '', selectedSkills: [], description: '', setting: [], mode: 'add'};
@@ -25,10 +25,7 @@ class CustomCareersComponent extends React.Component {
 	};
 
 	handleSelect = (event) => {
-		let newArr = [...this.state.selectedSkills];
-		newArr.push(event.target.value);
-		newArr.sort();
-		this.setState({selectedSkills: newArr});
+		this.setState({selectedSkills: [...this.state.selectedSkills, event.target.value]});
 		event.preventDefault();
 	};
 
@@ -61,75 +58,38 @@ class CustomCareersComponent extends React.Component {
 		});
 	};
 
-	createOptions = () => {
-		const {skills} = this.props;
-		const {selectedSkills} = this.state;
-		return Object.keys(skills).filter(skill => !selectedSkills.includes(skill)).sort();
-	};
-
 	render() {
-		const {skills, customCareers, settings} = this.props;
-		const {name, selectedSkills, description, setting} = this.state;
+		const {skills, customCareers} = this.props;
+		const {name, selectedSkills, description, setting, mode} = this.state;
 		return (
 			<div>
-				<Row className='mt-2'>
-					<Col xs='4' className='my-auto'><b>Name:</b></Col>
+				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
+				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
+				<Fragment type='selectedSkills'
+						  array={Object.keys(skills).filter(skill => !selectedSkills.includes(skill)).sort()}
+						  nameObj={skills}
+						  handleChange={this.handleSelect}/>
+				<Row className='mt-1'>
 					<Col>
-						<Input type='text' value={name} name='name' maxLength='25' onChange={this.handleChange}
-							   disabled={this.state.mode === 'edit'}/>
+						{selectedSkills.sort().map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
 					</Col>
 				</Row>
-				<Row className='mt-2'>
-					<Col xs='4' className='my-auto'><b>Setting:</b></Col>
-					<Col>
-						<Typeahead
-							multiple={true}
-							options={Object.values(settings)}
-							name='setting'
-							selected={setting}
-							placeholder='Choose a Setting...'
-							clearButton={true}
-							onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
+				<Row className='mt-1 mx-2'>
+					<Col sm='2'>
+						{selectedSkills.length} skills
+					</Col>
+					<Col className='text-left'>
+						<Button onClick={() => this.setState({selectedSkills: []})}>Clear</Button>
 					</Col>
 				</Row>
-				<Row className='mt-2'>
-					<Col xs='4' className='my-auto'><b>Career Skills:</b></Col>
-					<Col>
-						<Input type='select' value='' name='selectedSkills' onChange={this.handleSelect}>
-							<option value=''/>
-							{this.createOptions().map((key) =>
-								<option value={key} key={key}>{skills[key].name}</option>
-							)}
-						</Input>
-					</Col>
-				</Row>
-				<Row className='mt-2 mx-2'>
-					<span className='my-auto'>{selectedSkills.length} skills&emsp;</span>
-					<Button onClick={() => this.setState({selectedSkills: []})}>Clear</Button>
-				</Row>
-				<Row className='mt-2'>
-					{selectedSkills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
-				</Row>
-				<Row className='mt-2'>
-					<Col xs='4'><b>Description:</b></Col>
-					<Col>
-                            <textarea onChange={this.handleChange}
-									  name='description'
-									  rows='8'
-									  maxLength='200'
-									  className='w-100'
-									  value={description}/>
-					</Col>
-				</Row>
-				<Row className='my-4 justify-content-end'>
-					<ControlButtonSet
-						mode={this.state.mode}
-						type={'Career'}
-						handleSubmit={this.handleSubmit}
-						onEditSubmit={this.handleSubmit}
-						onEditCancel={this.initState}
-						disabled={name === '' || 0 >= selectedSkills.length}/>
-				</Row>
+				<Fragment type='description' value={description} handleChange={this.handleChange}/>
+				<ControlButtonSet
+					mode={this.state.mode}
+					type={'Career'}
+					handleSubmit={this.handleSubmit}
+					onEditSubmit={this.handleSubmit}
+					onEditCancel={this.initState}
+					disabled={name === '' || 0 >= selectedSkills.length}/>
 				<Table>
 					<thead>
 					<tr>
@@ -161,7 +121,6 @@ function mapStateToProps(state) {
 		customCareers: state.customCareers,
 		skills: state.skills,
 		career: state.career,
-		settings: state.settings,
 	};
 }
 

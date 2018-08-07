@@ -604,7 +604,7 @@ export const ROT = {
 		setting: 'Fantasy',
 		tier: 4,
 		activation: true,
-		turn: 'Maneuver',
+		turn: 'Incidental',
 		ranked: false,
 		book: 'ROT',
 		page: '91',

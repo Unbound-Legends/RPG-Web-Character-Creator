@@ -1,16 +1,17 @@
 import {camelCase, omit, startCase} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Row, Table} from 'reactstrap';
+import {Button, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {DeleteButton} from '../';
 import {changeCustomData} from '../../actions';
+import {Fragment} from './';
 
 class CustomSettingsComponent extends React.Component {
-	state = {setting: ''};
+	state = {name: ''};
 
 	initState = () => {
-		this.setState({setting: ''});
+		this.setState({name: ''});
 	};
 
 	handleChange = (event) => {
@@ -20,8 +21,8 @@ class CustomSettingsComponent extends React.Component {
 
 	handleSubmit = (event) => {
 		const {customSettings, changeCustomData} = this.props;
-		const {setting} = this.state;
-		changeCustomData({...customSettings, [camelCase(setting)]: startCase(setting)}, 'customSettings');
+		const {name} = this.state;
+		changeCustomData({...customSettings, [camelCase(name)]: startCase(name)}, 'customSettings');
 		this.initState();
 		event.preventDefault();
 	};
@@ -34,18 +35,12 @@ class CustomSettingsComponent extends React.Component {
 
 	render() {
 		const {customSettings} = this.props;
-		const {setting} = this.state;
+		const {name} = this.state;
 		return (
 			<div>
-				<Row className='m-1 align-items-center'>
-					<Col sm='2'><b>NEW SETTING:</b></Col>
-					<Col>
-						<Input type='text' value={setting} name='setting' maxLength='25'
-							   onChange={this.handleChange}/>
-					</Col>
-					<Col>
-						<Button onClick={this.handleSubmit} className='btn'>ADD</Button>
-					</Col>
+				<Fragment type='name' value={name} handleChange={this.handleChange}/>
+				<Row className='my-4 justify-content-end'>
+					<Button onClick={this.handleSubmit} className='btn'>ADD</Button>
 				</Row>
 				<Row>
 					<Col sm='6'>

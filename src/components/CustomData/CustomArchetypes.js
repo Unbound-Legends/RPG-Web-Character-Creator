@@ -1,11 +1,11 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 import {omit} from 'lodash-es';
-import {Typeahead} from 'react-bootstrap-typeahead';
-import {Button, ButtonGroup, Col, Input, Row, Table} from 'reactstrap';
-import {changeCustomData, changeData} from '../../actions';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Button, ButtonGroup, Col, Row, Table} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
+import {changeCustomData, changeData} from '../../actions';
+import {Fragment} from './';
 
 const clone = require('clone');
 
@@ -23,10 +23,10 @@ class CustomArchetypesComponent extends React.Component {
 		woundThreshold: 10,
 		strainThreshold: 10,
 		XP: 100,
-		selectedSkill: '',
+		freeSkillRanks: {},
 		description: '',
 		setting: [],
-		talents: [],
+		archetypeTalents: [],
 		mode: 'add',
 	};
 
@@ -42,10 +42,10 @@ class CustomArchetypesComponent extends React.Component {
 			woundThreshold: 10,
 			strainThreshold: 10,
 			XP: 100,
-			selectedSkill: '',
+			freeSkillRanks: {},
 			description: '',
 			setting: [],
-			talents: [],
+			archetypeTalents: [],
 			mode: 'add',
 		});
 	};
@@ -74,15 +74,22 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	handleSelect = (event) => {
-		let talents = [...this.state.talents];
-		talents.push(event.target.value);
-		talents.sort();
-		this.setState({talents});
+		this.setState({archetypeTalents: [...this.state.archetypeTalents, event.target.value]});
+		event.preventDefault();
+	};
+
+	handleSkillSelect = (event) => {
+		const skill = event.target.value;
+		const {freeSkillRanks} = this.state;
+		let obj = {...freeSkillRanks};
+		if (freeSkillRanks[skill]) obj[skill]++;
+		else obj[skill] = 1;
+		this.setState({freeSkillRanks: obj});
 		event.preventDefault();
 	};
 
 	handleSubmit = () => {
-		const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, selectedSkill, description, talents, setting} = this.state;
+		const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, freeSkillRanks, description, archetypeTalents, setting} = this.state;
 		const {customArchetypes, changeCustomData} = this.props;
 		let obj = clone(customArchetypes);
 		obj[name.replace(/\s/g, '')] = {
@@ -98,8 +105,8 @@ class CustomArchetypesComponent extends React.Component {
 			woundThreshold,
 			strainThreshold,
 			experience: XP,
-			skills: {[selectedSkill]: 1},
-			talents,
+			skills: freeSkillRanks,
+			talents: archetypeTalents,
 			setting,
 			description,
 		};
@@ -121,10 +128,10 @@ class CustomArchetypesComponent extends React.Component {
 			woundThreshold: archetype.woundThreshold,
 			strainThreshold: archetype.strainThreshold,
 			XP: archetype.experience,
-			selectedSkill: Object.keys(archetype.skills)[0],
+			freeSkillRanks: archetype.skills,
 			description: archetype.description,
 			setting: typeof archetype.setting === 'string' ? archetype.setting.split(', ') : archetype.setting,
-			talents: archetype.talents,
+			archetypeTalents: archetype.talents,
 			mode: 'edit',
 		});
 	};
@@ -137,163 +144,112 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	render() {
-		const {customArchetypes, skills, archetypeTalents, settings} = this.props;
-		const {name, woundThreshold, strainThreshold, selectedSkill, XP, description, talents, setting} = this.state;
+		const {customArchetypes, skills} = this.props;
+		const {name, woundThreshold, strainThreshold, freeSkillRanks, XP, description, archetypeTalents, setting, mode} = this.state;
 		return (
 			<div>
-					<Row className='mt-2'>
-						<Col xs='4' className='my-auto'><b>Name:</b></Col>
-						<Col>
-							<Input className='my-auto' type='text' value={name} name='name' maxLength='25'
-								   onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>
-						</Col>
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='4' className='my-auto'><b>Starting XP:</b></Col>
-						<Col>
-							<Input className='w-50 my-auto' type='number' value={XP} name='XP' maxLength='3'
-								   onChange={this.handleChange}/>
-						</Col>
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='4' className='my-auto'><b>Setting:</b></Col>
-						<Col>
-							<Typeahead
-								multiple={true}
-								options={Object.values(settings)}
-								name='setting'
-								selected={setting}
-								placeholder='Choose a Setting...'
-								clearButton={true}
-								onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
-						</Col>
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='4' className='my-auto'><b className='text-left'>Starting Characteristics:</b></Col>
-					</Row>
-					<Row className='justify-content-center'>
-						{chars.map((stat) =>
-							<div key={stat} className='m-2 text-center'>
-								<div className='imageBox m-auto'>
-									<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
-									<Row className='characteristicValue'>{this.state[stat]}</Row>
-									<Row className='characteristicTitle'>{stat}</Row>
-								</div>
-								<ButtonGroup>
-									<Button name={stat} value='+1' onClick={this.handleClick}>↑</Button>
-									<Button name={stat} value='-1' onClick={this.handleClick}>↓</Button>
-								</ButtonGroup>
-							</div>
-						)}
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='4' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
-					</Row>
-					<Row className='justify-content-center'>
-						<div className='justify-content-center text-center'>
-							<div className='imageBox attribute'>
-								<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-								<Row className='attributeTitle'>WOUNDS</Row>
-								<Row className='attributeValue'>{woundThreshold}</Row>
+				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
+
+				<Fragment type='XP' value={XP} handleChange={this.handleChange}/>
+
+				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
+
+				<Row className='mt-2'>
+					<Col sm='2' className='my-auto'><b className='text-left'>Starting Characteristics:</b></Col>
+				</Row>
+
+				<Row className='justify-content-center'>
+					{chars.map((stat) =>
+						<div key={stat} className='m-2 text-center'>
+							<div className='imageBox m-auto'>
+								<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
+								<Row className='characteristicValue'>{this.state[stat]}</Row>
+								<Row className='characteristicTitle'>{stat}</Row>
 							</div>
 							<ButtonGroup>
-								<Button name='woundThreshold' value='+1' onClick={this.handleClick}>↑</Button>
-								<Button name='woundThreshold' value='-1' onClick={this.handleClick}>↓</Button>
+								<Button name={stat} value='+1' onClick={this.handleClick}>↑</Button>
+								<Button name={stat} value='-1' onClick={this.handleClick}>↓</Button>
 							</ButtonGroup>
 						</div>
-						<div className='justify-content-center text-center'>
-							<div className='imageBox attribute'>
-								<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-								<Row className='attributeTitle'>STRAIN</Row>
-								<Row className='attributeValue'>{strainThreshold}</Row>
-							</div>
-							<ButtonGroup>
-								<Button name='strainThreshold' value='+1' onClick={this.handleClick}>↑</Button>
-								<Button name='strainThreshold' value='-1' onClick={this.handleClick}>↓</Button>
-							</ButtonGroup>
+					)}
+				</Row>
+
+				<Row className='mt-2'>
+					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
+				</Row>
+				<Row className='justify-content-center'>
+					<div className='justify-content-center text-center'>
+						<div className='imageBox attribute'>
+							<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
+							<Row className='attributeTitle'>WOUNDS</Row>
+							<Row className='attributeValue'>{woundThreshold}</Row>
 						</div>
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='5' className='my-auto'><b>One free rank in:</b></Col>
-						<Col>
-							<Input type='select' name='selectedSkill' value={selectedSkill}
-								   onChange={this.handleChange}>
-								<option value=''/>
-								{Object.keys(skills).map(key =>
-									<option value={key} key={key}>{skills[key].name}</option>
-								)}
+						<ButtonGroup>
+							<Button name='woundThreshold' value='+1' onClick={this.handleClick}>↑</Button>
+							<Button name='woundThreshold' value='-1' onClick={this.handleClick}>↓</Button>
+						</ButtonGroup>
+					</div>
+					<div className='justify-content-center text-center'>
+						<div className='imageBox attribute'>
+							<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
+							<Row className='attributeTitle'>STRAIN</Row>
+							<Row className='attributeValue'>{strainThreshold}</Row>
+						</div>
+						<ButtonGroup>
+							<Button name='strainThreshold' value='+1' onClick={this.handleClick}>↑</Button>
+							<Button name='strainThreshold' value='-1' onClick={this.handleClick}>↓</Button>
+						</ButtonGroup>
+					</div>
+				</Row>
 
-							</Input>
-						</Col>
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='5' className='my-auto'><b>Archetype Talents:</b></Col>
-						<Col>
-							<Input type='select' name='talents' value=''
-								   onChange={this.handleSelect}>
-								<option value=''/>
-								{Object.keys(archetypeTalents).map(key =>
-									<option value={key} key={key}>{archetypeTalents[key].name}</option>
-								)}
-							</Input>
-						</Col>
-					</Row>
-					<Row className='mt-2'>
-						<Col className='my-auto'>
-							{talents.map(key => archetypeTalents[key] ? archetypeTalents[key].name : key).join(', ')}
-						</Col>
-					</Row>
-					<Row className='mt-2'>
-						<Col xs='5' className='my-auto'>
-							<span className='my-auto'>{talents.length} Talents&emsp;</span>
-							<Button onClick={() => this.setState({talents: []})}>Clear</Button>
-						</Col>
-					</Row>
+				<Fragment type='freeSkillRanks' array={Object.keys(skills)} nameObj={skills}
+						  handleChange={this.handleSkillSelect}/>
 
-					<Row className='mt-2'>
-						<Col xs='4'><b>Description:</b></Col>
-						<Col>
-                            <textarea onChange={this.handleChange}
-									  name='description'
-									  rows='8'
-									  maxLength='1000'
-									  className='w-100'
-									  value={description}/>
-						</Col>
-					</Row>
-					<Row className='my-4 justify-content-end'>
-						<ControlButtonSet
-							mode={this.state.mode}
-							type={'Archetype'}
-							handleSubmit={this.handleSubmit}
-							onEditSubmit={this.handleSubmit}
-							onEditCancel={this.initState}
-							disabled={name === '' || selectedSkill === '' || XP === ''}/>
-					</Row>
-					<Table>
-						<thead>
-						<tr>
-							<th>NAME</th>
-							<th/>
-							<th/>
+				<Fragment type='list' array={Object.keys(freeSkillRanks)} object={freeSkillRanks} nameObj={skills}
+						  handleClear={() => this.setState({freeSkillRanks: {}})}/>
+
+				<Fragment type='archetypeTalents'
+						  array={Object.keys(this.props.archetypeTalents).filter(key => !archetypeTalents.includes(key)).sort()}
+						  nameObj={this.props.archetypeTalents}
+						  handleChange={this.handleSelect}/>
+
+				<Fragment type='list' array={archetypeTalents.sort()} nameObj={this.props.archetypeTalents}
+						  handleClear={() => this.setState({archetypeTalents: []})}/>
+
+				<Fragment type='description' value={description} handleChange={this.handleChange}/>
+
+				<ControlButtonSet
+					mode={this.state.mode}
+					type={'Archetype'}
+					handleSubmit={this.handleSubmit}
+					onEditSubmit={this.handleSubmit}
+					onEditCancel={this.initState}
+					disabled={name === '' || Object.keys(freeSkillRanks).length === 0 || XP === ''}/>
+
+				<Table>
+					<thead>
+					<tr>
+						<th>NAME</th>
+						<th/>
+						<th/>
+					</tr>
+					</thead>
+					<tbody>
+					{customArchetypes &&
+					Object.keys(customArchetypes).map(slot =>
+						<tr key={slot}>
+							<td>{customArchetypes[slot].name}</td>
+							<td className='text-right'>
+								<Button name={slot} onClick={this.handleEdit}>Edit</Button>
+							</td>
+							<td className='text-right'>
+								<DeleteButton name={slot} onClick={this.handleDelete}/>
+							</td>
 						</tr>
-						</thead>
-						<tbody>
-						{customArchetypes &&
-						Object.keys(customArchetypes).map(slot =>
-							<tr key={slot}>
-								<td>{customArchetypes[slot].name}</td>
-								<td className='text-right'>
-									<Button name={slot} onClick={this.handleEdit}>Edit</Button>
-								</td>
-								<td className='text-right'>
-									<DeleteButton name={slot} onClick={this.handleDelete}/>
-								</td>
-							</tr>
-						)
-						}
-						</tbody>
-					</Table>
+					)
+					}
+					</tbody>
+				</Table>
 			</div>
 		)
 	}
@@ -306,7 +262,6 @@ function mapStateToProps(state) {
 		archetype: state.archetype,
 		archetypeTalents: state.archetypeTalents,
 		skills: state.skills,
-		settings: state.settings,
 	};
 }
 
