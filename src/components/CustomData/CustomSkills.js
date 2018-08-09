@@ -22,11 +22,6 @@ class CustomSkillsComponent extends React.Component {
 		this.props.handleClose();
 	};
 
-	handleChange = (event) => {
-		this.setState({[event.target.name]: event.target.value});
-		event.preventDefault();
-	};
-
 	handleSubmit = (event) => {
 		const {customSkills, changeCustomData} = this.props;
 		const {name, type, characteristic, setting} = this.state;
@@ -60,11 +55,18 @@ class CustomSkillsComponent extends React.Component {
 		const {name, type, characteristic, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
-				<Fragment type='type' value={type} array={['General', 'Combat', 'Social', 'Magic', 'Knowledge']}
-						  handleChange={this.handleChange}/>
-				<Fragment type='characteristic' value={characteristic} array={chars} handleChange={this.handleChange}/>
+				<Fragment type='name' value={name} mode={mode}
+						  handleChange={(event) => this.setState({name: event.target.value})}/>
+
+				<Fragment type='inputSelect' name='type' value={type}
+						  array={['General', 'Combat', 'Social', 'Magic', 'Knowledge']}
+						  handleChange={(event) => this.setState({type: event.target.value})}/>
+
+				<Fragment type='inputSelect' name='characteristic' value={characteristic} array={chars}
+						  handleChange={(event) => this.setState({characteristic: event.target.value})}/>
+
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
+
 				<ControlButtonSet
 					mode={this.state.mode}
 					type={'Skill'}

@@ -14,59 +14,59 @@ export class Description extends React.Component {
 				case word.includes('ROT'):
 					newString.push(`<a href="http://www.drivethrurpg.com/product/239561/Realms-of-Terrinoth?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">${word}</a> `);
 					break;
-				case word === '[blue]':
-				case word === '[boost]':
+				case word.includes('[blue]'):
+				case word.includes('[boost]'):
 					newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"></i>');
 					break;
-				case word === '[green]':
-				case word === '[ability]':
+				case word.includes('[green]'):
+				case word.includes('[ability]'):
 					newString.push('<i class="ffi  ffi-d8 ffi-border ffi-grpg-ability-color"></i>');
 					break;
-				case word === '[yellow]':
-				case word === '[proficiency]':
+				case word.includes('[yellow]'):
+				case word.includes('[proficiency]'):
 					newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-proficiency-color"></i>');
 					break;
-				case word === '[black]':
-				case word === '[setback]':
+				case word.includes('[black]'):
+				case word.includes('[setback]'):
 					newString.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i>');
 					break;
-				case word === '[purple]':
-				case word === '[difficulty]':
+				case word.includes('[purple]'):
+				case word.includes('[difficulty]'):
 					newString.push('<i class="ffi ffi-d8 ffi-border ffi-grpg-difficulty-color"></i>');
 					break;
-				case word === '[red]':
-				case word === '[challenge]':
+				case word.includes('[red]'):
+				case word.includes('[challenge]'):
 					newString.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-challenge-color"></i>');
 					break;
-				case word === '[white]':
+				case word.includes('[white]'):
 					newString.push('<i class="ffi ffi-d12 ffi-border"></i>');
 					break;
-				case word === '[advantage]':
-				case word === '[adv]':
+				case word.includes('[advantage]'):
+				case word.includes('[adv]'):
 					newString.push('<i class="ffi ffi-grpg-advantage"></i>');
 					break;
-				case word === '[success]':
-				case word === '[suc]':
+				case word.includes('[success]'):
+				case word.includes('[suc]'):
 					newString.push('<i class="ffi ffi-grpg-success"></i>');
 					break;
-				case word === '[triumph]':
-				case word === '[tri]':
+				case word.includes('[triumph]'):
+				case word.includes('[tri]'):
 					newString.push('<i class="ffi ffi-grpg-triumph"></i>');
 					break;
-				case word === '[threat]':
-				case word === '[thr]':
+				case word.includes('[threat]'):
+				case word.includes('[thr]'):
 					newString.push('<i class="ffi ffi-grpg-threat"></i>');
 					break;
-				case word === '[failure]':
-				case word === '[fail]':
+				case word.includes('[failure]'):
+				case word.includes('[fail]'):
 					newString.push('<i class="ffi ffi-grpg-failure"></i>');
 					break;
-				case word === '[despair]':
-				case word === '[des]':
+				case word.includes('[despair]'):
+				case word.includes('[des]'):
 					newString.push('<i class="ffi ffi-grpg-despair"></i>');
 					break;
-				case word === '[rmsetback]':
-				case word === '[rmblack]':
+				case word.includes('[rmsetback]'):
+				case word.includes('[rmblack]'):
 					newString.push(`<b>(-</b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b>)</b>`);
 					break;
 				default:
@@ -74,13 +74,10 @@ export class Description extends React.Component {
 					break;
 			}
 		});
-
 		return {__html: newString.join('')};
 	};
 
 	render() {
-		return <div className='description' dangerouslySetInnerHTML={this.checkText()}
-					style={{margin: '0'}}/>
-
+		return <div className='description m-auto' dangerouslySetInnerHTML={this.checkText()}/>
 	}
 }

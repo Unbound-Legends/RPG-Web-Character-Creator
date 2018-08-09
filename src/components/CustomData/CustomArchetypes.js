@@ -55,11 +55,6 @@ class CustomArchetypesComponent extends React.Component {
 		this.props.handleClose();
 	};
 
-	handleChange = (event) => {
-		this.setState({[event.target.name]: event.target.value});
-		event.preventDefault();
-	};
-
 	handleClick = (event) => {
 		let value = this.state[event.target.name] + +event.target.value;
 		if (chars.includes(event.target.name) && (value > 5)) {
@@ -148,67 +143,66 @@ class CustomArchetypesComponent extends React.Component {
 		const {name, woundThreshold, strainThreshold, freeSkillRanks, XP, description, archetypeTalents, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
+				<Fragment type='name' value={name} mode={mode}
+						  handleChange={(event) => this.setState({name: event.target.value})}/>
 
-				<Fragment type='XP' value={XP} handleChange={this.handleChange}/>
+				<Fragment type='number' title='XP' value={XP}
+						  handleChange={(event) => this.setState({XP: event.target.value})}/>
 
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 
 				<Row className='mt-2'>
 					<Col sm='2' className='my-auto'><b className='text-left'>Starting Characteristics:</b></Col>
-				</Row>
-
-				<Row className='justify-content-center'>
-					{chars.map((stat) =>
-						<div key={stat} className='m-2 text-center'>
-							<div className='imageBox m-auto'>
-								<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
-								<Row className='characteristicValue'>{this.state[stat]}</Row>
-								<Row className='characteristicTitle'>{stat}</Row>
+					<Col>
+						{chars.map((stat) =>
+							<div key={stat} className='m-2 text-center d-inline-block'>
+								<div className='imageBox m-auto'>
+									<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
+									<Row className='characteristicValue'>{this.state[stat]}</Row>
+									<Row className='characteristicTitle'>{stat}</Row>
+								</div>
+								<ButtonGroup>
+									<Button name={stat} value='+1' onClick={this.handleClick}>↑</Button>
+									<Button name={stat} value='-1' onClick={this.handleClick}>↓</Button>
+								</ButtonGroup>
 							</div>
-							<ButtonGroup>
-								<Button name={stat} value='+1' onClick={this.handleClick}>↑</Button>
-								<Button name={stat} value='-1' onClick={this.handleClick}>↓</Button>
-							</ButtonGroup>
-						</div>
-					)}
+						)}
+					</Col>
 				</Row>
-
 				<Row className='mt-2'>
 					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
-				</Row>
-				<Row className='justify-content-center'>
-					<div className='justify-content-center text-center'>
-						<div className='imageBox attribute'>
-							<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-							<Row className='attributeTitle'>WOUNDS</Row>
-							<Row className='attributeValue'>{woundThreshold}</Row>
+					<Col>
+						<div className='m-2 text-center d-inline-block'>
+							<div className='imageBox attribute'>
+								<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
+								<Row className='attributeTitle'>WOUNDS</Row>
+								<Row className='attributeValue'>{woundThreshold}</Row>
+							</div>
+							<ButtonGroup>
+								<Button name='woundThreshold' value='+1' onClick={this.handleClick}>↑</Button>
+								<Button name='woundThreshold' value='-1' onClick={this.handleClick}>↓</Button>
+							</ButtonGroup>
 						</div>
-						<ButtonGroup>
-							<Button name='woundThreshold' value='+1' onClick={this.handleClick}>↑</Button>
-							<Button name='woundThreshold' value='-1' onClick={this.handleClick}>↓</Button>
-						</ButtonGroup>
-					</div>
-					<div className='justify-content-center text-center'>
-						<div className='imageBox attribute'>
-							<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-							<Row className='attributeTitle'>STRAIN</Row>
-							<Row className='attributeValue'>{strainThreshold}</Row>
+						<div className='m-2 text-center d-inline-block'>
+							<div className='imageBox attribute'>
+								<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
+								<Row className='attributeTitle'>STRAIN</Row>
+								<Row className='attributeValue'>{strainThreshold}</Row>
+							</div>
+							<ButtonGroup>
+								<Button name='strainThreshold' value='+1' onClick={this.handleClick}>↑</Button>
+								<Button name='strainThreshold' value='-1' onClick={this.handleClick}>↓</Button>
+							</ButtonGroup>
 						</div>
-						<ButtonGroup>
-							<Button name='strainThreshold' value='+1' onClick={this.handleClick}>↑</Button>
-							<Button name='strainThreshold' value='-1' onClick={this.handleClick}>↓</Button>
-						</ButtonGroup>
-					</div>
+					</Col>
 				</Row>
-
-				<Fragment type='freeSkillRanks' array={Object.keys(skills)} nameObj={skills}
+				<Fragment name='freeSkillRanks' type='inputSelect' array={Object.keys(skills)} nameObj={skills}
 						  handleChange={this.handleSkillSelect}/>
 
 				<Fragment type='list' array={Object.keys(freeSkillRanks)} object={freeSkillRanks} nameObj={skills}
 						  handleClear={() => this.setState({freeSkillRanks: {}})}/>
 
-				<Fragment type='archetypeTalents'
+				<Fragment name='archetypeTalents' type='inputSelect'
 						  array={Object.keys(this.props.archetypeTalents).filter(key => !archetypeTalents.includes(key)).sort()}
 						  nameObj={this.props.archetypeTalents}
 						  handleChange={this.handleSelect}/>
@@ -216,7 +210,8 @@ class CustomArchetypesComponent extends React.Component {
 				<Fragment type='list' array={archetypeTalents.sort()} nameObj={this.props.archetypeTalents}
 						  handleClear={() => this.setState({archetypeTalents: []})}/>
 
-				<Fragment type='description' value={description} handleChange={this.handleChange}/>
+				<Fragment type='description' value={description}
+						  handleChange={(event) => this.setState({description: event.target.value})}/>
 
 				<ControlButtonSet
 					mode={this.state.mode}

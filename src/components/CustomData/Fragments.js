@@ -3,6 +3,7 @@ import React from 'react';
 import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Row} from 'reactstrap';
+import {Description} from '../Description';
 
 class FragmentComponent extends React.Component {
 
@@ -18,8 +19,31 @@ class FragmentComponent extends React.Component {
 	};
 
 	buildField = () => {
-		const {type, settings, setState, setting, mode, handleChange, value, array, nameObj, object, handleClear} = this.props;
+		const {type, settings, setState, setting, mode, handleChange, value = '', array, nameObj, object, handleClear, blankText = '', blankOption = true, name,} = this.props;
 		switch (type) {
+			case 'name':
+				return <Input type='text' value={value} maxLength='25' onChange={handleChange}
+							  disabled={mode === 'edit'}/>;
+			case 'text':
+				return <Input type='text' value={value} maxLength='25' onChange={handleChange}/>;
+			case 'number':
+				return <Input type='number' value={value} maxLength='7' onChange={handleChange}/>;
+			case 'list':
+				return (
+					<div style={{display: 'inline-flex'}}>
+						<Description text={this.buildList(array, object, nameObj)}/>
+						{array.length > 0 &&
+						<Button className='btn-outline-warning ml-2' onClick={handleClear}>Clear</Button>}
+					</div>
+				);
+			case 'setting':
+				return <Typeahead
+					multiple={true}
+					options={Object.values(settings)}
+					selected={setting}
+					placeholder='Choose a Setting...'
+					clearButton={true}
+					onChange={(selected) => setState(selected.includes('All') ? ['All'] : selected)}/>;
 			case 'description':
 				return (<textarea onChange={handleChange}
 								  name='description'
@@ -28,53 +52,24 @@ class FragmentComponent extends React.Component {
 								  className='w-100'
 								  value={value}/>
 				);
-			case 'name':
-				return (<Input type='text' value={value} name={type} maxLength='25'
-							   onChange={handleChange} disabled={mode === 'edit'}/>);
-			case 'setting':
-				return (<Typeahead
-					multiple={true}
-					options={Object.values(settings)}
-					name='setting'
-					selected={setting}
-					placeholder='Choose a Setting...'
-					clearButton={true}
-					onChange={(selected) => setState(selected.includes('All') ? ['All'] : selected)}/>);
-			case 'characteristic':
-			case 'type':
-				return (<Input type='select' value={value} name={type} onChange={handleChange}>
-					<option value=''/>
+			case 'inputSelect':
+				return (<Input type='select' value={value} name={name} onChange={handleChange}>
+					{blankOption && <option value=''>{blankText}</option>}
 					{array.map(key =>
-						<option value={key} key={key}>{key}</option>
+						<option value={key}
+								key={key}>{nameObj ? nameObj[key.toString()] ? nameObj[key.toString()].name : startCase(key) : startCase(key)}</option>
 					)}
 				</Input>);
-			case 'selectedSkills':
-			case 'freeSkillRanks':
-			case 'archetypeTalents':
-				return (<Input type='select' value='' name={type} onChange={handleChange}>
-					<option value=''/>
-					{array.map((key) =>
-						<option value={key} key={key}>{nameObj[key].name}</option>
-					)}
-				</Input>);
-			case 'XP':
-				return (<Input type='number' value={value} name='XP' maxLength='3'
-							   onChange={handleChange}/>);
-			case 'list':
-				return (
-					<div>{this.buildList(array, object, nameObj)} {array.length > 0 &&
-					<Button className='btn-outline-warning' onClick={handleClear}>Clear</Button>}</div>
-				);
 			default:
 				break;
 		}
 	};
 
 	render() {
-		const {type} = this.props;
+		const {name, type, title = name ? name : type} = this.props;
 		return (
-			<Row className='mt-2'>
-				<Col sm='2'><b>{startCase(type)}:</b></Col>
+			<Row className='my-2'>
+				<Col sm='2' className={title === 'description' ? 'mt-0' : 'my-auto'}><b>{startCase(title)}:</b></Col>
 				<Col>
 					{this.buildField()}
 				</Col>

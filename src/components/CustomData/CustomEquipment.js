@@ -1,11 +1,11 @@
+import {omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Row, Table} from 'reactstrap';
+import {Button, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
+import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData} from '../../actions';
-import {ControlButtonSet, DeleteButton} from '..';
-import {omit} from 'lodash-es';
-import {Typeahead} from 'react-bootstrap-typeahead';
+import {Fragment} from './';
 
 const clone = require('clone');
 
@@ -114,32 +114,28 @@ class CustomEquipmentComponent extends React.Component {
 
 	handleEdit = (event, equipment) => {
 		event.preventDefault();
-		this.setState({...equipment, setting: typeof equipment.setting === 'string' ? equipment.setting.split(', ') : equipment.setting,
-			qualityList: equipment.qualities ? equipment.qualities : {}, mode: 'edit'})
+		this.setState({
+			...equipment,
+			setting: typeof equipment.setting === 'string' ? equipment.setting.split(', ') : equipment.setting,
+			qualityList: equipment.qualities ? equipment.qualities : {},
+			specialQualities: '',
+			qualityRank: '',
+			mode: 'edit'
+		})
 	};
 
 	buildField = (field) => {
-		const {type, skills, qualities, settings} = this.props;
+		const {type, skills, qualities} = this.props;
 		switch (field) {
 			case 'name':
-				return <Input type='text' value={this.state[field]} name={field}
-							  onChange={this.handleChange} disabled={this.state.mode === 'edit'}/>;
+				return <Fragment key={field} type='name' value={this.state[field]} mode={this.state.mode}
+								 handleChange={(event) => this.setState({name: event.target.value})}/>;
 			case 'damage':
-				return (
-					<Input type='text' value={this.state[field]} name={field}
-						   onChange={this.handleChange}/>
-				);
+				return <Fragment key={field} type='text' value={this.state[field]} title={field}
+								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'setting':
-				return (
-					<Typeahead
-						multiple={true}
-						options={Object.values(settings)}
-						name='setting'
-						selected={this.state.setting}
-						placeholder='Choose a Setting...'
-						clearButton={true}
-						onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}/>
-				);
+				return <Fragment key={field} type='setting' setting={this.state.setting}
+								 setState={(selected) => this.setState({setting: selected})}/>;
 			case 'critical':
 			case 'encumbrance':
 			case 'price':
@@ -147,96 +143,54 @@ class CustomEquipmentComponent extends React.Component {
 			case 'defense':
 			case 'rangedDefense':
 			case 'meleeDefense':
-				return (
-					<Input type='number' value={this.state[field]} name={field}
-						   onChange={this.handleChange}/>
-				);
+				return <Fragment key={field} type='number' value={this.state[field]} title={field}
+								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'range':
-				return (
-					<Input type='select' value={this.state[field]}
-						   name='range'
-						   onChange={this.handleChange}>
-						<option value=''/>
-						<option value='Engaged'>Engaged</option>
-						<option value='Short'>Short</option>
-						<option value='Medium'>Medium</option>
-						<option value='Long'>Long</option>
-						<option value='Extreme'>Extreme</option>
-					</Input>
-				);
+				return <Fragment key={field} type='inputSelect' name={field} value={this.state[field]}
+								 array={['Engaged', 'Short', 'Medium', 'Long', 'Extreme']}
+								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'skill':
-				return (
-					<Input type='select' value={this.state[field]}
-						   name={field}
-						   onChange={this.handleChange}>
-						<option value=''/>
-						{Object.keys(skills).sort().map(skillKey =>
-							skills[skillKey].type === 'Combat' &&
-							<option value={skillKey} key={skillKey}>{skills[skillKey].name}</option>
-						)}
-					</Input>
-				);
+				return <Fragment key={field} type='inputSelect' name={field} value={this.state[field]}
+								 array={Object.keys(skills).filter(skill => skills[skill].type === 'Combat')}
+								 nameObj={skills}
+								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'specialQualities':
-				return (
-					<div>
-						<Row className='mt-2'>
-							<Col sm='4' className='my-auto'><b>Special Qualities:</b></Col>
-							<Col>
-								<Input type='select'
-									   value={this.state[field]}
-									   name={field}
-									   onChange={this.handleChange}>
-									<option value=''/>
-									{Object.keys(qualities).map(quality =>
-										qualities[quality].type.includes(type.toLowerCase().slice(6)) &&
-										<option key={quality} value={quality}>{qualities[quality].name}</option>
-									)}
-								</Input>
-							</Col>
-						</Row>
-						{this.state.specialQualities &&
-						<Row className='my-2'>
-							<Col sm='4' className='my-auto'/>
-							<Col>
-								{qualities[this.state.specialQualities] &&
-								qualities[this.state.specialQualities].ranked &&
-								<Input type='number' maxLength='2'
-									   value={this.state.qualityRank}
-									   name='qualityRank'
-									   onChange={this.handleChange}/>
-								}
-							</Col>
-							<Col className='text-right'>
-								{this.state.specialQualities &&
-								<Button onClick={this.handleAddQuality}>Add</Button>
-								}
-							</Col>
-						</Row>
+				const {specialQualities, qualityList, qualityRank} = this.state;
+				return (<div key={field}>
+						<Fragment type='inputSelect' title='specialQualities' value={specialQualities}
+								  array={Object.keys(qualities).filter(quality => qualities[quality].type.includes(type.toLowerCase().slice(6)))}
+								  nameObj={qualities}
+								  handleChange={(event) => this.setState({
+									  specialQualities: event.target.value,
+									  qualityRank: ''
+								  })}/>
+
+						{specialQualities &&
+						<div>
+							{qualities[specialQualities] && qualities[specialQualities].ranked &&
+							<Fragment type='number' value={qualityRank} title={'qualityRank'}
+									  handleChange={(event) => this.setState({qualityRank: event.target.value})}/>}
+
+							<Row>
+								<Col sm='2' className='my-auto'/>
+								<Col className='text-left'>
+									<Button onClick={this.handleAddQuality}>Add Quality</Button>
+								</Col>
+							</Row>
+						</div>
 						}
-						<Row className='my-2'>
-							{Object.keys(this.state.qualityList).map(quality =>
-								`${qualities[quality].name} ${this.state.qualityList[quality]}`
-							).sort().join(', ')
-							}
-						</Row>
-						{Object.keys(this.state.qualityList).length > 0 &&
-						<Row className='text-right'>
-							<Button onClick={() => this.setState({qualityList: {}})}>Clear</Button>
-						</Row>
-						}
+
+						{Object.keys(qualityList).length > 0 &&
+						<Fragment type='list' title='Qualities List' array={Object.keys(qualityList)}
+								  object={qualityList} nameObj={qualities}
+								  handleClear={() => this.setState({qualityList: {}})}/>}
 					</div>
 				);
 			case 'description':
-				return (
-					<textarea onChange={this.handleChange}
-							  name={field}
-							  rows='8'
-							  maxLength='1000'
-							  className='w-100'
-							  value={this.state[field]}/>
-				);
+				return <Fragment key={field} type='description' value={this.state.description}
+								 handleChange={(event) => this.setState({description: event.target.value})}/>;
 			default:
-				return <div/>
+				return <div/>;
 		}
 	};
 
@@ -250,14 +204,7 @@ class CustomEquipmentComponent extends React.Component {
 		if (!type) return <div/>;
 		return (
 			<div>
-				{fields.map(field =>
-					<Row className='mt-2' key={field}>
-						<Col sm='4' className='my-auto'><b>{field.charAt(0).toUpperCase() + field.slice(1)}:</b></Col>
-						<Col>
-							{this.buildField(field)}
-						</Col>
-					</Row>
-				)}
+				{fields.map(field => this.buildField(field))}
 				{this.buildField('specialQualities')}
 				<ControlButtonSet
 					mode={this.state.mode}
@@ -305,7 +252,6 @@ function mapStateToProps(state) {
 		customWeapons: state.customWeapons,
 		customGear: state.customGear,
 		customArmor: state.customArmor,
-		settings: state.settings,
 	};
 }
 

@@ -1,7 +1,7 @@
 import {omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Row, Table} from 'reactstrap';
+import {Button, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData, changeData} from '../../actions';
@@ -17,11 +17,6 @@ class CustomCareersComponent extends React.Component {
 	handleClose = () => {
 		this.initState();
 		this.props.handleClose();
-	};
-
-	handleChange = (event) => {
-		this.setState({[event.target.name]: event.target.value});
-		event.preventDefault();
 	};
 
 	handleSelect = (event) => {
@@ -63,26 +58,23 @@ class CustomCareersComponent extends React.Component {
 		const {name, selectedSkills, description, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode} handleChange={this.handleChange}/>
+				<Fragment type='name' value={name} mode={mode}
+						  handleChange={(event) => this.setState({name: event.target.value})}/>
+
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
-				<Fragment type='selectedSkills'
+
+				<Fragment name='selectedSkills' type='inputSelect'
 						  array={Object.keys(skills).filter(skill => !selectedSkills.includes(skill)).sort()}
 						  nameObj={skills}
 						  handleChange={this.handleSelect}/>
-				<Row className='mt-1'>
-					<Col>
-						{selectedSkills.sort().map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
-					</Col>
-				</Row>
-				<Row className='mt-1 mx-2'>
-					<Col sm='2'>
-						{selectedSkills.length} skills
-					</Col>
-					<Col className='text-left'>
-						<Button onClick={() => this.setState({selectedSkills: []})}>Clear</Button>
-					</Col>
-				</Row>
-				<Fragment type='description' value={description} handleChange={this.handleChange}/>
+
+				<Fragment type='list' array={selectedSkills} nameObj={skills}
+						  handleClear={() => this.setState({selectedSkills: []})}/>
+
+
+				<Fragment type='description' value={description}
+						  handleChange={(event) => this.setState({description: event.target.value})}/>
+
 				<ControlButtonSet
 					mode={this.state.mode}
 					type={'Career'}

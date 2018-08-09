@@ -36,9 +36,7 @@ const calcSkillDice = createSelector(
 				if (talents[talent]) {
 					if (talents[talent].modifier) {
 						if (talents[talent].modifier[key]) {
-							for (let j = 0; j < talentCount[talent]; j++) {
-								text += talents[talent].modifier[key] + ' ';
-							}
+							talents[talent].modifier[key].forEach(die => text += `${die} `);
 						}
 					}
 				}

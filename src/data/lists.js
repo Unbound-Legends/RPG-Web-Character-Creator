@@ -35,3 +35,13 @@ export const customDataTypes = [
 ];
 
 export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
+
+export const diceNames = {
+	'[blue]': {name: 'Boost Die'},
+	'[black]': {name: 'Setback Die'},
+	'[rmblack]': {name: 'Remove Setback Die'},
+	'[success]': {name: 'Success'},
+	'[advantage]': {name: 'Advantage'},
+	'[failure]': {name: 'Failure'},
+	'[threat]': {name: 'Threat'}
+};
