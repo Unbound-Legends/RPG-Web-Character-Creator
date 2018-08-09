@@ -55,11 +55,9 @@ class CustomSkillsComponent extends React.Component {
 		const {name, type, characteristic, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode}
-						  handleChange={(event) => this.setState({name: event.target.value})}/>
+				<Fragment type='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
-				<Fragment type='inputSelect' name='type' value={type}
-						  array={['General', 'Combat', 'Social', 'Magic', 'Knowledge']}
+				<Fragment type='inputSelect' name='type' value={type} array={['General', 'Combat', 'Social', 'Magic', 'Knowledge']}
 						  handleChange={(event) => this.setState({type: event.target.value})}/>
 
 				<Fragment type='inputSelect' name='characteristic' value={characteristic} array={chars}
@@ -67,13 +65,8 @@ class CustomSkillsComponent extends React.Component {
 
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 
-				<ControlButtonSet
-					mode={this.state.mode}
-					type={'Skill'}
-					handleSubmit={this.handleSubmit}
-					onEditSubmit={this.handleSubmit}
-					onEditCancel={this.initState}
-					disabled={name === '' || type === '' || characteristic === ''}/>
+				<ControlButtonSet mode={this.state.mode} type={'Skill'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
+								  onEditCancel={this.initState} disabled={name === '' || type === '' || characteristic === ''}/>
 
 				<Table>
 					<thead>

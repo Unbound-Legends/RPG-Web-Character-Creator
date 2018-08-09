@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import DynamicFont from 'react-dynamic-font';
+import {connect} from 'react-redux';
 import {Card, CardBody, CardHeader, CardText} from 'reactstrap';
 import {talentCount} from '../selectors';
 import {TalentSelection} from './index';
@@ -33,7 +33,7 @@ class TalentBlockComponent extends React.Component {
 					</CardHeader>
 					<CardBody className='p-1 talentDesc'>
 						<CardText>
-							{(talent ? talent.description + '\n\n' + (talent.activation ? talent.turn : '') : '')}
+							{(talent ? (talent.description ? talent.description : '') + '\n\n' + (talent.activation ? talent.turn : '') : '')}
 						</CardText>
 					</CardBody>
 				</Card>

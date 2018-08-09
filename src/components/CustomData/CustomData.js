@@ -1,13 +1,14 @@
 import React from 'react';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
-import {CustomSettings, CustomArchetypes, CustomEquipment, CustomCareers, CustomSkills, CustomTalents} from './';
+import {CustomArchetypes, CustomArchetypeTalents, CustomCareers, CustomEquipment, CustomSettings, CustomSkills, CustomTalents} from './';
 
 export const CustomData = () => {
 	return (
 		<div className='mx-2'>
-			<Tabs>
+			<Tabs defaultIndex={1}>
 				<TabList>
 					<Tab>Archetypes</Tab>
+					<Tab>Archetype Talents</Tab>
 					<Tab>Armor</Tab>
 					<Tab>Careers</Tab>
 					<Tab>Gear</Tab>
@@ -18,6 +19,9 @@ export const CustomData = () => {
 				</TabList>
 				<TabPanel className='w-100'>
 					<CustomArchetypes/>
+				</TabPanel>
+				<TabPanel className='w-100'>
+					<CustomArchetypeTalents/>
 				</TabPanel>
 				<TabPanel className='w-100'>
 					<CustomEquipment type='customArmor'/>

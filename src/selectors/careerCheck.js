@@ -15,22 +15,14 @@ const calcCareerCheck = createSelector(
 	archetype, archetypes, archetypeTalents, skills, career, careers, talents, selectors.talentCount,
 	(archetype, archetypes, archetypeTalents, skills, career, careers, talents, talentCount) => {
 		let careerSkillsList = {};
+
+		//get careerSkills from career
 		Object.keys(skills).forEach(skill => {
 			careerSkillsList[skill] = false;
 			if (careers[career]) {
 				if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
-				else {
-					Object.keys(talentCount).forEach(talent => {
-						if (talents[talent]) {
-							if (talents[talent].modifier) {
-								if (talents[talent].modifier.careerSkills) {
-									if (talents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
-								}
-							}
-						}
-					});
-				}
 			}
+			//get careerSkills from archetype
 			if (archetypes[archetype]) {
 				if (archetypes[archetype].talents) {
 					archetypes[archetype].talents.forEach(talent => {
@@ -44,6 +36,16 @@ const calcCareerCheck = createSelector(
 					});
 				}
 			}
+			//get careerSkills from talents
+			Object.keys(talentCount).forEach(talent => {
+				if (talents[talent]) {
+					if (talents[talent].modifier) {
+						if (talents[talent].modifier.careerSkills) {
+							if (talents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
+						}
+					}
+				}
+			});
 		});
 		return careerSkillsList;
 	}

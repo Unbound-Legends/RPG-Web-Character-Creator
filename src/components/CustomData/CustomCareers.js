@@ -65,23 +65,17 @@ class CustomCareersComponent extends React.Component {
 
 				<Fragment name='selectedSkills' type='inputSelect'
 						  array={Object.keys(skills).filter(skill => !selectedSkills.includes(skill)).sort()}
-						  nameObj={skills}
-						  handleChange={this.handleSelect}/>
+						  nameObj={skills} handleChange={this.handleSelect}/>
 
 				<Fragment type='list' array={selectedSkills} nameObj={skills}
 						  handleClear={() => this.setState({selectedSkills: []})}/>
 
-
 				<Fragment type='description' value={description}
 						  handleChange={(event) => this.setState({description: event.target.value})}/>
 
-				<ControlButtonSet
-					mode={this.state.mode}
-					type={'Career'}
-					handleSubmit={this.handleSubmit}
-					onEditSubmit={this.handleSubmit}
-					onEditCancel={this.initState}
-					disabled={name === '' || 0 >= selectedSkills.length}/>
+				<ControlButtonSet mode={this.state.mode} type={'Career'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
+								  onEditCancel={this.initState} disabled={name === '' || 0 >= selectedSkills.length}/>
+
 				<Table>
 					<thead>
 					<tr>

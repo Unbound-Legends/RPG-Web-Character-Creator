@@ -29,7 +29,7 @@ class TalentListComponent extends React.Component {
 							<td/>
 							<td className='text-center'>{archetypeTalents[key].activation ? 'Active' : 'Passive'}</td>
 							<td className='text-center'>{archetypeTalents[key].turn}</td>
-							<td><Description text={archetypeTalents[key].description}/></td>
+							<td><Description text={archetypeTalents[key].description ? archetypeTalents[key].description : ''}/></td>
 						</tr>
 					)}
 					{misc &&

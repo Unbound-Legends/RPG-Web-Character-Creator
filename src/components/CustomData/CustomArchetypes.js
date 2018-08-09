@@ -5,11 +5,12 @@ import {Button, ButtonGroup, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData, changeData} from '../../actions';
+import {chars} from '../../data/lists';
 import {Fragment} from './';
 
-const clone = require('clone');
+const attributes = {WOUNDS: 'woundThreshold', STRAIN: 'strainThreshold'};
 
-const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
+const clone = require('clone');
 
 class CustomArchetypesComponent extends React.Component {
 	state = {
@@ -56,7 +57,7 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	handleClick = (event) => {
-		let value = this.state[event.target.name] + +event.target.value;
+		let value = this.state[event.target.name] + event.target.value;
 		if (chars.includes(event.target.name) && (value > 5)) {
 			alert(`Cannot set ${event.target.name} to ${value}`);
 			return;
@@ -140,21 +141,19 @@ class CustomArchetypesComponent extends React.Component {
 
 	render() {
 		const {customArchetypes, skills} = this.props;
-		const {name, woundThreshold, strainThreshold, freeSkillRanks, XP, description, archetypeTalents, setting, mode} = this.state;
+		const {name, freeSkillRanks, XP, description, archetypeTalents, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode}
-						  handleChange={(event) => this.setState({name: event.target.value})}/>
+				<Fragment type='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
-				<Fragment type='number' title='XP' value={XP}
-						  handleChange={(event) => this.setState({XP: event.target.value})}/>
+				<Fragment type='number' title='XP' value={XP} handleChange={(event) => this.setState({XP: event.target.value})}/>
 
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 
 				<Row className='mt-2'>
 					<Col sm='2' className='my-auto'><b className='text-left'>Starting Characteristics:</b></Col>
 					<Col>
-						{chars.map((stat) =>
+						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center d-inline-block'>
 								<div className='imageBox m-auto'>
 									<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
@@ -162,8 +161,8 @@ class CustomArchetypesComponent extends React.Component {
 									<Row className='characteristicTitle'>{stat}</Row>
 								</div>
 								<ButtonGroup>
-									<Button name={stat} value='+1' onClick={this.handleClick}>↑</Button>
-									<Button name={stat} value='-1' onClick={this.handleClick}>↓</Button>
+									<Button name={stat} value={1} onClick={this.handleClick}>↑</Button>
+									<Button name={stat} value={-1} onClick={this.handleClick}>↓</Button>
 								</ButtonGroup>
 							</div>
 						)}
@@ -172,28 +171,19 @@ class CustomArchetypesComponent extends React.Component {
 				<Row className='mt-2'>
 					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
 					<Col>
-						<div className='m-2 text-center d-inline-block'>
-							<div className='imageBox attribute'>
-								<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-								<Row className='attributeTitle'>WOUNDS</Row>
-								<Row className='attributeValue'>{woundThreshold}</Row>
+						{Object.keys(attributes).map(type =>
+							<div className='m-2 text-center d-inline-block'>
+								<div className='imageBox attribute'>
+									<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
+									<Row className='attributeTitle'>{type}</Row>
+									<Row className='attributeValue'>{this.state[attributes[type]]}</Row>
+								</div>
+								<ButtonGroup>
+									<Button name={attributes[type]} value={1} onClick={this.handleClick}>↑</Button>
+									<Button name={attributes[type]} value={-1} onClick={this.handleClick}>↓</Button>
+								</ButtonGroup>
 							</div>
-							<ButtonGroup>
-								<Button name='woundThreshold' value='+1' onClick={this.handleClick}>↑</Button>
-								<Button name='woundThreshold' value='-1' onClick={this.handleClick}>↓</Button>
-							</ButtonGroup>
-						</div>
-						<div className='m-2 text-center d-inline-block'>
-							<div className='imageBox attribute'>
-								<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-								<Row className='attributeTitle'>STRAIN</Row>
-								<Row className='attributeValue'>{strainThreshold}</Row>
-							</div>
-							<ButtonGroup>
-								<Button name='strainThreshold' value='+1' onClick={this.handleClick}>↑</Button>
-								<Button name='strainThreshold' value='-1' onClick={this.handleClick}>↓</Button>
-							</ButtonGroup>
-						</div>
+						)}
 					</Col>
 				</Row>
 				<Fragment name='freeSkillRanks' type='inputSelect' array={Object.keys(skills)} nameObj={skills}
@@ -204,8 +194,7 @@ class CustomArchetypesComponent extends React.Component {
 
 				<Fragment name='archetypeTalents' type='inputSelect'
 						  array={Object.keys(this.props.archetypeTalents).filter(key => !archetypeTalents.includes(key)).sort()}
-						  nameObj={this.props.archetypeTalents}
-						  handleChange={this.handleSelect}/>
+						  nameObj={this.props.archetypeTalents} handleChange={this.handleSelect}/>
 
 				<Fragment type='list' array={archetypeTalents.sort()} nameObj={this.props.archetypeTalents}
 						  handleClear={() => this.setState({archetypeTalents: []})}/>
@@ -213,13 +202,8 @@ class CustomArchetypesComponent extends React.Component {
 				<Fragment type='description' value={description}
 						  handleChange={(event) => this.setState({description: event.target.value})}/>
 
-				<ControlButtonSet
-					mode={this.state.mode}
-					type={'Archetype'}
-					handleSubmit={this.handleSubmit}
-					onEditSubmit={this.handleSubmit}
-					onEditCancel={this.initState}
-					disabled={name === '' || Object.keys(freeSkillRanks).length === 0 || XP === ''}/>
+				<ControlButtonSet mode={this.state.mode} type={'Archetype'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
+								  onEditCancel={this.initState} disabled={name === '' || Object.keys(freeSkillRanks).length === 0 || XP === ''}/>
 
 				<Table>
 					<thead>

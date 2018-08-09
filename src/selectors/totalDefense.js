@@ -18,10 +18,12 @@ const calcTotalDefense = createSelector(
 		if (archetypes[archetype]) {
 			if (archetypes[archetype].talents) {
 				archetypes[archetype].talents.forEach(key => {
-					if (archetypeTalents[key].modifier) {
-						let target = {...archetypeTalents[key].modifier};
-						defense.melee += (target.meleeDefense ? +target.meleeDefense : 0) + (target.defense ? +target.defense : 0);
-						defense.ranged += (target.rangedDefense ? +target.rangedDefense : 0) + (target.defense ? +target.defense : 0);
+					if (archetypeTalents[key]) {
+						if (archetypeTalents[key].modifier) {
+							let target = {...archetypeTalents[key].modifier};
+							defense.melee += (target.meleeDefense ? +target.meleeDefense : 0) + (target.defense ? +target.defense : 0);
+							defense.ranged += (target.rangedDefense ? +target.rangedDefense : 0) + (target.defense ? +target.defense : 0);
+						}
 					}
 				});
 			}

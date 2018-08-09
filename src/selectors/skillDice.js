@@ -36,7 +36,10 @@ const calcSkillDice = createSelector(
 				if (talents[talent]) {
 					if (talents[talent].modifier) {
 						if (talents[talent].modifier[key]) {
-							talents[talent].modifier[key].forEach(die => text += `${die} `);
+							for (let i = 0; i < talentCount[talent]; i++) {
+								// eslint-disable-next-line
+								talents[talent].modifier[key].forEach(die => text += `${die} `);
+							}
 						}
 					}
 				}
@@ -46,8 +49,10 @@ const calcSkillDice = createSelector(
 			if (archetypes[archetype]) {
 				if (archetypes[archetype].talents) {
 					archetypes[archetype].talents.forEach(key2 => {
-						if (archetypeTalents[key2].modifier) {
-							if (archetypeTalents[key2].modifier[key] && !Number.isInteger(archetypeTalents[key2].modifier[key])) text += archetypeTalents[key2].modifier[key] + ' ';
+						if (archetypeTalents[key2]) {
+							if (archetypeTalents[key2].modifier) {
+								if (archetypeTalents[key2].modifier[key] && !Number.isInteger(archetypeTalents[key2].modifier[key])) text += archetypeTalents[key2].modifier[key] + ' ';
+							}
 						}
 					});
 				}

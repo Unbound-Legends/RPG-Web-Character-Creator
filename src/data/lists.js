@@ -45,3 +45,6 @@ export const diceNames = {
 	'[failure]': {name: 'Failure'},
 	'[threat]': {name: 'Threat'}
 };
+
+export const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'];
+

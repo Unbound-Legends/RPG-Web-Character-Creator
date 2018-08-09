@@ -151,8 +151,7 @@ class CustomEquipmentComponent extends React.Component {
 								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'skill':
 				return <Fragment key={field} type='inputSelect' name={field} value={this.state[field]}
-								 array={Object.keys(skills).filter(skill => skills[skill].type === 'Combat')}
-								 nameObj={skills}
+								 array={Object.keys(skills).filter(skill => skills[skill].type === 'Combat')} nameObj={skills}
 								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'specialQualities':
 				const {specialQualities, qualityList, qualityRank} = this.state;
@@ -181,8 +180,7 @@ class CustomEquipmentComponent extends React.Component {
 						}
 
 						{Object.keys(qualityList).length > 0 &&
-						<Fragment type='list' title='Qualities List' array={Object.keys(qualityList)}
-								  object={qualityList} nameObj={qualities}
+						<Fragment type='list' title='Qualities List' array={Object.keys(qualityList)} object={qualityList} nameObj={qualities}
 								  handleClear={() => this.setState({qualityList: {}})}/>}
 					</div>
 				);
@@ -206,12 +204,8 @@ class CustomEquipmentComponent extends React.Component {
 			<div>
 				{fields.map(field => this.buildField(field))}
 				{this.buildField('specialQualities')}
-				<ControlButtonSet
-					mode={this.state.mode}
-					type={type.toString().slice(6)}
-					handleSubmit={this.handleSubmit}
-					onEditSubmit={this.handleSubmit}
-					onEditCancel={this.initState}/>
+				<ControlButtonSet mode={this.state.mode} type={type.toString().slice(6)} handleSubmit={this.handleSubmit}
+								  onEditSubmit={this.handleSubmit} onEditCancel={this.initState}/>
 				<Table>
 					<thead>
 					<tr>
