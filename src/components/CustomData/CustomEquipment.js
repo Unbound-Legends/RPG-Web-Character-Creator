@@ -236,7 +236,7 @@ class CustomEquipmentComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		armor: state.armor,
 		weapons: state.weapons,
@@ -247,10 +247,8 @@ function mapStateToProps(state) {
 		customGear: state.customGear,
 		customArmor: state.customArmor,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
 
 export const CustomEquipment = connect(mapStateToProps, matchDispatchToProps)(CustomEquipmentComponent);

@@ -148,7 +148,7 @@ class GearComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		armor: state.armor,
 		weapons: state.weapons,
@@ -159,10 +159,8 @@ function mapStateToProps(state) {
 		equipmentGear: state.equipmentGear,
 		equipmentWeapons: state.equipmentWeapons,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const Gear = connect(mapStateToProps, matchDispatchToProps)(GearComponent);

@@ -152,7 +152,7 @@ class CharacterSelectComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetype: state.archetype,
 		archetypes: state.archetypes,
@@ -165,17 +165,16 @@ function mapStateToProps(state) {
 		user: state.user,
 		settings: state.settings,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({
-		changeData,
-		addCharacter,
-		changeCharacter,
-		deleteCharacter,
-		changeCharacterName,
-		loadData
-	}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({
+	changeData,
+	addCharacter,
+	changeCharacter,
+	deleteCharacter,
+	changeCharacterName,
+	loadData
+}, dispatch);
+
 
 export const CharacterSelect = connect(mapStateToProps, matchDispatchToProps)(CharacterSelectComponent);

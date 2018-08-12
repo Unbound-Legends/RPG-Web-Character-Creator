@@ -14,11 +14,6 @@ class CustomSettingsComponent extends React.Component {
 		this.setState({name: ''});
 	};
 
-	handleChange = (event) => {
-		this.setState({[event.target.name]: event.target.value});
-		event.preventDefault();
-	};
-
 	handleSubmit = (event) => {
 		const {customSettings, changeCustomData} = this.props;
 		const {name} = this.state;
@@ -38,7 +33,7 @@ class CustomSettingsComponent extends React.Component {
 		const {name} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} handleChange={this.handleChange}/>
+				<Fragment type='name' value={name} handleChange={(event) => this.setState({name: event.target.value})}/>
 				<Row className='my-4 justify-content-end'>
 					<Button onClick={this.handleSubmit} className='btn'>ADD</Button>
 				</Row>
@@ -72,14 +67,12 @@ class CustomSettingsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customSettings: state.customSettings,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
 
 export const CustomSettings = connect(mapStateToProps, matchDispatchToProps)(CustomSettingsComponent);

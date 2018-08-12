@@ -57,7 +57,7 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	handleClick = (event) => {
-		let value = this.state[event.target.name] + event.target.value;
+		let value = this.state[event.target.name] + +event.target.value;
 		if (chars.includes(event.target.name) && (value > 5)) {
 			alert(`Cannot set ${event.target.name} to ${value}`);
 			return;
@@ -171,8 +171,8 @@ class CustomArchetypesComponent extends React.Component {
 				<Row className='mt-2'>
 					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
 					<Col>
-						{Object.keys(attributes).map(type =>
-							<div className='m-2 text-center d-inline-block'>
+						{['WOUNDS', 'STRAIN'].map(type =>
+							<div className='m-2 text-center d-inline-block' key={type}>
 								<div className='imageBox attribute'>
 									<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
 									<Row className='attributeTitle'>{type}</Row>
@@ -234,7 +234,7 @@ class CustomArchetypesComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customArchetypes: state.customArchetypes,
 		archetypes: state.archetypes,
@@ -242,10 +242,8 @@ function mapStateToProps(state) {
 		archetypeTalents: state.archetypeTalents,
 		skills: state.skills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData, changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData, changeData}, dispatch);
 
 export const CustomArchetypes = connect(mapStateToProps, matchDispatchToProps)(CustomArchetypesComponent);

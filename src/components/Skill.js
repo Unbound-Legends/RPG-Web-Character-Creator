@@ -31,10 +31,10 @@ class SkillComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customSkills: state.customSkills,
 	};
-}
+};
 
 export const Skill = connect(mapStateToProps)(SkillComponent);

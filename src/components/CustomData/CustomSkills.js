@@ -106,14 +106,12 @@ class CustomSkillsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customSkills: state.customSkills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
 
 export const CustomSkills = connect(mapStateToProps, matchDispatchToProps)(CustomSkillsComponent);

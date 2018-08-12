@@ -28,10 +28,10 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		critical: state.critical,
 	};
-}
+};
 
 export const Critical = connect(mapStateToProps)(Component);

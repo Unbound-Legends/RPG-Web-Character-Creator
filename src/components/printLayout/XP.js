@@ -25,12 +25,11 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		totalXP: totalXP(state),
 		usedXP: usedXP(state),
-
 	};
-}
+};
 
 export const XP = connect(mapStateToProps)(Component);

@@ -1,14 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
-import {
-	encumbranceLimit,
-	strainThreshold,
-	totalDefense,
-	totalEncumbrance,
-	totalSoak,
-	woundThreshold,
-} from "../../selectors";
+import {encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, totalSoak, woundThreshold,} from "../../selectors";
 
 class Component extends React.Component {
 
@@ -55,7 +48,7 @@ class Component extends React.Component {
 
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		woundThreshold: woundThreshold(state),
 		strainThreshold: strainThreshold(state),
@@ -66,6 +59,6 @@ function mapStateToProps(state) {
 		currentWound: state.currentWound,
 		currentStrain: state.currentStrain,
 	};
-}
+};
 
 export const Attributes = connect(mapStateToProps)(Component);

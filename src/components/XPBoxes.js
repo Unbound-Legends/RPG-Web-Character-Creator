@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
-import {totalXP, usedXP} from '../selectors';
-import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
+import {changeData} from '../actions';
+import {totalXP, usedXP} from '../selectors';
 import {XPPopup} from './index';
 
 class XPBoxesComponent extends React.Component {
@@ -29,16 +29,13 @@ class XPBoxesComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		totalXP: totalXP(state),
 		usedXP: usedXP(state),
-
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const XPBoxes = connect(mapStateToProps, matchDispatchToProps)(XPBoxesComponent);

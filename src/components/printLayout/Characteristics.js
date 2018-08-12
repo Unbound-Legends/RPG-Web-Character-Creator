@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
-import {characteristics} from '../../selectors';
 import {chars} from '../../data/lists';
+import {characteristics} from '../../selectors';
 
 class Component extends React.Component {
 
@@ -27,10 +27,10 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		characteristics: characteristics(state),
 	};
-}
+};
 
 export const Characteristics = connect(mapStateToProps)(Component);

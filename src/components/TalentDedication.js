@@ -1,7 +1,7 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Input, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {characteristics} from '../selectors';
 
@@ -45,15 +45,13 @@ class TalentDedicationComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		characteristics: characteristics(state),
 		talentModifiers: state.talentModifiers,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData: changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const TalentDedication = connect(mapStateToProps, matchDispatchToProps)(TalentDedicationComponent);

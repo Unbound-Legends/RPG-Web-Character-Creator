@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData, changeData} from '../../actions';
+import {changeCustomData} from '../../actions';
 import {diceNames, modifiableAttributes} from '../../data/lists'
 import {Fragment} from './';
 
@@ -111,13 +111,13 @@ class CustomTalentsComponent extends React.Component {
 
 			<Fragment type='inputSelect' title='activation'
 					  array={[true, false]} nameObj={{true: {name: 'Active'}, false: {name: 'Passive'}}} value={activation}
-					  handleChange={(event) => this.setState({activation: event.target.value})}/>
+					  handleChange={(event) => this.setState({activation: JSON.parse(event.target.value)})}/>
 
 
 			{activation && <Fragment type='text' title='turn' value={turn} handleChange={(event) => this.setState({turn: event.target.value})}/>}
 
 			<Fragment type='inputSelect' title='ranked' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}} value={ranked}
-					  handleChange={(event) => this.setState({ranked: event.target.value})}/>
+					  handleChange={(event) => this.setState({ranked: JSON.parse(event.target.value)})}/>
 
 			<Fragment type='description' value={description} handleChange={(event) => this.setState({description: event.target.value})}/>
 
@@ -128,7 +128,7 @@ class CustomTalentsComponent extends React.Component {
 					  nameObj={talents} blankText={'None'} handleChange={(event) => this.setState({antirequisite: event.target.value})}/>
 
 			<Fragment type='inputSelect' title='modifier' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}} value={modifier}
-					  blankOption={false} handleChange={(event) => this.setState({modifier: event.target.value, modifierValue: ''})}/>
+					  blankOption={false} handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 			{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
 								   array={['careerSkills', 'defense', 'meleeDefense', 'strainThreshold', 'soak', 'rangedDefense', 'woundThreshold'].concat(Object.keys(skills))}
@@ -151,7 +151,7 @@ class CustomTalentsComponent extends React.Component {
 
 					: <Fragment type='inputSelect' title='modifierValue' value='' nameObj={diceNames}
 								array={['[blue]', '[black]', '[rmblack]', '[success]', '[advantage]', '[failure]', '[threat]']}
-					/>))}
+								handleChange={this.handleList}/>))}
 
 			{Array.isArray(modifierValue) &&
 			<Fragment type='list' title='modifierList' array={modifierValue} nameObj={{...skills, diceNames}}
@@ -187,16 +187,14 @@ class CustomTalentsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customTalents: state.customTalents,
 		talents: state.talents,
 		skills: state.skills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData, changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
 
 export const CustomTalents = connect(mapStateToProps, matchDispatchToProps)(CustomTalentsComponent);

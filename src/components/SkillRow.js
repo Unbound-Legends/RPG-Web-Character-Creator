@@ -1,6 +1,6 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../selectors';
 import {Description} from './index';
@@ -69,7 +69,7 @@ class SkillRowComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetype: state.archetype,
 		masterSkills: state.masterSkills,
@@ -82,10 +82,8 @@ function mapStateToProps(state) {
 		archetypeSkillRank: archetypeSkillRank(state),
 		careerCheck: careerCheck(state),
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const SkillRow = connect(mapStateToProps, matchDispatchToProps)(SkillRowComponent);

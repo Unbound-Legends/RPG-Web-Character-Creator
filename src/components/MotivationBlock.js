@@ -85,15 +85,13 @@ class MotivationBlockComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		masterMotivations: state.masterMotivations,
 		motivations: state.motivations,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const MotivationBlock = connect(mapStateToProps, matchDispatchToProps)(MotivationBlockComponent);

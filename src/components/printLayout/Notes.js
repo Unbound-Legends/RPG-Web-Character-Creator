@@ -1,6 +1,6 @@
 import React from 'react';
-import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
+import {Row} from 'reactstrap';
 
 class Component extends React.Component {
 
@@ -19,10 +19,10 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		description: state.description,
 	};
-}
+};
 
 export const Notes = connect(mapStateToProps)(Component);

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Card, CardBody, CardHeader, CardText, Row} from 'reactstrap';
-import {connect} from 'react-redux';
 import DynamicFont from 'react-dynamic-font';
+import {connect} from 'react-redux';
+import {Card, CardBody, CardHeader, CardText, Row} from 'reactstrap';
 import {talentCount} from '../../selectors';
 
 class Component extends React.Component {
@@ -48,12 +48,12 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		masterTalents: state.masterTalents,
 		talents: state.talents,
 		talentCount: talentCount(state),
 	};
-}
+};
 
 export const TalentPyramid = connect(mapStateToProps)(Component);

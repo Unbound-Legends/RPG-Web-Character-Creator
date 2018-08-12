@@ -1,8 +1,8 @@
 import React from 'react';
-import {Col, Row, Table} from 'reactstrap';
 import {connect} from 'react-redux';
-import {Description} from "../index";
+import {Col, Row, Table} from 'reactstrap';
 import {equipmentStats, gearDice, skillDice} from '../../selectors';
+import {Description} from "../index";
 
 class Component extends React.Component {
 
@@ -166,7 +166,7 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		armor: state.armor,
 		gear: state.gear,
@@ -181,6 +181,6 @@ function mapStateToProps(state) {
 		weapons: state.weapons,
 		money: state.money,
 	};
-}
+};
 
 export const Equipment = connect(mapStateToProps)(Component);

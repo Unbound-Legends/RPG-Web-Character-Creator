@@ -96,7 +96,7 @@ class CareerComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		career: state.career,
 		careerSkillsRank: state.careerSkillsRank,
@@ -104,10 +104,8 @@ function mapStateToProps(state) {
 		skills: state.skills,
 		maxCareerSkills: maxCareerSkills(state),
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const Career = connect(mapStateToProps, matchDispatchToProps)(CareerComponent);

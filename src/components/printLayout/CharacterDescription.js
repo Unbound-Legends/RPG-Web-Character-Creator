@@ -1,6 +1,6 @@
 import React from 'react';
-import {Col, Row} from 'reactstrap';
 import {connect} from 'react-redux';
+import {Col, Row} from 'reactstrap';
 
 class Component extends React.Component {
 
@@ -34,10 +34,10 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		description: state.description,
 	};
-}
+};
 
 export const CharacterDescription = connect(mapStateToProps)(Component);

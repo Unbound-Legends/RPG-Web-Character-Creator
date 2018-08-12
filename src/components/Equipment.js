@@ -5,15 +5,7 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Button, Col, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-import {
-	encumbranceLimit,
-	equipmentStats,
-	gearDice,
-	skillDice,
-	totalDefense,
-	totalEncumbrance,
-	totalSoak,
-} from '../selectors';
+import {encumbranceLimit, equipmentStats, gearDice, skillDice, totalDefense, totalEncumbrance, totalSoak,} from '../selectors';
 import {DeleteButton, Description, Gear} from "./index";
 
 const clone = require('clone');
@@ -281,7 +273,7 @@ class EquipmentComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		armor: state.armor,
 		craftsmanship: state.craftsmanship,
@@ -301,10 +293,8 @@ function mapStateToProps(state) {
 		totalSoak: totalSoak(state),
 		weapons: state.weapons,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const Equipment = connect(mapStateToProps, matchDispatchToProps)(EquipmentComponent);

@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Modal, ModalBody, ModalHeader, Row} from 'reactstrap';
-import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
+import {changeData} from '../actions';
 
 class XPPopupComponent extends React.Component {
 	state = {earnedXP: this.props.earnedXP};
@@ -49,14 +49,12 @@ class XPPopupComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		earnedXP: state.earnedXP,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const XPPopup = connect(mapStateToProps, matchDispatchToProps)(XPPopupComponent);

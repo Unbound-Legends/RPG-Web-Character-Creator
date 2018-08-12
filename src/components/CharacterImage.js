@@ -54,14 +54,12 @@ class CharacterImageComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		description: state.description,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const CharacterImage = connect(mapStateToProps, matchDispatchToProps)(CharacterImageComponent);

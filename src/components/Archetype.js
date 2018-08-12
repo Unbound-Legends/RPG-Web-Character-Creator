@@ -1,10 +1,10 @@
+import {omit} from 'lodash-es';
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {ArchetypeStats} from './index';
-import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
-import {omit} from 'lodash-es';
 
 class ArchetypeComponent extends React.Component {
 
@@ -37,16 +37,14 @@ class ArchetypeComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetypes: state.archetypes,
 		archetype: state.archetype,
 		misc: state.misc,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const Archetype = connect(mapStateToProps, matchDispatchToProps)(ArchetypeComponent);

@@ -1,10 +1,10 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-import {characteristics} from '../selectors';
 import {chars} from '../data/lists';
+import {characteristics} from '../selectors';
 
 class CharacteristicsComponent extends React.Component {
 
@@ -76,17 +76,15 @@ class CharacteristicsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetype: state.archetype,
 		archetypes: state.archetypes,
 		creationCharacteristics: state.creationCharacteristics,
 		characteristics: characteristics(state),
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const Characteristics = connect(mapStateToProps, matchDispatchToProps)(CharacteristicsComponent);

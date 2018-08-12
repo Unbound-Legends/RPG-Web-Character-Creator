@@ -30,11 +30,11 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		masterMotivations: state.masterMotivations,
 		motivations: state.motivations,
 	};
-}
+};
 
 export const Motivations = connect(mapStateToProps)(Component);

@@ -1,7 +1,7 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {talentCount} from '../selectors';
 import {Description, TalentDedication} from './index';
@@ -183,7 +183,7 @@ class TalentSelectionComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		masterTalents: state.masterTalents,
 		talentCount: talentCount(state),
@@ -191,10 +191,8 @@ function mapStateToProps(state) {
 		talentModifiers: state.talentModifiers,
 		skills: state.skills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const TalentSelection = connect(mapStateToProps, matchDispatchToProps)(TalentSelectionComponent);

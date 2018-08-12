@@ -1,7 +1,7 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
-import {Button, Col, Input, Row} from 'reactstrap';
 import {connect} from 'react-redux';
+import {Button, Col, Input, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
 class ArchetypeSkillsComponent extends React.Component {
@@ -55,17 +55,15 @@ class ArchetypeSkillsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetype: state.archetype,
 		archetypes: state.archetypes,
 		archetypeSpecialSkills: state.archetypeSpecialSkills,
 		skills: state.skills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const ArchetypeSkills = connect(mapStateToProps, matchDispatchToProps)(ArchetypeSkillsComponent);

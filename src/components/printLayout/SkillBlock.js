@@ -43,11 +43,11 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		skills: state.skills,
 		masterSkills: state.masterSkills,
 	};
-}
+};
 
 export const SkillBlock = connect(mapStateToProps)(Component);

@@ -63,7 +63,7 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetype: state.archetype,
 		archetypes: state.archetypes,
@@ -75,6 +75,6 @@ function mapStateToProps(state) {
 		character: state.character,
 		setting: state.setting,
 	};
-}
+};
 
 export const Character = connect(mapStateToProps)(Component);

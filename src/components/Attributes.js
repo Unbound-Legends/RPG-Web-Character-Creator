@@ -37,13 +37,13 @@ class AttributesComponent extends React.Component {
 					<div className='imageBox attribute'>
 						<img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
 						<Row className='attributeTitle'>WOUNDS</Row>
-						<Row className='attributeValue' style={{left: '65%'}}>
+						<Row className='attributeValue' style={{left: '63%'}}>
 							{woundThreshold} {' | '}
 							<Input type='number'
-								   style={{fontSize: '20px', width: '35px'}}
+								   style={{fontSize: '20px', width: '35px', height: '25px'}}
 								   name='currentWound'
 								   maxLength='2'
-								   className='py-0 px-1 mx-1'
+								   className='py-0 px-1 m-auto'
 								   onChange={this.handleChange}
 								   onBlur={this.handleBlur}
 								   value={currentWound > 0 ? currentWound : ''}/>
@@ -52,13 +52,13 @@ class AttributesComponent extends React.Component {
 					<div className='imageBox attribute'>
 						<img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
 						<Row className='attributeTitle'>STRAIN</Row>
-						<Row className='attributeValue' style={{left: '65%'}}>
+						<Row className='attributeValue' style={{left: '63%'}}>
 							{strainThreshold} {' | '}
 							<Input type='number'
-								   style={{fontSize: '20px', width: '35px'}}
+								   style={{fontSize: '20px', width: '35px', height: '25px'}}
 								   name='currentStrain'
 								   maxLength='2'
-								   className='py-0 px-1 mx-1'
+								   className='py-0 px-1 m-auto'
 								   onChange={this.handleChange}
 								   onBlur={this.handleBlur}
 								   value={currentStrain > 0 ? currentStrain : ''}/>
@@ -86,7 +86,7 @@ class AttributesComponent extends React.Component {
 
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		woundThreshold: selectors.woundThreshold(state),
 		strainThreshold: selectors.strainThreshold(state),
@@ -97,10 +97,8 @@ function mapStateToProps(state) {
 		currentWound: state.currentWound,
 		currentStrain: state.currentStrain,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const Attributes = connect(mapStateToProps, matchDispatchToProps)(AttributesComponent);

@@ -5,7 +5,7 @@ import {CustomArchetypes, CustomArchetypeTalents, CustomCareers, CustomEquipment
 export const CustomData = () => {
 	return (
 		<div className='mx-2'>
-			<Tabs defaultIndex={1}>
+			<Tabs defaultIndex={0}>
 				<TabList>
 					<Tab>Archetypes</Tab>
 					<Tab>Archetype Talents</Tab>

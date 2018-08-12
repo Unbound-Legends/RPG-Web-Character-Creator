@@ -64,7 +64,7 @@ class AppComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		user: state.user,
 		character: state.character,
@@ -73,15 +73,15 @@ function mapStateToProps(state) {
 		printContent: state.printContent,
 		setting: state.setting,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
+const matchDispatchToProps = dispatch => {
 	return bindActionCreators({
 		changeUser,
 		loadCharacterList,
 		loadData,
 		loadCustomData
 	}, dispatch);
-}
+};
 
 export const App = connect(mapStateToProps, matchDispatchToProps)(AppComponent);

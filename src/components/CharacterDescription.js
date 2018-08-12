@@ -60,14 +60,12 @@ class CharacterDescriptionComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		description: state.description,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const CharacterDescription = connect(mapStateToProps, matchDispatchToProps)(CharacterDescriptionComponent);

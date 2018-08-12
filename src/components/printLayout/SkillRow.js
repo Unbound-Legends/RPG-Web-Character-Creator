@@ -55,7 +55,7 @@ class Component extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		masterSkills: state.masterSkills,
 		skills: state.skills,
@@ -67,6 +67,6 @@ function mapStateToProps(state) {
 		archetypeSkillRank: archetypeSkillRank(state),
 		careerCheck: careerCheck(state),
 	};
-}
+};
 
 export const SkillRow = connect(mapStateToProps)(Component);

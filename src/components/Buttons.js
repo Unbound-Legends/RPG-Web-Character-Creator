@@ -1,10 +1,10 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {addCharacter, changePrintContent, changeUser} from '../actions';
 import firebase from '@firebase/app';
 import '@firebase/auth';
+import React from 'react';
+import {connect} from 'react-redux';
 import {Button, Col, Row} from 'reactstrap';
+import {bindActionCreators} from 'redux';
+import {addCharacter, changePrintContent, changeUser} from '../actions';
 import {PrintLayout} from './printLayout/index';
 
 class ButtonsComponent extends React.Component {
@@ -40,14 +40,12 @@ class ButtonsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		channel: state.channel,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeUser, addCharacter, changePrintContent}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeUser, addCharacter, changePrintContent, dispatch});
 
 export const Buttons = connect(mapStateToProps, matchDispatchToProps)(ButtonsComponent);

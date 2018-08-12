@@ -42,12 +42,12 @@ class TalentBlockComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		masterTalents: state.masterTalents,
 		talents: state.talents,
 		talentCount: talentCount(state),
 	};
-}
+};
 
 export const TalentBlock = connect(mapStateToProps)(TalentBlockComponent);

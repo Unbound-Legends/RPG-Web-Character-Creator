@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import {Col, Input, Row} from 'reactstrap';
-import {ArchetypeSkills, Description} from './index';
+import {bindActionCreators} from 'redux';
 import {changeData} from "../actions";
+import {ArchetypeSkills, Description} from './index';
 
 class ArchetypeStatsComponent extends React.Component {
 
@@ -100,17 +100,15 @@ class ArchetypeStatsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		archetype: state.archetype,
 		archetypes: state.archetypes,
 		archetypeTalents: state.archetypeTalents,
 		misc: state.misc,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const ArchetypeStats = connect(mapStateToProps, matchDispatchToProps)(ArchetypeStatsComponent);

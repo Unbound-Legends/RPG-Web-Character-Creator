@@ -60,7 +60,7 @@ class TalentListComponent extends React.Component {
 	};
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		talents: state.talents,
 		archetype: state.archetype,
@@ -69,6 +69,6 @@ function mapStateToProps(state) {
 		misc: state.misc,
 		talentCount: talentCount(state),
 	};
-}
+};
 
 export const TalentList = connect(mapStateToProps)(TalentListComponent);

@@ -102,16 +102,14 @@ class CustomCareersComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customCareers: state.customCareers,
 		skills: state.skills,
 		career: state.career,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData, changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData, changeData}, dispatch);
 
 export const CustomCareers = connect(mapStateToProps, matchDispatchToProps)(CustomCareersComponent);

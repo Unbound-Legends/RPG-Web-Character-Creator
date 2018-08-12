@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Table} from 'reactstrap';
-import {SkillRow} from './index';
-import {changeData} from '../actions';
 import {bindActionCreators} from 'redux';
+import {changeData} from '../actions';
+import {SkillRow} from './index';
 
 class SkillBlockComponent extends React.Component {
 
@@ -95,15 +95,13 @@ class SkillBlockComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		skills: state.skills,
 		masterSkills: state.masterSkills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
 
 export const SkillBlock = connect(mapStateToProps, matchDispatchToProps)(SkillBlockComponent);

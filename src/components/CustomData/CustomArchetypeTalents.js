@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData, changeData} from '../../actions';
+import {changeCustomData} from '../../actions';
 import {diceNames, modifiableAttributes} from '../../data/lists'
 import {Fragment} from './';
 
@@ -96,14 +96,14 @@ class CustomArchetypeTalentsComponent extends React.Component {
 
 			<Fragment type='inputSelect' title='activation'
 					  array={[true, false]} nameObj={{true: {name: 'Active'}, false: {name: 'Passive'}}} value={activation}
-					  handleChange={(event) => this.setState({activation: event.target.value})}/>
+					  handleChange={(event) => this.setState({activation: JSON.parse(event.target.value)})}/>
 
 			{activation && <Fragment type='text' title='turn' value={turn} handleChange={(event) => this.setState({turn: event.target.value})}/>}
 
 			<Fragment type='description' value={description} handleChange={(event) => this.setState({description: event.target.value})}/>
 
 			<Fragment type='inputSelect' title='modifier' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}} value={modifier}
-					  blankOption={false} handleChange={(event) => this.setState({modifier: event.target.value, modifierValue: ''})}/>
+					  blankOption={false} handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 			{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
 								   array={['careerSkills', 'defense', 'meleeDefense', 'strainThreshold', 'soak', 'rangedDefense', 'woundThreshold'].concat(Object.keys(skills))}
@@ -132,7 +132,7 @@ class CustomArchetypeTalentsComponent extends React.Component {
 			<Fragment type='list' title='modifierList' array={modifierValue} nameObj={{...skills, diceNames}}
 					  handleClear={() => this.setState({modifierValue: []})}/>}
 			<hr/>
-			<ControlButtonSet mode={this.state.mode} type={'archetypeTalents'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
+			<ControlButtonSet mode={this.state.mode} type={'Archetype Talents'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
 							  onEditCancel={this.initState} disabled={name === '' || tier === '' || ranked === '' || activation === ''}/>
 
 			<Table>
@@ -160,16 +160,14 @@ class CustomArchetypeTalentsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		customArchetypeTalents: state.customArchetypeTalents,
 		archetypeTalents: state.archetypeTalents,
 		skills: state.skills,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({changeCustomData, changeData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
 
 export const CustomArchetypeTalents = connect(mapStateToProps, matchDispatchToProps)(CustomArchetypeTalentsComponent);

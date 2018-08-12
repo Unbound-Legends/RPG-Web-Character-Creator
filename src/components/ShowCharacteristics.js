@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Button, Row} from 'reactstrap';
 import {chars} from '../data/lists';
 import {characteristics} from '../selectors'
-import {Characteristics} from './index';
+import {Characteristics} from './';
 
 class ShowCharacteristicsComponent extends React.Component {
 	state = {modal: false};
@@ -14,16 +14,13 @@ class ShowCharacteristicsComponent extends React.Component {
 			<div className='w-100'>
 				<Row className='justify-content-end'>
 					<h5>CHARACTERISTICS</h5>
-					<Button color='link'
-							className='noUnderLine p-0'
-							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
+					<Button color='link' className='noUnderLine p-0' onClick={() => this.setState({modal: true})}>⚙</Button>
+				</Row>
 				<hr/>
 				<Row className='justify-content-center'>
-
-					{chars.map((stat) =>
+					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
 							<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
-
 							<Row className='characteristicValue'>{characteristics[stat]}</Row>
 							<Row className='characteristicTitle'>{stat}</Row>
 						</div>
@@ -35,10 +32,10 @@ class ShowCharacteristicsComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		characteristics: characteristics(state),
 	};
-}
+};
 
 export const ShowCharacteristics = connect(mapStateToProps)(ShowCharacteristicsComponent);

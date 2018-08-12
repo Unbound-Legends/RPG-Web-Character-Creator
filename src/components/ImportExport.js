@@ -227,7 +227,7 @@ class ImportExportComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
 	return {
 		characterList: state.characterList,
 		user: state.user,
@@ -242,10 +242,8 @@ function mapStateToProps(state) {
 		customWeapons: state.customWeapons,
 		customSettings: state.customSettings,
 	};
-}
+};
 
-function matchDispatchToProps(dispatch) {
-	return bindActionCreators({importCharacter, importCustomData}, dispatch);
-}
+const matchDispatchToProps = dispatch => bindActionCreators({importCharacter, importCustomData}, dispatch);
 
 export const ImportExport = connect(mapStateToProps, matchDispatchToProps)(ImportExportComponent);
