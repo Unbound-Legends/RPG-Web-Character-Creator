@@ -1,4 +1,4 @@
-import {omit} from 'lodash-es';
+import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Table} from 'reactstrap';
@@ -57,7 +57,7 @@ class CustomTalentsComponent extends React.Component {
 		const {name, modifier, modifierValue} = this.state;
 		const {customTalents, changeCustomData} = this.props;
 		let Obj = clone(customTalents);
-		let key = name.replace(/\s/g, '').replace(/[{()}]/g, '');
+		let key = upperFirst(camelCase((name)));
 		Obj[key] = {};
 		['name', 'tier', 'activation', 'turn', 'ranked', 'description', 'setting', 'prerequisite', 'antirequisite'].forEach(stat => {
 			if (this.state[stat] !== '') Obj[key][stat] = this.state[stat];

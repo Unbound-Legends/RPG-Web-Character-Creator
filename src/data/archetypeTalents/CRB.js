@@ -1,5 +1,5 @@
 export const CRB = {
-	readyforanything: {
+	ReadyForAnything: {
 		name: 'Ready for Anything',
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -8,7 +8,7 @@ export const CRB = {
 		description: 'See CRB, page 36, for more details.',
 		setting: 'All',
 	},
-	toughasnails: {
+	ToughAsNails: {
 		name: 'Tough as Nails',
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -17,7 +17,7 @@ export const CRB = {
 		description: 'See CRB, page 37, for more details.',
 		setting: 'All',
 	},
-	brilliant: {
+	Brilliant: {
 		name: 'Brilliant!',
 		activation: true,
 		turn: 'Incidental',
@@ -26,7 +26,7 @@ export const CRB = {
 		description: 'See CRB, page 38, for more details.',
 		setting: 'All',
 	},
-	forcefulPersonality: {
+	ForcefulPersonality: {
 		name: 'Forceful Personality',
 		activation: true,
 		turn: 'Incidental',
@@ -35,7 +35,7 @@ export const CRB = {
 		description: 'See CRB, page 39, for more details.',
 		setting: 'All',
 	},
-	nimble: {
+	Nimble: {
 		name: 'Nimble',
 		activation: false,
 		turn: false,
@@ -45,7 +45,7 @@ export const CRB = {
 		setting: 'All',
 		modifier: {defense: 1},
 	},
-	darkvision: {
+	DarkVision: {
 		name: 'Dark Vision',
 		activation: false,
 		turn: false,
@@ -54,7 +54,7 @@ export const CRB = {
 		description: 'See CRB, page 142, for more details.',
 		setting: 'All',
 	},
-	battlerage: {
+	BattleRage: {
 		name: 'Battle Rage',
 		activation: true,
 		turn: 'Attack',
@@ -63,7 +63,7 @@ export const CRB = {
 		description: 'See CRB, page 143, for more details.',
 		setting: 'All',
 	},
-	thebeastwithin: {
+	TheBeastWithin: {
 		name: 'The Beast Within',
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -72,7 +72,7 @@ export const CRB = {
 		description: 'See CRB, page 152, for more details.',
 		setting: 'All',
 	},
-	thehumanspirit: {
+	TheHumanSpirit: {
 		name: 'The Human Spirit',
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -81,7 +81,7 @@ export const CRB = {
 		description: 'See CRB, page 152, for more details.',
 		setting: 'All',
 	},
-	reanimated: {
+	Reanimated: {
 		name: 'Reanimated',
 		activation: false,
 		turn: false,
@@ -90,7 +90,7 @@ export const CRB = {
 		description: 'See CRB, page 153, for more details.',
 		setting: 'All',
 	},
-	deadnerves: {
+	DeadNerves: {
 		name: 'Dead Nerves',
 		activation: false,
 		turn: false,
@@ -99,7 +99,7 @@ export const CRB = {
 		description: 'See CRB, page 153, for more details.',
 		setting: 'All',
 	},
-	robot: {
+	Robot: {
 		name: 'Robot',
 		activation: false,
 		turn: false,
@@ -108,7 +108,7 @@ export const CRB = {
 		description: 'See CRB, page 174, for more details.',
 		setting: 'All',
 	},
-	inorganic: {
+	Inorganic: {
 		name: 'Inorganic',
 		activation: false,
 		turn: false,
@@ -117,7 +117,7 @@ export const CRB = {
 		description: 'See CRB, page 174, for more details.',
 		setting: 'All',
 	},
-	afaceinacrowd: {
+	AFaceInACrowd: {
 		name: 'A Face in a Crowd',
 		activation: false,
 		turn: false,
@@ -126,7 +126,7 @@ export const CRB = {
 		description: 'See CRB, page 174, for more details.',
 		setting: 'All',
 	},
-	naturalweapons: {
+	NaturalWeapons: {
 		name: 'Natural Weapons',
 		activation: false,
 		turn: 'Attack',
@@ -135,7 +135,7 @@ export const CRB = {
 		description: 'See CRB, page 182, for more details.',
 		setting: 'All',
 	},
-	mindreader: {
+	MindReader: {
 		name: 'Mind Reader',
 		activation: true,
 		turn: 'Action',
@@ -144,7 +144,7 @@ export const CRB = {
 		description: 'See CRB, page 182, for more details.',
 		setting: 'All',
 	},
-	mindshaper: {
+	MindShaper: {
 		name: 'Mind Shaper',
 		activation: true,
 		turn: 'Action',
@@ -153,7 +153,7 @@ export const CRB = {
 		description: 'See CRB, page 182, for more details.',
 		setting: 'All',
 	},
-	mindbreaker: {
+	MindBreaker: {
 		name: 'Mind Breaker',
 		activation: true,
 		turn: 'Action',
@@ -162,7 +162,7 @@ export const CRB = {
 		description: 'See CRB, page 182, for more details.',
 		setting: 'All',
 	},
-	networkedintelligence: {
+	NetworkedIntelligence: {
 		name: 'Networked Intelligence',
 		activation: false,
 		turn: false,
@@ -171,7 +171,7 @@ export const CRB = {
 		description: 'See CRB, page 183, for more details.',
 		setting: 'All',
 	},
-	spaceisourbirthright: {
+	SpaceIsOurBirthRight: {
 		name: 'Space is our Birth Right',
 		activation: false,
 		turn: 'Action',
@@ -184,7 +184,7 @@ export const CRB = {
 			Knowledge: '[advantage]'
 		},
 	},
-	hightechbaubles: {
+	HighTechBaubles: {
 		name: 'High Tech Baubles',
 		activation: false,
 		turn: false,

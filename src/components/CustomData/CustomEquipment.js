@@ -1,4 +1,4 @@
-import {omit} from 'lodash-es';
+import {camelCase, omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, Row, Table} from 'reactstrap';
@@ -75,7 +75,7 @@ class CustomEquipmentComponent extends React.Component {
 		const {type, changeCustomData} = this.props;
 		const {name, range, damage, skill, critical, encumbrance, price, soak, defense, meleeDefense, rangedDefense, description, qualityList, setting} = this.state;
 		let obj = clone(this.props[type]);
-		let key = name.replace(/\s/g, '').replace(/[{()}]/g, '');
+		let key = camelCase(name);
 		if (type === 'customWeapons') obj[key] = {
 			name,
 			damage,

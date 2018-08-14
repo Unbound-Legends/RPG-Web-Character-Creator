@@ -1,4 +1,4 @@
-import {startCase} from 'lodash-es'
+import {cloneDeep, startCase} from 'lodash-es'
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, FormGroup, Input, Label, Row} from 'reactstrap';
@@ -6,8 +6,6 @@ import {bindActionCreators} from 'redux';
 import {importCharacter, importCustomData} from '../actions';
 import {customDataTypes, dataTypes} from '../data/lists';
 import {db} from '../firestore/db';
-
-const clone = require('clone');
 
 class ImportExportComponent extends React.Component {
 	state = {characters: [], customData: {}};
@@ -32,7 +30,7 @@ class ImportExportComponent extends React.Component {
 				dataTypes.forEach((type, index) => {
 					db.doc(`users/${user}/data/characters/${character}/${type}/`).get()
 						.then(doc => {
-							if (doc.exists) file[type] = clone(doc.data().data);
+							if (doc.exists) file[type] = cloneDeep(doc.data().data);
 							else file[type] = null;
 							if (index + 1 >= dataTypes.length) final.push({character: file});
 							if (final.length === characters.length + (Object.keys(customData).length > 0 ? 1 : 0)) resolve(final);
@@ -47,7 +45,7 @@ class ImportExportComponent extends React.Component {
 				db.doc(`users/${user}/customData/${type}/`).get()
 					.then(doc => {
 						if (doc.exists) {
-							let data = clone(doc.data().data);
+							let data = cloneDeep(doc.data().data);
 							customData[type].forEach(item => {
 								if (data[item]) {
 									file[type][item] = data[item]
@@ -85,7 +83,7 @@ class ImportExportComponent extends React.Component {
 				if (characters.length === Object.keys(characterList).length) arr = [];
 				else arr = Object.keys(characterList);
 			} else {
-				arr = clone(characters);
+				arr = cloneDeep(characters);
 				if (arr.includes(value)) arr.splice(arr.indexOf(value), 1);
 				else arr.push(value);
 			}
@@ -94,7 +92,7 @@ class ImportExportComponent extends React.Component {
 
 		if (name === 'customData') {
 			let key = event.target.id;
-			let obj = clone(customData);
+			let obj = cloneDeep(customData);
 			switch (true) {
 				case value === 'all':
 					if (customDataTypes.every(type => Object.keys(this.props[type]).every(key => customData[type] ? customData[type].includes(key) : false))) obj = {};
@@ -197,7 +195,7 @@ class ImportExportComponent extends React.Component {
 														   name={type}
 														   onChange={this.handleChange}
 													/>
-													{' '} {this.props[item][key].name ? this.props[item][key].name : this.props[item][key]}
+													{' '} {this.props[item][key].name ? this.props[item][key].name : key}
 												</Label>
 											</Row>
 										)}

@@ -36,7 +36,7 @@ export const loadData = () => {
 	}
 };
 
-export const loadCustomData = (setting) => {
+export const loadCustomData = (setting = 'All') => {
 	return (dispatch, getState) => {
 		dispatch({type: 'loadingCustomData_Changed', payload: true});
 		const {user} = getState();

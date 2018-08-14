@@ -46,6 +46,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeUser, addCharacter, changePrintContent, dispatch});
+const matchDispatchToProps = dispatch => bindActionCreators({changeUser, addCharacter, changePrintContent}, dispatch);
 
 export const Buttons = connect(mapStateToProps, matchDispatchToProps)(ButtonsComponent);

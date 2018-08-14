@@ -1,4 +1,4 @@
-import {omit} from 'lodash-es';
+import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Table} from 'reactstrap';
@@ -28,7 +28,7 @@ class CustomCareersComponent extends React.Component {
 		const {customCareers, changeCustomData} = this.props;
 		const {name, selectedSkills, description, setting} = this.state;
 		let obj = {...customCareers};
-		obj[name.replace(/\s/g, '')] = {name, skills: selectedSkills, description, setting};
+		obj[upperFirst(camelCase((name)))] = {name, skills: selectedSkills, description, setting};
 		changeCustomData(obj, 'customCareers');
 		this.initState();
 		event.preventDefault();

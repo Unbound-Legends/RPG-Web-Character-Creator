@@ -4,17 +4,19 @@ import {Button, Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
+const clone = require('clone');
+
 class ArchetypeSkillsComponent extends React.Component {
 
 	handleCheck = (event) => {
 		const {archetype, changeData, archetypeSpecialSkills, archetypes} = this.props;
 		const masterArchetypeSkills = archetypes[archetype].skills;
-		let newObj = {};
+		let obj = {};
 		if (masterArchetypeSkills.choice > Object.keys(archetypeSpecialSkills).length) {
-			newObj = {...archetypeSpecialSkills};
+			obj = clone(archetypeSpecialSkills);
 		} else changeData('', 'archetypeSpecialSkills');
-		newObj[event.target.value] = {rank: Object.keys(masterArchetypeSkills).includes('any') ? masterArchetypeSkills.any : masterArchetypeSkills[event.target.value]};
-		changeData(newObj, 'archetypeSpecialSkills');
+		obj[event.target.value] = {rank: Object.keys(masterArchetypeSkills).includes('any') ? masterArchetypeSkills.any : masterArchetypeSkills[event.target.value]};
+		changeData(obj, 'archetypeSpecialSkills');
 	};
 
 	render() {
@@ -36,7 +38,7 @@ class ArchetypeSkillsComponent extends React.Component {
 						)}
 					</Input>
 					<Row className='my-2'>
-						{Object.keys(archetypeSpecialSkills).map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}
+						{Object.keys(archetypeSpecialSkills).map(skill => skills[skill] ? skills[skill].name : skill).join(', ')}
 					</Row>
 					<Row className='my-2'>
 						<Button onClick={() => this.props.changeData('', 'archetypeSpecialSkills')}>Clear</Button>

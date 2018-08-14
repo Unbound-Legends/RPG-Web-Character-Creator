@@ -1,4 +1,4 @@
-import {omit} from 'lodash-es';
+import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Table} from 'reactstrap';
@@ -49,7 +49,7 @@ class CustomArchetypeTalentsComponent extends React.Component {
 		const {name, modifier, modifierValue} = this.state;
 		const {customArchetypeTalents, changeCustomData} = this.props;
 		let Obj = clone(customArchetypeTalents);
-		let key = name.replace(/\s/g, '').replace(/[{()}]/g, '');
+		let key = upperFirst(camelCase((name)));
 		Obj[key] = {};
 		['name', 'activation', 'turn', 'description', 'setting'].forEach(stat => {
 			if (this.state[stat] !== '') Obj[key][stat] = this.state[stat];

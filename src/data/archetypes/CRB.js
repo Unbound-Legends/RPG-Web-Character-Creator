@@ -9,7 +9,7 @@ export const CRB = {
 		strainThreshold: 10,
 		experience: 110,
 		skills: {choice: 2, any: 1},
-		talents: ['readyforanything'],
+		talents: ['ReadyForAnything'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,
@@ -30,7 +30,7 @@ export const CRB = {
 		strainThreshold: 8,
 		experience: 100,
 		skills: {Athletics: 1},
-		talents: ['toughasnails'],
+		talents: ['ToughAsNails'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 2,
@@ -51,7 +51,7 @@ export const CRB = {
 		strainThreshold: 12,
 		experience: 100,
 		skills: {Knowledge: 1},
-		talents: ['brilliant'],
+		talents: ['Brilliant'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 1,
@@ -72,7 +72,7 @@ export const CRB = {
 		strainThreshold: 10,
 		experience: 100,
 		skills: {Cool: 1},
-		talents: ['forcefulPersonality'],
+		talents: ['ForcefulPersonality'],
 		characteristics: {
 			Brawn: 1,
 			Agility: 2,
@@ -92,7 +92,7 @@ export const CRB = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Perception: 1},
-		talents: ['nimble'],
+		talents: ['Nimble'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 3,
@@ -102,7 +102,6 @@ export const CRB = {
 			Presence: 2
 		}
 	},
-
 	Dwarf: {
 		name: 'Dwarf',
 		book: 'CRB',
@@ -113,7 +112,7 @@ export const CRB = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Resilience: 1},
-		talents: ['darkvision', 'toughasnails'],
+		talents: ['DarkVision', 'ToughAsNails'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 1,
@@ -123,7 +122,6 @@ export const CRB = {
 			Presence: 2
 		}
 	},
-
 	Orc: {
 		name: 'Orc',
 		book: 'CRB',
@@ -134,7 +132,7 @@ export const CRB = {
 		strainThreshold: 8,
 		experience: 100,
 		skills: {Coercion: 1},
-		talents: ['battlerage'],
+		talents: ['BattleRage'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 2,
@@ -155,7 +153,7 @@ export const CRB = {
 		strainThreshold: 8,
 		experience: 100,
 		skills: {Discipline: 1},
-		talents: ['thebeastwithin', 'thehumanspirit'],
+		talents: ['TheBeastWithin', 'TheHumanSpirit'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,
@@ -176,7 +174,7 @@ export const CRB = {
 		strainThreshold: 9,
 		experience: 100,
 		skills: {Coercion: 1},
-		talents: ['reanimated', 'deadnerves'],
+		talents: ['Reanimated', 'DeadNerves'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 2,
@@ -197,7 +195,7 @@ export const CRB = {
 		strainThreshold: 8,
 		experience: 155,
 		skills: {},
-		talents: ['robot', 'inorganic'],
+		talents: ['Robot', 'Inorganic'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 1,
@@ -207,7 +205,6 @@ export const CRB = {
 			Presence: 1
 		}
 	},
-
 	Clone: {
 		name: 'Clone',
 		book: 'CRB',
@@ -218,7 +215,7 @@ export const CRB = {
 		strainThreshold: 10,
 		experience: 80,
 		skills: {choice: 2, any: 2},
-		talents: ['afaceinacrowd'],
+		talents: ['AFaceInACrowd'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,
@@ -228,7 +225,6 @@ export const CRB = {
 			Presence: 2
 		}
 	},
-
 	AnimalisticAlien: {
 		name: 'Animalistic Alien',
 		book: 'CRB',
@@ -244,7 +240,7 @@ export const CRB = {
 			Coordination: 1,
 			Resilience: 1
 		},
-		talents: ['naturalweapons'],
+		talents: ['NaturalWeapons'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 3,
@@ -254,7 +250,6 @@ export const CRB = {
 			Presence: 2
 		}
 	},
-
 	Psionic: {
 		name: 'Psionic',
 		book: 'CRB',
@@ -265,7 +260,7 @@ export const CRB = {
 		strainThreshold: 11,
 		experience: 70,
 		skills: {},
-		talents: ['mindreader', 'mindshaper', 'mindbreaker'],
+		talents: ['MindReader', 'MindShaper', 'MindBreaker'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,
@@ -275,7 +270,6 @@ export const CRB = {
 			Presence: 1
 		}
 	},
-
 	Robot: {
 		name: 'Robot',
 		book: 'CRB',
@@ -286,7 +280,7 @@ export const CRB = {
 		strainThreshold: 10,
 		experience: 175,
 		skills: {careerSkills: 6},
-		talents: ['robot', 'networkedintelligence', 'inorganic'],
+		talents: ['Robot', 'NetworkedIntelligence', 'Inorganic'],
 		characteristics: {
 			Brawn: 1,
 			Agility: 1,
@@ -306,7 +300,7 @@ export const CRB = {
 		strainThreshold: 9,
 		experience: 100,
 		skills: {Knowledge: 1},
-		talents: ['spaceisourbirthright', 'hightechbaubles'],
+		talents: ['SpaceIsOurBirthRight', 'HighTechBaubles'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,

@@ -1,6 +1,7 @@
 import merge from 'deepmerge';
 import {upperFirst} from 'lodash';
 import * as data from '../data';
+import {typeCheck} from './checkTypes';
 import * as initialState from './initialState';
 
 const clone = require('clone');
@@ -21,7 +22,7 @@ export const printContent = (state = initialState.printContent, action) => loadi
 //character objects
 const characterReducer = (state, action, type) => {
 	if (action.type === `${type}_Changed`) {
-		if (action.payload) return action.payload;
+		if (typeCheck(type, action.payload)) return action.payload;
 		else return clone(initialState[type]);
 	}
 	return state;

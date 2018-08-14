@@ -1,6 +1,6 @@
 //Realms of Terrinoth Skills
 export const ROT = {
-	ynfernaelore: {
+	YnfernaelLore: {
 		name: 'Ynfernael Lore',
 		activation: false,
 		turn: false,
@@ -10,7 +10,7 @@ export const ROT = {
 		modifier: {careerSkills: ['KnowledgeForbidden'], KnowledgeForbidden: 2},
 		setting: 'All',
 	},
-	empyreanmagic: {
+	EmpyreanMagic: {
 		name: 'Empyrean Magic',
 		activation: false,
 		turn: false,
@@ -20,7 +20,7 @@ export const ROT = {
 		modifier: {careerSkills: ['Divine'], Divine: 1},
 		setting: 'All',
 	},
-	stubborn: {
+	Stubborn: {
 		name: 'Stubborn',
 		activation: false,
 		turn: false,
@@ -29,7 +29,7 @@ export const ROT = {
 		description: 'See ROT, page 65, for more details.',
 		setting: 'All',
 	},
-	hottempered: {
+	HotTempered: {
 		name: 'Hot Tempered',
 		activation: false,
 		turn: false,
@@ -38,7 +38,7 @@ export const ROT = {
 		description: 'See ROT, page 67, for more details.',
 		setting: 'All',
 	},
-	tenacious: {
+	Tenacious: {
 		name: 'Tenacious',
 		activation: false,
 		turn: false,
@@ -47,7 +47,7 @@ export const ROT = {
 		description: 'See ROT, page 67, for more details.',
 		setting: 'All',
 	},
-	claws: {
+	Claws: {
 		name: 'Claws',
 		activation: false,
 		turn: false,
@@ -56,7 +56,7 @@ export const ROT = {
 		description: 'See ROT, page 68, for more details.',
 		setting: 'All',
 	},
-	fleetofpaw: {
+	FleetOfPaw: {
 		name: 'Fleet of Paw',
 		activation: false,
 		turn: false,
@@ -65,17 +65,17 @@ export const ROT = {
 		description: 'See ROT, page 68, for more details.',
 		setting: 'All',
 	},
-	catancestry: {
+	CatAncestry: {
 		name: 'Cat Ancestry',
 		activation: false,
 		turn: false,
 		book: 'ROT',
 		page: '68',
-		modifier: {archetypeTalents: ['fleetofpaw', 'claws']},
+		modifier: {archetypeTalents: ['FleetOfPaw', 'Claws']},
 		description: 'See ROT, page 68, for more details.',
 		setting: 'All',
 	},
-	small: {
+	Small: {
 		name: 'Small',
 		activation: false,
 		turn: false,
@@ -84,7 +84,7 @@ export const ROT = {
 		description: 'See ROT, page 69, for more details.',
 		setting: 'All',
 	},
-	militiatraining: {
+	MilitiaTraining: {
 		name: 'Militia Training',
 		activation: false,
 		turn: false,
@@ -93,7 +93,7 @@ export const ROT = {
 		description: 'See ROT, page 69, for more details.',
 		setting: 'All',
 	},
-	tricksy: {
+	Tricksy: {
 		name: 'Tricksy',
 		activation: false,
 		turn: false,

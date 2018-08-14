@@ -10,7 +10,7 @@ export const ROT = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Discipline: 1},
-		talents: ['ynfernaelore'],
+		talents: ['YnfernaeLore'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 3,
@@ -30,7 +30,7 @@ export const ROT = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Streetwise: 1},
-		talents: ['nimble'],
+		talents: ['Nimble'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 3,
@@ -50,7 +50,7 @@ export const ROT = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Negotiation: 1},
-		talents: ['empyreanmagic'],
+		talents: ['EmpyreanMagic'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 3,
@@ -70,7 +70,7 @@ export const ROT = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Survival: 1},
-		talents: ['nimble'],
+		talents: ['Nimble'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 3,
@@ -90,7 +90,7 @@ export const ROT = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Resilience: 1},
-		talents: ['darkvision', 'toughasnails'],
+		talents: ['DarkVision', 'ToughAsNails'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 1,
@@ -110,7 +110,7 @@ export const ROT = {
 		strainThreshold: 10,
 		experience: 90,
 		skills: {Negotiation: 1},
-		talents: ['stubborn', 'toughasnails'],
+		talents: ['Stubborn', 'ToughAsNails'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 1,
@@ -130,7 +130,7 @@ export const ROT = {
 		strainThreshold: 8,
 		experience: 100,
 		skills: {Coercion: 1},
-		talents: ['battlerage'],
+		talents: ['BattleRage'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 2,
@@ -150,7 +150,7 @@ export const ROT = {
 		strainThreshold: 8,
 		experience: 100,
 		skills: {Cool: 1},
-		talents: ['hottempered'],
+		talents: ['HotTempered'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 2,
@@ -170,7 +170,7 @@ export const ROT = {
 		strainThreshold: 8,
 		experience: 100,
 		skills: {Alchemy: 1},
-		talents: ['tenacious'],
+		talents: ['Tenacious'],
 		characteristics: {
 			Brawn: 3,
 			Agility: 2,
@@ -190,7 +190,7 @@ export const ROT = {
 		strainThreshold: 8,
 		experience: 90,
 		skills: {Perception: 1},
-		talents: ['claws', 'fleetofpaw'],
+		talents: ['Claws', 'FleetOfPaw'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,
@@ -210,7 +210,7 @@ export const ROT = {
 		strainThreshold: 9,
 		experience: 100,
 		skills: {Cool: 1},
-		talents: ['catancestry'],
+		talents: ['CatAncestry'],
 		characteristics: {
 			Brawn: 2,
 			Agility: 2,
@@ -230,7 +230,7 @@ export const ROT = {
 		strainThreshold: 11,
 		experience: 90,
 		skills: {Charm: 1, Resilience: 1},
-		talents: ['small', 'militiatraining'],
+		talents: ['Small', 'MilitiaTraining'],
 		characteristics: {
 			Brawn: 1,
 			Agility: 2,
@@ -250,7 +250,7 @@ export const ROT = {
 		strainThreshold: 11,
 		experience: 90,
 		skills: {Charm: 1, Stealth: 1},
-		talents: ['small', 'tricksy'],
+		talents: ['Small', 'Tricksy'],
 		characteristics: {
 			Brawn: 1,
 			Agility: 2,

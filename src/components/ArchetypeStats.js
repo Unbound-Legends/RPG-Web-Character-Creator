@@ -5,10 +5,13 @@ import {bindActionCreators} from 'redux';
 import {changeData} from "../actions";
 import {ArchetypeSkills, Description} from './index';
 
+const clone = require('clone');
+
+
 class ArchetypeStatsComponent extends React.Component {
 
 	handleSelect = (event) => {
-		let obj = {...this.props.misc};
+		let obj = clone(this.props.misc);
 		obj.archetypeTalents = event.target.value;
 		this.props.changeData(obj, 'misc');
 	};
@@ -55,7 +58,8 @@ class ArchetypeStatsComponent extends React.Component {
 					<Col sm='5'><b>Starting Talents:</b></Col>
 				</Row>
 				{masterArchetype.talents &&
-				masterArchetype.talents.map((talent) =>
+				masterArchetype.talents.map(talent =>
+					archetypeTalents[talent] &&
 					<div key={talent}>
 						<Row className='ml-4'>
 							<Col sm='5'><b>{archetypeTalents[talent].name}:</b></Col>
@@ -75,8 +79,6 @@ class ArchetypeStatsComponent extends React.Component {
 									)}
 								</Input>
 							</Col>
-
-
 						</Row>
 						}
 					</div>

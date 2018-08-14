@@ -1,4 +1,4 @@
-import {omit} from 'lodash-es';
+import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Row, Table} from 'reactstrap';
@@ -88,7 +88,7 @@ class CustomArchetypesComponent extends React.Component {
 		const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, freeSkillRanks, description, archetypeTalents, setting} = this.state;
 		const {customArchetypes, changeCustomData} = this.props;
 		let obj = clone(customArchetypes);
-		obj[name.replace(/\s/g, '')] = {
+		obj[upperFirst(camelCase((name)))] = {
 			name,
 			characteristics: {
 				Brawn,
