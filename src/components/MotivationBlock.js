@@ -60,7 +60,7 @@ class MotivationBlockComponent extends React.Component {
                         <InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>
                         <Input type='select' onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
                             <option value=''/>
-                            {motivations[type] && Object.keys(motivations[type]).map(key =>
+							{motivations[type] && Object.keys(motivations[type]).sort().map(key =>
                                 <option key={key} value={key}>{key}</option>
                             )}
                         </Input>

@@ -1,6 +1,15 @@
 import React from 'react';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
-import {CustomArchetypes, CustomArchetypeTalents, CustomCareers, CustomEquipment, CustomSettings, CustomSkills, CustomTalents} from './';
+import {
+	CustomArchetypes,
+	CustomArchetypeTalents,
+	CustomCareers,
+	CustomEquipment,
+	CustomMotivations,
+	CustomSettings,
+	CustomSkills,
+	CustomTalents
+} from './';
 
 export const CustomData = () => {
 	return (
@@ -12,6 +21,7 @@ export const CustomData = () => {
 					<Tab>Armor</Tab>
 					<Tab>Careers</Tab>
 					<Tab>Gear</Tab>
+					<Tab>Motivations</Tab>
 					<Tab>Settings</Tab>
 					<Tab>Skills</Tab>
 					<Tab>Talents</Tab>
@@ -31,6 +41,9 @@ export const CustomData = () => {
 				</TabPanel>
 				<TabPanel className='w-100'>
 					<CustomEquipment type='customGear'/>
+				</TabPanel>
+				<TabPanel className='w-100'>
+					<CustomMotivations/>
 				</TabPanel>
 				<TabPanel className='w-100'>
 					<CustomSettings/>
