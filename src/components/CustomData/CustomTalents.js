@@ -50,7 +50,6 @@ class CustomTalentsComponent extends React.Component {
 		arr.push(event.target.value);
 		this.setState({modifierValue: arr});
 		event.preventDefault();
-
 	};
 
 	handleSubmit = () => {
@@ -131,27 +130,26 @@ class CustomTalentsComponent extends React.Component {
 					  blankOption={false} handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 			{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
-								   array={['careerSkills', 'defense', 'meleeDefense', 'strainThreshold', 'soak', 'rangedDefense', 'woundThreshold'].concat(Object.keys(skills))}
+								   array={modifiableAttributes.concat(Object.keys(skills)).sort()}
 								   nameObj={skills}
 								   handleChange={(event) => this.setState({
 									   modifier: event.target.value,
 									   modifierValue: ''
 								   })}/>}
 
-			{(modifiableAttributes.includes(modifier) || Object.keys(skills).includes(modifier)) &&
-			(modifier === 'careerSkills' ?
-				<Fragment type='inputSelect' title='modifierValue' value=''
-						  array={Object.keys(skills).filter(skill => !modifierValue.includes(skill))} nameObj={skills}
-						  handleChange={this.handleList}/>
+			{modifier === 'careerSkills' &&
+			<Fragment type='inputSelect' title='modifierValue' value=''
+					  array={Object.keys(skills).filter(skill => !modifierValue.includes(skill))} nameObj={skills}
+					  handleChange={this.handleList}/>}
 
-				: (modifiableAttributes.includes(modifier) ?
+			{(modifiableAttributes.includes(modifier) && modifier !== 'careerSkills') &&
+			<Fragment type='number' value={modifierValue} title='modifierValue'
+					  handleChange={(event) => this.setState({modifierValue: +event.target.value})}/>}
 
-					<Fragment type='number' value={modifierValue} title='modifierValue'
-							  handleChange={(event) => this.setState({modifierValue: +event.target.value})}/>
-
-					: <Fragment type='inputSelect' title='modifierValue' value='' nameObj={diceNames}
-								array={['[blue]', '[black]', '[rmblack]', '[success]', '[advantage]', '[failure]', '[threat]']}
-								handleChange={this.handleList}/>))}
+			{Object.keys(skills).includes(modifier) &&
+			<Fragment type='inputSelect' title='modifierValue' value='' nameObj={diceNames}
+					  array={['[blue]', '[black]', '[rmblack]', '[success]', '[advantage]', '[failure]', '[threat]']}
+					  handleChange={this.handleList}/>}
 
 			{Array.isArray(modifierValue) &&
 			<Fragment type='list' title='modifierList' array={modifierValue} nameObj={{...skills, diceNames}}

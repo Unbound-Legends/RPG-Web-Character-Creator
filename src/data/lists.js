@@ -46,5 +46,4 @@ export const diceNames = {
 	'[threat]': {name: 'Threat'}
 };
 
-export const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'];
-
+export const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'].sort();

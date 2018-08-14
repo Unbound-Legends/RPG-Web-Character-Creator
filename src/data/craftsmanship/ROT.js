@@ -32,7 +32,7 @@ export const ROT = {
 		name: 'Elven',
 		armor: {
 			encumbrance: -2,
-			modifier: {Stealth: '[rmblack]'}
+			modifier: {Stealth: ['[rmblack]']}
 		},
 		weapons: {
 			damage: -1,
@@ -45,7 +45,7 @@ export const ROT = {
 		name: 'Iron',
 		armor: {
 			encumbrance: +2,
-			modifier: {Athletics: '[black]', Coordination: '[black]', Riding: '[black]', Stealth: '[black]'}
+			modifier: {Athletics: ['[black]'], Coordination: ['[black]'], Riding: ['[black]'], Stealth: ['[black]']}
 		},
 		weapons: {
 			critical: +1,

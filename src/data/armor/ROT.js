@@ -20,7 +20,7 @@ export const ROT = {
 		book: 'ROT',
 		page: 96,
 		setting: 'Fantasy',
-		modifier: {Stealth: '[black]'},
+		modifier: {Stealth: ['[black]']},
 	},
 	heavyRobes: {
 		name: 'Heavy Robes',
@@ -65,7 +65,7 @@ export const ROT = {
 		book: 'ROT',
 		page: 97,
 		setting: 'Fantasy',
-		modifier: {Stealth: '[black] [black]'},
+		modifier: {Stealth: ['[black]', '[black]']},
 
 	},
 	scale: {
@@ -78,6 +78,6 @@ export const ROT = {
 		book: 'ROT',
 		page: 97,
 		setting: 'Fantasy',
-		modifier: {Stealth: '[black]'},
+		modifier: {Stealth: ['[black]']},
 	}
 };

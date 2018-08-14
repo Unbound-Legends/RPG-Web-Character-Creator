@@ -26,12 +26,6 @@ class EquipmentComponent extends React.Component {
 		event.preventDefault();
 	};
 
-	handleBlurChangeMoney = (event) => {
-		const {changeData} = this.props;
-		changeData(event.target.value, 'money');
-		event.preventDefault();
-	};
-
 	handleStatus = (type, key, status) => {
 		const {changeData, equipmentStats} = this.props;
 		let obj = clone(this.props[type]);
@@ -145,7 +139,7 @@ class EquipmentComponent extends React.Component {
 	};
 
 	render() {
-		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense} = this.props;
+		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense, changeData} = this.props;
 		const {money, equipModal} = this.state;
 		return (
 			<div className='w-100'>
@@ -154,7 +148,7 @@ class EquipmentComponent extends React.Component {
 				<Row className='my-2'>
 					<b className='my-auto'>MONEY:&nbsp;</b>
 					<Input type='number' value={money > 0 ? money : ''}
-						   onBlur={this.handleBlurChangeMoney}
+						   onBlur={() => changeData(money, 'money')}
 						   onChange={this.handleChangeMoney}
 						   className='w-25'/>
 				</Row>
