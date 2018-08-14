@@ -209,7 +209,7 @@ class CustomEquipmentComponent extends React.Component {
 			case 'modifier':
 				return (<div key={field}>
 					<Fragment type='inputSelect' title='modifier' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}}
-							  value={modifier}
+							  value={Boolean(modifier)}
 							  blankOption={false}
 							  handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
@@ -225,13 +225,23 @@ class CustomEquipmentComponent extends React.Component {
 					<Fragment type='inputSelect' title='modifierValue' value=''
 							  array={Object.keys(skills).filter(skill => !modifierValue.includes(skill))} nameObj={skills}
 							  handleChange={this.handleList}/>}
-					{((modifiableAttributes.includes(modifier) || chars.includes(modifier)) && modifier !== 'careerSkills') &&
+
+					{(modifiableAttributes.includes(modifier) && modifier !== 'careerSkills') &&
 					<Fragment type='number' value={modifierValue} title='modifierValue'
 							  handleChange={(event) => this.setState({modifierValue: +event.target.value})}/>}
+
+					{chars.includes(modifier) &&
+					<Fragment type='inputSelect' title='Reduce Strain' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}}
+							  value={modifierValue}
+							  blankOption={false}
+							  handleChange={(event) => this.setState({modifierValue: JSON.parse(event.target.value)})}/>
+					}
+
 					{Object.keys(skills).includes(modifier) &&
 					<Fragment type='inputSelect' title='modifierValue' value='' nameObj={diceNames}
 							  array={['[blue]', '[black]', '[rmblack]', '[success]', '[advantage]', '[failure]', '[threat]', '1 Free Rank', '2 Free Ranks', '3 Free Ranks', '4 Free Ranks', '5 Free Ranks',]}
 							  handleChange={this.handleList}/>}
+
 					{Array.isArray(modifierValue) &&
 					<Fragment type='list' title='modifierList' array={modifierValue} nameObj={{...skills, diceNames}}
 							  handleClear={() => this.setState({modifierValue: []})}/>}

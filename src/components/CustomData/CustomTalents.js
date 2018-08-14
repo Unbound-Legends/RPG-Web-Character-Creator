@@ -126,7 +126,8 @@ class CustomTalentsComponent extends React.Component {
 			<Fragment type='inputSelect' title='antirequisite' value={antirequisite} array={Object.keys(talents)}
 					  nameObj={talents} blankText={'None'} handleChange={(event) => this.setState({antirequisite: event.target.value})}/>
 
-			<Fragment type='inputSelect' title='modifier' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}} value={modifier}
+			<Fragment type='inputSelect' title='modifier' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}}
+					  value={Boolean(modifier)}
 					  blankOption={false} handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 			{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}

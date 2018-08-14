@@ -1,4 +1,5 @@
 import {createSelector} from 'reselect';
+import {chars} from '../data/lists';
 import * as selectors from './';
 
 const archetype = state => state.archetype;
@@ -9,8 +10,8 @@ const talents = state => state.talents;
 export const strainThreshold = (state) => calcStrain(state);
 
 const calcStrain = createSelector(
-	archetype, archetypes, talents, creationCharacteristics, selectors.talentCount,
-	(archetype, archetypes, talents, creationCharacteristics, talentCount) => {
+	archetype, archetypes, talents, creationCharacteristics, selectors.talentCount, selectors.equipmentStats,
+	(archetype, archetypes, talents, creationCharacteristics, talentCount, equipmentStats) => {
 		if (!archetype || !archetypes[archetype]) return 0;
 		//get starting wounds
 		let startingThreshold = archetypes[archetype].strainThreshold;
@@ -25,6 +26,23 @@ const calcStrain = createSelector(
 				if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
 			}
 		});
-		return startingThreshold + startingBrawn + creationBrawn + talentModifier;
+		//check for cybernetics
+		let cybernetics = 0;
+		Object.keys(equipmentStats).forEach(key => {
+			let item = equipmentStats[key];
+			if (item.modifier) {
+				if (item.carried) {
+					if (item.equipped || item.type !== 'armor') {
+						let list = item.modifier;
+						if (list) {
+							Object.keys(list).forEach(modifier => {
+								if (chars.includes(modifier) && list[modifier]) cybernetics--;
+							});
+						}
+					}
+				}
+			}
+		});
+		return startingThreshold + startingBrawn + creationBrawn + talentModifier + cybernetics;
 	}
 );
