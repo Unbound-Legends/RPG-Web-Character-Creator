@@ -1,5 +1,5 @@
-import {createSelector} from "reselect";
 import {lowerCase, replace} from "lodash-es";
+import {createSelector} from "reselect";
 
 const clone = require('clone');
 
@@ -48,6 +48,9 @@ const calcEquipmentStats = createSelector(
 								if (typeof craftModifier[type][field][modifier] === 'string') {
 									if (!derivedStats[field][modifier]) derivedStats[field][modifier] = '';
 									derivedStats[field][modifier] += ` ${craftModifier[type][field][modifier]}`;
+								} else if (Array.isArray(craftModifier[type][field][modifier])) {
+									if (!Array.isArray(derivedStats[field][modifier])) derivedStats[field][modifier] = [];
+									derivedStats[field][modifier] = [...derivedStats[field][modifier], ...craftModifier[type][field][modifier]];
 								} else {
 									if (!derivedStats[field][modifier]) derivedStats[field][modifier] = 0;
 									derivedStats[field][modifier] = +craftModifier[type][field][modifier] + derivedStats[field][modifier];

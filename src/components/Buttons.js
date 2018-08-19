@@ -16,23 +16,14 @@ class ButtonsComponent extends React.Component {
 			});
 	};
 
-	handleDonate = () => {
-		window.open('https://paypal.me/SkyJedi');
-	};
-
-	handlePrint = () => {
-		this.props.changePrintContent(<PrintLayout/>)
-	};
-
 	render() {
 		return (
 			<Row className='justify-content-end align-items-center d-print-none'>
 				<Col sm='auto'>
-					<Button size='sm' onClick={this.handlePrint}>Print</Button>
-					{' '}
-					<Button size='sm' onClick={this.handleDonate}>Donate</Button>
-					{' '}
-					<Button size='sm' onClick={this.handleClick}>Sign Out</Button>
+					<Button size='sm' className='mx-2' onClick={() => this.props.changePrintContent(<PrintLayout/>)}>Print</Button>
+					<Button size='sm' className='mx-2' onClick={() => window.open('https://paypal.me/SkyJedi')}>Donate</Button>
+					<Button size='sm' className='mx-2' onClick={() => window.open("https://patreon.com/SkyJedi")}>Patreon</Button>
+					<Button size='sm' className='mx-2' onClick={this.handleClick}>Sign Out</Button>
 				</Col>
 			</Row>
 

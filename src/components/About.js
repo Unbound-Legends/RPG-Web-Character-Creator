@@ -8,9 +8,13 @@ export const About = () => {
 				Created by&nbsp;<a href="https://github.com/SkyJedi" target="_blank"
 								   rel="noopener noreferrer">SkyJedi</a>. Questions? Comments?&nbsp;
 				<a href="mailto:info@genesysemporium.com?subject=Genesys%20Emporium%20Feedback" target="_blank"
-				   rel="noopener noreferrer">Contact Me</a>.&nbsp;
+				   rel="noopener noreferrer">Contact Me</a>.
+			</Row>
+			<Row className='justify-content-center'>
 				<Button color='link' href="https://paypal.me/SkyJedi" target="_blank"
-						className='p-0'>Donate</Button>
+						className='p-0 m-2'>Donate</Button>
+				<Button color='link' href="https://patreon.com/SkyJedi" target="_blank"
+						className='p-0 m-2'>Patreon</Button>
 			</Row>
 			<Row className='justify-content-center'>
 				Contributions by Nick Holmstead.

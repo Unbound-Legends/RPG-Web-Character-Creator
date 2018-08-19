@@ -37,10 +37,10 @@ export const critical = (state = clone(initialState.critical), action) => charac
 	type: action.type,
 	payload: Array.isArray(action.payload) ? action.payload.sort((a, b) => a - b) : null
 }, 'critical');
-export const currentStrain = (state = clone(initialState.currentStrain), action) => characterReducer(state, action, 'currentStrain');
-export const currentWound = (state = clone(initialState.currentWound), action) => characterReducer(state, action, 'currentWounds');
+export const currentStrain = (state = initialState.currentStrain, action) => characterReducer(state, action, 'currentStrain');
+export const currentWound = (state = initialState.currentWound, action) => characterReducer(state, action, 'currentWound');
 export const description = (state = clone(initialState.description), action) => characterReducer(state, action, 'description');
-export const earnedXP = (state = clone(initialState.earnedXP), action) => characterReducer(state, action, 'earnedXP');
+export const earnedXP = (state = initialState.earnedXP, action) => characterReducer(state, action, 'earnedXP');
 export const equipmentArmor = (state = clone(initialState.equipmentArmor), action) => characterReducer(state, action, 'equipmentArmor');
 export const equipmentGear = (state = clone(initialState.equipmentGear), action) => characterReducer(state, action, 'equipmentGear');
 export const equipmentWeapons = (state = clone(initialState.equipmentWeapons), action) => characterReducer(state, action, 'equipmentWeapons');
@@ -48,7 +48,7 @@ export const masterMotivations = (state = clone(initialState.masterMotivations),
 export const masterSkills = (state = clone(initialState.masterSkills), action) => characterReducer(state, action, 'masterSkills');
 export const masterTalents = (state = clone(initialState.masterTalents), action) => characterReducer(state, action, 'masterTalents');
 export const misc = (state = clone(initialState.misc), action) => characterReducer(state, action, 'misc');
-export const money = (state = clone(initialState.money), action) => characterReducer(state, action, 'money');
+export const money = (state = initialState.money, action) => characterReducer(state, action, 'money');
 export const setting = (state = clone(initialState.setting), action) => characterReducer(state, action, 'setting');
 export const talentModifiers = (state = clone(initialState.talentModifiers), action) => characterReducer(state, action, 'talentModifiers');
 

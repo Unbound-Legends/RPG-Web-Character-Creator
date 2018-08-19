@@ -26,7 +26,7 @@ const calcSkillDice = createSelector(
 							let list = item.modifier;
 							if (list) {
 								Object.keys(list).forEach(modifier => {
-									if (key === modifier) {
+									if (key === modifier && Array.isArray(list[modifier])) {
 										list[modifier].forEach(text => {
 											if (text.includes('Free Rank')) {
 												rank += +text.replace(/\D/g, '')
@@ -61,7 +61,7 @@ const calcSkillDice = createSelector(
 						if (talents[talent].modifier[key]) {
 							for (let i = 0; i < talentCount[talent]; i++) {
 								// eslint-disable-next-line
-								talents[talent].modifier[key].forEach(die => text += `${die} `);
+								if (Array.isArray(talents[talent].modifier[key])) talents[talent].modifier[key].forEach(die => text += `${die} `);
 							}
 						}
 					}

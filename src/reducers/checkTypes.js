@@ -8,7 +8,7 @@ export const typeCheck = (type, data) => {
 			if (typeof data !== 'string') return false;
 			break;
 		case 'currentStrain':
-		case 'currentWounds':
+		case 'currentWound':
 		case 'money':
 		case 'earnedXP':
 			if (typeof data !== 'number') return false;

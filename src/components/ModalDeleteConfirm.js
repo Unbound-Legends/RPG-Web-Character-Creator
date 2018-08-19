@@ -4,7 +4,7 @@ import {Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader} from 'r
 export const ModalDeleteConfirm = ({deleteModal, confirmedDelete, handleClose, type}) => {
 	return (
 		<Modal isOpen={deleteModal} toggle={handleClose}>
-			<ModalHeader>BALETED WARNING</ModalHeader>
+			<ModalHeader>BALETEED WARNING</ModalHeader>
 			<ModalBody>
 				Are you super serious? This cannot be undone!
 			</ModalBody>

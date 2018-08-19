@@ -101,7 +101,7 @@ export const ROT = {
 		name: 'Katar',
 		skill: 'Brawl',
 		damage: '+1',
-		critical: 3,
+		critical: 2,
 		range: 'Engaged',
 		encumbrance: 1,
 		price: 175,
