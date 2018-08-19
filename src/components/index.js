@@ -15,6 +15,7 @@ export {Critical} from './Critical';
 export {DataPage} from './DataPage';
 export {DeleteButton} from './Buttons/DeleteButton';
 export {Description} from './Description';
+export {ErrorBoundary} from './ErrorBoundary';
 export {Equipment} from './Equipment';
 export {Gear} from './Gear';
 export {ImportExport} from './ImportExport';

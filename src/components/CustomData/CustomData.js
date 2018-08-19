@@ -1,5 +1,6 @@
 import React from 'react';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
+import {ErrorBoundary} from '../';
 import {
 	CustomArchetypes,
 	CustomArchetypeTalents,
@@ -8,7 +9,7 @@ import {
 	CustomMotivations,
 	CustomSettings,
 	CustomSkills,
-	CustomTalents
+	CustomTalents,
 } from './';
 
 export const CustomData = () => {
@@ -28,34 +29,54 @@ export const CustomData = () => {
 					<Tab>Weapons</Tab>
 				</TabList>
 				<TabPanel className='w-100'>
-					<CustomArchetypes/>
+					<ErrorBoundary>
+						<CustomArchetypes/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomArchetypeTalents/>
+					<ErrorBoundary>
+						<CustomArchetypeTalents/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomEquipment type='customArmor'/>
+					<ErrorBoundary>
+						<CustomEquipment type='customArmor'/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomCareers/>
+					<ErrorBoundary>
+						<CustomCareers/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomEquipment type='customGear'/>
+					<ErrorBoundary>
+						<CustomEquipment type='customGear'/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomMotivations/>
+					<ErrorBoundary>
+						<CustomMotivations/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomSettings/>
+					<ErrorBoundary>
+						<CustomSettings/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomSkills/>
+					<ErrorBoundary>
+						<CustomSkills/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomTalents/>
+					<ErrorBoundary>
+						<CustomTalents/>
+					</ErrorBoundary>
 				</TabPanel>
 				<TabPanel className='w-100'>
-					<CustomEquipment type='customWeapons'/>
+					<ErrorBoundary>
+						<CustomEquipment type='customWeapons'/>
+					</ErrorBoundary>
 				</TabPanel>
 			</Tabs></div>
 	);

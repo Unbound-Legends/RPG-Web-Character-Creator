@@ -1,11 +1,13 @@
 import firebase from '@firebase/app';
 import '@firebase/auth';
+import LogRocket from 'logrocket';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadCustomData, loadData} from '../actions';
+import {LogRocketID} from '../firestore/config'
 import {DataPage, MainPage, User} from './';
 import {CustomData} from './CustomData';
 
@@ -13,9 +15,11 @@ class AppComponent extends React.Component {
 	state = {loading: true};
 
 	componentWillMount() {
+		LogRocket.init(LogRocketID);
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				this.props.changeUser(user.uid);
+				LogRocket.identify(`${User.email}`, {name: user.displayName, email: user.email, uid: user.uid});
 				this.setState({loading: false});
 			}
 			else this.setState({loading: false});
