@@ -1,9 +1,9 @@
-#RPG-Web-Character-Creator
+# RPG-Web-Character-Creator
 
-##Current Build
+## Current Build
 [The Genesys Emporium](https://genesysemporium.com)
 
-##Patrons
+## Patrons
 -Xavi Santamaria
 -Flobio
 
