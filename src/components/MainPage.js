@@ -22,7 +22,9 @@ import {
 export const MainPage = () => {
 	return (
 		<div className='mx-2'>
-			<Buttons/>
+			<ErrorBoundary>
+				<Buttons/>
+			</ErrorBoundary>
 			<Row className='m-1'>
 				<Col md='6'>
 					<ErrorBoundary>
