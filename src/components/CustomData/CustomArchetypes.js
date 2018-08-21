@@ -106,7 +106,7 @@ class CustomArchetypesComponent extends React.Component {
 			setting,
 			description,
 		};
-		changeCustomData(obj, 'customArchetypes');
+		changeCustomData(obj, 'customArchetypes', false);
 		this.initState();
 	};
 
@@ -186,7 +186,10 @@ class CustomArchetypesComponent extends React.Component {
 						)}
 					</Col>
 				</Row>
-				<Fragment name='freeSkillRanks' type='inputSelect' array={Object.keys(skills)} nameObj={skills}
+
+				<Fragment name='freeSkillRanks' type='inputSelect'
+						  array={[...Object.keys(skills), ...Object.keys(freeSkillRanks).includes('choice') ? ['any', 'choice'] : ['choice']]}
+						  nameObj={skills}
 						  handleChange={this.handleSkillSelect}/>
 
 				<Fragment type='list' array={Object.keys(freeSkillRanks)} object={freeSkillRanks} nameObj={skills}

@@ -7,7 +7,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '70',
 		description: 'See ROT, page 70, for more details.',
-		skills: ['Athletics', 'Charm', 'Discipline', 'Divine', 'KnowledgeLore', 'Leadership', 'MeleeLight', 'Resilience']
+		skills: ['Athletics', 'Charm', 'Discipline', 'Divine', 'KnowledgeLore', 'Leadership', 'MeleeLight', 'Melee', 'Resilience']
 	},
 	Envoy: {
 		name: 'Envoy',
@@ -15,7 +15,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '70',
 		description: 'See ROT, page 70, for more details.',
-		skills: ['Charm', 'Cool', 'Deception', 'KnowledgeGeography', 'Leadership', 'MeleeLight', 'Negotiation', 'Vigilance']
+		skills: ['Charm', 'Cool', 'Deception', 'KnowledgeGeography', 'Leadership', 'MeleeLight', 'Negotiation', 'Melee', 'Vigilance']
 	},
 	Mage: {
 		name: 'Mage',
