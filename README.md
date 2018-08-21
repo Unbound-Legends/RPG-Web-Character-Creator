@@ -4,8 +4,8 @@
 [The Genesys Emporium](https://genesysemporium.com)
 
 ## Patrons
--Xavi Santamaria
--Flobio
+- Xavi Santamaria
+- Flobio
 
 [Patreon](https://www.patreon.com/SkyJedi)
 
