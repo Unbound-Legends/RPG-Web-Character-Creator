@@ -14,9 +14,11 @@ const calcArchetypeSkillRank = createSelector(
 		if (!archetype || !archetypes[archetype]) return archetypeSpecialSkills;
 		let archetypeSkillRank = {...archetypeSpecialSkills};
 		//add any starting skills based on archetype skills
-		Object.keys(archetypes[archetype].skills).forEach(key => {
-			if (Object.keys(skills).includes(key)) archetypeSkillRank[key] = {rank: archetypes[archetype].skills[key]};
-		});
+		if (!Object.keys(archetypes[archetype].skills).includes('choice')) {
+			Object.keys(archetypes[archetype].skills).forEach(key => {
+				if (Object.keys(skills).includes(key)) archetypeSkillRank[key] = {rank: archetypes[archetype].skills[key]};
+			});
+		}
 		//add any starting skills based on archetype talents
 		if (archetypes[archetype].talents) {
 			archetypes[archetype].talents.forEach(talent => {
