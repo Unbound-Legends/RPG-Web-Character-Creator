@@ -21,6 +21,7 @@ class ErrorBoundaryComponent extends React.Component {
 
 	buildMessage = () => {
 		let text = `User: ${this.props.user}%0D%0A`;
+		text += `Character: ${this.props.character}%0D%0A`;
 		text += `Error: ${this.state.error.toString()}%0D%0A`;
 		let error = this.state.info.componentStack.split('\n').filter(Boolean);
 		error.forEach(line => text += `${line.replace('\n', '').trim()}%0D%0A`);
@@ -45,6 +46,7 @@ class ErrorBoundaryComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		user: state.user,
+		character: state.character,
 	};
 };
 

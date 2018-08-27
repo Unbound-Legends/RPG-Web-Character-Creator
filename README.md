@@ -6,6 +6,7 @@
 ## Patrons
 - Xavi Santamaria
 - Flobio
+- Scott McNeil
 
 [Patreon](https://www.patreon.com/SkyJedi)
 
