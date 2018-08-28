@@ -40,6 +40,7 @@
     "react-bootstrap-typeahead": "^3.2.1",
     "react-dom": "^16.4.2",
     "react-dynamic-font": "^2.0.1",
+    "react-ga": "^2.5.3",
     "react-redux": "^5.0.7",
     "react-scripts": "^1.1.4",
     "react-tabs": "^2.2.2",

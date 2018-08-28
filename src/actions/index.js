@@ -1,5 +1,5 @@
 import {customDataTypes, dataTypes} from '../data';
-import {db} from '../firestore/db';
+import {db} from '../firestoreDB';
 
 export const changeData = (data, type, merge = true) => {
 	return (dispatch, getState) => {

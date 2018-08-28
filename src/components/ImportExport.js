@@ -5,7 +5,7 @@ import {Button, Col, FormGroup, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {importCharacter, importCustomData} from '../actions';
 import {customDataTypes, dataTypes} from '../data/lists';
-import {db} from '../firestore/db';
+import {db} from '../firestoreDB';
 
 class ImportExportComponent extends React.Component {
 	state = {characters: [], customData: {}};
@@ -13,7 +13,7 @@ class ImportExportComponent extends React.Component {
 	generateFileName = () => {
 		let time = new Date(Date.now())
 			.toLocaleString()
-			.replace(/[' ']/g, '')
+			.replace(/[\s+]/g, '')
 			.replace(/[\D+]/g, '_')
 			.slice(0, -2);
 		return `GenesysEmporiumExport_${time}.json`
