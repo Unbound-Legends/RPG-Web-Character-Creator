@@ -88,7 +88,8 @@ input[type="number"] {
 }
 
 .textSymbols {
-	height: 20px;
+	vertical-align: middle;
+	height: 1.2rem;
 }
 
 .imageBox {

@@ -69,6 +69,12 @@ export class Description extends React.Component {
 				case word.includes('[rmblack]'):
 					array.push(`<b>(-</b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b>)</b>`);
 					break;
+				case word.includes('[gm]'):
+					array.push('<img src="/images/png/gm.png" class="textSymbols" /> ');
+					break;
+				case word.includes('[pc]'):
+					array.push('<img src="/images/png/pc.png" class="textSymbols" /> ');
+					break;
 				default:
 					array.push(`${word}`);
 					break;

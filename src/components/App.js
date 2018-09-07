@@ -18,6 +18,7 @@ class AppComponent extends React.Component {
 	componentWillMount() {
 		LogRocket.init(LogRocketID);
 		ReactGA.initialize(gaID);
+		ReactGA.pageview(window.location.pathname);
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				this.props.changeUser(user.uid);

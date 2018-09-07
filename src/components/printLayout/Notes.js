@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
+import {Description} from '../';
 
 class Component extends React.Component {
 
@@ -11,7 +12,7 @@ class Component extends React.Component {
 				<Row className='justify-content-end'><h5>NOTES</h5></Row>
 				<hr/>
 				<Row style={{whiteSpace: 'pre-line'}}>
-					{description.notes ? description.notes : ''}
+					<Description text={description.notes ? description.notes : ''}/>
 				</Row>
 			</div>
 

@@ -144,6 +144,8 @@ export const importCharacter = (characterImport) => {
 export const importCustomData = (customDataSetImport) => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		Object.keys(customDataSetImport).forEach(type => db.doc(`users/${user}/customData/${type}/`).set({data: customDataSetImport[type]}, {merge: true}));
+		Object.keys(customDataSetImport).forEach(type => {
+			if (customDataSetImport[type]) db.doc(`users/${user}/customData/${type}/`).set({data: customDataSetImport[type]}, {merge: true})
+		});
 	}
 };
