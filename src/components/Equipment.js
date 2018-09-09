@@ -177,7 +177,6 @@ class EquipmentComponent extends React.Component {
 								<thead>
 								<tr>
 									<th>CARRY</th>
-									<th>CRAFT</th>
 									<th>NAME</th>
 									<th>DAM</th>
 									<th>CRIT</th>
@@ -185,6 +184,7 @@ class EquipmentComponent extends React.Component {
 									<th>SKILL</th>
 									<th>ENCUM</th>
 									<th>QUAL</th>
+									<th>CRAFT</th>
 									<th>DICE</th>
 									<th/>
 								</tr>
@@ -192,7 +192,7 @@ class EquipmentComponent extends React.Component {
 								<tbody>
 								{Object.keys(equipmentWeapons).map(key =>
 									<tr key={key}>
-										{['carried', 'craftsmanship', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'gearDice', 'deleteButton'].map(block =>
+										{['carried', 'name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'qualities', 'craftsmanship', 'gearDice', 'deleteButton'].map(block =>
 											this.getLabel('equipmentWeapons', block, key)
 										)}
 									</tr>
@@ -209,7 +209,6 @@ class EquipmentComponent extends React.Component {
 								<tr>
 									<th>EQUIP</th>
 									<th>CARRY</th>
-									<th>CRAFT</th>
 									<th>NAME</th>
 									<th>SOAK</th>
 									<th>DEFENSE</th>
@@ -217,13 +216,15 @@ class EquipmentComponent extends React.Component {
 									<th>MELEE</th>
 									<th>ENCUM</th>
 									<th>QUAL</th>
+									<th>CRAFT</th>
+
 									<th/>
 								</tr>
 								</thead>
 								<tbody>
 								{Object.keys(equipmentArmor).map(key =>
 									<tr key={key}>
-										{['equipped', 'carried', 'craftsmanship', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities', 'deleteButton'].map(block =>
+										{['equipped', 'carried', 'name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'qualities', 'craftsmanship', 'deleteButton'].map(block =>
 											this.getLabel('equipmentArmor', block, key)
 										)}
 									</tr>
