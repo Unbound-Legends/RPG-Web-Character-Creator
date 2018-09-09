@@ -1,6 +1,5 @@
 import firebase from '@firebase/app';
 import '@firebase/auth';
-import LogRocket from 'logrocket';
 import React from 'react';
 import ReactGA from 'react-ga'
 import {connect} from 'react-redux';
@@ -8,7 +7,7 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadCustomData, loadData} from '../actions';
-import {gaID, LogRocketID} from '../config'
+import {gaID} from '../config'
 import {DataPage, MainPage, User} from './';
 import {CustomData} from './CustomData';
 
@@ -16,13 +15,11 @@ class AppComponent extends React.Component {
 	state = {loading: true};
 
 	componentWillMount() {
-		LogRocket.init(LogRocketID);
 		ReactGA.initialize(gaID);
 		ReactGA.pageview(window.location.pathname);
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				this.props.changeUser(user.uid);
-				LogRocket.identify(`${User.email}`, {name: user.displayName, email: user.email, uid: user.uid});
 				this.setState({loading: false});
 			}
 			else this.setState({loading: false});
@@ -37,7 +34,7 @@ class AppComponent extends React.Component {
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
 		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting);
-		if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 300);
+		if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 400);
 	}
 
 	render() {

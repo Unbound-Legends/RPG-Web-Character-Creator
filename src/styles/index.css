@@ -288,7 +288,7 @@ and (max-width: 480px) {
 	.table td {
 		padding: 0.1rem;
 		vertical-align: middle;
-		font-size: 0.6rem;
+		font-size: 0.8rem;
 	}
 
 	.ffi {
