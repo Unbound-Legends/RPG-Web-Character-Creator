@@ -2,7 +2,7 @@ export const ROT = {
 	//Realms of Terrinoth
 	Apothecary: {
 		name: 'Apothecary',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -13,7 +13,7 @@ export const ROT = {
 	},
 	Bullrush: {
 		name: 'Bullrush',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -24,7 +24,7 @@ export const ROT = {
 	},
 	Challenge: {
 		name: 'Challenge!',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Maneuver',
@@ -35,7 +35,7 @@ export const ROT = {
 	},
 	DarkInsight: {
 		name: 'Dark Insight',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -46,7 +46,7 @@ export const ROT = {
 	},
 	Dungeoneer: {
 		name: 'Dungeoneer',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -57,7 +57,7 @@ export const ROT = {
 	},
 	Finesse: {
 		name: 'Finesse',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -68,7 +68,7 @@ export const ROT = {
 	},
 	PainfulBlow: {
 		name: 'Painful Blow',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -79,7 +79,7 @@ export const ROT = {
 	},
 	Precision: {
 		name: 'Precision',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -90,7 +90,7 @@ export const ROT = {
 	},
 	Shapeshifter: {
 		name: 'Shapeshifter',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -101,7 +101,7 @@ export const ROT = {
 	},
 	ShieldSlam: {
 		name: 'Shield Slam',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -112,7 +112,7 @@ export const ROT = {
 	},
 	TavernBrawler: {
 		name: 'Tavern Brawler',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -123,7 +123,7 @@ export const ROT = {
 	},
 	Templar: {
 		name: 'Templar',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -135,7 +135,7 @@ export const ROT = {
 	},
 	Tumble: {
 		name: 'Tumble',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -146,7 +146,7 @@ export const ROT = {
 	},
 	Adventurer: {
 		name: 'Adventurer',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -158,7 +158,7 @@ export const ROT = {
 	},
 	Bard: {
 		name: 'Bard',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -170,7 +170,7 @@ export const ROT = {
 	},
 	Block: {
 		name: 'Block',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -182,7 +182,7 @@ export const ROT = {
 	},
 	BloodSacrifice: {
 		name: 'Blood Sacrifice',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -194,7 +194,7 @@ export const ROT = {
 	},
 	Bulwark: {
 		name: 'Bulwark',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental, Out of turn',
@@ -206,7 +206,7 @@ export const ROT = {
 	},
 	ChillOfNordros: {
 		name: 'Chill of Nordros',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -218,7 +218,7 @@ export const ROT = {
 	},
 	DirtyTricks: {
 		name: 'Dirty Tricks',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -229,7 +229,7 @@ export const ROT = {
 	},
 	DominionOfTheDimora: {
 		name: 'Dominion of the Dimora',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -241,7 +241,7 @@ export const ROT = {
 	},
 	EncouragingSong: {
 		name: 'Encouraging Song',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Action',
@@ -252,7 +252,7 @@ export const ROT = {
 	},
 	Exploit: {
 		name: 'Exploit',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -263,7 +263,7 @@ export const ROT = {
 	},
 	FavorOfTheFae: {
 		name: 'Favor of the Fae',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -275,7 +275,7 @@ export const ROT = {
 	},
 	FlamesofKellos: {
 		name: 'Flames of Kellos',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -287,7 +287,7 @@ export const ROT = {
 	},
 	FlashOfInsight: {
 		name: 'Flash of Insight',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -298,7 +298,7 @@ export const ROT = {
 	},
 	Grapple: {
 		name: 'Grapple',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -309,7 +309,7 @@ export const ROT = {
 	},
 	HeroicRecovery: {
 		name: 'Heroic Recovery',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -320,7 +320,7 @@ export const ROT = {
 	},
 	Hunter: {
 		name: 'Hunter',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -332,7 +332,7 @@ export const ROT = {
 	},
 	ImpalingStrike: {
 		name: 'ImpalingStrike',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -343,7 +343,7 @@ export const ROT = {
 	},
 	NaturalCommunion: {
 		name: 'Natural Communion',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -354,7 +354,7 @@ export const ROT = {
 	},
 	RecklessCharge: {
 		name: 'Reckless Charge',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -365,7 +365,7 @@ export const ROT = {
 	},
 	RunicLore: {
 		name: 'Runic Lore',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -377,7 +377,7 @@ export const ROT = {
 	},
 	ShapeshifterImproved: {
 		name: 'Shapeshifter (Improved)',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -389,7 +389,7 @@ export const ROT = {
 	},
 	SignatureSpell: {
 		name: 'Signature Spell',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -400,7 +400,7 @@ export const ROT = {
 	},
 	TemplarImproved: {
 		name: 'Templar (Improved)',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -412,7 +412,7 @@ export const ROT = {
 	},
 	Threaten: {
 		name: 'Threaten',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -423,7 +423,7 @@ export const ROT = {
 	},
 	WellTraveled: {
 		name: 'Well Traveled',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -435,7 +435,7 @@ export const ROT = {
 	},
 	Wraithbane: {
 		name: 'WraithBane',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -446,7 +446,7 @@ export const ROT = {
 	},
 	Backstab: {
 		name: 'Backstab',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Action',
@@ -457,7 +457,7 @@ export const ROT = {
 	},
 	BattleCasting: {
 		name: 'Battle Casting',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -468,7 +468,7 @@ export const ROT = {
 	},
 	BodyGuard: {
 		name: 'Body Guard',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Maneuver',
@@ -479,7 +479,7 @@ export const ROT = {
 	},
 	Cavalier: {
 		name: 'Cavalier',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Maneuver',
@@ -490,7 +490,7 @@ export const ROT = {
 	},
 	Counterattack: {
 		name: 'Counterattack',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -502,7 +502,7 @@ export const ROT = {
 	},
 	Dissonance: {
 		name: 'Dissonance',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Action',
@@ -513,7 +513,7 @@ export const ROT = {
 	},
 	DualStrike: {
 		name: 'Dual Strike',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental',
@@ -524,7 +524,7 @@ export const ROT = {
 	},
 	EasyPrey: {
 		name: 'Easy Prey',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Maneuver',
@@ -535,7 +535,7 @@ export const ROT = {
 	},
 	JusticeOfTheCitadel: {
 		name: 'Justice of the Citadel',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental',
@@ -546,7 +546,7 @@ export const ROT = {
 	},
 	PotentConcoction: {
 		name: 'Potent Concoctions',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -557,7 +557,7 @@ export const ROT = {
 	},
 	PreciseArchery: {
 		name: 'Precise Archery',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -568,7 +568,7 @@ export const ROT = {
 	},
 	PressurePoint: {
 		name: 'Pressure Point',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental',
@@ -579,7 +579,7 @@ export const ROT = {
 	},
 	Shockwave: {
 		name: 'Shockwave',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -590,7 +590,7 @@ export const ROT = {
 	},
 	BackToBack: {
 		name: 'Back to Back',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -601,7 +601,7 @@ export const ROT = {
 	},
 	Conduit: {
 		name: 'Conduit',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: true,
 		turn: 'Incidental',
@@ -612,7 +612,7 @@ export const ROT = {
 	},
 	DeathRage: {
 		name: 'Death Rage',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -623,7 +623,7 @@ export const ROT = {
 	},
 	VenomSoakedBlade: {
 		name: 'Venom Soaked Blade',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -634,7 +634,7 @@ export const ROT = {
 	},
 	SignatureSpellImproved: {
 		name: 'Signature Spell (Improved)',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -646,7 +646,7 @@ export const ROT = {
 	},
 	Unrelenting: {
 		name: 'Unrelenting',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: true,
 		turn: 'Incidental',
@@ -657,7 +657,7 @@ export const ROT = {
 	},
 	CrushingBlow: {
 		name: 'Crushing Blow',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 5,
 		activation: true,
 		turn: 'Incidental',
@@ -668,7 +668,7 @@ export const ROT = {
 	},
 	LetsTalkAboutThis: {
 		name: 'Let\'s Talk About This',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 5,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -679,7 +679,7 @@ export const ROT = {
 	},
 	Retribution: {
 		name: 'Retribution',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 5,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -690,7 +690,7 @@ export const ROT = {
 	},
 	Whirlwind: {
 		name: 'Whirlwind',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 4,
 		activation: true,
 		turn: 'Action',
@@ -701,7 +701,7 @@ export const ROT = {
 	},
 	ZealousFire: {
 		name: 'ZealousFire',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		tier: 5,
 		activation: false,
 		turn: false,

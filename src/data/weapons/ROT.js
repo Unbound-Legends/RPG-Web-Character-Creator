@@ -11,7 +11,7 @@ export const ROT = {
 		qualities: {Vicious: 1},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	cestus: {
 		name: 'Cestus',
@@ -25,7 +25,7 @@ export const ROT = {
 		qualities: {Disorient: 3},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	dagger: {
 		name: 'Dagger',
@@ -39,7 +39,7 @@ export const ROT = {
 		qualities: {Accurate: 1},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	flail: {
 		name: 'Flail',
@@ -53,7 +53,7 @@ export const ROT = {
 		qualities: {Cumbersome: 3, Pierce: 2, Vicious: 1},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	greataxe: {
 		name: 'Greataxe',
@@ -67,7 +67,7 @@ export const ROT = {
 		qualities: {Cumbersome: 3, Pierce: 2, Vicious: 1},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	greatsword: {
 		name: 'Greatsword',
@@ -81,7 +81,7 @@ export const ROT = {
 		qualities: {Defensive: 1, Pierce: 1, Unwieldy: 3},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	halberd: {
 		name: 'Halberd',
@@ -95,7 +95,7 @@ export const ROT = {
 		qualities: {Defensive: 1, Pierce: 3},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	katar: {
 		name: 'Katar',
@@ -109,7 +109,7 @@ export const ROT = {
 		qualities: {Accurate: 1},
 		book: 'ROT',
 		page: 92,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	lightSpear: {
 		name: 'Light Spear',
@@ -123,7 +123,7 @@ export const ROT = {
 		qualities: {Accurate: 1, Defensive: 1},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	spear: {
 		name: 'Spear',
@@ -137,7 +137,7 @@ export const ROT = {
 		qualities: {Accurate: 1},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	mace: {
 		name: 'Mace',
@@ -150,7 +150,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	militaryPick: {
 		name: 'Military Pick',
@@ -164,7 +164,7 @@ export const ROT = {
 		qualities: {Pierce: 2},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	pike: {
 		name: 'Pike',
@@ -178,7 +178,7 @@ export const ROT = {
 		qualities: {Prepare: 1},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	shield: {
 		name: 'Shield',
@@ -192,7 +192,7 @@ export const ROT = {
 		qualities: {Defensive: 1, Deflection: 1, Inaccurate: 1, Knockdown: 1},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	largeShield: {
 		name: 'Large Shield',
@@ -206,7 +206,7 @@ export const ROT = {
 		qualities: {Defensive: 2, Deflection: 2, Inaccurate: 2, Knockdown: 1},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	bulwarkShield: {
 		name: 'Bulwark Shield',
@@ -220,7 +220,7 @@ export const ROT = {
 		qualities: {Cumbersome: 4, Defensive: 2, Deflection: 3, Inaccurate: 2, Knockdown: 1, Reinforced: 1},
 		book: 'ROT',
 		page: 93,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	staff: {
 		name: 'Staff',
@@ -234,7 +234,7 @@ export const ROT = {
 		qualities: {Defensive: 1},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	sword: {
 		name: 'Sword',
@@ -248,7 +248,7 @@ export const ROT = {
 		qualities: {Defensive: 1},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	warhammer: {
 		name: 'War Hammer',
@@ -262,7 +262,7 @@ export const ROT = {
 		qualities: {Concussive: 3, Cumbersome: 4, Inaccurate: 1, Knockdown: 1},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	bow: {
 		name: 'Bow',
@@ -276,7 +276,7 @@ export const ROT = {
 		qualities: {Unwieldy: 2},
 		book: 'ROT',
 		page: 95,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	crossbow: {
 		name: 'Crossbow',
@@ -290,7 +290,7 @@ export const ROT = {
 		qualities: {Pierce: 2, Prepare: 1},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	handCrossbow: {
 		name: 'Hand Crossbow',
@@ -304,7 +304,7 @@ export const ROT = {
 		qualities: {Pierce: 1, Prepare: 1},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	heavyCrossbow: {
 		name: 'Heavy Crossbow',
@@ -318,7 +318,7 @@ export const ROT = {
 		qualities: {Cumbersome: 3, Pierce: 3, Prepare: 2},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	repeatingCrossbow: {
 		name: 'Crossbow',
@@ -332,7 +332,7 @@ export const ROT = {
 		qualities: {Linked: 2, Prepare: 2},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	longbow: {
 		name: 'Longbow',
@@ -346,7 +346,7 @@ export const ROT = {
 		qualities: {Unwieldy: 3},
 		book: 'ROT',
 		page: 94,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	sling: {
 		name: 'Sling',
@@ -360,7 +360,7 @@ export const ROT = {
 		qualities: {Disorient: 2, Prepare: 1},
 		book: 'ROT',
 		page: 95,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	throwingAxe: {
 		name: 'Throwing Axe',
@@ -374,6 +374,6 @@ export const ROT = {
 		qualities: {Inaccurate: 1, LimitedAmmo: 1, Vicious: 1},
 		book: 'ROT',
 		page: 95,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	}
 };

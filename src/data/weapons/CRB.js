@@ -10,7 +10,7 @@ export const CRB = {
 		rarity: 1,
 		book: 'CRB',
 		page: 91,
-		setting: 'All'
+		setting: ['All']
 	},
 	revolver: {
 		name: 'Revolver',
@@ -24,7 +24,7 @@ export const CRB = {
 		qualities: {Accurate: 1},
 		book: 'CRB',
 		page: 91,
-		setting: 'All'
+		setting: ['All']
 	},
 	axe: {
 		name: 'Axe',
@@ -38,7 +38,7 @@ export const CRB = {
 		qualities: {Vicious: 1},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	greataxe: {
 		name: 'Greataxe',
@@ -52,7 +52,7 @@ export const CRB = {
 		qualities: {Cumbersome: 3, Pierce: 2, Vicious: 1},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	greatsword: {
 		name: 'Greatsword',
@@ -66,7 +66,7 @@ export const CRB = {
 		qualities: {Defensive: 1, Pierce: 1, Unwieldy: 3},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	halberd: {
 		name: 'Halberd',
@@ -80,7 +80,7 @@ export const CRB = {
 		qualities: {Defensive: 1, Pierce: 3},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	lightSpear: {
 		name: 'Light Spear',
@@ -94,7 +94,7 @@ export const CRB = {
 		qualities: {Accurate: 1, Defensive: 1},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	mace: {
 		name: 'Mace',
@@ -107,7 +107,7 @@ export const CRB = {
 		rarity: 1,
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	shield: {
 		name: 'Shield',
@@ -121,7 +121,7 @@ export const CRB = {
 		qualities: {Defensive: 1, Deflection: 1, Inaccurate: 1, Knockdown: 1},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	sword: {
 		name: 'Sword',
@@ -135,7 +135,7 @@ export const CRB = {
 		qualities: {Defensive: 1},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	bow: {
 		name: 'Bow',
@@ -149,7 +149,7 @@ export const CRB = {
 		qualities: {Unwieldy: 2},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	crossbow: {
 		name: 'Crossbow',
@@ -163,7 +163,7 @@ export const CRB = {
 		qualities: {Pierce: 2, Prepare: 1},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	longbow: {
 		name: 'Longbow',
@@ -177,7 +177,7 @@ export const CRB = {
 		qualities: {Unwieldy: 3},
 		book: 'CRB',
 		page: 144,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	springFist: {
 		name: 'Spring-Fist',
@@ -191,7 +191,7 @@ export const CRB = {
 		qualities: {Concussive: 1, SlowFiring: 2},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	rotorsword: {
 		name: 'Rotorsword',
@@ -205,7 +205,7 @@ export const CRB = {
 		qualities: {Cumbersome: 3, Inaccurate: 1, Pierce: 2, Sunder: '', Vicious: 2},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	swordCane: {
 		name: 'Sword Cane',
@@ -219,7 +219,7 @@ export const CRB = {
 		qualities: {Defensive: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	autoRotaryGun: {
 		name: 'Auto-Rotary Gun',
@@ -233,7 +233,7 @@ export const CRB = {
 		qualities: {AutoFire: '', Cumbersome: 4, Prepare: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	clockworkGrenade: {
 		name: 'Clockwork Grenade',
@@ -247,7 +247,7 @@ export const CRB = {
 		qualities: {Blast: 5, Burn: 1, LimitedAmmo: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	deathRay: {
 		name: 'Death Ray',
@@ -261,7 +261,7 @@ export const CRB = {
 		qualities: {Breach: 2, Inaccurate: 2, SlowFiring: 1, Vicious: 5},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	handCannon: {
 		name: 'Hand Cannon',
@@ -275,7 +275,7 @@ export const CRB = {
 		qualities: {Knockdown: '', LimitedAmmo: 1, Prepare: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	repeatingRifle: {
 		name: 'Repeating Rifle',
@@ -288,7 +288,7 @@ export const CRB = {
 		rarity: 4,
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	rotorPistol: {
 		name: 'Rotor Pistol',
@@ -302,7 +302,7 @@ export const CRB = {
 		qualities: {AutoFire: '', LimitedAmmo: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	electricTruncheon: {
 		name: 'Electric Truncheon',
@@ -316,7 +316,7 @@ export const CRB = {
 		qualities: {Disorient: 3, StunDamage: ''},
 		book: 'CRB',
 		page: 161,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	razorWhip: {
 		name: 'Razor Whip',
@@ -330,7 +330,7 @@ export const CRB = {
 		qualities: {Ensnare: 1, Pierce: 3, Unwieldy: 3},
 		book: 'CRB',
 		page: 161,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	dewPistol: {
 		name: 'DEW Pistol',
@@ -344,7 +344,7 @@ export const CRB = {
 		qualities: {Burn: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	dewRifle: {
 		name: 'DEW Rifle',
@@ -358,7 +358,7 @@ export const CRB = {
 		qualities: {Burn: 2},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	flashGun: {
 		name: 'Flash Gun',
@@ -372,7 +372,7 @@ export const CRB = {
 		qualities: {AutoFire: '', Disorient: 2, Pierce: 2},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	flashMachineGun: {
 		name: 'Flash Machine Gun',
@@ -386,7 +386,7 @@ export const CRB = {
 		qualities: {AutoFire: '', Cumbersome: 3, Disorient: 2, Inaccurate: 1, Pierce: 2, Vicious: 3},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	meteopLauncher: {
 		name: 'Meteop Launcher',
@@ -400,7 +400,7 @@ export const CRB = {
 		qualities: {Blast: 8, Cumbersome: 3, LimitedAmmo: 1},
 		book: 'CRB',
 		page: 154,
-		setting: 'Steampunk'
+		setting: ['Steampunk']
 	},
 	brassKnuckles: {
 		name: 'Brass Knuckles',
@@ -414,7 +414,7 @@ export const CRB = {
 		qualities: {Disorient: 3},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	collapsibleBaton: {
 		name: 'Collapsible Baton',
@@ -427,7 +427,7 @@ export const CRB = {
 		rarity: 2,
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	stunGun: {
 		name: 'Stun Gun',
@@ -441,7 +441,7 @@ export const CRB = {
 		qualities: {Stun: 3, StunDamage: ''},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	assaultRifle: {
 		name: 'Assault Rifle',
@@ -455,7 +455,7 @@ export const CRB = {
 		qualities: {AutoFire: ''},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern'
+		setting: ['Modern Day']
 	},
 	heavyPistol: {
 		name: 'Heavy Pistol',
@@ -468,7 +468,7 @@ export const CRB = {
 		rarity: 3,
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	huntingRifle: {
 		name: 'Hunting Rifle',
@@ -482,7 +482,7 @@ export const CRB = {
 		qualities: {Accurate: 1, LimitedAmmo: 2},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	machineGun: {
 		name: 'Machine Gun',
@@ -496,7 +496,7 @@ export const CRB = {
 		qualities: {AutoFire: '', Cumbersome: 2, Pierce: 2, Vicious: 2},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	portableMissileLauncher: {
 		name: 'Portable Missile Launcher',
@@ -510,7 +510,7 @@ export const CRB = {
 		qualities: {Blast: 10, Breach: 2, Cumbersome: 3, Guided: 3, LimitedAmmo: 1, Prepare: 1},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	shotgun: {
 		name: 'Shotgun',
@@ -524,7 +524,7 @@ export const CRB = {
 		qualities: {Blast: 4, Knockdown: '', Vicious: 2},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	submachineGun: {
 		name: 'Submachine Gun',
@@ -538,7 +538,7 @@ export const CRB = {
 		qualities: {AutoFire: ''},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	sniperRifle: {
 		name: 'Sniper Rifle',
@@ -552,7 +552,7 @@ export const CRB = {
 		qualities: {Accurate: 2, LimitedAmmo: 4, Pierce: 2},
 		book: 'CRB',
 		page: 166,
-		setting: 'Modern Day'
+		setting: ['Modern Day']
 	},
 	monobladeKnife: {
 		name: 'Monoblade Knife',
@@ -566,7 +566,7 @@ export const CRB = {
 		qualities: {Pierce: 2},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	stunBaton: {
 		name: 'Stun Baton',
@@ -580,7 +580,7 @@ export const CRB = {
 		qualities: {Disorient: 3, StunDamage: ''},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	flechettePistol: {
 		name: 'Flechette Pistol',
@@ -594,7 +594,7 @@ export const CRB = {
 		qualities: {Pierce: 2, Vicious: 2},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	flechetteLauncher: {
 		name: 'Flechette Launcher',
@@ -608,7 +608,7 @@ export const CRB = {
 		qualities: {Blast: 4, Pierce: 2, Vicious: 3},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	laserPistolSF: {
 		name: 'Laser Pistol (Sci-Fi)',
@@ -622,7 +622,7 @@ export const CRB = {
 		qualities: {Accurate: 1, Burn: 1},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	laserRifleSF: {
 		name: 'Laser Rifle (Sci-Fi)',
@@ -636,7 +636,7 @@ export const CRB = {
 		qualities: {Accurate: 1, Burn: 1},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	gaussRifle: {
 		name: 'Gauss Rifle',
@@ -650,7 +650,7 @@ export const CRB = {
 		qualities: {Cumbersome: 3, Pierce: 5, SlowFiring: 1},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	microMissileLauncher: {
 		name: 'Micro-Missile Launcher',
@@ -664,7 +664,7 @@ export const CRB = {
 		qualities: {Blast: 10, Cumbersome: 4, Guided: 3, LimitedAmmo: 3, Prepare: 1},
 		book: 'CRB',
 		page: 175,
-		setting: 'Science Fiction'
+		setting: ['Science Fiction']
 	},
 	shudderBlade: {
 		name: 'Shudder Blade',
@@ -678,7 +678,7 @@ export const CRB = {
 		qualities: {Pierce: 2, Vicious: 3},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	assaultCannon: {
 		name: 'Assault Cannon',
@@ -692,7 +692,7 @@ export const CRB = {
 		qualities: {AutoFire: '', Cumbersome: 4, Inaccurate: 1, Pierce: 3, Vicious: 3},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	grenadeLobber: {
 		name: 'Grenade Lobber',
@@ -706,7 +706,7 @@ export const CRB = {
 		qualities: {Accurate: 2, Blast: 6, LimitedAmmo: 6},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	laserCannon: {
 		name: 'Laser Cannon',
@@ -720,7 +720,7 @@ export const CRB = {
 		qualities: {Breach: 2, Cumbersome: 3},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	laserPistolSO: {
 		name: 'Laser Pistol (Space Opera)',
@@ -734,7 +734,7 @@ export const CRB = {
 		qualities: {Pierce: 2},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	laserRifleSO: {
 		name: 'Laser Rifle (Space Opera)',
@@ -748,7 +748,7 @@ export const CRB = {
 		qualities: {Pierce: 4},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	particleGrenade: {
 		name: 'Particle Grenade',
@@ -762,7 +762,7 @@ export const CRB = {
 		qualities: {Blast: 3, Concussive: 1, Disorient: 3, LimitedAmmo: 1, StunDamage: ''},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	plasmaCannon: {
 		name: 'Plasma Cannon',
@@ -776,7 +776,7 @@ export const CRB = {
 		qualities: {Blast: 10, Burn: 1, Cumbersome: 3, SlowFiring: 1},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	plasmaPistol: {
 		name: 'Plasma Pistol',
@@ -790,7 +790,7 @@ export const CRB = {
 		qualities: {Burn: 1},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	plasmaRifle: {
 		name: 'Plasma Rifle',
@@ -804,7 +804,7 @@ export const CRB = {
 		qualities: {Burn: 1},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	sliverRocketLauncher: {
 		name: 'Sliver Rocket Launcher',
@@ -818,7 +818,7 @@ export const CRB = {
 		qualities: {Breach: 4, Cumbersome: 3, Guided: 4, LimitedAmmo: 3, Prepare: 1, Vicious: 5},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	slugPistol: {
 		name: 'Slug Pistol',
@@ -831,7 +831,7 @@ export const CRB = {
 		rarity: 1,
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	slugRifle: {
 		name: 'Slug Rifle',
@@ -845,6 +845,6 @@ export const CRB = {
 		qualities: {AutoFire: ''},
 		book: 'CRB',
 		page: 184,
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	}
 };

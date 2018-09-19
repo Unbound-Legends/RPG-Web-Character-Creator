@@ -29,6 +29,7 @@ export const masterTalents = {1: {1: ''}};
 export const misc = null;
 export const money = 0;
 export const setting = ['All'];
+export const strict = false;
 export const talentModifiers = {Dedication: {},};
 
 export const printContent = <h1 className='text-left m-3' style={{whiteSpace: 'pre-line'}}>

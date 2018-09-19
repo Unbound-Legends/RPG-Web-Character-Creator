@@ -8,7 +8,7 @@ export const ROT = {
 		page: '63',
 		description: 'See ROT, page 63, for more details.',
 		modifier: {careerSkills: ['KnowledgeForbidden'], KnowledgeForbidden: 2},
-		setting: 'All',
+		setting: ['All'],
 	},
 	EmpyreanMagic: {
 		name: 'Empyrean Magic',
@@ -18,7 +18,7 @@ export const ROT = {
 		page: '63',
 		description: 'See ROT, page 63, for more details.',
 		modifier: {careerSkills: ['Divine'], Divine: 1},
-		setting: 'All',
+		setting: ['All'],
 	},
 	Stubborn: {
 		name: 'Stubborn',
@@ -27,7 +27,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '65',
 		description: 'See ROT, page 65, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	HotTempered: {
 		name: 'Hot Tempered',
@@ -36,7 +36,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '67',
 		description: 'See ROT, page 67, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Tenacious: {
 		name: 'Tenacious',
@@ -45,7 +45,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '67',
 		description: 'See ROT, page 67, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Claws: {
 		name: 'Claws',
@@ -54,7 +54,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '68',
 		description: 'See ROT, page 68, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	FleetOfPaw: {
 		name: 'Fleet of Paw',
@@ -63,7 +63,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '68',
 		description: 'See ROT, page 68, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	CatAncestry: {
 		name: 'Cat Ancestry',
@@ -73,7 +73,7 @@ export const ROT = {
 		page: '68',
 		modifier: {archetypeTalents: ['FleetOfPaw', 'Claws']},
 		description: 'See ROT, page 68, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Small: {
 		name: 'Small',
@@ -82,7 +82,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '69',
 		description: 'See ROT, page 69, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	MilitiaTraining: {
 		name: 'Militia Training',
@@ -91,7 +91,7 @@ export const ROT = {
 		book: 'ROT',
 		page: '69',
 		description: 'See ROT, page 69, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Tricksy: {
 		name: 'Tricksy',
@@ -100,6 +100,6 @@ export const ROT = {
 		book: 'ROT',
 		page: '69',
 		description: 'See ROT, page 69, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	}
 };

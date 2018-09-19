@@ -6,7 +6,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '36',
 		description: 'See CRB, page 36, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	ToughAsNails: {
 		name: 'Tough as Nails',
@@ -15,7 +15,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '37',
 		description: 'See CRB, page 37, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Brilliant: {
 		name: 'Brilliant!',
@@ -24,7 +24,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '38',
 		description: 'See CRB, page 38, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	ForcefulPersonality: {
 		name: 'Forceful Personality',
@@ -33,7 +33,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '39',
 		description: 'See CRB, page 39, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Nimble: {
 		name: 'Nimble',
@@ -42,7 +42,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '142',
 		description: 'See CRB, page 142, for more details.',
-		setting: 'All',
+		setting: ['All'],
 		modifier: {defense: 1},
 	},
 	DarkVision: {
@@ -52,7 +52,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '142',
 		description: 'See CRB, page 142, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	BattleRage: {
 		name: 'Battle Rage',
@@ -61,7 +61,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '143',
 		description: 'See CRB, page 143, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	TheBeastWithin: {
 		name: 'The Beast Within',
@@ -70,7 +70,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '152',
 		description: 'See CRB, page 152, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	TheHumanSpirit: {
 		name: 'The Human Spirit',
@@ -79,7 +79,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '152',
 		description: 'See CRB, page 152, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Reanimated: {
 		name: 'Reanimated',
@@ -88,7 +88,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '153',
 		description: 'See CRB, page 153, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	DeadNerves: {
 		name: 'Dead Nerves',
@@ -97,7 +97,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '153',
 		description: 'See CRB, page 153, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Robot: {
 		name: 'Robot',
@@ -106,7 +106,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '174',
 		description: 'See CRB, page 174, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	Inorganic: {
 		name: 'Inorganic',
@@ -115,7 +115,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '174',
 		description: 'See CRB, page 174, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	AFaceInACrowd: {
 		name: 'A Face in a Crowd',
@@ -124,7 +124,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '174',
 		description: 'See CRB, page 174, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	NaturalWeapons: {
 		name: 'Natural Weapons',
@@ -133,7 +133,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '182',
 		description: 'See CRB, page 182, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	MindReader: {
 		name: 'Mind Reader',
@@ -142,7 +142,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '182',
 		description: 'See CRB, page 182, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	MindShaper: {
 		name: 'Mind Shaper',
@@ -151,7 +151,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '182',
 		description: 'See CRB, page 182, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	MindBreaker: {
 		name: 'Mind Breaker',
@@ -160,7 +160,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '182',
 		description: 'See CRB, page 182, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	NetworkedIntelligence: {
 		name: 'Networked Intelligence',
@@ -169,7 +169,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '183',
 		description: 'See CRB, page 183, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	},
 	SpaceIsOurBirthRight: {
 		name: 'Space is our Birth Right',
@@ -178,7 +178,7 @@ export const CRB = {
 		book: 'CRB',
 		page: '183',
 		description: 'See CRB, page 183, for more details.',
-		setting: 'All',
+		setting: ['All'],
 		modifier: {
 			Astrocartography: '[advantage]',
 			Knowledge: '[advantage]'
@@ -190,6 +190,6 @@ export const CRB = {
 		turn: false,
 		source: 'CRB page 183',
 		description: 'See CRB, page 183, for more details.',
-		setting: 'All',
+		setting: ['All'],
 	}
 };

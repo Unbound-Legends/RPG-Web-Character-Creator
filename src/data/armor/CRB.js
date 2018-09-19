@@ -8,6 +8,6 @@ export const CRB = {
 		rarity: 1,
 		book: 'CRB',
 		page: 92,
-		setting: 'All'
+		setting: ['All']
 	}
 };

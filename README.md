@@ -7,6 +7,7 @@
 - Xavi Santamaria
 - Flobio
 - Scott McNeil
+- Jason Greathouse
 
 [Patreon](https://www.patreon.com/SkyJedi)
 

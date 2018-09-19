@@ -33,7 +33,8 @@ class AppComponent extends React.Component {
 			loadCustomData();
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
-		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting);
+		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting, nextProps.strict);
+		if (nextProps.strict !== this.props.strict) this.props.loadCustomData(nextProps.setting, nextProps.strict);
 		if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 400);
 	}
 
@@ -76,6 +77,7 @@ const mapStateToProps = state => {
 		loadingCustomData: state.loadingCustomData,
 		printContent: state.printContent,
 		setting: state.setting,
+		strict: state.strict,
 	};
 };
 

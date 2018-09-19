@@ -1,4 +1,3 @@
-import LogRocket from 'logrocket';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, Row} from 'reactstrap';
@@ -16,7 +15,6 @@ class ErrorBoundaryComponent extends React.Component {
 			error: error,
 			info: info
 		});
-		LogRocket.captureException(error);
 	}
 
 	buildMessage = () => {

@@ -113,7 +113,7 @@ class TalentSelectionComponent extends React.Component {
 					<Input type='select' value={talentSelection} onChange={(event) => this.setState({talentSelection: event.target.value})}>
 						<option value=''/>
 						{this.makeOptions().sort().map((key) =>
-							<option value={key} key={key}>{talents[key].name}</option>
+							<option value={key} key={key}>{talents[key] ? talents[key].name : ''}</option>
 						)}
 					</Input>
 				</Row>

@@ -131,7 +131,7 @@ class CustomTalentsComponent extends React.Component {
 					  blankOption={false} handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 			{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
-								   array={modifiableAttributes.concat(Object.keys(skills)).sort()}
+								   array={(modifiableAttributes.concat(Object.keys(skills))).sort()}
 								   nameObj={skills}
 								   handleChange={(event) => this.setState({
 									   modifier: event.target.value,

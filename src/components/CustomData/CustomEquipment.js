@@ -27,7 +27,7 @@ class CustomEquipmentComponent extends React.Component {
 		qualitiesList: '',
 		qualityRank: '',
 		description: '',
-		amount: '',
+		quantity: 1,
 		specialQualities: '',
 		qualityList: {},
 		modifier: false,
@@ -51,6 +51,7 @@ class CustomEquipmentComponent extends React.Component {
 			rangedDefense: '',
 			qualityRank: '',
 			description: '',
+			quantity: 1,
 			specialQualities: '',
 			qualityList: {},
 			modifier: false,
@@ -107,7 +108,7 @@ class CustomEquipmentComponent extends React.Component {
 		};
 		if (type === 'customGear') obj[key] = {name, encumbrance, price, description, setting, qualities: qualityList};
 		if (modifier) obj[key].modifier = {[modifier]: modifierValue};
-		changeCustomData(obj, type);
+		changeCustomData(obj, type, false);
 		this.initState();
 		event.preventDefault();
 	};
@@ -164,7 +165,7 @@ class CustomEquipmentComponent extends React.Component {
 			case 'rangedDefense':
 			case 'meleeDefense':
 				return <Fragment key={field} type='number' value={this.state[field]} title={field}
-								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
+								 handleChange={(event) => this.setState({[field]: +event.target.value})}/>;
 			case 'range':
 				return <Fragment key={field} type='inputSelect' name={field} value={this.state[field]}
 								 array={['Engaged', 'Short', 'Medium', 'Long', 'Extreme']}
@@ -214,11 +215,11 @@ class CustomEquipmentComponent extends React.Component {
 							  handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 					{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
-										   array={Object.keys(skills).concat(modifiableAttributes).concat(chars).sort()}
+										   array={(Object.keys(skills).concat(modifiableAttributes).concat(chars)).sort()}
 										   nameObj={skills}
 										   handleChange={(event) => this.setState({
 											   modifier: event.target.value,
-											   modifierValue: ''
+											   modifierValue: 1
 										   })}/>}
 
 					{modifier === 'careerSkills' &&

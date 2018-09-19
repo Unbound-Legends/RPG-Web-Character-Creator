@@ -5,7 +5,7 @@ export const CRB = {
 		description: 'See CRB, page 40, for more details.',
 		book: 'CRB',
 		page: '40',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Charm', 'Coordination', 'Deception', 'Discipline', 'Leadership', 'Melee', 'MeleeLight', 'Skullduggery', 'Stealth']
 	},
 	Explorer: {
@@ -13,7 +13,7 @@ export const CRB = {
 		description: 'See CRB, page 41, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Athletics', 'Brawl', 'Coordination', 'Deception', 'Perception', 'Ranged', 'RangedHeavy', 'Stealth', 'Survival']
 	},
 	Healer: {
@@ -21,7 +21,7 @@ export const CRB = {
 		description: 'See CRB, page 41, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Cool', 'Discipline', 'Knowledge', 'Medicine', 'Melee', 'MeleeLight', 'Resilience', 'Survival', 'Vigilance']
 	},
 	Leader: {
@@ -29,7 +29,7 @@ export const CRB = {
 		description: 'See CRB, page 41, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Charm', 'Coercion', 'Cool', 'Discipline', 'Leadership', 'Melee', 'MeleeLight', 'Negotiation', 'Perception']
 	},
 	Scoundrel: {
@@ -37,7 +37,7 @@ export const CRB = {
 		description: 'See CRB, page 41, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Charm', 'Cool', 'Coordination', 'Deception', 'Ranged', 'RangedLight', 'Skullduggery', 'Stealth', 'Streetwise']
 	},
 	Socialite: {
@@ -45,7 +45,7 @@ export const CRB = {
 		description: 'See CRB, page 41, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Charm', 'Cool', 'Deception', 'Knowledge', 'Negotiation', 'Perception', 'Streetwise', 'Vigilance']
 	},
 	Soldier: {
@@ -53,7 +53,7 @@ export const CRB = {
 		description: 'See CRB, page 41, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Athletics', 'Brawl', 'Gunnery', 'Coercion', 'Melee', 'MeleeHeavy', 'Perception', 'Ranged', 'RangedHeavy', 'Survival', 'Vigilance']
 	},
 	Tradesperson: {
@@ -61,12 +61,12 @@ export const CRB = {
 		description: 'See CRB, page 42, for more details.',
 		book: 'CRB',
 		page: '41',
-		setting: 'All',
+		setting: ['All'],
 		skills: ['Athletics', 'Brawl', 'Discipline', 'Mechanics', 'Negotiation', 'Perception', 'Resilience', 'Streetwise']
 	},
 	Hacker: {
 		name: 'Hacker',
-		setting: 'Science Fiction, Space Opera, Hacking',
+		setting: ['Science Fiction', 'Space Opera', 'Hacking'],
 		book: 'CRB',
 		page: '42',
 		description: 'See CRB, page 42, for more details.',
@@ -74,7 +74,7 @@ export const CRB = {
 	},
 	FighterPilot: {
 		name: 'Fighter Pilot',
-		setting: 'Weird War, Modern, Science Fiction, Space Opera, Vehicle',
+		setting: ['Weird War', 'Modern', 'Science Fiction', 'Space Opera', 'Vehicle'],
 		book: 'CRB',
 		page: '42',
 		description: 'See CRB, page 42, for more details.',
@@ -82,7 +82,7 @@ export const CRB = {
 	},
 	Knight: {
 		name: 'Knight',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'CRB',
 		page: '42',
 		description: 'See CRB, page 42, for more details.',
@@ -90,7 +90,7 @@ export const CRB = {
 	},
 	MadScientist: {
 		name: 'Mad Scientist',
-		setting: 'Steampunk, Weird War',
+		setting: ['Steampunk', 'Weird War'],
 		book: 'CRB',
 		page: '43',
 		description: 'See CRB, page 43, for more details.',
@@ -98,7 +98,7 @@ export const CRB = {
 	},
 	Priest: {
 		name: 'Priest',
-		setting: 'Magic',
+		setting: ['Magic'],
 		book: 'CRB',
 		page: '43',
 		description: 'See CRB, page 43, for more details.',
@@ -106,7 +106,7 @@ export const CRB = {
 	},
 	Druid: {
 		name: 'Druid',
-		setting: 'Magic',
+		setting: ['Magic'],
 		book: 'CRB',
 		page: '43',
 		description: 'See CRB, page 43, for more details.',
@@ -114,7 +114,7 @@ export const CRB = {
 	},
 	StarshipCaptain: {
 		name: 'Starship Captain',
-		setting: 'Science Fiction, Space Opera, Vehicle',
+		setting: ['Science Fiction', 'Space Opera', 'Vehicle'],
 		book: 'CRB',
 		page: '43',
 		description: 'See CRB, page 43, for more details.',
@@ -122,7 +122,7 @@ export const CRB = {
 	},
 	Wizard: {
 		name: 'Wizard',
-		setting: 'Magic',
+		setting: ['Magic'],
 		book: 'CRB',
 		page: '43',
 		description: 'See CRB, page 43, for more details.',

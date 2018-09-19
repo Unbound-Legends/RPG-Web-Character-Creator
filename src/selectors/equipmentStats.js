@@ -39,6 +39,10 @@ const calcEquipmentStats = createSelector(
 			Object.keys(inventory).forEach(item => {
 				let derivedStats = {...clone(data[inventory[item].id]), ...inventory[item], type: type};
 				let craftType = inventory[item].craftsmanship;
+				let quantity = inventory[item].quantity;
+				if (!quantity) quantity = 1;
+
+				//modify item with craftsmanship
 				if (craftType) {
 					let craftModifier = clone(craftsmanship[craftType]);
 					Object.keys(craftModifier[type]).forEach(field => {
@@ -69,6 +73,17 @@ const calcEquipmentStats = createSelector(
 						if (derivedStats.rarity > 10) derivedStats.rarity = 10;
 					}
 				}
+
+				//modify encumbrance via quantity
+				derivedStats.encumbrance = derivedStats.encumbrance * quantity;
+
+				//modify modifiers via quantity
+				if (derivedStats.modifier) {
+					Object.keys(derivedStats.modifier).forEach(modifier => {
+						if (typeof derivedStats.modifier[modifier] === 'number') derivedStats.modifier[modifier] = derivedStats.modifier[modifier] * quantity;
+					})
+				}
+
 				final[item] = derivedStats;
 			});
 		});

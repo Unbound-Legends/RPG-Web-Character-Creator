@@ -1,7 +1,7 @@
 export const CRB = {
 	BoughtInfo: {
 		name: 'Bought Info',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Action',
@@ -12,7 +12,7 @@ export const CRB = {
 	},
 	CleverRetort: {
 		name: 'Clever Retort',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -23,7 +23,7 @@ export const CRB = {
 	},
 	DefensiveSysops: {
 		name: 'Defensive Sysops',
-		setting: 'Modern Day, Science Fiction, Space Opera',
+		setting: ['Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -34,7 +34,7 @@ export const CRB = {
 	},
 	DesperateRecovery: {
 		name: 'Desperate Recovery',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -45,7 +45,7 @@ export const CRB = {
 	},
 	Duelist: {
 		name: 'Duelist',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -56,7 +56,7 @@ export const CRB = {
 	},
 	Durable: {
 		name: 'Durable',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -67,7 +67,7 @@ export const CRB = {
 	},
 	Forager: {
 		name: 'Forager',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -78,7 +78,7 @@ export const CRB = {
 	},
 	Grit: {
 		name: 'Grit',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -90,7 +90,7 @@ export const CRB = {
 	},
 	HamstringShot: {
 		name: 'Hamstring Shot',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Action',
@@ -101,7 +101,7 @@ export const CRB = {
 	},
 	JumpUp: {
 		name: 'Jump Up',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -112,7 +112,7 @@ export const CRB = {
 	},
 	KnackForIt: {
 		name: 'Knack For It',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -123,7 +123,7 @@ export const CRB = {
 	},
 	KnowSomebody: {
 		name: 'Know Somebody',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -134,7 +134,7 @@ export const CRB = {
 	},
 	LetsRide: {
 		name: 'Let\'s Ride',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -145,7 +145,7 @@ export const CRB = {
 	},
 	OneWithNature: {
 		name: 'One With Nature',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -156,7 +156,7 @@ export const CRB = {
 	},
 	Parry: {
 		name: 'Parry',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -167,7 +167,7 @@ export const CRB = {
 	},
 	ProperUpbringing: {
 		name: 'Proper Upbringing',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -178,7 +178,7 @@ export const CRB = {
 	},
 	Quickdraw: {
 		name: 'Quick Draw',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -189,7 +189,7 @@ export const CRB = {
 	},
 	QuickStrike: {
 		name: 'Quick Strike',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -200,7 +200,7 @@ export const CRB = {
 	},
 	RapidReaction: {
 		name: 'Rapid Reaction',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental, Out if Turn',
@@ -211,7 +211,7 @@ export const CRB = {
 	},
 	SecondWind: {
 		name: 'Second Wind',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: true,
 		turn: 'Incidental',
@@ -222,7 +222,7 @@ export const CRB = {
 	},
 	Surgeon: {
 		name: 'Surgeon',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -233,7 +233,7 @@ export const CRB = {
 	},
 	Swift: {
 		name: 'Swift',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -244,7 +244,7 @@ export const CRB = {
 	},
 	Toughened: {
 		name: 'Toughened',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -257,7 +257,7 @@ export const CRB = {
 	},
 	Unremarkable: {
 		name: 'Unremarkable',
-		setting: 'All',
+		setting: ['All'],
 		tier: 1,
 		activation: false,
 		turn: false,
@@ -268,7 +268,7 @@ export const CRB = {
 	},
 	BasicMilitaryTraining: {
 		name: 'Basic Military Training',
-		setting: 'Weird War',
+		setting: ['Weird War'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -280,7 +280,7 @@ export const CRB = {
 	},
 	Berserk: {
 		name: 'Berserk',
-		setting: 'Fantasy, Weird War',
+		setting: ['Fantasy', 'Weird War'],
 		tier: 2,
 		activation: true,
 		turn: 'Maneuver',
@@ -291,7 +291,7 @@ export const CRB = {
 	},
 	CoordinatedAssault: {
 		name: 'Coordinated Assault',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Maneuver',
@@ -302,7 +302,7 @@ export const CRB = {
 	},
 	Counteroffer: {
 		name: 'Counteroffer',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Action',
@@ -313,7 +313,7 @@ export const CRB = {
 	},
 	DaringAviator: {
 		name: 'Daring Aviator',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -324,7 +324,7 @@ export const CRB = {
 	},
 	DefensiveStance: {
 		name: 'Defensive Stance',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Maneuver',
@@ -347,7 +347,7 @@ export const CRB = {
 	},
 	DualWielder: {
 		name: 'Dual Wielder',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Maneuver',
@@ -369,7 +369,7 @@ export const CRB = {
 	},
 	HeightenedAwareness: {
 		name: 'Heightened Awareness',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: false,
 		turn: false,
@@ -380,7 +380,7 @@ export const CRB = {
 	},
 	InspiringRhetoric: {
 		name: 'Inspiring Rhetoric',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Action',
@@ -391,7 +391,7 @@ export const CRB = {
 	},
 	Inventor: {
 		name: 'Inventor',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -402,7 +402,7 @@ export const CRB = {
 	},
 	LuckyStrike: {
 		name: 'Lucky Strike',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Incidental',
@@ -413,7 +413,7 @@ export const CRB = {
 	},
 	ScathingTirade: {
 		name: 'Scathing Tirade',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Action',
@@ -424,7 +424,7 @@ export const CRB = {
 	},
 	SideStep: {
 		name: 'Side Step',
-		setting: 'All',
+		setting: ['All'],
 		tier: 2,
 		activation: true,
 		turn: 'Action',
@@ -435,7 +435,7 @@ export const CRB = {
 	},
 	AnimalCompanion: {
 		name: 'Animal Companion',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -446,7 +446,7 @@ export const CRB = {
 	},
 	BarrelRoll: {
 		name: 'Barrel Roll',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -468,7 +468,7 @@ export const CRB = {
 	},
 	Dodge: {
 		name: 'Dodge',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -479,7 +479,7 @@ export const CRB = {
 	},
 	EagleEyes: {
 		name: 'Eagle Eyes',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: true,
 		turn: 'Action',
@@ -490,7 +490,7 @@ export const CRB = {
 	},
 	FieldCommander: {
 		name: 'Field Commander',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: true,
 		turn: 'Action',
@@ -501,7 +501,7 @@ export const CRB = {
 	},
 	ForgotToCount: {
 		name: 'Forgot To Count?',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -512,7 +512,7 @@ export const CRB = {
 	},
 	FullThrottle: {
 		name: 'Full Throttle',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 3,
 		activation: true,
 		turn: 'Action',
@@ -523,7 +523,7 @@ export const CRB = {
 	},
 	Grenadier: {
 		name: 'Grenadier',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental',
@@ -534,7 +534,7 @@ export const CRB = {
 	},
 	InspiringRhetoricImproved: {
 		name: 'Inspiring Rhetoric (Improved)',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -546,7 +546,7 @@ export const CRB = {
 	},
 	PainkillerSpecialization: {
 		name: 'Painkiller Specialization',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -557,7 +557,7 @@ export const CRB = {
 	},
 	ScathingTiradeImproved: {
 		name: 'Scathing Tirade (Improved)',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: false,
 		turn: false,
@@ -569,7 +569,7 @@ export const CRB = {
 	},
 	HeroicWill: {
 		name: 'Heroic Will',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -580,7 +580,7 @@ export const CRB = {
 	},
 	Natural: {
 		name: 'Natural',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental',
@@ -602,7 +602,7 @@ export const CRB = {
 	},
 	ParryImproved: {
 		name: 'Parry (Improved)',
-		setting: 'All',
+		setting: ['All'],
 		tier: 3,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -614,7 +614,7 @@ export const CRB = {
 	},
 	CantWeTalkAboutThis: {
 		name: 'Can\'t We Talk About This?',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: true,
 		turn: 'Action',
@@ -625,7 +625,7 @@ export const CRB = {
 	},
 	Deadeye: {
 		name: 'Deadeye',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: true,
 		turn: 'Incidental',
@@ -636,7 +636,7 @@ export const CRB = {
 	},
 	Defensive: {
 		name: 'Defensive',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -649,7 +649,7 @@ export const CRB = {
 	},
 	DefensiveDriving: {
 		name: 'Defensive Driving',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera',
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -662,7 +662,7 @@ export const CRB = {
 	},
 	Enduring: {
 		name: 'Enduring',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -674,7 +674,7 @@ export const CRB = {
 	},
 	FieldCommanderImproved: {
 		name: 'Field Commander (Improved)',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: false,
 		turn: false,
@@ -686,7 +686,7 @@ export const CRB = {
 	},
 	HowConvenient: {
 		name: 'How Convenient!',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: true,
 		turn: 'Action',
@@ -697,7 +697,7 @@ export const CRB = {
 	},
 	InspiringRhetoricSupreme: {
 		name: 'Inspiring Rhetoric (Supreme)',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: true,
 		turn: 'Incidental',
@@ -709,7 +709,7 @@ export const CRB = {
 	},
 	MadInventor: {
 		name: 'Mad Inventor',
-		setting: 'Steampunk, Weird War',
+		setting: ['Steampunk', 'Weird War'],
 		tier: 4,
 		activation: true,
 		turn: 'Action',
@@ -720,7 +720,7 @@ export const CRB = {
 	},
 	Overcharge: {
 		name: 'Overcharge',
-		setting: 'Science Fiction, Space Opera',
+		setting: ['Science Fiction', 'Space Opera'],
 		tier: 4,
 		activation: true,
 		turn: 'Action',
@@ -731,7 +731,7 @@ export const CRB = {
 	},
 	ScathingTiradeSupreme: {
 		name: 'Scathing Tirade (Supreme)',
-		setting: 'All',
+		setting: ['All'],
 		tier: 4,
 		activation: true,
 		turn: 'Incidental',
@@ -743,7 +743,7 @@ export const CRB = {
 	},
 	Dedication: {
 		name: 'Dedication',
-		setting: 'All',
+		setting: ['All'],
 		tier: 5,
 		activation: false,
 		turn: false,
@@ -754,7 +754,7 @@ export const CRB = {
 	},
 	Indomitable: {
 		name: 'Indomitable',
-		setting: 'All',
+		setting: ['All'],
 		tier: 5,
 		activation: true,
 		turn: 'Incidental, Out of Turn',
@@ -765,7 +765,7 @@ export const CRB = {
 	},
 	Master: {
 		name: 'Master',
-		setting: 'All',
+		setting: ['All'],
 		tier: 5,
 		activation: true,
 		turn: 'Incidental',
@@ -776,7 +776,7 @@ export const CRB = {
 	},
 	OverchargeImproved: {
 		name: 'Overcharge (Improved)',
-		setting: 'Science Fiction, Space Opera',
+		setting: ['Science Fiction', 'Space Opera'],
 		tier: 5,
 		activation: true,
 		turn: 'Action',
@@ -788,7 +788,7 @@ export const CRB = {
 	},
 	RuinousRepartee: {
 		name: 'Ruinous Repartee',
-		setting: 'All',
+		setting: ['All'],
 		tier: 5,
 		activation: true,
 		turn: 'Action',

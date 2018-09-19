@@ -5,7 +5,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '57',
-		setting: 'Fantasy, Steampunk, Weird War'
+		setting: ['Fantasy', 'Steampunk', 'Weird War']
 	},
 	Arcana: {
 		name: 'Arcana',
@@ -13,7 +13,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '70',
-		setting: 'Magic'
+		setting: ['Magic']
 	},
 	Astrocartography: {
 		name: 'Astrocartography',
@@ -21,7 +21,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '57',
-		setting: 'Space Opera'
+		setting: ['Space Opera']
 	},
 	Athletics: {
 		name: 'Athletics',
@@ -29,7 +29,7 @@ export const skills = {
 		characteristic: 'Brawn',
 		book: 'CRB',
 		page: '58',
-		setting: 'All'
+		setting: ['All']
 	},
 	Brawl: {
 		name: 'Brawl',
@@ -37,7 +37,7 @@ export const skills = {
 		characteristic: 'Brawn',
 		book: 'CRB',
 		page: '67',
-		setting: 'All'
+		setting: ['All']
 	},
 	Charm: {
 		name: 'Charm',
@@ -45,7 +45,7 @@ export const skills = {
 		characteristic: 'Presence',
 		book: 'CRB',
 		page: '54',
-		setting: 'All'
+		setting: ['All']
 	},
 	Coercion: {
 		name: 'Coercion',
@@ -53,7 +53,7 @@ export const skills = {
 		characteristic: 'Willpower',
 		book: 'CRB',
 		page: '55',
-		setting: 'All'
+		setting: ['All']
 	},
 	Computers: {
 		name: 'Computers',
@@ -61,7 +61,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '58',
-		setting: 'Modern Day, Science Fiction, Space Opera'
+		setting: ['Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	Cool: {
 		name: 'Cool',
@@ -69,7 +69,7 @@ export const skills = {
 		characteristic: 'Presence',
 		book: 'CRB',
 		page: '59',
-		setting: 'All'
+		setting: ['All']
 	},
 	Coordination: {
 		name: 'Coordination',
@@ -77,7 +77,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '59',
-		setting: 'All'
+		setting: ['All']
 	},
 	Deception: {
 		name: 'Deception',
@@ -85,7 +85,7 @@ export const skills = {
 		characteristic: 'Cunning',
 		book: 'CRB',
 		page: '56',
-		setting: 'All'
+		setting: ['All']
 	},
 	Discipline: {
 		name: 'Discipline',
@@ -93,7 +93,7 @@ export const skills = {
 		characteristic: 'Willpower',
 		book: 'CRB',
 		page: '60',
-		setting: 'All'
+		setting: ['All']
 	},
 	Divine: {
 		name: 'Divine',
@@ -101,7 +101,7 @@ export const skills = {
 		characteristic: 'Willpower',
 		book: 'CRB',
 		page: '70',
-		setting: 'Magic'
+		setting: ['Magic']
 	},
 	Driving: {
 		name: 'Driving',
@@ -109,7 +109,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '60',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera'
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	Gunnery: {
 		name: 'Gunnery',
@@ -117,7 +117,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '69',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera'
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	Knowledge: {
 		name: 'Knowledge',
@@ -125,7 +125,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '66',
-		setting: 'All'
+		setting: ['All']
 	},
 	Leadership: {
 		name: 'Leadership',
@@ -133,7 +133,7 @@ export const skills = {
 		characteristic: 'Presence',
 		book: 'CRB',
 		page: '56',
-		setting: 'All'
+		setting: ['All']
 	},
 	Mechanics: {
 		name: 'Mechanics',
@@ -141,7 +141,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '60',
-		setting: 'All'
+		setting: ['All']
 	},
 	Medicine: {
 		name: 'Medicine',
@@ -149,7 +149,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '61',
-		setting: 'All'
+		setting: ['All']
 	},
 	Melee: {
 		name: 'Melee',
@@ -157,7 +157,7 @@ export const skills = {
 		characteristic: 'Brawn',
 		book: 'CRB',
 		page: '67',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera'
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	MeleeHeavy: {
 		name: 'Melee (Heavy)',
@@ -165,7 +165,7 @@ export const skills = {
 		characteristic: 'Brawn',
 		book: 'CRB',
 		page: '68',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	MeleeLight: {
 		name: 'Melee (Light)',
@@ -173,7 +173,7 @@ export const skills = {
 		characteristic: 'Brawn',
 		book: 'CRB',
 		page: '68',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	Negotiation: {
 		name: 'Negotiation',
@@ -181,7 +181,7 @@ export const skills = {
 		characteristic: 'Presence',
 		book: 'CRB',
 		page: '56',
-		setting: 'All'
+		setting: ['All']
 	},
 	Operating: {
 		name: 'Operating',
@@ -189,7 +189,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'CRB',
 		page: '62',
-		setting: 'All'
+		setting: ['All']
 	},
 	Perception: {
 		name: 'Perception',
@@ -197,7 +197,7 @@ export const skills = {
 		characteristic: 'Cunning',
 		book: 'CRB',
 		page: '62',
-		setting: 'All'
+		setting: ['All']
 	},
 	Piloting: {
 		name: 'Piloting',
@@ -205,7 +205,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '62',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera'
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	Primal: {
 		name: 'Primal',
@@ -213,7 +213,7 @@ export const skills = {
 		characteristic: 'Cunning',
 		book: 'CRB',
 		page: '70',
-		setting: 'Magic'
+		setting: ['Magic']
 	},
 	Ranged: {
 		name: 'Ranged',
@@ -221,7 +221,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '68',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	RangedHeavy: {
 		name: 'Ranged (Heavy)',
@@ -229,7 +229,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '69',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera'
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	RangedLight: {
 		name: 'Ranged (Light)',
@@ -237,7 +237,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '68',
-		setting: 'Steampunk, Weird War, Modern Day, Science Fiction, Space Opera'
+		setting: ['Steampunk', 'Weird War', 'Modern Day', 'Science Fiction', 'Space Opera']
 	},
 	Resilience: {
 		name: 'Resilience',
@@ -245,7 +245,7 @@ export const skills = {
 		characteristic: 'Brawn',
 		book: 'CRB',
 		page: '63',
-		setting: 'All'
+		setting: ['All']
 	},
 	Riding: {
 		name: 'Riding',
@@ -253,7 +253,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '63',
-		setting: 'Fantasy, Steampunk'
+		setting: ['Fantasy', 'Steampunk']
 	},
 	Skullduggery: {
 		name: 'Skulduggery',
@@ -261,7 +261,7 @@ export const skills = {
 		characteristic: 'Cunning',
 		book: 'CRB',
 		page: '64',
-		setting: 'All'
+		setting: ['All']
 	},
 	Stealth: {
 		name: 'Stealth',
@@ -269,7 +269,7 @@ export const skills = {
 		characteristic: 'Agility',
 		book: 'CRB',
 		page: '64',
-		setting: 'All'
+		setting: ['All']
 	},
 	Streetwise: {
 		name: 'Streetwise',
@@ -277,7 +277,7 @@ export const skills = {
 		characteristic: 'Cunning',
 		book: 'CRB',
 		page: '65',
-		setting: 'All'
+		setting: ['All']
 	},
 	Survival: {
 		name: 'Survival',
@@ -285,7 +285,7 @@ export const skills = {
 		characteristic: 'Cunning',
 		book: 'CRB',
 		page: '65',
-		setting: 'All'
+		setting: ['All']
 	},
 	Vigilance: {
 		name: 'Vigilance',
@@ -293,7 +293,7 @@ export const skills = {
 		characteristic: 'Willpower',
 		book: 'CRB',
 		page: '65',
-		setting: 'All'
+		setting: ['All']
 	},
 
 	//Realms of Terrinoth
@@ -304,7 +304,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'ROT',
 		page: '81',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	KnowledgeForbidden: {
 		name: 'Knowledge Forbidden',
@@ -312,7 +312,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'ROT',
 		page: '81',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	KnowledgeGeography: {
 		name: 'Knowledge Geography',
@@ -320,7 +320,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'ROT',
 		page: '81',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	KnowledgeLore: {
 		name: 'Knowledge Lore',
@@ -328,7 +328,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'ROT',
 		page: '82',
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	Runes: {
 		name: 'Runes',
@@ -336,7 +336,7 @@ export const skills = {
 		characteristic: 'Intellect',
 		book: 'ROT',
 		page: '83',
-		setting: 'Magic'
+		setting: ['Magic']
 	},
 	Verse: {
 		name: 'Verse',
@@ -344,6 +344,6 @@ export const skills = {
 		characteristic: 'Presence',
 		book: 'ROT',
 		page: '83',
-		setting: 'Magic'
+		setting: ['Magic']
 	},
 };

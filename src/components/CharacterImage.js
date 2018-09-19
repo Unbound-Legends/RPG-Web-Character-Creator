@@ -7,11 +7,6 @@ import {changeData} from '../actions';
 class CharacterImageComponent extends React.Component {
 	state = {modal: false, text: this.props.description.image};
 
-	handleChange = (event) => {
-		this.setState({text: event.target.value});
-		event.preventDefault();
-	};
-
 	handleBlur = (event) => {
 		const {changeData, description} = this.props;
 		let obj = {...description};
@@ -41,7 +36,7 @@ class CharacterImageComponent extends React.Component {
 					<ModalBody className='m-3'>
 						<div>
 							<Row>CHARACTER IMAGE URL:</Row>
-							<Input type='text' value={text} onBlur={this.handleBlur} onChange={this.handleChange}/>
+							<Input type='text' value={text} onBlur={this.handleBlur} onChange={(event) => this.setState({text: event.target.value})}/>
 						</div>
 					</ModalBody>
 					<ModalFooter>

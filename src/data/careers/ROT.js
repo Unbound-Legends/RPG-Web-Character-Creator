@@ -3,7 +3,7 @@
 export const ROT = {
 	Disciple: {
 		name: 'Disciple',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '70',
 		description: 'See ROT, page 70, for more details.',
@@ -11,7 +11,7 @@ export const ROT = {
 	},
 	Envoy: {
 		name: 'Envoy',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '70',
 		description: 'See ROT, page 70, for more details.',
@@ -19,7 +19,7 @@ export const ROT = {
 	},
 	Mage: {
 		name: 'Mage',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '71',
 		description: 'See ROT, page 71, for more details.',
@@ -27,7 +27,7 @@ export const ROT = {
 	},
 	Primalist: {
 		name: 'Primalist',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '71',
 		description: 'See ROT, page 71, for more details.',
@@ -35,7 +35,7 @@ export const ROT = {
 	},
 	Scholar: {
 		name: 'Scholar',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '72',
 		description: 'See ROT, page 72, for more details.',
@@ -43,7 +43,7 @@ export const ROT = {
 	},
 	Scout: {
 		name: 'Scout',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '73',
 		description: 'See ROT, page 73, for more details.',
@@ -51,7 +51,7 @@ export const ROT = {
 	},
 	Warrior: {
 		name: 'Warrior',
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		book: 'ROT',
 		page: '73',
 		description: 'See ROT, page 73, for more details.',

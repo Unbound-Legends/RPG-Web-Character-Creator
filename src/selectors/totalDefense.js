@@ -66,6 +66,17 @@ const calcTotalDefense = createSelector(
 							}
 						})
 					}
+				if (item.modifier) {
+					Object.keys(item.modifier).forEach(modifier => {
+						if (modifier === 'meleeDefense') defense.melee += +item.modifier[modifier];
+						if (modifier === 'rangedDefense') defense.ranged += +item.modifier[modifier];
+						if (modifier === 'defense') {
+							defense.ranged += +item.modifier[modifier];
+							defense.melee += +item.modifier[modifier];
+						}
+					});
+
+				}
 			}
 		});
 		if (defense.melee > 4) defense.melee = 4;

@@ -18,6 +18,7 @@ export const dataTypes = [
 	'misc',
 	'money',
 	'setting',
+	'strict',
 	'talentModifiers',
 ];
 

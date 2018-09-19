@@ -6,7 +6,7 @@ export const ROT = {
 		rarity: 5,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	AlchemistLab: {
 		name: 'Alchemist\'s Lab',
@@ -15,7 +15,7 @@ export const ROT = {
 		rarity: 6,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	apothecaryKit: {
 		name: 'Apothecary\'s Kit',
@@ -24,7 +24,7 @@ export const ROT = {
 		rarity: 4,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	backpack: {
 		name: 'Backpack',
@@ -33,7 +33,7 @@ export const ROT = {
 		rarity: 3,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		modifier: {maxEncumbrance: 4}
 
 	},
@@ -44,7 +44,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	climbingGear: {
 		name: 'Climbing Gear',
@@ -53,7 +53,7 @@ export const ROT = {
 		rarity: 2,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	extraQuiver: {
 		name: 'Extra Quiver',
@@ -62,7 +62,7 @@ export const ROT = {
 		rarity: 2,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	fineCloak: {
 		name: 'Fine Cloak',
@@ -71,7 +71,7 @@ export const ROT = {
 		rarity: 4,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	flask: {
 		name: 'Flask',
@@ -80,7 +80,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 	},
 	flintAndSteel: {
 		name: 'Flint and Steel',
@@ -89,7 +89,7 @@ export const ROT = {
 		rarity: 2,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	herbsOfHealing: {
 		name: 'Herbs of Healing',
@@ -98,7 +98,7 @@ export const ROT = {
 		rarity: 6,
 		book: 'ROT',
 		page: 100,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	lantern: {
 		name: 'Lantern',
@@ -107,7 +107,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	pole: {
 		name: 'Pole (30 hands long)',
@@ -116,7 +116,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	rope: {
 		name: 'Rope',
@@ -125,7 +125,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	thievesTools: {
 		name: 'Thieves\' Tools',
@@ -134,7 +134,7 @@ export const ROT = {
 		rarity: 5,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	torches: {
 		name: 'Torches (3)',
@@ -143,7 +143,7 @@ export const ROT = {
 		rarity: 0,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	trailRations: {
 		name: 'Trail Rations (1 day)',
@@ -152,7 +152,7 @@ export const ROT = {
 		rarity: 0,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	wagon: {
 		name: 'Wagon',
@@ -161,7 +161,7 @@ export const ROT = {
 		rarity: 2,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	waterskin: {
 		name: 'Waterskin (empty)',
@@ -170,7 +170,7 @@ export const ROT = {
 		rarity: 1,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	winterClothing: {
 		name: 'Winter Clothing',
@@ -179,6 +179,6 @@ export const ROT = {
 		rarity: 3,
 		book: 'ROT',
 		page: 101,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	}
 };

@@ -1,5 +1,5 @@
 import merge from 'deepmerge';
-import {upperFirst} from 'lodash';
+import {upperFirst} from 'lodash-es';
 import * as data from '../data';
 import {typeCheck} from './checkTypes';
 import * as initialState from './initialState';
@@ -50,6 +50,7 @@ export const masterTalents = (state = clone(initialState.masterTalents), action)
 export const misc = (state = clone(initialState.misc), action) => characterReducer(state, action, 'misc');
 export const money = (state = initialState.money, action) => characterReducer(state, action, 'money');
 export const setting = (state = clone(initialState.setting), action) => characterReducer(state, action, 'setting');
+export const strict = (state = initialState.strict, action) => characterReducer(state, action, 'strict');
 export const talentModifiers = (state = clone(initialState.talentModifiers), action) => characterReducer(state, action, 'talentModifiers');
 
 //database objects
@@ -61,8 +62,11 @@ const databaseReducer = (state, action, type) => {
 			let filter = {};
 			Object.keys(obj).forEach(key => {
 				if (obj[key].setting) {
-					if (obj[key].setting.includes('All') || action.setting.some(setting => obj[key].setting.includes(setting))) {
-						filter[key] = clone(obj[key]);
+					if (action.strict) {
+						if (action.setting.some(setting => obj[key].setting.includes(setting))) filter[key] = clone(obj[key]);
+					}
+					else {
+						if (obj[key].setting.includes('All') || action.setting.some(setting => obj[key].setting.includes(setting))) filter[key] = clone(obj[key]);
 					}
 				} else filter[key] = clone(obj[key]);
 			});

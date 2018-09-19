@@ -8,7 +8,7 @@ export const ROT = {
 		rarity: 5,
 		book: 'ROT',
 		page: 96,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	chainmail: {
 		name: 'Chainmail',
@@ -19,7 +19,7 @@ export const ROT = {
 		rarity: 4,
 		book: 'ROT',
 		page: 96,
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		modifier: {Stealth: ['[black]']},
 	},
 	heavyRobes: {
@@ -31,7 +31,7 @@ export const ROT = {
 		rarity: 0,
 		book: 'ROT',
 		page: 96,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	leather: {
 		name: 'Leather',
@@ -42,7 +42,7 @@ export const ROT = {
 		rarity: 3,
 		book: 'ROT',
 		page: 96,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	padded: {
 		name: 'Padded',
@@ -53,7 +53,7 @@ export const ROT = {
 		rarity: 2,
 		book: 'ROT',
 		page: 96,
-		setting: 'Fantasy'
+		setting: ['Fantasy']
 	},
 	plate: {
 		name: 'Plate',
@@ -64,7 +64,7 @@ export const ROT = {
 		rarity: 6,
 		book: 'ROT',
 		page: 97,
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		modifier: {Stealth: ['[black]', '[black]']},
 
 	},
@@ -77,7 +77,7 @@ export const ROT = {
 		rarity: 4,
 		book: 'ROT',
 		page: 97,
-		setting: 'Fantasy',
+		setting: ['Fantasy'],
 		modifier: {Stealth: ['[black]']},
 	}
 };

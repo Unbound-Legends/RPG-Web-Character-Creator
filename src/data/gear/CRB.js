@@ -6,7 +6,7 @@ export const CRB = {
 		rarity: 3,
 		book: 'CRB',
 		page: 94,
-		setting: 'All',
+		setting: ['All'],
 		modifier: {maxEncumbrance: 4}
 	},
 	painkiller: {
@@ -16,7 +16,7 @@ export const CRB = {
 		rarity: 2,
 		book: 'CRB',
 		page: 94,
-		setting: 'All'
+		setting: ['All']
 	},
 	rope: {
 		name: 'Rope',
@@ -25,6 +25,6 @@ export const CRB = {
 		rarity: 1,
 		book: 'CRB',
 		page: 94,
-		setting: 'All'
+		setting: ['All']
 	}
 };

@@ -1,3 +1,4 @@
+import merge from 'deepmerge';
 import {customDataTypes, dataTypes} from '../data';
 import {db} from '../firestoreDB';
 
@@ -36,7 +37,7 @@ export const loadData = () => {
 	}
 };
 
-export const loadCustomData = (setting = 'All') => {
+export const loadCustomData = (setting = 'All', strict = false) => {
 	return (dispatch, getState) => {
 		dispatch({type: 'loadingCustomData_Changed', payload: true});
 		const {user} = getState();
@@ -44,7 +45,7 @@ export const loadCustomData = (setting = 'All') => {
 			db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
 				let payload = null;
 				if (doc.exists) payload = doc.data().data;
-				dispatch({type: `${type}_Changed`, payload: payload, setting: setting});
+				dispatch({type: `${type}_Changed`, payload: payload, setting: setting, strict: strict});
 				if (index + 1 >= customDataTypes.length) dispatch({type: 'loadingCustomData_Changed', payload: false});
 			}, err => {
 				console.log(`Encountered error: ${err}`);
@@ -145,7 +146,10 @@ export const importCustomData = (customDataSetImport) => {
 	return (dispatch, getState) => {
 		const user = getState().user;
 		Object.keys(customDataSetImport).forEach(type => {
-			if (customDataSetImport[type]) db.doc(`users/${user}/customData/${type}/`).set({data: customDataSetImport[type]}, {merge: true})
+			const customType = getState()[type];
+			let data = customDataSetImport[type];
+			if (customType) data = merge(customType, data);
+			if (customDataSetImport[type]) db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true})
 		});
 	}
 };
