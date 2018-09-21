@@ -4,3 +4,4 @@ v1.3.1
     -added .sort().join(', ') to all the setting displays
     -added a merge and sort when adding setting to customItems
     -moved Settingbuilder to CustomData/
+    -community links

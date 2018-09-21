@@ -11,6 +11,14 @@ export const About = () => {
 				   rel="noopener noreferrer">Contact Me</a>.
 			</Row>
 			<Row className='justify-content-center'>
+				<Button color='link' href="https://www.facebook.com/groups/242585076458814/" target="_blank"
+						className='p-0 m-2'>Facebook Group</Button>
+				<Button color='link' href="https://www.reddit.com/r/genesysrpg/" target="_blank"
+						className='p-0 m-2'>Subreddit</Button>
+				<Button color='link' href="http://discord.gg/3vNJa6t" target="_blank"
+						className='p-0 m-2'>Discord</Button>
+			</Row>
+			<Row className='justify-content-center'>
 				<Button color='link' href="https://paypal.me/SkyJedi" target="_blank"
 						className='p-0 m-2'>Donate</Button>
 				<Button color='link' href="https://patreon.com/SkyJedi" target="_blank"
