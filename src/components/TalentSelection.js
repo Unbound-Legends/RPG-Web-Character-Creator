@@ -137,7 +137,7 @@ class TalentSelectionComponent extends React.Component {
 					{talent.setting &&
 					<Row>
 						<Col sm='4'><b>Setting:</b></Col>
-						<Col>{talent.setting}</Col>
+						<Col>{talent.setting.sort().join(', ')}</Col>
 					</Row>}
 					{talent.book &&
 					<Row className='my-2'>

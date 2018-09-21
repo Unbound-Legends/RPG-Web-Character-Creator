@@ -1,6 +1,7 @@
 import React from 'react';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {ErrorBoundary} from '../';
+import {SettingBuilder} from '../index';
 import {
 	CustomArchetypes,
 	CustomArchetypeTalents,
@@ -27,6 +28,7 @@ export const CustomData = () => {
 					<Tab>Skills</Tab>
 					<Tab>Talents</Tab>
 					<Tab>Weapons</Tab>
+					<Tab>Setting Builder</Tab>
 				</TabList>
 				<TabPanel className='w-100'>
 					<ErrorBoundary>
@@ -76,6 +78,11 @@ export const CustomData = () => {
 				<TabPanel className='w-100'>
 					<ErrorBoundary>
 						<CustomEquipment type='customWeapons'/>
+					</ErrorBoundary>
+				</TabPanel>
+				<TabPanel className='w-100'>
+					<ErrorBoundary>
+						<SettingBuilder/>
 					</ErrorBoundary>
 				</TabPanel>
 			</Tabs></div>

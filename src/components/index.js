@@ -23,6 +23,7 @@ export {MainPage} from './MainPage';
 export {MotivationBlock} from './MotivationBlock';
 export {Motivation} from './Motivation';
 export {Notes} from './Notes';
+export {SettingBuilder} from './SettingBuilder';
 export {ShowCharacteristics} from './ShowCharacteristics';
 export {SkillBlock} from './SkillBlock';
 export {SkillRow} from './SkillRow';

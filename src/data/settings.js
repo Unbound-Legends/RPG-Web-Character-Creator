@@ -8,5 +8,6 @@ export const settings = {
 	weirdWar: 'Weird War',
 	hacking: 'Hacking',
 	vehicle: 'Vehicle',
-	magic: 'Magic'
+	magic: 'Magic',
+	taco: 'Taco',
 };

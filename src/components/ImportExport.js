@@ -1,7 +1,7 @@
 import {cloneDeep, startCase} from 'lodash-es'
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Card, CardBody, CardHeader, CardText, Input, Label, Row} from 'reactstrap';
+import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {importCharacter, importCustomData} from '../actions';
 import {customDataTypes, dataTypes} from '../data/lists';
@@ -146,53 +146,6 @@ class ImportExportComponent extends React.Component {
 		const {characters, customData} = this.state;
 		return (
 			<div className='align-self-end align-self-middle'>
-				{['characters', 'customData'].map(type => {
-					let list = {};
-					if (type === 'characters') list = {...characterList};
-					if (type === 'customData') customDataTypes.forEach(key => list[key] = startCase(key));
-					return (
-						<div key={type}>
-							<Row>
-								<Input type="checkbox"
-									   value='all'
-									   name={type}
-									   checked={type === 'characters' ? characters.length === Object.keys(list).length : customDataTypes.every(type => Object.keys(this.props[type]).every(key => customData[type] ? customData[type].includes(key) : false))}
-									   onChange={this.handleChange}
-								/>{' '} <h5 className='my-auto'>All {startCase(type)}</h5>
-							</Row>
-							{Object.keys(list).sort().map(item =>
-								type === 'customData' && 0 >= Object.keys(this.props[item]).length ? '' :
-									<Card key={item} className='m-2 w-40'>
-										<CardHeader>
-											<CardText className='ml-2'>
-												<Input type='checkbox'
-													   checked={type === 'characters' ? characters.includes(item) : customData[item] ? Object.keys(this.props[item]).every(key => customData[item].includes(key)) : false}
-													   value={item}
-													   name={type}
-													   onChange={this.handleChange}
-												/> {' '}<strong>{list[item]}</strong>
-											</CardText>
-										</CardHeader>
-
-										{type === 'customData' && this.props[item] && Object.keys(this.props[item]).length > 0 &&
-										<CardBody key={item} className='py-2 ml-4'>
-											{Object.keys(this.props[item]).sort().map(key =>
-												<CardText key={key}>
-													<Input type='checkbox'
-														   checked={customData[item] ? customData[item].includes(key) : false}
-														   id={key}
-														   value={item}
-														   name={type}
-														   onChange={this.handleChange}/> {' '}{this.props[item][key].name ? this.props[item][key].name : key}
-												</CardText>
-											)}
-										</CardBody>
-										}
-									</Card>
-							)}
-						</div>
-					)
-				})}
 				<Row>
 					<Button
 						className='m-2 align-middle'
@@ -207,6 +160,57 @@ class ImportExportComponent extends React.Component {
 						id='import'
 						hidden/>
 				</Row>
+				{['characters', 'customData'].map(type => {
+					let list = {};
+					if (type === 'characters') list = {...characterList};
+					if (type === 'customData') customDataTypes.forEach(key => list[key] = startCase(key));
+					return (
+						<div key={type}>
+							<Row>
+								<Input type="checkbox"
+									   value='all'
+									   name={type}
+									   checked={type === 'characters' ? characters.length === Object.keys(list).length : customDataTypes.every(type => Object.keys(this.props[type]).every(key => customData[type] ? customData[type].includes(key) : false))}
+									   onChange={this.handleChange}
+								/>{' '} <h5 className='my-auto'>All {startCase(type)}</h5>
+							</Row>
+							<Row>
+								{Object.keys(list).sort().map(item =>
+									type === 'customData' && 0 >= Object.keys(this.props[item]).length ? '' :
+										<Col md='4' key={item}>
+											<Card className='m-2 w-100'>
+												<CardHeader>
+													<CardText className='ml-2'>
+														<Input type='checkbox'
+															   checked={type === 'characters' ? characters.includes(item) : customData[item] ? Object.keys(this.props[item]).every(key => customData[item].includes(key)) : false}
+															   value={item}
+															   name={type}
+															   onChange={this.handleChange}
+														/> {' '}<strong>{list[item]}</strong>
+													</CardText>
+												</CardHeader>
+
+												{type === 'customData' && this.props[item] && Object.keys(this.props[item]).length > 0 &&
+												<CardBody key={item} className='py-2 ml-4'>
+													{Object.keys(this.props[item]).sort().map(key =>
+														<CardText key={key}>
+															<Input type='checkbox'
+																   checked={customData[item] ? customData[item].includes(key) : false}
+																   id={key}
+																   value={item}
+																   name={type}
+																   onChange={this.handleChange}/> {' '}{this.props[item][key].name ? this.props[item][key].name : key}
+														</CardText>
+													)}
+												</CardBody>
+												}
+											</Card>
+										</Col>
+								)}
+							</Row>
+						</div>
+					)
+				})}
 			</div>
 
 		);

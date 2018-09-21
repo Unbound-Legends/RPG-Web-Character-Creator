@@ -6,6 +6,11 @@ import {Description} from './index'
 
 class TalentListComponent extends React.Component {
 
+	activation = (value) => {
+		if (value) return 'var(--orangeFade)';
+		else return 'var(--lightblueFade)';
+	};
+
 	render() {
 		const {archetype, archetypes, archetypeTalents, talents, talentCount, misc} = this.props;
 		return (
@@ -24,7 +29,7 @@ class TalentListComponent extends React.Component {
 					{(archetypes[archetype] && archetypes[archetype].talents) &&
 					archetypes[archetype].talents.sort().map(key =>
 						archetypeTalents[key] &&
-						<tr key={key}>
+						<tr key={key} style={{backgroundColor: this.activation(archetypeTalents[key].activation)}}>
 							<td>{archetypeTalents[key].name}</td>
 							<td/>
 							<td className='text-center'>{archetypeTalents[key].activation ? 'Active' : 'Passive'}</td>
@@ -35,7 +40,7 @@ class TalentListComponent extends React.Component {
 					{misc &&
 					misc.archetypeTalents &&
 					archetypeTalents[misc.archetypeTalents] &&
-					<tr>
+					<tr style={{backgroundColor: this.activation(archetypeTalents[misc.archetypeTalents].activation)}}>
 						<td>{archetypeTalents[misc.archetypeTalents].name}</td>
 						<td/>
 						<td className='text-center'>{archetypeTalents[misc.archetypeTalents].activation ? 'Active' : 'Passive'}</td>
@@ -45,7 +50,7 @@ class TalentListComponent extends React.Component {
 					}
 					{Object.keys(talentCount).sort().map(key =>
 						talents[key] &&
-						<tr key={key}>
+						<tr key={key} style={{backgroundColor: this.activation(talents[key].activation)}}>
 							<td>{talents[key].name}</td>
 							<td className='text-center'>{talentCount[key]}</td>
 							<td className='text-center'>{talents[key].activation ? 'Active' : 'Passive'}</td>

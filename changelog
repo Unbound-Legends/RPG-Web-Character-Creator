@@ -1,0 +1,5 @@
+v1.3.1
+    -prettied up the import/export module
+    -added bulk settings maker
+    -added .sort().join(', ') to all the setting displays
+    -added a merge and sort when adding setting to customItems

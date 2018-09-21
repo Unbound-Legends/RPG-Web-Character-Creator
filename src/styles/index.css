@@ -11,6 +11,8 @@ body {
 	--boost: rgb(118, 205, 219);
 	--ability: rgb(70, 172, 78);
 	--proficiency: rgb(254, 240, 53);
+	--orangeFade: rgba(245, 142, 32, 0.2);
+	--lightblueFade: rgba(181, 224, 232, 0.2);
 	font-family: 'Avenir Next', sans-serif !important;
 	background-image: url('/images/background.png');
 }
