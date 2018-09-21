@@ -85,7 +85,7 @@ class ArchetypeStatsComponent extends React.Component {
 				)}
 				<Row className='my-2'>
 					<Col sm='5'><b>Setting:</b></Col>
-					<Col>{masterArchetype.setting.sort().join(', ')}</Col></Row>
+					<Col>{Array.isArray(masterArchetype.setting) ? masterArchetype.setting.sort().join(', ') : masterArchetype.setting}</Col></Row>
 				{masterArchetype.book &&
 				<Row className='my-2'>
 					<Col sm='5'><b>Book:</b></Col>

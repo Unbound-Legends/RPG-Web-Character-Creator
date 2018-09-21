@@ -64,7 +64,7 @@ class CareerComponent extends React.Component {
 								<b>Setting:</b>
 							</Col>
 							<Col sm='6'>
-								{masterCareer.setting.sort().join(', ')}
+								{Array.isArray(masterCareer.setting) ? masterCareer.setting.sort().join(', ') : masterCareer.setting}
 							</Col>
 						</Row>
 						{masterCareer.book &&
