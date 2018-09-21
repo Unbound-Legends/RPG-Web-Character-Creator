@@ -1,7 +1,6 @@
 import React from 'react';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {ErrorBoundary} from '../';
-import {SettingBuilder} from '../index';
 import {
 	CustomArchetypes,
 	CustomArchetypeTalents,
@@ -11,6 +10,7 @@ import {
 	CustomSettings,
 	CustomSkills,
 	CustomTalents,
+	SettingBuilder
 } from './';
 
 export const CustomData = () => {
