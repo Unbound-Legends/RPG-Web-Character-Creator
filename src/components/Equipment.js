@@ -154,7 +154,7 @@ class EquipmentComponent extends React.Component {
 		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense, changeData} = this.props;
 		const {money, equipModal} = this.state;
 		return (
-			<div className='w-100'>
+			<div>
 				<Row className='justify-content-end'><h5>EQUIPMENT</h5></Row>
 				<hr/>
 				<Row className='my-2'>
@@ -177,7 +177,7 @@ class EquipmentComponent extends React.Component {
 					</Col>
 				</Row>
 				<Row>
-					<Tabs defaultIndex={0} className='d-print-none'>
+					<Tabs defaultIndex={0} className='d-print-none  overflowX' style={{width: '90vw'}}>
 						<TabList>
 							<Tab>WEAPONS</Tab>
 							<Tab>ARMOR</Tab>

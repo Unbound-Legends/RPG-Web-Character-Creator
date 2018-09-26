@@ -15,7 +15,7 @@ class NotesComponent extends React.Component {
 		const {notes} = this.state;
 		const {changeData, description} = this.props;
 		return (
-			<div className='m-1'>
+			<div>
 				<Row className='justify-content-end'>
 					<h5>NOTES</h5>
 				</Row>

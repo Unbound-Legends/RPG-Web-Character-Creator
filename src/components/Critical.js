@@ -37,14 +37,14 @@ class CriticalComponent extends React.Component {
 		const {value, modal} = this.state;
 		const {critical} = this.props;
 		return (
-			<div className='w-100'>
+			<div>
 				<Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
 				<hr/>
 				<Row className='my-2'>
-					<b className='my-auto'>Add a critical:</b>
-					<Input className='w-10 mx-2' type='number' name='critical' value={value > 0 ? value : ''}
+					<b className='my-auto'>Add Critical:</b>
+					<Input className='w-20 mx-2' type='number' name='critical' value={value > 0 ? value : ''}
 						   onChange={this.handleChange}/>
-					<Button size='sm' onClick={this.handleSubmit}>Add Critical</Button>
+					<Button size='sm' onClick={this.handleSubmit}>Add</Button>
 				</Row>
 				{critical.map((critRoll, index) =>
 					<Row className='my-2' key={index} onClick={() => this.setState({modal: index})}>

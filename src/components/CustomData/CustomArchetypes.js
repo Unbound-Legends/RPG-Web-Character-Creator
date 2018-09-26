@@ -8,7 +8,7 @@ import {changeCustomData, changeData} from '../../actions';
 import {chars} from '../../data/lists';
 import {Fragment} from './';
 
-const attributes = {WOUNDS: 'woundThreshold', STRAIN: 'strainThreshold'};
+const attributes = {Wounds: 'woundThreshold', Strain: 'strainThreshold'};
 
 const clone = require('clone');
 
@@ -57,7 +57,7 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	handleClick = (event) => {
-		let value = this.state[event.target.name] + +event.target.value;
+		let value = +this.state[event.target.name] + +event.target.value;
 		if (chars.includes(event.target.name) && (value > 5)) {
 			alert(`Cannot set ${event.target.name} to ${value}`);
 			return;
@@ -115,19 +115,19 @@ class CustomArchetypesComponent extends React.Component {
 		const archetype = customArchetypes[event.target.name];
 		this.setState({
 			name: archetype.name,
-			Brawn: archetype.characteristics.Brawn,
-			Agility: archetype.characteristics.Agility,
-			Intellect: archetype.characteristics.Intellect,
-			Cunning: archetype.characteristics.Cunning,
-			Willpower: archetype.characteristics.Willpower,
-			Presence: archetype.characteristics.Presence,
+			Brawn: archetype.characteristics ? archetype.characteristics.Brawn : 0,
+			Agility: archetype.characteristics ? archetype.characteristics.Agility : 0,
+			Intellect: archetype.characteristics ? archetype.characteristics.Intellect : 0,
+			Cunning: archetype.characteristics ? archetype.characteristics.Cunning : 0,
+			Willpower: archetype.characteristics ? archetype.characteristics.Willpower : 0,
+			Presence: archetype.characteristics ? archetype.characteristics.Presence : 0,
 			woundThreshold: archetype.woundThreshold,
 			strainThreshold: archetype.strainThreshold,
 			XP: archetype.experience,
-			freeSkillRanks: archetype.skills,
+			freeSkillRanks: archetype.skills ? archetype.skills : {},
 			description: archetype.description,
 			setting: typeof archetype.setting === 'string' ? archetype.setting.split(', ') : archetype.setting,
-			archetypeTalents: archetype.talents,
+			archetypeTalents: archetype.talents ? archetype.talents : [],
 			mode: 'edit',
 		});
 	};
@@ -156,9 +156,8 @@ class CustomArchetypesComponent extends React.Component {
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center d-inline-block'>
 								<div className='imageBox m-auto'>
-									<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
+									<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
 									<Row className='characteristicValue'>{this.state[stat]}</Row>
-									<Row className='characteristicTitle'>{stat}</Row>
 								</div>
 								<ButtonGroup>
 									<Button name={stat} value={1} onClick={this.handleClick}>↑</Button>
@@ -171,11 +170,10 @@ class CustomArchetypesComponent extends React.Component {
 				<Row className='mt-2'>
 					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
 					<Col>
-						{['WOUNDS', 'STRAIN'].map(type =>
+						{['Wounds', 'Strain'].map(type =>
 							<div className='m-2 text-center d-inline-block' key={type}>
 								<div className='imageBox attribute'>
-									<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-									<Row className='attributeTitle'>{type}</Row>
+									<img src={`/images/svg/blocks/${upperFirst(type)}.svg`} alt='' className='png'/>
 									<Row className='attributeValue'>{this.state[attributes[type]]}</Row>
 								</div>
 								<ButtonGroup>

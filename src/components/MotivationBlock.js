@@ -7,7 +7,7 @@ import {changeData} from '../actions';
 const clone = require('clone');
 
 const seedrandom = require('seedrandom');
-let rng = seedrandom('added entropy.', {entropy: true});
+let rng = seedrandom(Math.random(), {entropy: true});
 
 class MotivationBlockComponent extends React.Component {
     state = {description: this.props.masterMotivations[this.props.type] ? this.props.masterMotivations[this.props.type].description : ''};

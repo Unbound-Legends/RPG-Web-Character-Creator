@@ -3,7 +3,7 @@ import {Button, Row} from 'reactstrap';
 
 export const About = () => {
 	return (
-		<div className='d-print-none m-2, w-100'>
+		<div>
 			<Row className='justify-content-center'>
 				Created by&nbsp;<a href="https://github.com/SkyJedi" target="_blank"
 								   rel="noopener noreferrer">SkyJedi</a>. Questions? Comments?&nbsp;

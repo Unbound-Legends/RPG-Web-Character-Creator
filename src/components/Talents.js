@@ -8,7 +8,7 @@ class TalentsComponent extends React.Component {
 	render() {
 		const {masterTalents} = this.props;
 		return (
-			<div className='w-100'>
+			<div>
 				<Row className='justify-content-end'>
 					<h5>TALENTS</h5>
 				</Row>

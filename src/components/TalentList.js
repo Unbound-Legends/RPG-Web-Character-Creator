@@ -14,10 +14,10 @@ class TalentListComponent extends React.Component {
 	render() {
 		const {archetype, archetypes, archetypeTalents, talents, talentCount, misc} = this.props;
 		return (
-			<div className='w-100 no-break'>
+			<div>
 				<Row className='justify-content-end'><h5>TALENT LIST</h5></Row>
 				<hr/>
-				<Table>
+				<Table className='fontSizeSmall'>
 					<thead>
 					<tr className='text-center'>
 						{['Talent', 'Rank', 'Activation', 'Type', 'Description'].map((heading) =>

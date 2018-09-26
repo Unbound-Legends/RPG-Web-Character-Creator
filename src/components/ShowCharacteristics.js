@@ -11,7 +11,7 @@ class ShowCharacteristicsComponent extends React.Component {
 	render() {
 		const {characteristics} = this.props;
 		return (
-			<div className='w-100'>
+			<div>
 				<Row className='justify-content-end'>
 					<h5>CHARACTERISTICS</h5>
 					<Button color='link' className='noUnderLine p-0' onClick={() => this.setState({modal: true})}>⚙</Button>
@@ -20,9 +20,8 @@ class ShowCharacteristicsComponent extends React.Component {
 				<Row className='justify-content-center'>
 					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
+							<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
 							<Row className='characteristicValue'>{characteristics[stat]}</Row>
-							<Row className='characteristicTitle'>{stat}</Row>
 						</div>
 					)}
 				</Row>

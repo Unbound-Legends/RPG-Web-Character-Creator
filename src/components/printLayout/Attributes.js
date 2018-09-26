@@ -6,40 +6,31 @@ import {encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, total
 class Component extends React.Component {
 
 	render() {
-		const {woundThreshold, strainThreshold, currentWound, currentStrain, totalSoak, totalDefense, totalEncumbrance, encumbranceLimit} = this.props;
+		const {woundThreshold, strainThreshold, currentWound, currentStrain, totalSoak, totalDefense} = this.props;
 		return (
 			<div>
 				<Row className='justify-content-end'><h5>ATTRIBUTES</h5></Row>
 				<hr/>
 				<Row className='my-1 justify-content-center'>
 					<div className='imageBox attribute'>
-						<img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
-						<Row className='attributeTitle'>WOUNDS</Row>
+						<img src={`/images/svg/blocks/Wounds.svg`} alt='' className='svg'/>
 						<Row className='attributeValue'>
 							{`${woundThreshold}   |   ${currentWound}`}
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
-						<Row className='attributeTitle'>STRAIN</Row>
+						<img src={`/images/svg/blocks/Strain.svg`} alt='' className='svg'/>
 						<Row className='attributeValue'>
 							{`${strainThreshold}   |   ${currentStrain}`}
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={'/images/png/SingleAttribute.png'} alt='' className='png'/>
-						<Row className='attributeTitle'>SOAK</Row>
+						<img src={`/images/svg/blocks/Soak.svg`} alt='' className='svg'/>
 						<Row className='attributeValue'>{totalSoak}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
-						<Row className='attributeTitle'>DEFENSE</Row>
+						<img src={`/images/svg/blocks/Defense.svg`} alt='' className='svg'/>
 						<Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
-					</div>
-					<div className='imageBox attribute'>
-						<img src={'/images/png/DoubleAttribute.png'} alt='' className='png'/>
-						<Row className='attributeTitle'>ENCUMBRANCE</Row>
-						<Row className='attributeValue'>{`${encumbranceLimit}  |   ${totalEncumbrance}`}</Row>
 					</div>
 				</Row>
 			</div>

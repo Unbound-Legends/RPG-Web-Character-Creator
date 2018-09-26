@@ -4,7 +4,7 @@ import {MotivationBlock} from './index';
 
 export const Motivation = () => {
 	return (
-		<div className='w-100'>
+		<div>
 			<Row className='justify-content-end'><h5>MOTIVATIONS</h5></Row>
 			<hr/>
 			<Row className='justify-content-center'>

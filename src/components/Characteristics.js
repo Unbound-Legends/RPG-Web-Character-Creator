@@ -53,12 +53,11 @@ class CharacteristicsComponent extends React.Component {
 				<ModalBody className='m-1 text-left'>
 					<Row>Total XP: {this.countXP()}</Row>
 					<Row className='justify-content-center'>
-						{chars.map((stat) =>
+						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center'>
 								<div className='imageBox m-auto'>
-									<img src={'/images/png/Characteristic.png'} alt='' className='png'/>
+									<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
 									<Row className='characteristicValue'>{characteristics[stat]}</Row>
-									<Row className='characteristicTitle'>{stat}</Row>
 								</div>
 								<ButtonGroup>
 									<Button value={stat} name='Up' onClick={this.handleClick}>↑</Button>

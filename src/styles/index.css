@@ -25,17 +25,17 @@ hr {
 }
 
 h5 {
-	font-size: 1.25rem;
+	font-size: 1.25em;
 	margin-bottom: 0;
 	margin-top: 0.5rem;
 }
 
 .table th {
-	padding: 0.4rem 0.2rem;
+	padding: 0.4em 0.2em;
 }
 
 .table td {
-	padding: 0.4rem 0.2rem;
+	padding: 0.4em 0.2em;
 	vertical-align: middle;
 }
 
@@ -99,18 +99,22 @@ input[type="number"] {
 	text-align: center;
 	color: black;
 	padding: 0;
-	margin: 0.15rem;
-	width: 100px;
+	margin: 0.15em;
+	width: 6em;
 }
 
 .attribute {
-	width: 140px;
+	width: 10em;
+	height: 5.5em;
 }
 
 .xpBox {
 	width: 140px;
 }
 
+.svg {
+	width: 100%;
+}
 .png {
 	width: 100%;
 }
@@ -122,49 +126,30 @@ input[type="number"] {
 	transform: translate(-50%, -50%);
 }
 
-.attributeTitle {
-	position: absolute;
-	color: white;
-	font-size: 12px;
-	top: 17%;
-	left: 55%;
-	transform: translate(-50%, -50%);
-}
-
 .attributeValue {
 	position: absolute;
 	display: inline-flex;
-	font-size: 20px;
+	font-size: 1.5em;
 	font-weight: 600;
 	top: 51%;
-	left: 60%;
+	left: 58%;
 	transform: translate(-50%, -50%);
 	flex: unset;
 }
 
-.characteristicTitle {
-	position: absolute;
-	font-size: 17px;
-	color: white;
-	font-weight: 600;
-	top: 84%;
-	left: 65%;
-	transform: translate(-50%, -50%);
-}
-
 .characteristicValue {
 	position: absolute;
-	font-size: 40px;
+	font-size: 2.5em;
 	font-weight: 600;
 	top: 35%;
-	left: 65%;
+	left: 62%;
 	transform: translate(-50%, -50%);
 	flex: unset;
 }
 
 .xpValue {
 	position: absolute;
-	font-size: 40px;
+	font-size: 2em;
 	font-weight: 600;
 	top: 45%;
 	left: 60%;
@@ -229,7 +214,7 @@ input[type="number"] {
 
 .ffi {
 	vertical-align: middle;
-	font-size: 1.4rem;
+	font-size: 1.4em;
 	letter-spacing: -3px;
 }
 
@@ -246,17 +231,25 @@ input[type="number"] {
 and (max-width: 480px) {
 
 	.table {
-		font-size: 10px;
+		font-size: 0.8em;
+	}
+
+	.fontSizeSmall {
+		font-size: 0.5em;
 	}
 
 	.talentCard {
-		width: 14vw;
+		width: 16vw;
 		height: 12vh;
-		font-size: 0.4rem;
+		font-size: 0.5em;
 	}
 
 	.ffi {
-		font-size: 0.8rem;
+		font-size: 2em;
+	}
+
+	.overflowX {
+		overflow-x: scroll;
 	}
 }
 
@@ -266,7 +259,7 @@ and (max-width: 480px) {
 	}
 
 	h5 {
-		font-size: 1rem;
+		font-size: 1em;
 		margin-top: 0.25rem;
 		font-weight: 600;
 	}
@@ -290,11 +283,11 @@ and (max-width: 480px) {
 	.table td {
 		padding: 0.1rem;
 		vertical-align: middle;
-		font-size: 0.8rem;
+		font-size: 0.8em;
 	}
 
 	.ffi {
-		font-size: 1rem;
+		font-size: 2em;
 	}
 
 }

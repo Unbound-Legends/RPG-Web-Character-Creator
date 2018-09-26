@@ -39,7 +39,7 @@ class CharacterDescriptionComponent extends React.Component {
 
 	render() {
 		return (
-			<div className='w-100 m-1'>
+			<div>
 				<Row className='justify-content-end'><h5>CHARACTER DESCRIPTION</h5></Row>
 				<hr/>
 				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map(aspect =>

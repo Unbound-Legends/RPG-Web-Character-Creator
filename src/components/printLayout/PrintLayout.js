@@ -1,5 +1,7 @@
 import React from 'react';
 import {Col, Container, Row} from 'reactstrap';
+
+import {TalentList} from "../index";
 import {
 	Attributes,
 	Character,
@@ -14,8 +16,6 @@ import {
 	TalentPyramid,
 	XP,
 } from './index';
-
-import {TalentList} from "../index";
 
 export const PrintLayout = () => {
 	return (
@@ -42,7 +42,7 @@ export const PrintLayout = () => {
 				</Col>
 			</Row>
 			<Equipment/>
-			<TalentList/>
+			<TalentList className='no-break'/>
 			<TalentPyramid/>
 			<Notes/>
 		</Container>

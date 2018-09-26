@@ -10,7 +10,7 @@ class Component extends React.Component {
 			<div>
 				<Row className='justify-content-end'><h5>CHARACTER DESCRIPTION</h5></Row>
 				<hr/>
-				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map((aspect) =>
+				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map(aspect =>
 					<Row key={aspect} className='my-2'>
 						<Col sm='3'>
 							<b>{aspect.toLocaleUpperCase()}:</b>
