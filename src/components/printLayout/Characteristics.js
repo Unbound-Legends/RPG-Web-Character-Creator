@@ -9,14 +9,13 @@ class Component extends React.Component {
 	render() {
 		const {characteristics} = this.props;
 		return (
-			<div className='w-100'>
+			<div>
 				<Row className='justify-content-end'><h5>CHARACTERISTICS</h5></Row>
 				<hr/>
 				<Row className='justify-content-center'>
-					{chars.map((stat) =>
+					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
 							<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
-
 							<Row className='characteristicValue'>{characteristics[stat]}</Row>
 						</div>
 					)}

@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Button, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {criticalText} from '../selectors';
-import {Description} from './index';
+import {DeleteButton, Description} from './index';
 
 class CriticalComponent extends React.Component {
 	state = {value: '', modal: false};
@@ -26,46 +26,44 @@ class CriticalComponent extends React.Component {
 		event.preventDefault();
 	};
 
-	removeCritical = () => {
+	handleDelete = (event) => {
 		let newArr = [...this.props.critical];
-		newArr.splice(this.state.modal, 1);
+		newArr.splice(event.target.value, 1);
 		this.props.changeData(newArr, 'critical');
 		this.setState({modal: false});
 	};
 
 	render() {
-		const {value, modal} = this.state;
+		const {value} = this.state;
 		const {critical} = this.props;
 		return (
 			<div>
 				<Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
 				<hr/>
-				<Row className='my-2'>
+				<Table className='bg-light'>
+					<thead>
+					<tr>
+						<th>CRITICAL</th>
+						<th>DESCRIPTION</th>
+						<th/>
+					</tr>
+					</thead>
+					<tbody>
+					{critical.map((critRoll, index) =>
+						<tr className='my-2' key={index}>
+							<td><b>{critRoll}:</b></td>
+							<td><Description text={criticalText(critRoll)}/></td>
+							<td><DeleteButton value={index} onClick={this.handleDelete}/></td>
+						</tr>
+					)}
+					</tbody>
+				</Table>
+				<Row className='my-2 justify-content-end'>
 					<b className='my-auto'>Add Critical:</b>
 					<Input className='w-20 mx-2' type='number' name='critical' value={value > 0 ? value : ''}
 						   onChange={this.handleChange}/>
 					<Button size='sm' onClick={this.handleSubmit}>Add</Button>
 				</Row>
-				{critical.map((critRoll, index) =>
-					<Row className='my-2' key={index} onClick={() => this.setState({modal: index})}>
-						<Col xs='1' className='text-right p-0'><b>{critRoll}:</b></Col>
-						<Col className='p-0'><Description text={criticalText(critRoll)}/></Col>
-						<hr/>
-					</Row>
-				)}
-				<Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
-					<ModalHeader toggle={() => this.setState({modal: false})}>Remove Critical Injury?</ModalHeader>
-					<ModalBody>
-						<Row>
-							<Col xs='1' className='text-right p-0'><b>{critical[modal]}:</b></Col>
-							<Col className='p-0'><Description text={criticalText(critical[modal])}/></Col>
-						</Row>
-					</ModalBody>
-					<ModalFooter>
-						<Button onClick={this.removeCritical}>Remove Critical</Button>
-						<Button onClick={() => this.setState({modal: false})}>Cancel</Button>
-					</ModalFooter>
-				</Modal>
 			</div>
 		);
 	}

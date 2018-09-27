@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Card, CardBody, CardHeader, Row} from 'reactstrap';
+import {Row} from 'reactstrap';
 
 class Component extends React.Component {
 
@@ -11,18 +11,16 @@ class Component extends React.Component {
 				<Row className='justify-content-end'><h5>MOTIVATIONS</h5></Row>
 				<hr/>
 				<Row className='justify-content-center'>
-					{['Strength', 'Flaw', 'Desire', 'Fear'].map(type => {
-							return (
-								<Card className='m-2' key={type} style={{width: '45%', height: '300px'}}>
-									<CardHeader>
-										<b>{`${type}: ${masterMotivations[type] ? (masterMotivations[type].key ? masterMotivations[type].key : '') : ''}`}</b>
-									</CardHeader>
-									<CardBody>
-										{masterMotivations[type] ? masterMotivations[type].description : ''}
-									</CardBody>
-								</Card>
-							)
-						}
+					{['Strength', 'Flaw', 'Desire', 'Fear'].map(type =>
+						<Row key={type}>
+							<h4>{type}:</h4>
+							{masterMotivations[type] ?
+								<p>
+									<strong>{masterMotivations[type].key} - </strong>
+									<a>{masterMotivations[type].description}</a>
+								</p>
+								: ''}
+						</Row>
 					)}
 				</Row>
 			</div>

@@ -7,57 +7,40 @@ class Component extends React.Component {
 	render() {
 		const {archetype, archetypes, careers, career, characterList, character, description, setting} = this.props;
 		return (
-			<Row>
-				<Col sm='6'>
-					<Row className='justify-content-end align-items-center'><h5>CHARACTER</h5></Row>
-					<hr/>
-					<Row className='align-items-center'>
-						<Col sm='4'>
-							<b>CHARACTER NAME:</b>
-						</Col>
-						<Col>{characterList[character]}</Col>
-					</Row>
-					<hr/>
-					<Row className='align-items-center'>
-						<Col sm='4'>
-							<b>ARCHETYPE:</b>
-						</Col>
-						<Col>
-							{archetype === null ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
-						</Col>
-					</Row>
-					<hr/>
-					<Row className='align-items-center'>
-						<Col sm='4'>
-							<b>CAREER:</b>
-						</Col>
-						<Col>
-							{career === null ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
-						</Col>
-					</Row>
-					<hr/>
-					<Row className='align-items-center'>
-						<Col sm='4'>
-							<b>SETTING:</b>
-						</Col>
-						<Col>
-							{setting.join(', ')}
-						</Col>
-					</Row>
-					<hr/>
-					<Row className='align-items-center'>
-						<Col sm='4'>
-							<b>PLAYER NAME:</b>
-						</Col>
-						<Col>
-							{description.playerName}
-						</Col>
-					</Row>
-				</Col>
-				<Col className='text-center'>
-					<img className='img-fluid text-center w-60' src={'images/favicon.png'} alt=''/>
-				</Col>
-			</Row>
+			<div>
+				<Row>
+					<Col md='8'>
+						<Row className='justify-content-end align-items-center'><h5>CHARACTER</h5></Row>
+						<hr/>
+						<Row className='align-items-center'>
+							<Col>
+								<b className='mx-2'>CHARACTER:</b>{characterList[character]}
+							</Col>
+						</Row>
+						<hr/>
+						<Row className='align-items-start'>
+							<Col>
+								<b className='mx-2'>ARCHETYPE:</b>{archetype === null ? '' : archetypes[archetype] ? archetypes[archetype].name : 'Missing Archetype Data'}
+							</Col>
+							<Col>
+								<b className='mx-2'>CAREER:</b>{career === null ? '' : careers[career] ? careers[career].name : 'Missing Career Data'}
+							</Col>
+						</Row>
+						<hr/>
+						<Row className='align-items-start'>
+							<Col>
+								<b className='mx-2'>SETTING:</b>{setting.join(', ')}
+							</Col>
+							<Col>
+								<b className='mx-2'>PLAYER:</b>{description.playerName}
+							</Col>
+						</Row>
+					</Col>
+					<Col className='text-right'>
+						<img className='img-fluid text-right w-60' src={'images/favicon.png'} alt=''/>
+					</Col>
+				</Row>
+			</div>
 
 		);
 	}

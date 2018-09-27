@@ -15,11 +15,7 @@ class Component extends React.Component {
 			case 'equipped':
 				return (
 					<td key={key + block}>
-						<input type='checkbox'
-							   className='text-center'
-							   checked={equipmentStats[key][block]}
-							   readOnly
-						/>
+						{equipmentStats[key][block] ? '✓' : ''}
 					</td>
 				);
 			case 'name':
@@ -31,7 +27,7 @@ class Component extends React.Component {
 			case 'defense':
 			case 'rangedDefense':
 			case 'meleeDefense':
-			case 'amount':
+			case 'quantity':
 				return (
 					<td key={key + block}>
 						{item[block]}
@@ -152,7 +148,7 @@ class Component extends React.Component {
 						<tbody>
 						{Object.keys(equipmentGear).map(key =>
 							<tr key={key}>
-								{['carried', 'name', 'amount', 'encumbrance', 'qualities'].map(block =>
+								{['carried', 'name', 'quantity', 'encumbrance', 'qualities'].map(block =>
 									this.getLabel(block, key)
 								)}
 							</tr>

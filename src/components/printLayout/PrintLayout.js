@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Container, Row} from 'reactstrap';
 
-import {TalentList} from "../index";
+import {TalentList} from '../index';
 import {
 	Attributes,
 	Character,
@@ -21,14 +21,8 @@ export const PrintLayout = () => {
 	return (
 		<Container style={{fontSize: '0.8rem'}}>
 			<Character/>
-			<Row>
-				<Col sm='7'>
-					<Attributes/>
-				</Col>
-				<Col sm='5'>
-					<Characteristics/>
-				</Col>
-			</Row>
+			<Attributes/>
+			<Characteristics/>
 			<Skill/>
 			<XP/>
 			<Row>
@@ -38,12 +32,12 @@ export const PrintLayout = () => {
 				<Col sm='4'>
 					<CharacterImage/>
 					<CharacterDescription/>
-					<Critical/>
 				</Col>
 			</Row>
 			<Equipment/>
-			<TalentList className='no-break'/>
+			<Critical/>
 			<TalentPyramid/>
+			<TalentList/>
 			<Notes/>
 		</Container>
 	)

@@ -8,7 +8,7 @@ class Component extends React.Component {
 	render() {
 		const {description} = this.props;
 		return (
-			<div>
+			<div className='no-break'>
 				<Row className='justify-content-end'><h5>NOTES</h5></Row>
 				<hr/>
 				<Row style={{whiteSpace: 'pre-line'}}>

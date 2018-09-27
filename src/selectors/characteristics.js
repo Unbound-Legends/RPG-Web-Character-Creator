@@ -40,6 +40,10 @@ const calcCharacteristics = createSelector(
 			}
 		});
 
+		//Hard cap of 6
+		Object.keys(characteristics).forEach(characteristic => {
+			if (characteristics[characteristic] > 6) characteristics[characteristic] = 6;
+		});
 		return characteristics;
 	}
 );

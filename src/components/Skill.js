@@ -12,17 +12,15 @@ class SkillComponent extends React.Component {
 				<hr/>
 				<Row>
 					<Col>
-						{['General', 'Magic'].map((type, index) =>
+						{['General', 'Magic'].map(type =>
 							<SkillBlock key={type}
-										type={type}
-										index={index}/>
+										type={type}/>
 						)}
 					</Col>
 					<Col>
-						{['Combat', 'Social', 'Knowledge'].map((type, index) =>
+						{['Combat', 'Social', 'Knowledge'].map(type =>
 							<SkillBlock key={type}
-										type={type}
-										index={index}/>
+										type={type}/>
 						)}
 					</Col>
 				</Row>

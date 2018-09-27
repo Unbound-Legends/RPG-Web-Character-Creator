@@ -6,7 +6,7 @@ import {Button, Col, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {encumbranceLimit, equipmentStats, gearDice, skillDice, totalDefense, totalEncumbrance, totalSoak,} from '../selectors';
-import {DeleteButton, Description, Gear} from "./index";
+import {DeleteButton, Description, Gear} from './index';
 
 const clone = require('clone');
 
@@ -185,7 +185,7 @@ class EquipmentComponent extends React.Component {
 						</TabList>
 						<TabPanel>
 							{Object.keys(equipmentWeapons).length > 0 &&
-							<Table className='text-center'>
+							<Table className='text-center bg-light'>
 								<thead>
 								<tr>
 									<th>NAME</th>

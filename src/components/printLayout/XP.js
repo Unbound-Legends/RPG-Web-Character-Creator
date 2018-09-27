@@ -8,15 +8,15 @@ class Component extends React.Component {
 	render() {
 		const {totalXP, usedXP} = this.props;
 		return (
-			<div className='w-100 break-after'>
+			<div className='break-after'>
 				<Row className='justify-content-between'>
-					<div className='imageBox xpBox print-totalXP'>
+					<div className='imageBox xpBox totalXP'>
 						<img src={`/images/svg/blocks/TotalXp.svg`} alt='' className='svg'/>
 						<Row className='xpValue'>{totalXP}</Row>
 					</div>
 
-					<div className='imageBox xpBox print-availableXP'>
-						<img src={`/images/svg/blocks/TotalXp.svg`} alt='' className='svg'/>
+					<div className='imageBox xpBox availableXP'>
+						<img src={`/images/svg/blocks/AvailableXp.svg`} alt='' className='svg'/>
 						<Row className='xpValue'>{totalXP - usedXP}</Row>
 					</div>
 				</Row>

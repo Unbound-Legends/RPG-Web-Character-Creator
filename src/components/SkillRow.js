@@ -52,10 +52,9 @@ class SkillRowComponent extends React.Component {
 					{`${skill.name} (${this.shortCharacteristics()})`}
 				</td>
 				<td className='table-career'>
-					<input type='checkbox' checked={!!careerCheck[skillKey]}
-						   readOnly/>
+					{!!careerCheck[skillKey] ? '✓' : ''}
 				</td>
-				<td>
+				<td className='table-rank'>
 					<select disabled={!archetype || !career} value={skillRanks[skillKey]}
 							onChange={this.handleRankChange} style={{margin: '0'}}>
 						{ranks.map((key) => <option key={key} value={key}>{key}</option>)}

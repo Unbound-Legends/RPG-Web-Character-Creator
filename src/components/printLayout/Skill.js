@@ -7,7 +7,7 @@ class Component extends React.Component {
 
 	render() {
 		return (
-			<div className='w-100'>
+			<div>
 				<Row className='justify-content-end'><h5>SKILLS</h5></Row>
 				<hr/>
 				<Row>

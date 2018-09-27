@@ -90,6 +90,6 @@ export class Description extends React.Component {
 	};
 
 	render() {
-		return <div className='description m-auto' dangerouslySetInnerHTML={this.checkText()}/>
+		return <div className='m-auto' dangerouslySetInnerHTML={this.checkText()}/>
 	}
 }

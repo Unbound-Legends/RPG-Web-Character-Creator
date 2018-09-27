@@ -25,18 +25,21 @@ hr {
 }
 
 h5 {
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	margin-bottom: 0;
 	margin-top: 0.5rem;
 }
 
+table {
+	vertical-align: middle;
+}
+
 .table th {
-	padding: 0.4em 0.2em;
+	padding: 0.4rem;
 }
 
 .table td {
-	padding: 0.4em 0.2em;
-	vertical-align: middle;
+	padding: 0.4rem;
 }
 
 thead {
@@ -99,23 +102,20 @@ input[type="number"] {
 	text-align: center;
 	color: black;
 	padding: 0;
-	margin: 0.15em;
-	width: 6em;
+	margin: 0.15rem;
+	width: 6rem;
 }
 
 .attribute {
-	width: 10em;
-	height: 5.5em;
+	width: 10rem;
+	height: 5.5rem;
 }
 
 .xpBox {
-	width: 140px;
+	width: 8rem;
 }
 
 .svg {
-	width: 100%;
-}
-.png {
 	width: 100%;
 }
 
@@ -129,7 +129,7 @@ input[type="number"] {
 .attributeValue {
 	position: absolute;
 	display: inline-flex;
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	font-weight: 600;
 	top: 51%;
 	left: 58%;
@@ -139,7 +139,7 @@ input[type="number"] {
 
 .characteristicValue {
 	position: absolute;
-	font-size: 2.5em;
+	font-size: 2.5rem;
 	font-weight: 600;
 	top: 35%;
 	left: 62%;
@@ -149,7 +149,7 @@ input[type="number"] {
 
 .xpValue {
 	position: absolute;
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: 600;
 	top: 45%;
 	left: 60%;
@@ -159,30 +159,16 @@ input[type="number"] {
 
 .totalXP {
 	position: fixed;
-	bottom: 5px;
-	left: 5px;
+	bottom: 10px;
+	left: 10px;
 	z-index: 1;
 }
 
 .availableXP {
 	position: fixed;
-	bottom: 5px;
-	right: 5px;
+	bottom: 10px;
+	right: 10px;
 	z-index: 1;
-}
-
-.print-totalXP {
-	display: inline-block;
-	position: relative;
-	bottom: 5px;
-	left: 0;
-}
-
-.print-availableXP {
-	display: inline-block;
-	position: relative;
-	bottom: 5px;
-	right: 0;
 }
 
 .talentDesc {
@@ -191,15 +177,17 @@ input[type="number"] {
 }
 
 .table-dice {
-	width: 130px;
 }
 
 .table-career {
 	text-align: center;
 }
 
+.table-rank {
+	text-align: center;
+}
+
 .table-name {
-	width: 150px;
 	text-align: left;
 }
 
@@ -208,14 +196,13 @@ input[type="number"] {
 }
 
 .talentCard {
-	width: 150px;
-	height: 160px;
+	width: 10rem;
+	height: 11rem;
 }
 
 .ffi {
 	vertical-align: middle;
-	font-size: 1.4em;
-	letter-spacing: -3px;
+	font-size: 1.4rem;
 }
 
 .ffi-d6 {
@@ -224,28 +211,28 @@ input[type="number"] {
 
 .ffi-border {
 	-webkit-text-stroke-color: black;
-	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-width: 0.1rem;
 }
 
 @media only screen
 and (max-width: 480px) {
 
 	.table {
-		font-size: 0.8em;
+		font-size: 0.7rem;
 	}
 
 	.fontSizeSmall {
-		font-size: 0.5em;
+		font-size: 0.5rem;
 	}
 
 	.talentCard {
 		width: 16vw;
 		height: 12vh;
-		font-size: 0.5em;
+		font-size: 0.5rem;
 	}
 
 	.ffi {
-		font-size: 2em;
+		font-size: 1rem;
 	}
 
 	.overflowX {
@@ -256,12 +243,18 @@ and (max-width: 480px) {
 @media print {
 	* {
 		-webkit-print-color-adjust: exact;
+		color-adjust: exact;
 	}
 
 	h5 {
-		font-size: 1em;
+		font-size: 1rem;
 		margin-top: 0.25rem;
 		font-weight: 600;
+	}
+
+	body {
+		--orangeFade: rgb(245, 142, 32);
+		--lightblueFade: rgb(181, 224, 232);
 	}
 
 	.no-break {
@@ -281,13 +274,49 @@ and (max-width: 480px) {
 	}
 
 	.table td {
-		padding: 0.1rem;
-		vertical-align: middle;
-		font-size: 0.8em;
+		padding: 0 0.2rem;
+	}
+
+	.talentCard {
+		width: 8rem;
+		height: 1rem;
 	}
 
 	.ffi {
-		font-size: 2em;
+		font-size: 12pt;
 	}
 
+	.ffi-border {
+		-webkit-text-stroke-width: 0.05rem;
+	}
+
+	.table-dice {
+		width: 200px;
+	}
+
+	.table-career {
+		width: 70px;
+	}
+
+	.table-rank {
+		width: 70px;
+	}
+
+	.table-name {
+		width: 250px;
+	}
+
+	.table-skills {
+		font-size: 14pt;
+	}
+
+	.totalXP {
+		display: inline-block;
+		position: relative;
+	}
+
+	.availableXP {
+		display: inline-block;
+		position: relative;
+	}
 }

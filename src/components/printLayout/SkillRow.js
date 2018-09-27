@@ -41,11 +41,10 @@ class Component extends React.Component {
 					{`${skill.name} (${this.shortCharacteristics()})`}
 				</td>
 				<td className='table-career'>
-					<input type='checkbox' checked={!!careerCheck[skillKey]}
-						   readOnly/>
+					{!!careerCheck[skillKey] ? '✓' : ''}
 				</td>
-				<td>
-					{skillRanks[skillKey]}
+				<td className='table-rank'>
+					{skillRanks[skillKey] ? skillRanks[skillKey] : ''}
 				</td>
 				<td className='table-dice '>
 					<Description text={skillDice[skillKey]}/>
