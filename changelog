@@ -1,3 +1,6 @@
+v1.3.6
+    -fixed the crap job of importing settings
+
 v1.3.5
     -move images inside of src/
     -npm updated

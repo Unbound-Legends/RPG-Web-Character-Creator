@@ -1,5 +1,5 @@
 import merge from 'deepmerge';
-import {uniq} from 'lodash-es'
+import {uniq} from 'lodash-es';
 import {customDataTypes, dataTypes} from '../data';
 import {db} from '../firestoreDB';
 
@@ -149,13 +149,15 @@ export const importCustomData = (customDataSetImport) => {
 		Object.keys(customDataSetImport).forEach(type => {
 			const customType = getState()[type];
 			let data = customDataSetImport[type];
+
 			if (customType) {
-				Object.keys(data).forEach(item => {
+				if (type === 'customSettings') data = merge(customType, data);
+				else Object.keys(data).forEach(item => {
 					data[item] = merge(customType[item], data[item]);
 					if (data[item].setting) data[item].setting = uniq(data[item].setting).sort();
 				});
 			}
-			if (customDataSetImport[type]) db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true})
+			if (customDataSetImport[type]) db.doc(`users/${user}/customData/${type}/`).set({data: customDataSetImport[type]}, {merge: true})
 		});
 	}
 };
