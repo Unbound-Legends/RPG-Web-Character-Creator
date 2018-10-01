@@ -4,6 +4,7 @@ import {Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row} fr
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {chars} from '../data/lists';
+import * as images from '../images';
 import {characteristics} from '../selectors';
 
 class CharacteristicsComponent extends React.Component {
@@ -56,7 +57,7 @@ class CharacteristicsComponent extends React.Component {
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center'>
 								<div className='imageBox m-auto'>
-									<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
+									<img src={images[stat]} alt='' className='svg'/>
 									<Row className='characteristicValue'>{characteristics[stat]}</Row>
 								</div>
 								<ButtonGroup>

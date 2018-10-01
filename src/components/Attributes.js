@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
+import * as images from '../images';
 import * as selectors from '../selectors';
 
 class AttributesComponent extends React.Component {
@@ -21,7 +22,7 @@ class AttributesComponent extends React.Component {
 				<hr/>
 				<Row className='my-2 justify-content-center'>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Wounds.svg`} alt='' className='svg'/>
+						<img src={images.Wounds} alt='' className='svg'/>
 						<Row className='attributeValue' style={{left: '59%'}}>
 							{`${woundThreshold} |`}
 							<Input type='number'
@@ -35,7 +36,7 @@ class AttributesComponent extends React.Component {
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Strain.svg`} alt='' className='svg'/>
+						<img src={images.Strain} alt='' className='svg'/>
 						<Row className='attributeValue' style={{left: '59%'}}>
 							{`${strainThreshold} |`}
 							<Input type='number'
@@ -49,11 +50,11 @@ class AttributesComponent extends React.Component {
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Soak.svg`} alt='' className='svg'/>
+						<img src={images.Soak} alt='' className='svg'/>
 						<Row className='attributeValue'>{totalSoak}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Defense.svg`} alt='' className='svg'/>
+						<img src={images.Defense} alt='' className='svg'/>
 						<Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
 					</div>
 				</Row>

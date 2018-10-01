@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Col, Row} from 'reactstrap';
+import * as images from '../../images';
 
 class Component extends React.Component {
 
@@ -37,7 +38,7 @@ class Component extends React.Component {
 						</Row>
 					</Col>
 					<Col className='text-right'>
-						<img className='img-fluid text-right w-60' src={'images/favicon.png'} alt=''/>
+						<img className='img-fluid text-right w-60' src={images.GenesysLogo} alt=''/>
 					</Col>
 				</Row>
 			</div>

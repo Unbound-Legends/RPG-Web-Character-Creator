@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Row} from 'reactstrap';
 import {chars} from '../data/lists';
+import * as images from '../images';
 import {characteristics} from '../selectors'
 import {Characteristics} from './';
 
@@ -20,7 +21,7 @@ class ShowCharacteristicsComponent extends React.Component {
 				<Row className='justify-content-center'>
 					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
+							<img src={images[stat]} alt='' className='svg'/>
 							<Row className='characteristicValue'>{characteristics[stat]}</Row>
 						</div>
 					)}

@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
-import {encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, totalSoak, woundThreshold,} from "../../selectors";
+import * as images from '../../images';
+import {encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, totalSoak, woundThreshold,} from '../../selectors';
 
 class Component extends React.Component {
 
@@ -13,23 +14,23 @@ class Component extends React.Component {
 				<hr/>
 				<Row className='my-1 justify-content-center'>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Wounds.svg`} alt='' className='svg'/>
+						<img src={images.Wounds} alt='' className='svg'/>
 						<Row className='attributeValue'>
 							{`${woundThreshold}   |   ${currentWound}`}
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Strain.svg`} alt='' className='svg'/>
+						<img src={images.Strain} alt='' className='svg'/>
 						<Row className='attributeValue'>
 							{`${strainThreshold}   |   ${currentStrain}`}
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Soak.svg`} alt='' className='svg'/>
+						<img src={images.Soak} alt='' className='svg'/>
 						<Row className='attributeValue'>{totalSoak}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Defense.svg`} alt='' className='svg'/>
+						<img src={images.Defense} alt='' className='svg'/>
 						<Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
 					</div>
 				</Row>

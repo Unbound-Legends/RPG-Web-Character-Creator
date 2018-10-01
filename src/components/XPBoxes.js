@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import {Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
+import * as images from '../images';
 import {totalXP, usedXP} from '../selectors';
-import {XPPopup} from './index';
+import {XPPopup} from './';
 
 class XPBoxesComponent extends React.Component {
 	state = {modal: false};
@@ -14,12 +15,12 @@ class XPBoxesComponent extends React.Component {
 		return (
 			<div>
 				<div className='imageBox xpBox totalXP' onClick={() => this.setState({modal: true})}>
-					<img src={'/images/svg/blocks/TotalXp.svg'} alt='' className='svg'/>
+					<img src={images.TotalXp} alt='' className='svg'/>
 					<Row className='xpValue'>{totalXP}</Row>
 				</div>
 
 				<div className='imageBox xpBox availableXP' onClick={() => this.setState({modal: true})}>
-					<img src={'/images/svg/blocks/AvailableXp.svg'} alt='' className='svg'/>
+					<img src={images.AvailableXp} alt='' className='svg'/>
 
 					<Row className='xpValue'>{totalXP - usedXP}</Row>
 				</div>

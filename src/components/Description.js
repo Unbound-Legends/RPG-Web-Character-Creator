@@ -1,4 +1,5 @@
 import React from 'react';
+import * as images from '../images';
 
 export class Description extends React.Component {
 
@@ -71,10 +72,10 @@ export class Description extends React.Component {
 					array.push(`<b>(-</b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b>)</b>`);
 					break;
 				case target.includes('[gm]'):
-					array.push('<img src="/images/png/gm.png" class="textSymbols" /> ');
+					array.push(`<img src=${images.gm} class="textSymbols" /> `);
 					break;
 				case target.includes('[pc]'):
-					array.push('<img src="/images/png/pc.png" class="textSymbols" /> ');
+					array.push(`<img src=${images.pc} class="textSymbols" /> `);
 					break;
 				default:
 					array.push(`${word}`);

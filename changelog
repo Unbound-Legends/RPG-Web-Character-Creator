@@ -1,4 +1,8 @@
-v.1.3.4
+v1.3.5
+    -move images inside of src/
+    -npm updated
+
+v1.3.4
     -simplified divs in skillblock and skillrow
     -color-adjust: exact;//:For Firefox printing?
     -simplified the talent pyramid in print

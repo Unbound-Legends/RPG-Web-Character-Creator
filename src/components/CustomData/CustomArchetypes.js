@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData, changeData} from '../../actions';
 import {chars} from '../../data/lists';
+import * as images from '../../images';
 import {Fragment} from './';
 
 const attributes = {Wounds: 'woundThreshold', Strain: 'strainThreshold'};
@@ -156,7 +157,7 @@ class CustomArchetypesComponent extends React.Component {
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center d-inline-block'>
 								<div className='imageBox m-auto'>
-									<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
+									<img src={images[stat]} alt='' className='svg'/>
 									<Row className='characteristicValue'>{this.state[stat]}</Row>
 								</div>
 								<ButtonGroup>
@@ -173,7 +174,7 @@ class CustomArchetypesComponent extends React.Component {
 						{['Wounds', 'Strain'].map(type =>
 							<div className='m-2 text-center d-inline-block' key={type}>
 								<div className='imageBox attribute'>
-									<img src={`/images/svg/blocks/${upperFirst(type)}.svg`} alt='' className='png'/>
+									<img src={images[upperFirst(type)]} alt='' className='svg'/>
 									<Row className='attributeValue'>{this.state[attributes[type]]}</Row>
 								</div>
 								<ButtonGroup>
