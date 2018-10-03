@@ -173,7 +173,7 @@ class CustomArchetypesComponent extends React.Component {
 						{['Wounds', 'Strain'].map(type =>
 							<div className='m-2 text-center d-inline-block' key={type}>
 								<div className='imageBox attribute'>
-									<img src={images.CRB[upperFirst(type)]} alt='' className='svg'/>
+									<img src={images.CRB[`${upperFirst(type)}Threshold`]} alt='' className='svg'/>
 									<Row className='attributeValue'>{this.state[attributes[type]]}</Row>
 								</div>
 								<ButtonGroup>

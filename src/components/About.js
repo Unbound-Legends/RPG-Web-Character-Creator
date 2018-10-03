@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Row} from 'reactstrap';
+import * as config from '../../package.json'
 
 export const About = () => {
 	return (
@@ -41,6 +42,7 @@ export const About = () => {
 			<Row className='justify-content-center'>
 				<a href="https://github.com/SkyJedi/RPG-Web-Character-Creator" target="_blank"
 				   rel="noopener noreferrer">Source Code</a>
+				&nbsp;v{config.version}
 			</Row>
 		</div>
 	)

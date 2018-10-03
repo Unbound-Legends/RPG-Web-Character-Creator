@@ -33,11 +33,11 @@ class ArchetypeStatsComponent extends React.Component {
 				{masterArchetype &&
 				<Row className='justify-content-center my-2'>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Wounds} alt='' className='svg'/>
+						<img src={images.CRB.WoundsThreshold} alt='' className='svg'/>
 						<Row className='attributeValue'>{masterArchetype.woundThreshold}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Strain} alt='' className='svg'/>
+						<img src={images.CRB.StrainThreshold} alt='' className='svg'/>
 						<Row className='attributeValue'>{masterArchetype.strainThreshold}</Row>
 					</div>
 				</Row>
