@@ -1,10 +1,9 @@
+import clone from 'clone';
 import merge from 'deepmerge';
 import {upperFirst} from 'lodash-es';
 import * as data from '../data';
 import {typeCheck} from './checkTypes';
 import * as initialState from './initialState';
-
-const clone = require('clone');
 
 //loading objects
 const loadingReducer = (state, action, type) => {

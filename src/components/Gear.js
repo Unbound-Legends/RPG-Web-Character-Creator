@@ -1,10 +1,9 @@
+import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-
-const clone = require('clone');
 
 class GearComponent extends React.Component {
 

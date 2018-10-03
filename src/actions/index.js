@@ -1,3 +1,4 @@
+import clone from 'clone';
 import merge from 'deepmerge';
 import {uniq} from 'lodash-es';
 import {customDataTypes, dataTypes} from '../data';
@@ -148,16 +149,18 @@ export const importCustomData = (customDataSetImport) => {
 		const user = getState().user;
 		Object.keys(customDataSetImport).forEach(type => {
 			const customType = getState()[type];
-			let data = customDataSetImport[type];
+			let data = clone(customDataSetImport[type]);
 
 			if (customType) {
 				if (type === 'customSettings') data = merge(customType, data);
 				else Object.keys(data).forEach(item => {
-					data[item] = merge(customType[item], data[item]);
-					if (data[item].setting) data[item].setting = uniq(data[item].setting).sort();
+					if (customType[item]) {
+						data[item] = merge(customType[item], data[item]);
+						if (data[item].setting) data[item].setting = uniq(data[item].setting).sort();
+					}
 				});
 			}
-			if (customDataSetImport[type]) db.doc(`users/${user}/customData/${type}/`).set({data: customDataSetImport[type]}, {merge: true})
+			db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true})
 		});
 	}
 };

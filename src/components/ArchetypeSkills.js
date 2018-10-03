@@ -1,10 +1,9 @@
+import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-
-const clone = require('clone');
 
 class ArchetypeSkillsComponent extends React.Component {
 
@@ -32,7 +31,7 @@ class ArchetypeSkillsComponent extends React.Component {
 						get {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : 1} {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:</Row>
 					<Input type='select' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
 						<option value=''/>
-						{list.map((key) =>
+						{list.map(key =>
 							(skills[key] && !Object.keys(archetypeSpecialSkills).includes(key)) &&
 							<option value={key} name={key} key={key}>{skills[key].name}</option>
 						)}
@@ -49,7 +48,7 @@ class ArchetypeSkillsComponent extends React.Component {
 		}
 		return (
 			<div>
-				{list.map((key) =>
+				{list.map(key =>
 					<Col key={key}>{masterArchetype.skills[key]} rank in {key}</Col>
 				)}
 			</div>

@@ -1,3 +1,4 @@
+import clone from 'clone';
 import {omit, range} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -7,8 +8,6 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {encumbranceLimit, equipmentStats, gearDice, skillDice, totalDefense, totalEncumbrance, totalSoak,} from '../selectors';
 import {DeleteButton, Description, Gear} from './index';
-
-const clone = require('clone');
 
 class EquipmentComponent extends React.Component {
 	state = {

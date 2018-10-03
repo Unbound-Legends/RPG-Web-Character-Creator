@@ -1,3 +1,4 @@
+import clone from 'clone';
 import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -7,8 +8,6 @@ import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData} from '../../actions';
 import {diceNames, modifiableAttributes} from '../../data/lists'
 import {Fragment} from './';
-
-const clone = require('clone');
 
 class CustomArchetypeTalentsComponent extends React.Component {
 	state = {

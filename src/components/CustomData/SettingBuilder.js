@@ -1,3 +1,4 @@
+import clone from 'clone';
 import {pull, startCase, upperFirst} from 'lodash-es'
 import React from 'react';
 import {connect} from 'react-redux';
@@ -5,7 +6,6 @@ import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Row} from 'rea
 import {bindActionCreators} from 'redux';
 import {changeCustomData} from '../../actions/index';
 
-const clone = require('clone');
 const types = ['archetypes', 'careers', 'skills', 'talents', 'archetypeTalents', 'armor', 'gear', 'weapons'];
 
 class SettingBuilderComponent extends React.Component {

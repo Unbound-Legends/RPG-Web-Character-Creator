@@ -1,3 +1,4 @@
+import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
@@ -5,8 +6,6 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {talentCount} from '../selectors';
 import {Description, TalentDedication} from './index';
-
-const clone = require('clone');
 
 const modifiableAttributes = {
 	woundThreshold: 'Wound Threshold',

@@ -1,5 +1,5 @@
 import merge from 'deepmerge';
-import {CRB} from './CRB'
-import {ROT} from './ROT'
+import * as CRB from './CRB.json'
+import * as ROT from './ROT.json'
 
 export const careers = merge.all([CRB, ROT]);

@@ -1,20 +1,19 @@
+import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Card, CardBody, CardFooter, CardHeader, Input, InputGroup, InputGroupAddon} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
-const clone = require('clone');
-
 const seedrandom = require('seedrandom');
 let rng = seedrandom(Math.random(), {entropy: true});
 
 class MotivationBlockComponent extends React.Component {
-    state = {description: this.props.masterMotivations[this.props.type] ? this.props.masterMotivations[this.props.type].description : ''};
+	state = {description: this.props.masterMotivations[this.props.type] ? this.props.masterMotivations[this.props.type].description : ''};
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({description: nextProps.masterMotivations[this.props.type] ? nextProps.masterMotivations[this.props.type].description : ''});
-    }
+	componentWillReceiveProps(nextProps) {
+		this.setState({description: nextProps.masterMotivations[this.props.type] ? nextProps.masterMotivations[this.props.type].description : ''});
+	}
 
 	handleChange = (event) => {
 		this.setState({description: event.target.value});
@@ -49,24 +48,24 @@ class MotivationBlockComponent extends React.Component {
 		changeData(obj, 'masterMotivations', false)
 	};
 
-    render() {
-        const {type, masterMotivations, motivations} = this.props;
-        const name = masterMotivations[type] ? masterMotivations[type].key : '';
-        const {description} = this.state;
-        return (
+	render() {
+		const {type, masterMotivations, motivations} = this.props;
+		const name = masterMotivations[type] ? masterMotivations[type].key : '';
+		const {description} = this.state;
+		return (
 			<Card className='m-2' style={{minWidth: '45%'}}>
-                <CardHeader>
-                    <InputGroup>
-                        <InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>
-                        <Input type='select' onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
-                            <option value=''/>
+				<CardHeader>
+					<InputGroup>
+						<InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>
+						<Input type='select' onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
+							<option value=''/>
 							{motivations[type] && Object.keys(motivations[type]).sort().map(key =>
-                                <option key={key} value={key}>{key}</option>
-                            )}
-                        </Input>
-                    </InputGroup>
-                </CardHeader>
-                <CardBody>
+								<option key={key} value={key}>{key}</option>
+							)}
+						</Input>
+					</InputGroup>
+				</CardHeader>
+				<CardBody>
                     <textarea onBlur={this.handleBlur}
 							  onChange={this.handleChange}
 							  rows='10'

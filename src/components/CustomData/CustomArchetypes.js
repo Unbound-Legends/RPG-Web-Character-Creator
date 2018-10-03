@@ -1,3 +1,4 @@
+import clone from 'clone';
 import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -10,8 +11,6 @@ import * as images from '../../images';
 import {Fragment} from './';
 
 const attributes = {Wounds: 'woundThreshold', Strain: 'strainThreshold'};
-
-const clone = require('clone');
 
 class CustomArchetypesComponent extends React.Component {
 	state = {

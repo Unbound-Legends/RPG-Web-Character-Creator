@@ -1,10 +1,9 @@
+import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-
-const clone = require('clone');
 
 class CharacterDescriptionComponent extends React.Component {
 	state = {

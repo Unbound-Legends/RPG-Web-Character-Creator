@@ -1,3 +1,4 @@
+import clone from 'clone';
 import {omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -6,8 +7,6 @@ import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData} from '../../actions';
 import {Fragment} from './';
-
-const clone = require('clone');
 
 class CustomMotivationsComponent extends React.Component {
 	state = {type: '', name: '', description: '', mode: 'add'};

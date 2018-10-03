@@ -1,7 +1,6 @@
+import clone from 'clone';
 import {lowerCase, replace} from "lodash-es";
 import {createSelector} from "reselect";
-
-const clone = require('clone');
 
 const armor = state => state.armor;
 const craftsmanship = state => state.craftsmanship;

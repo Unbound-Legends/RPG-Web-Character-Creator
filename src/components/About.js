@@ -11,7 +11,7 @@ export const About = () => {
 				   rel="noopener noreferrer">Contact Me</a>.
 			</Row>
 			<Row className='justify-content-center'>
-				<Button color='link' href="https://www.facebook.com/groups/242585076458814/" target="_blank"
+				<Button color='link' href="https://www.facebook.com/groups/GenesysRPG" target="_blank"
 						className='p-0 m-2'>Facebook Group</Button>
 				<Button color='link' href="https://www.reddit.com/r/genesysrpg/" target="_blank"
 						className='p-0 m-2'>Subreddit</Button>

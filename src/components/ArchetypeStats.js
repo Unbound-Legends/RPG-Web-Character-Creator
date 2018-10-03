@@ -1,12 +1,11 @@
+import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from "../actions";
+import * as images from '../images';
 import {ArchetypeSkills, Description} from './index';
-
-const clone = require('clone');
-
 
 class ArchetypeStatsComponent extends React.Component {
 
@@ -24,9 +23,9 @@ class ArchetypeStatsComponent extends React.Component {
 			<div>
 				<Row className='my-2'><Col sm='5'><b>Starting Stats: </b></Col></Row>
 				<Row className='justify-content-center my-2'>
-					{Object.keys(masterArchetype.characteristics).map((stat) =>
+					{Object.keys(masterArchetype.characteristics).map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={`/images/svg/blocks/${stat}.svg`} alt='' className='svg'/>
+							<img src={images[stat]} alt='' className='svg'/>
 							<Row className='characteristicValue'>{masterArchetype.characteristics[stat]}</Row>
 						</div>
 					)}
@@ -34,11 +33,11 @@ class ArchetypeStatsComponent extends React.Component {
 				{masterArchetype &&
 				<Row className='justify-content-center my-2'>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Wounds.svg`} alt='' className='svg'/>
+						<img src={images.Wounds} alt='' className='svg'/>
 						<Row className='attributeValue'>{masterArchetype.woundThreshold}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={`/images/svg/blocks/Strain.svg`} alt='' className='svg'/>
+						<img src={images.Strain} alt='' className='svg'/>
 						<Row className='attributeValue'>{masterArchetype.strainThreshold}</Row>
 					</div>
 				</Row>
