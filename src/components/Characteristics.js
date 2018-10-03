@@ -57,7 +57,7 @@ class CharacteristicsComponent extends React.Component {
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center'>
 								<div className='imageBox m-auto'>
-									<img src={images[stat]} alt='' className='svg'/>
+									<img src={images.CRB[stat]} alt='' className='svg'/>
 									<Row className='characteristicValue'>{characteristics[stat]}</Row>
 								</div>
 								<ButtonGroup>

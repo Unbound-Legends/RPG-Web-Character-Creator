@@ -46,7 +46,7 @@ class CustomCareersComponent extends React.Component {
 		const career = customCareers[event.target.name];
 		this.setState({
 			name: career.name,
-			selectedSkills: career.skills,
+			selectedSkills: career.skills ? career.skills : [],
 			description: career.description,
 			setting: typeof career.setting === 'string' ? career.setting.split(', ') : career.setting,
 			mode: 'edit'
@@ -89,7 +89,7 @@ class CustomCareersComponent extends React.Component {
 					{Object.keys(customCareers).map((key) =>
 						<tr key={key} style={{textAlign: 'left'}}>
 							<td>{customCareers[key].name}</td>
-							<td>{customCareers[key].skills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}</td>
+							<td>{customCareers[key].skills && customCareers[key].skills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}</td>
 							<td><Button name={key} onClick={this.handleEdit}>Edit</Button></td>
 							<td><DeleteButton name={key} onClick={this.handleDelete}/></td>
 						</tr>

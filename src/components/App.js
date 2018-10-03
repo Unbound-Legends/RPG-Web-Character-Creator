@@ -47,7 +47,7 @@ class AppComponent extends React.Component {
 		if (loadingCustomData || loadingData) return loadingPage;
 		else return (
 			<Container>
-				<Tabs defaultIndex={0} className='d-print-none mt-2' style={{marginBottom: '5rem'}}>
+				<Tabs defaultIndex={0} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
 					<TabList>
 						<Tab>CHARACTERS</Tab>
 						<Tab>CUSTOM DATA</Tab>
@@ -64,6 +64,7 @@ class AppComponent extends React.Component {
 					</TabPanel>
 				</Tabs>
 				<div className='d-none d-print-block'>{this.props.printContent}</div>
+				<div className='bg bg-CRB d-print-none'/>
 			</Container>
 		);
 	}

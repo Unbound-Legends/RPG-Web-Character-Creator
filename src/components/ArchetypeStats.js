@@ -25,7 +25,7 @@ class ArchetypeStatsComponent extends React.Component {
 				<Row className='justify-content-center my-2'>
 					{Object.keys(masterArchetype.characteristics).map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={images[stat]} alt='' className='svg'/>
+							<img src={images.CRB[stat]} alt='' className='svg'/>
 							<Row className='characteristicValue'>{masterArchetype.characteristics[stat]}</Row>
 						</div>
 					)}
@@ -33,11 +33,11 @@ class ArchetypeStatsComponent extends React.Component {
 				{masterArchetype &&
 				<Row className='justify-content-center my-2'>
 					<div className='imageBox attribute'>
-						<img src={images.Wounds} alt='' className='svg'/>
+						<img src={images.CRB.Wounds} alt='' className='svg'/>
 						<Row className='attributeValue'>{masterArchetype.woundThreshold}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.Strain} alt='' className='svg'/>
+						<img src={images.CRB.Strain} alt='' className='svg'/>
 						<Row className='attributeValue'>{masterArchetype.strainThreshold}</Row>
 					</div>
 				</Row>
@@ -92,7 +92,6 @@ class ArchetypeStatsComponent extends React.Component {
 					<Col sm='5'><b>Description:</b></Col>
 					<Col> <Description text={masterArchetype.description}/></Col>
 				</Row>
-
 			</div>
 		);
 	}

@@ -14,23 +14,23 @@ class Component extends React.Component {
 				<hr/>
 				<Row className='my-1 justify-content-center'>
 					<div className='imageBox attribute'>
-						<img src={images.Wounds} alt='' className='svg'/>
+						<img src={images.CRB.Wounds} alt='' className='svg'/>
 						<Row className='attributeValue'>
 							{`${woundThreshold}   |   ${currentWound}`}
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.Strain} alt='' className='svg'/>
+						<img src={images.CRB.Strain} alt='' className='svg'/>
 						<Row className='attributeValue'>
 							{`${strainThreshold}   |   ${currentStrain}`}
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.Soak} alt='' className='svg'/>
+						<img src={images.CRB.Soak} alt='' className='svg'/>
 						<Row className='attributeValue'>{totalSoak}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.Defense} alt='' className='svg'/>
+						<img src={images.CRB.Defense} alt='' className='svg'/>
 						<Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
 					</div>
 				</Row>

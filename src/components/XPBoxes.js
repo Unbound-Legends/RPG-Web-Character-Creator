@@ -15,12 +15,12 @@ class XPBoxesComponent extends React.Component {
 		return (
 			<div>
 				<div className='imageBox xpBox totalXP' onClick={() => this.setState({modal: true})}>
-					<img src={images.TotalXp} alt='' className='svg'/>
+					<img src={images.CRB.TotalXp} alt='' className='svg'/>
 					<Row className='xpValue'>{totalXP}</Row>
 				</div>
 
 				<div className='imageBox xpBox availableXP' onClick={() => this.setState({modal: true})}>
-					<img src={images.AvailableXp} alt='' className='svg'/>
+					<img src={images.CRB.AvailableXp} alt='' className='svg'/>
 
 					<Row className='xpValue'>{totalXP - usedXP}</Row>
 				</div>

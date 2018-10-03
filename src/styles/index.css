@@ -14,7 +14,6 @@ body {
 	--orangeFade: rgba(245, 142, 32, 0.2);
 	--lightblueFade: rgba(181, 224, 232, 0.2);
 	font-family: 'Avenir Next', sans-serif !important;
-	background-image: url(../images/background.png);
 }
 
 hr {
@@ -97,6 +96,74 @@ input[type="number"] {
 	height: 1.2rem;
 }
 
+.svg {
+	width: 100%;
+}
+
+.absolute {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.talentDesc {
+	overflow-y: auto;
+	white-space: pre-line;
+}
+
+.table-dice {
+}
+
+.table-career {
+	text-align: center;
+}
+
+.table-rank {
+	text-align: center;
+}
+
+.table-name {
+	text-align: left;
+}
+
+.row-hide {
+	display: none;
+}
+
+.talentCard {
+	width: 10rem;
+	height: 11rem;
+}
+
+.ffi {
+	vertical-align: middle;
+	font-size: 1.4rem;
+}
+
+.ffi-d6 {
+	letter-spacing: 0;
+}
+
+.ffi-border {
+	-webkit-text-stroke-color: black;
+	-webkit-text-stroke-width: 0.1rem;
+}
+
+.bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+/*CRB Theme*/
+.bg-CRB {
+	background-image: url(../images/CRB/background.png);
+}
+
 .imageBox {
 	position: relative;
 	text-align: center;
@@ -113,17 +180,6 @@ input[type="number"] {
 
 .xpBox {
 	width: 8rem;
-}
-
-.svg {
-	width: 100%;
-}
-
-.absolute {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 }
 
 .attributeValue {
@@ -169,49 +225,6 @@ input[type="number"] {
 	bottom: 10px;
 	right: 10px;
 	z-index: 1;
-}
-
-.talentDesc {
-	overflow-y: auto;
-	white-space: pre-line;
-}
-
-.table-dice {
-}
-
-.table-career {
-	text-align: center;
-}
-
-.table-rank {
-	text-align: center;
-}
-
-.table-name {
-	text-align: left;
-}
-
-.row-hide {
-	display: none;
-}
-
-.talentCard {
-	width: 10rem;
-	height: 11rem;
-}
-
-.ffi {
-	vertical-align: middle;
-	font-size: 1.4rem;
-}
-
-.ffi-d6 {
-	letter-spacing: 0;
-}
-
-.ffi-border {
-	-webkit-text-stroke-color: black;
-	-webkit-text-stroke-width: 0.1rem;
 }
 
 @media only screen

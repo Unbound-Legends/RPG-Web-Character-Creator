@@ -12,12 +12,12 @@ class Component extends React.Component {
 			<div className='break-after'>
 				<Row className='justify-content-between'>
 					<div className='imageBox xpBox totalXP'>
-						<img src={images.TotalXp} alt='' className='svg'/>
+						<img src={images.CRB.TotalXp} alt='' className='svg'/>
 						<Row className='xpValue'>{totalXP}</Row>
 					</div>
 
 					<div className='imageBox xpBox availableXP'>
-						<img src={images.AvailableXp} alt='' className='svg'/>
+						<img src={images.CRB.AvailableXp} alt='' className='svg'/>
 						<Row className='xpValue'>{totalXP - usedXP}</Row>
 					</div>
 				</Row>
