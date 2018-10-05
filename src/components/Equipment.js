@@ -166,7 +166,7 @@ class EquipmentComponent extends React.Component {
 				<Row className='m-1'>
 					<Col>
 						Encumbrance: <b
-						className={`text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>{encumbranceLimit}/{totalEncumbrance}</b>
+						className={`text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>{totalEncumbrance}/{encumbranceLimit}</b>
 					</Col>
 					<Col>
 						Soak: <b>{totalSoak}</b>
