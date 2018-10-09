@@ -6,10 +6,12 @@ import {Description} from '../';
 class Component extends React.Component {
 
 	render() {
-		const {description} = this.props;
+		const {description, theme} = this.props;
 		return (
 			<div className='no-break'>
-				<Row className='justify-content-end'><h5>NOTES</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>NOTES</div>
+				</Row>
 				<hr/>
 				<Row style={{whiteSpace: 'pre-line'}}>
 					<Description text={description.notes ? description.notes : ''}/>
@@ -23,6 +25,7 @@ class Component extends React.Component {
 const mapStateToProps = state => {
 	return {
 		description: state.description,
+		theme: state.theme,
 	};
 };
 

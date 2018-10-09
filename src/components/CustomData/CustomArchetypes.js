@@ -140,7 +140,7 @@ class CustomArchetypesComponent extends React.Component {
 	};
 
 	render() {
-		const {customArchetypes, skills} = this.props;
+		const {customArchetypes, skills, theme} = this.props;
 		const {name, freeSkillRanks, XP, description, archetypeTalents, setting, mode} = this.state;
 		return (
 			<div>
@@ -156,8 +156,8 @@ class CustomArchetypesComponent extends React.Component {
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center d-inline-block'>
 								<div className='imageBox m-auto'>
-									<img src={images.CRB[stat]} alt='' className='svg'/>
-									<Row className='characteristicValue'>{this.state[stat]}</Row>
+									<img src={images[theme][stat]} alt='' className='svg'/>
+									<Row className={`characteristicValue characteristicValue-${theme}`}>{this.state[stat]}</Row>
 								</div>
 								<ButtonGroup>
 									<Button name={stat} value={1} onClick={this.handleClick}>↑</Button>
@@ -173,8 +173,8 @@ class CustomArchetypesComponent extends React.Component {
 						{['Wounds', 'Strain'].map(type =>
 							<div className='m-2 text-center d-inline-block' key={type}>
 								<div className='imageBox attribute'>
-									<img src={images.CRB[`${upperFirst(type)}Threshold`]} alt='' className='svg'/>
-									<Row className='attributeValue'>{this.state[attributes[type]]}</Row>
+									<img src={images[theme][`${upperFirst(type)}Threshold`]} alt='' className='svg'/>
+									<Row className={`attributeValue characteristicValue-${theme}`}>{this.state[attributes[type]]}</Row>
 								</div>
 								<ButtonGroup>
 									<Button name={attributes[type]} value={1} onClick={this.handleClick}>↑</Button>
@@ -242,6 +242,7 @@ const mapStateToProps = state => {
 		archetype: state.archetype,
 		archetypeTalents: state.archetypeTalents,
 		skills: state.skills,
+		theme: state.theme,
 	};
 };
 

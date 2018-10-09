@@ -17,12 +17,12 @@ class CharacterImageComponent extends React.Component {
 	};
 
 	render() {
-		const {description} = this.props;
+		const {description, theme} = this.props;
 		const {modal, text} = this.state;
 		return (
 			<div className='align-items-center m-auto'>
 				<Row className='justify-content-end'>
-					<h5>CHARACTER IMAGE</h5>
+					<div className={`header header-${theme}`}>CHARACTER IMAGE</div>
 					<Button color='link'
 							className='noUnderLine p-0'
 							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
@@ -53,6 +53,7 @@ class CharacterImageComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		description: state.description,
+		theme: state.theme,
 	};
 };
 

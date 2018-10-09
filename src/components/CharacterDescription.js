@@ -37,9 +37,12 @@ class CharacterDescriptionComponent extends React.Component {
 	};
 
 	render() {
+		const {theme} = this.props;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>CHARACTER DESCRIPTION</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>CHARACTER DESCRIPTION</div>
+				</Row>
 				<hr/>
 				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map(aspect =>
 					<Row key={aspect} className='my-2'>
@@ -70,6 +73,7 @@ class CharacterDescriptionComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		description: state.description,
+		theme: state.theme,
 	};
 };
 

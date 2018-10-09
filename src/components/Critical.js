@@ -35,10 +35,12 @@ class CriticalComponent extends React.Component {
 
 	render() {
 		const {value} = this.state;
-		const {critical} = this.props;
+		const {critical, theme} = this.props;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>CRITICAL INJURES</div>
+				</Row>
 				<hr/>
 				<Table className='bg-light'>
 					<thead>
@@ -72,6 +74,7 @@ class CriticalComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		critical: state.critical,
+		theme: state.theme,
 	};
 };
 

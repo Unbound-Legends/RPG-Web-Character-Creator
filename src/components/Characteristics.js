@@ -47,7 +47,7 @@ class CharacteristicsComponent extends React.Component {
 	};
 
 	render() {
-		const {characteristics, modal, handleClose} = this.props;
+		const {characteristics, modal, handleClose, theme} = this.props;
 		return (
 			<Modal isOpen={modal} toggle={handleClose}>
 				<ModalHeader toggle={handleClose}>Modify Characteristics</ModalHeader>
@@ -56,9 +56,9 @@ class CharacteristicsComponent extends React.Component {
 					<Row className='justify-content-center'>
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center'>
-								<div className='imageBox m-auto'>
-									<img src={images.CRB[stat]} alt='' className='svg'/>
-									<Row className='characteristicValue'>{characteristics[stat]}</Row>
+								<div className='imageBox'>
+									<img src={images[theme][stat]} alt='' className='svg'/>
+									<Row className={`characteristicValue characteristicValue-${theme}`}>{characteristics[stat]}</Row>
 								</div>
 								<ButtonGroup>
 									<Button value={stat} name='Up' onClick={this.handleClick}>↑</Button>
@@ -81,6 +81,7 @@ const mapStateToProps = state => {
 		archetype: state.archetype,
 		archetypes: state.archetypes,
 		creationCharacteristics: state.creationCharacteristics,
+		theme: state.theme,
 		characteristics: characteristics(state),
 	};
 };

@@ -10,19 +10,19 @@ class ShowCharacteristicsComponent extends React.Component {
 	state = {modal: false};
 
 	render() {
-		const {characteristics} = this.props;
+		const {characteristics, theme} = this.props;
 		return (
 			<div>
 				<Row className='justify-content-end'>
-					<h5>CHARACTERISTICS</h5>
+					<div className={`header header-${theme}`}>CHARACTERISTICS</div>
 					<Button color='link' className='noUnderLine p-0' onClick={() => this.setState({modal: true})}>⚙</Button>
 				</Row>
 				<hr/>
 				<Row className='justify-content-center'>
 					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={images.CRB[stat]} alt='' className='svg'/>
-							<Row className='characteristicValue'>{characteristics[stat]}</Row>
+							<img src={images[theme][stat]} alt='' className='svg'/>
+							<Row className={`characteristicValue characteristicValue-${theme}`}>{characteristics[stat]}</Row>
 						</div>
 					)}
 				</Row>
@@ -35,6 +35,7 @@ class ShowCharacteristicsComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		characteristics: characteristics(state),
+		theme: state.theme,
 	};
 };
 

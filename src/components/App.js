@@ -40,13 +40,13 @@ class AppComponent extends React.Component {
 
 	render() {
 		const {loading} = this.state;
-		const {loadingCustomData, loadingData} = this.props;
+		const {loadingCustomData, loadingData, theme} = this.props;
 		const loadingPage = <h1 className='text-center mt-3'>LOADING</h1>;
 		if (loading) return loadingPage;
 		if (!(this.props.user)) return <User/>;
 		if (loadingCustomData || loadingData) return loadingPage;
 		else return (
-			<Container>
+			<Container className={`body-${theme}`}>
 				<Tabs defaultIndex={0} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
 					<TabList>
 						<Tab>CHARACTERS</Tab>
@@ -64,7 +64,7 @@ class AppComponent extends React.Component {
 					</TabPanel>
 				</Tabs>
 				<div className='d-none d-print-block'>{this.props.printContent}</div>
-				<div className='bg bg-CRB d-print-none'/>
+				<div className={`bg bg-${theme} d-print-none`}/>
 			</Container>
 		);
 	}
@@ -79,6 +79,7 @@ const mapStateToProps = state => {
 		printContent: state.printContent,
 		setting: state.setting,
 		strict: state.strict,
+		theme: state.theme,
 	};
 };
 

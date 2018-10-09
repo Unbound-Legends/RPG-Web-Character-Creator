@@ -13,11 +13,11 @@ class NotesComponent extends React.Component {
 
 	render() {
 		const {notes} = this.state;
-		const {changeData, description} = this.props;
+		const {changeData, description, theme} = this.props;
 		return (
 			<div>
 				<Row className='justify-content-end'>
-					<h5>NOTES</h5>
+					<div className={`header header-${theme}`}>NOTES</div>
 				</Row>
 				<hr/>
 				<Row className='justify-content-center mx-auto'>
@@ -34,6 +34,7 @@ class NotesComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		description: state.description,
+		theme: state.theme,
 	};
 };
 

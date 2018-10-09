@@ -6,12 +6,14 @@ import * as images from '../../images';
 class Component extends React.Component {
 
 	render() {
-		const {archetype, archetypes, careers, career, characterList, character, description, setting} = this.props;
+		const {archetype, archetypes, careers, career, characterList, character, description, setting, theme} = this.props;
 		return (
 			<div>
 				<Row>
 					<Col md='8'>
-						<Row className='justify-content-end align-items-center'><h5>CHARACTER</h5></Row>
+						<Row className='justify-content-end align-items-center'>
+							<div className={`header header-${theme}`}>CHARACTER</div>
+						</Row>
 						<hr/>
 						<Row className='align-items-center'>
 							<Col>
@@ -38,7 +40,7 @@ class Component extends React.Component {
 						</Row>
 					</Col>
 					<Col className='text-right'>
-						<img className='img-fluid text-right w-60' src={images.GenesysLogo} alt=''/>
+						<img className='img-fluid text-right w-60' src={images[theme].Logo} alt=''/>
 					</Col>
 				</Row>
 			</div>
@@ -58,6 +60,7 @@ const mapStateToProps = state => {
 		characterList: state.characterList,
 		character: state.character,
 		setting: state.setting,
+		theme: state.theme,
 	};
 };
 

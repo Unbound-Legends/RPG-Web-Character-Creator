@@ -51,11 +51,13 @@ class CharacterSelectComponent extends React.Component {
 	};
 
 	render() {
-		const {archetype, archetypes, careers, career, characterList, character, changeData, settings, strict} = this.props;
+		const {archetype, archetypes, careers, career, characterList, character, changeData, settings, strict, theme} = this.props;
 		const {name, playerName, archetypeModal, careerModal, deleteModal, setting} = this.state;
 		return (
 			<div className='w-100'>
-				<Row className='justify-content-end'><h5>CHARACTER</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>CHARACTER</div>
+				</Row>
 				<hr/>
 				<Row className='align-items-center'>
 					<Col className='my-2'>
@@ -172,6 +174,7 @@ const mapStateToProps = state => {
 		strict: state.strict,
 		user: state.user,
 		settings: state.settings,
+		theme: state.theme,
 	};
 };
 

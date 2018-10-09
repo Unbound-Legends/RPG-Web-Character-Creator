@@ -51,6 +51,7 @@ export const money = (state = initialState.money, action) => characterReducer(st
 export const setting = (state = clone(initialState.setting), action) => characterReducer(state, action, 'setting');
 export const strict = (state = initialState.strict, action) => characterReducer(state, action, 'strict');
 export const talentModifiers = (state = clone(initialState.talentModifiers), action) => characterReducer(state, action, 'talentModifiers');
+export const theme = (state = clone(initialState.theme), action) => characterReducer(state, action, 'theme');
 
 //database objects
 const databaseReducer = (state, action, type) => {

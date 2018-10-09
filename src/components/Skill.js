@@ -6,9 +6,12 @@ import {SkillBlock} from './';
 class SkillComponent extends React.Component {
 
 	render() {
+		const {theme} = this.props;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>SKILLS</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>SKILLS</div>
+				</Row>
 				<hr/>
 				<Row>
 					<Col>
@@ -31,7 +34,7 @@ class SkillComponent extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		customSkills: state.customSkills,
+		theme: state.theme,
 	};
 };
 

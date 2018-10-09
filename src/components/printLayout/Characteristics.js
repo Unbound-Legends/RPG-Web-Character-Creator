@@ -8,16 +8,18 @@ import {characteristics} from '../../selectors';
 class Component extends React.Component {
 
 	render() {
-		const {characteristics} = this.props;
+		const {characteristics, theme} = this.props;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>CHARACTERISTICS</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>CHARACTERISTICS</div>
+				</Row>
 				<hr/>
 				<Row className='justify-content-center'>
 					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={images.CRB[stat]} alt='' className='svg'/>
-							<Row className='characteristicValue'>{characteristics[stat]}</Row>
+							<img src={images[theme][stat]} alt='' className='svg'/>
+							<Row className={`characteristicValue characteristicValue-${theme}`}>{characteristics[stat]}</Row>
 						</div>
 					)}
 				</Row>
@@ -29,6 +31,7 @@ class Component extends React.Component {
 const mapStateToProps = state => {
 	return {
 		characteristics: characteristics(state),
+		theme: state.theme,
 	};
 };
 

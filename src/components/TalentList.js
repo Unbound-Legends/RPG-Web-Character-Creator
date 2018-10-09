@@ -12,10 +12,12 @@ class TalentListComponent extends React.Component {
 	};
 
 	render() {
-		const {archetype, archetypes, archetypeTalents, talents, talentCount, misc} = this.props;
+		const {archetype, archetypes, archetypeTalents, talents, talentCount, misc, theme} = this.props;
 		return (
 			<div className='no-break'>
-				<Row className='justify-content-end'><h5>TALENT LIST</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>TALENT LIST</div>
+				</Row>
 				<hr/>
 				<Table className='fontSizeSmall bg-light'>
 					<thead>
@@ -76,6 +78,7 @@ const mapStateToProps = state => {
 		archetypeTalents: state.archetypeTalents,
 		misc: state.misc,
 		talentCount: talentCount(state),
+		theme: state.theme,
 	};
 };
 

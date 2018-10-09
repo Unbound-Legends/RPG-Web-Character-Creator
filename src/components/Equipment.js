@@ -150,11 +150,13 @@ class EquipmentComponent extends React.Component {
 	};
 
 	render() {
-		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense, changeData} = this.props;
+		const {equipmentWeapons, equipmentArmor, equipmentGear, totalEncumbrance, encumbranceLimit, totalSoak, totalDefense, changeData, theme} = this.props;
 		const {money, equipModal} = this.state;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>EQUIPMENT</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>EQUIPMENT</div>
+				</Row>
 				<hr/>
 				<Row className='my-2'>
 					<b className='my-auto'>MONEY:&nbsp;</b>
@@ -299,6 +301,7 @@ const mapStateToProps = state => {
 		totalEncumbrance: totalEncumbrance(state),
 		totalSoak: totalSoak(state),
 		weapons: state.weapons,
+		theme: state.theme,
 	};
 };
 

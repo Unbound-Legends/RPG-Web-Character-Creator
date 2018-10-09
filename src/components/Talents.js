@@ -6,11 +6,11 @@ import {TalentBlock} from './';
 
 class TalentsComponent extends React.Component {
 	render() {
-		const {masterTalents} = this.props;
+		const {masterTalents, theme} = this.props;
 		return (
 			<div>
 				<Row className='justify-content-end'>
-					<h5>TALENTS</h5>
+					<div className={`header header-${theme}`}>TALENTS</div>
 				</Row>
 				<hr/>
 				{Object.keys(masterTalents).map(row =>
@@ -33,6 +33,7 @@ const mapStateToProps = state => {
 		masterTalents: state.masterTalents,
 		talents: state.talents,
 		talentCount: talentCount(state),
+		theme: state.theme
 	};
 };
 

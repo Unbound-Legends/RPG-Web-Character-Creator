@@ -63,10 +63,12 @@ class Component extends React.Component {
 	};
 
 	render() {
-		const {money, equipmentArmor, equipmentGear, equipmentWeapons, totalEncumbrance, encumbranceLimit} = this.props;
+		const {money, equipmentArmor, equipmentGear, equipmentWeapons, totalEncumbrance, encumbranceLimit, theme} = this.props;
 		return (
 			<div className='w-100'>
-				<Row className='justify-content-end'><h5>GEAR</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>GEAR</div>
+				</Row>
 				<hr/>
 				<Row className='my-2'>
 					<Col><b className='mx-1'> MONEY: </b>{money > 0 ? money : ''}</Col>
@@ -183,6 +185,7 @@ const mapStateToProps = state => {
 		totalEncumbrance: totalEncumbrance(state),
 		weapons: state.weapons,
 		money: state.money,
+		theme: state.theme,
 	};
 };
 

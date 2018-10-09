@@ -7,10 +7,12 @@ import {Description} from '../index';
 class Component extends React.Component {
 
 	render() {
-		const {critical} = this.props;
+		const {critical, theme} = this.props;
 		return (
 			<div className='w-100'>
-				<Row className='justify-content-end'><h5>CRITICAL INJURES</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>CRITICAL INJURES</div>
+				</Row>
 				<hr/>
 				<Table className='bg-light'>
 					<thead>
@@ -36,6 +38,7 @@ class Component extends React.Component {
 const mapStateToProps = state => {
 	return {
 		critical: state.critical,
+		theme: state.theme
 	};
 };
 

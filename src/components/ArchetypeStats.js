@@ -16,7 +16,7 @@ class ArchetypeStatsComponent extends React.Component {
 	};
 
 	render() {
-		const {archetype, archetypes, archetypeTalents, misc} = this.props;
+		const {archetype, archetypes, archetypeTalents, misc, theme} = this.props;
 		const masterArchetype = archetypes[archetype];
 		if (!archetype || !archetypes[archetype]) return <div/>;
 		return (
@@ -25,20 +25,20 @@ class ArchetypeStatsComponent extends React.Component {
 				<Row className='justify-content-center my-2'>
 					{Object.keys(masterArchetype.characteristics).map(stat =>
 						<div className='imageBox' key={stat}>
-							<img src={images.CRB[stat]} alt='' className='svg'/>
-							<Row className='characteristicValue'>{masterArchetype.characteristics[stat]}</Row>
+							<img src={images[theme][stat]} alt='' className='svg'/>
+							<Row className={`characteristicValue characteristicValue-${theme}`}>{masterArchetype.characteristics[stat]}</Row>
 						</div>
 					)}
 				</Row>
 				{masterArchetype &&
 				<Row className='justify-content-center my-2'>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.WoundsThreshold} alt='' className='svg'/>
-						<Row className='attributeValue'>{masterArchetype.woundThreshold}</Row>
+						<img src={images[theme].WoundsThreshold} alt='' className='svg'/>
+						<Row className={`attributeValue characteristicValue-${theme}`}>{masterArchetype.woundThreshold}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.StrainThreshold} alt='' className='svg'/>
-						<Row className='attributeValue'>{masterArchetype.strainThreshold}</Row>
+						<img src={images[theme].StrainThreshold} alt='' className='svg'/>
+						<Row className={`attributeValue characteristicValue-${theme}`}>{masterArchetype.strainThreshold}</Row>
 					</div>
 				</Row>
 				}
@@ -103,6 +103,7 @@ const mapStateToProps = state => {
 		archetypes: state.archetypes,
 		archetypeTalents: state.archetypeTalents,
 		misc: state.misc,
+		theme: state.theme,
 	};
 };
 

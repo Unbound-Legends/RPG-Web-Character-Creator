@@ -31,6 +31,7 @@ export const money = 0;
 export const setting = ['All'];
 export const strict = false;
 export const talentModifiers = {Dedication: {},};
+export const theme = 'CRB';
 
 export const printContent = <h1 className='text-left m-3' style={{whiteSpace: 'pre-line'}}>
 	{`You savage. I made print button and you dare to use the print function in the browser?!?!\n

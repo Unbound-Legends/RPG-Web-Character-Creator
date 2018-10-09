@@ -14,48 +14,59 @@ class AttributesComponent extends React.Component {
 	}
 
 	render() {
-		const {woundThreshold, strainThreshold, totalSoak, totalDefense} = this.props;
+		const {woundThreshold, strainThreshold, totalSoak, totalDefense, theme} = this.props;
 		const {currentStrain, currentWound} = this.state;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>ATTRIBUTES</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>ATTRIBUTES</div>
+				</Row>
 				<hr/>
 				<Row className='my-2 justify-content-center'>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Wounds} alt='' className='svg'/>
-						<Row className='attributeValue' style={{left: '59%'}}>
-							{`${woundThreshold} |`}
+						<img src={images[theme].Wounds} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Wounds`}>
+							<div className='mr-2 p-1'>
+								{woundThreshold}
+							</div>
 							<Input type='number'
-								   style={{fontSize: '1.5rem', width: '2.3rem', height: '1.8rem'}}
 								   name='currentWound'
 								   maxLength='2'
-								   className='py-0 px-1 ml-1 my-auto d-inline-flex'
+								   className='attributeInput ml-2'
 								   onChange={(event) => this.setState({currentWound: +event.target.value})}
 								   onBlur={() => this.props.changeData(currentWound, 'currentWound')}
 								   value={currentWound > 0 ? currentWound : ''}/>
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Strain} alt='' className='svg'/>
-						<Row className='attributeValue' style={{left: '59%'}}>
-							{`${strainThreshold} |`}
+						<img src={images[theme].Strain} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Strain`}>
+							<div className='mr-2 p-1'>
+								{strainThreshold}
+							</div>
 							<Input type='number'
-								   style={{fontSize: '1.5rem', width: '2.3rem', height: '1.8rem'}}
 								   name='currentStrain'
 								   maxLength='2'
-								   className='py-0 px-1 ml-1 my-auto d-inline-flex'
+								   className='attributeInput ml-2'
 								   onChange={(event) => this.setState({currentStrain: +event.target.value})}
 								   onBlur={() => this.props.changeData(currentStrain, 'currentStrain')}
 								   value={currentStrain > 0 ? currentStrain : ''}/>
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Soak} alt='' className='svg'/>
-						<Row className='attributeValue'>{totalSoak}</Row>
+						<img src={images[theme].Soak} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Soak`}>{totalSoak}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Defense} alt='' className='svg'/>
-						<Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
+						<img src={images[theme].Defense} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Defense`}>
+							<div className='mr-2'>
+								{totalDefense.ranged}
+							</div>
+							<div className='ml-2'>
+								{totalDefense.melee}
+							</div>
+						</Row>
 					</div>
 				</Row>
 			</div>
@@ -72,6 +83,7 @@ const mapStateToProps = state => {
 		totalDefense: selectors.totalDefense(state),
 		currentWound: state.currentWound,
 		currentStrain: state.currentStrain,
+		theme: state.theme,
 	};
 };
 

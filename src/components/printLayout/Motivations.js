@@ -5,24 +5,23 @@ import {Row} from 'reactstrap';
 class Component extends React.Component {
 
 	render() {
-		const {masterMotivations} = this.props;
+		const {masterMotivations, theme} = this.props;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>MOTIVATIONS</h5></Row>
-				<hr/>
-				<Row className='justify-content-center'>
-					{['Strength', 'Flaw', 'Desire', 'Fear'].map(type =>
-						<Row key={type}>
-							<h4>{type}:</h4>
-							{masterMotivations[type] ?
-								<p>
-									<strong>{masterMotivations[type].key} - </strong>
-									<a>{masterMotivations[type].description}</a>
-								</p>
-								: ''}
-						</Row>
-					)}
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>MOTIVATIONS</div>
 				</Row>
+				<hr/>
+				{['Strength', 'Flaw', 'Desire', 'Fear'].map(type =>
+					<Row className='justify-content-left' key={type}>
+						<b>{type.toUpperCase()}</b>
+						{masterMotivations[type] &&
+						<p>
+							<i>{masterMotivations[type].key}</i>: <a>{masterMotivations[type].description}</a>
+						</p>
+						}
+					</Row>
+				)}
 			</div>
 		)
 	}
@@ -32,6 +31,7 @@ const mapStateToProps = state => {
 	return {
 		masterMotivations: state.masterMotivations,
 		motivations: state.motivations,
+		theme: state.theme,
 	};
 };
 

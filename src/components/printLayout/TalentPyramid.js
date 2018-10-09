@@ -15,10 +15,12 @@ class Component extends React.Component {
 	};
 
 	render() {
-		const {masterTalents, talents} = this.props;
+		const {masterTalents, talents, theme} = this.props;
 		return (
 			<div className='break-before'>
-				<Row className='justify-content-end'><h5>TALENTS</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>TALENTS</div>
+				</Row>
 				<hr/>
 				{Object.keys(masterTalents).map(row =>
 					<Row key={row}>
@@ -47,6 +49,7 @@ const mapStateToProps = state => {
 		masterTalents: state.masterTalents,
 		talents: state.talents,
 		talentCount: talentCount(state),
+		theme: state.theme,
 	};
 };
 

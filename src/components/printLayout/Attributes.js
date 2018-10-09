@@ -7,31 +7,51 @@ import {encumbranceLimit, strainThreshold, totalDefense, totalEncumbrance, total
 class Component extends React.Component {
 
 	render() {
-		const {woundThreshold, strainThreshold, currentWound, currentStrain, totalSoak, totalDefense} = this.props;
+		const {woundThreshold, strainThreshold, currentWound, currentStrain, totalSoak, totalDefense, theme} = this.props;
 		return (
 			<div>
-				<Row className='justify-content-end'><h5>ATTRIBUTES</h5></Row>
+				<Row className='justify-content-end'>
+					<div className={`header header-${theme}`}>ATTRIBUTES</div>
+				</Row>
 				<hr/>
-				<Row className='my-1 justify-content-center'>
+				<Row className='my-2 justify-content-center'>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Wounds} alt='' className='svg'/>
-						<Row className='attributeValue'>
-							{`${woundThreshold}   |   ${currentWound}`}
+						<img src={images[theme].Wounds} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Wounds`}>
+							<div className='mr-2 p-1'>
+								{woundThreshold}
+							</div>
+							<div className='ml-2 p-1'>
+								{currentWound}
+							</div>
+
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Strain} alt='' className='svg'/>
-						<Row className='attributeValue'>
-							{`${strainThreshold}   |   ${currentStrain}`}
+						<img src={images[theme].Strain} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Strain`}>
+							<div className='mr-2 p-1'>
+								{strainThreshold}
+							</div>
+							<div className='ml-2 p-1'>
+								{currentStrain}
+							</div>
 						</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Soak} alt='' className='svg'/>
-						<Row className='attributeValue'>{totalSoak}</Row>
+						<img src={images[theme].Soak} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Soak`}>{totalSoak}</Row>
 					</div>
 					<div className='imageBox attribute'>
-						<img src={images.CRB.Defense} alt='' className='svg'/>
-						<Row className='attributeValue'>{`${totalDefense.ranged}  |  ${totalDefense.melee}`}</Row>
+						<img src={images[theme].Defense} alt='' className='svg'/>
+						<Row className={`attributeValue attributeValue-${theme}-Defense`}>
+							<div className='mr-2 p-1'>
+								{totalDefense.ranged}
+							</div>
+							<div className='ml-2 p-1'>
+								{totalDefense.melee}
+							</div>
+						</Row>
 					</div>
 				</Row>
 			</div>
@@ -50,6 +70,7 @@ const mapStateToProps = state => {
 		encumbranceLimit: encumbranceLimit(state),
 		currentWound: state.currentWound,
 		currentStrain: state.currentStrain,
+		theme: state.theme,
 	};
 };
 

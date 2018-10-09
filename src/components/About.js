@@ -29,8 +29,8 @@ export const About = () => {
 				Contributions by Nick Holmstead.
 			</Row>
 			<Row className='justify-content-center'>
-				Images by&nbsp;<a href="https://www.reddit.com/user/DrainSmith" target="_blank"
-								  rel="noopener noreferrer">DrainSmith</a>.&nbsp;
+				Images by DrainSmith&nbsp;<a href="http://bigevil.net" target="_blank"
+											 rel="noopener noreferrer">http://bigevil.net</a>&nbsp;
 			</Row>
 			<Row className='justify-content-center'>
 				A Character Creator for&nbsp;
