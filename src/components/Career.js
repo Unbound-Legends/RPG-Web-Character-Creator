@@ -27,11 +27,11 @@ class CareerComponent extends React.Component {
 	};
 
 	render() {
-		const {career, careers, skills, careerSkillsRank, modal, handleClose} = this.props;
+		const {career, careers, skills, careerSkillsRank, modal, handleClose, theme} = this.props;
 		const masterCareer = careers[career];
 		return (
 
-			<Modal isOpen={modal} toggle={handleClose}>
+			<Modal className={`body-${theme}`} isOpen={modal} toggle={handleClose}>
 				<ModalHeader toggle={handleClose}>Select Career</ModalHeader>
 				<ModalBody>
 					<Input type='select' defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
@@ -103,6 +103,7 @@ const mapStateToProps = state => {
 		careers: state.careers,
 		skills: state.skills,
 		maxCareerSkills: maxCareerSkills(state),
+		theme: state.theme,
 	};
 };
 

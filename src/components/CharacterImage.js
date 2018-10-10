@@ -32,7 +32,7 @@ class CharacterImageComponent extends React.Component {
 						 alt='not found' ref={img => this.img = img}
 						 onError={() => this.img.src = images.Crest}/>
 				</Row>
-				<Modal isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
+				<Modal className={`body-${theme}`} isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
 					<ModalHeader toggle={() => this.setState({modal: false})}>Edit Character Image</ModalHeader>
 					<ModalBody className='m-3'>
 						<div>

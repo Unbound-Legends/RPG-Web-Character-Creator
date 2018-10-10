@@ -174,7 +174,8 @@ class CustomArchetypesComponent extends React.Component {
 							<div className='m-2 text-center d-inline-block' key={type}>
 								<div className='imageBox attribute'>
 									<img src={images[theme][`${upperFirst(type)}Threshold`]} alt='' className='svg'/>
-									<Row className={`attributeValue characteristicValue-${theme}`}>{this.state[attributes[type]]}</Row>
+									<Row
+										className={`attributeValue attributeValue-${theme}-${upperFirst(type)}Threshold`}>{this.state[attributes[type]]}</Row>
 								</div>
 								<ButtonGroup>
 									<Button name={attributes[type]} value={1} onClick={this.handleClick}>↑</Button>

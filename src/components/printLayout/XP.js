@@ -11,14 +11,14 @@ class Component extends React.Component {
 		return (
 			<div className='break-after'>
 				<Row className='justify-content-between'>
-					<div className={`imageBox xpBox totalXp totalXp-${theme}`}>
+					<div className={`imageBox xpBox totalXp`}>
 						<img src={images[theme].TotalXp} alt='' className='svg'/>
-						<Row className='xpValue'>{totalXP}</Row>
+						<Row className={`xpValue xpValue-${theme}`}>{totalXP}</Row>
 					</div>
 
-					<div className={`imageBox xpBox availableXP availableXP-${theme}`}>
+					<div className={`imageBox xpBox availableXP availableXP`}>
 						<img src={images[theme].AvailableXp} alt='' className='svg'/>
-						<Row className='xpValue'>{totalXP - usedXP}</Row>
+						<Row className={`xpValue xpValue-${theme}`}>{totalXP - usedXP}</Row>
 					</div>
 				</Row>
 			</div>

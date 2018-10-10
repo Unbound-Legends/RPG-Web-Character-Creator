@@ -49,7 +49,7 @@ class CharacteristicsComponent extends React.Component {
 	render() {
 		const {characteristics, modal, handleClose, theme} = this.props;
 		return (
-			<Modal isOpen={modal} toggle={handleClose}>
+			<Modal className={`body-${theme}`} isOpen={modal} toggle={handleClose}>
 				<ModalHeader toggle={handleClose}>Modify Characteristics</ModalHeader>
 				<ModalBody className='m-1 text-left'>
 					<Row>Total XP: {this.countXP()}</Row>

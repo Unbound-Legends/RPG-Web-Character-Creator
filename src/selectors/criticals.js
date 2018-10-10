@@ -19,7 +19,7 @@ const CriticalText = (total) => {
 			textCrit = '[purple] Off-Balance: Add [black] to the target’s next skill check.';
 			break;
 		case (total >= 26 && total <= 30):
-			textCrit = '[purple] Discouraging Wound: Move one player pool Story Point to the Game Master pool (reverse if NPC).';
+			textCrit = '[purple] Discouraging Wounds.svg: Move one player pool Story Point to the Game Master pool (reverse if NPC).';
 			break;
 		case (total >= 31 && total <= 35):
 			textCrit = '[purple] Stunned: The target is staggered until the end of their next turn.';
@@ -34,10 +34,10 @@ const CriticalText = (total) => {
 			textCrit = '[purple] [purple] Head Ringer: The target increases the difficulty of all Intellect and Cunning checks by one until this Critical Injury is healed.';
 			break;
 		case (total >= 51 && total <= 55):
-			textCrit = '[purple] [purple] Fearsome Wound: The target increases the difficulty of all Presence and Willpower checks by one until this Critical Injury is healed.';
+			textCrit = '[purple] [purple] Fearsome Wounds.svg: The target increases the difficulty of all Presence and Willpower checks by one until this Critical Injury is healed.';
 			break;
 		case (total >= 56 && total <= 60):
-			textCrit = '[purple] [purple] Agonizing Wound: The target increases the difficulty of all Brawn and Agility checks by one until this Critical Injury is healed.';
+			textCrit = '[purple] [purple] Agonizing Wounds.svg: The target increases the difficulty of all Brawn and Agility checks by one until this Critical Injury is healed.';
 			break;
 		case (total >= 61 && total <= 65):
 			textCrit = '[purple] [purple] Slightly Dazed: The target is disoriented until this Critical Injury is healed.';

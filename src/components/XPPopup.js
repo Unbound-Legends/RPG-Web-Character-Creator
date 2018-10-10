@@ -28,9 +28,9 @@ class XPPopupComponent extends React.Component {
 
 	render() {
 		const {earnedXP} = this.state;
-		const {handleClose, modal} = this.props;
+		const {handleClose, modal, theme} = this.props;
 		return (
-			<Modal isOpen={modal} toggle={handleClose}>
+			<Modal className={`body-${theme}`} isOpen={modal} toggle={handleClose}>
 				<ModalHeader toggle={handleClose}>{`Earned XP:  ${earnedXP}`}</ModalHeader>
 				<ModalBody className='m-4'>
 					<Row className='my-2'>
@@ -52,6 +52,7 @@ class XPPopupComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		earnedXP: state.earnedXP,
+		theme: state.theme,
 	};
 };
 

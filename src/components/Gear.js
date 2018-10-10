@@ -105,7 +105,7 @@ class GearComponent extends React.Component {
 	};
 
 	render() {
-		const {type, modal, weapons, armor, gear} = this.props;
+		const {type, modal, weapons, armor, gear, theme} = this.props;
 		let data;
 		switch (type) {
 			case 'equipmentWeapons':
@@ -121,7 +121,7 @@ class GearComponent extends React.Component {
 				break;
 		}
 		return (
-			<Modal isOpen={!!modal} toggle={this.handleClose}>
+			<Modal className={`body-${theme}`} isOpen={!!modal} toggle={this.handleClose}>
 				<ModalHeader toggle={this.handleClose}>Select your {type.toString().slice(9)}</ModalHeader>
 				<ModalBody className='m-1'>
 					<Row>
@@ -157,6 +157,7 @@ const mapStateToProps = state => {
 		equipmentArmor: state.equipmentArmor,
 		equipmentGear: state.equipmentGear,
 		equipmentWeapons: state.equipmentWeapons,
+		theme: state.theme
 	};
 };
 

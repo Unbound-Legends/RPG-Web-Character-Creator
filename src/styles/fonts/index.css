@@ -1,0 +1,153 @@
+@font-face {
+	font-family: 'Bebas Neue';
+	src: url('BebasNeueBold.woff2') format('woff2'),
+	url('BebasNeueBold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bebas Neue';
+	src: url('BebasNeueRegular.woff2') format('woff2'),
+	url('BebasNeueRegular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Next LT Pro';
+	src: url('AvenirNextLTPro-Regular.woff2') format('woff2'),
+	url('AvenirNextLTPro-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Next LT Pro';
+	src: url('AvenirNextLTPro-Bold.woff2') format('woff2'),
+	url('AvenirNextLTPro-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Minion Pro';
+	src: url('MinionPro-Regular.woff2') format('woff2'),
+	url('MinionPro-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Minion Pro';
+	src: url('MinionPro-Bold.woff2') format('woff2'),
+	url('MinionPro-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'American Captian';
+	src: url('american-captain-webfont.woff2') format('woff2'),
+	url('american-captain-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Archistico';
+	src: url('archistico_simple.woff2') format('woff2'),
+	url('archistico_simple.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'Archistico';
+	src: url('archistico_bold.woff2') format('woff2'),
+	url('archistico_bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Charis SIL';
+	src: url('CharisSIL.woff2') format('woff2'),
+	url('CharisSIL.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Charis SIL';
+	src: url('CharisSIL-Bold.woff2') format('woff2'),
+	url('CharisSIL-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bolton';
+	src: url('Bolton.woff2') format('woff2'),
+	url('Bolton.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bolton';
+	src: url('BoltonBold.woff2') format('woff2'),
+	url('BoltonBold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bolton';
+	src: url('BoltonItalic.woff2') format('woff2'),
+	url('BoltonItalic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Bolton';
+	src: url('BoltonBoldItalic.woff2') format('woff2'),
+	url('BoltonBoldItalic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Adobe Garamond Pro';
+	src: url('AGaramondPro-Bold.woff2') format('woff2'),
+	url('AGaramondPro-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Adobe Garamond Pro';
+	src: url('AGaramondPro-Regular.woff2') format('woff2'),
+	url('AGaramondPro-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Adobe Garamond Pro';
+	src: url('AGaramondPro-Italic.woff2') format('woff2'),
+	url('AGaramondPro-Italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Adobe Garamond Pro';
+	src: url('AGaramondPro-BoldItalic.woff2') format('woff2'),
+	url('AGaramondPro-BoldItalic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+

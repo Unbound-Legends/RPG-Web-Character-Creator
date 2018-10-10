@@ -14,15 +14,15 @@ class XPBoxesComponent extends React.Component {
 		const {totalXP, usedXP, theme} = this.props;
 		return (
 			<div>
-				<div className={`imageBox xpBox totalXP totalXP-${theme}`} onClick={() => this.setState({modal: true})}>
+				<div className={`imageBox xpBox totalXP`} onClick={() => this.setState({modal: true})}>
 					<img src={images[theme].TotalXp} alt='' className='svg'/>
-					<Row className='xpValue'>{totalXP}</Row>
+					<Row className={`xpValue xpValue-${theme}`}>{totalXP}</Row>
 				</div>
 
 				<div className={`imageBox xpBox availableXP availableXP-${theme}`} onClick={() => this.setState({modal: true})}>
 					<img src={images[theme].AvailableXp} alt='' className='svg'/>
 
-					<Row className='xpValue'>{totalXP - usedXP}</Row>
+					<Row className={`xpValue xpValue-${theme}`}>{totalXP - usedXP}</Row>
 				</div>
 				<XPPopup modal={this.state.modal} handleClose={() => this.setState({modal: false})}/>
 			</div>

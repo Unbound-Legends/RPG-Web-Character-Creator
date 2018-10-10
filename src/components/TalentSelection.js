@@ -8,7 +8,7 @@ import {talentCount} from '../selectors';
 import {Description, TalentDedication} from './index';
 
 const modifiableAttributes = {
-	woundThreshold: 'Wound Threshold',
+	woundThreshold: 'Wounds.svg Threshold',
 	strainThreshold: 'Stain Threshold',
 	Soak: 'Soak',
 	meleeDefense: 'Melee Defense',
@@ -102,10 +102,10 @@ class TalentSelectionComponent extends React.Component {
 	};
 
 	render() {
-		const {talents, row, modal, skills} = this.props;
+		const {talents, row, modal, skills, theme} = this.props;
 		const {talentSelection, selection} = this.state;
 		const talent = talents[talentSelection];
-		return <Modal isOpen={modal} toggle={this.handleClose}>
+		return <Modal className={`body-${theme}`} isOpen={modal} toggle={this.handleClose}>
 			<ModalHeader toggle={this.handleClose} style={{backgroundColor: this.activation()}}>Select a Talent</ModalHeader>
 			<ModalBody className='m-4'>
 				<Row>
@@ -205,6 +205,7 @@ const mapStateToProps = state => {
 		talents: state.talents,
 		talentModifiers: state.talentModifiers,
 		skills: state.skills,
+		theme: state.theme,
 	};
 };
 

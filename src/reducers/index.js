@@ -50,6 +50,7 @@ const allReducers = combineReducers({
 	talentModifiers: changeState.talentModifiers,
 	talents: changeState.talents,
 	theme: changeState.theme,
+	themes: changeState.themes,
 	user: changeState.user,
 	weapons: changeState.weapons,
 });
