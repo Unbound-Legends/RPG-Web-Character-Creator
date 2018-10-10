@@ -14,7 +14,7 @@ class Component extends React.Component {
 				</Row>
 				<hr/>
 				<img className='img-fluid' src={description.image ? description.image : ''}
-					 alt='not found' ref={img => this.img = img} onError={() => this.img.src = images.Crest}/>
+					 alt='not found' ref={img => this.img = img} onError={() => this.img.src = images.user}/>
 			</div>
 		)
 	}

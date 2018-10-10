@@ -26,11 +26,12 @@ class CharacterImageComponent extends React.Component {
 					<Button color='link'
 							className='noUnderLine p-0'
 							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
+				<hr/>
 				<Row className='justify-content-center'>
-					<img className='img-fluid w-100 h-100' style={{maxWidth: 'unset'}}
+					<img className='img-fluid w-100 h-100 m-1' style={{maxHeight: '20rem'}}
 						 src={description.image ? description.image : ''}
 						 alt='not found' ref={img => this.img = img}
-						 onError={() => this.img.src = images.Crest}/>
+						 onError={() => this.img.src = images.user}/>
 				</Row>
 				<Modal className={`body-${theme}`} isOpen={modal !== false} toggle={() => this.setState({modal: false})}>
 					<ModalHeader toggle={() => this.setState({modal: false})}>Edit Character Image</ModalHeader>
