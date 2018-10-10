@@ -28,7 +28,7 @@ class CharacterImageComponent extends React.Component {
 							onClick={() => this.setState({modal: true})}>⚙</Button></Row>
 				<hr/>
 				<Row className='justify-content-center'>
-					<img className='img-fluid w-100 h-100 m-1' style={{maxHeight: '20rem'}}
+					<img className='characterImage m-1 w-100 h-100'
 						 src={description.image ? description.image : ''}
 						 alt='not found' ref={img => this.img = img}
 						 onError={() => this.img.src = images.user}/>

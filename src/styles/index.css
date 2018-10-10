@@ -112,6 +112,11 @@ input[type="number"] {
 	height: 1.2rem;
 }
 
+.characterImage {
+	max-height: 18rem;
+	object-fit: contain;
+}
+
 .svg {
 	width: 100%;
 }
