@@ -1,0 +1,134 @@
+{
+  "threeMastedFrigate": {
+    "name": "Three-Masted Frigate",
+    "silhouette": 5,
+    "maxSpeed": 3,
+    "handling": -3,
+    "defense": 0,
+    "armor": 3,
+    "hullTraumaThreshold": 60,
+    "systemStrainThreshold": 45,
+    "skill": "Operating,",
+    "complement": "225 crew",
+    "passengerCapacity": 60,
+    "price": 300000,
+    "rarity": 8,
+    "consumables": "3 months",
+    "encumbranceCapacity": 200,
+    "weapons": {
+      "twentryFourPounderCannons": {
+        "name": "24-Pounder Cannons",
+        "amount": 30,
+        "fireArc": [
+          "starboard",
+          "port"
+        ],
+        "damage": 6,
+        "critical": 3,
+        "range": "long"
+      },
+      "ninePounderCannons": {
+        "name": "9-Pounder Cannons",
+        "amount": 8,
+        "fireArc": [
+          "starboard",
+          "port"
+        ],
+        "damage": 4,
+        "critical": 5,
+        "range": "medium"
+      },
+      "longNines": {
+        "name": "Long Nines",
+        "amount": 2,
+        "fireArc": [
+          "forward"
+        ],
+        "damage": 4,
+        "critical": 5,
+        "range": "long",
+        "qualities": {
+          "Accurate": 1
+        }
+      }
+    }
+  },
+  "fourDoorAutomobile": {
+    "name": "Four Door Automobile",
+    "silhouette": 2,
+    "maxSpeed": 4,
+    "handling": 0,
+    "defense": 0,
+    "armor": 0,
+    "hullTraumaThreshold": 4,
+    "systemStrainThreshold": 5,
+    "skill": "Driving,",
+    "complement": "1 driver",
+    "passengerCapacity": "3 (5 uncomfortably)",
+    "price": 2000,
+    "rarity": 3,
+    "consumables": "none",
+    "encumbranceCapacity": 20
+  },
+  "aerospaceSuperiorityFighter": {
+    "name": "Aerospace Superiority Fighter",
+    "silhouette": 3,
+    "maxSpeed": 5,
+    "handling": 2,
+    "defense": 0,
+    "armor": 2,
+    "hullTraumaThreshold": 10,
+    "systemStrainThreshold": 10,
+    "skill": "Piloting,",
+    "complement": "1 pilot, 1 copilot",
+    "passengerCapacity": 0,
+    "price": 1000000000,
+    "rarity": 9,
+    "consumables": "1 day",
+    "encumbranceCapacity": 5,
+    "weapons": {
+      "rotaryCannon": {
+        "name": "Rotary Cannon",
+        "amount": 1,
+        "fireArc": [
+          "forward"
+        ],
+        "damage": 2,
+        "critical": 5,
+        "range": "long",
+        "qualities": {
+          "AutoFire": ""
+        }
+      },
+      "airToAirMissiles": {
+        "name": "Air to Air Missiles",
+        "amount": 1,
+        "fireArc": [
+          "forward"
+        ],
+        "damage": 5,
+        "critical": 3,
+        "range": "extreme",
+        "qualities": {
+          "Guided": 3,
+          "LimitedAmmo": 6
+        }
+      },
+      "antiShipMissile": {
+        "name": "Anti-Ship Missile",
+        "amount": 1,
+        "fireArc": [
+          "forward"
+        ],
+        "damage": 8,
+        "critical": 1,
+        "range": "Strategic",
+        "qualities": {
+          "Blast": 5,
+          "Breach": 2,
+          "LimitedAmmo": 1
+        }
+      }
+    }
+  }
+}

@@ -174,7 +174,7 @@ class EquipmentComponent extends React.Component {
 						Soak: <b>{totalSoak}</b>
 					</Col>
 					<Col>
-						Ranged: <b>{totalDefense.ranged}</b> Melee: <b>{totalDefense.melee}</b>
+						Melee: <b>{totalDefense.melee}</b> Ranged: <b>{totalDefense.ranged}</b>
 					</Col>
 				</Row>
 				<Row>

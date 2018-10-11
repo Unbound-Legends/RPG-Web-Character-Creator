@@ -46,10 +46,10 @@ class Component extends React.Component {
 						<img src={images[theme].Defense} alt='' className='svg'/>
 						<Row className={`attributeValue attributeValue-${theme}-Defense`}>
 							<div className='mr-2 p-1'>
-								{totalDefense.ranged}
+								{totalDefense.melee}
 							</div>
 							<div className='ml-2 p-1'>
-								{totalDefense.melee}
+								{totalDefense.ranged}
 							</div>
 						</Row>
 					</div>

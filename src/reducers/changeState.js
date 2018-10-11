@@ -90,6 +90,7 @@ export const skills = (state = data.skills, action) => databaseReducer(state, ac
 export const qualities = (state = data.qualities, action) => databaseReducer(state, action, 'qualities');
 export const talents = (state = data.talents, action) => databaseReducer(state, action, 'talents');
 export const weapons = (state = data.weapons, action) => databaseReducer(state, action, 'weapons');
+export const vehicles = (state = data.vehicles, action) => databaseReducer(state, action, 'vehicles');
 
 //custom data objects
 const customDataReducer = (state, action, type) => {
