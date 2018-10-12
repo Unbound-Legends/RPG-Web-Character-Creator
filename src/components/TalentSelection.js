@@ -1,20 +1,13 @@
 import clone from 'clone';
+import {startCase} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
+import {chars, modifiableAttributes} from '../data';
 import {talentCount} from '../selectors';
 import {Description, TalentDedication} from './index';
-
-const modifiableAttributes = {
-	woundThreshold: 'Wounds.svg Threshold',
-	strainThreshold: 'Stain Threshold',
-	Soak: 'Soak',
-	meleeDefense: 'Melee Defense',
-	rangedDefense: 'Ranged Defense',
-	defense: 'Defense'
-};
 
 class TalentSelectionComponent extends React.Component {
 	state = {
@@ -167,8 +160,11 @@ class TalentSelectionComponent extends React.Component {
 						<Col><Description
 							text={`Adds ${Object.values(talent.modifier)[0]}  to ${skills[Object.keys(talent.modifier)[0]].name} checks.`}/></Col>
 						}
-						{Object.keys(modifiableAttributes).includes(Object.keys(talent.modifier)[0]) &&
-						<Col>Adds {Object.values(talent.modifier)[0]} to {modifiableAttributes[Object.keys(talent.modifier)[0]]}</Col>
+						{(modifiableAttributes.includes(Object.keys(talent.modifier)[0]) && Object.keys(talent.modifier)[0] !== 'careerSkills') &&
+						<Col>Adds {Object.values(talent.modifier)[0]} to {startCase(Object.keys(talent.modifier)[0])}</Col>
+						}
+						{chars.includes(Object.keys(talent.modifier)[0]) &&
+						<Col>Increase {Object.keys(talent.modifier)[0]} by 1</Col>
 						}
 					</Row>
 					}

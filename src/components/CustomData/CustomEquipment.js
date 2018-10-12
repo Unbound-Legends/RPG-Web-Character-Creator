@@ -214,7 +214,7 @@ class CustomEquipmentComponent extends React.Component {
 							  handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 					{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
-										   array={(Object.keys(skills).concat(modifiableAttributes).concat(chars)).sort()}
+										   array={(Object.keys(skills).concat(modifiableAttributes, chars)).sort()}
 										   nameObj={skills}
 										   handleChange={(event) => this.setState({
 											   modifier: event.target.value,

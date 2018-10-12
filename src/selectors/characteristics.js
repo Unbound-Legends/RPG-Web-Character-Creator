@@ -26,13 +26,14 @@ const calcCharacteristics = createSelector(
 		});
 		//add other talents
 		Object.entries(talentCount).forEach(([talent, count]) => {
-			if (talents[talent] && talents[talent].modifier) {
-				let modifiers = talents[talent].modifier;
-				chars.forEach(characteristic => {
-					if (characteristic in modifiers) {
-						characteristics[characteristic] += count;
-					}
-				});
+			if (talents[talent]) {
+				if (talents[talent].modifier) {
+					chars.forEach(characteristic => {
+						if (characteristic in talents[talent].modifier) {
+							characteristics[characteristic] += count;
+						}
+					});
+				}
 			}
 		});
 		//add equipment modifier
