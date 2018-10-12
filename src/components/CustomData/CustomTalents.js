@@ -6,7 +6,7 @@ import {Button, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
 import {changeCustomData} from '../../actions';
-import {diceNames, modifiableAttributes} from '../../data/lists'
+import {chars, diceNames, modifiableAttributes} from '../../data/lists'
 import {Fragment} from './';
 
 class CustomTalentsComponent extends React.Component {
@@ -130,7 +130,7 @@ class CustomTalentsComponent extends React.Component {
 					  blankOption={false} handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
 
 			{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
-								   array={(modifiableAttributes.concat(Object.keys(skills))).sort()}
+								   array={modifiableAttributes.concat(Object.keys(skills), chars).sort()}
 								   nameObj={skills}
 								   handleChange={(event) => this.setState({
 									   modifier: event.target.value,
