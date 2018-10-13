@@ -54,6 +54,7 @@ const allReducers = combineReducers({
 	user: changeState.user,
 	weapons: changeState.weapons,
 	vehicles: changeState.vehicles,
+	vehicleList: changeState.vehicleList,
 });
 
 export default allReducers;

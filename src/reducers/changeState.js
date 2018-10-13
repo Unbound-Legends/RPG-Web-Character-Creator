@@ -1,13 +1,15 @@
 import clone from 'clone';
 import merge from 'deepmerge';
-import {upperFirst} from 'lodash-es';
+import {omit, upperFirst} from 'lodash-es';
 import * as data from '../data';
 import {typeCheck} from './checkTypes';
 import * as initialState from './initialState';
 
 //loading objects
 const loadingReducer = (state, action, type) => {
-	if (action.type === `${type}_Changed`) return action.payload;
+	if (action.type === `${type}_Changed`) {
+		return action.payload;
+	}
 	return state;
 };
 
@@ -17,6 +19,17 @@ export const loadingData = (state = true, action) => loadingReducer(state, actio
 export const loadingCustomData = (state = true, action) => loadingReducer(state, action, 'loadingCustomData');
 export const characterList = (state = null, action) => loadingReducer(state, action, 'characterList');
 export const printContent = (state = initialState.printContent, action) => loadingReducer(state, action, 'printContent');
+
+export const vehicleList = (state = {}, action) => {
+	if (action.type === `vehicleList_Added`) {
+		return merge(state, action.payload);
+	}
+	if (action.type === `vehicleList_Removed`) {
+		return omit(state, action.payload);
+	}
+	return state;
+};
+
 
 //character objects
 const characterReducer = (state, action, type) => {

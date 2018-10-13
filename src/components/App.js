@@ -6,9 +6,9 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser, loadCharacterList, loadCustomData, loadData} from '../actions';
+import {changeUser, loadCharacterList, loadCustomData, loadData, loadList} from '../actions';
 import {gaID} from '../config'
-import {DataPage, MainPage, User} from './';
+import {DataPage, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
 
 class AppComponent extends React.Component {
@@ -27,10 +27,11 @@ class AppComponent extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const {loadCharacterList, loadCustomData, user} = this.props;
+		const {loadCharacterList, loadCustomData, user, loadList} = this.props;
 		if (nextProps.user && user !== nextProps.user) {
 			loadCharacterList();
 			loadCustomData();
+			loadList('vehicle');
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
 		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting, nextProps.strict);
@@ -47,11 +48,12 @@ class AppComponent extends React.Component {
 		if (loadingCustomData || loadingData) return loadingPage;
 		else return (
 			<Container className={`body-${theme}`}>
-				<Tabs defaultIndex={0} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
+				<Tabs defaultIndex={3} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
 					<TabList>
 						<Tab>CHARACTERS</Tab>
 						<Tab>CUSTOM DATA</Tab>
 						<Tab>EXPORT / IMPORT</Tab>
+						<Tab>VEHICLES</Tab>
 					</TabList>
 					<TabPanel>
 						<MainPage/>
@@ -61,6 +63,9 @@ class AppComponent extends React.Component {
 					</TabPanel>
 					<TabPanel>
 						<DataPage/>
+					</TabPanel>
+					<TabPanel>
+						<VehicleSelect/>
 					</TabPanel>
 				</Tabs>
 				<div className='d-none d-print-block'>{this.props.printContent}</div>
@@ -88,7 +93,8 @@ const matchDispatchToProps = dispatch => {
 		changeUser,
 		loadCharacterList,
 		loadData,
-		loadCustomData
+		loadCustomData,
+		loadList,
 	}, dispatch);
 };
 

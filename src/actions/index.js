@@ -127,7 +127,7 @@ export const changeCharacterName = (data) => {
 };
 
 export const changePrintContent = (state) => {
-	return (dispatch) => {
+	return dispatch => {
 		dispatch({type: 'printContent_Changed', payload: state});
 	}
 };
@@ -161,6 +161,23 @@ export const importCustomData = (customDataSetImport) => {
 				});
 			}
 			db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true})
+		});
+	}
+};
+
+export const addData = (type) => {
+	return (dispatch, getState) => db.collection(`${type}`).add({owner: getState().user})
+};
+
+export const loadList = (type) => {
+	return (dispatch, getState) => {
+		const user = getState().user;
+		db.collection(type).where('owner', '==', user).onSnapshot(querySnapshot => {
+			querySnapshot.docChanges().forEach(change => {
+					if (change.type === 'added') dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
+					if (change.type === 'removed') dispatch({type: `${type}List_Removed`, payload: change.doc.id});
+				}
+			);
 		});
 	}
 };
