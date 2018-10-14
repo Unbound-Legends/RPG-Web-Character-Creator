@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, ButtonGroup, Col, Input, InputGroupAddon, Row} from 'reactstrap';
+import {Button, ButtonGroup, Col, Form, FormGroup, Input, InputGroupAddon, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addListData, changeDocData, changeListActive, changeName, removeListData} from '../actions';
 
@@ -23,13 +23,14 @@ class VehicleSelectComponent extends React.Component {
 		const {vehicle, vehicles, addListData, vehicleList, theme, vehicleType, changeListActive, changeDocData, removeListData} = this.props;
 		const {name} = this.state;
 		return (
-			<div className='w-100'>
+			<Form>
 				<Row className='justify-content-end'>
 					<div className={`header header-${theme}`}>VEHICLES</div>
 				</Row>
 				<hr/>
-				<Row className='align-items-center'>
-					<Col className='my-2'>
+				<FormGroup row>
+					<Label sm={2}><b>VEHICLE</b></Label>
+					<Col md={4}>
 						<Input type='select' disabled={0 >= Object.keys(vehicleList).length} value={vehicle}
 							   onChange={(event) => changeListActive(event.target.value, 'vehicle')}>
 							{Object.keys(vehicleList).map(key =>
@@ -38,7 +39,7 @@ class VehicleSelectComponent extends React.Component {
 							)}
 						</Input>
 					</Col>
-					<Col md='auto'>
+					<Col md={2}>
 						<InputGroupAddon addonType='append'>
 							<ButtonGroup>
 								<Button onClick={() => addListData('vehicle')}>New</Button>
@@ -46,25 +47,20 @@ class VehicleSelectComponent extends React.Component {
 							</ButtonGroup>
 						</InputGroupAddon>
 					</Col>
-				</Row>
-				<hr/>
-				<Row className='align-items-center'>
-					<Col sm='4' className='m-auto'>
-						<b>NAME:</b>
-					</Col>
-					<Col className='m-auto'>
-						<Input type='text' value={name ? name : ''} maxLength='50' name='name'
+				</FormGroup>
+				<FormGroup row>
+					<Label sm={2}><b>NAME</b></Label>
+					<Col md={6}>
+						<Input type='text' disabled={!vehicle} value={name ? name : ''} maxLength='50' name='name'
 							   onChange={(event) => this.setState({name: event.target.value})}
 							   onBlur={() => changeName('vehicle', vehicle, name)}/>
 					</Col>
-				</Row>
-				<hr/>
-				<Row className='align-items-center'>
-					<Col sm='4' className='m-auto'>
-						<b>TYPE:</b>
-					</Col>
-					<Col>
-						<Input type='select' value={vehicleType} onChange={(event) => changeDocData('vehicle', 'vehicleType', event.target.value)}>
+				</FormGroup>
+				<FormGroup row>
+					<Label sm={2}><b>TYPE</b></Label>
+					<Col md={6}>
+						<Input type='select' disabled={!vehicle} value={vehicleType}
+							   onChange={(event) => changeDocData('vehicle', 'vehicleType', event.target.value)}>
 							<option value=''/>
 							{vehicles && Object.keys(vehicles).map(key =>
 								<option value={key}
@@ -72,9 +68,9 @@ class VehicleSelectComponent extends React.Component {
 							)}
 						</Input>
 					</Col>
-				</Row>
+				</FormGroup>
 				<hr/>
-			</div>
+			</Form>
 
 		);
 	}

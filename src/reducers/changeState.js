@@ -45,6 +45,8 @@ export const critical = (state = clone(initialState.critical), action) => dataRe
 	type: action.type,
 	payload: Array.isArray(action.payload) ? action.payload.sort((a, b) => a - b) : null
 }, 'critical');
+export const currentHullTrauma = (state = initialState.currentHullTrauma, action) => dataReducer(state, action, 'currentHullTrauma');
+export const currentSystemStrain = (state = initialState.currentSystemStrain, action) => dataReducer(state, action, 'currentSystemStrain');
 export const currentStrain = (state = initialState.currentStrain, action) => dataReducer(state, action, 'currentStrain');
 export const currentWound = (state = initialState.currentWound, action) => dataReducer(state, action, 'currentWound');
 export const description = (state = clone(initialState.description), action) => dataReducer(state, action, 'description');

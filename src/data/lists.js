@@ -38,7 +38,7 @@ export const customDataTypes = [
 ];
 
 export const vehicleDataTypes = [
-	'vehicleType'
+	'vehicleType', 'currentHullTrauma', 'currentSystemStrain'
 ];
 
 export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];

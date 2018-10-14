@@ -15,6 +15,8 @@ const allReducers = combineReducers({
 	craftsmanship: changeState.craftsmanship,
 	creationCharacteristics: changeState.creationCharacteristics,
 	critical: changeState.critical,
+	currentHullTrauma: changeState.currentHullTrauma,
+	currentSystemStrain: changeState.currentSystemStrain,
 	currentStrain: changeState.currentStrain,
 	currentWound: changeState.currentWound,
 	customArchetypes: changeState.customArchetypes,

@@ -13,6 +13,8 @@ export const creationCharacteristics = {
 	Presence: 0
 };
 export const critical = [];
+export const currentHullTrauma = 0;
+export const currentSystemStrain = 0;
 export const currentWound = 0;
 export const currentStrain = 0;
 export const description = {
