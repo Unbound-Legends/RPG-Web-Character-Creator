@@ -33,4 +33,4 @@ export {default as motivations} from './motivations.json';
 export {default as qualities} from './qualities.json';
 export {default as skills} from './skills.json';
 export {default as settings} from './settings.json';
-export {dataTypes, customDataTypes, chars, diceNames, modifiableAttributes} from './lists';
+export {dataTypes, customDataTypes, vehicleDataTypes, chars, diceNames, modifiableAttributes} from './lists';

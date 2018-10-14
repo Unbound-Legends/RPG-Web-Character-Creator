@@ -13,6 +13,8 @@ export const creationCharacteristics = {
 	Presence: 0
 };
 export const critical = [];
+export const currentHullTrauma = 0;
+export const currentSystemStrain = 0;
 export const currentWound = 0;
 export const currentStrain = 0;
 export const description = {
@@ -33,6 +35,8 @@ export const strict = false;
 export const talentModifiers = {Dedication: {},};
 export const theme = 'CRB';
 export const themes = {CRB: 'Core Rule Book', ROT: 'Realms of Terrinoth', SOTB: 'Shadow of the Beanstalk'};
+export const vehicle = '';
+export const vehicleType = '';
 
 export const printContent = <h1 className='text-left m-3' style={{whiteSpace: 'pre-line'}}>
 	{`You savage. I made print button and you dare to use the print function in the browser?!?!\n

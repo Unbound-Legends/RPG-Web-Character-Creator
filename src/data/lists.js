@@ -37,6 +37,10 @@ export const customDataTypes = [
 	'customGear',
 ];
 
+export const vehicleDataTypes = [
+	'vehicleType', 'currentHullTrauma', 'currentSystemStrain'
+];
+
 export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
 
 export const diceNames = {

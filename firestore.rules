@@ -9,5 +9,8 @@ service cloud.firestore {
     match /users/{userId}/customData/{document=**}  {
       allow read, write: if request.auth.uid == userId;
     }
+    match /vehicle/{document=**}  {
+      allow read, write;
+    }
   }
 }
