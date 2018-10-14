@@ -1,7 +1,7 @@
 import clone from 'clone';
 import merge from 'deepmerge';
 import {uniq} from 'lodash-es';
-import {customDataTypes, dataTypes} from '../data';
+import {customDataTypes, dataTypes, vehicleDataTypes} from '../data';
 import {db} from '../firestoreDB';
 
 export const changeData = (data, type, merge = true) => {
@@ -165,19 +165,62 @@ export const importCustomData = (customDataSetImport) => {
 	}
 };
 
-export const addData = (type) => {
-	return (dispatch, getState) => db.collection(`${type}`).add({owner: getState().user})
+export const addListData = (type) => {
+	return (dispatch, getState) => db.collection(`${type}`).add({owner: getState().user, name: 'None'})
 };
-
+export const removeListData = (type, key) => {
+	return () => {
+		db.doc(`${type}/${key}/`).delete();
+	}
+};
 export const loadList = (type) => {
 	return (dispatch, getState) => {
 		const user = getState().user;
 		db.collection(type).where('owner', '==', user).onSnapshot(querySnapshot => {
 			querySnapshot.docChanges().forEach(change => {
-					if (change.type === 'added') dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
-					if (change.type === 'removed') dispatch({type: `${type}List_Removed`, payload: change.doc.id});
+				if (change.type === 'added') {
+					dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
+					dispatch({type: `${type}_Changed`, payload: change.doc.id});
+				}
+				if (change.type === 'removed') {
+					let newID = '';
+					if (querySnapshot.docs[0]) newID = querySnapshot.docs[0].id;
+					dispatch({type: `${type}_Changed`, payload: newID});
+					dispatch({type: `${type}List_Removed`, payload: change.doc.id});
+				}
+				if (change.type === 'modified') {
+					dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+				}
 				}
 			);
 		});
 	}
 };
+export const changeListActive = (data, type) => {
+	return {type: `${type}_Changed`, payload: data};
+};
+export const changeName = (type, key, data) => {
+	return db.doc(`${type}/${key}/`).update({name: data});
+};
+export const changeDocData = (type, dataType, data) => {
+	return (dispatch, getState) => {
+		db.doc(`${type}/${getState()[type]}/data/${dataType}`).set({data});
+	}
+};
+export const loadDoc = (type, key) => {
+	return (dispatch) => {
+		vehicleDataTypes.forEach(dataType => {
+			if (key) {
+				db.doc(`${type}/${key}/data/${dataType}`).onSnapshot(doc => {
+					let data = null;
+					if (doc.data()) data = doc.data().data;
+					dispatch({type: `${dataType}_Changed`, payload: data});
+				});
+			} else dispatch({type: `${dataType}_Changed`, payload: null});
+
+		})
+
+	}
+};
+
+

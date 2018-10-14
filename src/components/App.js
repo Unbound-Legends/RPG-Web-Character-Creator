@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser, loadCharacterList, loadCustomData, loadData, loadList} from '../actions';
+import {changeUser, loadCharacterList, loadCustomData, loadData, loadDoc, loadList} from '../actions';
 import {gaID} from '../config'
 import {DataPage, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
@@ -27,13 +27,14 @@ class AppComponent extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const {loadCharacterList, loadCustomData, user, loadList} = this.props;
+		const {loadCharacterList, loadCustomData, user, loadList, loadDoc} = this.props;
 		if (nextProps.user && user !== nextProps.user) {
 			loadCharacterList();
 			loadCustomData();
 			loadList('vehicle');
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
+		if (nextProps.vehicle !== this.props.vehicle) loadDoc('vehicle', nextProps.vehicle);
 		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting, nextProps.strict);
 		if (nextProps.strict !== this.props.strict) this.props.loadCustomData(nextProps.setting, nextProps.strict);
 		if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 400);
@@ -85,6 +86,7 @@ const mapStateToProps = state => {
 		setting: state.setting,
 		strict: state.strict,
 		theme: state.theme,
+		vehicle: state.vehicle,
 	};
 };
 
@@ -95,6 +97,7 @@ const matchDispatchToProps = dispatch => {
 		loadData,
 		loadCustomData,
 		loadList,
+		loadDoc,
 	}, dispatch);
 };
 

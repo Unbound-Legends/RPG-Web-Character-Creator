@@ -53,8 +53,10 @@ const allReducers = combineReducers({
 	themes: changeState.themes,
 	user: changeState.user,
 	weapons: changeState.weapons,
+	vehicle: changeState.vehicle,
 	vehicles: changeState.vehicles,
 	vehicleList: changeState.vehicleList,
+	vehicleType: changeState.vehicleType,
 });
 
 export default allReducers;
