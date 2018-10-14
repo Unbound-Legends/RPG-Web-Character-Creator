@@ -1,6 +1,8 @@
 1.5.0
     -fixed user page
      -adding vehicles
+1.4.5
+    -moved configs to .env
 
 1.4.4
     -added Char to talent modifier list

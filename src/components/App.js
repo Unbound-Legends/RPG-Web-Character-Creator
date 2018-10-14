@@ -7,7 +7,6 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadCustomData, loadData, loadDoc, loadList} from '../actions';
-import {gaID} from '../config'
 import {DataPage, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
 
@@ -15,7 +14,7 @@ class AppComponent extends React.Component {
 	state = {loading: true};
 
 	componentWillMount() {
-		ReactGA.initialize(gaID);
+		ReactGA.initialize(process.env.REACT_APP_gaID);
 		ReactGA.pageview(window.location.pathname);
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {

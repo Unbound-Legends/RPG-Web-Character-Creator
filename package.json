@@ -1,6 +1,6 @@
 {
   "name": "rpg-web-character-creator",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "An open source character generator and manager for RPGs",
   "repository": {
     "type": "git",
@@ -55,7 +55,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "firebase deploy"
+    "deploy": "npm run build && firebase deploy"
   },
   "devDependencies": {}
 }
