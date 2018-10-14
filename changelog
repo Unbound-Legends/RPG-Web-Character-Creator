@@ -1,3 +1,6 @@
+1.4.5
+    -moved configs to .env
+
 1.4.4
     -added Char to talent modifier list
     -added char to talentSelection printout
