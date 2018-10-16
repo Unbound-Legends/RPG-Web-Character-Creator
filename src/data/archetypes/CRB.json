@@ -5,7 +5,8 @@
     "page": "36",
     "description": "See CRB, page 36, for more details.",
     "setting": [
-      "All"
+      "All",
+      "Fantasy"
     ],
     "woundThreshold": 10,
     "strainThreshold": 10,

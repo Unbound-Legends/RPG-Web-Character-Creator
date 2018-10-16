@@ -9,6 +9,5 @@ export {SOTB};
 //export {CCC};
 export {default as Crest} from './Crest.png';
 export {default as gm} from './gm.png';
-export {default as GoogleLogo} from './GoogleLogo.png';
 export {default as pc} from './pc.png';
 export {default as user} from './user.svg';

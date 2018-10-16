@@ -1,6 +1,7 @@
 1.5.0
     -fixed user page
      -adding vehicles
+     -phone auth
 1.4.5
     -moved configs to .env
 
