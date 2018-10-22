@@ -7,7 +7,7 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadCustomData, loadData, loadDoc, loadList} from '../actions';
-import {DataPage, MainPage, User, VehicleSelect} from './';
+import {DataPage, MainPage, User} from './';
 import {CustomData} from './CustomData';
 
 class AppComponent extends React.Component {
@@ -53,7 +53,6 @@ class AppComponent extends React.Component {
 						<Tab>CHARACTERS</Tab>
 						<Tab>CUSTOM DATA</Tab>
 						<Tab>EXPORT / IMPORT</Tab>
-						<Tab>VEHICLES</Tab>
 					</TabList>
 					<TabPanel>
 						<MainPage/>
@@ -63,9 +62,6 @@ class AppComponent extends React.Component {
 					</TabPanel>
 					<TabPanel>
 						<DataPage/>
-					</TabPanel>
-					<TabPanel>
-						<VehicleSelect/>
 					</TabPanel>
 				</Tabs>
 				<div className='d-none d-print-block'>{this.props.printContent}</div>

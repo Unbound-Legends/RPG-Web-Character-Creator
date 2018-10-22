@@ -314,7 +314,7 @@ input[type="number"] {
 	top: 61%
 }
 
-/*CCC Theme*/
+/*CCC Theme
 .bg-CCC {
 	background: url(../images/CCC/background.png) center;
 }
@@ -333,7 +333,7 @@ input[type="number"] {
 
 .xpValue-CCC {
 	top: 65%;
-}
+}*/
 
 @media only screen
 and (max-width: 480px) {

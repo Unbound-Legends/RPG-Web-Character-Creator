@@ -8,12 +8,16 @@ import * as images from '../images';
 import {About} from './index';
 
 export class User extends Component {
+
 	uiConfig = {
 		signInFlow: 'popup',
 		autoUpgradeAnonymousUsers: true,
 		callbacks: {
 			signInFailure: error => {
 				console.error(error);
+			},
+			onAuthStateChanged: user => {
+				console.log(user)
 			},
 		},
 		signInOptions: [
