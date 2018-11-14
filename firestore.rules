@@ -12,5 +12,8 @@ service cloud.firestore {
     match /vehicle/{document=**}  {
       allow read, write;
     }
+    match /userDB/{document=**}  {
+      allow read, write;
+    }
   }
 }

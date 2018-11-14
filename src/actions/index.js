@@ -1,8 +1,27 @@
+import firebase from '@firebase/app';
+import '@firebase/auth';
 import clone from 'clone';
 import merge from 'deepmerge';
 import {uniq} from 'lodash-es';
 import {customDataTypes, dataTypes, vehicleDataTypes} from '../data';
 import {db} from '../firestoreDB';
+
+export const writeUser = () => {
+	firebase.auth().onAuthStateChanged(user => {
+		if (user) {
+			let object = {
+				name: user.displayName,
+				email: user.email,
+				uid: user.uid,
+				phone: user.phoneNumber,
+				lastLogin: new Date(),
+			};
+			console.log(object);
+			db.doc(`userDB/${user.uid}`).set(object).catch(console.error);
+
+		}
+	});
+};
 
 export const changeData = (data, type, merge = true) => {
 	return (dispatch, getState) => {
@@ -178,19 +197,19 @@ export const loadList = (type) => {
 		const user = getState().user;
 		db.collection(type).where('owner', '==', user).onSnapshot(querySnapshot => {
 			querySnapshot.docChanges().forEach(change => {
-				if (change.type === 'added') {
-					dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
-					dispatch({type: `${type}_Changed`, payload: change.doc.id});
-				}
-				if (change.type === 'removed') {
-					let newID = '';
-					if (querySnapshot.docs[0]) newID = querySnapshot.docs[0].id;
-					dispatch({type: `${type}_Changed`, payload: newID});
-					dispatch({type: `${type}List_Removed`, payload: change.doc.id});
-				}
-				if (change.type === 'modified') {
-					dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
-				}
+					if (change.type === 'added') {
+						dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
+						dispatch({type: `${type}_Changed`, payload: change.doc.id});
+					}
+					if (change.type === 'removed') {
+						let newID = '';
+						if (querySnapshot.docs[0]) newID = querySnapshot.docs[0].id;
+						dispatch({type: `${type}_Changed`, payload: newID});
+						dispatch({type: `${type}List_Removed`, payload: change.doc.id});
+					}
+					if (change.type === 'modified') {
+						dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+					}
 				}
 			);
 		});

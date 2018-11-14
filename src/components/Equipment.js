@@ -121,7 +121,7 @@ class EquipmentComponent extends React.Component {
 			case 'craftsmanship':
 				return (
 					<td key={key + block} style={{width: '7em'}} className='p-1'>
-						<Input type='select' name='craftsmanship' value={equipmentStats[key].craftsmanship}
+						<Input bsSize='sm' type='select' name='craftsmanship' value={equipmentStats[key].craftsmanship}
 							   equipmenttype={type} equipmentkey={key}
 							   onChange={this.handleSelect}>
 							<option value=''/>

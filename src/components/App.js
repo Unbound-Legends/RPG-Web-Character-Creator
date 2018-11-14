@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser, loadCharacterList, loadCustomData, loadData, loadDoc, loadList} from '../actions';
+import {changeUser, loadCharacterList, loadCustomData, loadData, loadDoc, loadList, writeUser} from '../actions';
 import {DataPage, MainPage, User} from './';
 import {CustomData} from './CustomData';
 
@@ -28,6 +28,7 @@ class AppComponent extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		const {loadCharacterList, loadCustomData, user, loadList, loadDoc} = this.props;
 		if (nextProps.user && user !== nextProps.user) {
+			writeUser();
 			loadCharacterList();
 			loadCustomData();
 			loadList('vehicle');
@@ -93,6 +94,7 @@ const matchDispatchToProps = dispatch => {
 		loadCustomData,
 		loadList,
 		loadDoc,
+		writeUser,
 	}, dispatch);
 };
 

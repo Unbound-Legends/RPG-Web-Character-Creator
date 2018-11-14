@@ -102,7 +102,8 @@ class TalentSelectionComponent extends React.Component {
 			<ModalHeader toggle={this.handleClose} style={{backgroundColor: this.activation()}}>Select a Talent</ModalHeader>
 			<ModalBody className='m-4'>
 				<Row>
-					<Input type='select' value={talentSelection} onChange={(event) => this.setState({talentSelection: event.target.value})}>
+					<Input type='select' bsSize='sm' value={talentSelection}
+						   onChange={(event) => this.setState({talentSelection: event.target.value})}>
 						<option value=''/>
 						{this.makeOptions().sort().map((key) =>
 							<option value={key} key={key}>{talents[key] ? talents[key].name : ''}</option>
