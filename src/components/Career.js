@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Button, Col, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {maxCareerSkills} from '../selectors';
@@ -32,9 +32,9 @@ class CareerComponent extends React.Component {
 		return (
 
 			<Modal className={`body-${theme}`} isOpen={modal} toggle={handleClose}>
-				<ModalHeader toggle={handleClose}>Select Career</ModalHeader>
+				<ModalHeader toggle={handleClose}><b>Select Career</b></ModalHeader>
 				<ModalBody>
-					<Input type='select' defaultValue={masterCareer && masterCareer.name} onChange={this.handleChange}>
+					<Input type='select' bsSize='sm' value={masterCareer ? masterCareer.name : ''} onChange={this.handleChange}>
 						<option value=''/>
 						{Object.keys(careers).sort().map((key) =>
 							<option value={key} key={key}>{careers[key].name}</option>
@@ -43,49 +43,46 @@ class CareerComponent extends React.Component {
 					<hr/>
 
 					{masterCareer &&
-					<div className='mt-2 px-2'>
-						<Row><h3>Career Skills:</h3></Row>
-						<div className='px-3'>
-							<Row>Select {this.props.maxCareerSkills} skills to start with 1 free rank</Row>
-							{masterCareer.skills.sort().map(skill =>
-								<Row key={skill} className='ml-3 align-items-center'>
-									<Label className='my-1'>
-										<Input type='checkbox' name={skill}
-											   className='my-2'
-											   checked={careerSkillsRank.includes(skill)}
-											   onChange={this.handleCheck}/>{skills[skill] ? skills[skill].name : ''}
-									</Label>
-								</Row>
-							)}
-						</div>
+					<ModalBody>
+						<Row><h5>Career Skills</h5></Row>
+						<Row>Select {this.props.maxCareerSkills} skills to start with 1 free rank</Row>
+						{masterCareer.skills.sort().map(skill =>
+							<Row key={skill} className='ml-3 align-items-center'>
+								<FormGroup check>
+									<Input type='checkbox' name={skill} id={skill}
+										   className='my-2'
+										   checked={careerSkillsRank.includes(skill)}
+										   onChange={this.handleCheck}/>
+									<Label id={skill} check>{skills[skill] ? skills[skill].name : 'Skill not found'}</Label>
+								</FormGroup>
+							</Row>
+						)}
 
-						<Row>
-							<Col xs='4'>
-								<b>Setting:</b>
-							</Col>
-							<Col sm='6'>
+						<Row className='mb-1 align-self-center'>
+							<Label for='setting' sm='3' className='py-0'><b>Setting</b></Label>
+							<Col id='setting' sm='auto'>
 								{Array.isArray(masterCareer.setting) ? masterCareer.setting.sort().join(', ') : masterCareer.setting}
 							</Col>
 						</Row>
 						{masterCareer.book &&
-						<Row className='my-2'>
-							<Col xs='4'>
-								<b>Book:</b>
-							</Col>
-							<Col>
-								<Description text={`${masterCareer.book}: ${masterCareer.page}`}/>
+						<Row className='mb-1 align-self-center'>
+							<Label for='book' sm='3' className='py-0'>
+								<b>Book</b>
+							</Label>
+							<Col sm='auto'>
+								<Description id='book' text={`${masterCareer.book}: ${masterCareer.page}`}/>
 							</Col>
 						</Row>
 						}
-						<Row>
-							<Col xs='4'>
-								<b>Description:</b>
-							</Col>
-							<Col sm='6'>
-								<Description text={masterCareer.description}/>
+						<Row className='mb-1 align-self-center'>
+							<Label for='desc' className='py-0' sm='3'>
+								<b>Description</b>
+							</Label>
+							<Col sm='auto'>
+								<Description id='desc' text={masterCareer.description}/>
 							</Col>
 						</Row>
-					</div>
+					</ModalBody>
 					}
 				</ModalBody>
 				<ModalFooter>

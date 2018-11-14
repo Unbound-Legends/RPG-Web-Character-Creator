@@ -19,9 +19,9 @@ class ArchetypeComponent extends React.Component {
 		const {archetype, archetypes, handleClose, modal, theme} = this.props;
 		return (
 			<Modal className={`body-${theme}`} isOpen={modal} toggle={handleClose} style={{overflowY: 'auto'}}>
-				<ModalHeader toggle={handleClose}>Select Archetype</ModalHeader>
+				<ModalHeader toggle={handleClose}><b>Select Archetype</b></ModalHeader>
 				<ModalBody className='mx-2'>
-					<Input type='select' value={archetype ? archetype : ''} onChange={this.handleSelect}>
+					<Input type='select' bsSize='sm' value={archetype ? archetype : ''} onChange={this.handleSelect}>
 						<option value=''/>
 						{Object.keys(archetypes).sort().map(key =>
 							<option value={key} key={key}>{archetypes[key].name}</option>

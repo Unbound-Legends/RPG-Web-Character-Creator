@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Row} from 'reactstrap';
+import {Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -21,9 +21,10 @@ class NotesComponent extends React.Component {
 				</Row>
 				<hr/>
 				<Row className='justify-content-center mx-auto'>
-                        <textarea onBlur={() => changeData({...description, notes}, 'description')}
-								  onChange={(event) => this.setState({notes: event.target.value})}
-								  className='w-100' rows='31' maxLength='5000' value={notes}/>
+					<Input onBlur={() => changeData({...description, notes}, 'description')}
+						   onChange={(event) => this.setState({notes: event.target.value})}
+						   type='textarea'
+						   className='w-100' rows='31' maxLength='5000' value={notes}/>
 				</Row>
 			</div>
 

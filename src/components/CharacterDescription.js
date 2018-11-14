@@ -1,7 +1,7 @@
 import clone from 'clone';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Input, Row} from 'reactstrap';
+import {Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
@@ -45,25 +45,35 @@ class CharacterDescriptionComponent extends React.Component {
 				</Row>
 				<hr/>
 				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map(aspect =>
-					<Row key={aspect} className='my-2'>
-						<b>{aspect.toLocaleUpperCase()}:</b>
-						<Input value={this.state[aspect]}
-							   maxLength='25'
-							   name={aspect}
-							   onBlur={this.handleBlur}
-							   onChange={(event) => this.setState({[aspect]: event.target.value})}/>
+					<Row key={aspect}>
+						<Label for={aspect} sm={2}>
+							<b>{aspect.toLocaleUpperCase()}</b>
+						</Label>
+						<Col md='10' className='align-self-center'>
+							<Input value={this.state[aspect]}
+								   id={aspect}
+								   maxLength='25'
+								   bsSize='sm'
+								   name={aspect}
+								   onBlur={this.handleBlur}
+								   onChange={(event) => this.setState({[aspect]: event.target.value})}/>
+						</Col>
 						<hr/>
 					</Row>
 				)}
-				<Row className='my-2'>
-					<b>NOTABLE FEATURES:</b>
-					<textarea onChange={(event) => this.setState({features: event.target.value})}
-							  onBlur={this.handleBlur}
-							  rows='12'
-							  className='w-100'
-							  maxLength='1000'
-							  name='features'
-							  value={this.state.features}/>
+				<Row>
+					<Label sm={6} for='features'><b>NOTABLE FEATURES</b></Label>
+					<Col sm={12}>
+						<Input onChange={(event) => this.setState({features: event.target.value})}
+							   onBlur={this.handleBlur}
+							   type='textarea'
+							   rows='12'
+							   className='w-100 my-auto'
+							   maxLength='1000'
+							   name='features'
+							   id='features'
+							   value={this.state.features}/>
+					</Col>
 				</Row>
 			</div>
 		);

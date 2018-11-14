@@ -94,6 +94,11 @@ input[type="number"] {
 	width: 90%;
 }
 
+.form-check-label {
+	margin-bottom: 0;
+	vertical-align: -webkit-baseline-middle;
+}
+
 .header {
 	font-size: 1.25rem;
 	margin-bottom: 0;
@@ -254,8 +259,15 @@ input[type="number"] {
 }
 
 .attributeValue-CRB-Wounds,
+.attributeValue-CRB-Defense,
+.attributeValue-CRB-Soak,
 .attributeValue-CRB-Strain {
-	left: 58%
+	left: 59%
+}
+
+.characteristicValue-CRB {
+	top: 37%;
+	left: 65%;
 }
 
 /*ROT Theme*/
@@ -280,7 +292,13 @@ input[type="number"] {
 .attributeValue-ROT-Soak,
 .attributeValue-ROT-Defense,
 .attributeValue-ROT-Strain {
-	top: 58%
+	top: 58%;
+	left: 58%;
+}
+
+.characteristicValue-ROT {
+	left: 65.5%;
+	top: 41%;
 }
 
 /*SOTB Theme*/
@@ -298,7 +316,8 @@ input[type="number"] {
 }
 
 .characteristicValue-SOTB {
-	top: 36%
+	top: 36%;
+	left: 65.5%;
 }
 
 .xpValue-SOTB {
@@ -311,7 +330,8 @@ input[type="number"] {
 .attributeValue-SOTB-Strain,
 .attributeValue-SOTB-StrainThreshold,
 .attributeValue-SOTB-WoundsThreshold {
-	top: 61%
+	top: 61%;
+	left: 58%;
 }
 
 /*CCC Theme

@@ -2,7 +2,7 @@ import firebase from '@firebase/app';
 import '@firebase/auth';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, ButtonGroup, Col, Input, Row} from 'reactstrap';
+import {Button, ButtonGroup, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData, changePrintContent, changeUser} from '../actions';
 import {PrintLayout} from './printLayout/index';
@@ -19,17 +19,17 @@ class ButtonsComponent extends React.Component {
 	render() {
 		const {changePrintContent, theme, themes, changeData} = this.props;
 		return (
-			<Row className='m-1 justify-content-between align-items-center d-print-none'>
-				<Col md='4' className='d-inline-flex align-items-center' style={{fontSize: '0.7rem'}}>
-					<b>THEME:</b>&emsp;
-					<Input type='select' value={theme} style={{fontSize: '0.7rem', height: '1.5rem', padding: '0'}}
+			<Row className='m-1 justify-content-between d-print-none'>
+				<Col className='d-inline-flex' sm={4} style={{fontSize: '0.7rem'}}>
+					<Label for='theme' className='mr-1 my-auto'><b>THEME</b></Label>
+					<Input id='theme' type='select' value={theme} bsSize='sm'
 						   onChange={(event) => changeData(event.target.value, 'theme')}>
 						{Object.keys(themes).sort().map(key =>
 							<option value={key} key={key}>{themes[key]}</option>
 						)}
 					</Input>
 				</Col>
-				<Col md='4' className='text-right'>
+				<Col sm='4' className='text-right'>
 					<ButtonGroup>
 						<Button size='sm' onClick={() => changePrintContent(<PrintLayout/>)}>Print</Button>
 						<Button size='sm' onClick={() => window.open('https://paypal.me/SkyJedi')}>Donate</Button>

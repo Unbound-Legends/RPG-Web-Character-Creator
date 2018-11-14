@@ -82,9 +82,9 @@ class CustomTalentsComponent extends React.Component {
 		this.setState({
 			name: talent.name ? talent.name : '',
 			tier: talent.tier ? talent.tier : '',
-			activation: talent.activation ? talent.activation : '',
+			activation: talent.activation ? talent.activation : false,
 			turn: talent.turn ? talent.turn : '',
-			ranked: talent.ranked ? talent.ranked : '',
+			ranked: talent.ranked ? talent.ranked : false,
 			description: talent.description ? talent.description : '',
 			setting: typeof talent.setting === 'string' ? talent.setting.split(', ') : talent.setting,
 			prerequisite: talent.prerequisite ? talent.prerequisite : '',

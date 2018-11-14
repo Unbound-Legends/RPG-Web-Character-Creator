@@ -2,7 +2,7 @@ import {startCase} from 'lodash-es';
 import React from 'react';
 import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
-import {Button, Col, Input, Row} from 'reactstrap';
+import {Button, Col, Input, Label, Row} from 'reactstrap';
 import {Description} from '../Description';
 
 class FragmentComponent extends React.Component {
@@ -22,12 +22,12 @@ class FragmentComponent extends React.Component {
 		const {type, settings, setState, setting, mode, handleChange, value = '', array, nameObj, object, handleClear, blankText = '', blankOption = true, name,} = this.props;
 		switch (type) {
 			case 'name':
-				return <Input type='text' value={value} maxLength='25' onChange={handleChange}
+				return <Input type='text' bsSize='sm' value={value} maxLength='25' onChange={handleChange}
 							  disabled={mode === 'edit'}/>;
 			case 'text':
-				return <Input type='text' value={value} maxLength='25' onChange={handleChange}/>;
+				return <Input type='text' bsSize='sm' value={value} maxLength='25' onChange={handleChange}/>;
 			case 'number':
-				return <Input type='number' value={value} maxLength='7' onChange={handleChange}/>;
+				return <Input type='number' bsSize='sm' value={value} maxLength='7' onChange={handleChange}/>;
 			case 'list':
 				return (
 					<div style={{display: 'inline-flex'}}>
@@ -45,15 +45,16 @@ class FragmentComponent extends React.Component {
 					clearButton={true}
 					onChange={(selected) => setState(selected.includes('All') ? ['All'] : selected)}/>;
 			case 'description':
-				return (<textarea onChange={handleChange}
-								  name='description'
-								  rows='8'
-								  maxLength='1000'
-								  className='w-100'
-								  value={value}/>
+				return (<Input onChange={handleChange}
+							   type='textarea'
+							   name='description'
+							   rows='8'
+							   maxLength='1000'
+							   className='w-100'
+							   value={value}/>
 				);
 			case 'inputSelect':
-				return (<Input type='select' value={value} name={name} onChange={handleChange}>
+				return (<Input type='select' bsSize='sm' value={value} name={name} onChange={handleChange}>
 					{blankOption && <option value=''>{blankText}</option>}
 					{array.sort().map(key =>
 						<option value={key}
@@ -69,8 +70,8 @@ class FragmentComponent extends React.Component {
 		const {name, type, title = name ? name : type} = this.props;
 		return (
 			<Row className='my-2'>
-				<Col sm='2' className={title === 'description' ? 'mt-0' : 'my-auto'}><b>{startCase(title)}:</b></Col>
-				<Col>
+				<Label for={title} sm='2' className={title === 'description' ? 'mt-0' : 'my-auto'}><b>{startCase(title)}</b></Label>
+				<Col id={title}>
 					{this.buildField()}
 				</Col>
 			</Row>

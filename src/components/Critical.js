@@ -62,7 +62,7 @@ class CriticalComponent extends React.Component {
 				</Table>
 				<Row className='my-2 justify-content-end'>
 					<b className='my-auto'>Add Critical:</b>
-					<Input className='w-20 mx-2' type='number' name='critical' value={value > 0 ? value : ''}
+					<Input className='w-20 mx-2' bsSize='sm' type='number' name='critical' value={value > 0 ? value : ''}
 						   onChange={this.handleChange}/>
 					<Button size='sm' onClick={this.handleSubmit}>Add</Button>
 				</Row>

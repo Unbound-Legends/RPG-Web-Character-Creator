@@ -29,7 +29,7 @@ class ArchetypeSkillsComponent extends React.Component {
 				<Col>
 					<Row>Select {masterArchetype.skills.choice} {masterArchetype.skills.choice > 1 ? 'options' : 'option'} to
 						get {Object.keys(masterArchetype.skills).includes('any') ? masterArchetype.skills.any : 1} {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:</Row>
-					<Input type='select' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
+					<Input type='select' bsSize='sm' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
 						<option value=''/>
 						{list.map(key =>
 							(skills[key] && !Object.keys(archetypeSpecialSkills).includes(key)) &&

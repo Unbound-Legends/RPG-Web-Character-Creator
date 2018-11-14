@@ -110,7 +110,7 @@ class TalentSelectionComponent extends React.Component {
 					</Input>
 				</Row>
 				{talent &&
-				<div>
+				<div className='mt-2'>
 					<Row>
 						<Col sm='4'><b>Name:</b></Col>
 						<Col>{talent.name}</Col>

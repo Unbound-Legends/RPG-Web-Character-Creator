@@ -151,7 +151,7 @@ class CustomArchetypesComponent extends React.Component {
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 
 				<Row className='mt-2'>
-					<Col sm='2' className='my-auto'><b className='text-left'>Starting Characteristics:</b></Col>
+					<Col sm='2' className='my-auto'><b className='text-left'>Starting Characteristics</b></Col>
 					<Col>
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center d-inline-block'>
@@ -168,7 +168,7 @@ class CustomArchetypesComponent extends React.Component {
 					</Col>
 				</Row>
 				<Row className='mt-2'>
-					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes:</b></Col>
+					<Col sm='2' className='my-auto'><b className='text-left'>Starting Attributes</b></Col>
 					<Col>
 						{['Wounds', 'Strain'].map(type =>
 							<div className='m-2 text-center d-inline-block' key={type}>

@@ -30,6 +30,7 @@ class AttributesComponent extends React.Component {
 								{woundThreshold}
 							</div>
 							<Input type='number'
+								   bsSize='sm'
 								   name='currentWound'
 								   maxLength='2'
 								   className='attributeInput ml-2'
@@ -47,6 +48,7 @@ class AttributesComponent extends React.Component {
 							<Input type='number'
 								   name='currentStrain'
 								   maxLength='2'
+								   bsSize='sm'
 								   className='attributeInput ml-2'
 								   onChange={(event) => this.setState({currentStrain: +event.target.value})}
 								   onBlur={() => this.props.changeData(currentStrain, 'currentStrain')}

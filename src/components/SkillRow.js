@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Input} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../selectors';
@@ -55,10 +56,10 @@ class SkillRowComponent extends React.Component {
 					{!!careerCheck[skillKey] ? '✓' : ''}
 				</td>
 				<td className='table-rank'>
-					<select disabled={!archetype || !career} value={skillRanks[skillKey]}
-							onChange={this.handleRankChange} style={{margin: '0'}}>
+					<Input type='select' bsSize='sm' disabled={!archetype || !career} value={skillRanks[skillKey]}
+						   onChange={this.handleRankChange} className='p-0 m-0'>
 						{ranks.map((key) => <option key={key} value={key}>{key}</option>)}
-					</select>
+					</Input>
 				</td>
 				<td className='table-dice'>
 					<Description text={skillDice[skillKey]}/>
