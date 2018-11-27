@@ -9,7 +9,7 @@ service cloud.firestore {
     match /users/{userId}/customData/{document=**}  {
       allow read, write: if request.auth.uid == userId;
     }
-    match /vehicle/{document=**}  {
+    match /vehicleDB/{document=**}  {
       allow read, write;
     }
     match /userDB/{document=**}  {

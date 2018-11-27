@@ -16,9 +16,7 @@ export const writeUser = () => {
 				phone: user.phoneNumber,
 				lastLogin: new Date(),
 			};
-			console.log(object);
 			db.doc(`userDB/${user.uid}`).set(object).catch(console.error);
-
 		}
 	});
 };
@@ -123,7 +121,7 @@ export const deleteCharacter = () => {
 		const character = getState().character;
 		let characterList = {...getState().characterList};
 		delete characterList[character];
-		dataTypes.forEach((type) => db.doc(`users/${user}/data/characters/${character}/${type}`).delete());
+		dataTypes.forEach(type => db.doc(`users/${user}/data/characters/${character}/${type}`).delete());
 		if (Object.keys(characterList).length === 0) {
 			let newCharacter = Math.random().toString(36).substr(2, 16);
 			db.doc(`users/${user}/data/characterList`).set({[newCharacter]: 'New Character'});
@@ -185,17 +183,18 @@ export const importCustomData = (customDataSetImport) => {
 };
 
 export const addListData = (type) => {
-	return (dispatch, getState) => db.collection(`${type}`).add({owner: getState().user, name: 'None'})
+	return (dispatch, getState) => db.collection(`${type}DB`).add({write: [getState().user], read: [getState().user], name: 'None'})
 };
 export const removeListData = (type, key) => {
 	return () => {
-		db.doc(`${type}/${key}/`).delete();
+		vehicleDataTypes.forEach(vehicleDataType => db.doc(`${type}DB/${key}/data/${vehicleDataType}`).delete());
+		db.doc(`${type}DB/${key}/`).delete();
 	}
 };
 export const loadList = (type) => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		db.collection(type).where('owner', '==', user).onSnapshot(querySnapshot => {
+		db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
 			querySnapshot.docChanges().forEach(change => {
 					if (change.type === 'added') {
 						dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
@@ -216,21 +215,25 @@ export const loadList = (type) => {
 	}
 };
 export const changeListActive = (data, type) => {
-	return {type: `${type}_Changed`, payload: data};
+	return (dispatch) => {
+		dispatch({type: `${type}_Changed`, payload: data});
+	};
 };
 export const changeName = (type, key, data) => {
-	return db.doc(`${type}/${key}/`).update({name: data});
+	return db.doc(`${type}DB/${key}/`).update({name: data});
 };
 export const changeDocData = (type, dataType, data) => {
 	return (dispatch, getState) => {
-		db.doc(`${type}/${getState()[type]}/data/${dataType}`).set({data});
+		db.doc(`${type}DB/${getState()[type]}/data/${dataType}`).set({data});
 	}
 };
 export const loadDoc = (type, key) => {
-	return (dispatch) => {
+	return (dispatch, getState) => {
+		let write = getState()[`${type}List`][key].write.includes(getState().user);
+		dispatch({type: `${type}Write_Changed`, payload: write});
 		vehicleDataTypes.forEach(dataType => {
 			if (key) {
-				db.doc(`${type}/${key}/data/${dataType}`).onSnapshot(doc => {
+				db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
 					let data = null;
 					if (doc.data()) data = doc.data().data;
 					dispatch({type: `${dataType}_Changed`, payload: data});
