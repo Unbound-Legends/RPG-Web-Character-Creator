@@ -1,0 +1,99 @@
+.VehicleStatBlock {
+	position: relative;
+	text-align: center;
+	color: black;
+	padding: 0;
+	margin: 0.15rem;
+	width: 40rem;
+}
+
+.vehicleStat {
+	position: absolute;
+	display: inline-flex;
+	align-items: center;
+	transform: translate(-50%, -50%);
+	flex: unset;
+	padding: 0 0;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.vehicleStat-silhouette {
+	top: 27%;
+	left: 8.5%;
+	font-size: 2.5rem;
+}
+
+.vehicleStat-maxSpeed {
+	top: 27%;
+	left: 24.5%;
+	font-size: 2.5rem;
+}
+
+.vehicleStat-handling {
+	top: 27%;
+	left: 40.9%;
+	font-size: 2.5rem;
+}
+
+.vehicleStat-defense {
+	top: 27%;
+	left: 61.5%;
+}
+
+.vehicleStat-armor {
+	top: 27%;
+	left: 85%;
+}
+
+.vehicleStat-hullTraumaThreshold {
+	top: 78.5%;
+	left: 57%;
+}
+
+.vehicleStat-systemStrainThreshold {
+	top: 78.5%;
+	left: 81%;
+}
+
+.vehicleStat-currentHullTrauma {
+	top: 77.5%;
+	left: 65%;
+	width: 2.2rem;
+	font-size: 1.2rem;
+}
+
+.vehicleStat-currentSystemStrain {
+	top: 77.5%;
+	left: 89%;
+	width: 2.2rem;
+	font-size: 1.2rem;
+}
+
+@media only screen
+and (max-width: 480px) {
+
+	.VehicleStatBlock {
+		max-width: 100vw
+	}
+
+	.vehicleStat-silhouette,
+	.vehicleStat-maxSpeed,
+	.vehicleStat-handling {
+		font-size: 1.5rem;
+	}
+
+	.vehicleStat-defense,
+	.vehicleStat-armor,
+	.vehicleStat-hullTraumaThreshold,
+	.vehicleStat-systemStrainThreshold {
+		font-size: 1.0rem;
+	}
+
+	.vehicleStat-currentHullTrauma,
+	.vehicleStat-currentSystemStrain {
+		height: 1rem;
+		width: 1.8rem;
+		font-size: 0.8rem;
+	}
+}

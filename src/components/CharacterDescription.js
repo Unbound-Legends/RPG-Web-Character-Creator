@@ -45,7 +45,7 @@ class CharacterDescriptionComponent extends React.Component {
 				</Row>
 				<hr/>
 				{['gender', 'age', 'height', 'build', 'hair', 'eyes'].map(aspect =>
-					<Row key={aspect}>
+					<Row key={aspect} className='align-items-center'>
 						<Label for={aspect} sm={2}>
 							<b>{aspect.toLocaleUpperCase()}</b>
 						</Label>

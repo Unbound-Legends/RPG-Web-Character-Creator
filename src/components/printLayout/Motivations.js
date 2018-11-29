@@ -17,7 +17,7 @@ class Component extends React.Component {
 						<b>{type.toUpperCase()}</b>
 						{masterMotivations[type] &&
 						<p>
-							<i>{masterMotivations[type].key}</i>: <a>{masterMotivations[type].description}</a>
+							<i>{masterMotivations[type].key}</i>: {masterMotivations[type].description}
 						</p>
 						}
 					</Row>

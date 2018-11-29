@@ -11,6 +11,7 @@ export {default as Soak} from './Soak.svg';
 export {default as Strain} from './Strain.svg';
 export {default as StrainThreshold} from './StrainThreshold.svg';
 export {default as TotalXp} from './TotalXp.svg';
+export {default as VehicleStatBlock} from './VehicleStatBlock.svg';
 export {default as Willpower} from './Willpower.svg';
 export {default as Wounds} from './Wounds.svg';
 export {default as WoundsThreshold} from './WoundsThreshold.svg';

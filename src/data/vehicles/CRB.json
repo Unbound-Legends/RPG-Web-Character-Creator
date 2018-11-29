@@ -15,43 +15,7 @@
     "rarity": 8,
     "consumables": "3 months",
     "encumbranceCapacity": 200,
-    "weapons": {
-      "twentryFourPounderCannons": {
-        "name": "24-Pounder Cannons",
-        "amount": 30,
-        "fireArc": [
-          "starboard",
-          "port"
-        ],
-        "damage": 6,
-        "critical": 3,
-        "range": "long"
-      },
-      "ninePounderCannons": {
-        "name": "9-Pounder Cannons",
-        "amount": 8,
-        "fireArc": [
-          "starboard",
-          "port"
-        ],
-        "damage": 4,
-        "critical": 5,
-        "range": "medium"
-      },
-      "longNines": {
-        "name": "Long Nines",
-        "amount": 2,
-        "fireArc": [
-          "forward"
-        ],
-        "damage": 4,
-        "critical": 5,
-        "range": "long",
-        "qualities": {
-          "Accurate": 1
-        }
-      }
-    }
+    "weapons": "15 starboard and 15 port 24-pounder cannons (Fire Arc Starboard and Fire Arc Port; Damage 6; Critical 3; Range [Long]).\n4 starboard and 4 port 9-pounder cannons (Fire Arc Starboard and Fire Arc Port; Damage 4; Critical 5; Range [Medium]).\n2 forward “long nines” (Fire Arc Forward; Damage 4; Critical 5; Range [Long]; Accurate 1)."
   },
   "fourDoorAutomobile": {
     "name": "Four Door Automobile",
@@ -68,7 +32,8 @@
     "price": 2000,
     "rarity": 3,
     "consumables": "none",
-    "encumbranceCapacity": 20
+    "encumbranceCapacity": 20,
+    "weapons": "none"
   },
   "aerospaceSuperiorityFighter": {
     "name": "Aerospace Superiority Fighter",
@@ -86,49 +51,6 @@
     "rarity": 9,
     "consumables": "1 day",
     "encumbranceCapacity": 5,
-    "weapons": {
-      "rotaryCannon": {
-        "name": "Rotary Cannon",
-        "amount": 1,
-        "fireArc": [
-          "forward"
-        ],
-        "damage": 2,
-        "critical": 5,
-        "range": "long",
-        "qualities": {
-          "AutoFire": ""
-        }
-      },
-      "airToAirMissiles": {
-        "name": "Air to Air Missiles",
-        "amount": 1,
-        "fireArc": [
-          "forward"
-        ],
-        "damage": 5,
-        "critical": 3,
-        "range": "extreme",
-        "qualities": {
-          "Guided": 3,
-          "LimitedAmmo": 6
-        }
-      },
-      "antiShipMissile": {
-        "name": "Anti-Ship Missile",
-        "amount": 1,
-        "fireArc": [
-          "forward"
-        ],
-        "damage": 8,
-        "critical": 1,
-        "range": "Strategic",
-        "qualities": {
-          "Blast": 5,
-          "Breach": 2,
-          "LimitedAmmo": 1
-        }
-      }
-    }
+    "weapons": "Rotary cannon (Fire Arc Forward; Damage 2; Critical 5; Range [Long]; Auto-fire).\nAir-to-air missiles (Fire Arc Forward; Damage 5; Critical 3; Range [Extreme]; Guided 3, Limited Ammo 6).\nAnti-ship missile (Fire Arc Forward; Damage 8; Critical 1; Range [Strategic]; Blast 5, Breach 2, Limited Ammo 1)."
   }
 }

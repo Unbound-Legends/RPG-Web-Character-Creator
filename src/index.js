@@ -12,9 +12,7 @@ import 'sw-rpg-icons/css/sw-rpg-colors.min.css';
 import 'sw-rpg-icons/css/sw-rpg-icons.min.css';
 import {App} from './components/index';
 import allReducers from './reducers';
-import './styles/fonts/index.css'
 import './styles/index.css';
-import './styles/tabs.css';
 
 export const store = createStore(allReducers, {}, applyMiddleware(thunk));
 

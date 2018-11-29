@@ -185,32 +185,37 @@ export const importCustomData = (customDataSetImport) => {
 export const addListData = (type) => {
 	return (dispatch, getState) => db.collection(`${type}DB`).add({write: [getState().user], read: [getState().user], name: 'None'})
 };
+
 export const removeListData = (type, key) => {
 	return () => {
-		vehicleDataTypes.forEach(vehicleDataType => db.doc(`${type}DB/${key}/data/${vehicleDataType}`).delete());
+		let list = [];
+		if (type === 'vehicle') list = vehicleDataTypes;
+		list.forEach(dataType => db.doc(`${type}DB/${key}/data/${dataType}`).delete());
 		db.doc(`${type}DB/${key}/`).delete();
 	}
 };
-export const loadList = (type) => {
+export const loadLists = () => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
-			querySnapshot.docChanges().forEach(change => {
-					if (change.type === 'added') {
-						dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
-						dispatch({type: `${type}_Changed`, payload: change.doc.id});
+		['vehicle'].forEach(type => {
+			db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
+				querySnapshot.docChanges().forEach(change => {
+						if (change.type === 'added') {
+							dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
+							dispatch({type: `${type}_Changed`, payload: change.doc.id});
+						}
+						if (change.type === 'removed') {
+							let newID = '';
+							if (querySnapshot.docs[0]) newID = querySnapshot.docs[0].id;
+							dispatch({type: `${type}_Changed`, payload: newID});
+							dispatch({type: `${type}List_Removed`, payload: change.doc.id});
+						}
+						if (change.type === 'modified') {
+							dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+						}
 					}
-					if (change.type === 'removed') {
-						let newID = '';
-						if (querySnapshot.docs[0]) newID = querySnapshot.docs[0].id;
-						dispatch({type: `${type}_Changed`, payload: newID});
-						dispatch({type: `${type}List_Removed`, payload: change.doc.id});
-					}
-					if (change.type === 'modified') {
-						dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
-					}
-				}
-			);
+				);
+			});
 		});
 	}
 };

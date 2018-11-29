@@ -69,7 +69,7 @@ class FragmentComponent extends React.Component {
 	render() {
 		const {name, type, title = name ? name : type} = this.props;
 		return (
-			<Row className='my-2'>
+			<Row className='my-2 '>
 				<Label for={title} sm='2' className={title === 'description' ? 'mt-0' : 'my-auto'}><b>{startCase(title)}</b></Label>
 				<Col id={title}>
 					{this.buildField()}

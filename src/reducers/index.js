@@ -58,6 +58,7 @@ const allReducers = combineReducers({
 	vehicle: changeState.vehicle,
 	vehicles: changeState.vehicles,
 	vehicleList: changeState.vehicleList,
+	vehicleNotes: changeState.vehicleNotes,
 	vehicleType: changeState.vehicleType,
 	vehicleWrite: changeState.vehicleWrite,
 });

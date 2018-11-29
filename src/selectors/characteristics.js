@@ -45,7 +45,7 @@ const calcCharacteristics = createSelector(
 						let list = item.modifier;
 						if (list) {
 							Object.keys(list).forEach(modifier => {
-								if (chars.includes(modifier)) characteristics[modifier] += +list[modifier];
+								if (chars.includes(modifier)) characteristics[modifier] += 1;
 							});
 						}
 					}

@@ -64,6 +64,7 @@ export const strict = (state = initialState.strict, action) => dataReducer(state
 export const talentModifiers = (state = clone(initialState.talentModifiers), action) => dataReducer(state, action, 'talentModifiers');
 export const theme = (state = clone(initialState.theme), action) => dataReducer(state, action, 'theme');
 export const themes = (state = clone(initialState.themes), action) => dataReducer(state, action, 'themes');
+export const vehicleNotes = (state = clone(initialState.vehicleNotes), action) => dataReducer(state, action, 'vehicleNotes');
 export const vehicleType = (state = clone(initialState.vehicleType), action) => dataReducer(state, action, 'vehicleType');
 export const vehicleWrite = (state = clone(initialState.vehicleWrite), action) => dataReducer(state, action, 'vehicleWrite');
 

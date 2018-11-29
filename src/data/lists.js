@@ -35,10 +35,11 @@ export const customDataTypes = [
 	'customWeapons',
 	'customArmor',
 	'customGear',
+	'customVehicles'
 ];
 
 export const vehicleDataTypes = [
-	'vehicleType', 'currentHullTrauma', 'currentSystemStrain'
+	'vehicleType', 'currentHullTrauma', 'currentSystemStrain', 'vehicleNotes'
 ];
 
 export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];

@@ -74,9 +74,9 @@ class Component extends React.Component {
 					<Col><b className='mx-1'> MONEY: </b>{money > 0 ? money : ''}</Col>
 					<Col>
 						<b className='mx-1'>Encumbrance: </b>
-						<a className={`text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>
+						<text className={`text-${totalEncumbrance > encumbranceLimit ? 'danger' : 'dark'}`}>
 							{totalEncumbrance}/{encumbranceLimit}
-						</a>
+						</text>
 					</Col>
 				</Row>
 				{Object.keys(equipmentWeapons).length > 0 &&
