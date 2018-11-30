@@ -170,12 +170,14 @@ class ImportExportComponent extends React.Component {
 								<Input type="checkbox"
 									   value='all'
 									   name={type}
-									   checked={type === 'characters' ? characters.length === Object.keys(list).length : customDataTypes.every(type => Object.keys(this.props[type]).every(key => customData[type] ? customData[type].includes(key) : false))}
+									   checked={type === 'characters' ? characters.length === Object.keys(list).length : customDataTypes.every(type => this.props[type] && Object.keys(this.props[type]).every(key => customData[type] ? customData[type].includes(key) : false))}
 									   onChange={this.handleChange}
 								/>{' '} <h5 className='my-auto'>All {startCase(type)}</h5>
 							</Row>
 							<Row>
-								{Object.keys(list).sort().map(item =>
+								{list &&
+								Object.keys(list).sort().map(item =>
+									this.props[item] &&
 									type === 'customData' && 0 >= Object.keys(this.props[item]).length ? '' :
 										<Col md='4' key={item}>
 											<Card className='m-2 w-100'>

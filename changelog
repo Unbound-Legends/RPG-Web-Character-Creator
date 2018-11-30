@@ -1,3 +1,7 @@
+1.5.5
+    -updated firestore rules
+    -fixed import/export page a bit
+
 1.5.4
     -updated import for JSON objects
     -fixed screw implants again

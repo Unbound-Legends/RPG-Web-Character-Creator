@@ -1,19 +1,29 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Make sure the uid of the requesting user matches name of the user
-    // document. The wildcard expression {userId} makes the userId variable
-    // available in rules.
+
     match /users/{userId}/data/{document=**}  {
       allow read, write: if request.auth.uid == userId;
     }
+
     match /users/{userId}/customData/{document=**}  {
       allow read, write: if request.auth.uid == userId;
     }
-    match /vehicleDB/{document=**}  {
-      allow read, write;
+
+    match /vehicleDB/{document}  {
+     function vehicleData() {
+            return get(/databases/$(database)/documents/vehicleDB/$(document)).data
+        }
+      allow read;
+      allow write: if request.auth.uid in vehicleData().write;
+
+      match /data/{type} {
+        allow read: if request.auth.uid in vehicleData().read;
+        allow write: if request.auth.uid in vehicleData().write;
+  		}
     }
-    match /userDB/{document=**}  {
-      allow read, write;
+
+    match /userDB/{document}  {
+      allow write: if request.resource.data.uid == request.auth.uid;
     }
   }
 }
