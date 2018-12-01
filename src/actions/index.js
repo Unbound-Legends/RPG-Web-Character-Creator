@@ -85,8 +85,9 @@ export const loadCharacterList = () => {
 				newObj = {[key]: 'New Character'};
 				db.doc(`users/${user}/data/characterList`).set(newObj, {merge: true});
 			} else {
+				let list = Object.keys(doc.data()).sort((a, b) => doc.data()[a] < doc.data()[b] ? -1 : (doc.data()[a] > doc.data()[b] ? 1 : 0));
 				dispatch({type: `characterList_Changed`, payload: doc.data()});
-				if (!character) dispatch({type: `character_Changed`, payload: Object.keys(doc.data())[0]});
+				if (!character) dispatch({type: `character_Changed`, payload: list[0]});
 			}
 		}, err => {
 			console.log(`Encountered error: ${err}`);
@@ -201,13 +202,11 @@ export const loadLists = () => {
 			db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
 				querySnapshot.docChanges().forEach(change => {
 						if (change.type === 'added') {
-							dispatch({type: `${type}List_Added`, payload: {[change.doc.id]: change.doc.data()}});
+							dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
 							dispatch({type: `${type}_Changed`, payload: change.doc.id});
 						}
 						if (change.type === 'removed') {
-							let newID = '';
-							if (querySnapshot.docs[0]) newID = querySnapshot.docs[0].id;
-							dispatch({type: `${type}_Changed`, payload: newID});
+							dispatch({type: `${type}_Changed`, payload: querySnapshot.docs[0] ? querySnapshot.docs[0].id : ''});
 							dispatch({type: `${type}List_Removed`, payload: change.doc.id});
 						}
 						if (change.type === 'modified') {

@@ -21,7 +21,7 @@ export const characterList = (state = null, action) => loadingReducer(state, act
 export const printContent = (state = initialState.printContent, action) => loadingReducer(state, action, 'printContent');
 
 export const vehicleList = (state = {}, action) => {
-	if (action.type === `vehicleList_Added` || action.type === `vehicleList_Modified`) return merge(state, action.payload);
+	if (action.type === `vehicleList_Modified`) return merge(state, action.payload);
 	if (action.type === `vehicleList_Removed`) return omit(state, action.payload);
 	return state;
 };

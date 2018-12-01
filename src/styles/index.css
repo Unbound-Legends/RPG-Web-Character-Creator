@@ -57,6 +57,10 @@
 	height: 11rem;
 }
 
+.motivationCard {
+	min-width: 45%;
+}
+
 .ffi {
 	vertical-align: middle;
 	font-size: 1.4rem;
@@ -280,6 +284,10 @@ and (max-width: 480px) {
 		width: 16vw;
 		height: 12vh;
 		font-size: 0.5rem;
+	}
+
+	.motivationCard {
+		width: 100%;
 	}
 
 	.ffi {

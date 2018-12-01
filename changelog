@@ -1,3 +1,7 @@
+1.5.6
+    -PWA!
+    -fixed motivation block on mobile
+
 1.5.5
     -updated firestore rules
     -fixed import/export page a bit

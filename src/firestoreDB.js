@@ -14,6 +14,7 @@ firebase.initializeApp(config);
 const firestore = firebase.firestore();
 const settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
+firestore.enablePersistence().catch(console.error);
 
 export const db = firebase.firestore();
 

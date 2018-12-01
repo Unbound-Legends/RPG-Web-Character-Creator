@@ -62,7 +62,8 @@ class CharacterSelectComponent extends React.Component {
 				<Row className='align-items-center justify-content-between'>
 					<Col>
 						<Input type='select' bsSize='sm' value={character} onChange={this.handleSelect}>
-							{characterList && Object.keys(characterList).map((key) =>
+							{characterList &&
+							Object.keys(characterList).sort((a, b) => characterList[a] < characterList[b] ? -1 : (characterList[a] > characterList[b] ? 1 : 0)).map(key =>
 								<option value={key}
 										key={key}>{characterList[key]}</option>
 							)}

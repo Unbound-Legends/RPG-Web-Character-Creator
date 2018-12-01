@@ -13,11 +13,12 @@ service cloud.firestore {
      function vehicleData() {
             return get(/databases/$(database)/documents/vehicleDB/$(document)).data
         }
-      allow read;
+      allow create: if request.auth.uid != null;
+      allow read: if request.auth.uid != null;
       allow write: if request.auth.uid in vehicleData().write;
 
       match /data/{type} {
-        allow read: if request.auth.uid in vehicleData().read;
+      	allow read: if request.auth.uid != null;
         allow write: if request.auth.uid in vehicleData().write;
   		}
     }
