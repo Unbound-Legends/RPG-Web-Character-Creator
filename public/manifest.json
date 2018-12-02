@@ -3,13 +3,18 @@
   "name": "Genesys Emporium",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "emporium.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "emporium.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "/",
-  "background_color": "#222",
-  "theme_color": "#222",
+  "background_color": "#f7f4f2",
+  "theme_color": "#f7f4f2",
   "display": "standalone"
 }

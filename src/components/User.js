@@ -41,7 +41,7 @@ export class User extends Component {
 				<Container className='container-fluid my-4'>
 					<div className={`bg bg-CRB d-print-none`}/>
 					<Row className='justify-content-center'>
-						<h1>The Emporium</h1>
+						<h1>Genesys Emporium</h1>
 					</Row>
 					<Row className='justify-content-center'>
 						<h2>Genesys Character Creator</h2>
