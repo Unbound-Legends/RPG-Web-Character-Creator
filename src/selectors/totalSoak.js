@@ -15,13 +15,12 @@ const calcTotalSoak = createSelector(
 		if (!archetype || !archetypes[archetype]) return 0;
 		//get calcBrawn
 		let Brawn = characteristics.Brawn;
-		//get soak from armor
+		//get soak from armor and gear
 		let Armor = 0;
 		Object.keys(equipmentStats).forEach(key => {
-			if (equipmentStats[key].type === 'armor') {
-				let item = equipmentStats[key];
-				if (item.equipped && item.soak) Armor += +item.soak;
-			}
+			let item = equipmentStats[key];
+			if (item.type === 'armor') if (item.equipped && item.soak) Armor += +item.soak;
+			if (item.type === 'gear') if (item.modifier && item.carried) if (item.modifier.soak) Armor += +item.modifier.soak;
 		});
 		//get soak from Enduring Talent
 		let talentModifier = 0;

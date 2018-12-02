@@ -9,8 +9,8 @@ const talents = state => state.talents;
 export const woundThreshold = (state) => calcWounds(state);
 
 const calcWounds = createSelector(
-	archetype, archetypes, talents, creationCharacteristics, selectors.talentCount,
-	(archetype, archetypes, talents, creationCharacteristics, talentCount) => {
+	archetype, archetypes, talents, creationCharacteristics, selectors.talentCount, selectors.equipmentStats,
+	(archetype, archetypes, talents, creationCharacteristics, talentCount, equipmentStats) => {
 		if (!archetype || !archetypes[archetype]) return 0;
 		//get starting wounds
 		let startingThreshold = archetypes[archetype].woundThreshold;
@@ -25,6 +25,11 @@ const calcWounds = createSelector(
 				if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.woundThreshold ? talents[talent].modifier.woundThreshold : 0) * talentCount[talent]);
 			}
 		});
-		return startingThreshold + startingBrawn + creationBrawn + talentModifier;
+		let Gear = 0;
+		Object.keys(equipmentStats).forEach(key => {
+			let item = equipmentStats[key];
+			if (item.type === 'gear') if (item.modifier && item.carried) if (item.modifier.woundThreshold) Gear += +item.modifier.woundThreshold;
+		});
+		return startingThreshold + startingBrawn + creationBrawn + talentModifier + Gear;
 	}
 );

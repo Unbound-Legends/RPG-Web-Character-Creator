@@ -26,23 +26,24 @@ const calcStrain = createSelector(
 				if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
 			}
 		});
-		//check for cybernetics
-		let cybernetics = 0;
+		//check for Gear
+		let Gear = 0;
 		Object.keys(equipmentStats).forEach(key => {
 			let item = equipmentStats[key];
 			if (item.modifier) {
 				if (item.carried) {
+					if (item.modifier.strainThreshold) Gear += +item.modifier.strainThreshold;
 					if (item.equipped || item.type !== 'armor') {
 						let list = item.modifier;
 						if (list) {
 							Object.keys(list).forEach(modifier => {
-								if (chars.includes(modifier) && list[modifier]) cybernetics--;
+								if (chars.includes(modifier) && list[modifier]) Gear--;
 							});
 						}
 					}
 				}
 			}
 		});
-		return startingThreshold + startingBrawn + creationBrawn + talentModifier + cybernetics;
+		return startingThreshold + startingBrawn + creationBrawn + talentModifier + Gear;
 	}
 );
