@@ -33,6 +33,7 @@ export {TalentList} from './TalentList';
 export {TalentSelection} from './TalentSelection';
 export {Talents} from './Talents';
 export {User} from './User';
+export {UserButton} from './UserButton';
 export {XPBoxes} from './XPBoxes';
 export {XPPopup} from './XPPopup';
 export {VehicleSelect} from './VehicleSelect';

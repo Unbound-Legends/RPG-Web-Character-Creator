@@ -6,9 +6,7 @@ import * as initialState from './initialState';
 
 //loading objects
 const loadingReducer = (state, action, type) => {
-	if (action.type === `${type}_Changed`) {
-		return action.payload;
-	}
+	if (action.type === `${type}_Changed`) return action.payload;
 	return state;
 };
 

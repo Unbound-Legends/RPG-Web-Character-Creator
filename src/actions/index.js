@@ -43,14 +43,16 @@ export const loadData = () => {
 	return (dispatch, getState) => {
 		dispatch({type: 'loadingData_Changed', payload: true});
 		const {user, character} = getState();
+		let unsub = {};
 		dataTypes.forEach((type, index) => {
-			db.doc(`users/${user}/data/characters/${character}/${type}/`).onSnapshot(doc => {
+			unsub[type] = db.doc(`users/${user}/data/characters/${character}/${type}/`).onSnapshot(doc => {
 				let payload = null;
 				if (doc.exists) payload = doc.data().data;
 				dispatch({type: `${type}_Changed`, payload: payload});
 				if (index + 1 >= dataTypes.length) dispatch({type: 'loadingData_Changed', payload: false});
-			}, err => {
-				console.log(`Encountered error: ${err}`);
+			}, error => {
+				if (!getState().user) unsub[type]();
+				else console.error(error);
 			});
 		});
 	}
@@ -60,14 +62,16 @@ export const loadCustomData = (setting = 'All', strict = false) => {
 	return (dispatch, getState) => {
 		dispatch({type: 'loadingCustomData_Changed', payload: true});
 		const {user} = getState();
+		let unsub = {};
 		customDataTypes.forEach((type, index) => {
-			db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
+			unsub[type] = db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
 				let payload = null;
 				if (doc.exists) payload = doc.data().data;
 				dispatch({type: `${type}_Changed`, payload: payload, setting: setting, strict: strict});
 				if (index + 1 >= customDataTypes.length) dispatch({type: 'loadingCustomData_Changed', payload: false});
-			}, err => {
-				console.log(`Encountered error: ${err}`);
+			}, error => {
+				if (!getState().user) unsub[type]();
+				else console.error(error);
 			});
 		});
 	}
@@ -76,7 +80,7 @@ export const loadCustomData = (setting = 'All', strict = false) => {
 export const loadCharacterList = () => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		db.doc(`users/${user}/data/characterList`).onSnapshot(doc => {
+		let unsub = db.doc(`users/${user}/data/characterList`).onSnapshot(doc => {
 			const character = getState().character;
 			let key;
 			let newObj = null;
@@ -89,8 +93,9 @@ export const loadCharacterList = () => {
 				dispatch({type: `characterList_Changed`, payload: doc.data()});
 				if (!character) dispatch({type: `character_Changed`, payload: list[0]});
 			}
-		}, err => {
-			console.log(`Encountered error: ${err}`);
+		}, error => {
+			if (!getState().user) unsub();
+			else console.error(error);
 		});
 	}
 };
@@ -198,8 +203,9 @@ export const removeListData = (type, key) => {
 export const loadLists = () => {
 	return (dispatch, getState) => {
 		const user = getState().user;
+		let unsub = {};
 		['vehicle'].forEach(type => {
-			db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
+			unsub[type] = db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
 				querySnapshot.docChanges().forEach(change => {
 						if (change.type === 'added') {
 							dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
@@ -214,6 +220,9 @@ export const loadLists = () => {
 						}
 					}
 				);
+			}, error => {
+				if (!getState().user) unsub[type]();
+				else console.error(error);
 			});
 		});
 	}
@@ -235,12 +244,16 @@ export const loadDoc = (type, key) => {
 	return (dispatch, getState) => {
 		let write = getState()[`${type}List`][key].write.includes(getState().user);
 		dispatch({type: `${type}Write_Changed`, payload: write});
+		let unsub = {};
 		vehicleDataTypes.forEach(dataType => {
 			if (key) {
-				db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
+				unsub[dataType] = db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
 					let data = null;
 					if (doc.data()) data = doc.data().data;
 					dispatch({type: `${dataType}_Changed`, payload: data});
+				}, error => {
+					if (!getState().user) unsub[dataType]();
+					else console.error(error);
 				});
 			} else dispatch({type: `${dataType}_Changed`, payload: null});
 

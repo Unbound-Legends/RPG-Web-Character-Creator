@@ -13,12 +13,8 @@ export class User extends Component {
 		signInFlow: 'popup',
 		autoUpgradeAnonymousUsers: true,
 		callbacks: {
-			signInFailure: error => {
-				console.error(error);
-			},
-			onAuthStateChanged: user => {
-				console.log(user)
-			},
+			signInFailure: console.error,
+			onAuthStateChanged: console.log,
 		},
 		signInOptions: [
 			firebase.auth.GoogleAuthProvider.PROVIDER_ID,

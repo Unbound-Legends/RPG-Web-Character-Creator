@@ -1,3 +1,7 @@
+1.5.9
+    -detach listeners on logout
+    -username display on signout button
+
 1.5.8
     -fixed soak, WT, and ST for custom gear
 

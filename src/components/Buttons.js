@@ -1,20 +1,12 @@
-import firebase from '@firebase/app';
-import '@firebase/auth';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData, changePrintContent, changeUser} from '../actions';
+import {changeData, changePrintContent} from '../actions';
+import {UserButton} from './';
 import {PrintLayout} from './printLayout/index';
 
 class ButtonsComponent extends React.Component {
-
-	handleClick = () => {
-		firebase.auth().signOut()
-			.then(() => {
-				this.props.changeUser(null);
-			});
-	};
 
 	render() {
 		const {changePrintContent, theme, themes, changeData} = this.props;
@@ -34,7 +26,7 @@ class ButtonsComponent extends React.Component {
 						<Button size='sm' onClick={() => changePrintContent(<PrintLayout/>)}>Print</Button>
 						<Button size='sm' onClick={() => window.open('https://paypal.me/SkyJedi')}>Donate</Button>
 						<Button size='sm' onClick={() => window.open("https://patreon.com/SkyJedi")}>Patreon</Button>
-						<Button size='sm' onClick={this.handleClick}>Sign Out</Button>
+						<UserButton/>
 					</ButtonGroup>
 				</Col>
 			</Row>
@@ -49,6 +41,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changePrintContent, changeUser, changeData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({changePrintContent, changeData}, dispatch);
 
 export const Buttons = connect(mapStateToProps, matchDispatchToProps)(ButtonsComponent);
