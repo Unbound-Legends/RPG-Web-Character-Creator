@@ -7,5 +7,6 @@ export {CustomEquipment} from './CustomEquipment';
 export {CustomMotivations} from './CustomMotivations';
 export {CustomSkills} from './CustomSkills';
 export {CustomTalents} from './CustomTalents';
+export {CustomVehicles} from './CustomVehicles';
 export {Fragment} from './Fragments';
 export {SettingBuilder} from './SettingBuilder';

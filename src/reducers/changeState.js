@@ -18,13 +18,6 @@ export const loadingCustomData = (state = true, action) => loadingReducer(state,
 export const characterList = (state = null, action) => loadingReducer(state, action, 'characterList');
 export const printContent = (state = initialState.printContent, action) => loadingReducer(state, action, 'printContent');
 
-export const vehicleList = (state = {}, action) => {
-	if (action.type === `vehicleList_Modified`) return merge(state, action.payload);
-	if (action.type === `vehicleList_Removed`) return omit(state, action.payload);
-	return state;
-};
-
-
 //character objects
 const dataReducer = (state, action, type) => {
 	if (action.type === `${type}_Changed`) {
@@ -58,13 +51,11 @@ export const masterTalents = (state = clone(initialState.masterTalents), action)
 export const misc = (state = clone(initialState.misc), action) => dataReducer(state, action, 'misc');
 export const money = (state = initialState.money, action) => dataReducer(state, action, 'money');
 export const setting = (state = clone(initialState.setting), action) => dataReducer(state, action, 'setting');
-export const strict = (state = initialState.strict, action) => dataReducer(state, action, 'strict');
 export const talentModifiers = (state = clone(initialState.talentModifiers), action) => dataReducer(state, action, 'talentModifiers');
 export const theme = (state = clone(initialState.theme), action) => dataReducer(state, action, 'theme');
 export const themes = (state = clone(initialState.themes), action) => dataReducer(state, action, 'themes');
 export const vehicleNotes = (state = clone(initialState.vehicleNotes), action) => dataReducer(state, action, 'vehicleNotes');
 export const vehicleType = (state = clone(initialState.vehicleType), action) => dataReducer(state, action, 'vehicleType');
-export const vehicleWrite = (state = clone(initialState.vehicleWrite), action) => dataReducer(state, action, 'vehicleWrite');
 
 //database objects
 const databaseReducer = (state, action, type) => {
@@ -75,12 +66,8 @@ const databaseReducer = (state, action, type) => {
 			let filter = {};
 			Object.keys(obj).forEach(key => {
 				if (obj[key].setting) {
-					if (action.strict) {
-						if (action.setting.some(setting => obj[key].setting.includes(setting))) filter[key] = clone(obj[key]);
-					}
-					else {
-						if (obj[key].setting.includes('All') || action.setting.some(setting => obj[key].setting.includes(setting))) filter[key] = clone(obj[key]);
-					}
+
+					if (obj[key].setting.includes('All') || action.setting.some(setting => obj[key].setting.includes(setting))) filter[key] = clone(obj[key]);
 				} else filter[key] = clone(obj[key]);
 			});
 			return filter;
@@ -102,7 +89,6 @@ export const skills = (state = data.skills, action) => databaseReducer(state, ac
 export const qualities = (state = data.qualities, action) => databaseReducer(state, action, 'qualities');
 export const talents = (state = data.talents, action) => databaseReducer(state, action, 'talents');
 export const weapons = (state = data.weapons, action) => databaseReducer(state, action, 'weapons');
-export const vehicles = (state = data.vehicles, action) => databaseReducer(state, action, 'vehicles');
 
 //custom data objects
 const customDataReducer = (state, action, type) => {
@@ -123,3 +109,14 @@ export const customSkills = (state = {}, action) => customDataReducer(state, act
 export const customMotivations = (state = {}, action) => customDataReducer(state, action, 'customMotivations');
 export const customTalents = (state = {}, action) => customDataReducer(state, action, 'customTalents');
 export const customWeapons = (state = {}, action) => customDataReducer(state, action, 'customWeapons');
+
+//new data model
+export const dataSets = (state, action, type) => {
+	if (action.type === `${type}_Modified`) return merge(state, action.payload);
+	if (action.type === `${type}_Removed`) return omit(state, action.payload);
+	return state;
+};
+
+export const vehicleDataSet = (state = {}, action) => dataSets(state, action, 'vehicleDataSet');
+export const customVehicles = (state = {}, action) => dataSets(state, action, 'customVehicles');
+export const vehicles = (state = data.vehicles, action) => dataSets(state, action, 'customVehicles');

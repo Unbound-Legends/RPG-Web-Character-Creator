@@ -29,6 +29,7 @@ const allReducers = combineReducers({
 	customSettings: changeState.customSettings,
 	customTalents: changeState.customTalents,
 	customWeapons: changeState.customWeapons,
+	customVehicles: changeState.customVehicles,
 	description: changeState.description,
 	earnedXP: changeState.earnedXP,
 	equipmentArmor: changeState.equipmentArmor,
@@ -47,7 +48,6 @@ const allReducers = combineReducers({
 	qualities: changeState.qualities,
 	setting: changeState.setting,
 	settings: changeState.settings,
-	strict: changeState.strict,
 	skills: changeState.skills,
 	talentModifiers: changeState.talentModifiers,
 	talents: changeState.talents,
@@ -57,10 +57,9 @@ const allReducers = combineReducers({
 	weapons: changeState.weapons,
 	vehicle: changeState.vehicle,
 	vehicles: changeState.vehicles,
-	vehicleList: changeState.vehicleList,
+	vehicleDataSet: changeState.vehicleDataSet,
 	vehicleNotes: changeState.vehicleNotes,
 	vehicleType: changeState.vehicleType,
-	vehicleWrite: changeState.vehicleWrite,
 });
 
 export default allReducers;

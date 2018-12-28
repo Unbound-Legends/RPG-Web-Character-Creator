@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
-import {Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row, UncontrolledTooltip} from 'reactstrap';
+import {Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
 import {Archetype, Career, ModalDeleteConfirm} from './';
@@ -51,7 +51,7 @@ class CharacterSelectComponent extends React.Component {
 	};
 
 	render() {
-		const {archetype, archetypes, careers, career, characterList, character, changeData, settings, strict, theme} = this.props;
+		const {archetype, archetypes, careers, career, characterList, character, changeData, settings, theme} = this.props;
 		const {name, playerName, archetypeModal, careerModal, deleteModal, setting} = this.state;
 		return (
 			<div className='w-100'>
@@ -121,15 +121,6 @@ class CharacterSelectComponent extends React.Component {
 							onChange={(selected) => this.setState({setting: selected.includes('All') ? ['All'] : selected})}
 							onBlur={() => changeData(setting, 'setting', false)}/>
 					</Col>
-					<Col>
-						<Input type='checkbox' id='strict' checked={strict} onChange={() => changeData(!strict, 'strict')}/> <Label for='strict'><b
-						id='tooltip'>Strict</b></Label>
-						<UncontrolledTooltip target='tooltip' placement='right'>
-							When Strict is checked, only data items that have the current setting listed will be displayed. 'All' and blank
-							settings
-							will be ignored.
-						</UncontrolledTooltip>
-					</Col>
 				</Row>
 				<hr/>
 				<Row className='align-items-center'>
@@ -165,7 +156,6 @@ const mapStateToProps = state => {
 		characterList: state.characterList,
 		description: state.description,
 		setting: state.setting,
-		strict: state.strict,
 		user: state.user,
 		settings: state.settings,
 		theme: state.theme,

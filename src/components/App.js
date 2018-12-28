@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container, Progress} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser, loadCharacterList, loadCustomData, loadData, loadDoc, loadLists, writeUser} from '../actions';
+import {changeUser, loadCharacterList, loadCustomData, loadData, loadDataSets, loadDoc, writeUser} from '../actions';
 import {DataPage, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
 
@@ -26,17 +26,16 @@ class AppComponent extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const {loadCharacterList, loadCustomData, user, loadLists, loadDoc} = this.props;
+		const {loadCharacterList, loadCustomData, user, loadDataSets, loadDoc} = this.props;
 		if (nextProps.user && user !== nextProps.user) {
 			writeUser();
 			loadCharacterList();
 			loadCustomData();
-			loadLists();
+			loadDataSets();
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
 		if (nextProps.vehicle && (nextProps.vehicle !== this.props.vehicle)) loadDoc('vehicle', nextProps.vehicle);
-		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting, nextProps.strict);
-		if (nextProps.strict !== this.props.strict) this.props.loadCustomData(nextProps.setting, nextProps.strict);
+		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting);
 		if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 400);
 	}
 
@@ -102,7 +101,7 @@ const matchDispatchToProps = dispatch => {
 		loadCharacterList,
 		loadData,
 		loadCustomData,
-		loadLists,
+		loadDataSets,
 		loadDoc,
 		writeUser,
 	}, dispatch);

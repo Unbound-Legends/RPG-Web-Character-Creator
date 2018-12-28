@@ -58,7 +58,7 @@ export const loadData = () => {
 	}
 };
 
-export const loadCustomData = (setting = 'All', strict = false) => {
+export const loadCustomData = (setting = 'All') => {
 	return (dispatch, getState) => {
 		dispatch({type: 'loadingCustomData_Changed', payload: true});
 		const {user} = getState();
@@ -67,7 +67,7 @@ export const loadCustomData = (setting = 'All', strict = false) => {
 			unsub[type] = db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
 				let payload = null;
 				if (doc.exists) payload = doc.data().data;
-				dispatch({type: `${type}_Changed`, payload: payload, setting: setting, strict: strict});
+				dispatch({type: `${type}_Changed`, payload, setting});
 				if (index + 1 >= customDataTypes.length) dispatch({type: 'loadingCustomData_Changed', payload: false});
 			}, error => {
 				if (!getState().user) unsub[type]();
@@ -173,7 +173,6 @@ export const importCustomData = (customDataSetImport) => {
 		Object.keys(customDataSetImport).forEach(type => {
 			const customType = getState()[type];
 			let data = clone(customDataSetImport[type]);
-
 			if (customType) {
 				if (type === 'customSettings') data = merge(customType, data);
 				else Object.keys(data).forEach(item => {
@@ -188,73 +187,92 @@ export const importCustomData = (customDataSetImport) => {
 	}
 };
 
-export const addListData = (type) => {
-	return (dispatch, getState) => db.collection(`${type}DB`).add({write: [getState().user], read: [getState().user], name: 'None'})
+export const addDataSet = (type, data) => {
+	return (dispatch, getState) => {
+		let final = {write: [getState().user], read: [getState().user], name: 'none'};
+		if (data) final = {...final, ...data};
+		db.collection(`${type}DB`).add(final).catch(console.error);
+	}
 };
 
-export const removeListData = (type, key) => {
+export const removeDataSet = (type, key) => {
 	return () => {
-		let list = [];
+		let list;
 		if (type === 'vehicle') list = vehicleDataTypes;
-		list.forEach(dataType => db.doc(`${type}DB/${key}/data/${dataType}`).delete());
+		if (list) list.forEach(dataType => db.doc(`${type}DB/${key}/data/${dataType}`).delete());
 		db.doc(`${type}DB/${key}/`).delete();
 	}
 };
-export const loadLists = () => {
+
+export const modifyDataSet = (type, data, key) => {
+	return () => db.doc(`${type}DB/${key}/`).set({...data}, {merge: true});
+};
+
+export const loadDataSets = () => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		let unsub = {};
-		['vehicle'].forEach(type => {
-			unsub[type] = db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
+		['vehicle', 'customVehicles'].forEach(type => {
+			db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
 				querySnapshot.docChanges().forEach(change => {
-						if (change.type === 'added') {
-							dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
-							dispatch({type: `${type}_Changed`, payload: change.doc.id});
+					if (type.includes('custom')) {
+						switch (change.type) {
+							case 'added':
+							case 'modified':
+								dispatch({type: `${type}_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+								break;
+							case 'removed':
+								dispatch({type: `${type}_Removed`, payload: change.doc.id});
+								break;
+							default:
+								break;
 						}
-						if (change.type === 'removed') {
-							dispatch({type: `${type}_Changed`, payload: querySnapshot.docs[0] ? querySnapshot.docs[0].id : ''});
-							dispatch({type: `${type}List_Removed`, payload: change.doc.id});
+					}
+					else {
+						switch (change.type) {
+							case 'added':
+								dispatch({type: `${type}DataSet_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+								dispatch({type: `${type}_Changed`, payload: change.doc.id});
+								break;
+							case 'removed':
+								dispatch({type: `${type}DataSet_Removed`, payload: change.doc.id});
+								dispatch({type: `${type}_Changed`, payload: querySnapshot.docs[0] ? querySnapshot.docs[0].id : ''});
+								break;
+							case 'modified':
+								console.log(change);
+								dispatch({type: `${type}DataSet_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+								break;
+							default:
+								break;
 						}
-						if (change.type === 'modified') {
-							dispatch({type: `${type}List_Modified`, payload: {[change.doc.id]: change.doc.data()}});
 						}
 					}
 				);
-			}, error => {
-				if (!getState().user) unsub[type]();
-				else console.error(error);
-			});
+			}, console.error);
 		});
 	}
 };
-export const changeListActive = (data, type) => {
-	return (dispatch) => {
-		dispatch({type: `${type}_Changed`, payload: data});
-	};
+
+export const changeReduxState = (data, type) => {
+	return {type: `${type}_Changed`, payload: data};
 };
-export const changeName = (type, key, data) => {
-	return db.doc(`${type}DB/${key}/`).update({name: data});
+
+export const changeFieldData = (type, key, data, field) => {
+	return () => db.doc(`${type}DB/${key}/`).update({[field]: data});
 };
-export const changeDocData = (type, dataType, data) => {
-	return (dispatch, getState) => {
-		db.doc(`${type}DB/${getState()[type]}/data/${dataType}`).set({data});
-	}
+
+export const changeDocData = (type, key, dataType, data) => {
+	return () => db.doc(`${type}DB/${key}/data/${dataType}`).set({data});
 };
+
 export const loadDoc = (type, key) => {
-	return (dispatch, getState) => {
-		let write = getState()[`${type}List`][key].write.includes(getState().user);
-		dispatch({type: `${type}Write_Changed`, payload: write});
-		let unsub = {};
+	return dispatch => {
 		vehicleDataTypes.forEach(dataType => {
 			if (key) {
-				unsub[dataType] = db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
+				db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
 					let data = null;
 					if (doc.data()) data = doc.data().data;
 					dispatch({type: `${dataType}_Changed`, payload: data});
-				}, error => {
-					if (!getState().user) unsub[dataType]();
-					else console.error(error);
-				});
+				}, console.error);
 			} else dispatch({type: `${dataType}_Changed`, payload: null});
 
 		})

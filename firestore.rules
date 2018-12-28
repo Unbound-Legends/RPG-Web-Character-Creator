@@ -23,6 +23,15 @@ service cloud.firestore {
   		}
     }
 
+     match /customVehicleDB/{document}  {
+     function dbData(type) {
+            return get(/databases/$(database)/documents/$(type)/$(document)).data
+        }
+      allow create: if request.auth.uid != null;
+      allow read: if request.auth.uid != null;
+      allow write: if request.auth.uid in dbData('customVehicleDB').write;
+    }
+
     match /userDB/{document}  {
       allow write: if request.resource.data.uid == request.auth.uid;
     }

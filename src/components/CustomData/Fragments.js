@@ -56,7 +56,7 @@ class FragmentComponent extends React.Component {
 			case 'inputSelect':
 				return (<Input type='select' bsSize='sm' value={value} name={name} onChange={handleChange}>
 					{blankOption && <option value=''>{blankText}</option>}
-					{array.sort().map(key =>
+					{array.sort((a, b) => a - b).map(key =>
 						<option value={key}
 								key={key}>{nameObj ? nameObj[key.toString()] ? nameObj[key.toString()].name : startCase(key) : startCase(key)}</option>
 					)}

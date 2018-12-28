@@ -10,7 +10,7 @@ import {
 	CustomSettings,
 	CustomSkills,
 	CustomTalents,
-	SettingBuilder
+	CustomVehicles
 } from './';
 
 export const CustomData = () => {
@@ -28,7 +28,7 @@ export const CustomData = () => {
 					<Tab>Skills</Tab>
 					<Tab>Talents</Tab>
 					<Tab>Weapons</Tab>
-					<Tab>Setting Builder</Tab>
+					<Tab>Vehicles</Tab>
 				</TabList>
 				<TabPanel className='w-100'>
 					<ErrorBoundary>
@@ -82,7 +82,7 @@ export const CustomData = () => {
 				</TabPanel>
 				<TabPanel className='w-100'>
 					<ErrorBoundary>
-						<SettingBuilder/>
+						<CustomVehicles/>
 					</ErrorBoundary>
 				</TabPanel>
 			</Tabs></div>

@@ -31,7 +31,6 @@ export const masterTalents = {1: {1: ''}};
 export const misc = null;
 export const money = 0;
 export const setting = ['All'];
-export const strict = false;
 export const talentModifiers = {Dedication: {},};
 export const theme = 'CRB';
 export const themes = {CRB: 'Core Rule Book', ROT: 'Realms of Terrinoth', SOTB: 'Shadow of the Beanstalk'};
