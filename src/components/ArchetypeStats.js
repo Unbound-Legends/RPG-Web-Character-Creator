@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from "../actions";
+import {chars} from '../data/lists'
 import * as images from '../images';
 import {ArchetypeSkills, Description} from './index';
 
@@ -23,10 +24,10 @@ class ArchetypeStatsComponent extends React.Component {
 			<div>
 				<Row className='my-2'><Col sm='5'><b>Starting Stats</b></Col></Row>
 				<Row className='justify-content-center my-2'>
-					{Object.keys(masterArchetype.characteristics).map(stat =>
+					{chars.map(stat =>
 						<div className='imageBox' key={stat}>
 							<img src={images[theme][stat]} alt='' className='svg'/>
-							<Row className={`characteristicValue characteristicValue-${theme}`}>{masterArchetype.characteristics[stat]}</Row>
+							<Row className={`characteristicValue characteristicValue-${theme}`}>{masterArchetype[stat]}</Row>
 						</div>
 					)}
 				</Row>

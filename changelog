@@ -1,3 +1,8 @@
+1.6.1
+    moved customArchetypes to new system
+    rebuilt import/export (sorta)
+
+
 1.6.0
     custom vehicles
     removed strict

@@ -24,7 +24,6 @@ export const dataTypes = [
 ];
 
 export const customDataTypes = [
-	'customArchetypes',
 	'customArchetypeTalents',
 	'customCareers',
 	'customMotivations',
@@ -34,7 +33,6 @@ export const customDataTypes = [
 	'customWeapons',
 	'customArmor',
 	'customGear',
-	'customVehicles'
 ];
 
 export const vehicleDataTypes = [
@@ -52,5 +50,7 @@ export const diceNames = {
 	'[failure]': {name: 'Failure'},
 	'[threat]': {name: 'Threat'}
 };
+
+export const newData = ['vehicle', 'customVehicles', 'customArchetypes'];
 
 export const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'].sort();

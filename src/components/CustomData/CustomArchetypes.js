@@ -1,16 +1,16 @@
-import clone from 'clone';
-import {camelCase, omit, upperFirst} from 'lodash-es';
+import {upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData, changeData} from '../../actions';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {chars} from '../../data/lists';
 import * as images from '../../images';
 import {Fragment} from './';
 
 const attributes = {Wounds: 'woundThreshold', Strain: 'strainThreshold'};
+const type = 'customArchetypes';
 
 class CustomArchetypesComponent extends React.Component {
 	state = {
@@ -23,7 +23,7 @@ class CustomArchetypesComponent extends React.Component {
 		Presence: 2,
 		woundThreshold: 10,
 		strainThreshold: 10,
-		XP: 100,
+		experience: 100,
 		freeSkillRanks: {},
 		description: '',
 		setting: [],
@@ -42,7 +42,7 @@ class CustomArchetypesComponent extends React.Component {
 			Presence: 2,
 			woundThreshold: 10,
 			strainThreshold: 10,
-			XP: 100,
+			experience: 100,
 			freeSkillRanks: {},
 			description: '',
 			setting: [],
@@ -69,44 +69,31 @@ class CustomArchetypesComponent extends React.Component {
 		this.setState({[event.target.name]: value})
 	};
 
-	handleSelect = (event) => {
-		this.setState({archetypeTalents: [...this.state.archetypeTalents, event.target.value]});
-		event.preventDefault();
-	};
-
 	handleSkillSelect = (event) => {
 		const skill = event.target.value;
-		const {freeSkillRanks} = this.state;
-		let obj = {...freeSkillRanks};
-		if (freeSkillRanks[skill]) obj[skill]++;
-		else obj[skill] = 1;
+		let obj = {...this.state.freeSkillRanks};
+		obj[skill] ? obj[skill]++ : obj[skill] = 1;
 		this.setState({freeSkillRanks: obj});
 		event.preventDefault();
 	};
 
+	handleDuplicate = (event) => {
+		const {customArchetypes} = this.props;
+		// noinspection JSUnusedLocalSymbols
+		const {id, ...data} = {...customArchetypes[event.target.name]};
+		this.props.addDataSet(type, {...data, name: `${data.name} (copy)`});
+		event.preventDefault();
+	};
+
 	handleSubmit = () => {
-		const {name, Brawn, Agility, Intellect, Cunning, Willpower, Presence, woundThreshold, strainThreshold, XP, freeSkillRanks, description, archetypeTalents, setting} = this.state;
-		const {customArchetypes, changeCustomData} = this.props;
-		let obj = clone(customArchetypes);
-		obj[upperFirst(camelCase((name)))] = {
-			name,
-			characteristics: {
-				Brawn,
-				Agility,
-				Intellect,
-				Cunning,
-				Willpower,
-				Presence
-			},
-			woundThreshold,
-			strainThreshold,
-			experience: XP,
+		const {freeSkillRanks, archetypeTalents, mode, ...rest} = this.state;
+		const data = {
 			skills: freeSkillRanks,
 			talents: archetypeTalents,
-			setting,
-			description,
+			...rest
 		};
-		changeCustomData(obj, 'customArchetypes', false);
+		if (mode === 'add') this.props.addDataSet(type, data);
+		else if (mode === 'edit') this.props.modifyDataSet(type, data);
 		this.initState();
 	};
 
@@ -114,39 +101,28 @@ class CustomArchetypesComponent extends React.Component {
 		const {customArchetypes} = this.props;
 		const archetype = customArchetypes[event.target.name];
 		this.setState({
-			name: archetype.name,
-			Brawn: archetype.characteristics ? archetype.characteristics.Brawn : 0,
-			Agility: archetype.characteristics ? archetype.characteristics.Agility : 0,
-			Intellect: archetype.characteristics ? archetype.characteristics.Intellect : 0,
-			Cunning: archetype.characteristics ? archetype.characteristics.Cunning : 0,
-			Willpower: archetype.characteristics ? archetype.characteristics.Willpower : 0,
-			Presence: archetype.characteristics ? archetype.characteristics.Presence : 0,
-			woundThreshold: archetype.woundThreshold,
-			strainThreshold: archetype.strainThreshold,
-			XP: archetype.experience,
 			freeSkillRanks: archetype.skills ? archetype.skills : {},
-			description: archetype.description,
-			setting: typeof archetype.setting === 'string' ? archetype.setting.split(', ') : archetype.setting,
 			archetypeTalents: archetype.talents ? archetype.talents : [],
+			setting: typeof archetype.setting === 'string' ? archetype.setting.split(', ') : archetype.setting,
+			...archetype,
 			mode: 'edit',
 		});
 	};
 
 	handleDelete = (event) => {
-		const {customArchetypes, changeCustomData, archetype, changeData} = this.props;
-		if (archetype === event.target.name) changeData('', 'archetype');
-		changeCustomData(omit(customArchetypes, event.target.name), 'customArchetypes', false);
+		this.props.removeDataSet(type, this.props[type][event.target.name].id);
 		event.preventDefault();
 	};
 
 	render() {
 		const {customArchetypes, skills, theme} = this.props;
-		const {name, freeSkillRanks, XP, description, archetypeTalents, setting, mode} = this.state;
+		const {name, freeSkillRanks, experience, description, archetypeTalents, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
+				<Fragment type='text' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
-				<Fragment type='number' title='XP' value={XP} handleChange={(event) => this.setState({XP: event.target.value})}/>
+				<Fragment type='number' title='experience' value={experience}
+						  handleChange={(event) => this.setState({experience: event.target.value})}/>
 
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 
@@ -196,7 +172,8 @@ class CustomArchetypesComponent extends React.Component {
 
 				<Fragment name='archetypeTalents' type='inputSelect'
 						  array={Object.keys(this.props.archetypeTalents).filter(key => !archetypeTalents.includes(key)).sort()}
-						  nameObj={this.props.archetypeTalents} handleChange={this.handleSelect}/>
+						  nameObj={this.props.archetypeTalents}
+						  handleChange={(event) => this.setState({archetypeTalents: [...this.state.archetypeTalents, event.target.value]})}/>
 
 				<Fragment type='list' array={archetypeTalents.sort()} nameObj={this.props.archetypeTalents}
 						  handleClear={() => this.setState({archetypeTalents: []})}/>
@@ -205,7 +182,8 @@ class CustomArchetypesComponent extends React.Component {
 						  handleChange={(event) => this.setState({description: event.target.value})}/>
 
 				<ControlButtonSet mode={this.state.mode} type={'Archetype'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
-								  onEditCancel={this.initState} disabled={name === '' || Object.keys(freeSkillRanks).length === 0 || XP === ''}/>
+								  onEditCancel={this.initState}
+								  disabled={name === '' || Object.keys(freeSkillRanks).length === 0 || experience === ''}/>
 
 				<Table>
 					<thead>
@@ -217,14 +195,15 @@ class CustomArchetypesComponent extends React.Component {
 					</thead>
 					<tbody>
 					{customArchetypes &&
-					Object.keys(customArchetypes).map(slot =>
-						<tr key={slot}>
-							<td>{customArchetypes[slot].name}</td>
+					Object.keys(customArchetypes).map(key =>
+						<tr key={key}>
+							<td>{customArchetypes[key].name}</td>
 							<td className='text-right'>
-								<Button name={slot} onClick={this.handleEdit}>Edit</Button>
-							</td>
-							<td className='text-right'>
-								<DeleteButton name={slot} onClick={this.handleDelete}/>
+								<ButtonGroup>
+									<Button name={key} onClick={this.handleEdit}>Edit</Button>
+									<Button name={key} onClick={this.handleDuplicate}>Duplicate</Button>
+									<DeleteButton name={key} onClick={this.handleDelete}/>
+								</ButtonGroup>
 							</td>
 						</tr>
 					)
@@ -247,6 +226,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData, changeData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({removeDataSet, addDataSet, modifyDataSet}, dispatch);
 
 export const CustomArchetypes = connect(mapStateToProps, matchDispatchToProps)(CustomArchetypesComponent);

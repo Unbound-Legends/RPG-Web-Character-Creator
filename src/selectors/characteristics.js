@@ -15,7 +15,7 @@ const calcCharacteristics = createSelector(
 	(archetype, archetypes, creationCharacteristics, talentModifiers, equipmentStats, talents, talentCount) => {
 		if (!archetype || !archetypes[archetype]) return creationCharacteristics;
 		//get the starting characteristics
-		let characteristics = {...archetypes[archetype].characteristics};
+		const characteristics = {...archetypes[archetype]};
 		//add the creation characteristics
 		Object.keys(characteristics).forEach(characteristic => {
 			characteristics[characteristic] += creationCharacteristics[characteristic];

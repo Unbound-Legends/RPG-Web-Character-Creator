@@ -13,12 +13,12 @@ const calcStrain = createSelector(
 	archetype, archetypes, talents, creationCharacteristics, selectors.talentCount, selectors.equipmentStats,
 	(archetype, archetypes, talents, creationCharacteristics, talentCount, equipmentStats) => {
 		if (!archetype || !archetypes[archetype]) return 0;
-		//get starting wounds
-		let startingThreshold = archetypes[archetype].strainThreshold;
+		//get starting strain
+		const startingThreshold = archetypes[archetype].strainThreshold;
 		//get starting brawn
-		let startingBrawn = archetypes[archetype].characteristics.Willpower;
+		const startingWillpower = archetypes[archetype].Willpower;
 		//get brawn added via creation
-		let creationBrawn = creationCharacteristics.Willpower;
+		const creationWillpower = creationCharacteristics.Willpower;
 		//get wound modifier from talentModifier
 		let talentModifier = 0;
 		Object.keys(talentCount).forEach((talent) => {
@@ -44,6 +44,6 @@ const calcStrain = createSelector(
 				}
 			}
 		});
-		return startingThreshold + startingBrawn + creationBrawn + talentModifier + Gear;
+		return startingThreshold + startingWillpower + creationWillpower + talentModifier + Gear;
 	}
 );

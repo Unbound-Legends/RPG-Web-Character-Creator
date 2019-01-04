@@ -14,9 +14,9 @@ class CharacteristicsComponent extends React.Component {
 		let xp = 0;
 		if (!archetype || !archetypes[archetype]) return 0;
 		//starting characteristics
-		let startingCharacteristics = archetypes[archetype].characteristics;
+		let startingCharacteristics = archetypes[archetype];
 
-		Object.keys(creationCharacteristics).forEach((characteristic) => {
+		Object.keys(creationCharacteristics).forEach(characteristic => {
 			let points = creationCharacteristics[characteristic];
 			for (let i = 0; points > i; i++) {
 				xp += (startingCharacteristics[characteristic] + i + 1) * 10;

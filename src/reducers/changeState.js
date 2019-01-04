@@ -1,6 +1,6 @@
 import clone from 'clone';
 import merge from 'deepmerge';
-import {omit, upperFirst} from 'lodash-es';
+import {upperFirst} from 'lodash-es';
 import * as data from '../data';
 import * as initialState from './initialState';
 
@@ -77,7 +77,6 @@ const databaseReducer = (state, action, type) => {
 	return state;
 };
 
-export const archetypes = (state = data.archetypes, action) => databaseReducer(state, action, 'archetypes');
 export const archetypeTalents = (state = data.archetypeTalents, action) => databaseReducer(state, action, 'archetypeTalents');
 export const armor = (state = data.armor, action) => databaseReducer(state, action, 'armor');
 export const careers = (state = data.careers, action) => databaseReducer(state, action, 'careers');
@@ -99,7 +98,6 @@ const customDataReducer = (state, action, type) => {
 	return state;
 };
 
-export const customArchetypes = (state = {}, action) => customDataReducer(state, action, 'customArchetypes');
 export const customArchetypeTalents = (state = {}, action) => customDataReducer(state, action, 'customArchetypeTalents');
 export const customArmor = (state = {}, action) => customDataReducer(state, action, 'customArmor');
 export const customCareers = (state = {}, action) => customDataReducer(state, action, 'customCareers');
@@ -112,11 +110,26 @@ export const customWeapons = (state = {}, action) => customDataReducer(state, ac
 
 //new data model
 export const dataSets = (state, action, type) => {
-	if (action.type === `${type}_Modified`) return merge(state, action.payload);
-	if (action.type === `${type}_Removed`) return omit(state, action.payload);
+	if (action.type === `${type}_Added`) return merge(state, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
+	if (action.type === `${type}_Modified`) {
+		let data = {...state};
+		Object.keys(data).forEach(key => {
+			if (data[key].id === action.payload.id) delete data[key];
+		});
+		return merge(data, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
+	}
+	if (action.type === `${type}_Removed`) {
+		let data = {...state};
+		Object.keys(data).forEach(key => {
+			if (data[key].id === action.payload) delete data[key];
+		});
+		return data;
+	}
 	return state;
 };
 
 export const vehicleDataSet = (state = {}, action) => dataSets(state, action, 'vehicleDataSet');
+export const customArchetypes = (state = {}, action) => dataSets(state, action, 'customArchetypes');
 export const customVehicles = (state = {}, action) => dataSets(state, action, 'customVehicles');
+export const archetypes = (state = data.archetypes, action) => dataSets(state, action, 'customArchetypes');
 export const vehicles = (state = data.vehicles, action) => dataSets(state, action, 'customVehicles');

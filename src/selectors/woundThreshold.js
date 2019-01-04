@@ -15,7 +15,7 @@ const calcWounds = createSelector(
 		//get starting wounds
 		let startingThreshold = archetypes[archetype].woundThreshold;
 		//get starting brawn
-		let startingBrawn = archetypes[archetype].characteristics.Brawn;
+		let startingBrawn = archetypes[archetype].Brawn;
 		//get brawn added via creation
 		let creationBrawn = creationCharacteristics.Brawn;
 		//get wound modifier from talentModifier

@@ -18,14 +18,12 @@
     "talents": [
       "ReadyForAnything"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 2
-    }
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
   },
   "Laborer": {
     "name": "Laborer",
@@ -44,14 +42,12 @@
     "talents": [
       "ToughAsNails"
     ],
-    "characteristics": {
-      "Brawn": 3,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 1,
-      "Presence": 2
-    }
+    "Brawn": 3,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 1,
+    "Presence": 2
   },
   "Intellectual": {
     "name": "Intellectual",
@@ -70,14 +66,12 @@
     "talents": [
       "Brilliant"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 1,
-      "Intellect": 3,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 2
-    }
+    "Brawn": 2,
+    "Agility": 1,
+    "Intellect": 3,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
   },
   "Aristocrat": {
     "name": "Aristocrat",
@@ -96,14 +90,12 @@
     "talents": [
       "ForcefulPersonality"
     ],
-    "characteristics": {
-      "Brawn": 1,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 3
-    }
+    "Brawn": 1,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 3
   },
   "Elf": {
     "name": "Elf",
@@ -122,14 +114,12 @@
     "talents": [
       "Nimble"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 3,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 1,
-      "Presence": 2
-    }
+    "Brawn": 2,
+    "Agility": 3,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 1,
+    "Presence": 2
   },
   "Dwarf": {
     "name": "Dwarf",
@@ -149,14 +139,12 @@
       "DarkVision",
       "ToughAsNails"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 1,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 3,
-      "Presence": 2
-    }
+    "Brawn": 2,
+    "Agility": 1,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 3,
+    "Presence": 2
   },
   "Orc": {
     "name": "Orc",
@@ -175,14 +163,12 @@
     "talents": [
       "BattleRage"
     ],
-    "characteristics": {
-      "Brawn": 3,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 1
-    }
+    "Brawn": 3,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 1
   },
   "Mongrel": {
     "name": "Mongrel",
@@ -202,14 +188,12 @@
       "TheBeastWithin",
       "TheHumanSpirit"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 2
-    }
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
   },
   "Revenant": {
     "name": "Revenant",
@@ -229,14 +213,12 @@
       "Reanimated",
       "DeadNerves"
     ],
-    "characteristics": {
-      "Brawn": 3,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 1
-    }
+    "Brawn": 3,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 1
   },
   "Bioroid": {
     "name": "Bioroid",
@@ -254,14 +236,12 @@
       "Robot",
       "Inorganic"
     ],
-    "characteristics": {
-      "Brawn": 3,
-      "Agility": 1,
-      "Intellect": 1,
-      "Cunning": 1,
-      "Willpower": 1,
-      "Presence": 1
-    }
+    "Brawn": 3,
+    "Agility": 1,
+    "Intellect": 1,
+    "Cunning": 1,
+    "Willpower": 1,
+    "Presence": 1
   },
   "Clone": {
     "name": "Clone",
@@ -281,14 +261,12 @@
     "talents": [
       "AFaceInACrowd"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 2,
-      "Presence": 2
-    }
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
   },
   "AnimalisticAlien": {
     "name": "Animalistic Alien",
@@ -310,14 +288,12 @@
     "talents": [
       "NaturalWeapons"
     ],
-    "characteristics": {
-      "Brawn": 3,
-      "Agility": 3,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 1,
-      "Presence": 2
-    }
+    "Brawn": 3,
+    "Agility": 3,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 1,
+    "Presence": 2
   },
   "Psionic": {
     "name": "Psionic",
@@ -336,14 +312,12 @@
       "MindShaper",
       "MindBreaker"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 2,
-      "Willpower": 3,
-      "Presence": 1
-    }
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 3,
+    "Presence": 1
   },
   "Robot": {
     "name": "Robot",
@@ -364,14 +338,12 @@
       "NetworkedIntelligence",
       "Inorganic"
     ],
-    "characteristics": {
-      "Brawn": 1,
-      "Agility": 1,
-      "Intellect": 1,
-      "Cunning": 1,
-      "Willpower": 1,
-      "Presence": 1
-    }
+    "Brawn": 1,
+    "Agility": 1,
+    "Intellect": 1,
+    "Cunning": 1,
+    "Willpower": 1,
+    "Presence": 1
   },
   "Vanguard": {
     "name": "Vanguard",
@@ -391,13 +363,11 @@
       "SpaceIsOurBirthRight",
       "HighTechBaubles"
     ],
-    "characteristics": {
-      "Brawn": 2,
-      "Agility": 2,
-      "Intellect": 2,
-      "Cunning": 1,
-      "Willpower": 2,
-      "Presence": 3
-    }
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 1,
+    "Willpower": 2,
+    "Presence": 3
   }
 }

@@ -53,7 +53,7 @@ class AppComponent extends React.Component {
 		if (loadingCustomData || loadingData) return loadingPage;
 		else return (
 			<Container className={`body-${theme}`}>
-				<Tabs defaultIndex={0} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
+				<Tabs defaultIndex={3} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
 					<TabList>
 						<Tab>CHARACTERS</Tab>
 						<Tab>VEHICLES</Tab>

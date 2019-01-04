@@ -28,7 +28,6 @@ class CustomVehiclesComponent extends React.Component {
 		weapons: '',
 		setting: [],
 		mode: 'add',
-		key: ''
 	};
 
 	initState = () => {
@@ -51,7 +50,6 @@ class CustomVehiclesComponent extends React.Component {
 			weapons: '',
 			setting: [],
 			mode: 'add',
-			key: ''
 		});
 	};
 
@@ -60,35 +58,30 @@ class CustomVehiclesComponent extends React.Component {
 		this.props.handleClose();
 	};
 
-	handleSubmit = (event) => {
-		const {mode, key, ...data} = this.state;
-		this.props.addDataSet(type, data, key, mode);
-		this.initState();
-		event.preventDefault();
-	};
-
 	handleDuplicate = (event) => {
 		const {customVehicles} = this.props;
-		let data = {...customVehicles[event.target.name]};
+		// noinspection JSUnusedLocalSymbols
+		const {id, ...data} = {...customVehicles[event.target.name]};
 		this.props.addDataSet(type, {...data, name: `${data.name} (copy)`});
 		event.preventDefault();
 	};
 
-	handleEditSubmit = (event) => {
-		const {mode, key, ...data} = this.state;
-		this.props.modifyDataSet(type, data, key, mode);
+	handleSubmit = (event) => {
+		const {mode, ...data} = this.state;
+		if (mode === 'add') this.props.addDataSet(type, data);
+		else if (mode === 'edit') this.props.modifyDataSet(type, data);
 		this.initState();
 		event.preventDefault();
 	};
 
 	handleDelete = (event) => {
-		this.props.removeDataSet(type, event.target.name);
+		this.props.removeDataSet(type, this.props[type][event.target.name].id);
 		event.preventDefault();
 	};
 
 	handleEdit = (event) => {
 		const {customVehicles} = this.props;
-		this.setState({mode: 'edit', key: event.target.name, ...customVehicles[event.target.name]});
+		this.setState({mode: 'edit', ...customVehicles[event.target.name]});
 	};
 
 	buildField = (field) => {
@@ -134,7 +127,7 @@ class CustomVehiclesComponent extends React.Component {
 
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
 
-				<ControlButtonSet mode={mode} type={'Vehicle'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleEditSubmit}
+				<ControlButtonSet mode={mode} type={'Vehicle'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
 								  onEditCancel={this.initState} disabled={this.state.name === ''}/>
 				.
 				<Table>
