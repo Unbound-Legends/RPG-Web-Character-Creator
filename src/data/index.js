@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import * as merge from 'deepmerge';
 import {default as archetypesCRB} from './archetypes/CRB.json';
 import {default as archetypesROT} from './archetypes/ROT.json';
 import {default as archetypeTalentsCRB} from './archetypeTalents/CRB.json';

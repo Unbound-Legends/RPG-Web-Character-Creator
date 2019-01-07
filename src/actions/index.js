@@ -1,7 +1,7 @@
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import clone from 'clone';
-import merge from 'deepmerge';
+import * as merge from 'deepmerge';
 import {uniq, upperFirst} from 'lodash-es';
 import {customDataTypes, dataTypes, newData, vehicleDataTypes} from '../data';
 import {db} from '../firestoreDB';

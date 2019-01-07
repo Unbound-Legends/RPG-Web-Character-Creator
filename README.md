@@ -4,6 +4,7 @@
 [The Genesys Emporium](https://genesysemporium.com)
 
 ## Patrons
+- Caleb Smith
 - Chad Owen
 - Clynac
 - Esteban Riviera

@@ -89,7 +89,7 @@ class CustomVehiclesComponent extends React.Component {
 		switch (field) {
 			case 'name':
 			case 'consumables':
-			case 'weapons':
+			case 'complement':
 				return <Fragment key={field} type='text' value={this.state[field]} title={field}
 								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'silhouette':
@@ -99,7 +99,6 @@ class CustomVehiclesComponent extends React.Component {
 			case 'armor':
 			case 'hullTraumaThreshold':
 			case 'systemStrainThreshold':
-			case 'complement':
 			case 'passengerCapacity':
 			case 'price':
 			case 'encumbranceCapacity':
@@ -112,6 +111,10 @@ class CustomVehiclesComponent extends React.Component {
 			case 'rarity':
 				return <Fragment key={field} type='inputSelect' name='rarity' value={this.state[field]}
 								 array={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} handleChange={(event) => this.setState({rarity: event.target.value})}/>;
+			case 'weapons':
+				return <Fragment key={field} type='weapons' value={this.state[field]}
+								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
+
 			default:
 				return <div/>;
 		}

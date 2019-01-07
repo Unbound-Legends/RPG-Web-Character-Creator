@@ -45,6 +45,7 @@ class FragmentComponent extends React.Component {
 					clearButton={true}
 					onChange={(selected) => setState(selected.includes('All') ? ['All'] : selected)}/>;
 			case 'description':
+			case 'weapons':
 				return (<Input onChange={handleChange}
 							   type='textarea'
 							   name='description'
@@ -70,7 +71,7 @@ class FragmentComponent extends React.Component {
 		const {name, type, title = name ? name : type} = this.props;
 		return (
 			<Row className='my-2 '>
-				<Label for={title} sm='2' className={title === 'description' ? 'mt-0' : 'my-auto'}><b>{startCase(title)}</b></Label>
+				<Label for={title} sm='2' className={(title === 'description' || title === 'weapons') ? 'mt-0' : 'my-auto'}><b>{startCase(title)}</b></Label>
 				<Col id={title}>
 					{this.buildField()}
 				</Col>

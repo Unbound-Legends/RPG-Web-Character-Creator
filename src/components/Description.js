@@ -9,11 +9,12 @@ export class Description extends React.Component {
 		let array = [];
 		text.forEach(word => {
 			let target = word.toLowerCase();
+			if (target.includes('crb')) console.log(target);
 			switch (true) {
-				case target.includes('crb'):
+				case target.replace(/[,"'.?<>{}[\]]/g, '') === 'crb':
 					array.push(`<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">CRB</a>`);
 					break;
-				case target.includes('rot'):
+				case target.replace(/[,"'.?<>{}[\]]/g, '') === 'rot':
 					array.push(`<a href="http://www.drivethrurpg.com/product/239561/Realms-of-Terrinoth?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">ROT</a>`);
 					break;
 				case target.includes('[blue]'):

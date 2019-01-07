@@ -1,5 +1,5 @@
 import clone from 'clone';
-import merge from 'deepmerge';
+import * as merge from 'deepmerge';
 import {upperFirst} from 'lodash-es';
 import * as data from '../data';
 import * as initialState from './initialState';
@@ -60,13 +60,12 @@ export const vehicleType = (state = clone(initialState.vehicleType), action) => 
 //database objects
 const databaseReducer = (state, action, type) => {
 	if (action.type === `custom${upperFirst(type)}_Changed`) {
-		let obj = data[type];
-		if (action.payload) obj = merge(data[type], action.payload);
+		let obj = clone(data[type]);
+		if (action.payload) obj = merge(obj, action.payload);
 		if (action.setting && action.setting.length > 0 && !action.setting.includes('All') && type !== 'settings') {
 			let filter = {};
 			Object.keys(obj).forEach(key => {
 				if (obj[key].setting) {
-
 					if (obj[key].setting.includes('All') || action.setting.some(setting => obj[key].setting.includes(setting))) filter[key] = clone(obj[key]);
 				} else filter[key] = clone(obj[key]);
 			});
