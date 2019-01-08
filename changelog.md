@@ -1,3 +1,6 @@
+#1.6.2
+    removed setting filter until i fix it
+    custom archetypes only need name to create
 #1.6.1
     moved customArchetypes to new system
     rebuilt import/export (sorta)
@@ -11,15 +14,12 @@
     + react-ga@2.5.6
     + react-scripts@2.1.2
     + firebase@5.7.2
-
 #1.6.0
     custom vehicles
     removed strict
-
 #1.5.9
     -detach listeners on logout
     -username display on signout button
-
 #1.5.8
     -fixed soak, WT, and ST for custom gear
 

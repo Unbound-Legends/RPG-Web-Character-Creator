@@ -35,7 +35,6 @@ class AppComponent extends React.Component {
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
 		if (nextProps.vehicle && (nextProps.vehicle !== this.props.vehicle)) loadDoc('vehicle', nextProps.vehicle);
-		if (nextProps.setting && nextProps.setting !== this.props.setting) this.props.loadCustomData(nextProps.setting);
 		if (nextProps.printContent !== this.props.printContent) setTimeout(() => window.print(), 400);
 	}
 

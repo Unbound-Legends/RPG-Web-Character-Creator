@@ -58,21 +58,17 @@ export const loadData = () => {
 	}
 };
 
-export const loadCustomData = (setting = 'All') => {
+export const loadCustomData = () => {
 	return (dispatch, getState) => {
 		dispatch({type: 'loadingCustomData_Changed', payload: true});
 		const {user} = getState();
-		let unsub = {};
 		customDataTypes.forEach((type, index) => {
-			unsub[type] = db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
+			db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
 				let payload = null;
 				if (doc.exists) payload = doc.data().data;
-				dispatch({type: `${type}_Changed`, payload, setting});
+				dispatch({type: `${type}_Changed`, payload});
 				if (index + 1 >= customDataTypes.length) dispatch({type: 'loadingCustomData_Changed', payload: false});
-			}, error => {
-				if (!getState().user) unsub[type]();
-				else console.error(error);
-			});
+			}, error => console.error(error));
 		});
 	}
 };

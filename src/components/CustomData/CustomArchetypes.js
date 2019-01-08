@@ -183,7 +183,7 @@ class CustomArchetypesComponent extends React.Component {
 
 				<ControlButtonSet mode={this.state.mode} type={'Archetype'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
 								  onEditCancel={this.initState}
-								  disabled={name === '' || Object.keys(freeSkillRanks).length === 0 || experience === ''}/>
+								  disabled={name === ''}/>
 
 				<Table>
 					<thead>
