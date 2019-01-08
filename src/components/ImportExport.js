@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addDataSet, importCharacter, importCustomData} from '../actions';
-import {asyncForEach, customDataTypes as temp, dataTypes} from '../data/';
+import {asyncForEach, customDataTypes as temp, dataTypes, newData} from '../data/';
 import {db} from '../firestoreDB';
 
-const customDataTypes = [...temp, ...['customArchetypes', 'customVehicles']];
+const customDataTypes = [...temp, ...newData];
 
 class ImportExportComponent extends React.Component {
 	state = {

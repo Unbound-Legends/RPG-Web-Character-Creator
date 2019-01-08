@@ -1,3 +1,7 @@
+#1.6.4
+    fixed vehicles
+#1.6.3
+    fixed prereq ranked issues
 #1.6.2
     removed setting filter until i fix it
     custom archetypes only need name to create

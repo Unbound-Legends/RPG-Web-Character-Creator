@@ -213,7 +213,7 @@ export const modifyDataSet = (type, {id, ...data}) => {
 export const loadDataSets = () => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		newData.forEach(type => {
+		[...newData, 'vehicle'].forEach(type => {
 			db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
 				querySnapshot.docChanges().forEach(change => {
 					if (type.includes('custom')) {
@@ -232,7 +232,7 @@ export const loadDataSets = () => {
 					else {
 						switch (change.type) {
 							case 'added':
-								dispatch({type: `${type}DataSet_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+								dispatch({type: `${type}DataSet_Added`, payload: {[change.doc.id]: change.doc.data()}});
 								dispatch({type: `${type}_Changed`, payload: change.doc.id});
 								break;
 							case 'removed':
@@ -240,8 +240,7 @@ export const loadDataSets = () => {
 								dispatch({type: `${type}_Changed`, payload: querySnapshot.docs[0] ? querySnapshot.docs[0].id : ''});
 								break;
 							case 'modified':
-								console.log(change);
-								dispatch({type: `${type}DataSet_Modified`, payload: {[change.doc.id]: change.doc.data()}});
+								dispatch({type: `${type}DataSet_Modified`, payload: {...change.doc.data(), id: change.doc.id}});
 								break;
 							default:
 								break;

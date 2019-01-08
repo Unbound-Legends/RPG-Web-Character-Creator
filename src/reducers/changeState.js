@@ -1,6 +1,6 @@
 import clone from 'clone';
 import * as merge from 'deepmerge';
-import {upperFirst} from 'lodash-es';
+import {omit, upperFirst} from 'lodash-es';
 import * as data from '../data';
 import * as initialState from './initialState';
 
@@ -99,7 +99,7 @@ export const customTalents = (state = {}, action) => customDataReducer(state, ac
 export const customWeapons = (state = {}, action) => customDataReducer(state, action, 'customWeapons');
 
 //new data model
-export const dataSets = (state, action, type) => {
+export const dataObjects = (state, action, type) => {
 	if (action.type === `${type}_Added`) return merge(state, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
 	if (action.type === `${type}_Modified`) {
 		let data = {...state};
@@ -118,8 +118,23 @@ export const dataSets = (state, action, type) => {
 	return state;
 };
 
+export const customArchetypes = (state = {}, action) => dataObjects(state, action, 'customArchetypes');
+export const customVehicles = (state = {}, action) => dataObjects(state, action, 'customVehicles');
+export const archetypes = (state = data.archetypes, action) => dataObjects(state, action, 'customArchetypes');
+export const vehicles = (state = data.vehicles, action) => dataObjects(state, action, 'customVehicles');
+
+export const dataSets = (state, action, type) => {
+	switch (action.type) {
+		case `${type}_Added`:
+			return merge(state, action.payload);
+		case `${type}_Modified`:
+			return {...state, [action.payload.id]: action.payload};
+		case `${type}_Removed`:
+			return omit(state, action.payload);
+		default:
+			return state;
+	}
+};
+
 export const vehicleDataSet = (state = {}, action) => dataSets(state, action, 'vehicleDataSet');
-export const customArchetypes = (state = {}, action) => dataSets(state, action, 'customArchetypes');
-export const customVehicles = (state = {}, action) => dataSets(state, action, 'customVehicles');
-export const archetypes = (state = data.archetypes, action) => dataSets(state, action, 'customArchetypes');
-export const vehicles = (state = data.vehicles, action) => dataSets(state, action, 'customVehicles');
+

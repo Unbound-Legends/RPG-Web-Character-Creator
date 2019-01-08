@@ -18,12 +18,13 @@ class TalentSelectionComponent extends React.Component {
 	makeOptions = () => {
 		const {tier, talentCount, talentKey, talents} = this.props;
 		let options = [];
-		Object.keys(talents).forEach((key) => {
+		Object.keys(talents).forEach(key => {
 			//check for antirequisite
 			if (!talents[key].antirequisite) {
 				//prerequisite check
-				if (talents[key].prerequisite) {
-					if (+tier === +talents[key].tier && talentCount[talents[key].prerequisite]) options.push(key);
+				if (talents[key].prerequisite && talentCount[talents[key].prerequisite]) {
+					if (+tier === +talents[key].tier && !talentCount[key]) options.push(key);
+					else if (talents[key].ranked && ((+talents[key].tier + talentCount[key]) === tier)) options.push(key);
 				}
 				//talent from this tier and has not been selected already
 				else if (+tier === +talents[key].tier && !talentCount[key]) options.push(key);
