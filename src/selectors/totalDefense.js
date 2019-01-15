@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import * as selectors from './';
 
@@ -15,73 +16,47 @@ const calcTotalDefense = createSelector(
 		let defense = {melee: 0, ranged: 0};
 
 		//get defense from Archetype
-		if (archetypes[archetype]) {
-			if (archetypes[archetype].talents) {
-				archetypes[archetype].talents.forEach(key => {
-					if (archetypeTalents[key]) {
-						if (archetypeTalents[key].modifier) {
-							let target = {...archetypeTalents[key].modifier};
-							defense.melee += (target.meleeDefense ? +target.meleeDefense : 0) + (target.defense ? +target.defense : 0);
-							defense.ranged += (target.rangedDefense ? +target.rangedDefense : 0) + (target.defense ? +target.defense : 0);
-						}
-					}
-				});
-			}
-		}
-
-		//get defense from Armor
-		Object.keys(equipmentStats).forEach(key => {
-			let item = equipmentStats[key];
-			if (item.type === 'armor') {
-				if (item.equipped) {
-					defense.melee += item.meleeDefense ? +item.meleeDefense : 0 + item.defense ? +item.defense : 0;
-					defense.ranged += item.rangedDefense ? +item.rangedDefense : 0 + item.defense ? +item.defense : 0;
-				}
-			}
+		const archTalents = get(archetypes, `${archetype}.talents`, []);
+		archTalents.forEach(key => {
+			Object.keys(defense).forEach(type => {
+				defense[type] += get(archetypeTalents, `${key}.modifier.${type}Defense`, 0) + get(archetypeTalents, `${key}.modifier.defense`, 0)
+			});
 		});
 
 		//get defense from talents
 		Object.keys(talentCount).forEach(talent => {
-			if (talents[talent]) {
-				if (talents[talent].modifier) {
-					defense.melee += ((talents[talent].modifier.meleeDefense ? +talents[talent].modifier.meleeDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
-					defense.ranged += ((talents[talent].modifier.rangedDefense ? +talents[talent].modifier.rangedDefense : 0) + (talents[talent].modifier.defense ? +talents[talent].modifier.defense : 0) * talentCount[talent]);
-				}
-			}
+			Object.keys(defense).forEach(type => {
+				defense[type] += get(talents, `${talent}.modifier.${type}Defense`, 0) + get(talents, `${talent}.modifier.defense`, 0);
+			});
 		});
 
 		//get defense from gear
 		Object.keys(equipmentStats).forEach(key => {
-			let item = equipmentStats[key];
-			if (item.carried) {
-				if (item.type !== 'armor' || item.equipped)
-					if (item.qualities) {
-						Object.keys(item.qualities).forEach(quality => {
-							let rank = item.qualities[quality] === '' ? 1 : item.qualities[quality];
-							if (qualities[quality]) {
-								if (qualities[quality].modifier) {
-									if (qualities[quality].modifier.meleeDefense) defense.melee += +qualities[quality].modifier.meleeDefense * rank;
-									if (qualities[quality].modifier.rangedDefense) defense.ranged += +qualities[quality].modifier.rangedDefense * rank;
-								}
-							}
-						})
-					}
-				if (item.modifier) {
-					Object.keys(item.modifier).forEach(modifier => {
-						if (modifier === 'meleeDefense') defense.melee += +item.modifier[modifier];
-						if (modifier === 'rangedDefense') defense.ranged += +item.modifier[modifier];
-						if (modifier === 'defense') {
-							defense.ranged += +item.modifier[modifier];
-							defense.melee += +item.modifier[modifier];
-						}
-					});
+			const carried = get(equipmentStats, `${key}.carried`, false),
+				equipped = get(equipmentStats, `${key}.equipped`, false),
+				type = get(equipmentStats, `${key}.type`, ''),
+				gearQualities = get(equipmentStats, `${key}.qualities`, {}),
+				modifier = get(equipmentStats, `${key}.modifier`, {});
 
-				}
+			if (carried && (type !== 'armor' || equipped)) {
+				//add defense from item qualities
+				Object.keys(gearQualities).forEach(quality => {
+					const rank = gearQualities[quality] === '' ? 1 : gearQualities[quality];
+					Object.keys(defense).forEach(type => defense[type] += get(qualities, `${quality}.modifier.${type}Defense`, 0) * rank);
+				});
+				//add armor defense
+				Object.keys(defense).forEach(type => {
+					defense[type] += +get(equipmentStats, `${key}.${type}Defense`, 0) + +get(equipmentStats, `${key}.defense`, 0);
+				});
+				//add any modifier defense
+				Object.keys(defense).forEach(type => defense[type] += get(modifier, `${type}Defense`, 0) + get(modifier, `defense`, 0));
 			}
 		});
-		if (defense.melee > 4) defense.melee = 4;
-		if (defense.ranged > 4) defense.ranged = 4;
+
+		//max of 4
+		Object.keys(defense).forEach(key => {
+			if (defense[key] > 4) defense[key] = 4
+		});
 		return defense;
 	}
 );
-

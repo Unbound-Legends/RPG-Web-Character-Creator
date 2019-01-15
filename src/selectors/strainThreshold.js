@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import {chars} from '../data/lists';
 import * as selectors from './';
@@ -12,36 +13,30 @@ export const strainThreshold = (state) => calcStrain(state);
 const calcStrain = createSelector(
 	archetype, archetypes, talents, creationCharacteristics, selectors.talentCount, selectors.equipmentStats,
 	(archetype, archetypes, talents, creationCharacteristics, talentCount, equipmentStats) => {
-		if (!archetype || !archetypes[archetype]) return 0;
-		//get starting strain
-		const startingThreshold = archetypes[archetype].strainThreshold;
-		//get starting brawn
-		const startingWillpower = archetypes[archetype].Willpower;
-		//get brawn added via creation
-		const creationWillpower = creationCharacteristics.Willpower;
-		//get wound modifier from talentModifier
+		const startingThreshold = get(archetypes, `${archetype}.strainThreshold`, 0),
+			startingWillpower = get(archetypes, `${archetype}.Willpower`, 0),
+			creationWillpower = get(creationCharacteristics, 'Willpower', 0);
+
+		//get all talents that modify strain
 		let talentModifier = 0;
-		Object.keys(talentCount).forEach((talent) => {
-			if (talents[talent]) {
-				if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.strainThreshold ? talents[talent].modifier.strainThreshold : 0) * talentCount[talent]);
-			}
+		Object.keys(talentCount).forEach(talent => {
+			talentModifier += (get(talent, `${talent}.modifier.strainThreshold`, 0) * talentCount[talent]);
 		});
+
 		//check for Gear
 		let Gear = 0;
 		Object.keys(equipmentStats).forEach(key => {
-			let item = equipmentStats[key];
-			if (item.modifier) {
-				if (item.carried) {
-					if (item.modifier.strainThreshold) Gear += +item.modifier.strainThreshold;
-					if (item.equipped || item.type !== 'armor') {
-						let list = item.modifier;
-						if (list) {
-							Object.keys(list).forEach(modifier => {
-								if (chars.includes(modifier) && list[modifier]) Gear--;
-							});
-						}
-					}
-				}
+			const modifier = get(equipmentStats, `${key}.modifier`, {}),
+				carried = get(equipmentStats, `${key}.carried`, false),
+				equipped = get(equipmentStats, `${key}.equipped`, false),
+				kind = get(equipmentStats, `${key}.type`, '');
+
+			if (carried) Gear += get(equipmentStats, `${key}.modifier.strainThreshold`, 0);
+
+			if (equipped || kind !== 'armor') {
+				Object.keys(modifier).forEach(type => {
+					if (chars.includes(type)) Gear--
+				});
 			}
 		});
 		return startingThreshold + startingWillpower + creationWillpower + talentModifier + Gear;

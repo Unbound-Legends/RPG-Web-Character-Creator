@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import * as selectors from './';
 
@@ -19,32 +20,20 @@ const calcCareerCheck = createSelector(
 		//get careerSkills from career
 		Object.keys(skills).forEach(skill => {
 			careerSkillsList[skill] = false;
-			if (careers[career]) {
-				if (careers[career].skills.includes(skill)) careerSkillsList[skill] = true;
-			}
+			const list = get(careers, `${career}.skills`, []);
+			if (list.includes(skill)) careerSkillsList[skill] = true;
+
 			//get careerSkills from archetype
-			if (archetypes[archetype]) {
-				if (archetypes[archetype].talents) {
-					archetypes[archetype].talents.forEach(talent => {
-						if (archetypeTalents[talent]) {
-							if (archetypeTalents[talent].modifier) {
-								if (archetypeTalents[talent].modifier.careerSkills) {
-									if (archetypeTalents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
-								}
-							}
-						}
-					});
-				}
-			}
+			const archTalents = get(archetypes, `${archetype}.talents`, []);
+			archTalents.forEach(talent => {
+				const careerSkills = get(archetypeTalents, `${talent}.modifier.careerSkills`, []);
+				if (careerSkills.includes(skill)) careerSkillsList[skill] = true;
+			});
+
 			//get careerSkills from talents
 			Object.keys(talentCount).forEach(talent => {
-				if (talents[talent]) {
-					if (talents[talent].modifier) {
-						if (talents[talent].modifier.careerSkills) {
-							if (talents[talent].modifier.careerSkills.includes(skill)) careerSkillsList[skill] = true;
-						}
-					}
-				}
+				const careerSkills = get(talents, `${talent}.modifier.careerSkills`, []);
+				if (careerSkills.includes(skill)) careerSkillsList[skill] = true;
 			});
 		});
 		return careerSkillsList;

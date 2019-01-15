@@ -24,7 +24,6 @@ export const dataTypes = [
 ];
 
 export const customDataTypes = [
-	'customArchetypeTalents',
 	'customCareers',
 	'customMotivations',
 	'customSettings',
@@ -41,6 +40,8 @@ export const vehicleDataTypes = [
 
 export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
 
+export const diceOrder = ['[yellow]', '[green]', '[blue]', '[red]', '[purple]', '[black]'];
+
 export const diceNames = {
 	'[blue]': {name: 'Boost Die'},
 	'[black]': {name: 'Setback Die'},
@@ -51,6 +52,6 @@ export const diceNames = {
 	'[threat]': {name: 'Threat'}
 };
 
-export const newData = ['customArchetypes', 'customVehicles'];
+export const newData = ['customArchetypes', 'customArchetypeTalents', 'customVehicles'];
 
 export const modifiableAttributes = ['woundThreshold', 'strainThreshold', 'soak', 'meleeDefense', 'rangedDefense', 'defense', 'careerSkills'].sort();

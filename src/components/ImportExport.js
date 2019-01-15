@@ -174,7 +174,6 @@ class ImportExportComponent extends React.Component {
 								text += `${character.name} Imported!\n`;
 							});
 							break;
-						case 'customArchetypeTalents':
 						case 'customCareers':
 						case 'customSkills':
 						case 'customTalents':
@@ -193,6 +192,7 @@ class ImportExportComponent extends React.Component {
 							this.props.importCustomData({[type]: file[type]});
 							text += `${startCase(type)} Data Imported.\n`;
 							break;
+						case 'customArchetypeTalents':
 						case 'customArchetypes':
 						case 'customVehicles':
 							file[type].forEach(data => this.props.addDataSet(type, data));

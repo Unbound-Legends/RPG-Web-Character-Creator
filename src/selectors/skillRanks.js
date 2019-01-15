@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import * as selectors from './';
 
@@ -12,12 +13,14 @@ const calcSkillRanks = createSelector(
 	(masterSkills, skills, careerSkillsRank, archetypeSkillRank) => {
 		let skillRanks = {};
 		Object.keys(skills).forEach(key => {
-			skillRanks[key] = (
-					masterSkills[key] ? ((masterSkills[key].rank ? masterSkills[key].rank : 0) +
-						(masterSkills[key].careerRank ? masterSkills[key].careerRank : 0)) : 0) +
-				(careerSkillsRank.includes(key) ? 1 : 0) +
-				(Object.keys(archetypeSkillRank).includes(key) ? archetypeSkillRank[key].rank : 0);
+			const ranks = get(masterSkills, `${key}.rank`, 0),
+				careerRanks = get(masterSkills, `${key}.careerRank`, 0),
+				freeCareerSkillsRank = careerSkillsRank.includes(key) ? 1 : 0,
+				freeArchetypeSkillRank = get(archetypeSkillRank, `${key}.rank`, 0);
+
+			skillRanks[key] = ranks + careerRanks + freeCareerSkillsRank + freeArchetypeSkillRank;
 		});
+
 		return skillRanks;
 	}
 );

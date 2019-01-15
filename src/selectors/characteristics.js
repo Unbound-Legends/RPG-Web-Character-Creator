@@ -1,5 +1,7 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import {chars} from '../data/lists'
+import * as initialState from '../reducers/initialState';
 import * as selectors from './index';
 
 const archetype = state => state.archetype;
@@ -13,50 +15,43 @@ export const characteristics = (state) => calcCharacteristics(state);
 const calcCharacteristics = createSelector(
 	archetype, archetypes, creationCharacteristics, talentModifiers, selectors.equipmentStats, talents, selectors.talentCount,
 	(archetype, archetypes, creationCharacteristics, talentModifiers, equipmentStats, talents, talentCount) => {
-		if (!archetype || !archetypes[archetype]) return creationCharacteristics;
 		//get the starting characteristics
-		const characteristics = {...archetypes[archetype]};
-		//add the creation characteristics
-		Object.keys(characteristics).forEach(characteristic => {
-			characteristics[characteristic] += creationCharacteristics[characteristic];
-		});
+		let characteristics = {...creationCharacteristics};
+
+		//add the arch characteristics
+		const arch = get(archetypes, `${archetype}`, initialState.creationCharacteristics);
+		Object.keys(characteristics).forEach(key => characteristics[key] += arch[key]);
+
 		//add dedications talents
-		Object.values(talentModifiers.Dedication).forEach(characteristic => {
-			characteristics[characteristic]++;
-		});
+		const dedication = get(talentModifiers, 'Dedication', {});
+		Object.keys(dedication).forEach(key => characteristics[dedication[key]]++);
+
 		//add other talents
 		Object.entries(talentCount).forEach(([talent, count]) => {
-			if (talents[talent]) {
-				if (talents[talent].modifier) {
-					chars.forEach(characteristic => {
-						if (characteristic in talents[talent].modifier) {
-							characteristics[characteristic] += count;
-						}
-					});
-				}
-			}
+			const modifier = get(talents, `${talent}.modifier`, {});
+			chars.forEach(key => {
+				if (key in modifier) characteristics[key] += count;
+			});
 		});
 		//add equipment modifier
 		Object.keys(equipmentStats).forEach(key => {
-			let item = equipmentStats[key];
-			if (item.modifier) {
-				if (item.carried) {
-					if (item.equipped || item.type !== 'armor') {
-						let list = item.modifier;
-						if (list) {
-							Object.keys(list).forEach(modifier => {
-								if (chars.includes(modifier)) characteristics[modifier] += 1;
-							});
-						}
-					}
-				}
+			const modifier = get(equipmentStats, `${key}.modifier`, {}),
+				carried = get(equipmentStats, `${key}.carried`, false),
+				equipped = get(equipmentStats, `${key}.equipped`, false),
+				type = get(equipmentStats, `${key}.type`, '');
+
+			if (carried && modifier && (equipped || type !== 'armor')) {
+				Object.keys(modifier).forEach(key => {
+					if (chars.includes(key)) characteristics[key] += 1;
+				});
 			}
 		});
 
 		//Hard cap of 6
-		Object.keys(characteristics).forEach(characteristic => {
-			if (characteristics[characteristic] > 6) characteristics[characteristic] = 6;
+		Object.keys(characteristics).forEach(key => {
+			if (characteristics[key] > 6) characteristics[key] = 6;
 		});
+
 		return characteristics;
 	}
 );

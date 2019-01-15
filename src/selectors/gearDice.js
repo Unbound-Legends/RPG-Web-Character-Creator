@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import * as selectors from './';
 
@@ -10,22 +11,16 @@ const calcGearDice = createSelector(
 	(skillDice, equipmentStats, qualities) => {
 		let gearDice = {};
 		Object.keys(equipmentStats).forEach(key => {
-			let item = equipmentStats[key];
-			let type = item.type;
-			let list = item.qualities;
-			let skill = item.skill;
+			const item = equipmentStats[key], {type, qualities: list, skill} = item;
 			if (!gearDice[type]) gearDice[type] = {};
 			let qualityDice = [];
 			if (list) {
 				Object.keys(list).forEach(quality => {
-					let rank = list[quality] === '' ? 1 : list[quality];
-					if (qualities[quality]) {
-						if (qualities[quality].modifier) {
-							if (qualities[quality].modifier.check) {
-								for (let i = 0; i < rank; i++) {
-									qualityDice.push(qualities[quality].modifier.check);
-								}
-							}
+					const rank = list[quality] === '' ? 1 : list[quality];
+					const check = get(qualities, `${quality}.modifier.check`, false);
+					if (check) {
+						for (let i = 0; i < rank; i++) {
+							qualityDice.push(check);
 						}
 					}
 				});

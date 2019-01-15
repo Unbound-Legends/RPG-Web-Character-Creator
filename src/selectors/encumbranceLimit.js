@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import * as selectors from './';
 
@@ -8,21 +9,14 @@ export const encumbranceLimit = (state) => calcEncumbranceLimit(state);
 const calcEncumbranceLimit = createSelector(
 	selectors.characteristics, equipmentGear, gear,
 	(characteristics, equipmentGear, gear) => {
-		let Brawn = characteristics.Brawn;
-		let gearModifier = 0;
+		const Brawn = characteristics.Brawn;
 
 		//get gear modifier
+		let gearModifier = 0;
+
 		Object.keys(equipmentGear).forEach(item => {
-			let id = equipmentGear[item].id;
-			if (equipmentGear[item].carried) {
-				if (gear[id]) {
-					if (gear[id].modifier) {
-						if (gear[id].modifier.maxEncumbrance) {
-							gearModifier += gear[id].modifier.maxEncumbrance;
-						}
-					}
-				}
-			}
+			const id = equipmentGear[item].id, maxEncumbrance = get(gear, `${id}.modifier.maxEncumbrance`, 0);
+			if (equipmentGear[item].carried) gearModifier += maxEncumbrance;
 		});
 
 		return Brawn + gearModifier + 5;

@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import * as selectors from './';
 
@@ -12,37 +13,30 @@ export const totalSoak = (state) => calcTotalSoak(state);
 const calcTotalSoak = createSelector(
 	archetype, archetypes, talents, armor, archetypeTalents, selectors.equipmentStats, selectors.characteristics, selectors.talentCount,
 	(archetype, archetypes, talents, armor, archetypeTalents, equipmentStats, characteristics, talentCount) => {
-		if (!archetype || !archetypes[archetype]) return 0;
-		//get calcBrawn
-		let Brawn = characteristics.Brawn;
+		const Brawn = get(characteristics, 'Brawn', 0);
+
 		//get soak from armor and gear
 		let Armor = 0;
 		Object.keys(equipmentStats).forEach(key => {
-			let item = equipmentStats[key];
-			if (item.type === 'armor') if (item.equipped && item.soak) Armor += +item.soak;
-			if (item.type === 'gear') if (item.modifier && item.carried) if (item.modifier.soak) Armor += +item.modifier.soak;
+			const carried = get(equipmentStats, `${key}.carried`, false),
+				equipped = get(equipmentStats, `${key}.equipped`, false),
+				type = get(equipmentStats, `${key}.type`, ''),
+				soak = +get(equipmentStats, `${key}.soak`, 0),
+				modifierSoak = +get(equipmentStats, `${key}.modifier.soak`, 0);
+
+			if (type === 'armor' && equipped) Armor += soak;
+			if (type === 'gear' && carried) Armor += modifierSoak;
 		});
+
 		//get soak from Enduring Talent
 		let talentModifier = 0;
-		Object.keys(talentCount).forEach(talent => {
-			if (talents[talent]) {
-				if (talents[talent].modifier) talentModifier += ((talents[talent].modifier.soak ? talents[talent].modifier.soak : 0) * talentCount[talent]);
-			}
-		});
+		Object.keys(talentCount).forEach(talent => talentModifier += +get(talents, `${talent}.modifier.soak`, 0) * talentCount[talent]);
 
 		//get soak from archetype
 		let archetypeModifier = 0;
-		if (archetypes[archetype]) {
-			if (archetypes[archetype].talents) {
-				archetypes[archetype].talents.forEach(key => {
-					if (archetypeTalents[key]) {
-						if (archetypeTalents[key].modifier) {
-							if (archetypeTalents[key].modifier.soak) archetypeModifier = +archetypeTalents[key].modifier.soak
-						}
-					}
-				});
-			}
-		}
+		const archTalents = get(archetypes, `${archetype}.talents`, []);
+		archTalents.forEach(key => archetypeModifier += +get(archetypeTalents, `${key}.modifier.soak`, 0));
+
 		return Brawn + Armor + talentModifier + archetypeModifier;
 	}
 );

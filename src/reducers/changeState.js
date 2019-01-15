@@ -5,21 +5,21 @@ import * as data from '../data';
 import * as initialState from './initialState';
 
 //loading objects
-const loadingReducer = (state, action, type) => {
+const loadingReducer = (type, state, action) => {
 	if (action.type === `${type}_Changed`) return action.payload;
 	return state;
 };
 
-export const user = (state = null, action) => loadingReducer(state, action, 'User');
-export const character = (state = null, action) => loadingReducer(state, action, 'character');
-export const vehicle = (state = '', action) => loadingReducer(state, action, 'vehicle');
-export const loadingData = (state = true, action) => loadingReducer(state, action, 'loadingData');
-export const loadingCustomData = (state = true, action) => loadingReducer(state, action, 'loadingCustomData');
-export const characterList = (state = null, action) => loadingReducer(state, action, 'characterList');
-export const printContent = (state = initialState.printContent, action) => loadingReducer(state, action, 'printContent');
+export const user = (state = null, action) => loadingReducer('User', state, action);
+export const character = (state = null, action) => loadingReducer('character', state, action);
+export const vehicle = (state = '', action) => loadingReducer('vehicle', state, action);
+export const loadingData = (state = true, action) => loadingReducer('loadingData', state, action);
+export const loadingCustomData = (state = true, action) => loadingReducer('loadingCustomData', state, action);
+export const characterList = (state = null, action) => loadingReducer('characterList', state, action);
+export const printContent = (state = initialState.printContent, action) => loadingReducer('printContent', state, action);
 
 //character objects
-const dataReducer = (state, action, type) => {
+const dataReducer = (type, state = clone(initialState[type]), action) => {
 	if (action.type === `${type}_Changed`) {
 		if (action.payload) return action.payload;
 		else return clone(initialState[type]);
@@ -27,38 +27,38 @@ const dataReducer = (state, action, type) => {
 	return state;
 };
 
-export const archetype = (state = clone(initialState.archetype), action) => dataReducer(state, action, 'archetype');
-export const archetypeSpecialSkills = (state = clone(initialState.archetypeSpecialSkills), action) => dataReducer(state, action, 'archetypeSpecialSkills');
-export const career = (state = clone(initialState.career), action) => dataReducer(state, action, 'career');
-export const careerSkillsRank = (state = clone(initialState.careerSkillsRank), action) => dataReducer(state, action, 'careerSkillsRank');
-export const creationCharacteristics = (state = clone(initialState.creationCharacteristics), action) => dataReducer(state, action, 'creationCharacteristics');
-export const critical = (state = clone(initialState.critical), action) => dataReducer(state, {
+export const archetype = (state, action) => dataReducer('archetype', state, action);
+export const archetypeSpecialSkills = (state, action) => dataReducer('archetypeSpecialSkills', state, action);
+export const career = (state, action) => dataReducer('career', state, action);
+export const careerSkillsRank = (state, action) => dataReducer('careerSkillsRank', state, action);
+export const creationCharacteristics = (state, action) => dataReducer('creationCharacteristics', state, action);
+export const critical = (state, action) => dataReducer('critical', state, {
 	type: action.type,
 	payload: Array.isArray(action.payload) ? action.payload.sort((a, b) => a - b) : null
-}, 'critical');
-export const currentHullTrauma = (state = initialState.currentHullTrauma, action) => dataReducer(state, action, 'currentHullTrauma');
-export const currentSystemStrain = (state = initialState.currentSystemStrain, action) => dataReducer(state, action, 'currentSystemStrain');
-export const currentStrain = (state = initialState.currentStrain, action) => dataReducer(state, action, 'currentStrain');
-export const currentWound = (state = initialState.currentWound, action) => dataReducer(state, action, 'currentWound');
-export const description = (state = clone(initialState.description), action) => dataReducer(state, action, 'description');
-export const earnedXP = (state = initialState.earnedXP, action) => dataReducer(state, action, 'earnedXP');
-export const equipmentArmor = (state = clone(initialState.equipmentArmor), action) => dataReducer(state, action, 'equipmentArmor');
-export const equipmentGear = (state = clone(initialState.equipmentGear), action) => dataReducer(state, action, 'equipmentGear');
-export const equipmentWeapons = (state = clone(initialState.equipmentWeapons), action) => dataReducer(state, action, 'equipmentWeapons');
-export const masterMotivations = (state = clone(initialState.masterMotivations), action) => dataReducer(state, action, 'masterMotivations');
-export const masterSkills = (state = clone(initialState.masterSkills), action) => dataReducer(state, action, 'masterSkills');
-export const masterTalents = (state = clone(initialState.masterTalents), action) => dataReducer(state, action, 'masterTalents');
-export const misc = (state = clone(initialState.misc), action) => dataReducer(state, action, 'misc');
-export const money = (state = initialState.money, action) => dataReducer(state, action, 'money');
-export const setting = (state = clone(initialState.setting), action) => dataReducer(state, action, 'setting');
-export const talentModifiers = (state = clone(initialState.talentModifiers), action) => dataReducer(state, action, 'talentModifiers');
-export const theme = (state = clone(initialState.theme), action) => dataReducer(state, action, 'theme');
-export const themes = (state = clone(initialState.themes), action) => dataReducer(state, action, 'themes');
-export const vehicleNotes = (state = clone(initialState.vehicleNotes), action) => dataReducer(state, action, 'vehicleNotes');
-export const vehicleType = (state = clone(initialState.vehicleType), action) => dataReducer(state, action, 'vehicleType');
+});
+export const currentHullTrauma = (state, action) => dataReducer('currentHullTrauma', state, action);
+export const currentSystemStrain = (state, action) => dataReducer('currentSystemStrain', state, action);
+export const currentStrain = (state, action) => dataReducer('currentStrain', state, action);
+export const currentWound = (state, action) => dataReducer('currentWound', state, action);
+export const description = (state, action) => dataReducer('description', state, action);
+export const earnedXP = (state, action) => dataReducer('earnedXP', state, action);
+export const equipmentArmor = (state, action) => dataReducer('equipmentArmor', state, action);
+export const equipmentGear = (state, action) => dataReducer('equipmentGear', state, action);
+export const equipmentWeapons = (state, action) => dataReducer('equipmentWeapons', state, action);
+export const masterMotivations = (state, action) => dataReducer('masterMotivations', state, action);
+export const masterSkills = (state, action) => dataReducer('masterSkills', state, action);
+export const masterTalents = (state, action) => dataReducer('masterTalents', state, action);
+export const misc = (state, action) => dataReducer('misc', state, action);
+export const money = (state, action) => dataReducer('money', state, action);
+export const setting = (state, action) => dataReducer('setting', state, action);
+export const talentModifiers = (state, action) => dataReducer('talentModifiers', state, action);
+export const theme = (state, action) => dataReducer('theme', state, action);
+export const themes = (state, action) => dataReducer('themes', state, action);
+export const vehicleNotes = (state, action) => dataReducer('vehicleNotes', state, action);
+export const vehicleType = (state, action) => dataReducer('vehicleType', state, action);
 
 //database objects
-const databaseReducer = (state, action, type) => {
+const databaseReducer = (type, state = data[type], action) => {
 	if (action.type === `custom${upperFirst(type)}_Changed`) {
 		let obj = clone(data[type]);
 		if (action.payload) obj = merge(obj, action.payload);
@@ -67,20 +67,19 @@ const databaseReducer = (state, action, type) => {
 	return state;
 };
 
-export const archetypeTalents = (state = data.archetypeTalents, action) => databaseReducer(state, action, 'archetypeTalents');
-export const armor = (state = data.armor, action) => databaseReducer(state, action, 'armor');
-export const careers = (state = data.careers, action) => databaseReducer(state, action, 'careers');
-export const craftsmanship = (state = data.craftsmanship, action) => databaseReducer(state, action, 'craftsmanship');
-export const gear = (state = data.gear, action) => databaseReducer(state, action, 'gear');
-export const motivations = (state = data.motivations, action) => databaseReducer(state, action, 'motivations');
-export const settings = (state = data.settings, action) => databaseReducer(state, action, 'settings');
-export const skills = (state = data.skills, action) => databaseReducer(state, action, 'skills');
-export const qualities = (state = data.qualities, action) => databaseReducer(state, action, 'qualities');
-export const talents = (state = data.talents, action) => databaseReducer(state, action, 'talents');
-export const weapons = (state = data.weapons, action) => databaseReducer(state, action, 'weapons');
+export const armor = (state, action) => databaseReducer('armor', state, action);
+export const careers = (state, action) => databaseReducer('careers', state, action);
+export const craftsmanship = (state, action) => databaseReducer('craftsmanship', state, action);
+export const gear = (state, action) => databaseReducer('gear', state, action);
+export const motivations = (state, action) => databaseReducer('motivations', state, action);
+export const settings = (state, action) => databaseReducer('settings', state, action);
+export const skills = (state, action) => databaseReducer('skills', state, action);
+export const qualities = (state, action) => databaseReducer('qualities', state, action);
+export const talents = (state, action) => databaseReducer('talents', state, action);
+export const weapons = (state, action) => databaseReducer('weapons', state, action);
 
 //custom data objects
-const customDataReducer = (state, action, type) => {
+const customDataReducer = (type, state = {}, action) => {
 	if (action.type === `${type}_Changed`) {
 		if (action.payload) return action.payload;
 		else return {};
@@ -88,53 +87,61 @@ const customDataReducer = (state, action, type) => {
 	return state;
 };
 
-export const customArchetypeTalents = (state = {}, action) => customDataReducer(state, action, 'customArchetypeTalents');
-export const customArmor = (state = {}, action) => customDataReducer(state, action, 'customArmor');
-export const customCareers = (state = {}, action) => customDataReducer(state, action, 'customCareers');
-export const customGear = (state = {}, action) => customDataReducer(state, action, 'customGear');
-export const customSettings = (state = {}, action) => customDataReducer(state, action, 'customSettings');
-export const customSkills = (state = {}, action) => customDataReducer(state, action, 'customSkills');
-export const customMotivations = (state = {}, action) => customDataReducer(state, action, 'customMotivations');
-export const customTalents = (state = {}, action) => customDataReducer(state, action, 'customTalents');
-export const customWeapons = (state = {}, action) => customDataReducer(state, action, 'customWeapons');
+export const customArmor = (state, action) => customDataReducer('customArmor', state, action);
+export const customCareers = (state, action) => customDataReducer('customCareers', state, action);
+export const customGear = (state, action) => customDataReducer('customGear', state, action);
+export const customSettings = (state, action) => customDataReducer('customSettings', state, action);
+export const customSkills = (state, action) => customDataReducer('customSkills', state, action);
+export const customMotivations = (state, action) => customDataReducer('customMotivations', state, action);
+export const customTalents = (state, action) => customDataReducer('customTalents', state, action);
+export const customWeapons = (state, action) => customDataReducer('customWeapons', state, action);
 
 //new data model
-export const dataObjects = (state, action, type) => {
-	if (action.type === `${type}_Added`) return merge(state, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
-	if (action.type === `${type}_Modified`) {
-		let data = {...state};
-		Object.keys(data).forEach(key => {
-			if (data[key].id === action.payload.id) delete data[key];
-		});
-		return merge(data, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
-	}
-	if (action.type === `${type}_Removed`) {
-		let data = {...state};
-		Object.keys(data).forEach(key => {
-			if (data[key].id === action.payload) delete data[key];
-		});
-		return data;
-	}
-	return state;
-};
-
-export const customArchetypes = (state = {}, action) => dataObjects(state, action, 'customArchetypes');
-export const customVehicles = (state = {}, action) => dataObjects(state, action, 'customVehicles');
-export const archetypes = (state = data.archetypes, action) => dataObjects(state, action, 'customArchetypes');
-export const vehicles = (state = data.vehicles, action) => dataObjects(state, action, 'customVehicles');
-
-export const dataSets = (state, action, type) => {
+export const dataObjects = (type, state, action) => {
+	let data;
 	switch (action.type) {
-		case `${type}_Added`:
-			return merge(state, action.payload);
+		case`${type}_Added`:
+			data = clone(state);
+			return merge(data, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
 		case `${type}_Modified`:
-			return {...state, [action.payload.id]: action.payload};
-		case `${type}_Removed`:
-			return omit(state, action.payload);
+			data = clone(state);
+			Object.keys(data).forEach(key => {
+				if (data[key].id === action.payload.id) delete data[key]
+			});
+			return merge(state, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
+		case`${type}_Removed`:
+			data = clone(state);
+			Object.keys(data).forEach(key => {
+				if (data[key].id === action.payload) delete data[key]
+			});
+			return data;
 		default:
 			return state;
 	}
 };
 
-export const vehicleDataSet = (state = {}, action) => dataSets(state, action, 'vehicleDataSet');
+export const customArchetypes = (state = {}, action) => dataObjects('customArchetypes', state, action);
+export const customArchetypeTalents = (state = {}, action) => dataObjects('customArchetypeTalents', state, action);
+export const customVehicles = (state = {}, action) => dataObjects('customVehicles', state, action);
+export const archetypes = (state = data.archetypes, action) => dataObjects('customArchetypes', state, action);
+export const archetypeTalents = (state = data.archetypeTalents, action) => dataObjects('customArchetypeTalents', state, action);
+export const vehicles = (state = data.vehicles, action) => dataObjects('customVehicles', state, action);
 
+export const dataSets = (type, state = {}, action) => {
+	let data;
+	switch (action.type) {
+		case `${type}_Added`:
+			data = clone(state);
+			return merge(data, action.payload);
+		case `${type}_Modified`:
+			data = clone(state);
+			return {...data, [action.payload.id]: action.payload};
+		case `${type}_Removed`:
+			data = clone(state);
+			return omit(data, action.payload);
+		default:
+			return state;
+	}
+};
+
+export const vehicleDataSet = (state, action) => dataSets('vehicleDataSet', state, action);

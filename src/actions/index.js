@@ -177,13 +177,26 @@ export const importCustomData = (customDataSetImport) => {
 					}
 				});
 			}
-			if (type === 'customArchetypes') Object.values(data).forEach(item => {
-				let {characteristics, ...obj} = item;
-				let final = {write: [getState().user], read: [getState().user], name: 'none'};
-				if (item) final = {...final, ...obj, ...characteristics};
-				db.collection(`${type}DB`).add(final).catch(console.error);
-			});
-			else db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true})
+			switch (type) {
+				case 'customArchetypes':
+					Object.values(data).forEach(item => {
+						let {characteristics, ...obj} = item;
+						let final = {write: [getState().user], read: [getState().user], name: 'none'};
+						if (item) final = {...final, ...obj, ...characteristics};
+						db.collection(`${type}DB`).add(final).catch(console.error);
+					});
+					break;
+				case 'customArchetypeTalents':
+					Object.values(data).forEach(item => {
+						let final = {write: [getState().user], read: [getState().user], name: 'none', ...item};
+						db.collection(`${type}DB`).add(final).catch(console.error);
+					});
+					break;
+				default:
+					db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true});
+					break;
+			}
+
 		});
 	}
 };
@@ -270,11 +283,10 @@ export const loadDoc = (type, key) => {
 		vehicleDataTypes.forEach(dataType => {
 			if (key) {
 				db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
-					let data = null;
-					if (doc.data()) data = doc.data().data;
-					dispatch({type: `${dataType}_Changed`, payload: data});
+					if (doc.data()) dispatch({type: `${dataType}_Changed`, payload: doc.data().data});
+					else dispatch({type: `${dataType}_Changed`});
 				}, console.error);
-			} else dispatch({type: `${dataType}_Changed`, payload: null});
+			} else dispatch({type: `${dataType}_Changed`});
 
 		})
 

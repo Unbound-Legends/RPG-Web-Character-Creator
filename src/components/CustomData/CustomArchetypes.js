@@ -88,9 +88,9 @@ class CustomArchetypesComponent extends React.Component {
 	handleSubmit = () => {
 		const {freeSkillRanks, archetypeTalents, mode, ...rest} = this.state;
 		const data = {
-			skills: freeSkillRanks,
-			talents: archetypeTalents,
-			...rest
+			...rest,
+			skills: {...freeSkillRanks},
+			talents: [...archetypeTalents],
 		};
 		if (mode === 'add') this.props.addDataSet(type, data);
 		else if (mode === 'edit') this.props.modifyDataSet(type, data);
@@ -119,7 +119,7 @@ class CustomArchetypesComponent extends React.Component {
 		const {name, freeSkillRanks, experience, description, archetypeTalents, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='text' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
+				<Fragment type='text' title='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
 				<Fragment type='number' title='experience' value={experience}
 						  handleChange={(event) => this.setState({experience: event.target.value})}/>

@@ -1,3 +1,7 @@
+#1.6.5
+    rewrote all selectors
+    moved customArchetypeTalents to new db structure
+    fixed customArchetype not saving skills or abilities
 #1.6.4
     fixed vehicles
 #1.6.3

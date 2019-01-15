@@ -1,6 +1,10 @@
 service cloud.firestore {
   match /databases/{database}/documents {
 
+  function dbData(type, document) {
+              return get(/databases/$(database)/documents/$(type)/$(document)).data
+      }
+
     match /users/{userId}/data/{document=**}  {
       allow read, write: if request.auth.uid == userId;
     }
@@ -12,20 +16,16 @@ service cloud.firestore {
     match /{db}/{document}  {
       allow create: if request.auth.uid != null;
       allow read: if request.auth.uid != null;
-      allow write: if request.auth.uid in dbData(db, document).write;
+      allow write, delete: if request.auth.uid in dbData(db, document).write;
 
       match /data/{type} {
       	allow read: if request.auth.uid != null;
-        allow write: if request.auth.uid in dbData(db, document).write;
+        allow write, delete: if request.auth.uid in dbData(db, document).write;
   		}
     }
 
     match /userDB/{document}  {
       allow write: if request.resource.data.uid == request.auth.uid;
-    }
-
-    function dbData(type, document) {
-            return get(/databases/$(database)/documents/$(type)/$(document)).data
     }
   }
 }
