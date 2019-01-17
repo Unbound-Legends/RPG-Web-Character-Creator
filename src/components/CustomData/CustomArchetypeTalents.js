@@ -9,7 +9,6 @@ import {Fragment} from './';
 
 const type = 'customArchetypeTalents';
 
-
 class CustomArchetypeTalentsComponent extends React.Component {
 	state = {
 		name: '',
@@ -144,7 +143,7 @@ class CustomArchetypeTalentsComponent extends React.Component {
 				</thead>
 				<tbody>
 				{customArchetypeTalents &&
-				Object.keys(customArchetypeTalents).map(key =>
+				Object.keys(customArchetypeTalents).sort().map(key =>
 					<tr key={key}>
 						<td>{customArchetypeTalents[key].name}</td>
 						<td>

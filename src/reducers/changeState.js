@@ -68,7 +68,6 @@ const databaseReducer = (type, state = data[type], action) => {
 };
 
 export const armor = (state, action) => databaseReducer('armor', state, action);
-export const careers = (state, action) => databaseReducer('careers', state, action);
 export const craftsmanship = (state, action) => databaseReducer('craftsmanship', state, action);
 export const gear = (state, action) => databaseReducer('gear', state, action);
 export const motivations = (state, action) => databaseReducer('motivations', state, action);
@@ -88,7 +87,6 @@ const customDataReducer = (type, state = {}, action) => {
 };
 
 export const customArmor = (state, action) => customDataReducer('customArmor', state, action);
-export const customCareers = (state, action) => customDataReducer('customCareers', state, action);
 export const customGear = (state, action) => customDataReducer('customGear', state, action);
 export const customSettings = (state, action) => customDataReducer('customSettings', state, action);
 export const customSkills = (state, action) => customDataReducer('customSkills', state, action);
@@ -98,23 +96,14 @@ export const customWeapons = (state, action) => customDataReducer('customWeapons
 
 //new data model
 export const dataObjects = (type, state, action) => {
-	let data;
 	switch (action.type) {
 		case`${type}_Added`:
-			data = clone(state);
-			return merge(data, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
-		case `${type}_Modified`:
-			data = clone(state);
-			Object.keys(data).forEach(key => {
-				if (data[key].id === action.payload.id) delete data[key]
-			});
 			return merge(state, {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
+		case `${type}_Modified`:
+			const key = Object.keys(state).find(key => state[key].id === action.payload.id);
+			return merge(omit(state, key), {[action.payload.name ? action.payload.name.replace(/[\s+]/g, '') : 'unnamed']: action.payload});
 		case`${type}_Removed`:
-			data = clone(state);
-			Object.keys(data).forEach(key => {
-				if (data[key].id === action.payload) delete data[key]
-			});
-			return data;
+			return omit(state, Object.keys(state).find(key => state[key].id === action.payload));
 		default:
 			return state;
 	}
@@ -122,22 +111,21 @@ export const dataObjects = (type, state, action) => {
 
 export const customArchetypes = (state = {}, action) => dataObjects('customArchetypes', state, action);
 export const customArchetypeTalents = (state = {}, action) => dataObjects('customArchetypeTalents', state, action);
+export const customCareers = (state = {}, action) => dataObjects('customCareers', state, action);
 export const customVehicles = (state = {}, action) => dataObjects('customVehicles', state, action);
+
 export const archetypes = (state = data.archetypes, action) => dataObjects('customArchetypes', state, action);
 export const archetypeTalents = (state = data.archetypeTalents, action) => dataObjects('customArchetypeTalents', state, action);
+export const careers = (state = data.careers, action) => dataObjects('customCareers', state, action);
 export const vehicles = (state = data.vehicles, action) => dataObjects('customVehicles', state, action);
 
 export const dataSets = (type, state = {}, action) => {
-	let data;
 	switch (action.type) {
 		case `${type}_Added`:
-			data = clone(state);
 			return merge(data, action.payload);
 		case `${type}_Modified`:
-			data = clone(state);
 			return {...data, [action.payload.id]: action.payload};
 		case `${type}_Removed`:
-			data = clone(state);
 			return omit(data, action.payload);
 		default:
 			return state;

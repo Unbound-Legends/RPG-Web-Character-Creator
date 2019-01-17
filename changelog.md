@@ -1,3 +1,6 @@
+#1.6.6
+    moved customCareers to new db structure
+    use .find() in chageState reducer now
 #1.6.5
     rewrote all selectors
     moved customArchetypeTalents to new db structure

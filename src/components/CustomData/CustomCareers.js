@@ -1,11 +1,12 @@
-import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Table} from 'reactstrap';
+import {Button, ButtonGroup, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData, changeData} from '../../actions';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {Fragment} from './';
+
+const type = 'customCareers';
 
 class CustomCareersComponent extends React.Component {
 	state = {name: '', selectedSkills: [], description: '', setting: [], mode: 'add'};
@@ -24,20 +25,24 @@ class CustomCareersComponent extends React.Component {
 		event.preventDefault();
 	};
 
-	handleSubmit = (event) => {
-		const {customCareers, changeCustomData} = this.props;
-		const {name, selectedSkills, description, setting} = this.state;
-		let obj = {...customCareers};
-		obj[upperFirst(camelCase((name)))] = {name, skills: selectedSkills, description, setting};
-		changeCustomData(obj, 'customCareers');
+	handleSubmit = () => {
+		const {selectedSkills, mode, ...rest} = this.state;
+		const data = {...rest, skills: selectedSkills};
+		if (mode === 'add') this.props.addDataSet(type, data);
+		else if (mode === 'edit') this.props.modifyDataSet(type, data);
 		this.initState();
+	};
+
+	handleDuplicate = (event) => {
+		const {customCareers} = this.props;
+		// noinspection JSUnusedLocalSymbols
+		const {id, ...data} = {...customCareers[event.target.name]};
+		this.props.addDataSet(type, {...data, name: `${data.name} (copy)`});
 		event.preventDefault();
 	};
 
 	handleDelete = (event) => {
-		const {customCareers, changeCustomData, career, changeData} = this.props;
-		if (career === event.target.name) changeData('', 'career');
-		changeCustomData(omit(customCareers, event.target.name), 'customCareers', false);
+		this.props.removeDataSet(type, this.props[type][event.target.name].id);
 		event.preventDefault();
 	};
 
@@ -45,9 +50,8 @@ class CustomCareersComponent extends React.Component {
 		const {customCareers} = this.props;
 		const career = customCareers[event.target.name];
 		this.setState({
-			name: career.name,
+			...career,
 			selectedSkills: career.skills ? career.skills : [],
-			description: career.description,
 			setting: typeof career.setting === 'string' ? career.setting.split(', ') : career.setting,
 			mode: 'edit'
 		});
@@ -58,7 +62,7 @@ class CustomCareersComponent extends React.Component {
 		const {name, selectedSkills, description, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode}
+				<Fragment type='text' title='name' value={name} mode={mode}
 						  handleChange={(event) => this.setState({name: event.target.value})}/>
 
 				<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
@@ -82,16 +86,20 @@ class CustomCareersComponent extends React.Component {
 						<th>NAME</th>
 						<th>SKILLS</th>
 						<th/>
-						<th/>
 					</tr>
 					</thead>
 					<tbody>
-					{Object.keys(customCareers).map((key) =>
+					{Object.keys(customCareers).sort().map(key =>
 						<tr key={key} style={{textAlign: 'left'}}>
 							<td>{customCareers[key].name}</td>
 							<td>{customCareers[key].skills && customCareers[key].skills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}</td>
-							<td><Button name={key} onClick={this.handleEdit}>Edit</Button></td>
-							<td><DeleteButton name={key} onClick={this.handleDelete}/></td>
+							<td>
+								<ButtonGroup>
+									<Button name={key} onClick={this.handleEdit}>Edit</Button>
+									<Button name={key} onClick={this.handleDuplicate}>Duplicate</Button>
+									<DeleteButton name={key} onClick={this.handleDelete}/>
+								</ButtonGroup>
+							</td>
 						</tr>
 					)}
 					</tbody>
@@ -110,6 +118,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData, changeData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({addDataSet, modifyDataSet, removeDataSet}, dispatch);
 
 export const CustomCareers = connect(mapStateToProps, matchDispatchToProps)(CustomCareersComponent);
