@@ -25,7 +25,7 @@ const calcGearDice = createSelector(
 					}
 				});
 			}
-			gearDice[type][key] = skillDice[skill] + qualityDice.map(die => `${die}`).sort((a, b) => {
+			gearDice[type][key] = skillDice[skill] + ' ' + qualityDice.map(die => `${die}`).sort((a, b) => {
 				if (a.length < b.length) return -1;
 				if (a.length > b.length) return 1;
 				return 0;

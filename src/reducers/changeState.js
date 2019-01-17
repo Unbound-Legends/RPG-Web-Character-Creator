@@ -60,9 +60,7 @@ export const vehicleType = (state, action) => dataReducer('vehicleType', state, 
 //database objects
 const databaseReducer = (type, state = data[type], action) => {
 	if (action.type === `custom${upperFirst(type)}_Changed`) {
-		let obj = clone(data[type]);
-		if (action.payload) obj = merge(obj, action.payload);
-		return obj;
+		if (action.payload) return merge(data[type], action.payload);
 	}
 	return state;
 };
@@ -122,11 +120,11 @@ export const vehicles = (state = data.vehicles, action) => dataObjects('customVe
 export const dataSets = (type, state = {}, action) => {
 	switch (action.type) {
 		case `${type}_Added`:
-			return merge(data, action.payload);
+			return merge(state, action.payload);
 		case `${type}_Modified`:
-			return {...data, [action.payload.id]: action.payload};
+			return merge(state, {[action.payload.id]: action.payload});
 		case `${type}_Removed`:
-			return omit(data, action.payload);
+			return omit(state, action.payload);
 		default:
 			return state;
 	}

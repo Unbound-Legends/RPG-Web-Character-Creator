@@ -1,3 +1,5 @@
+#1.6.7
+    fixes gear dice
 #1.6.6
     moved customCareers to new db structure
     use .find() in chageState reducer now
