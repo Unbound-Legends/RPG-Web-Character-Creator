@@ -1,11 +1,10 @@
 import clone from 'clone';
-import {camelCase, omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Col, Row, Table} from 'reactstrap';
+import {Button, ButtonGroup, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData} from '../../actions';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {chars, diceNames, modifiableAttributes} from '../../data/lists';
 import {Fragment} from './';
 
@@ -26,7 +25,6 @@ class CustomEquipmentComponent extends React.Component {
 		qualitiesList: '',
 		qualityRank: '',
 		description: '',
-		quantity: 1,
 		specialQualities: '',
 		qualityList: {},
 		modifier: false,
@@ -50,7 +48,6 @@ class CustomEquipmentComponent extends React.Component {
 			rangedDefense: '',
 			qualityRank: '',
 			description: '',
-			quantity: 1,
 			specialQualities: '',
 			qualityList: {},
 			modifier: false,
@@ -70,57 +67,59 @@ class CustomEquipmentComponent extends React.Component {
 	};
 
 	handleAddQuality = () => {
-		let obj = clone(this.state.qualityList);
-		obj[this.state.specialQualities] = this.state.qualityRank ? +this.state.qualityRank : '';
-		this.setState({qualityList: obj, specialQualities: '', qualityRank: ''});
+		const data = {...clone(this.state.qualityList), [this.state.specialQualities]: this.state.qualityRank ? +this.state.qualityRank : ''};
+		this.setState({qualityList: data, specialQualities: '', qualityRank: ''});
 
 	};
 
-	handleSubmit = (event) => {
-		const {type, changeCustomData} = this.props;
-		const {name, range, damage, skill, critical, encumbrance, price, soak, defense, meleeDefense, rangedDefense, description, qualityList, setting, modifier, modifierValue} = this.state;
-		let obj = clone(this.props[type]);
-		let key = camelCase(name);
-		if (type === 'customWeapons') obj[key] = {
-			name,
+	handleSubmit = () => {
+		const {type} = this.props;
+		// noinspection JSUnusedLocalSymbols
+		const {range, damage, skill, critical, soak, defense, meleeDefense, rangedDefense, qualityList: qualities, modifierValue, modifier: mod, mode, qualityRank, specialQualities, ...rest} = this.state;
+		const modifier = mod ? {[mod]: modifierValue} : {};
+		let data;
+
+		if (type === 'customWeapons') data = {
+			...rest,
 			damage,
 			range,
 			skill,
 			critical,
-			setting,
-			encumbrance,
-			price,
-			description,
-			qualities: qualityList
+			modifier,
+			qualities
 		};
-		if (type === 'customArmor') obj[key] = {
-			name,
+		if (type === 'customArmor') data = {
+			...rest,
 			soak,
 			defense,
 			meleeDefense,
 			rangedDefense,
-			encumbrance,
-			price,
-			setting,
-			description,
-			qualities: qualityList
+			modifier,
+			qualities
 		};
-		if (type === 'customGear') obj[key] = {name, encumbrance, price, description, setting, qualities: qualityList};
-		if (modifier) obj[key].modifier = {[modifier]: modifierValue};
-		changeCustomData(obj, type, false);
+
+		if (type === 'customGear') data = {...rest, modifier, qualities};
+		if (mode === 'add') this.props.addDataSet(type, data);
+		else if (mode === 'edit') this.props.modifyDataSet(type, data);
 		this.initState();
+	};
+
+	handleDuplicate = (event) => {
+		const type = event.target.getAttribute('type');
+		// noinspection JSUnusedLocalSymbols
+		const {id, ...data} = {...this.props[type][event.target.name]};
+		this.props.addDataSet(type, {...data, name: `${data.name} (copy)`});
 		event.preventDefault();
 	};
 
 	handleDelete = (event) => {
-		const {type, changeCustomData} = this.props;
-		changeCustomData(omit(this.props[type], event.target.name), type, false);
+		const type = event.target.getAttribute('type');
+		this.props.removeDataSet(type, this.props[type][event.target.name].id);
 		event.preventDefault();
 	};
-
 	handleEdit = (event) => {
 		event.preventDefault();
-		let equipment = this.props[event.target.getAttribute('type')][event.target.name];
+		const equipment = this.props[event.target.getAttribute('type')][event.target.name];
 		this.setState({
 			...equipment,
 			setting: typeof equipment.setting === 'string' ? equipment.setting.split(', ') : equipment.setting,
@@ -134,10 +133,8 @@ class CustomEquipmentComponent extends React.Component {
 	};
 
 	handleList = (event) => {
-		const {modifierValue} = this.state;
-		let arr = [];
-		if (Array.isArray(modifierValue)) arr = [...modifierValue];
-		arr.push(event.target.value);
+		const {modifierValue} = this.state,
+			arr = Array.isArray(modifierValue) ? [...modifierValue, event.target.value] : [];
 		this.setState({modifierValue: arr});
 		event.preventDefault();
 	};
@@ -154,7 +151,7 @@ class CustomEquipmentComponent extends React.Component {
 
 		switch (field) {
 			case 'name':
-				return <Fragment key={field} type='name' value={this.state[field]} mode={this.state.mode}
+				return <Fragment key={field} type='text' title='name' value={this.state[field]} mode={this.state.mode}
 								 handleChange={(event) => this.setState({name: event.target.value})}/>;
 			case 'damage':
 				return <Fragment key={field} type='text' value={this.state[field]} title={field}
@@ -255,40 +252,45 @@ class CustomEquipmentComponent extends React.Component {
 		}
 	};
 
+	getFields = (type) => {
+		switch (type) {
+			case 'customWeapons':
+				return ['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'price', 'description', 'setting', 'modifier'];
+			case 'customArmor':
+				return ['name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'price', 'description', 'setting', 'modifier'];
+			case'customGear':
+				return ['name', 'encumbrance', 'price', 'description', 'setting', 'modifier'];
+			default:
+				return [];
+		}
+	};
+
 	render() {
 		const {type} = this.props;
-		let fields = [];
-		if (type === 'customWeapons') fields = ['name', 'damage', 'critical', 'range', 'skill', 'encumbrance', 'price', 'description', 'setting', 'modifier'];
-		if (type === 'customArmor') fields = ['name', 'soak', 'defense', 'rangedDefense', 'meleeDefense', 'encumbrance', 'price', 'description', 'setting', 'modifier'];
-		if (type === 'customGear') fields = ['name', 'encumbrance', 'price', 'description', 'setting', 'modifier'];
-
-		if (!type) return <div/>;
 		return (
 			<div>
-				{fields.map(field => this.buildField(field))}
+				{this.getFields(type).map(field => this.buildField(field))}
 				{this.buildField('specialQualities')}
-				<ControlButtonSet mode={this.state.mode} type={type.toString().slice(6)} handleSubmit={this.handleSubmit}
+				<ControlButtonSet mode={this.state.mode} type={type.replace('custom', '')} handleSubmit={this.handleSubmit}
 								  onEditSubmit={this.handleSubmit} onEditCancel={this.initState}/>
 				<Table>
 					<thead>
 					<tr>
 						<th>NAME</th>
 						<th/>
-						<th/>
 					</tr>
 					</thead>
 					<tbody>
 					{type &&
-					Object.keys(this.props[type]).map(key =>
+					Object.keys(this.props[type]).sort().map(key =>
 						<tr key={key}>
 							<td>{this.props[type][key].name}</td>
 							<td className='text-right'>
-								<Button name={key}
-										type={type}
-										onClick={this.handleEdit}>Edit</Button>
-							</td>
-							<td className='text-right'>
-								<DeleteButton name={key} onClick={this.handleDelete}/>
+								<ButtonGroup>
+									<Button name={key} type={type} onClick={this.handleEdit}>Edit</Button>
+									<Button name={key} type={type} onClick={this.handleDuplicate}>Duplicate</Button>
+									<DeleteButton name={key} type={type} onClick={this.handleDelete}/>
+								</ButtonGroup>
 							</td>
 						</tr>
 					)
@@ -313,6 +315,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({addDataSet, modifyDataSet, removeDataSet}, dispatch);
 
 export const CustomEquipment = connect(mapStateToProps, matchDispatchToProps)(CustomEquipmentComponent);

@@ -1,3 +1,5 @@
+#1.6.8
+    weapons, armor, gear to new struture
 #1.6.7
     fixes gear dice
 #1.6.6

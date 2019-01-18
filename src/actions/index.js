@@ -187,8 +187,12 @@ export const importCustomData = (customDataSetImport) => {
 					});
 					break;
 				case 'customArchetypeTalents':
+				case 'customArmor':
+				case 'customCareers':
+				case 'customGear':
+				case 'customWeapons':
 					Object.values(data).forEach(item => {
-						let final = {write: [getState().user], read: [getState().user], name: 'none', ...item};
+						const final = {write: [getState().user], read: [getState().user], name: 'none', ...item};
 						db.collection(`${type}DB`).add(final).catch(console.error);
 					});
 					break;
@@ -202,19 +206,17 @@ export const importCustomData = (customDataSetImport) => {
 };
 
 //new database structure stuffs
-export const addDataSet = (type, data) => {
+export const addDataSet = (type, data = {}) => {
 	return (dispatch, getState) => {
-		let final = {write: [getState().user], read: [getState().user], name: 'none'};
-		if (data) final = {...final, ...data};
+		const final = {write: [getState().user], read: [getState().user], name: 'none', ...data};
 		db.collection(`${type}DB`).add(final).catch(console.error);
 	}
 };
 
 export const removeDataSet = (type, key) => {
 	return () => {
-		let list;
-		if (type === 'vehicle') list = vehicleDataTypes;
-		if (list) list.forEach(dataType => db.doc(`${type}DB/${key}/data/${dataType}`).delete());
+		const list = type === 'vehicle' ? vehicleDataTypes : [];
+		list.forEach(dataType => db.doc(`${type}DB/${key}/data/${dataType}`).delete());
 		db.doc(`${type}DB/${key}/`).delete();
 	}
 };

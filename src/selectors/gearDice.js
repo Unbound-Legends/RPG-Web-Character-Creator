@@ -11,25 +11,15 @@ const calcGearDice = createSelector(
 	(skillDice, equipmentStats, qualities) => {
 		let gearDice = {};
 		Object.keys(equipmentStats).forEach(key => {
-			const item = equipmentStats[key], {type, qualities: list, skill} = item;
-			if (!gearDice[type]) gearDice[type] = {};
-			let qualityDice = [];
-			if (list) {
-				Object.keys(list).forEach(quality => {
+			const item = equipmentStats[key], {type, skill} = item,
+				list = get(item, 'qualities', []),
+				qualityDice = Object.keys(list).map(quality => {
 					const rank = list[quality] === '' ? 1 : list[quality];
-					const check = get(qualities, `${quality}.modifier.check`, false);
-					if (check) {
-						for (let i = 0; i < rank; i++) {
-							qualityDice.push(check);
-						}
-					}
-				});
-			}
-			gearDice[type][key] = skillDice[skill] + ' ' + qualityDice.map(die => `${die}`).sort((a, b) => {
-				if (a.length < b.length) return -1;
-				if (a.length > b.length) return 1;
-				return 0;
-			}).join(' ');
+					const check = get(qualities, `${quality}.modifier.check`, '');
+					return [...Array(rank)].map(() => check).join(' ');
+				}).join(' ');
+
+			gearDice[type] = {...gearDice[type], [key]: skillDice[skill] + ' ' + qualityDice};
 		});
 		return gearDice;
 	}

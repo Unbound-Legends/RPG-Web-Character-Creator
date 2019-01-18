@@ -176,9 +176,6 @@ class ImportExportComponent extends React.Component {
 							break;
 						case 'customSkills':
 						case 'customTalents':
-						case 'customWeapons':
-						case 'customArmor':
-						case 'customGear':
 							if (file[type].length > 0) {
 								let data = {};
 								file[type].forEach(item => data[item.name.replace(/\s/g, '')] = item);
@@ -193,8 +190,11 @@ class ImportExportComponent extends React.Component {
 							break;
 						case 'customArchetypeTalents':
 						case 'customArchetypes':
+						case 'customArmor':
 						case 'customCareers':
+						case 'customGear':
 						case 'customVehicles':
+						case 'customWeapons':
 							file[type].forEach(data => this.props.addDataSet(type, data));
 							text += `${startCase(type)} Data Imported.\n`;
 							break;
