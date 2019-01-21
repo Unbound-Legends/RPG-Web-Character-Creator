@@ -17,29 +17,21 @@ class TalentSelectionComponent extends React.Component {
 
 	makeOptions = () => {
 		const {tier, talentCount, talentKey, talents} = this.props;
-		let options = [];
-		Object.keys(talents).forEach(key => {
+		return Object.keys(talents).map(key => {
+			if (tier === 5 && key === 'Dedication') return key;
+			if (key === talentKey) return key;
 			//check for antirequisite
-			if (!talents[key].antirequisite) {
-				//prerequisite check
-				if (talents[key].prerequisite && talentCount[talents[key].prerequisite]) {
-					if (+tier === +talents[key].tier && !talentCount[key]) options.push(key);
-					else if (talents[key].ranked && ((+talents[key].tier + talentCount[key]) === tier)) options.push(key);
-				}
-				//talent from this tier and has not been selected already
-				else if (+tier === +talents[key].tier && !talentCount[key]) options.push(key);
-				//talent is ranked and has been selected enough for this tier
-				else if (talents[key].ranked && ((+talents[key].tier + talentCount[key]) === tier)) options.push(key);
-			} else {
-				if (+tier === talents[key].tier && !talentCount[talents[key].antirequisite] && !talentCount[key]) options.push(key);
-			}
-			if (key === talentKey) options.push(key);
-
-		});
-
-		if (tier === 5 && !options.includes('Dedication')) options.push('Dedication');
-		options.sort();
-		return options;
+			if (talents[key].antirequisite && talentCount[talents[key].antirequisite]) return false;
+			//check for prerequisite
+			if (talents[key].prerequisite && !talentCount[talents[key].prerequisite]) return false;
+			//talent from this tier and has not been selected already
+			if (+talents[key].tier > +tier) return false;
+			if (+talents[key].tier === +tier && talentCount[key]) return false;
+			if (+talents[key].tier < +tier && !talents[key].ranked) return false;
+			//talent is ranked and has been selected enough for this tier
+			if (talents[key].ranked && !(+talentCount[key] ? +talentCount[key] : 0 > tier - +talents[key].tier)) return false;
+			return key;
+		}).sort().filter(Boolean);
 	};
 
 	handleClear = () => {
@@ -106,7 +98,7 @@ class TalentSelectionComponent extends React.Component {
 					<Input type='select' bsSize='sm' value={talentSelection}
 						   onChange={(event) => this.setState({talentSelection: event.target.value})}>
 						<option value=''/>
-						{this.makeOptions().sort().map((key) =>
+						{this.makeOptions().sort().map(key =>
 							<option value={key} key={key}>{talents[key] ? talents[key].name : ''}</option>
 						)}
 					</Input>

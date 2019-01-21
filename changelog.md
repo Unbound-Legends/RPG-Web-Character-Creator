@@ -1,3 +1,5 @@
+#1.6.11
+    fixed preq talents
 #1.6.10
     fixed Grit
 #1.6.9
