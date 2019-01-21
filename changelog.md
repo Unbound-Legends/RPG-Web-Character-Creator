@@ -1,3 +1,5 @@
+#1.6.12
+    fixed merging of custom objects
 #1.6.11
     fixed preq talents
 #1.6.10

@@ -90,7 +90,7 @@ export const customTalents = (state, action) => customDataReducer('customTalents
 export const dataObjects = (type, state, action) => {
 	const name = ['customArmor', 'customGear', 'customWeapons'].includes(type) ?
 		camelCase(get(action, 'payload.name', 'unnamed')) :
-		get(action, 'payload.name', 'unnamed').replace(/[\s+]/g, '');
+		upperFirst(camelCase(get(action, 'payload.name', 'unnamed')));
 	switch (action.type) {
 		case`${type}_Added`:
 			return merge(state, {[name]: action.payload});

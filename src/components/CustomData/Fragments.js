@@ -22,10 +22,10 @@ class FragmentComponent extends React.Component {
 		const {type, settings, setState, setting, mode, handleChange, value = '', array, nameObj, object, handleClear, blankText = '', blankOption = true, name,} = this.props;
 		switch (type) {
 			case 'name':
-				return <Input type='text' bsSize='sm' value={value} maxLength='25' onChange={handleChange}
+				return <Input type='text' bsSize='sm' value={value} maxLength='50' onChange={handleChange}
 							  disabled={mode === 'edit'}/>;
 			case 'text':
-				return <Input type='text' bsSize='sm' value={value} maxLength='25' onChange={handleChange}/>;
+				return <Input type='text' bsSize='sm' value={value} maxLength='50' onChange={handleChange}/>;
 			case 'number':
 				return <Input type='number' bsSize='sm' value={value} maxLength='7' onChange={handleChange}/>;
 			case 'list':
