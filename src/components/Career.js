@@ -1,3 +1,4 @@
+import {get} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
@@ -9,8 +10,13 @@ import {Description} from './index';
 class CareerComponent extends React.Component {
 
 	handleChange = (event) => {
-		let value = event.target.value === '' ? null : event.target.value;
-		this.props.changeData(value, 'career');
+		const {archetypeSpecialSkills = {}, careers, archetype, archetypes} = this.props;
+		const skill = Object.keys(archetypeSpecialSkills).filter(key => careers[event.target.value].skills.includes(key) && key);
+		if (skill.length > 0) {
+			alert(`${careers[event.target.value].name} career contains ${skill.join(' ')}, which ${get(archetypes, `${archetype}.name`, 'your selected Archetype')} has modified. Please select a different career or change the skill options in Archetype selection`);
+			return;
+		}
+		this.props.changeData(event.target.value, 'career');
 		this.props.changeData([], 'careerSkillsRank');
 		event.preventDefault();
 	};
@@ -35,7 +41,7 @@ class CareerComponent extends React.Component {
 				<ModalHeader toggle={handleClose}><b>Select Career</b></ModalHeader>
 				<ModalBody>
 					<Input type='select' bsSize='sm' value={masterCareer ? masterCareer.name : ''} onChange={this.handleChange}>
-						<option value=''/>
+						<option value={null}/>
 						{Object.keys(careers).sort().map((key) =>
 							<option value={key} key={key}>{careers[key].name}</option>
 						)}
@@ -95,12 +101,15 @@ class CareerComponent extends React.Component {
 
 const mapStateToProps = state => {
 	return {
+		archetype: state.archetype,
+		archetypes: state.archetypes,
 		career: state.career,
 		careerSkillsRank: state.careerSkillsRank,
 		careers: state.careers,
 		skills: state.skills,
 		maxCareerSkills: maxCareerSkills(state),
 		theme: state.theme,
+		archetypeSpecialSkills: state.archetypeSpecialSkills,
 	};
 };
 

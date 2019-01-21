@@ -1,3 +1,4 @@
+import {uniq} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Table} from 'reactstrap';
@@ -51,7 +52,7 @@ class CustomCareersComponent extends React.Component {
 		const career = customCareers[event.target.name];
 		this.setState({
 			...career,
-			selectedSkills: career.skills ? career.skills : [],
+			selectedSkills: career.skills ? uniq(career.skills) : [],
 			setting: typeof career.setting === 'string' ? career.setting.split(', ') : career.setting,
 			mode: 'edit'
 		});

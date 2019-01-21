@@ -222,7 +222,7 @@ export const removeDataSet = (type, key) => {
 };
 
 export const modifyDataSet = (type, {id, ...data}) => {
-	return () => db.doc(`${type}DB/${id}/`).set({...data}, {merge: true});
+	return () => db.doc(`${type}DB/${id}/`).set(data);
 };
 
 export const loadDataSets = () => {

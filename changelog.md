@@ -1,3 +1,5 @@
+#1.6.13
+    fixed ave human/career skills bug 
 #1.6.12
     fixed merging of custom objects
 #1.6.11

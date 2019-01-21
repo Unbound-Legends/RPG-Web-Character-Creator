@@ -16,7 +16,6 @@ const calcCareerCheck = createSelector(
 	archetype, archetypes, archetypeTalents, skills, career, careers, talents, selectors.talentCount,
 	(archetype, archetypes, archetypeTalents, skills, career, careers, talents, talentCount) => {
 		let careerSkillsList = {};
-
 		//get careerSkills from career
 		Object.keys(skills).forEach(skill => {
 			careerSkillsList[skill] = false;

@@ -1,4 +1,5 @@
 import clone from 'clone';
+import {get} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Row} from 'reactstrap';
@@ -19,8 +20,9 @@ class ArchetypeSkillsComponent extends React.Component {
 	};
 
 	render() {
-		const {archetype, archetypes, archetypeSpecialSkills, skills} = this.props;
+		const {archetype, archetypes, archetypeSpecialSkills, careers, career, skills} = this.props;
 		const masterArchetype = archetypes[archetype];
+		const careerSkills = get(careers, `${career}.skills`, []);
 		let list = Object.keys(masterArchetype.skills).includes('any') ? Object.keys(skills) : Object.keys(masterArchetype.skills);
 
 		if (archetype === null) return <div/>;
@@ -32,7 +34,7 @@ class ArchetypeSkillsComponent extends React.Component {
 					<Input type='select' bsSize='sm' value='' name='archetypeSpecialSkills' onChange={this.handleCheck}>
 						<option value=''/>
 						{list.map(key =>
-							(skills[key] && !Object.keys(archetypeSpecialSkills).includes(key)) &&
+							(skills[key] && !Object.keys(archetypeSpecialSkills).includes(key) && !careerSkills.includes(key)) &&
 							<option value={key} name={key} key={key}>{skills[key].name}</option>
 						)}
 					</Input>
@@ -62,6 +64,8 @@ const mapStateToProps = state => {
 		archetypes: state.archetypes,
 		archetypeSpecialSkills: state.archetypeSpecialSkills,
 		skills: state.skills,
+		careers: state.careers,
+		career: state.career,
 	};
 };
 
