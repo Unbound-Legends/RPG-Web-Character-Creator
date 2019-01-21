@@ -1,3 +1,7 @@
+#1.6.10
+    fixed Grit
+#1.6.9
+    fixed a career bug (i dun copied it wrong)
 #1.6.8
     weapons, armor, gear to new struture
 #1.6.7

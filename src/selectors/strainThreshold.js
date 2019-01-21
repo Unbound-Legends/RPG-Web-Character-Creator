@@ -18,10 +18,10 @@ const calcStrain = createSelector(
 			creationWillpower = get(creationCharacteristics, 'Willpower', 0);
 
 		//get all talents that modify strain
-		let talentModifier = 0;
-		Object.keys(talentCount).forEach(talent => {
-			talentModifier += (get(talent, `${talent}.modifier.strainThreshold`, 0) * talentCount[talent]);
-		});
+
+		const talentModifier = Object.keys(talentCount).reduce((acc, talent) => {
+			return acc + +get(talents, `${talent}.modifier.strainThreshold`, 0) * talentCount[talent];
+		}, 0);
 
 		//check for Gear
 		let Gear = 0;

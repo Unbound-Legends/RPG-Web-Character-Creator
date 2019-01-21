@@ -114,7 +114,7 @@ export const customWeapons = (state = {}, action) => dataObjects('customWeapons'
 
 export const archetypes = (state = data.archetypes, action) => dataObjects('customArchetypes', state, action);
 export const archetypeTalents = (state = data.archetypeTalents, action) => dataObjects('customArchetypeTalents', state, action);
-export const careers = (state = data.archetypeTalents, action) => dataObjects('customCareers', state, action);
+export const careers = (state = data.careers, action) => dataObjects('customCareers', state, action);
 export const armor = (state = data.armor, action) => dataObjects('customArmor', state, action);
 export const gear = (state = data.gear, action) => dataObjects('customGear', state, action);
 export const vehicles = (state = data.vehicles, action) => dataObjects('customVehicles', state, action);
