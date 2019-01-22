@@ -195,7 +195,9 @@ class CustomArchetypesComponent extends React.Component {
 					</thead>
 					<tbody>
 					{customArchetypes &&
-					Object.keys(customArchetypes).sort().map(key =>
+					Object.keys(customArchetypes)
+						.sort((a, b) => customArchetypes[a].name > customArchetypes[b].name ? 1 : -1)
+						.map(key =>
 						<tr key={key}>
 							<td>{customArchetypes[key].name}</td>
 							<td className='text-right'>

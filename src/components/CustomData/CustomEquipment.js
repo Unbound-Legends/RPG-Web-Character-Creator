@@ -282,7 +282,9 @@ class CustomEquipmentComponent extends React.Component {
 					</thead>
 					<tbody>
 					{type &&
-					Object.keys(this.props[type]).sort().map(key =>
+					Object.keys(this.props[type])
+						.sort((a, b) => this.props[type][a].name > this.props[type][b].name ? 1 : -1)
+						.map(key =>
 						<tr key={key}>
 							<td>{this.props[type][key].name}</td>
 							<td className='text-right'>

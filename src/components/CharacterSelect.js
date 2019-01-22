@@ -63,7 +63,7 @@ class CharacterSelectComponent extends React.Component {
 					<Col>
 						<Input type='select' bsSize='sm' value={character} onChange={this.handleSelect}>
 							{characterList &&
-							Object.keys(characterList).sort((a, b) => characterList[a] < characterList[b] ? -1 : (characterList[a] > characterList[b] ? 1 : 0)).map(key =>
+							Object.keys(characterList).sort((a, b) => characterList[a] > characterList[b] ? 1 : -1).map(key =>
 								<option value={key}
 										key={key}>{characterList[key]}</option>
 							)}

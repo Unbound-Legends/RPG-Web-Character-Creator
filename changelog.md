@@ -1,3 +1,6 @@
+#1.6.14
+    fixed customdata merging on top of each other and causing duplicate stats
+    sorted custom stuffs
 #1.6.13
     fixed ave human/career skills bug 
 #1.6.12

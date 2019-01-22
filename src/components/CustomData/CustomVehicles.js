@@ -141,7 +141,9 @@ class CustomVehiclesComponent extends React.Component {
 					</tr>
 					</thead>
 					<tbody>
-					{Object.keys(customVehicles).sort((a, b) => customVehicles[a].name < customVehicles[b].name ? -1 : (customVehicles[a].name > customVehicles[b].name ? 1 : 0)).map(key =>
+					{Object.keys(customVehicles)
+						.sort((a, b) => customVehicles[a].name > customVehicles[b].name ? 1 : -1)
+						.map(key =>
 						<tr key={key}>
 							<td>
 								{customVehicles[key].name}

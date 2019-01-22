@@ -87,16 +87,17 @@ export const customMotivations = (state, action) => customDataReducer('customMot
 export const customTalents = (state, action) => customDataReducer('customTalents', state, action);
 
 //new data model
-export const dataObjects = (type, state, action) => {
+export const dataObjects = (type, state, action, custom = false) => {
 	const name = ['customArmor', 'customGear', 'customWeapons'].includes(type) ?
 		camelCase(get(action, 'payload.name', 'unnamed')) :
-		upperFirst(camelCase(get(action, 'payload.name', 'unnamed')));
+		upperFirst(camelCase(get(action, 'payload.name', 'unnamed'))),
+		id = get(action, 'payload.id');
 	switch (action.type) {
 		case`${type}_Added`:
-			return merge(state, {[name]: action.payload});
+			return merge(state, {[custom ? id : name]: action.payload});
 		case `${type}_Modified`:
 			const key = Object.keys(state).find(key => state[key].id === action.payload.id);
-			return merge(omit(state, key), {[name]: action.payload});
+			return merge(omit(state, key), {[custom ? id : name]: action.payload});
 		case`${type}_Removed`:
 			return omit(state, Object.keys(state).find(key => state[key].id === action.payload));
 		default:
@@ -104,13 +105,13 @@ export const dataObjects = (type, state, action) => {
 	}
 };
 
-export const customArchetypes = (state = {}, action) => dataObjects('customArchetypes', state, action);
-export const customArchetypeTalents = (state = {}, action) => dataObjects('customArchetypeTalents', state, action);
-export const customArmor = (state = {}, action) => dataObjects('customArmor', state, action);
-export const customCareers = (state = {}, action) => dataObjects('customCareers', state, action);
-export const customGear = (state = {}, action) => dataObjects('customGear', state, action);
-export const customVehicles = (state = {}, action) => dataObjects('customVehicles', state, action);
-export const customWeapons = (state = {}, action) => dataObjects('customWeapons', state, action);
+export const customArchetypes = (state = {}, action) => dataObjects('customArchetypes', state, action, 'customObject');
+export const customArchetypeTalents = (state = {}, action) => dataObjects('customArchetypeTalents', state, action, 'customObject');
+export const customArmor = (state = {}, action) => dataObjects('customArmor', state, action, 'customObject');
+export const customCareers = (state = {}, action) => dataObjects('customCareers', state, action, 'customObject');
+export const customGear = (state = {}, action) => dataObjects('customGear', state, action, 'customObject');
+export const customVehicles = (state = {}, action) => dataObjects('customVehicles', state, action, 'customObject');
+export const customWeapons = (state = {}, action) => dataObjects('customWeapons', state, action, 'customObject');
 
 export const archetypes = (state = data.archetypes, action) => dataObjects('customArchetypes', state, action);
 export const archetypeTalents = (state = data.archetypeTalents, action) => dataObjects('customArchetypeTalents', state, action);

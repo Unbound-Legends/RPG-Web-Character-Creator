@@ -90,7 +90,9 @@ class CustomCareersComponent extends React.Component {
 					</tr>
 					</thead>
 					<tbody>
-					{Object.keys(customCareers).sort().map(key =>
+					{Object.keys(customCareers)
+						.sort((a, b) => customCareers[a].name > customCareers[b].name ? 1 : -1)
+						.map(key =>
 						<tr key={key} style={{textAlign: 'left'}}>
 							<td>{customCareers[key].name}</td>
 							<td>{customCareers[key].skills && customCareers[key].skills.map((skill) => skills[skill] ? skills[skill].name : skill).join(', ')}</td>

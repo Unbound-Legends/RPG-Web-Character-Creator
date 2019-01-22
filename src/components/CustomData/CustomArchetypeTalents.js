@@ -143,7 +143,9 @@ class CustomArchetypeTalentsComponent extends React.Component {
 				</thead>
 				<tbody>
 				{customArchetypeTalents &&
-				Object.keys(customArchetypeTalents).sort().map(key =>
+				Object.keys(customArchetypeTalents)
+					.sort((a, b) => customArchetypeTalents[a].name > customArchetypeTalents[b].name ? 1 : -1)
+					.map(key =>
 					<tr key={key}>
 						<td>{customArchetypeTalents[key].name}</td>
 						<td>
