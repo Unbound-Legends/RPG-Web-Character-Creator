@@ -12,6 +12,7 @@
 - Gil Colgate
 - Jason Greathouse
 - Joonas Moisio
+- JP Sugarbroad
 - Matt Langhinrichs
 - Matthew R Martinez
 - Michael C Hershiser
@@ -19,7 +20,9 @@
 - Nathan Montondon
 - Ohdias
 - Peter Cummuskey
+- Peter Por
 - Scott McNeil
+- Tommy R.
 - triplel
 - Xavi Santamaria
 
