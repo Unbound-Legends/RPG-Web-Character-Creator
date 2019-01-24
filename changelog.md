@@ -1,35 +1,37 @@
-#1.6.14
+# 1.6.15
+    skills and talents to new structure
+# 1.6.14
     fixed customdata merging on top of each other and causing duplicate stats
     sorted custom stuffs
-#1.6.13
+# 1.6.13
     fixed ave human/career skills bug 
-#1.6.12
+# 1.6.12
     fixed merging of custom objects
-#1.6.11
+# 1.6.11
     fixed preq talents
-#1.6.10
+# 1.6.10
     fixed Grit
-#1.6.9
+# 1.6.9
     fixed a career bug (i dun copied it wrong)
-#1.6.8
+# 1.6.8
     weapons, armor, gear to new struture
-#1.6.7
+# 1.6.7
     fixes gear dice
-#1.6.6
+# 1.6.6
     moved customCareers to new db structure
     use .find() in chageState reducer now
-#1.6.5
+# 1.6.5
     rewrote all selectors
     moved customArchetypeTalents to new db structure
     fixed customArchetype not saving skills or abilities
-#1.6.4
+# 1.6.4
     fixed vehicles
-#1.6.3
+# 1.6.3
     fixed prereq ranked issues
-#1.6.2
+# 1.6.2
     removed setting filter until i fix it
     custom archetypes only need name to create
-#1.6.1
+# 1.6.1
     moved customArchetypes to new system
     rebuilt import/export (sorta)
     + bootstrap@4.2.1
@@ -42,54 +44,54 @@
     + react-ga@2.5.6
     + react-scripts@2.1.2
     + firebase@5.7.2
-#1.6.0
+# 1.6.0
     custom vehicles
     removed strict
-#1.5.9
+# 1.5.9
     -detach listeners on logout
     -username display on signout button
-#1.5.8
+# 1.5.8
     -fixed soak, WT, and ST for custom gear
 
-#1.5.7
+# 1.5.7
     -new bitchin' icon!
 
-#1.5.6
+# 1.5.6
     -PWA!
     -fixed motivation block on mobile
 
-#1.5.5
+# 1.5.5
     -updated firestore rules
     -fixed import/export page a bit
 
-#1.5.4
+# 1.5.4
     -updated import for JSON objects
     -fixed screw implants again
     -VEHICLES!  (ALL THREE OF THEM)
     -fancy loading screen
     -figured out how to breakout css
 
-#1.5.3
+# 1.5.3
     -UserDB init
 
-#1.5.2
+# 1.5.2
     -lots of formatting
 
-#1.5.1
+# 1.5.1
     -all the auths
 
-#1.5.0
+# 1.5.0
     -fixed user page
      -adding vehicles
      -phone auth
-#1.4.5
+# 1.4.5
     -moved configs to .env
 
-#1.4.4
+# 1.4.4
     -added Char to talent modifier list
     -added char to talentSelection printout
 
-#1.4.3
+# 1.4.3
     -stated vehicles
     -removed test theme references
 

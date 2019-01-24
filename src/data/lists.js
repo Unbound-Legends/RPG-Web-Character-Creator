@@ -25,9 +25,7 @@ export const dataTypes = [
 
 export const customDataTypes = [
 	'customMotivations',
-	'customSettings',
-	'customSkills',
-	'customTalents'
+	'customSettings'
 ];
 
 export const vehicleDataTypes = [
@@ -54,6 +52,8 @@ export const newData = [
 	'customArmor',
 	'customCareers',
 	'customGear',
+	'customSkills',
+	'customTalents',
 	'customVehicles',
 	'customWeapons',
 ];

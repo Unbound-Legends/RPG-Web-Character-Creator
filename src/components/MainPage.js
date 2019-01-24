@@ -22,41 +22,41 @@ import {
 export const MainPage = () => {
 	return (
 		<div>
-			<ErrorBoundary><Buttons/></ErrorBoundary>
+			<ErrorBoundary component='Buttons'><Buttons/></ErrorBoundary>
 			<Row>
 				<Col md='6'>
-					<ErrorBoundary>
+					<ErrorBoundary component='CharacterSelect'>
 						<CharacterSelect/>
 					</ErrorBoundary>
 				</Col>
 				<Col md='6'>
-					<ErrorBoundary>
+					<ErrorBoundary component='CharacterImage'>
 						<CharacterImage/>
 					</ErrorBoundary>
 				</Col>
 			</Row>
-			<ErrorBoundary><Attributes/></ErrorBoundary>
-			<ErrorBoundary><ShowCharacteristics/></ErrorBoundary>
-			<ErrorBoundary><Critical/></ErrorBoundary>
-			<ErrorBoundary><XPBoxes/></ErrorBoundary>
-			<ErrorBoundary><Skill/></ErrorBoundary>
-			<ErrorBoundary><Motivation/></ErrorBoundary>
-			<ErrorBoundary><Equipment/></ErrorBoundary>
+			<ErrorBoundary component='Attributes'><Attributes/></ErrorBoundary>
+			<ErrorBoundary component='ShowCharacteristics'><ShowCharacteristics/></ErrorBoundary>
+			<ErrorBoundary component='Critical'><Critical/></ErrorBoundary>
+			<ErrorBoundary component='XPBoxes'><XPBoxes/></ErrorBoundary>
+			<ErrorBoundary component='Skill'><Skill/></ErrorBoundary>
+			<ErrorBoundary component='Motivation'><Motivation/></ErrorBoundary>
+			<ErrorBoundary component='Equipment'><Equipment/></ErrorBoundary>
 			<Row>
 				<Col md='6'>
-					<ErrorBoundary>
+					<ErrorBoundary component='CharacterDescription'>
 						<CharacterDescription/>
 					</ErrorBoundary>
 				</Col>
 				<Col md='6'>
-					<ErrorBoundary>
+					<ErrorBoundary component='Notes'>
 						<Notes/>
 					</ErrorBoundary>
 				</Col>
 			</Row>
-			<ErrorBoundary><TalentList/></ErrorBoundary>
-			<ErrorBoundary><Talents/></ErrorBoundary>
-			<ErrorBoundary><About/></ErrorBoundary>
+			<ErrorBoundary component='TalentList'><TalentList/></ErrorBoundary>
+			<ErrorBoundary component='Talents'><Talents/></ErrorBoundary>
+			<ErrorBoundary component='About'><About/></ErrorBoundary>
 		</div>
 	);
 };

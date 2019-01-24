@@ -18,12 +18,13 @@ class ErrorBoundaryComponent extends React.Component {
 	}
 
 	buildMessage = () => {
-		let text = `User: ${this.props.user}%0D%0A`;
-		text += `Character: ${this.props.character}%0D%0A`;
-		text += `Error: ${this.state.error.toString()}%0D%0A`;
-		let error = this.state.info.componentStack.split('\n').filter(Boolean);
-		error.forEach(line => text += `${line.replace('\n', '').trim()}%0D%0A`);
-		return text;
+		const text = `Component: ${this.props.component}%0D%0A User: ${this.props.user}%0D%0A Character: ${this.props.character}%0D%0A Error: ${this.state.error.toString()}%0D%0A`;
+		const error = this.state.info.componentStack
+			.split('\n')
+			.filter(Boolean)
+			.map(line => `${line.replace('\n', '').trim()}%0D%0A`)
+			.join('');
+		return text + error;
 	};
 
 	render() {

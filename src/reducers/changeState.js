@@ -65,12 +65,8 @@ const databaseReducer = (type, state = data[type], action) => {
 	return state;
 };
 
-export const craftsmanship = (state, action) => databaseReducer('craftsmanship', state, action);
 export const motivations = (state, action) => databaseReducer('motivations', state, action);
 export const settings = (state, action) => databaseReducer('settings', state, action);
-export const skills = (state, action) => databaseReducer('skills', state, action);
-export const qualities = (state, action) => databaseReducer('qualities', state, action);
-export const talents = (state, action) => databaseReducer('talents', state, action);
 
 //custom data objects
 const customDataReducer = (type, state = {}, action) => {
@@ -82,9 +78,7 @@ const customDataReducer = (type, state = {}, action) => {
 };
 
 export const customSettings = (state, action) => customDataReducer('customSettings', state, action);
-export const customSkills = (state, action) => customDataReducer('customSkills', state, action);
 export const customMotivations = (state, action) => customDataReducer('customMotivations', state, action);
-export const customTalents = (state, action) => customDataReducer('customTalents', state, action);
 
 //new data model
 export const dataObjects = (type, state, action, custom = false) => {
@@ -110,14 +104,20 @@ export const customArchetypeTalents = (state = {}, action) => dataObjects('custo
 export const customArmor = (state = {}, action) => dataObjects('customArmor', state, action, 'customObject');
 export const customCareers = (state = {}, action) => dataObjects('customCareers', state, action, 'customObject');
 export const customGear = (state = {}, action) => dataObjects('customGear', state, action, 'customObject');
+export const customSkills = (state = {}, action) => dataObjects('customSkills', state, action, 'customObject');
+export const customTalents = (state = {}, action) => dataObjects('customTalents', state, action, 'customObject');
 export const customVehicles = (state = {}, action) => dataObjects('customVehicles', state, action, 'customObject');
 export const customWeapons = (state = {}, action) => dataObjects('customWeapons', state, action, 'customObject');
 
 export const archetypes = (state = data.archetypes, action) => dataObjects('customArchetypes', state, action);
 export const archetypeTalents = (state = data.archetypeTalents, action) => dataObjects('customArchetypeTalents', state, action);
 export const careers = (state = data.careers, action) => dataObjects('customCareers', state, action);
+export const craftsmanship = (state = data.craftsmanship, action) => dataObjects('customCraftsmanship', state, action);
 export const armor = (state = data.armor, action) => dataObjects('customArmor', state, action);
 export const gear = (state = data.gear, action) => dataObjects('customGear', state, action);
+export const qualities = (state = data.qualities, action) => dataObjects('customQualities', state, action);
+export const skills = (state = data.skills, action) => dataObjects('customSkills', state, action);
+export const talents = (state = data.talents, action) => dataObjects('customTalents', state, action);
 export const vehicles = (state = data.vehicles, action) => dataObjects('customVehicles', state, action);
 export const weapons = (state = data.weapons, action) => dataObjects('customWeapons', state, action);
 

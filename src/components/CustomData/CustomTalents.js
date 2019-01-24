@@ -1,13 +1,14 @@
-import clone from 'clone';
-import {camelCase, omit, upperFirst} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Table} from 'reactstrap';
+import {Button, ButtonGroup, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData} from '../../actions';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {chars, diceNames, modifiableAttributes} from '../../data/lists'
 import {Fragment} from './';
+
+const type = 'customTalents';
+
 
 class CustomTalentsComponent extends React.Component {
 	state = {
@@ -51,23 +52,25 @@ class CustomTalentsComponent extends React.Component {
 		event.preventDefault();
 	};
 
+	handleDuplicate = (event) => {
+		const {customTalents} = this.props;
+		// noinspection JSUnusedLocalSymbols
+		const {id, ...data} = {...customTalents[event.target.name]};
+		this.props.addDataSet(type, {...data, name: `${data.name} (copy)`});
+		event.preventDefault();
+	};
+
 	handleSubmit = () => {
-		const {name, modifier, modifierValue} = this.state;
-		const {customTalents, changeCustomData} = this.props;
-		let Obj = clone(customTalents);
-		let key = upperFirst(camelCase((name)));
-		Obj[key] = {};
-		['name', 'tier', 'activation', 'turn', 'ranked', 'description', 'setting', 'prerequisite', 'antirequisite'].forEach(stat => {
-			if (this.state[stat] !== '') Obj[key][stat] = this.state[stat];
-		});
-		if (modifier) Obj[key].modifier = {[modifier]: modifierValue};
-		changeCustomData(Obj, 'customTalents', false);
+		const {modifier, modifierValue, mode, ...rest} = this.state;
+		const data = {...rest};
+		if (modifier) data.modifier = {[modifier]: modifierValue};
+		if (mode === 'add') this.props.addDataSet(type, data);
+		else if (mode === 'edit') this.props.modifyDataSet(type, data);
 		this.initState();
 	};
 
 	handleDelete = (event) => {
-		const {customTalents, changeCustomData} = this.props;
-		changeCustomData(omit(customTalents, event.target.name), 'customTalents', false);
+		this.props.removeDataSet(type, this.props[type][event.target.name].id);
 		event.preventDefault();
 	};
 
@@ -80,15 +83,10 @@ class CustomTalentsComponent extends React.Component {
 		const {customTalents} = this.props;
 		const talent = customTalents[event.target.name];
 		this.setState({
-			name: talent.name ? talent.name : '',
-			tier: talent.tier ? talent.tier : '',
+			...talent,
 			activation: talent.activation ? talent.activation : false,
-			turn: talent.turn ? talent.turn : '',
 			ranked: talent.ranked ? talent.ranked : false,
-			description: talent.description ? talent.description : '',
 			setting: typeof talent.setting === 'string' ? talent.setting.split(', ') : talent.setting,
-			prerequisite: talent.prerequisite ? talent.prerequisite : '',
-			antirequisite: talent.antirequisite ? talent.antirequisite : '',
 			modifier: talent.modifier ? Object.keys(talent.modifier)[0] : false,
 			modifierValue: talent.modifier ? Object.values(talent.modifier)[0] : '',
 			mode: 'edit'
@@ -99,7 +97,7 @@ class CustomTalentsComponent extends React.Component {
 		const {customTalents, skills, talents} = this.props;
 		const {name, tier, ranked, activation, turn, description, setting, modifier, modifierValue, prerequisite, antirequisite, mode} = this.state;
 		return <div>
-			<Fragment type='name' value={name} mode={mode}
+			<Fragment type='text' title='Name' value={name} mode={mode}
 					  handleChange={(event) => this.setState({name: event.target.value})}/>
 
 			<Fragment type='setting' setting={setting} setState={(selected) => this.setState({setting: selected})}/>
@@ -164,17 +162,23 @@ class CustomTalentsComponent extends React.Component {
 					<th>NAME</th>
 					<th>TIER</th>
 					<th/>
-					<th/>
 				</tr>
 				</thead>
 				<tbody>
 				{customTalents &&
-				Object.keys(customTalents).map(key =>
+				Object.keys(customTalents)
+					.sort((a, b) => customTalents[a].name > customTalents[b].name ? 1 : -1)
+					.map(key =>
 					<tr key={key}>
 						<td>{customTalents[key].name}</td>
 						<td>{customTalents[key].tier}</td>
-						<td><Button name={key} onClick={this.handleEdit}>Edit</Button></td>
-						<td><DeleteButton name={key} onClick={this.handleDelete}/></td>
+						<td>
+							<ButtonGroup>
+								<Button name={key} onClick={this.handleEdit}>Edit</Button>
+								<Button name={key} onClick={this.handleDuplicate}>Duplicate</Button>
+								<DeleteButton name={key} onClick={this.handleDelete}/>
+							</ButtonGroup>
+						</td>
 					</tr>
 				)
 				}
@@ -193,6 +197,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({removeDataSet, addDataSet, modifyDataSet}, dispatch);
 
 export const CustomTalents = connect(mapStateToProps, matchDispatchToProps)(CustomTalentsComponent);
