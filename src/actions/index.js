@@ -1,22 +1,21 @@
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import clone from 'clone';
-import * as merge from 'deepmerge';
-import {uniq, upperFirst} from 'lodash-es';
-import {customDataTypes, dataTypes, newData, vehicleDataTypes} from '../data';
+import {upperFirst} from 'lodash-es';
+import {customDataTypes, dataTypes, vehicleDataTypes} from '../data';
 import {db} from '../firestoreDB';
 
 export const writeUser = () => {
 	firebase.auth().onAuthStateChanged(user => {
 		if (user) {
-			let object = {
+			const data = {
 				name: user.displayName,
 				email: user.email,
 				uid: user.uid,
 				phone: user.phoneNumber,
 				lastLogin: new Date(),
 			};
-			db.doc(`userDB/${user.uid}`).set(object).catch(console.error);
+			db.doc(`userDB/${user.uid}`).set(data).catch(console.error);
 		}
 	});
 };
@@ -25,15 +24,6 @@ export const changeData = (data, type, merge = true) => {
 	return (dispatch, getState) => {
 		const {user, character} = getState();
 		const dbRef = db.doc(`users/${user}/data/characters/${character}/${type}/`);
-		dbRef.set({data}, {merge: merge});
-		dispatch({type: `${type}_Changed`, payload: data});
-	}
-};
-
-export const changeCustomData = (data, type, merge = true) => {
-	return (dispatch, getState) => {
-		const {user} = getState();
-		const dbRef = db.doc(`users/${user}/customData/${type}/`);
 		dbRef.set({data}, {merge: merge});
 		dispatch({type: `${type}_Changed`, payload: data});
 	}
@@ -54,21 +44,6 @@ export const loadData = () => {
 				if (!getState().user) unsub[type]();
 				else console.error(error);
 			});
-		});
-	}
-};
-
-export const loadCustomData = () => {
-	return (dispatch, getState) => {
-		dispatch({type: 'loadingCustomData_Changed', payload: true});
-		const {user} = getState();
-		customDataTypes.forEach((type, index) => {
-			db.doc(`users/${user}/customData/${type}/`).onSnapshot(doc => {
-				let payload = null;
-				if (doc.exists) payload = doc.data().data;
-				dispatch({type: `${type}_Changed`, payload});
-				if (index + 1 >= customDataTypes.length) dispatch({type: 'loadingCustomData_Changed', payload: false});
-			}, error => console.error(error));
 		});
 	}
 };
@@ -164,32 +139,26 @@ export const importCharacter = (characterImport, user) => {
 
 export const importCustomData = (customDataSetImport) => {
 	return (dispatch, getState) => {
-		const user = getState().user;
 		Object.keys(customDataSetImport).forEach(type => {
-			const customType = getState()[type];
-			let data = clone(customDataSetImport[type]);
-			if (customType) {
-				if (type === 'customSettings') data = merge(customType, data);
-				else Object.keys(data).forEach(item => {
-					if (customType[item]) {
-						data[item] = merge(customType[item], data[item]);
-						if (data[item].setting) data[item].setting = uniq(data[item].setting).sort();
-					}
-				});
-			}
+			const data = clone(customDataSetImport[type]);
 			switch (type) {
 				case 'customArchetypes':
 					Object.values(data).forEach(item => {
-						let {characteristics, ...obj} = item;
+						const {characteristics, ...obj} = item;
 						let final = {write: [getState().user], read: [getState().user], name: 'none'};
 						if (item) final = {...final, ...obj, ...characteristics};
 						db.collection(`${type}DB`).add(final).catch(console.error);
 					});
 					break;
+				case 'customMotivations':
 				case 'customArchetypeTalents':
 				case 'customArmor':
 				case 'customCareers':
 				case 'customGear':
+				case 'customSettings':
+				case 'customSkills':
+				case 'customTalents':
+				case 'customVehicles':
 				case 'customWeapons':
 					Object.values(data).forEach(item => {
 						const final = {write: [getState().user], read: [getState().user], name: 'none', ...item};
@@ -197,7 +166,6 @@ export const importCustomData = (customDataSetImport) => {
 					});
 					break;
 				default:
-					db.doc(`users/${user}/customData/${type}/`).set({data}, {merge: true});
 					break;
 			}
 
@@ -228,7 +196,7 @@ export const modifyDataSet = (type, {id, ...data}) => {
 export const loadDataSets = () => {
 	return (dispatch, getState) => {
 		const user = getState().user;
-		[...newData, 'vehicle'].forEach(type => {
+		[...customDataTypes, 'vehicle'].forEach(type => {
 			db.collection(`${type}DB`).where('read', 'array-contains', user).onSnapshot(querySnapshot => {
 				querySnapshot.docChanges().forEach(change => {
 					if (type.includes('custom')) {

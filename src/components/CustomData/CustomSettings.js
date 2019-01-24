@@ -1,10 +1,8 @@
-import {camelCase, omit, startCase} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {DeleteButton} from '../';
-import {changeCustomData} from '../../actions';
 import {Fragment} from './';
 
 class CustomSettingsComponent extends React.Component {
@@ -15,16 +13,12 @@ class CustomSettingsComponent extends React.Component {
 	};
 
 	handleSubmit = (event) => {
-		const {customSettings, changeCustomData} = this.props;
-		const {name} = this.state;
-		changeCustomData({...customSettings, [camelCase(name)]: startCase(name)}, 'customSettings');
+
 		this.initState();
 		event.preventDefault();
 	};
 
 	handleDelete = (event) => {
-		const {customSettings, changeCustomData} = this.props;
-		changeCustomData(omit(customSettings, event.target.name), 'customSettings', false);
 		event.preventDefault();
 	};
 
@@ -73,6 +67,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export const CustomSettings = connect(mapStateToProps, matchDispatchToProps)(CustomSettingsComponent);

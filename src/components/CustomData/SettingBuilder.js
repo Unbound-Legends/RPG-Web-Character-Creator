@@ -1,10 +1,9 @@
 import clone from 'clone';
-import {pull, startCase, upperFirst} from 'lodash-es'
+import {startCase, upperFirst} from 'lodash-es'
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeCustomData} from '../../actions/index';
 
 const types = ['archetypes', 'careers', 'skills', 'talents', 'archetypeTalents', 'armor', 'gear', 'weapons'];
 
@@ -39,18 +38,6 @@ class SettingBuilderComponent extends React.Component {
 		alert(`${settings[setting]} setting has been applied to all selected items`)
 	};
 
-	handleChange = (event) => {
-		let type = event.target.value, item = event.target.name, array = [];
-		array = [...this.state[type]];
-		if (item) {
-			if (array.includes(item)) pull(array, item);
-			else array.push(item);
-		} else {
-			if (array.length === Object.keys(this.props[type]).length) array = [];
-			else array = [...Object.keys(this.props[type])];
-		}
-		this.setState({[type]: array.sort()})
-	};
 
 	render() {
 		const {settings} = this.props;
@@ -120,6 +107,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export const SettingBuilder = connect(mapStateToProps, matchDispatchToProps)(SettingBuilderComponent);

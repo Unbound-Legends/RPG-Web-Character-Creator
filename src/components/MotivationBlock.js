@@ -1,12 +1,10 @@
 import clone from 'clone';
+import {random} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Card, CardBody, CardFooter, CardHeader, Input, InputGroup, InputGroupAddon} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
-
-const seedrandom = require('seedrandom');
-let rng = seedrandom(Math.random(), {entropy: true});
 
 class MotivationBlockComponent extends React.Component {
 	state = {description: this.props.masterMotivations[this.props.type] ? this.props.masterMotivations[this.props.type].description : ''};
@@ -25,7 +23,7 @@ class MotivationBlockComponent extends React.Component {
 		let obj = clone(masterMotivations);
 		obj[type] = {
 			key: event.target.value,
-			description: motivations[type][event.target.value] ? motivations[type][event.target.value] : ''
+			description: motivations[event.target.value] ? motivations[event.target.value].description : ''
 		};
 		changeData(obj, 'masterMotivations');
 		event.preventDefault();
@@ -41,10 +39,10 @@ class MotivationBlockComponent extends React.Component {
 
 	handleClick = () => {
 		const {motivations, type, masterMotivations, changeData} = this.props;
-		const list = Object.keys(motivations[type]);
-		let newKey = list[Math.floor(rng() * list.length)];
+		const list = Object.keys(motivations).filter(key => motivations[key].type === type);
+		let newKey = list[random(list.length - 1)];
 		let obj = clone(masterMotivations);
-		obj[type] = {key: newKey, description: motivations[type][newKey]};
+		obj[type] = {key: newKey, description: motivations[newKey].description};
 		changeData(obj, 'masterMotivations', false)
 	};
 
@@ -59,8 +57,10 @@ class MotivationBlockComponent extends React.Component {
 						<InputGroupAddon className='m-auto' addonType='prepend'>{type}:</InputGroupAddon>
 						<Input type='select' bsSize='sm' onChange={this.handleSelect} style={{marginLeft: '1vw'}} value={name}>
 							<option value=''/>
-							{motivations[type] && Object.keys(motivations[type]).sort().map(key =>
-								<option key={key} value={key}>{key}</option>
+							{Object.keys(motivations)
+								.filter(key => motivations[key].type === type)
+								.sort().map(key =>
+									<option key={key} value={key}>{motivations[key].name}</option>
 							)}
 						</Input>
 					</InputGroup>

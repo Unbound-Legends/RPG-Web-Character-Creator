@@ -36,7 +36,6 @@ const allReducers = combineReducers({
 	equipmentGear: changeState.equipmentGear,
 	equipmentWeapons: changeState.equipmentWeapons,
 	gear: changeState.gear,
-	loadingCustomData: changeState.loadingCustomData,
 	loadingData: changeState.loadingData,
 	masterMotivations: changeState.masterMotivations,
 	masterSkills: changeState.masterSkills,

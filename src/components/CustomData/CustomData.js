@@ -24,7 +24,7 @@ export const CustomData = () => {
 					<Tab>Careers</Tab>
 					<Tab>Gear</Tab>
 					<Tab>Motivations</Tab>
-					<Tab>Settings</Tab>
+					<Tab disabled>Settings</Tab>
 					<Tab>Skills</Tab>
 					<Tab>Talents</Tab>
 					<Tab>Weapons</Tab>

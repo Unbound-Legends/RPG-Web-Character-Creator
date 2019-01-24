@@ -4,10 +4,8 @@ import {connect} from 'react-redux';
 import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addDataSet, importCharacter, importCustomData} from '../actions';
-import {asyncForEach, customDataTypes as temp, dataTypes, newData} from '../data/';
+import {asyncForEach, customDataTypes, dataTypes,} from '../data/';
 import {db} from '../firestoreDB';
-
-const customDataTypes = [...temp, ...newData];
 
 class ImportExportComponent extends React.Component {
 	state = {
@@ -72,7 +70,6 @@ class ImportExportComponent extends React.Component {
 						if (characters.length > 0) final.characters = characters;
 						break;
 					case 'customMotivations':
-					case 'customSettings':
 						if (this.state[type].length > 0) final[type] = cloneDeep(this.props[type]);
 						break;
 					default:
@@ -141,8 +138,8 @@ class ImportExportComponent extends React.Component {
 	};
 
 	handleFile = (event) => {
-		let fileInput = event.target.files[0];
-		let reader = new FileReader();
+		const fileInput = event.target.files[0];
+		const reader = new FileReader();
 		reader.onload = (event) => {
 			let file = JSON.parse(event.target.result);
 			//old exports Delete at some point
@@ -175,15 +172,12 @@ class ImportExportComponent extends React.Component {
 							});
 							break;
 						case 'customMotivations':
-						case 'customSettings':
-							this.props.importCustomData({[type]: file[type]});
-							text += `${startCase(type)} Data Imported.\n`;
-							break;
 						case 'customArchetypeTalents':
 						case 'customArchetypes':
 						case 'customArmor':
 						case 'customCareers':
 						case 'customGear':
+						case 'customSettings':
 						case 'customSkills':
 						case 'customTalents':
 						case 'customVehicles':

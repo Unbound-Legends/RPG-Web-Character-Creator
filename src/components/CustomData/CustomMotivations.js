@@ -1,12 +1,13 @@
-import clone from 'clone';
-import {omit} from 'lodash-es';
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button, Table} from 'reactstrap';
+import {Button, ButtonGroup, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {changeCustomData} from '../../actions';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {Fragment} from './';
+
+const Type = 'customMotivations';
+
 
 class CustomMotivationsComponent extends React.Component {
 	state = {type: '', name: '', description: '', mode: 'add'};
@@ -20,33 +21,32 @@ class CustomMotivationsComponent extends React.Component {
 		this.props.handleClose();
 	};
 
-	handleSubmit = (event) => {
-		const {customMotivations, changeCustomData} = this.props;
-		const {name, type, description} = this.state;
-		let obj = clone(customMotivations);
-		obj[type] = {[name]: description};
-		changeCustomData(obj, 'customMotivations');
-		this.initState();
+	handleDuplicate = (event) => {
+		const {customMotivations} = this.props;
+		// noinspection JSUnusedLocalSymbols
+		const {id, ...data} = {...customMotivations[event.target.name]};
+		this.props.addDataSet(Type, {...data, name: `${data.name} (copy)`});
 		event.preventDefault();
 	};
 
+	handleSubmit = () => {
+		const {mode, ...data} = this.state;
+		if (mode === 'add') this.props.addDataSet(Type, data);
+		else if (mode === 'edit') this.props.modifyDataSet(Type, data);
+		this.initState();
+	};
+
 	handleDelete = (event) => {
-		const {customMotivations, changeCustomData} = this.props;
-		let type = event.target.getAttribute('type');
-		let obj = clone(customMotivations);
-		obj[type] = omit(obj[type], event.target.name);
-		changeCustomData(obj, 'customMotivations', false);
+		this.props.removeDataSet(Type, this.props[Type][event.target.name].id);
 		event.preventDefault();
 	};
 
 	handleEdit = (event) => {
 		const {customMotivations} = this.props;
-		const type = event.target.getAttribute('type');
-		const name = event.target.name;
+		// noinspection JSUnusedLocalSymbols
+		const data = customMotivations[event.target.name];
 		this.setState({
-			name: name,
-			type: event.target.getAttribute('type'),
-			description: customMotivations[type][name],
+			...data,
 			mode: 'edit',
 		});
 	};
@@ -56,12 +56,13 @@ class CustomMotivationsComponent extends React.Component {
 		const {name, type, description, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
+				<Fragment type='text' title='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
 				<Fragment type='inputSelect' name='type' value={type} array={Object.keys(motivations)}
 						  handleChange={(event) => this.setState({type: event.target.value})}/>
 
-				<Fragment type='text' value={description} mode={mode} handleChange={(event) => this.setState({description: event.target.value})}/>
+				<Fragment type='text' title='description' value={description} mode={mode}
+						  handleChange={(event) => this.setState({description: event.target.value})}/>
 
 				<ControlButtonSet mode={this.state.mode} type={'motivation'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
 								  onEditCancel={this.initState} disabled={name === '' || type === ''}/>
@@ -72,27 +73,26 @@ class CustomMotivationsComponent extends React.Component {
 						<th>NAME</th>
 						<th>TYPE</th>
 						<th/>
-						<th/>
 					</tr>
 					</thead>
 					<tbody>
-					{Object.keys(customMotivations).map(type =>
-						Object.keys(customMotivations[type]).map(name =>
-							<tr key={type + name}>
+					{Object.keys(customMotivations).map(key =>
+						<tr key={key}>
 								<td>
-									{name}
+									{customMotivations[key].name}
 								</td>
 								<td>
-									{type}
+									{customMotivations[key].type}
 								</td>
 								<td>
-									<Button name={name} type={type} onClick={this.handleEdit}>Edit</Button>
+									<ButtonGroup>
+										<Button name={key} onClick={this.handleEdit}>Edit</Button>
+										<Button name={key} onClick={this.handleDuplicate}>Duplicate</Button>
+										<DeleteButton name={key} onClick={this.handleDelete}/>
+									</ButtonGroup>
 								</td>
-								<td>
-									<DeleteButton name={name} type={type} onClick={this.handleDelete}/>
-								</td>
+
 							</tr>
-						)
 					)}
 					</tbody>
 				</Table>
@@ -109,6 +109,6 @@ const mapStateToProps = state => {
 	};
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeCustomData}, dispatch);
+const matchDispatchToProps = dispatch => bindActionCreators({removeDataSet, addDataSet, modifyDataSet}, dispatch);
 
 export const CustomMotivations = connect(mapStateToProps, matchDispatchToProps)(CustomMotivationsComponent);

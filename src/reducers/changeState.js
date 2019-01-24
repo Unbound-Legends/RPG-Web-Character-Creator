@@ -14,7 +14,6 @@ export const user = (state = null, action) => loadingReducer('User', state, acti
 export const character = (state = null, action) => loadingReducer('character', state, action);
 export const vehicle = (state = '', action) => loadingReducer('vehicle', state, action);
 export const loadingData = (state = true, action) => loadingReducer('loadingData', state, action);
-export const loadingCustomData = (state = true, action) => loadingReducer('loadingCustomData', state, action);
 export const characterList = (state = null, action) => loadingReducer('characterList', state, action);
 export const printContent = (state = initialState.printContent, action) => loadingReducer('printContent', state, action);
 
@@ -57,30 +56,25 @@ export const themes = (state, action) => dataReducer('themes', state, action);
 export const vehicleNotes = (state, action) => dataReducer('vehicleNotes', state, action);
 export const vehicleType = (state, action) => dataReducer('vehicleType', state, action);
 
-//database objects
-const databaseReducer = (type, state = data[type], action) => {
-	if (action.type === `custom${upperFirst(type)}_Changed`) {
-		if (action.payload) return merge(data[type], action.payload);
+//THE data model
+export const motivation = (type, state, action, custom = false) => {
+	const name = ['customArmor', 'customGear', 'customWeapons'].includes(type) ?
+		camelCase(get(action, 'payload.name', 'unnamed')) :
+		upperFirst(camelCase(get(action, 'payload.name', 'unnamed'))),
+		id = get(action, 'payload.id');
+	switch (action.type) {
+		case`${type}_Added`:
+			return merge(state, {[custom ? id : name]: action.payload});
+		case `${type}_Modified`:
+			const key = Object.keys(state).find(key => state[key].id === action.payload.id);
+			return merge(omit(state, key), {[custom ? id : name]: action.payload});
+		case`${type}_Removed`:
+			return omit(state, Object.keys(state).find(key => state[key].id === action.payload));
+		default:
+			return state;
 	}
-	return state;
 };
 
-export const motivations = (state, action) => databaseReducer('motivations', state, action);
-export const settings = (state, action) => databaseReducer('settings', state, action);
-
-//custom data objects
-const customDataReducer = (type, state = {}, action) => {
-	if (action.type === `${type}_Changed`) {
-		if (action.payload) return action.payload;
-		else return {};
-	}
-	return state;
-};
-
-export const customSettings = (state, action) => customDataReducer('customSettings', state, action);
-export const customMotivations = (state, action) => customDataReducer('customMotivations', state, action);
-
-//new data model
 export const dataObjects = (type, state, action, custom = false) => {
 	const name = ['customArmor', 'customGear', 'customWeapons'].includes(type) ?
 		camelCase(get(action, 'payload.name', 'unnamed')) :
@@ -104,6 +98,8 @@ export const customArchetypeTalents = (state = {}, action) => dataObjects('custo
 export const customArmor = (state = {}, action) => dataObjects('customArmor', state, action, 'customObject');
 export const customCareers = (state = {}, action) => dataObjects('customCareers', state, action, 'customObject');
 export const customGear = (state = {}, action) => dataObjects('customGear', state, action, 'customObject');
+export const customMotivations = (state = {}, action) => dataObjects('customMotivations', state, action, 'customObject');
+export const customSettings = (state = {}, action) => dataObjects('customSettings', state, action, 'customObject');
 export const customSkills = (state = {}, action) => dataObjects('customSkills', state, action, 'customObject');
 export const customTalents = (state = {}, action) => dataObjects('customTalents', state, action, 'customObject');
 export const customVehicles = (state = {}, action) => dataObjects('customVehicles', state, action, 'customObject');
@@ -115,7 +111,9 @@ export const careers = (state = data.careers, action) => dataObjects('customCare
 export const craftsmanship = (state = data.craftsmanship, action) => dataObjects('customCraftsmanship', state, action);
 export const armor = (state = data.armor, action) => dataObjects('customArmor', state, action);
 export const gear = (state = data.gear, action) => dataObjects('customGear', state, action);
+export const motivations = (state = data.motivations, action) => dataObjects('customMotivations', state, action);
 export const qualities = (state = data.qualities, action) => dataObjects('customQualities', state, action);
+export const settings = (state = data.settings, action) => dataObjects('customSettings', state, action);
 export const skills = (state = data.skills, action) => dataObjects('customSkills', state, action);
 export const talents = (state = data.talents, action) => dataObjects('customTalents', state, action);
 export const vehicles = (state = data.vehicles, action) => dataObjects('customVehicles', state, action);

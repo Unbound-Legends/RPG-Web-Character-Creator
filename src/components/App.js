@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container, Progress} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser, loadCharacterList, loadCustomData, loadData, loadDataSets, loadDoc, writeUser} from '../actions';
+import {changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser} from '../actions';
 import {DataPage, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
 
@@ -26,11 +26,10 @@ class AppComponent extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const {loadCharacterList, loadCustomData, user, loadDataSets, loadDoc} = this.props;
+		const {loadCharacterList, user, loadDataSets, loadDoc} = this.props;
 		if (nextProps.user && user !== nextProps.user) {
 			writeUser();
 			loadCharacterList();
-			loadCustomData();
 			loadDataSets();
 		}
 		if (nextProps.character && nextProps.character !== this.props.character) this.props.loadData();
@@ -40,16 +39,16 @@ class AppComponent extends React.Component {
 
 	render() {
 		const {loading} = this.state;
-		const {loadingCustomData, loadingData, theme} = this.props;
+		const {loadingData, theme} = this.props;
 		const loadingPage = (
 			<div className='text-center mt-5'>
 				<h1> LOADING</h1>
-				<Progress animated className='w-50 mx-auto' value={loadingCustomData && loadingData ? 0 : 100}/>
+				<Progress animated className='w-50 mx-auto' value={loadingData ? 0 : 100}/>
 			</div>
 		);
 		if (loading) return loadingPage;
 		if (!(this.props.user)) return <User/>;
-		if (loadingCustomData || loadingData) return loadingPage;
+		if (loadingData) return loadingPage;
 		else return (
 			<Container className={`body-${theme}`}>
 				<Tabs defaultIndex={0} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>
@@ -85,7 +84,6 @@ const mapStateToProps = state => {
 		user: state.user,
 		character: state.character,
 		loadingData: state.loadingData,
-		loadingCustomData: state.loadingCustomData,
 		printContent: state.printContent,
 		setting: state.setting,
 		strict: state.strict,
@@ -99,7 +97,6 @@ const matchDispatchToProps = dispatch => {
 		changeUser,
 		loadCharacterList,
 		loadData,
-		loadCustomData,
 		loadDataSets,
 		loadDoc,
 		writeUser,

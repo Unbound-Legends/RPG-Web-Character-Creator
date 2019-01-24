@@ -23,11 +23,6 @@ export const dataTypes = [
 	'themes',
 ];
 
-export const customDataTypes = [
-	'customMotivations',
-	'customSettings'
-];
-
 export const vehicleDataTypes = [
 	'vehicleType', 'currentHullTrauma', 'currentSystemStrain', 'vehicleNotes'
 ];
@@ -46,12 +41,14 @@ export const diceNames = {
 	'[threat]': {name: 'Threat'}
 };
 
-export const newData = [
+export const customDataTypes = [
 	'customArchetypes',
 	'customArchetypeTalents',
 	'customArmor',
 	'customCareers',
 	'customGear',
+	'customMotivations',
+	'customSettings',
 	'customSkills',
 	'customTalents',
 	'customVehicles',

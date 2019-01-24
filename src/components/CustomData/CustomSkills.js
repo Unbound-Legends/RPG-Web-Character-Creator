@@ -59,7 +59,7 @@ class CustomSkillsComponent extends React.Component {
 		const {name, type, characteristic, setting, mode} = this.state;
 		return (
 			<div>
-				<Fragment type='text' tile='Name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
+				<Fragment type='text' title='Name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
 				<Fragment type='inputSelect' name='type' value={type} array={['General', 'Combat', 'Social', 'Magic', 'Knowledge']}
 						  handleChange={(event) => this.setState({type: event.target.value})}/>

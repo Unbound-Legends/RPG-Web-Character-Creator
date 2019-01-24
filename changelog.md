@@ -1,3 +1,7 @@
+# 1.6.16
+    removed cutsom settings
+    migrated custom motivations
+    removed the last of the old customdata framework
 # 1.6.15
     skills and talents to new structure
 # 1.6.14
