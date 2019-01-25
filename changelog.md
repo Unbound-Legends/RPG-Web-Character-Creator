@@ -1,3 +1,5 @@
+# 1.6.17
+    fixed talent selection
 # 1.6.16
     removed cutsom settings
     migrated custom motivations

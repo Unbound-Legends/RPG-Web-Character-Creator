@@ -4,10 +4,10 @@ import React from 'react';
 import ReactGA from 'react-ga'
 import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
-import {Container, Progress} from 'reactstrap';
+import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser} from '../actions';
-import {DataPage, MainPage, User, VehicleSelect} from './';
+import {DataPage, Loading, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
 
 class AppComponent extends React.Component {
@@ -40,15 +40,10 @@ class AppComponent extends React.Component {
 	render() {
 		const {loading} = this.state;
 		const {loadingData, theme} = this.props;
-		const loadingPage = (
-			<div className='text-center mt-5'>
-				<h1> LOADING</h1>
-				<Progress animated className='w-50 mx-auto' value={loadingData ? 0 : 100}/>
-			</div>
-		);
-		if (loading) return loadingPage;
+
+		if (loading) return <Loading/>;
 		if (!(this.props.user)) return <User/>;
-		if (loadingData) return loadingPage;
+		if (loadingData) return <Loading/>;
 		else return (
 			<Container className={`body-${theme}`}>
 				<Tabs defaultIndex={0} className='d-print-none mt-2 mx-1' style={{marginBottom: '5rem'}}>

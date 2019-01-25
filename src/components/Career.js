@@ -12,7 +12,7 @@ class CareerComponent extends React.Component {
 	handleChange = (event) => {
 		const {archetypeSpecialSkills = {}, careers, archetype, archetypes} = this.props;
 		const skill = Object.keys(archetypeSpecialSkills).filter(key => careers[event.target.value].skills.includes(key) && key);
-		if (skill.length > 0) {
+		if (skill.length > 0 && archetype === 'AverageHuman') {
 			alert(`${careers[event.target.value].name} career contains ${skill.join(' ')}, which ${get(archetypes, `${archetype}.name`, 'your selected Archetype')} has modified. Please select a different career or change the skill options in Archetype selection`);
 			return;
 		}

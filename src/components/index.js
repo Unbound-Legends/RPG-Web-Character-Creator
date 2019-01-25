@@ -19,6 +19,7 @@ export {ErrorBoundary} from './ErrorBoundary';
 export {Equipment} from './Equipment';
 export {Gear} from './Gear';
 export {ImportExport} from './ImportExport';
+export {Loading} from './Loading';
 export {MainPage} from './MainPage';
 export {MotivationBlock} from './MotivationBlock';
 export {Motivation} from './Motivation';

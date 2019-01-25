@@ -29,8 +29,9 @@ class TalentSelectionComponent extends React.Component {
 			if (+talents[key].tier === +tier && talentCount[key]) return false;
 			if (+talents[key].tier < +tier && !talents[key].ranked) return false;
 			//talent is ranked and has been selected enough for this tier
-			if (talents[key].ranked && !(+talentCount[key] ? +talentCount[key] : 0 > tier - +talents[key].tier)) return false;
+			if (talents[key].ranked && talentCount[key] ? +tier !== +talents[key].tier + talentCount[key] : false) return false;
 			return key;
+
 		}).sort().filter(Boolean);
 	};
 
