@@ -1,3 +1,5 @@
+# 1.6.18
+    fix customMotivations
 # 1.6.17
     fixed talent selection
 # 1.6.16

@@ -52,16 +52,16 @@ class CustomMotivationsComponent extends React.Component {
 	};
 
 	render() {
-		const {customMotivations, motivations} = this.props;
+		const {customMotivations} = this.props;
 		const {name, type, description, mode} = this.state;
 		return (
 			<div>
 				<Fragment type='text' title='name' value={name} mode={mode} handleChange={(event) => this.setState({name: event.target.value})}/>
 
-				<Fragment type='inputSelect' name='type' value={type} array={Object.keys(motivations)}
+				<Fragment type='inputSelect' name='type' value={type} array={['Strength', 'Flaw', 'Desire', 'Fear']}
 						  handleChange={(event) => this.setState({type: event.target.value})}/>
 
-				<Fragment type='text' title='description' value={description} mode={mode}
+				<Fragment type='description' value={description} mode={mode}
 						  handleChange={(event) => this.setState({description: event.target.value})}/>
 
 				<ControlButtonSet mode={this.state.mode} type={'motivation'} handleSubmit={this.handleSubmit} onEditSubmit={this.handleSubmit}
@@ -105,7 +105,6 @@ class CustomMotivationsComponent extends React.Component {
 const mapStateToProps = state => {
 	return {
 		customMotivations: state.customMotivations,
-		motivations: state.motivations,
 	};
 };
 
