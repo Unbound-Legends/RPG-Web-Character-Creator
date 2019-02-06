@@ -1,2 +1,797 @@
 {
+  "CorporateDrone": {
+    "name": "Corporate Drone",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 44,
+    "description": "See SOTB, page 44, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "KnowledgeSociety",
+        "Negotiation"
+      ]
+    }
+  },
+  "CustomRig": {
+    "name": "Custom Rig",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": true,
+    "book": "SOTB",
+    "page": 44,
+    "description": "See SOTB, page 44, for more details."
+  },
+  "CustomCode": {
+    "name": "Custom Code",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 44,
+    "description": "See SOTB, page 44, for more details."
+  },
+  "CustomerServiceExperience": {
+    "name": "Customer Service Experience",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "DeepPockets": {
+    "name": "Deep Pockets",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "Disenfrancisto": {
+    "name": "Disenfrancisto",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details.",
+    "modifier": {
+    }
+  },
+  "FormerProfessor": {
+    "name": "Former Professor",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details.",
+    "modifier": {
+    }
+  },
+  "HandOnTheThrottle": {
+    "name": "Hand On The Throttle",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "IaijutsuTraining": {
+    "name": "Iaijutsu Training",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "KnockoutPunch": {
+    "name": "Knockout Punch",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "NetSearch": {
+    "name": "Net Search",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "ResourcefulMechanic": {
+    "name": "ResourcefulMechanic",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": true,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "StreetFighter": {
+    "name": "Street Fighter",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details."
+  },
+  "TriMafContact": {
+    "name": "Tri-Maf Contact",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details.",
+    "modifier": {
+    }
+  },
+  "UnionMember": {
+    "name": "Union Member",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 45,
+    "description": "See SOTB, page 45, for more details.",
+    "modifier": {
+    }
+  },
+  "WorldsWarVet": {
+    "name": "Worlds War Vet",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 47,
+    "description": "See SOTB, page 47, for more details.",
+    "modifier": {
+    }
+  },
+  "YearsOnTheForce": {
+    "name": "Years On The Force",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 47,
+    "description": "See SOTB, page 47, for more details.",
+    "modifier": {
+    }
+  },
+  "BadCop": {
+    "name": "Bad Cop",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 47,
+    "description": "See SOTB, page 47, for more details."
+  },
+  "BigGuns": {
+    "name": "Big Guns",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 47,
+    "description": "See SOTB, page 47, for more details.",
+    "modifier": {
+      "maxEncumbrance": 5
+    }
+  },
+  "Codeslinger": {
+    "name": "Codeslinger",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 48,
+    "description": "See SOTB, page 48, for more details.",
+    "modifier": {
+      "encumbranceLimit": 5
+    }
+  },
+  "CombatMedicine": {
+    "name": "Combat Medicine",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": true,
+    "book": "SOTB",
+    "page": 48,
+    "description": "See SOTB, page 48, for more details."
+  },
+  "DeterminedDriver": {
+    "name": "Determined Driver",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 48,
+    "description": "See SOTB, page 48, for more details."
+  },
+  "GoodCop": {
+    "name": "Good Cop",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": true,
+    "book": "SOTB",
+    "page": 48,
+    "description": "See SOTB, page 48, for more details."
+  },
+  "HaughtyDemeanor": {
+    "name": "Haughty Demeanor",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 48,
+    "description": "See SOTB, page 48, for more details."
+  },
+  "Nethunter": {
+    "name": "Nethunter",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 48,
+    "description": "See SOTB, page 48, for more details."
+  },
+  "Parkour!": {
+    "name": "Parkour!",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "ProbingQuestion": {
+    "name": "Probing Question",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "QuickFix": {
+    "name": "Quick Fix",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "SpecialUsePermit": {
+    "name": "Special Use Permit",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "TacticalFocus": {
+    "name": "Tactical Focus",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "TwoHandedStance": {
+    "name": "Two-Handed Stance",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "UndercityContacts": {
+    "name": "Undercity Contacts",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "AppliedResearch": {
+    "name": "Applied Research",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": true,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "BadHabit": {
+    "name": "Bad Habit",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "BodyGuard": {
+    "name": "Body Guard",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": true,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "DumbLuck": {
+    "name": "Dumb Luck",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 49,
+    "description": "See SOTB, page 49, for more details."
+  },
+  "HardBoiled": {
+    "name": "Hard-Boiled",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "HoldItSteady": {
+    "name": "Hold It Steady",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "LaughItOff": {
+    "name": "Laugh It Off",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "MartialWeaponsMaster": {
+    "name": "Martial Weapons Master",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "NetWarrior": {
+    "name": "Net Warrior",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "Nimble": {
+    "name": "Nimble",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "Snare": {
+    "name": "Snare",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "SuppressingFire": {
+    "name": "Suppressing Fire",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": true,
+    "book": "SOTB",
+    "page": 50,
+    "description": "See SOTB, page 50, for more details."
+  },
+  "Takedown": {
+    "name": "Takedown",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "UndercityContactsImproved": {
+    "name": "Undercity Contacts (Improved)",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "prerequiste": "UndercityContacts",
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "YouOweMe": {
+    "name": "You Owe Me",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "BurnThrough": {
+    "name": "Burn Through",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "Elementary": {
+    "name": "Elementary",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Active",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "OffensiveDriving": {
+    "name": "Offensive Driving",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Active",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "Parkour!Improved": {
+    "name": "Parkour! (Improved)",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "prerequisite": "Parkour!",
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "QuickWitted": {
+    "name": "Quick-Witted",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "prerequisite": "Parkour!",
+    "book": "SOTB",
+    "page": 51,
+    "description": "See SOTB, page 51, for more details."
+  },
+  "UrbanCombatant": {
+    "name": "Urban Combatant",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  },
+  "YouOweMeImproved": {
+    "name": "You Owe Me (Improved)",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "prerequisite": "YouOweMe",
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  },
+  "DroneMaster": {
+    "name": "Drone Master",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 5,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  },
+  "GhostInTheMachine": {
+    "name": "Ghost In The Machine",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  },
+  "MasterPlan": {
+    "name": "Master Plan",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  },
+  "TrickOfTheLight": {
+    "name": "Trick Of The Light",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  },
+  "WebOfKnowledge": {
+    "name": "Web Of Knowledge",
+    "setting": [
+      "Shadow of the Beanstalk"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "SOTB",
+    "page": 52,
+    "description": "See SOTB, page 52, for more details."
+  }
 }

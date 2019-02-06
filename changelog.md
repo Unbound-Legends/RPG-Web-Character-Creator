@@ -1,3 +1,5 @@
+# 1.7.2
+    SOTB Talents
 # 1.7.1
     SOTB Skills and Careers
 # 1.7.0
