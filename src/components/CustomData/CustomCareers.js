@@ -10,7 +10,9 @@ import {Fragment} from './';
 const type = 'customCareers';
 
 class CustomCareersComponent extends React.Component {
-	state = {name: '', selectedSkills: [], description: '', setting: [], mode: 'add'};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({name: '', selectedSkills: [], description: '', setting: [], mode: 'add'});

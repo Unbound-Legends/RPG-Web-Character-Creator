@@ -8,7 +8,9 @@ import {bindActionCreators} from 'redux';
 const types = ['archetypes', 'careers', 'skills', 'talents', 'archetypeTalents', 'armor', 'gear', 'weapons'];
 
 class SettingBuilderComponent extends React.Component {
-	state = {archetypes: [], careers: [], skills: [], talents: [], archetypeTalents: [], armor: [], gear: [], weapons: [], setting: ''};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => this.setState({
 		archetypes: [],

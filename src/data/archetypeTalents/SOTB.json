@@ -1,0 +1,79 @@
+{
+  "Underestimated": {
+    "name": "Underestimated",
+    "activation": false,
+    "turn": false,
+    "book": "SOTB",
+    "page": 27,
+    "description": "See SOTB, page 27, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  },
+  "AdjustedToCybernetics": {
+    "name": "Adjusted To Cybernetics",
+    "activation": false,
+    "turn": false,
+    "book": "SOTB",
+    "page": 28,
+    "description": "See SOTB, page 28, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  },
+  "Cyborg": {
+    "name": "Cyborg",
+    "activation": false,
+    "turn": false,
+    "book": "SOTB",
+    "page": 28,
+    "description": "See SOTB, page 28, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  },
+  "EnhancedGeneticModifications": {
+    "name": "Enhanced Genetic Modifications",
+    "activation": true,
+    "turn": "Incidental",
+    "book": "SOTB",
+    "page": 29,
+    "description": "See SOTB, page 29, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  },
+  "G-Mod": {
+    "name": "G-Mod",
+    "activation": false,
+    "turn": false,
+    "book": "SOTB",
+    "page": 29,
+    "description": "See SOTB, page 29, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  },
+  "Zero-GAdept": {
+    "name": "Zero-G Adept",
+    "activation": false,
+    "turn": false,
+    "book": "SOTB",
+    "page": 30,
+    "description": "See SOTB, page 30, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  },
+  "Resourceful": {
+    "name": "Resourceful",
+    "activation": true,
+    "turn": "Incidental",
+    "book": "SOTB",
+    "page": 30,
+    "description": "See SOTB, page 30, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ]
+  }
+}

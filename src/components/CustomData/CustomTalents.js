@@ -11,20 +11,9 @@ const type = 'customTalents';
 
 
 class CustomTalentsComponent extends React.Component {
-	state = {
-		name: '',
-		tier: '',
-		activation: '',
-		turn: '',
-		ranked: '',
-		description: '',
-		setting: [],
-		modifier: false,
-		modifierValue: '',
-		prerequisite: '',
-		antirequisite: '',
-		mode: 'add'
-	};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({

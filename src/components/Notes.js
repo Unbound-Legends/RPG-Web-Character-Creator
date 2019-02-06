@@ -5,10 +5,11 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
 class NotesComponent extends React.Component {
-	state = {notes: this.props.description.notes};
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({notes: nextProps.description.notes});
+	constructor(props) {
+		super(props);
+		this.state = {
+			notes: props.description.notes
+		};
 	}
 
 	render() {

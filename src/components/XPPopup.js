@@ -5,10 +5,12 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
 class XPPopupComponent extends React.Component {
-	state = {earnedXP: this.props.earnedXP};
 
-	componentWillReceiveProps(nextProps) {
-		this.setState({earnedXP: nextProps.earnedXP});
+	constructor(props) {
+		super(props);
+		this.state = {
+			earnedXP: props.earnedXP
+		};
 	}
 
 	handleChange = (event) => {

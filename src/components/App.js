@@ -17,11 +17,8 @@ class AppComponent extends React.Component {
 		ReactGA.initialize(process.env.REACT_APP_gaID);
 		ReactGA.pageview(window.location.pathname);
 		firebase.auth().onAuthStateChanged(user => {
-			if (user) {
-				this.props.changeUser(user.uid);
-				this.setState({loading: false});
-			}
-			else this.setState({loading: false});
+			if (user) this.props.changeUser(user.uid);
+			this.setState({loading: false});
 		});
 	}
 

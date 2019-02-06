@@ -13,23 +13,9 @@ const attributes = {Wounds: 'woundThreshold', Strain: 'strainThreshold'};
 const type = 'customArchetypes';
 
 class CustomArchetypesComponent extends React.Component {
-	state = {
-		name: '',
-		Brawn: 2,
-		Agility: 2,
-		Intellect: 2,
-		Cunning: 2,
-		Willpower: 2,
-		Presence: 2,
-		woundThreshold: 10,
-		strainThreshold: 10,
-		experience: 100,
-		freeSkillRanks: {},
-		description: '',
-		setting: [],
-		archetypeTalents: [],
-		mode: 'add',
-	};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({
@@ -198,17 +184,17 @@ class CustomArchetypesComponent extends React.Component {
 					Object.keys(customArchetypes)
 						.sort((a, b) => customArchetypes[a].name > customArchetypes[b].name ? 1 : -1)
 						.map(key =>
-						<tr key={key}>
-							<td>{customArchetypes[key].name}</td>
-							<td className='text-right'>
-								<ButtonGroup>
-									<Button name={key} onClick={this.handleEdit}>Edit</Button>
-									<Button name={key} onClick={this.handleDuplicate}>Duplicate</Button>
-									<DeleteButton name={key} onClick={this.handleDelete}/>
-								</ButtonGroup>
-							</td>
-						</tr>
-					)
+							<tr key={key}>
+								<td>{customArchetypes[key].name}</td>
+								<td className='text-right'>
+									<ButtonGroup>
+										<Button name={key} onClick={this.handleEdit}>Edit</Button>
+										<Button name={key} onClick={this.handleDuplicate}>Duplicate</Button>
+										<DeleteButton name={key} onClick={this.handleDelete}/>
+									</ButtonGroup>
+								</td>
+							</tr>
+						)
 					}
 					</tbody>
 				</Table>

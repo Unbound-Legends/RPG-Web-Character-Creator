@@ -9,26 +9,9 @@ import {Fragment} from './';
 const type = 'customVehicles';
 
 class CustomVehiclesComponent extends React.Component {
-	state = {
-		name: '',
-		silhouette: 0,
-		maxSpeed: 0,
-		handling: 0,
-		defense: 0,
-		armor: 0,
-		hullTraumaThreshold: 0,
-		systemStrainThreshold: 0,
-		skill: '',
-		complement: '',
-		passengerCapacity: 0,
-		price: 0,
-		rarity: 0,
-		consumables: '',
-		encumbranceCapacity: 0,
-		weapons: '',
-		setting: [],
-		mode: 'add',
-	};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({

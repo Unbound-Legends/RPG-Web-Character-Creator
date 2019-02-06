@@ -10,14 +10,13 @@ import {encumbranceLimit, equipmentStats, gearDice, skillDice, totalDefense, tot
 import {DeleteButton, Description, Gear} from './index';
 
 class EquipmentComponent extends React.Component {
-	state = {
-		money: this.props.money,
-		equipModal: false,
+	constructor(props) {
+		super(props);
+		this.state = {
+			money: props.money,
+			equipModal: false,
+		};
 	};
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({money: nextProps.money});
-	}
 
 	handleChangeMoney = (event) => {
 		let number = +event.target.value.replace(/\D+/g, '');

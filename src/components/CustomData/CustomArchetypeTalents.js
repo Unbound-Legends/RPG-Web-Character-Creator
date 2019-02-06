@@ -10,16 +10,9 @@ import {Fragment} from './';
 const type = 'customArchetypeTalents';
 
 class CustomArchetypeTalentsComponent extends React.Component {
-	state = {
-		name: '',
-		activation: '',
-		turn: '',
-		description: '',
-		setting: [],
-		modifier: false,
-		modifierValue: '',
-		mode: 'add'
-	};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({

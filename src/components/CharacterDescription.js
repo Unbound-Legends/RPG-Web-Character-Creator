@@ -6,26 +6,12 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
 class CharacterDescriptionComponent extends React.Component {
-	state = {
-		gender: this.props.description.gender ? this.props.description.gender : '',
-		age: this.props.description.age ? this.props.description.age : '',
-		height: this.props.description.height ? this.props.description.height : '',
-		build: this.props.description.build ? this.props.description.build : '',
-		hair: this.props.description.hair ? this.props.description.hair : '',
-		eyes: this.props.description.eyes ? this.props.description.eyes : '',
-		features: this.props.description.features ? this.props.description.features : '',
-	};
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			gender: nextProps.description.gender ? nextProps.description.gender : '',
-			age: nextProps.description.age ? nextProps.description.age : '',
-			height: nextProps.description.height ? nextProps.description.height : '',
-			build: nextProps.description.build ? nextProps.description.build : '',
-			hair: nextProps.description.hair ? nextProps.description.hair : '',
-			eyes: nextProps.description.eyes ? nextProps.description.eyes : '',
-			features: nextProps.description.features ? nextProps.description.features : '',
-		});
+	constructor(props) {
+		super(props);
+		const {gender = '', age = '', height = '', build = '', hair = '', eyes = '', features = ''} = props.description;
+		this.state = {
+			gender, age, height, build, hair, eyes, features
+		}
 	}
 
 	handleBlur = (event) => {

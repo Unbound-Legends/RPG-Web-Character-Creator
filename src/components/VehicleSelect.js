@@ -1,4 +1,4 @@
-import {upperCase} from 'lodash-es'
+import {get, upperCase} from 'lodash-es'
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row} from 'reactstrap';
@@ -8,32 +8,31 @@ import * as images from '../images';
 import {ModalDeleteConfirm} from './';
 
 class VehicleSelectComponent extends React.Component {
-	state = {
-		name: this.props.vehicleDataSet[this.props.vehicle] ? this.props.vehicleDataSet[this.props.vehicle].name : '',
-		currentSystemStrain: this.props.currentSystemStrain,
-		currentHullTrauma: this.props.currentHullTrauma,
-		vehicleNotes: this.props.vehicleNotes,
-		deleteModal: false,
-		writeAccess: this.props.vehicleDataSet[this.props.vehicle] ? this.props.vehicleDataSet[this.props.vehicle].write.includes(this.props.user) : false
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentSystemStrain: props.currentSystemStrain,
+			currentHullTrauma: props.currentHullTrauma,
+			vehicleNotes: props.vehicleNotes,
+			deleteModal: false,
+			name: get(props.vehicleDataSet, `${props.vehicle}.name`, ''),
+			writeAccess: get(props.vehicleDataSet, `${props.vehicle}.write`, []).includes(props.user)
+		};
+	}
 
 	componentWillReceiveProps(nextProps) {
-		const {user, vehicle, vehicleDataSet, currentHullTrauma, currentSystemStrain, vehicleNotes} = this.props;
+		const {vehicle, currentHullTrauma, currentSystemStrain, vehicleNotes} = this.props;
 		if (nextProps.vehicle !== vehicle) {
 			this.setState({
-				name: nextProps.vehicleDataSet[nextProps.vehicle] ? nextProps.vehicleDataSet[nextProps.vehicle].name : '',
-				writeAccess: nextProps.vehicleDataSet[nextProps.vehicle] ? nextProps.vehicleDataSet[nextProps.vehicle].write.includes(user) : false
+				name: get(nextProps.vehicleDataSet, `${nextProps.vehicle}.name`, ''),
 			});
 
 		}
-		if ((nextProps.vehicleDataSet !== vehicleDataSet) && nextProps.vehicleDataSet[nextProps.vehicle]) {
-			this.setState({writeAccess: nextProps.vehicleDataSet[nextProps.vehicle].write.includes(user)});
-		}
-
 		if (nextProps.currentHullTrauma !== currentHullTrauma) this.setState({currentHullTrauma: nextProps.currentHullTrauma});
 		if (nextProps.currentSystemStrain !== currentSystemStrain) this.setState({currentSystemStrain: nextProps.currentSystemStrain});
 		if (nextProps.vehicleNotes !== vehicleNotes) this.setState({vehicleNotes: nextProps.vehicleNotes});
 	}
+
 
 	handleChange = (event) => {
 		event.preventDefault();
@@ -43,8 +42,9 @@ class VehicleSelectComponent extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		if (event.target.id === 'number') event.target.value = +event.target.value;
-		this.props.changeDocData('vehicle', this.props.vehicle, event.target.name, event.target.value);
+		let {value, name, id} = event.target;
+		if (id === 'number') value = +value;
+		this.props.changeDocData('vehicle', this.props.vehicle, name, value);
 	};
 
 	handleSelect = (event) => {

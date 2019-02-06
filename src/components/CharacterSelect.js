@@ -7,20 +7,16 @@ import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCh
 import {Archetype, Career, ModalDeleteConfirm} from './';
 
 class CharacterSelectComponent extends React.Component {
-	state = {
-		name: this.props.characterList ? this.props.characterList[this.props.character] : '',
-		playerName: this.props.description.playerName,
-		setting: this.props.setting,
-		archetypeModal: false,
-		careerModal: false,
-		deleteModal: false,
-	};
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({playerName: nextProps.description.playerName});
-		this.setState({setting: nextProps.setting});
-		if (this.props.characterList) this.setState({name: this.props.characterList[nextProps.character]});
-		if (nextProps.characterList) this.setState({name: nextProps.characterList[nextProps.character]});
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: props.characterList ? props.characterList[props.character] : '',
+			playerName: props.description.playerName,
+			setting: props.setting,
+			archetypeModal: false,
+			careerModal: false,
+			deleteModal: false,
+		}
 	}
 
 	handleSelect = (event) => {

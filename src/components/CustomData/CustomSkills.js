@@ -11,7 +11,9 @@ const Type = 'customSkills';
 
 
 class CustomSkillsComponent extends React.Component {
-	state = {name: '', type: '', characteristic: '', setting: [], mode: 'add'};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({name: '', type: '', characteristic: '', setting: [], mode: 'add'});

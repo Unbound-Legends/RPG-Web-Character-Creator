@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {addDataSet, importCharacter, importCustomData} from '../actions';
-import {asyncForEach, customDataTypes, dataTypes,} from '../data/';
+import {customDataTypes, dataTypes} from '../data/';
 import {db} from '../firestoreDB';
 
 class ImportExportComponent extends React.Component {
@@ -51,42 +51,44 @@ class ImportExportComponent extends React.Component {
 
 	generateExport = async () => {
 		const {user, characterList} = this.props;
-		new Promise(async resolve => {
-			let final = {};
-			await asyncForEach(Object.keys(this.state), async type => {
+		let final = {};
+		Promise.all(Object.keys(this.state).map(async type => {
+			if (0 >= this.state[type].length) return;
+			return new Promise(resolve0 => {
 				switch (type) {
 					case'characters':
-						let characters = [];
-						await asyncForEach(this.state[type], async character => {
-							let file = {name: characterList[character]};
-							await asyncForEach(dataTypes, async type => {
-								await db.doc(`users/${user}/data/characters/${character}/${type}/`).get()
-									.then(doc => {
-										if (doc.exists) file[type] = cloneDeep(doc.data().data);
-									})
-							});
-							characters.push(file)
+						const characters = this.state[type].map(async character => {
+							return new Promise(async resolve1 => {
+								const file = {name: characterList[character]};
+								Promise.all(dataTypes.map(async type => {
+									return new Promise(async resolve2 => {
+										db.doc(`users/${user}/data/characters/${character}/${type}/`).get()
+											.then(doc => {
+												if (doc.exists) file[type] = cloneDeep(doc.data().data);
+												resolve2();
+											});
+									});
+								})).then(() => resolve1(file));
+							})
 						});
-						if (characters.length > 0) final.characters = characters;
-						break;
-					case 'customMotivations':
-						if (this.state[type].length > 0) final[type] = cloneDeep(this.props[type]);
+						Promise.all(characters).then(characters => {
+							final.characters = characters;
+							resolve0();
+						});
 						break;
 					default:
-						let data = [];
-						this.state[type].forEach(key => {
+						final[type] = this.state[type].map(key => {
 							// noinspection JSUnusedLocalSymbols
 							let {read, write, id, ...item} = this.props[type][key];
-							data.push(item);
+							return item;
 						});
-						if (data.length > 0) final[type] = data;
+						resolve0();
+						break;
 				}
-			});
-			resolve(final);
-
-		}).then(finalExport => {
-			let element = document.createElement('a');
-			let file = new Blob([JSON.stringify(finalExport)], {type: "application/json"});
+			})
+		})).then(() => {
+			const element = document.createElement('a');
+			const file = new Blob([JSON.stringify(final)], {type: "application/json"});
 			element.href = URL.createObjectURL(file);
 			element.download = this.generateFileName();
 			document.body.appendChild(element);
@@ -177,7 +179,6 @@ class ImportExportComponent extends React.Component {
 						case 'customArmor':
 						case 'customCareers':
 						case 'customGear':
-						case 'customSettings':
 						case 'customSkills':
 						case 'customTalents':
 						case 'customVehicles':

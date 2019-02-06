@@ -155,7 +155,6 @@ export const importCustomData = (customDataSetImport) => {
 				case 'customArmor':
 				case 'customCareers':
 				case 'customGear':
-				case 'customSettings':
 				case 'customSkills':
 				case 'customTalents':
 				case 'customVehicles':

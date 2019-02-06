@@ -6,11 +6,9 @@ import {DeleteButton} from '../';
 import {Fragment} from './';
 
 class CustomSettingsComponent extends React.Component {
-	state = {name: ''};
+	state = {};
 
-	initState = () => {
-		this.setState({name: ''});
-	};
+	componentWillMount = () => this.initState();
 
 	handleSubmit = (event) => {
 

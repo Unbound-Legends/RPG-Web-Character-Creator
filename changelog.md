@@ -1,3 +1,7 @@
+# 1.7.0
+    cleanin up constructor mishaps
+    cleanup custom data initStates
+    SotB Archetypes
 # 1.6.18
     fix customMotivations
 # 1.6.17

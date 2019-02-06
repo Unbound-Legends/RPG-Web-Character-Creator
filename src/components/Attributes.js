@@ -7,10 +7,12 @@ import * as images from '../images';
 import * as selectors from '../selectors';
 
 class AttributesComponent extends React.Component {
-	state = {currentStrain: this.props.currentStrain, currentWound: this.props.currentWound};
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({currentStrain: nextProps.currentStrain, currentWound: nextProps.currentWound});
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentStrain: props.currentStrain,
+			currentWound: props.currentWound
+		}
 	}
 
 	render() {

@@ -10,7 +10,9 @@ const Type = 'customMotivations';
 
 
 class CustomMotivationsComponent extends React.Component {
-	state = {type: '', name: '', description: '', mode: 'add'};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({type: '', name: '', description: '', mode: 'add'});

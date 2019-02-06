@@ -9,28 +9,9 @@ import {chars, diceNames, modifiableAttributes} from '../../data/lists';
 import {Fragment} from './';
 
 class CustomEquipmentComponent extends React.Component {
-	state = {
-		name: '',
-		damage: '',
-		range: '',
-		skill: '',
-		critical: '',
-		encumbrance: '',
-		price: '',
-		soak: '',
-		defense: '',
-		setting: [],
-		meleeDefense: '',
-		rangedDefense: '',
-		qualitiesList: '',
-		qualityRank: '',
-		description: '',
-		specialQualities: '',
-		qualityList: {},
-		modifier: false,
-		modifierValue: '',
-		mode: 'add'
-	};
+	state = {};
+
+	componentWillMount = () => this.initState();
 
 	initState = () => {
 		this.setState({

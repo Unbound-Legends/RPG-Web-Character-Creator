@@ -7,10 +7,11 @@ import {bindActionCreators} from 'redux';
 import {changeData} from '../actions';
 
 class MotivationBlockComponent extends React.Component {
-	state = {description: this.props.masterMotivations[this.props.type] ? this.props.masterMotivations[this.props.type].description : ''};
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({description: nextProps.masterMotivations[this.props.type] ? nextProps.masterMotivations[this.props.type].description : ''});
+	constructor(props) {
+		super(props);
+		this.state = {
+			description: props.masterMotivations[props.type] ? props.masterMotivations[props.type].description : ''
+		};
 	}
 
 	handleChange = (event) => {
