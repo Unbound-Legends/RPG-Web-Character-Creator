@@ -457,5 +457,55 @@
     "setting": [
       "Magic"
     ]
+  },
+  "ComputersHacking": {
+    "name": "Computers (Hacking)",
+    "type": "General",
+    "characteristic": "Intellect",
+    "book": "SOTB",
+    "page": 43,
+    "setting": [
+      "Shadow of the Beanstalk"
+    ]
+  },
+  "ComputersSysops": {
+    "name": "Computers (Sysops)",
+    "type": "General",
+    "characteristic": "Intellect",
+    "book": "SOTB",
+    "page": 44,
+    "setting": [
+      "Shadow of the Beanstalk"
+    ]
+  },
+  "KnowledgeScience": {
+    "name": "Knowledge (Science)",
+    "type": "Knowledge",
+    "characteristic": "Intellect",
+    "book": "SOTB",
+    "page": 42,
+    "setting": [
+      "Shadow of the Beanstalk"
+    ]
+  },
+  "KnowledgeSociety": {
+    "name": "Knowledge (Society)",
+    "type": "Knowledge",
+    "characteristic": "Intellect",
+    "book": "SOTB",
+    "page": 43,
+    "setting": [
+      "Shadow of the Beanstalk"
+    ]
+  },
+  "KnowledgeTheNet": {
+    "name": "Knowledge (The Net)",
+    "type": "Knowledge",
+    "characteristic": "Intellect",
+    "book": "SOTB",
+    "page": 43,
+    "setting": [
+      "Shadow of the Beanstalk"
+    ]
   }
 }

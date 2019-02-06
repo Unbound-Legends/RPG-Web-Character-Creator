@@ -1,2 +1,192 @@
 {
+  "Academic": {
+    "name": "Academic",
+    "description": "See SOTB, page 32, for more details.",
+    "book": "SOTB",
+    "page": 32,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Discipline",
+      "KnowledgeScience",
+      "KnowledgeSociety",
+      "KnowledgeTheNet",
+      "Leadership",
+      "Medicine",
+      "Melee",
+      "Negotiation"
+    ]
+  },
+  "BountyHunter": {
+    "name": "Bounty Hunter",
+    "description": "See SOTB, page 33, for more details.",
+    "book": "SOTB",
+    "page": 33,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Streetwise",
+      "Resilience",
+      "RangedHeavy",
+      "Melee",
+      "Driving",
+      "Discipline",
+      "Coercion",
+      "Brawl"
+    ]
+  },
+  "ConArtist": {
+    "name": "Con Artist",
+    "description": "See SOTB, page 34, for more details.",
+    "book": "SOTB",
+    "page": 34,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Charm",
+      "Coordination",
+      "Deception",
+      "Melee",
+      "Negotiation",
+      "RangedLight",
+      "Skullduggery",
+      "Stealth"
+    ]
+  },
+  "Courier": {
+    "name": "Courier",
+    "description": "See SOTB, page 35, for more details.",
+    "book": "SOTB",
+    "page": 35,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Athletics",
+      "Brawl",
+      "Charm",
+      "Coordination",
+      "Driving",
+      "Piloting",
+      "Stealth",
+      "Survival"
+    ]
+  },
+  "Investigator": {
+    "name": "Investigator",
+    "description": "See SOTB, page 36, for more details.",
+    "book": "SOTB",
+    "page": 36,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Coercion",
+      "ComputersHacking",
+      "KnowledgeSociety",
+      "Leadership",
+      "Perception",
+      "RangedLight",
+      "Streetwise",
+      "Vigilance"
+    ]
+  },
+  "Ristie": {
+    "name": "Ristie",
+    "description": "See SOTB, page 37, for more details.",
+    "book": "SOTB",
+    "page": 37,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Charm",
+      "Cool",
+      "Deception",
+      "KnowledgeSociety",
+      "Leadership",
+      "Negotiation",
+      "Perception",
+      "Vigilance"
+    ]
+  },
+  "Roughneck": {
+    "name": "Roughneck",
+    "description": "See SOTB, page 38, for more details.",
+    "book": "SOTB",
+    "page": 38,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Athletics",
+      "Gunnery",
+      "Mechanics",
+      "Operating",
+      "Piloting",
+      "RangedHeavy",
+      "Resilience",
+      "Vigilance"
+    ]
+  },
+  "Runner": {
+    "name": "Runner",
+    "description": "See SOTB, page 39, for more details.",
+    "book": "SOTB",
+    "page": 39,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "ComputersHacking",
+      "ComputersSysops",
+      "Cool",
+      "Deception",
+      "KnowledgeTheNet",
+      "Perception",
+      "Skullduggery",
+      "Streetwise"
+    ]
+  },
+  "SoldierSOTB": {
+    "name": "Soldier",
+    "description": "See SOTB, page 40, for more details.",
+    "book": "SOTB",
+    "page": 40,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Athletics",
+      "Coercion",
+      "Gunnery",
+      "Melee",
+      "RangedHeavy",
+      "RangedLight",
+      "Resilience",
+      "Survival"
+    ]
+  },
+  "Tech": {
+    "name": "Tech",
+    "description": "See SOTB, page 41, for more details.",
+    "book": "SOTB",
+    "page": 41,
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "skills": [
+      "Brawl",
+      "ComputersSysops",
+      "KnowledgeScience",
+      "KnowledgeTheNet",
+      "Mechanics",
+      "Medicine",
+      "Operating",
+      "Piloting"
+    ]
+  }
 }
