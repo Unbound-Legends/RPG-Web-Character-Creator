@@ -338,5 +338,253 @@
     "rarity": 3,
     "book": "SOTB",
     "page": 103
+  },
+  "boneLacing": {
+    "name": "Bone Lacing",
+    "encumbrance": 0,
+    "price": 1000,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 104,
+    "modifier": {
+      "strainThreshold": -1
+    }
+  },
+  "cybereyes": {
+    "name": "Cybereyes",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 4,
+    "book": "SOTB",
+    "page": 104,
+    "modifier": {
+      "Perception": 1,
+      "strainThreshold": -1
+    }
+  },
+  "cyberlimbAgility": {
+    "name": "Cyberlimb (Agility)",
+    "encumbrance": 0,
+    "price": 2000,
+    "rarity": 4,
+    "book": "SOTB",
+    "page": 104,
+    "modifier": {
+      "Agility": 1,
+      "strainThreshold": -1
+    }
+  },
+  "cyberlimbBrawn": {
+    "name": "Cyberlimb (Brawn)",
+    "encumbrance": 0,
+    "price": 2000,
+    "rarity": 4,
+    "book": "SOTB",
+    "page": 104,
+    "modifier": {
+      "Brawn": 1,
+      "strainThreshold": -1
+    }
+  },
+  "cyberHeart": {
+    "name": "Cyber Heart",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 105,
+    "modifier": {
+      "woundThreshold": 2,
+      "strainThreshold": -1
+    }
+  },
+  "cyberLungs": {
+    "name": "Cyber Lungs",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 105,
+    "modifier": {
+      "Athletics": 1,
+      "strainThreshold": -1
+    }
+  },
+  "cyberLiver": {
+    "name": "Cyber Liver",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 105,
+    "modifier": {
+      "Resilience": 1,
+      "strainThreshold": -1
+    }
+  },
+  "enhancedHearing": {
+    "name": "Enhanced Hearing",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 4,
+    "book": "SOTB",
+    "page": 105,
+    "modifier": {
+      "Vigilance": 1,
+      "strainThreshold": -1
+    }
+  },
+  "enhancedReflexes": {
+    "name": "Enhanced Reflexes",
+    "encumbrance": 0,
+    "price": 800,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 105,
+    "modifier": {
+      "Coordination": 1,
+      "Vigilance": 1,
+      "strainThreshold": -1
+    }
+  },
+  "skulljack": {
+    "name": "Skulljack",
+    "encumbrance": 0,
+    "price": 1250,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 105,
+    "modifier": {
+      "KnowledgeSociety": 1,
+      "KnowledgeScience": 1,
+      "KnowledgeTheNet": 1,
+      "strainThreshold": -1
+    }
+  },
+  "spinalModem": {
+    "name": "Spinal Modem",
+    "encumbrance": 0,
+    "price": 1350,
+    "restricted": true,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 106,
+    "modifier": {
+      "KnowledgeSociety": 1,
+      "KnowledgeScience": 1,
+      "KnowledgeTheNet": 1,
+      "strainThreshold": -1
+    }
+  },
+  "painEditor": {
+    "name": "Pain Editor",
+    "encumbrance": 0,
+    "price": 400,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 106,
+    "modifier": {
+      "strainThreshold": -1
+    }
+  },
+  "subdermalArmor": {
+    "name": "Sub-Dermal Armor",
+    "encumbrance": 0,
+    "price": 1000,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 106,
+    "modifier": {
+      "soak": 1,
+      "strainThreshold": -1
+    }
+  },
+  "catClaws": {
+    "name": "Cat Claws",
+    "encumbrance": 0,
+    "price": 1000,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 106
+  },
+  "chameleonSkin": {
+    "name": "Chameleon Skin",
+    "encumbrance": 0,
+    "price": 400,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 106
+  },
+  "enhancedHealing": {
+    "name": "Enhanced Healing",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 107
+  },
+  "enhancedMusclesCoordination": {
+    "name": "Enhanced Muscles (Coordination)",
+    "encumbrance": 0,
+    "price": 1500,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 107
+  },
+  "enhancedMusclesStrength": {
+    "name": "Enhanced Muscles (Strength)",
+    "encumbrance": 0,
+    "price": 1000,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 107
+  },
+  "enhancedOlfactoryReceptors": {
+    "name": "Enhanced Olfactory Receptors",
+    "encumbrance": 0,
+    "price": 500,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 107
+  },
+  "follicleControl": {
+    "name": "Follicle Control",
+    "encumbrance": 0,
+    "price": 300,
+    "rarity": 7,
+    "book": "SOTB",
+    "page": 107
+  },
+  "genoSculptedPhysique": {
+    "name": "Geno-Sculpted Physique",
+    "encumbrance": 0,
+    "price": 800,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 108
+  },
+  "nighteyes": {
+    "name": "Nighteyes",
+    "encumbrance": 0,
+    "price": 800,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 108
+  },
+  "toothBuds": {
+    "name": "Tooth Buds",
+    "encumbrance": 0,
+    "price": 600,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 108
+  },
+  "toxinFilters": {
+    "name": "Toxin Filters",
+    "encumbrance": 0,
+    "price": 400,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 108
   }
 }
