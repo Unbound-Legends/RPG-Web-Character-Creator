@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
 import * as images from '../images';
+import {changeData} from '../redux/actions';
 
 class CharacterImageComponent extends React.Component {
 	state = {modal: false, text: this.props.description.image};

@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {Button, ButtonGroup, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {chars} from '../../data/lists'
+import {addDataSet, modifyDataSet, removeDataSet} from '../../redux/actions';
 import {Fragment} from './';
 
 const Type = 'customSkills';

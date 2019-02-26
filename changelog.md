@@ -1,3 +1,5 @@
+# 1.7.3
+    SOTB equipment
 # 1.7.2
     SOTB Talents
 # 1.7.1

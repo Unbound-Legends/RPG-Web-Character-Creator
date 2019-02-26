@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
 import {chars, diceNames, modifiableAttributes} from '../../data/lists';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../redux/actions';
 import {Fragment} from './';
 
 class CustomEquipmentComponent extends React.Component {

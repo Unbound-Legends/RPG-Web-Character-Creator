@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, Input, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 
 class ArchetypeSkillsComponent extends React.Component {
 

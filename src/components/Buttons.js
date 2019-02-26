@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData, changePrintContent} from '../actions';
+import {changeData, changePrintContent} from '../redux/actions';
 import {UserButton} from './';
 import {PrintLayout} from './printLayout/index';
 

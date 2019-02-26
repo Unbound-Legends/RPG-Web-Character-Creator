@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Input} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 import {archetypeSkillRank, careerCheck, skillDice, skillRanks} from '../selectors';
 import {Description} from './index';
 

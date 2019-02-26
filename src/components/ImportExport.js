@@ -3,9 +3,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Card, CardBody, CardHeader, CardText, Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {addDataSet, importCharacter, importCustomData} from '../actions';
 import {customDataTypes, dataTypes} from '../data/';
 import {db} from '../firestoreDB';
+import {addDataSet, importCharacter, importCustomData} from '../redux/actions';
 
 class ImportExportComponent extends React.Component {
 	state = {

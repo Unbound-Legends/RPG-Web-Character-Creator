@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Card, CardBody, CardFooter, CardHeader, Input, InputGroup, InputGroupAddon} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 
 class MotivationBlockComponent extends React.Component {
 	constructor(props) {

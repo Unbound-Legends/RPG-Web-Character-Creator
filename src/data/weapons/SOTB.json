@@ -1,2 +1,673 @@
 {
+  "AssaultRifle": {
+    "name": "Assault Rifle",
+    "skill": "RangedHeavy",
+    "damage": 8,
+    "critical": 3,
+    "range": "Long",
+    "encumbrance": 4,
+    "hardPoints": 3,
+    "price": 1000,
+    "restricted": true,
+    "rarity": 7,
+    "qualities": {
+      "AutoFire": ""
+    },
+    "book": "SOTB",
+    "page": 82
+  },
+  "bullpupCarbine": {
+    "name": "Bullpup Carbine",
+    "skill": "RangedHeavy",
+    "damage": 7,
+    "critical": 3,
+    "range": "Medium",
+    "encumbrance": 3,
+    "hardPoints": 2,
+    "price": 825,
+    "restricted": false,
+    "rarity": 7,
+    "qualities": {
+      "Accurate": 1,
+      "AutoFire": ""
+    },
+    "book": "SOTB",
+    "page": 82
+  },
+  "combatShotgun": {
+    "name": "Combat Shotgun",
+    "skill": "RangedHeavy",
+    "damage": 8,
+    "critical": 3,
+    "range": "Short",
+    "encumbrance": 4,
+    "hardPoints": 2,
+    "price": 1000,
+    "restricted": true,
+    "rarity": 5,
+    "qualities": {
+      "AutoFire": "",
+      "Blast": 5,
+      "Inaccurate": 1,
+      "Vicious": 2
+    },
+    "book": "SOTB",
+    "page": 82
+  },
+  "handCannon": {
+    "name": "Hand Cannon",
+    "skill": "RangedLight",
+    "damage": 7,
+    "critical": 3,
+    "range": "Medium",
+    "encumbrance": 1,
+    "hardPoints": 3,
+    "price": 345,
+    "restricted": false,
+    "rarity": 3,
+    "qualities": {
+      "Inaccurate": 1,
+      "LimitedAmmo": 2
+    },
+    "book": "SOTB",
+    "page": 83
+  },
+  "lightPistol": {
+    "name": "Light Pistol",
+    "skill": "RangedLight",
+    "damage": 5,
+    "critical": 4,
+    "range": "Short",
+    "encumbrance": 1,
+    "hardPoints": 1,
+    "price": 100,
+    "restricted": false,
+    "rarity": 2,
+    "qualities": {},
+    "book": "SOTB",
+    "page": 83
+  },
+  "pistol": {
+    "name": "Pistol",
+    "skill": "RangedLight",
+    "damage": 6,
+    "critical": 3,
+    "range": "Medium",
+    "encumbrance": 1,
+    "hardPoints": 2,
+    "price": 300,
+    "restricted": false,
+    "rarity": 2,
+    "qualities": {},
+    "book": "SOTB",
+    "page": 83
+  },
+  "rifle": {
+    "name": "Rifle",
+    "skill": "RangedHeavy",
+    "damage": 8,
+    "critical": 3,
+    "range": "Long",
+    "encumbrance": 4,
+    "hardPoints": 3,
+    "price": 875,
+    "restricted": false,
+    "rarity": 4,
+    "qualities": {
+      "Accurate": 1
+    },
+    "book": "SOTB",
+    "page": 83
+  },
+  "shotgun": {
+    "name": "Shotgun",
+    "skill": "RangedHeavy",
+    "damage": 8,
+    "critical": 3,
+    "range": "Short",
+    "encumbrance": 3,
+    "hardPoints": 2,
+    "price": 900,
+    "restricted": false,
+    "rarity": 4,
+    "qualities": {
+      "Blast": 5,
+      "Knockdown": "",
+      "Vicious": 2
+    },
+    "book": "SOTB",
+    "page": 84
+  },
+  "submachineGun": {
+    "name": "Submachine Gun",
+    "skill": "RangedLight",
+    "damage": 5,
+    "critical": 3,
+    "range": "Medium",
+    "encumbrance": 2,
+    "hardPoints": 1,
+    "price": 400,
+    "restricted": true,
+    "rarity": 4,
+    "qualities": {
+      "AutoFire": ""
+    },
+    "book": "SOTB",
+    "page": 84
+  },
+  "autoFletcher": {
+    "name": "Auto-Fletcher",
+    "skill": "RangedLight",
+    "damage": 3,
+    "critical": 2,
+    "range": "Medium",
+    "encumbrance": 2,
+    "hardPoints": 1,
+    "price": 500,
+    "restricted": false,
+    "rarity": 5,
+    "qualities": {
+      "AutoFire": "",
+      "Pierce": 2,
+      "Vicious": 2
+    },
+    "book": "SOTB",
+    "page": 86
+  },
+  "fletcher": {
+    "name": "Fletcher",
+    "skill": "RangedHeavy",
+    "damage": 4,
+    "critical": 2,
+    "range": "Medium",
+    "encumbrance": 3,
+    "hardPoints": 3,
+    "price": 675,
+    "restricted": true,
+    "rarity": 5,
+    "qualities": {
+      "Blast": 4,
+      "Pierce": 2,
+      "Vicious": 3
+    },
+    "book": "SOTB",
+    "page": 86
+  },
+  "fletcherPistol": {
+    "name": "Fletcher Pistol",
+    "skill": "RangedLight",
+    "damage": 4,
+    "critical": 2,
+    "range": "Medium",
+    "encumbrance": 1,
+    "hardPoints": 2,
+    "price": 450,
+    "restricted": false,
+    "rarity": 4,
+    "qualities": {
+      "Pierce": 2,
+      "Vicious": 2
+    },
+    "book": "SOTB",
+    "page": 86
+  },
+  "gaussRifle": {
+    "name": "Gauss Rifle",
+    "skill": "RangedHeavy",
+    "damage": 10,
+    "critical": 2,
+    "range": "Extreme",
+    "encumbrance": 5,
+    "hardPoints": 3,
+    "price": 2000,
+    "restricted": true,
+    "rarity": 7,
+    "qualities": {
+      "Cumbersome": 3,
+      "Pierce": 5,
+      "SlowFiring": 1
+    },
+    "book": "SOTB",
+    "page": 86
+  },
+  "laserPistol": {
+    "name": "Laser Pistol",
+    "skill": "RangedLight",
+    "damage": 6,
+    "critical": 3,
+    "range": "Short",
+    "encumbrance": 1,
+    "hardPoints": 2,
+    "price": 650,
+    "restricted": false,
+    "rarity": 8,
+    "qualities": {
+      "Accurate": 1,
+      "Burn": 1
+    },
+    "book": "SOTB",
+    "page": 87
+  },
+  "laserRifle": {
+    "name": "Laser Rifle",
+    "skill": "RangedHeavy",
+    "damage": 8,
+    "critical": 3,
+    "range": "Medium",
+    "encumbrance": 4,
+    "hardPoints": 2,
+    "price": 900,
+    "restricted": true,
+    "rarity": 8,
+    "qualities": {
+      "Accurate": 1,
+      "Burn": 1
+    },
+    "book": "SOTB",
+    "page": 87
+  },
+  "synapPistol": {
+    "name": "Synap Pistol",
+    "skill": "RangedLight",
+    "damage": 5,
+    "critical": 6,
+    "range": "Short",
+    "encumbrance": 1,
+    "hardPoints": 2,
+    "price": 375,
+    "restricted": false,
+    "rarity": 2,
+    "qualities": {
+      "Disorient": 4,
+      "Stun": 3,
+      "StunDamage": ""
+    },
+    "book": "SOTB",
+    "page": 87
+  },
+  "guidedMissileLauncher": {
+    "name": "Guided Missile Launcher",
+    "skill": "Gunnery",
+    "damage": 20,
+    "critical": 3,
+    "range": "Strategic",
+    "encumbrance": 6,
+    "hardPoints": 3,
+    "price": 25000,
+    "restricted": true,
+    "rarity": 8,
+    "qualities": {
+      "Blast": 10,
+      "Breach": 2,
+      "Cumbersome": 5,
+      "Guided": 4,
+      "LimitedAmmo": 1,
+      "Prepare": 1
+    },
+    "book": "SOTB",
+    "page": 88
+  },
+  "heavyFletcher": {
+    "name": "Heavy Fletcher",
+    "skill": "Gunnery",
+    "damage": 6,
+    "critical": 2,
+    "range": "Medium",
+    "encumbrance": 6,
+    "hardPoints": 3,
+    "price": 1400,
+    "restricted": true,
+    "rarity": 5,
+    "qualities": {
+      "Cumbersome": 3,
+      "Blast": 6,
+      "Pierce": 4,
+      "Vicious": 3
+    },
+    "book": "SOTB",
+    "page": 88
+  },
+  "heavyGaussRifle": {
+    "name": "Heavy Gauss Rifle",
+    "skill": "Gunnery",
+    "damage": 15,
+    "critical": 2,
+    "range": "Extreme",
+    "encumbrance": 7,
+    "hardPoints": 3,
+    "price": 4000,
+    "restricted": true,
+    "rarity": 5,
+    "qualities": {
+      "Breach": 1,
+      "Cumbersome": 3,
+      "SlowFiring": ""
+    },
+    "book": "SOTB",
+    "page": 88
+  },
+  "laserCannon": {
+    "name": "Laser Cannon",
+    "skill": "Gunnery",
+    "damage": 10,
+    "critical": 3,
+    "range": "Long",
+    "encumbrance": 6,
+    "hardPoints": 2,
+    "price": 1675,
+    "restricted": true,
+    "rarity": 9,
+    "qualities": {
+      "Accurate": 1,
+      "Burn": 1,
+      "Cumbersome": 4,
+      "Sunder": ""
+    },
+    "book": "SOTB",
+    "page": 88
+  },
+  "lightMachineGun": {
+    "name": "Light Machine Gun",
+    "skill": "Gunnery",
+    "damage": 10,
+    "critical": 3,
+    "range": "Long",
+    "encumbrance": 6,
+    "hardPoints": 4,
+    "price": 1750,
+    "restricted": true,
+    "rarity": 6,
+    "qualities": {
+      "AutoFire": "",
+      "Cumbersome": 3,
+      "Pierce": 2,
+      "Vicious": 2
+    },
+    "book": "SOTB",
+    "page": 89
+  },
+  "maser": {
+    "name": "Maser",
+    "skill": "Gunnery",
+    "damage": 5,
+    "critical": 3,
+    "range": "Short",
+    "encumbrance": 6,
+    "hardPoints": 2,
+    "price": 1275,
+    "restricted": true,
+    "rarity": 6,
+    "qualities": {
+      "Breach": 1,
+      "Cumbersome": 5,
+      "Unwieldy": 2,
+      "Vicious": 5
+    },
+    "book": "SOTB",
+    "page": 89
+  },
+  "microMissileLauncher": {
+    "name": "Micro-Missile Launcher",
+    "skill": "Gunnery",
+    "damage": 12,
+    "critical": 4,
+    "range": "Long",
+    "encumbrance": 5,
+    "hardPoints": 2,
+    "price": 3000,
+    "restricted": true,
+    "rarity": 7,
+    "qualities": {
+      "Blast": 10,
+      "Cumbersome": 4,
+      "Guided": 3,
+      "LimitedAmmo": 3,
+      "Prepare": 1
+    },
+    "book": "SOTB",
+    "page": 89
+  },
+  "glopGrenade": {
+    "name": "Glop Grenade",
+    "skill": "RangedLight",
+    "damage": 1,
+    "critical": 6,
+    "range": "Short",
+    "encumbrance": 1,
+    "hardPoints": 0,
+    "price": 50,
+    "restricted": false,
+    "rarity": 5,
+    "qualities": {
+      "Blast": 1,
+      "Ensnare": 4,
+      "LimitedAmmo": 1
+    },
+    "book": "SOTB",
+    "page": 89
+  },
+  "monofilamentGrenade": {
+    "name": "Monofilament Grenade",
+    "skill": "RangedLight",
+    "damage": 7,
+    "critical": 3,
+    "range": "Short",
+    "encumbrance": 1,
+    "hardPoints": 0,
+    "price": 85,
+    "restricted": true,
+    "rarity": 4,
+    "qualities": {
+      "Blast": 7,
+      "Vicious": 2,
+      "LimitedAmmo": 1
+    },
+    "book": "SOTB",
+    "page": 90
+  },
+  "stunGrenade": {
+    "name": "Stun Grenade",
+    "skill": "RangedLight",
+    "damage": 8,
+    "critical": 5,
+    "range": "Short",
+    "encumbrance": 1,
+    "hardPoints": 0,
+    "price": 70,
+    "restricted": false,
+    "rarity": 4,
+    "qualities": {
+      "Blast": 3,
+      "Disorient": 3,
+      "LimitedAmmo": 1,
+      "StunDamage": ""
+    },
+    "book": "SOTB",
+    "page": 90
+  },
+  "brassKnuckles": {
+    "name": "Brass Knuckles",
+    "skill": "Brawl",
+    "damage": "+1",
+    "critical": 4,
+    "range": "Engaged",
+    "encumbrance": 1,
+    "hardPoints": 1,
+    "price": 40,
+    "restricted": false,
+    "rarity": 1,
+    "qualities": {
+      "Disorient": 3
+    },
+    "book": "SOTB",
+    "page": 90
+  },
+  "chromecrushers": {
+    "name": "Chromecrushers",
+    "skill": "Brawl",
+    "damage": "+3",
+    "critical": 4,
+    "range": "Engaged",
+    "encumbrance": 2,
+    "hardPoints": 1,
+    "price": 250,
+    "restricted": true,
+    "rarity": 3,
+    "qualities": {
+      "Linked": 1
+    },
+    "book": "SOTB",
+    "page": 90
+  },
+  "palmStunner": {
+    "name": "Palm Stunner",
+    "skill": "Brawl",
+    "damage": 5,
+    "critical": 5,
+    "range": "Engaged",
+    "encumbrance": 0,
+    "hardPoints": 0,
+    "price": 70,
+    "restricted": false,
+    "rarity": 3,
+    "qualities": {
+      "Disorient": 2,
+      "SlowFiring": 2,
+      "StunDamage": ""
+    },
+    "book": "SOTB",
+    "page": 90
+  },
+  "powerGauntlet": {
+    "name": "Power Gauntlet",
+    "skill": "Brawl",
+    "damage": "+4",
+    "critical": 4,
+    "range": "Engaged",
+    "encumbrance": 3,
+    "hardPoints": 2,
+    "price": 1120,
+    "restricted": true,
+    "rarity": 6,
+    "qualities": {
+      "Concussive": 2,
+      "Knockdown": "",
+      "Prepare": 1
+    },
+    "book": "SOTB",
+    "page": 90
+  },
+  "chargedCrystalKatana": {
+    "name": "Charged Crystal Katana",
+    "skill": "Melee",
+    "damage": "+3",
+    "critical": 2,
+    "range": "Engaged",
+    "encumbrance": 3,
+    "hardPoints": 2,
+    "price": 600,
+    "restricted": false,
+    "rarity": 10,
+    "qualities": {
+      "Defensive": 1,
+      "Pierce": 3,
+      "Reinforced": "",
+      "Unwieldy": 3
+    },
+    "book": "SOTB",
+    "page": 91
+  },
+  "monoblade": {
+    "name": "Monoblade",
+    "skill": "Melee",
+    "damage": "+1",
+    "critical": 2,
+    "range": "Engaged",
+    "encumbrance": 1,
+    "hardPoints": 1,
+    "price": 225,
+    "restricted": false,
+    "rarity": 3,
+    "qualities": {
+      "Pierce": 2
+    },
+    "book": "SOTB",
+    "page": 91
+  },
+  "plasmaCutter": {
+    "name": "Plasma Cutter",
+    "skill": "Melee",
+    "damage": 12,
+    "critical": 3,
+    "range": "Engaged",
+    "encumbrance": 5,
+    "hardPoints": 3,
+    "price": 725,
+    "restricted": false,
+    "rarity": 5,
+    "qualities": {
+      "Burn": 2,
+      "Prepare": 1,
+      "Sunder": "",
+      "Unwieldy": 2
+    },
+    "book": "SOTB",
+    "page": 91
+  },
+  "sledgehammer": {
+    "name": "Sledgehammer",
+    "skill": "Melee",
+    "damage": "+4",
+    "critical": 4,
+    "range": "Engaged",
+    "encumbrance": 4,
+    "hardPoints": 4,
+    "price": 200,
+    "restricted": false,
+    "rarity": 2,
+    "qualities": {
+      "Cumbersome": 2,
+      "KnockDown": ""
+    },
+    "book": "SOTB",
+    "page": 92
+  },
+  "stunBaton": {
+    "name": "Stun Baton",
+    "skill": "Melee",
+    "damage": "+2",
+    "critical": 5,
+    "range": "Engaged",
+    "encumbrance": 1,
+    "hardPoints": 2,
+    "price": 125,
+    "restricted": false,
+    "rarity": 2,
+    "qualities": {
+      "Stun": 4,
+      "StunDamage": ""
+    },
+    "book": "SOTB",
+    "page": 91
+  },
+  "waterknife": {
+    "name": "Waterknife",
+    "skill": "Melee",
+    "damage": 10,
+    "critical": 3,
+    "range": "Engaged",
+    "encumbrance": 4,
+    "hardPoints": 1,
+    "price": 850,
+    "restricted": false,
+    "rarity": 4,
+    "qualities": {
+      "Prepare": 1,
+      "Sunder": "",
+      "Unwieldy": 3,
+      "Vicious": 3
+    },
+    "book": "SOTB",
+    "page": 91
+  }
 }

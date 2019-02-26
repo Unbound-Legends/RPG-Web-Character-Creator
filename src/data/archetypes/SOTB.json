@@ -11,7 +11,8 @@
     "strainThreshold": 10,
     "experience": 120,
     "skills": {
-      "choice": 2
+      "choice": 2,
+      "any": 1
     },
     "talents": [
       "ReadyForAnything"
@@ -57,7 +58,8 @@
     "strainThreshold": 9,
     "experience": 85,
     "skills": {
-      "choice": 2
+      "choice": 2,
+      "any": 2
     },
     "talents": [
       "Underestimated"

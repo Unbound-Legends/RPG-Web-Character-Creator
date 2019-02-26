@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser} from '../actions';
+import {changeUser} from '../redux/actions';
 
 class UserButtonComponent extends React.Component {
 

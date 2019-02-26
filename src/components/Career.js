@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Col, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 import {maxCareerSkills} from '../selectors';
 import {Description} from './index';
 

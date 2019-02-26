@@ -3,8 +3,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {addDataSet, changeDocData, changeFieldData, changeReduxState, removeDataSet} from '../actions';
 import * as images from '../images';
+import {addDataSet, changeDocData, changeFieldData, changeReduxState, removeDataSet} from '../redux/actions';
 import {ModalDeleteConfirm} from './';
 
 class VehicleSelectComponent extends React.Component {

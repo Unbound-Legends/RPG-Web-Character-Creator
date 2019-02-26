@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import 'sw-rpg-icons/css/sw-rpg-colors.min.css';
 import 'sw-rpg-icons/css/sw-rpg-icons.min.css';
 import {App} from './components/index';
-import allReducers from './reducers';
+import allReducers from './redux/reducers';
 import './styles/index.css';
 
 export const store = createStore(allReducers, {}, applyMiddleware(thunk));

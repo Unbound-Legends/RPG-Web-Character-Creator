@@ -2,7 +2,7 @@ import firebase from '@firebase/app';
 import '@firebase/auth';
 import clone from 'clone';
 import {upperFirst} from 'lodash-es';
-import {customDataTypes, dataTypes, vehicleDataTypes} from '../data';
+import {customDataTypes, dataTypes, vehicleDataTypes} from '../data/index';
 import {db} from '../firestoreDB';
 
 export const writeUser = () => {

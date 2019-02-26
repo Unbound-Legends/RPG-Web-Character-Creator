@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, ButtonGroup, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import {ControlButtonSet, DeleteButton} from '../';
-import {addDataSet, modifyDataSet, removeDataSet} from '../../actions';
+import {addDataSet, modifyDataSet, removeDataSet} from '../../redux/actions';
 import {Fragment} from './';
 
 const type = 'customCareers';

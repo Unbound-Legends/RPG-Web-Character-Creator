@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 
 class GearComponent extends React.Component {
 

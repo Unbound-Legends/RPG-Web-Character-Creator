@@ -15,8 +15,8 @@ export class DeleteButton extends React.Component {
 
 	render() {
 		if (this.state.confirmation) {
-			return <Button {...this.props} className="btn btn-danger">✓</Button>
+			return <Button {...this.props} size='sm' color="danger">✓</Button>
 		}
-		return <Button className='btn btn-outline-danger' onClick={this.confirmDelete}>X</Button>
+		return <Button outline color='danger' size='sm' onClick={this.confirmDelete}>X</Button>
 	}
 }

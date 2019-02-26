@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Modal, ModalBody, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 
 class XPPopupComponent extends React.Component {
 

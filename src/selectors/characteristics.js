@@ -1,7 +1,7 @@
 import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
 import {chars} from '../data/lists'
-import * as initialState from '../reducers/initialState';
+import * as initialState from '../redux/initialState';
 import * as selectors from './index';
 
 const archetype = state => state.archetype;

@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
 import {chars} from '../data/lists';
 import * as images from '../images';
+import {changeData} from '../redux/actions';
 import {characteristics} from '../selectors';
 
 class CharacteristicsComponent extends React.Component {

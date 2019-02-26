@@ -29,12 +29,13 @@ export const vehicleDataTypes = [
 
 export const chars = ['Brawn', 'Agility', 'Intellect', 'Cunning', 'Willpower', 'Presence'];
 
-export const diceOrder = ['[yellow]', '[green]', '[blue]', '[red]', '[purple]', '[black]'];
+export const diceOrder = ['[yellow]', '[green]', '[blue]', '[red]', '[purple]', '[black]', '[rmblack]', '[rmblackblack]'];
 
 export const diceNames = {
 	'[blue]': {name: 'Boost Die'},
 	'[black]': {name: 'Setback Die'},
 	'[rmblack]': {name: 'Remove Setback Die'},
+	'[rmblackblack]': {name: 'Remove 2 Setback Die'},
 	'[success]': {name: 'Success'},
 	'[advantage]': {name: 'Advantage'},
 	'[failure]': {name: 'Failure'},

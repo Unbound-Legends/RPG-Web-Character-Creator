@@ -6,80 +6,63 @@ export class Description extends React.Component {
 	checkText = () => {
 		if (this.props.text === null || this.props.text === undefined) return '';
 		let text = this.props.text.split(' ');
-		let array = [];
-		text.forEach(word => {
+		let array = text.map(word => {
 			let target = word.toLowerCase();
 			switch (true) {
 				case target.replace(/[,"'.?<>{}[\]]/g, '') === 'crb':
-					array.push(`<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">CRB</a>`);
-					break;
+					return (`<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">CRB</a>`);
 				case target.replace(/[,"'.?<>{}[\]]/g, '') === 'rot':
-					array.push(`<a href="http://www.drivethrurpg.com/product/239561/Realms-of-Terrinoth?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">ROT</a>`);
-					break;
+					return (`<a href="http://www.drivethrurpg.com/product/239561/Realms-of-Terrinoth?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">ROT</a>`);
 				case target.includes('[blue]'):
 				case target.includes('[boost]'):
-					array.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"></i>');
-					break;
+					return ('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"></i>');
 				case target.includes('[green]'):
 				case target.includes('[ability]'):
-					array.push('<i class="ffi  ffi-d8 ffi-border ffi-grpg-ability-color"></i>');
-					break;
+					return ('<i class="ffi  ffi-d8 ffi-border ffi-grpg-ability-color"></i>');
 				case target.includes('[yellow]'):
 				case target.includes('[proficiency]'):
-					array.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-proficiency-color"></i>');
-					break;
+					return ('<i class="ffi ffi-d12 ffi-border ffi-grpg-proficiency-color"></i>');
 				case target.includes('[black]'):
 				case target.includes('[setback]'):
-					array.push('<i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i>');
-					break;
+					return ('<i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i>');
 				case target.includes('[purple]'):
 				case target.includes('[difficulty]'):
-					array.push('<i class="ffi ffi-d8 ffi-border ffi-grpg-difficulty-color"></i>');
-					break;
+					return ('<i class="ffi ffi-d8 ffi-border ffi-grpg-difficulty-color"></i>');
 				case target.includes('[red]'):
 				case target.includes('[challenge]'):
-					array.push('<i class="ffi ffi-d12 ffi-border ffi-grpg-challenge-color"></i>');
-					break;
+					return ('<i class="ffi ffi-d12 ffi-border ffi-grpg-challenge-color"></i>');
 				case target.includes('[white]'):
-					array.push('<i class="ffi ffi-d12 ffi-border"></i>');
-					break;
+					return ('<i class="ffi ffi-d12 ffi-border"></i>');
 				case target.includes('[advantage]'):
 				case target.includes('[adv]'):
-					array.push('<i class="ffi ffi-grpg-advantage"></i>');
-					break;
+					return ('<i class="ffi ffi-grpg-advantage"></i>');
 				case target.includes('[success]'):
 				case target.includes('[suc]'):
-					array.push('<i class="ffi ffi-grpg-success"></i>');
-					break;
+					return ('<i class="ffi ffi-grpg-success"></i>');
 				case target.includes('[triumph]'):
 				case target.includes('[tri]'):
-					array.push('<i class="ffi ffi-grpg-triumph"></i>');
-					break;
+					return ('<i class="ffi ffi-grpg-triumph"></i>');
 				case target.includes('[threat]'):
 				case target.includes('[thr]'):
-					array.push('<i class="ffi ffi-grpg-threat"></i>');
-					break;
+					return ('<i class="ffi ffi-grpg-threat"></i>');
 				case target.includes('[failure]'):
 				case target.includes('[fail]'):
-					array.push('<i class="ffi ffi-grpg-failure"></i>');
-					break;
+					return ('<i class="ffi ffi-grpg-failure"></i>');
 				case target.includes('[despair]'):
 				case target.includes('[des]'):
-					array.push('<i class="ffi ffi-grpg-despair"></i>');
-					break;
+					return ('<i class="ffi ffi-grpg-despair"></i>');
+				case target === '[rmblackblack]':
+				case target === '[rmsetbacksetback]':
+					return (`<b>(-</b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i> <i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b>)</b>`);
 				case target.includes('[rmsetback]'):
 				case target.includes('[rmblack]'):
-					array.push(`<b>(-</b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b>)</b>`);
-					break;
+					return (`<b>(-</b><i class="ffi ffi-d6 ffi-border ffi-grpg-setback-color"></i><b>)</b>`);
 				case target.includes('[gm]'):
-					array.push(`<img src=${images.gm} class="textSymbols" /> `);
-					break;
+					return (`<img src=${images.gm} class="textSymbols" /> `);
 				case target.includes('[pc]'):
-					array.push(`<img src=${images.pc} class="textSymbols" /> `);
-					break;
+					return (`<img src=${images.pc} class="textSymbols" /> `);
 				default:
-					array.push(`${word}`);
-					break;
+					return (`${word}`);
 			}
 		});
 		let final = '';

@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Col, Input, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 
 class CharacterDescriptionComponent extends React.Component {
 	constructor(props) {

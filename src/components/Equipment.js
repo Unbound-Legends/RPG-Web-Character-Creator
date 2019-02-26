@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Button, Col, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 import {encumbranceLimit, equipmentStats, gearDice, skillDice, totalDefense, totalEncumbrance, totalSoak,} from '../selectors';
 import {DeleteButton, Description, Gear} from './index';
 

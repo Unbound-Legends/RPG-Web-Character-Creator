@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {Container} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser} from '../actions';
+import {changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser} from '../redux/actions';
 import {DataPage, Loading, MainPage, User, VehicleSelect} from './';
 import {CustomData} from './CustomData';
 

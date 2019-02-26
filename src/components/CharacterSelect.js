@@ -3,7 +3,7 @@ import {Typeahead} from 'react-bootstrap-typeahead';
 import {connect} from 'react-redux';
 import {Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../actions';
+import {addCharacter, changeCharacter, changeCharacterName, changeData, deleteCharacter, loadData} from '../redux/actions';
 import {Archetype, Career, ModalDeleteConfirm} from './';
 
 class CharacterSelectComponent extends React.Component {

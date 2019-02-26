@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Input, Row, Table} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import {changeData} from '../actions';
+import {changeData} from '../redux/actions';
 import {criticalText} from '../selectors';
 import {DeleteButton, Description} from './index';
 
