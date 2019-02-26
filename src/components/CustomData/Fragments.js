@@ -62,6 +62,10 @@ class FragmentComponent extends React.Component {
 								key={key}>{nameObj ? nameObj[key.toString()] ? nameObj[key.toString()].name : startCase(key) : startCase(key)}</option>
 					)}
 				</Input>);
+			case 'numberSelect':
+				return (<Input type='select' bsSize='sm' value={value} name={name} onChange={handleChange}>
+					{array.map(key => <option value={key} key={key}>{key}</option>)}
+				</Input>);
 			default:
 				break;
 		}

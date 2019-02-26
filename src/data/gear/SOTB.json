@@ -358,7 +358,9 @@
     "book": "SOTB",
     "page": 104,
     "modifier": {
-      "Perception": 1,
+      "Perception": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -370,7 +372,9 @@
     "book": "SOTB",
     "page": 104,
     "modifier": {
-      "Agility": 1,
+      "Agility": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -406,7 +410,9 @@
     "book": "SOTB",
     "page": 105,
     "modifier": {
-      "Athletics": 1,
+      "Athletics": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -418,7 +424,9 @@
     "book": "SOTB",
     "page": 105,
     "modifier": {
-      "Resilience": 1,
+      "Resilience": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -430,7 +438,9 @@
     "book": "SOTB",
     "page": 105,
     "modifier": {
-      "Vigilance": 1,
+      "Vigilance": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -442,8 +452,12 @@
     "book": "SOTB",
     "page": 105,
     "modifier": {
-      "Coordination": 1,
-      "Vigilance": 1,
+      "Coordination": [
+        "1 Free Rank"
+      ],
+      "Vigilance": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -455,9 +469,15 @@
     "book": "SOTB",
     "page": 105,
     "modifier": {
-      "KnowledgeSociety": 1,
-      "KnowledgeScience": 1,
-      "KnowledgeTheNet": 1,
+      "KnowledgeSociety": [
+        "1 Free Rank"
+      ],
+      "KnowledgeScience": [
+        "1 Free Rank"
+      ],
+      "KnowledgeTheNet": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },
@@ -470,9 +490,15 @@
     "book": "SOTB",
     "page": 106,
     "modifier": {
-      "KnowledgeSociety": 1,
-      "KnowledgeScience": 1,
-      "KnowledgeTheNet": 1,
+      "KnowledgeSociety": [
+        "1 Free Rank"
+      ],
+      "KnowledgeScience": [
+        "1 Free Rank"
+      ],
+      "KnowledgeTheNet": [
+        "1 Free Rank"
+      ],
       "strainThreshold": -1
     }
   },

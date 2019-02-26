@@ -30,6 +30,7 @@ class CustomEquipmentComponent extends React.Component {
 			qualityRank: '',
 			description: '',
 			specialQualities: '',
+			strainThreshold: 0,
 			qualityList: {},
 			modifier: false,
 			modifierValue: '',
@@ -56,8 +57,8 @@ class CustomEquipmentComponent extends React.Component {
 	handleSubmit = () => {
 		const {type} = this.props;
 		// noinspection JSUnusedLocalSymbols
-		const {range, damage, skill, critical, soak, defense, meleeDefense, rangedDefense, qualityList: qualities, modifierValue, modifier: mod, mode, qualityRank, specialQualities, ...rest} = this.state;
-		const modifier = mod ? {[mod]: modifierValue} : {};
+		const {range, damage, skill, critical, soak, defense, meleeDefense, rangedDefense, qualityList: qualities, modifierValue, modifier: mod, mode, qualityRank, specialQualities, strainThreshold, ...rest} = this.state;
+		const modifier = mod ? {[mod]: modifierValue, strainThreshold} : {};
 		let data;
 
 		if (type === 'customWeapons') data = {
@@ -120,15 +121,9 @@ class CustomEquipmentComponent extends React.Component {
 		event.preventDefault();
 	};
 
-	handleModifier = (event) => {
-		let modifierValue = 1;
-		if (chars.includes(event.target.value)) modifierValue = true;
-		this.setState({modifier: event.target.value, modifierValue});
-	};
-
 	buildField = (field) => {
 		const {type, skills, qualities} = this.props;
-		const {modifier, modifierValue, specialQualities, qualityList, qualityRank} = this.state;
+		const {modifier, modifierValue, specialQualities, qualityList, qualityRank, strainThreshold} = this.state;
 
 		switch (field) {
 			case 'name':
@@ -200,7 +195,7 @@ class CustomEquipmentComponent extends React.Component {
 					{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
 										   array={(Object.keys(skills).concat(modifiableAttributes, chars)).sort()}
 										   nameObj={skills}
-										   handleChange={this.handleModifier}/>}
+										   handleChange={(event) => this.setState({modifier: event.target.value, modifierValue: 1})}/>}
 
 					{modifier === 'careerSkills' &&
 					<Fragment type='inputSelect' title='modifierValue' value=''
@@ -211,13 +206,9 @@ class CustomEquipmentComponent extends React.Component {
 					<Fragment type='number' value={modifierValue} title='modifierValue'
 							  handleChange={(event) => this.setState({modifierValue: +event.target.value})}/>}
 
-					{chars.includes(modifier) &&
-					<Fragment type='inputSelect' title='Reduce Strain' array={[true, false]}
-							  nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}}
-							  value={modifierValue}
-							  blankOption={true}
-							  handleChange={(event) => this.setState({modifierValue: JSON.parse(event.target.value)})}/>
-					}
+					<Fragment type='numberSelect' title='Strain Threshold Modifier' array={[0, -1]}
+							  value={strainThreshold}
+							  handleChange={(event) => this.setState({strainThreshold: event.target.value})}/>
 
 					{Object.keys(skills).includes(modifier) &&
 					<Fragment type='inputSelect' title='modifierValue' value='' nameObj={diceNames}

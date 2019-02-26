@@ -1,6 +1,5 @@
 import {get} from 'lodash-es';
 import {createSelector} from 'reselect';
-import {chars} from '../data/lists';
 import * as selectors from './';
 
 const archetype = state => state.archetype;
@@ -18,27 +17,21 @@ const calcStrain = createSelector(
 			creationWillpower = get(creationCharacteristics, 'Willpower', 0);
 
 		//get all talents that modify strain
-
 		const talentModifier = Object.keys(talentCount).reduce((acc, talent) => {
 			return acc + +get(talents, `${talent}.modifier.strainThreshold`, 0) * talentCount[talent];
 		}, 0);
 
 		//check for Gear
-		let Gear = 0;
-		Object.keys(equipmentStats).forEach(key => {
-			const modifier = get(equipmentStats, `${key}.modifier`, {}),
+		const Gear = Object.keys(equipmentStats).map(key => {
+			const modifier = get(equipmentStats, `${key}.modifier.strainThreshold`, 0),
 				carried = get(equipmentStats, `${key}.carried`, false),
 				equipped = get(equipmentStats, `${key}.equipped`, false),
 				kind = get(equipmentStats, `${key}.type`, '');
 
-			if (carried) Gear += get(equipmentStats, `${key}.modifier.strainThreshold`, 0);
+			if ((carried && kind !== 'armor') || equipped) return +modifier;
+			else return 0;
+		}).reduce((acc, num) => acc + num, 0);
 
-			if (equipped || kind !== 'armor') {
-				Object.keys(modifier).forEach(type => {
-					if (chars.includes(type)) Gear--
-				});
-			}
-		});
 		return startingThreshold + startingWillpower + creationWillpower + talentModifier + Gear;
 	}
 );
