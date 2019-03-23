@@ -1,3 +1,5 @@
+# 1.7.4
+    added check to stop duplicate data import
 # 1.7.3
     SOTB equipment
 # 1.7.2

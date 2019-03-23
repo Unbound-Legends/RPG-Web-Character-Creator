@@ -13,6 +13,8 @@ export class Description extends React.Component {
 					return (`<a href="http://www.drivethrurpg.com/product/228813/Genesys-Core-Rulebook?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">CRB</a>`);
 				case target.replace(/[,"'.?<>{}[\]]/g, '') === 'rot':
 					return (`<a href="http://www.drivethrurpg.com/product/239561/Realms-of-Terrinoth?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">ROT</a>`);
+				case target.replace(/[,"'.?<>{}[\]]/g, '') === 'sotb':
+					return (`<a href="https://www.drivethrurpg.com/product/266756/Shadow-of-the-Beanstalk?affiliate_id=1131280" target="_blank" rel="noopener noreferrer">SOTB</a>`);
 				case target.includes('[blue]'):
 				case target.includes('[boost]'):
 					return ('<i class="ffi ffi-d6 ffi-border ffi-grpg-boost-color"></i>');

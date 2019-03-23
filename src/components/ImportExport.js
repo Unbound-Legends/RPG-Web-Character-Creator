@@ -79,7 +79,7 @@ class ImportExportComponent extends React.Component {
 					default:
 						final[type] = this.state[type].map(key => {
 							// noinspection JSUnusedLocalSymbols
-							let {read, write, id, ...item} = this.props[type][key];
+							let {read, write, ...item} = this.props[type][key];
 							return item;
 						});
 						resolve0();
@@ -183,8 +183,14 @@ class ImportExportComponent extends React.Component {
 						case 'customTalents':
 						case 'customVehicles':
 						case 'customWeapons':
-							file[type].forEach(data => this.props.addDataSet(type, data));
-							text += `${startCase(type)} Data Imported.\n`;
+							file[type].forEach(data => {
+								if (Object.keys(this.props[type]).some(id => id === data.id)) {
+									text += `${data.name}(${data.id}) not imported, already exists in database.\n`;
+								} else {
+									this.props.addDataSet(type, data);
+									text += `${startCase(type)} Data Imported.\n`;
+								}
+							});
 							break;
 						default:
 							text += `No ${startCase(type)} Data Imported.\n`;
