@@ -1,3 +1,5 @@
+# 1.7.5
+    fixed the career skills modifier on Equipment
 # 1.7.4
     added check to stop duplicate data import
 # 1.7.3

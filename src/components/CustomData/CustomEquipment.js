@@ -49,7 +49,10 @@ class CustomEquipmentComponent extends React.Component {
 	};
 
 	handleAddQuality = () => {
-		const data = {...clone(this.state.qualityList), [this.state.specialQualities]: this.state.qualityRank ? +this.state.qualityRank : ''};
+		const data = {
+			...clone(this.state.qualityList),
+			[this.state.specialQualities]: this.state.qualityRank ? +this.state.qualityRank : ''
+		};
 		this.setState({qualityList: data, specialQualities: '', qualityRank: ''});
 
 	};
@@ -116,7 +119,7 @@ class CustomEquipmentComponent extends React.Component {
 
 	handleList = (event) => {
 		const {modifierValue} = this.state,
-			arr = Array.isArray(modifierValue) ? [...modifierValue, event.target.value] : [];
+			arr = Array.isArray(modifierValue) ? [...modifierValue, event.target.value] : [event.target.value];
 		this.setState({modifierValue: arr});
 		event.preventDefault();
 	};
@@ -150,7 +153,8 @@ class CustomEquipmentComponent extends React.Component {
 								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'skill':
 				return <Fragment key={field} type='inputSelect' name={field} value={this.state[field]}
-								 array={Object.keys(skills).filter(skill => skills[skill].type === 'Combat')} nameObj={skills}
+								 array={Object.keys(skills).filter(skill => skills[skill].type === 'Combat')}
+								 nameObj={skills}
 								 handleChange={(event) => this.setState({[field]: event.target.value})}/>;
 			case 'specialQualities':
 				return (<div key={field}>
@@ -178,7 +182,8 @@ class CustomEquipmentComponent extends React.Component {
 						}
 
 						{Object.keys(qualityList).length > 0 &&
-						<Fragment type='list' title='Qualities List' array={Object.keys(qualityList)} object={qualityList} nameObj={qualities}
+						<Fragment type='list' title='Qualities List' array={Object.keys(qualityList)}
+								  object={qualityList} nameObj={qualities}
 								  handleClear={() => this.setState({qualityList: {}})}/>}
 					</div>
 				);
@@ -187,24 +192,36 @@ class CustomEquipmentComponent extends React.Component {
 								 handleChange={(event) => this.setState({description: event.target.value})}/>;
 			case 'modifier':
 				return (<div key={field}>
-					<Fragment type='inputSelect' title='modifier' array={[true, false]} nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}}
+					<Fragment type='inputSelect' title='modifier' array={[true, false]}
+							  nameObj={{true: {name: 'Yes'}, false: {name: 'No'}}}
 							  value={Boolean(modifier)}
 							  blankOption={false}
-							  handleChange={(event) => this.setState({modifier: JSON.parse(event.target.value), modifierValue: ''})}/>
+							  handleChange={(event) => this.setState({
+								  modifier: JSON.parse(event.target.value),
+								  modifierValue: ''
+							  })}/>
 
 					{modifier && <Fragment type='inputSelect' title='Attribute' value={modifier}
 										   array={(Object.keys(skills).concat(modifiableAttributes, chars)).sort()}
 										   nameObj={skills}
-										   handleChange={(event) => this.setState({modifier: event.target.value, modifierValue: 1})}/>}
+										   handleChange={(event) => this.setState({
+											   modifier: event.target.value,
+											   modifierValue: 1
+										   })}/>}
 
 					{modifier === 'careerSkills' &&
 					<Fragment type='inputSelect' title='modifierValue' value=''
-							  array={Object.keys(skills).filter(skill => !modifierValue.includes(skill))} nameObj={skills}
+							  array={Object.keys(skills).filter(skill => Array.isArray(modifierValue) ? !modifierValue.includes(skill) : true)}
+							  nameObj={skills}
 							  handleChange={this.handleList}/>}
 
 					{(modifiableAttributes.includes(modifier) && modifier !== 'careerSkills') &&
 					<Fragment type='number' value={modifierValue} title='modifierValue'
 							  handleChange={(event) => this.setState({modifierValue: +event.target.value})}/>}
+
+					{Array.isArray(modifierValue) &&
+					<Fragment type='list' title='modifierList' array={modifierValue} nameObj={{...skills, diceNames}}
+							  handleClear={() => this.setState({modifierValue: []})}/>}
 
 					<Fragment type='numberSelect' title='Strain Threshold Modifier' array={[0, -1]}
 							  value={strainThreshold}
@@ -215,9 +232,7 @@ class CustomEquipmentComponent extends React.Component {
 							  array={['[blue]', '[black]', '[rmblack]', '[success]', '[advantage]', '[failure]', '[threat]', '1 Free Rank', '2 Free Ranks', '3 Free Ranks', '4 Free Ranks', '5 Free Ranks',]}
 							  handleChange={this.handleList}/>}
 
-					{Array.isArray(modifierValue) &&
-					<Fragment type='list' title='modifierList' array={modifierValue} nameObj={{...skills, diceNames}}
-							  handleClear={() => this.setState({modifierValue: []})}/>}
+
 				</div>);
 			default:
 				return <div/>;
@@ -243,7 +258,8 @@ class CustomEquipmentComponent extends React.Component {
 			<div>
 				{this.getFields(type).map(field => this.buildField(field))}
 				{this.buildField('specialQualities')}
-				<ControlButtonSet mode={this.state.mode} type={type.replace('custom', '')} handleSubmit={this.handleSubmit}
+				<ControlButtonSet mode={this.state.mode} type={type.replace('custom', '')}
+								  handleSubmit={this.handleSubmit}
 								  onEditSubmit={this.handleSubmit} onEditCancel={this.initState}/>
 				<Table>
 					<thead>
@@ -257,17 +273,17 @@ class CustomEquipmentComponent extends React.Component {
 					Object.keys(this.props[type])
 						.sort((a, b) => this.props[type][a].name > this.props[type][b].name ? 1 : -1)
 						.map(key =>
-						<tr key={key}>
-							<td>{this.props[type][key].name}</td>
-							<td className='text-right'>
-								<ButtonGroup>
-									<Button name={key} type={type} onClick={this.handleEdit}>Edit</Button>
-									<Button name={key} type={type} onClick={this.handleDuplicate}>Duplicate</Button>
-									<DeleteButton name={key} type={type} onClick={this.handleDelete}/>
-								</ButtonGroup>
-							</td>
-						</tr>
-					)
+							<tr key={key}>
+								<td>{this.props[type][key].name}</td>
+								<td className='text-right'>
+									<ButtonGroup>
+										<Button name={key} type={type} onClick={this.handleEdit}>Edit</Button>
+										<Button name={key} type={type} onClick={this.handleDuplicate}>Duplicate</Button>
+										<DeleteButton name={key} type={type} onClick={this.handleDelete}/>
+									</ButtonGroup>
+								</td>
+							</tr>
+						)
 					}
 					</tbody>
 				</Table>
