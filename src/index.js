@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import 'core-js/es7/array';
-import 'core-js/fn/object/values';
-import 'core-js/fn/string/includes';
+import 'core-js/features/array';
+import 'core-js/features/object/values';
+import 'core-js/features/string/includes';
 import React from 'react';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import ReactDOM from 'react-dom';
