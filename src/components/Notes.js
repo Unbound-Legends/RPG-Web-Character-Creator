@@ -1,45 +1,57 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Input, Row} from 'reactstrap';
-import {bindActionCreators} from 'redux';
-import {changeData} from '../redux/actions';
+import { connect } from 'react-redux';
+import { Input, Row } from 'reactstrap';
+import { bindActionCreators } from 'redux';
+import { changeData } from '../redux/actions';
 
 class NotesComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			notes: props.description.notes
-		};
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+            notes: props.description.notes
+        };
+    }
 
-	render() {
-		const {notes} = this.state;
-		const {changeData, description, theme} = this.props;
-		return (
-			<div>
-				<Row className='justify-content-end'>
-					<div className={`header header-${theme}`}>NOTES</div>
-				</Row>
-				<hr/>
-				<Row className='justify-content-center mx-auto'>
-					<Input onBlur={() => changeData({...description, notes}, 'description')}
-						   onChange={(event) => this.setState({notes: event.target.value})}
-						   type='textarea'
-						   className='w-100' rows='31' maxLength='5000' value={notes}/>
-				</Row>
-			</div>
-
-		);
-	}
+    render() {
+        const { notes } = this.state;
+        const { changeData, description, theme } = this.props;
+        return (
+            <div>
+                <Row className="justify-content-end">
+                    <div className={`header header-${theme}`}>NOTES</div>
+                </Row>
+                <hr />
+                <Row className="justify-content-center mx-auto">
+                    <Input
+                        onBlur={() =>
+                            changeData({ ...description, notes }, 'description')
+                        }
+                        onChange={event =>
+                            this.setState({ notes: event.target.value })
+                        }
+                        type="textarea"
+                        className="w-100"
+                        rows="31"
+                        maxLength="5000"
+                        value={notes}
+                    />
+                </Row>
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-	return {
-		description: state.description,
-		theme: state.theme,
-	};
+    return {
+        description: state.description,
+        theme: state.theme
+    };
 };
 
-const matchDispatchToProps = dispatch => bindActionCreators({changeData}, dispatch);
+const matchDispatchToProps = dispatch =>
+    bindActionCreators({ changeData }, dispatch);
 
-export const Notes = connect(mapStateToProps, matchDispatchToProps)(NotesComponent);
+export const Notes = connect(
+    mapStateToProps,
+    matchDispatchToProps
+)(NotesComponent);

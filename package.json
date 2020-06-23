@@ -1,69 +1,77 @@
 {
-  "name": "rpg-web-character-creator",
-  "version": "1.7.4",
-  "description": "An open source character generator and manager for RPGs",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SkyJedi/RPG-Web-Character-Creator.git"
-  },
-  "keywords": [
-    "RPG",
-    "FFG",
-    "Genesys",
-    "character",
-    "creator",
-    "web"
-  ],
-  "author": "SkyJedi",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/SkyJedi/RPG-Web-Character-Creator/issues"
-  },
-  "dependencies": {
-    "@firebase/app": "^0.6.3",
-    "@firebase/app-types": "^0.6.0",
-    "@firebase/firestore": "^1.14.3",
-    "ajv": "^6.12.2",
-    "bootstrap": "^4.4.1",
-    "clone": "^2.1.2",
-    "core-js": "^3.6.5",
-    "deepmerge": "^3.0.0",
-    "firebase": "^7.14.3",
-    "keymaster": "^1.6.2",
-    "lodash-es": "^4.17.11",
-    "npm-run-all": "^4.1.5",
-    "popper.js": "^1.14.6",
-    "react": "^16.7.0",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-addons-transition-group": "^15.6.2",
-    "react-bootstrap-typeahead": "^3.2.4",
-    "react-dom": "^16.7.0",
-    "react-dynamic-font": "^2.0.1",
-    "react-firebaseui": "^3.1.2",
-    "react-ga": "^2.5.6",
-    "react-redux": "^6.0.0",
-    "react-scripts": "^3.4.1",
-    "react-tabs": "^3.0.0",
-    "react-transition-group": "^2.5.2",
-    "reactstrap": "^7.0.2",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
-    "seedrandom": "^2.4.4",
-    "sockjs-client": "^1.3.0",
-    "sw-rpg-icons": "^1.7.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "firebase deploy",
-    "deploy&build": "npm run build && firebase deploy"
-  },
-  "devDependencies": {},
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "name": "rpg-web-character-creator",
+    "version": "1.7.4",
+    "description": "An open source character generator and manager for RPGs",
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "lint": "eslint ./src/**.*",
+        "deploy": "npm run build && firebase deploy --only hosting"
+    },
+    "dependencies": {
+        "@firebase/app": "^0.6.3",
+        "@firebase/app-types": "^0.6.0",
+        "@firebase/firestore": "^1.14.3",
+        "ajv": "^6.12.2",
+        "bootstrap": "^4.4.1",
+        "clone": "^2.1.2",
+        "core-js": "^3.6.5",
+        "deepmerge": "^3.0.0",
+        "firebase": "^7.14.3",
+        "keymaster": "^1.6.2",
+        "lodash-es": "^4.17.11",
+        "npm-run-all": "^4.1.5",
+        "popper.js": "^1.14.6",
+        "react": "^16.7.0",
+        "react-addons-css-transition-group": "^15.6.2",
+        "react-addons-transition-group": "^15.6.2",
+        "react-bootstrap-typeahead": "^3.2.4",
+        "react-dom": "^16.7.0",
+        "react-dynamic-font": "^2.0.1",
+        "react-firebaseui": "^3.1.2",
+        "react-ga": "^2.5.6",
+        "react-redux": "^6.0.0",
+        "react-scripts": "^3.4.1",
+        "react-tabs": "^3.0.0",
+        "react-transition-group": "^2.5.2",
+        "reactstrap": "^7.0.2",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0",
+        "reselect": "^4.0.0",
+        "seedrandom": "^2.4.4",
+        "sockjs-client": "^1.3.0",
+        "sw-rpg-icons": "^1.7.1"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^3.4.0",
+        "@typescript-eslint/parser": "^3.4.0",
+        "eslint": "^7.3.1",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-react": "^7.20.0",
+        "prettier": "^2.0.5",
+        "typescript": "^3.9.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SkyJedi/RPG-Web-Character-Creator.git"
+    },
+    "keywords": [
+        "RPG",
+        "FFG",
+        "Genesys",
+        "character",
+        "creator",
+        "web"
+    ],
+    "author": "SkyJedi",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/SkyJedi/RPG-Web-Character-Creator/issues"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
 }
