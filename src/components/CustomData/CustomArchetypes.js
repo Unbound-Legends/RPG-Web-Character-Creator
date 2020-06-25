@@ -117,7 +117,7 @@ class CustomArchetypesComponent extends React.Component {
 					<Col>
 						{chars.map(stat =>
 							<div key={stat} className='m-2 text-center d-inline-block'>
-								<div className='imageBox m-auto'>
+								<div className={`imageBox characteristic characteristic-${stat} m-auto`}>
 									<img src={images[theme][stat]} alt='' className='svg'/>
 									<Row className={`characteristicValue characteristicValue-${theme}`}>{this.state[stat]}</Row>
 								</div>
@@ -134,7 +134,7 @@ class CustomArchetypesComponent extends React.Component {
 					<Col>
 						{['Wounds', 'Strain'].map(type =>
 							<div className='m-2 text-center d-inline-block' key={type}>
-								<div className='imageBox attribute'>
+								<div className={`imageBox attribute attribute-${upperFirst(type)}Threshold`}>
 									<img src={images[theme][`${upperFirst(type)}Threshold`]} alt='' className='svg'/>
 									<Row
 										className={`attributeValue attributeValue-${theme}-${upperFirst(type)}Threshold`}>{this.state[attributes[type]]}</Row>

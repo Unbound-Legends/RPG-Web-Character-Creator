@@ -1,4 +1,15 @@
 {
+  "Aembercraft": {
+    "name": "Æmbercraft",
+    "type": "General",
+    "characteristic": "Willpower",
+    "book": "KF",
+    "page": 69,
+    "setting": [
+      "Secrets of the Crucible",
+      "Keyforge"
+    ]
+  },
   "Alchemy": {
     "name": "Alchemy",
     "type": "General",
@@ -506,6 +517,39 @@
     "page": 43,
     "setting": [
       "Shadow of the Beanstalk"
+    ]
+  },
+  "KnowledgeAember": {
+    "name": "Knowledge Æmber",
+    "type": "Knowledge",
+    "characteristic": "Intellect",
+    "book": "KF",
+    "page": 163,
+    "setting": [
+      "Secrets of the Crucible",
+      "Keyforge"
+    ]
+  },
+  "KnowledgeCrucible": {
+    "name": "Knowledge Crucible",
+    "type": "Knowledge",
+    "characteristic": "Intellect",
+    "book": "KF",
+    "page": 71,
+    "setting": [
+      "Secrets of the Crucible",
+      "Keyforge"
+    ]
+  },
+  "KnowledgeCulture": {
+    "name": "Knowledge Culture",
+    "type": "Knowledge",
+    "characteristic": "Intellect",
+    "book": "KF",
+    "page": 72,
+    "setting": [
+      "Secrets of the Crucible",
+      "Keyforge"
     ]
   }
 }

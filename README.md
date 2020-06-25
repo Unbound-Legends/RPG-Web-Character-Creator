@@ -1,31 +1,17 @@
-# RPG-Web-Character-Creator
+# Genesys Emporium
 
-## Current Build
+## Current Production Build
+
 [The Genesys Emporium](https://genesysemporium.com)
 
-## Patrons
-- Caleb Smith
-- Chad Owen
-- Clynac
-- Esteban Riviera
-- Flobio
-- Gil Colgate
-- Jason Greathouse
-- Joonas Moisio
-- JP Sugarbroad
-- Matt Langhinrichs
-- Matthew R Martinez
-- Michael C Hershiser
-- Mitch Christenson
-- Nathan Montondon
-- Ohdias
-- Peter Cummuskey
-- Peter Por
-- Scott McNeil
-- Tommy R.
-- triplel
-- Xavi Santamaria
+## Community
 
-[Patreon](https://www.patreon.com/SkyJedi)
+[Support/Unbound Legends Discord](https://discord.gg/wc7BGW5)  
+[Genesys Community Discord](https://discord.gg/XphjJxM)
 
-[Fantasy Flight Games, Genesys](https://www.fantasyflightgames.com/en/products/genesys)
+## Misc
+
+Genesys was created by [Fantasy Flight Games, Genesys](https://www.fantasyflightgames.com/en/products/genesys).
+
+Genesys Emporium was originally created by [SkyJedi](https://twitter.com/SkyJedi).
+Go check him out, he's an awesome guy who has made many major contributions to the Genesys community.

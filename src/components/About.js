@@ -14,13 +14,13 @@ export const About = () => {
                 >
                     SkyJedi
                 </a>
-                . Questions? Comments?&nbsp;
+                . Maintained by&nbsp;
                 <a
-                    href="mailto:info@genesysemporium.com?subject=Genesys%20Emporium%20Feedback"
+                    href="https://discord.gg/cpcred4"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Contact Me
+                    Unbound Legends
                 </a>
                 .
             </Row>
@@ -47,39 +47,29 @@ export const About = () => {
                     target="_blank"
                     className="p-0 m-2"
                 >
-                    Discord
-                </Button>
-            </Row>
-            <Row className="justify-content-center">
-                <Button
-                    color="link"
-                    href="https://paypal.me/SkyJedi"
-                    target="_blank"
-                    className="p-0 m-2"
-                >
-                    Donate
+                    Genesys Community Discord
                 </Button>
                 <Button
                     color="link"
-                    href="https://patreon.com/SkyJedi"
+                    href="https://discord.gg/cpcred4"
                     target="_blank"
                     className="p-0 m-2"
                 >
-                    Patreon
+                    Unbound Legends Discord
                 </Button>
             </Row>
             <Row className="justify-content-center">
                 Contributions by Nick Holmstead.
             </Row>
             <Row className="justify-content-center">
-                Images by DrainSmith&nbsp;
+                Images by&nbsp;
                 <a
                     href="http://bigevil.net"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    http://bigevil.net
-                </a>
+                    DrainSmith
+                </a>.
                 &nbsp;
             </Row>
             <Row className="justify-content-center">
@@ -103,7 +93,7 @@ export const About = () => {
             </Row>
             <Row className="justify-content-center">
                 <a
-                    href="https://github.com/SkyJedi/RPG-Web-Character-Creator"
+                    href="https://github.com/Unbound-Legends/RPG-Web-Character-Creator"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

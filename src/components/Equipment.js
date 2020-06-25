@@ -232,15 +232,27 @@ class EquipmentComponent extends React.Component {
                     <div className={`header header-${theme}`}>EQUIPMENT</div>
                 </Row>
                 <hr />
-                <Row className="my-2">
-                    <b className="my-auto">MONEY:&nbsp;</b>
-                    <Input
-                        type="number"
-                        value={money > 0 ? money : ''}
-                        onBlur={() => changeData(money, 'money')}
-                        onChange={this.handleChangeMoney}
-                        className="w-25"
-                    />
+                <Row className="my-4">
+                    <div className="col">
+                        <b className="my-auto">MONEY:&nbsp;</b>
+                        <Input
+                            type="number"
+                            value={money > 0 ? money : ''}
+                            onBlur={() => changeData(money, 'money')}
+                            onChange={this.handleChangeMoney}
+                            className="w-25"
+                        />
+                    </div>
+                    <div className="col">
+                        <b className="my-auto">Æmber:&nbsp;</b>
+                        <Input
+                            type="number"
+                            value={money > 0 ? money : ''}
+                            onBlur={() => changeData(money, 'money')}
+                            onChange={this.handleChangeMoney}
+                            className="w-25"
+                        />
+                    </div>
                 </Row>
                 <Row className="m-1">
                     <Col>

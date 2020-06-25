@@ -73,7 +73,7 @@ class CharacteristicsComponent extends React.Component {
                     <Row className="justify-content-center">
                         {chars.map(stat => (
                             <div key={stat} className="m-2 text-center">
-                                <div className="imageBox">
+                                <div className={`imageBox characteristic characteristic-${stat}`}>
                                     <img
                                         src={images[theme][stat]}
                                         alt=""

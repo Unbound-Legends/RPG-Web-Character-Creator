@@ -31,7 +31,7 @@ class AttributesComponent extends React.Component {
                 </Row>
                 <hr />
                 <Row className="my-2 justify-content-center">
-                    <div className="imageBox attribute">
+                    <div className="imageBox attribute attribute-wounds">
                         <img
                             src={images[theme].Wounds}
                             alt=""
@@ -62,7 +62,7 @@ class AttributesComponent extends React.Component {
                             />
                         </Row>
                     </div>
-                    <div className="imageBox attribute">
+                    <div className="imageBox attribute attribute-strain">
                         <img
                             src={images[theme].Strain}
                             alt=""
@@ -93,7 +93,7 @@ class AttributesComponent extends React.Component {
                             />
                         </Row>
                     </div>
-                    <div className="imageBox attribute">
+                    <div className="imageBox attribute attribute-soak">
                         <img src={images[theme].Soak} alt="" className="svg" />
                         <Row
                             className={`attributeValue attributeValue-${theme}-Soak`}
@@ -101,7 +101,7 @@ class AttributesComponent extends React.Component {
                             {totalSoak}
                         </Row>
                     </div>
-                    <div className="imageBox attribute">
+                    <div className="imageBox attribute attribute-defense">
                         <img
                             src={images[theme].Defense}
                             alt=""

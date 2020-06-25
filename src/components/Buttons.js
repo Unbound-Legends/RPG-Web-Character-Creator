@@ -7,10 +7,10 @@ import { UserButton } from './';
 import { PrintLayout } from './printLayout/index';
 
 class ButtonsComponent extends React.Component {
-    render() {
+    render () {
         const { changePrintContent, theme, themes, changeData } = this.props;
         return (
-            <Row className="m-1 justify-content-between d-print-none">
+            <Row className="m-1 justify-content-between d-print-none theme-select-container">
                 <Col
                     className="d-inline-flex"
                     sm={4}
@@ -37,7 +37,7 @@ class ButtonsComponent extends React.Component {
                             ))}
                     </Input>
                 </Col>
-                <Col sm="4" className="text-right">
+                <div className="text-right print-button-container">
                     <ButtonGroup>
                         <Button
                             size="sm"
@@ -45,25 +45,9 @@ class ButtonsComponent extends React.Component {
                         >
                             Print
                         </Button>
-                        <Button
-                            size="sm"
-                            onClick={() =>
-                                window.open('https://paypal.me/SkyJedi')
-                            }
-                        >
-                            Donate
-                        </Button>
-                        <Button
-                            size="sm"
-                            onClick={() =>
-                                window.open('https://patreon.com/SkyJedi')
-                            }
-                        >
-                            Patreon
-                        </Button>
                         <UserButton />
                     </ButtonGroup>
-                </Col>
+                </div>
             </Row>
         );
     }

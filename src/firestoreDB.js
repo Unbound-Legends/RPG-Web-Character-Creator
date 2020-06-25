@@ -12,6 +12,8 @@ const config = {
     messagingSenderId: process.env.REACT_APP_messagingSenderId
 };
 
+console.log('Config:', process.env);
+
 firebase.initializeApp(config);
 const firestore = firebase.firestore();
 const settings = {};

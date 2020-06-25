@@ -17,7 +17,7 @@ class Component extends React.Component {
 				<hr/>
 				<Row className='justify-content-center'>
 					{chars.map(stat =>
-						<div className='imageBox' key={stat}>
+						<div className={`imageBox characteristic characteristic-${stat}`} key={stat}>
 							<img src={images[theme][stat]} alt='' className='svg'/>
 							<Row className={`characteristicValue characteristicValue-${theme}`}>{characteristics[stat]}</Row>
 						</div>

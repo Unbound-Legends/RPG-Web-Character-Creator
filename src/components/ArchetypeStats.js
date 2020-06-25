@@ -34,7 +34,7 @@ class ArchetypeStatsComponent extends React.Component {
                 </Row>
                 <Row className="justify-content-center my-2">
                     {chars.map(stat => (
-                        <div className="imageBox" key={stat}>
+                        <div className={`imageBox characteristic characteristic-${stat}`} key={stat}>
                             <img
                                 src={images[theme][stat]}
                                 alt=""
@@ -50,7 +50,7 @@ class ArchetypeStatsComponent extends React.Component {
                 </Row>
                 {masterArchetype && (
                     <Row className="justify-content-center my-2">
-                        <div className="imageBox attribute">
+                        <div className="imageBox attribute attribute-WoundsThreshold">
                             <img
                                 src={images[theme].WoundsThreshold}
                                 alt=""
@@ -62,7 +62,7 @@ class ArchetypeStatsComponent extends React.Component {
                                 {masterArchetype.woundThreshold}
                             </Row>
                         </div>
-                        <div className="imageBox attribute">
+                        <div className="imageBox attribute attribute-StrainThreshold">
                             <img
                                 src={images[theme].StrainThreshold}
                                 alt=""
