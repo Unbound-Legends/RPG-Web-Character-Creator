@@ -35,6 +35,7 @@ export const masterSkills = {};
 export const masterTalents = { 1: { 1: '' } };
 export const misc = null;
 export const money = 0;
+export const aember = 0;
 export const setting = ['All'];
 export const talentModifiers = { Dedication: {} };
 export const theme = 'CRB';

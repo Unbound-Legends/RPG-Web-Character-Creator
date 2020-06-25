@@ -17,6 +17,7 @@ export const dataTypes = [
     'masterTalents',
     'misc',
     'money',
+    'aember',
     'setting',
     'talentModifiers',
     'theme',

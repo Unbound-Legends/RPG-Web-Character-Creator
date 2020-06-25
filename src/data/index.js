@@ -46,7 +46,12 @@ export const craftsmanship = merge.all([
     craftsmanshipSOTB
 ]);
 export const gear = merge.all([gearCRB, gearROT, gearSOTB]);
-export const talents = merge.all([talentsCRB, talentsROT, talentsSOTB, talentsKF]);
+export const talents = merge.all([
+    talentsCRB,
+    talentsROT,
+    talentsSOTB,
+    talentsKF
+]);
 export const weapons = merge.all([weaponsCRB, weaponsROT, weaponsSOTB]);
 export const vehicles = merge.all([vehiclesCRB, vehiclesROT, vehiclesSOTB]);
 

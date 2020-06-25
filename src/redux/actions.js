@@ -35,7 +35,7 @@ export const loadData = () => {
     return (dispatch, getState) => {
         dispatch({ type: 'loadingData_Changed', payload: true });
         const { user, character } = getState();
-        let unsub = {};
+        const unsub = {};
         dataTypes.forEach((type, index) => {
             unsub[type] = db
                 .doc(`users/${user}/data/characters/${character}/${type}/`)
@@ -44,11 +44,12 @@ export const loadData = () => {
                         let payload = null;
                         if (doc.exists) payload = doc.data().data;
                         dispatch({ type: `${type}_Changed`, payload: payload });
-                        if (index + 1 >= dataTypes.length)
+                        if (index + 1 >= dataTypes.length) {
                             dispatch({
                                 type: 'loadingData_Changed',
                                 payload: false
                             });
+                        }
                     },
                     error => {
                         if (!getState().user) unsub[type]();

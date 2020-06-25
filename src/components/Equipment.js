@@ -22,6 +22,7 @@ class EquipmentComponent extends React.Component {
         super(props);
         this.state = {
             money: props.money,
+            aember: props.aember || 0,
             equipModal: false
         };
     }
@@ -29,6 +30,12 @@ class EquipmentComponent extends React.Component {
     handleChangeMoney = event => {
         let number = +event.target.value.replace(/\D+/g, '');
         if (!(number > 9999999999)) this.setState({ money: number });
+        event.preventDefault();
+    };
+
+    handleChangeAember = event => {
+        let number = +event.target.value.replace(/\D+/g, '');
+        if (!(number > 9999999999)) this.setState({ aember: number });
         event.preventDefault();
     };
 
@@ -225,7 +232,7 @@ class EquipmentComponent extends React.Component {
             changeData,
             theme
         } = this.props;
-        const { money, equipModal } = this.state;
+        const { money, equipModal, aember } = this.state;
         return (
             <div>
                 <Row className="justify-content-end">
@@ -243,16 +250,18 @@ class EquipmentComponent extends React.Component {
                             className="w-25"
                         />
                     </div>
-                    <div className="col">
-                        <b className="my-auto">Æmber:&nbsp;</b>
-                        <Input
-                            type="number"
-                            value={money > 0 ? money : ''}
-                            onBlur={() => changeData(money, 'money')}
-                            onChange={this.handleChangeMoney}
-                            className="w-25"
-                        />
-                    </div>
+                    {theme === 'KF' && (
+                        <div className="col">
+                            <b className="my-auto">ÆMBER:&nbsp;</b>
+                            <Input
+                                type="number"
+                                value={aember > 0 ? aember : ''}
+                                onBlur={() => changeData(aember, 'aember')}
+                                onChange={this.handleChangeAember}
+                                className="w-25"
+                            />
+                        </div>
+                    )}
                 </Row>
                 <Row className="m-1">
                     <Col>
@@ -446,6 +455,7 @@ const mapStateToProps = state => {
         gear: state.gear,
         gearDice: gearDice(state),
         money: state.money,
+        aember: state.aember,
         qualities: state.qualities,
         skillDice: skillDice(state),
         skills: state.skills,

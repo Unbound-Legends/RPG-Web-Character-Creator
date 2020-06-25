@@ -74,6 +74,7 @@ export const masterTalents = (state, action) =>
     dataReducer('masterTalents', state, action);
 export const misc = (state, action) => dataReducer('misc', state, action);
 export const money = (state, action) => dataReducer('money', state, action);
+export const aember = (state, action) => dataReducer('aember', state, action);
 export const setting = (state, action) => dataReducer('setting', state, action);
 export const talentModifiers = (state, action) =>
     dataReducer('talentModifiers', state, action);
@@ -84,12 +85,12 @@ export const vehicleNotes = (state, action) =>
 export const vehicleType = (state, action) =>
     dataReducer('vehicleType', state, action);
 
-//THE data model
+// THE data model
 export const motivation = (type, state, action, custom = false) => {
     const name = ['customArmor', 'customGear', 'customWeapons'].includes(type)
-            ? camelCase(get(action, 'payload.name', 'unnamed'))
-            : upperFirst(camelCase(get(action, 'payload.name', 'unnamed'))),
-        id = get(action, 'payload.id');
+        ? camelCase(get(action, 'payload.name', 'unnamed'))
+        : upperFirst(camelCase(get(action, 'payload.name', 'unnamed')));
+    const id = get(action, 'payload.id');
     switch (action.type) {
         case `${type}_Added`:
             return merge(state, { [custom ? id : name]: action.payload });
