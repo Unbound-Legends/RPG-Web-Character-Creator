@@ -66,7 +66,6 @@ class ArchetypeSkillsComponent extends React.Component {
                     ))}
                 </Row>
             );
-            console.log('List:', list);
         } else {
             list = Object.keys(masterArchetype.skills).includes('any')
                 ? skills
@@ -101,7 +100,10 @@ class ArchetypeSkillsComponent extends React.Component {
                                     key
                                 ) && (
                                     <option value={key} name={key} key={key}>
-                                        {skills[key].name} ({list[key]})
+                                        {skills[key].name}{' '}
+                                        {typeof list[key] === 'number'
+                                            ? `(${list[key]})`
+                                            : '(1)'}
                                     </option>
                                 )
                         )}
@@ -118,7 +120,7 @@ class ArchetypeSkillsComponent extends React.Component {
                             .map(skill =>
                                 skills[skill]
                                     ? skills[skill].name +
-                                      (list[skill] ? ` (${list[skill]})` : '')
+                                      (typeof list[skill] === 'number' ? ` (${list[skill]})` : ' (1)')
                                     : skill
                             )
                             .join(', ')}
