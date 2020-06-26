@@ -16,17 +16,23 @@ class ArchetypeSkillsComponent extends React.Component {
         } = this.props;
         const masterArchetypeSkills = archetypes[archetype].skills;
         let obj = {};
-        if (
-            masterArchetypeSkills.choice >
-            Object.keys(archetypeSpecialSkills).length
-        ) {
+        let count = 0;
+        if (masterArchetypeSkills?.choose) {
+            count = masterArchetypeSkills?.choose?.count || 1;
+        } else {
+            count = masterArchetypeSkills.choice;
+        }
+        if (count > Object.keys(archetypeSpecialSkills).length) {
             obj = clone(archetypeSpecialSkills);
         } else changeData('', 'archetypeSpecialSkills');
         obj[event.target.value] = {
             rank: Object.keys(masterArchetypeSkills).includes('any')
                 ? masterArchetypeSkills.any
-                : masterArchetypeSkills[event.target.value]
+                : masterArchetypeSkills[event.target.value] ||
+                  masterArchetypeSkills?.choose?.skills?.[event.target.value] ||
+                  1
         };
+
         changeData(obj, 'archetypeSpecialSkills');
     };
 
@@ -41,24 +47,44 @@ class ArchetypeSkillsComponent extends React.Component {
         } = this.props;
         const masterArchetype = archetypes[archetype];
         const careerSkills = get(careers, `${career}.skills`, []);
-        let list = Object.keys(masterArchetype.skills).includes('any')
-            ? Object.keys(skills)
-            : Object.keys(masterArchetype.skills);
+        let list = [];
+        let count = 0;
+        let existing = <></>;
+        if (masterArchetype?.skills?.choose) {
+            count = masterArchetype?.skills?.choose?.count || 1;
+            list = masterArchetype?.skills?.choose?.skills || {};
+            const masterArchetypeSkills = Object.keys(
+                masterArchetype?.skills
+            ).filter(x => x !== 'choose' && x !== 'choice');
+            existing = (
+                <Row>
+                    {masterArchetypeSkills.map((skill, index) => (
+                        <div key={index}>
+                            {masterArchetype?.skills[skill]} rank in{' '}
+                            {skills[skill]?.name}
+                        </div>
+                    ))}
+                </Row>
+            );
+            console.log('List:', list);
+        } else {
+            list = Object.keys(masterArchetype.skills).includes('any')
+                ? skills
+                : masterArchetype.skills;
+        }
 
         if (archetype === null) return <div />;
-        if (Object.keys(masterArchetype.skills).includes('choice')) {
+        const keys = Object.keys(masterArchetype.skills);
+        if (keys.includes('choice') || keys.includes('choose')) {
             return (
                 <Col>
+                    {existing}
                     <Row>
-                        Select {masterArchetype.skills.choice}{' '}
-                        {masterArchetype.skills.choice > 1
+                        Select {count || masterArchetype.skills.choice}{' '}
+                        {(count || masterArchetype.skills.choice) > 1
                             ? 'options'
                             : 'option'}{' '}
-                        to get{' '}
-                        {Object.keys(masterArchetype.skills).includes('any')
-                            ? masterArchetype.skills.any
-                            : 1}{' '}
-                        {masterArchetype.skills.any > 1 ? 'ranks' : 'rank'}:
+                        to get free rank(s)
                     </Row>
                     <Input
                         type="select"
@@ -68,23 +94,32 @@ class ArchetypeSkillsComponent extends React.Component {
                         onChange={this.handleCheck}
                     >
                         <option value="" />
-                        {list.map(
+                        {Object.keys(list).map(
                             key =>
                                 skills[key] &&
                                 !Object.keys(archetypeSpecialSkills).includes(
                                     key
-                                ) &&
-                                !careerSkills.includes(key) && (
+                                ) && (
                                     <option value={key} name={key} key={key}>
-                                        {skills[key].name}
+                                        {skills[key].name} ({list[key]})
                                     </option>
                                 )
                         )}
                     </Input>
                     <Row className="my-2">
                         {Object.keys(archetypeSpecialSkills)
+                            .filter(
+                                x =>
+                                    // Ignore skills that are given with choice skills,
+                                    // if choice skills are available. If we don't do the
+                                    // or, we'll filter out skills from `choose`
+                                    keys.includes('choice') || !keys.includes(x)
+                            )
                             .map(skill =>
-                                skills[skill] ? skills[skill].name : skill
+                                skills[skill]
+                                    ? skills[skill].name +
+                                      (list[skill] ? ` (${list[skill]})` : '')
+                                    : skill
                             )
                             .join(', ')}
                     </Row>
@@ -105,9 +140,10 @@ class ArchetypeSkillsComponent extends React.Component {
         }
         return (
             <div>
-                {list.map(key => (
+                {Object.keys(list).map(key => (
                     <Col key={key}>
-                        {masterArchetype.skills[key]} rank in {key}
+                        {masterArchetype.skills[key]} rank in{' '}
+                        {skills[key]?.name || key}
                     </Col>
                 ))}
             </div>

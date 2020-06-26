@@ -2,9 +2,11 @@ import * as merge from 'deepmerge';
 import { default as archetypesCRB } from './archetypes/CRB.json';
 import { default as archetypesROT } from './archetypes/ROT.json';
 import { default as archetypesSOTB } from './archetypes/SOTB.json';
+import { default as archetypesKF } from './archetypes/KF.json';
 import { default as archetypeTalentsCRB } from './archetypeTalents/CRB.json';
 import { default as archetypeTalentsROT } from './archetypeTalents/ROT.json';
 import { default as archetypeTalentsSOTB } from './archetypeTalents/SOTB.json';
+import { default as archetypeTalentsKF } from './archetypeTalents/KF.json';
 import { default as armorCRB } from './armor/CRB.json';
 import { default as armorROT } from './armor/ROT.json';
 import { default as armorSOTB } from './armor/SOTB.json';
@@ -31,12 +33,14 @@ import { default as weaponsSOTB } from './weapons/SOTB.json';
 export const archetypes = merge.all([
     archetypesCRB,
     archetypesROT,
-    archetypesSOTB
+    archetypesSOTB,
+    archetypesKF
 ]);
 export const archetypeTalents = merge.all([
     archetypeTalentsCRB,
     archetypeTalentsROT,
-    archetypeTalentsSOTB
+    archetypeTalentsSOTB,
+    archetypeTalentsKF
 ]);
 export const armor = merge.all([armorCRB, armorROT, armorSOTB]);
 export const careers = merge.all([careersCRB, careersROT, careersSOTB]);

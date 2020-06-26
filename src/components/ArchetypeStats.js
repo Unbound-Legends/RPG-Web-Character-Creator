@@ -10,12 +10,12 @@ import { ArchetypeSkills, Description } from './index';
 
 class ArchetypeStatsComponent extends React.Component {
     handleSelect = event => {
-        let obj = clone(this.props.misc);
+        const obj = clone(this.props.misc);
         obj.archetypeTalents = event.target.value;
         this.props.changeData(obj, 'misc');
     };
 
-    render() {
+    render () {
         const {
             archetype,
             archetypes,
@@ -34,7 +34,10 @@ class ArchetypeStatsComponent extends React.Component {
                 </Row>
                 <Row className="justify-content-center my-2">
                     {chars.map(stat => (
-                        <div className={`imageBox characteristic characteristic-${stat}`} key={stat}>
+                        <div
+                            className={`imageBox characteristic characteristic-${stat}`}
+                            key={stat}
+                        >
                             <img
                                 src={images[theme][stat]}
                                 alt=""
@@ -120,33 +123,33 @@ class ArchetypeStatsComponent extends React.Component {
                                     {archetypeTalents[talent].modifier &&
                                         archetypeTalents[talent].modifier
                                             .archetypeTalents && (
-                                            <Row>
-                                                <Label
-                                                    for="selector"
-                                                    className="py-0"
-                                                    sm="5"
+                                        <Row>
+                                            <Label
+                                                for="selector"
+                                                className="py-0"
+                                                sm="5"
+                                            >
+                                                <b>Select One</b>
+                                            </Label>
+                                            <Col>
+                                                <Input
+                                                    id="selector"
+                                                    type="select"
+                                                    bsSize="sm"
+                                                    value={
+                                                        misc
+                                                            ? misc.archetypeTalents
+                                                            : ''
+                                                    }
+                                                    onChange={
+                                                        this.handleSelect
+                                                    }
                                                 >
-                                                    <b>Select One</b>
-                                                </Label>
-                                                <Col>
-                                                    <Input
-                                                        id="selector"
-                                                        type="select"
-                                                        bsSize="sm"
-                                                        value={
-                                                            misc
-                                                                ? misc.archetypeTalents
-                                                                : ''
-                                                        }
-                                                        onChange={
-                                                            this.handleSelect
-                                                        }
-                                                    >
-                                                        <option value="" />
-                                                        {archetypeTalents[
-                                                            talent
-                                                        ].modifier
-                                                            .archetypeTalents &&
+                                                    <option value="" />
+                                                    {archetypeTalents[
+                                                        talent
+                                                    ].modifier
+                                                        .archetypeTalents &&
                                                             archetypeTalents[
                                                                 talent
                                                             ].modifier.archetypeTalents
@@ -168,10 +171,10 @@ class ArchetypeStatsComponent extends React.Component {
                                                                         }
                                                                     </option>
                                                                 ))}
-                                                    </Input>
-                                                </Col>
-                                            </Row>
-                                        )}
+                                                </Input>
+                                            </Col>
+                                        </Row>
+                                    )}
                                 </Col>
                             )
                     )}
