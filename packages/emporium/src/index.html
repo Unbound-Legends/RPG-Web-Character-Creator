@@ -19,21 +19,6 @@
     <body id="body">
         <div id="root"></div>
         <script>
-            if ('serviceWorker' in (window?.navigator || {})) {
-                window?.addEventListener('load', () => {
-                    navigator.serviceWorker
-                        .register('/assets/service-worker.js')
-                        .then(registration => {
-                            // Registration was successful
-                            console.log(
-                                'ServiceWorker registration successful with scope: ',
-                                registration.scope
-                            );
-                        }, console.error);
-                });
-            } else {
-                console.warn('Service worker is not supported');
-            }
         </script>
     </body>
 </html>

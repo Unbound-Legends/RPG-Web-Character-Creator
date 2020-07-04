@@ -11,6 +11,8 @@ import './app.scss';
 import { DataPage, Loading, MainPage, User, VehicleSelect } from './components';
 import { CustomData } from './components/CustomData';
 
+declare const window: any;
+
 class AppComponent extends React.Component<any> {
     public readonly state = { loading: true };
 
@@ -23,6 +25,22 @@ class AppComponent extends React.Component<any> {
             }
             this.setState({ loading: false });
         });
+
+        if ('serviceWorker' in (window?.navigator || {})) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker
+                    .register('/assets/service-worker.js')
+                    .then(registration => {
+                        // Registration was successful
+                        console.log(
+                            'ServiceWorker registration successful with scope: ',
+                            registration.scope
+                        );
+                    }, console.error);
+            });
+        } else {
+            console.warn('Service worker is not supported');
+        }
     }
 
     public componentWillReceiveProps(nextProps): void {
