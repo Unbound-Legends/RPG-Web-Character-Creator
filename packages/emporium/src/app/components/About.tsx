@@ -99,7 +99,7 @@ export const About = () => {
                     Source Code
                 </a>
                 {/* TODO: Add dynamic version support that doesn't use package.json */}
-                &nbsp;v1.8.0
+                &nbsp;v0.2.0.0
             </Row>
         </div>
     );

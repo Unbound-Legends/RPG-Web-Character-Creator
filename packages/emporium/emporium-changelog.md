@@ -1,3 +1,8 @@
+# 0.2.0.0
+    Added pre-major version number (0) to indicate major UI changes vs code changes
+    Several breaking changes to the code revolving around converting to an [nx](https://nx.dev) project and supporting typescript
+    Several minor bug fixes that got highlighted due to typescript support
+    Added Discord link to loading screen in case the app got stuck loading for some reason (so people would know where to find us)
 # 1.8.0
     Added support for Keyforge, Keyforge talents
     Added support for choosing multiple skills from a list in an archetype when being provided one by default

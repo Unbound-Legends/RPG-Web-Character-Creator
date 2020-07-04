@@ -26,6 +26,10 @@ export class Loading extends React.Component<any, any> {
                     className="w-50 mx-auto"
                     value={this.state.time}
                 />
+                <div>
+                    Comments? Questions? Concerns?<br />
+                    <a href="https://discord.gg/wc7BGW5">Join our Discord!</a>
+                </div>
             </div>
         );
     }
