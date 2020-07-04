@@ -10,7 +10,7 @@
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
     "emproium": "nx serve emporium",
-    "emporium-deploy": "npm run affected:build emporium && firebase deploy --only hosting",
+    "emporium-deploy": "npm run build emporium --prod && firebase deploy --only hosting",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
