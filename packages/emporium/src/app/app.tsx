@@ -1,3 +1,4 @@
+import { changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser } from '@emporium/actions';
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import React from 'react';
@@ -6,7 +7,6 @@ import { connect } from 'react-redux';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { Container } from 'reactstrap';
 import { bindActionCreators } from 'redux';
-import { changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser } from '../redux/actions';
 import './app.scss';
 import { DataPage, Loading, MainPage, User, VehicleSelect } from './components';
 import { CustomData } from './components/CustomData';
@@ -15,7 +15,7 @@ class AppComponent extends React.Component<any> {
     public readonly state = { loading: true };
 
     public componentWillMount(): void {
-        ReactGA.initialize(process.env.REACT_APP_gaID);
+        ReactGA.initialize(process.env.NX_gaID);
         ReactGA.pageview(window.location.pathname);
         firebase.auth().onAuthStateChanged(user => {
             if (user) {

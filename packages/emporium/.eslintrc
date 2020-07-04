@@ -6,7 +6,7 @@
     "@typescript-eslint/no-empty-function": "off",
     "array-callback-return": "warn",
     "dot-location": ["warn", "property"],
-    "eqeqeq": ["warn", "smart"],
+    "eqeqeq": ["error", "smart"],
     "new-parens": "warn",
     "no-caller": "warn",
     "no-cond-assign": ["warn", "except-parens"],
