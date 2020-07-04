@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="shortcut icon" href="/assets/images/emporium.png" />
+        <link rel="manifest" href="/assets/manifest.json" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#536878" />
+        <noscript>
+            Your browser does not support JavaScript and I NEEDS IT!
+        </noscript>
+        <title>Genesys Emporium</title>
+    </head>
+    <body id="body">
+        <div id="root"></div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker
+                        .register('/assets/service-worker.js')
+                        .then(registration => {
+                            // Registration was successful
+                            console.log(
+                                'ServiceWorker registration successful with scope: ',
+                                registration.scope
+                            );
+                        }, console.error);
+                });
+            } else {
+                console.warn('Service worker is not supported');
+            }
+        </script>
+    </body>
+</html>

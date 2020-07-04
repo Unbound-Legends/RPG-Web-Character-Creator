@@ -1,0 +1,149 @@
+{
+  "Natural": {
+    "name": "Natural",
+    "book": "SOTB",
+    "page": 25,
+    "description": "See SOTB, page 25, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "woundThreshold": 10,
+    "strainThreshold": 10,
+    "experience": 120,
+    "skills": {
+      "choice": 2,
+      "any": 1
+    },
+    "talents": [
+      "ReadyForAnything"
+    ],
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
+  },
+  "Bioroid": {
+    "name": "Bioroid",
+    "book": "SOTB",
+    "page": 26,
+    "description": "See SOTB, page 26, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "woundThreshold": 11,
+    "strainThreshold": 8,
+    "experience": 170,
+    "skills": {},
+    "talents": [
+      "Inorganic"
+    ],
+    "Brawn": 3,
+    "Agility": 1,
+    "Intellect": 1,
+    "Cunning": 1,
+    "Willpower": 1,
+    "Presence": 1
+  },
+  "CloneSOTB": {
+    "name": "Clone",
+    "book": "SOTB",
+    "page": 27,
+    "description": "See SOTB, page 27, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "woundThreshold": 9,
+    "strainThreshold": 9,
+    "experience": 85,
+    "skills": {
+      "choice": 2,
+      "any": 2
+    },
+    "talents": [
+      "Underestimated"
+    ],
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
+  },
+  "Cyborg": {
+    "name": "Cyborg",
+    "book": "SOTB",
+    "page": 28,
+    "description": "See SOTB, page 28, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "woundThreshold": 11,
+    "strainThreshold": 8,
+    "experience": 100,
+    "skills": {
+      "Mechanics": 1
+    },
+    "talents": [
+      "AdjustedToCybernetics",
+      "Cyborg"
+    ],
+    "Brawn": 3,
+    "Agility": 2,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 1
+  },
+  "G-Mod": {
+    "name": "G-Mod",
+    "book": "SOTB",
+    "page": 29,
+    "description": "See SOTB, page 29, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "woundThreshold": 11,
+    "strainThreshold": 11,
+    "experience": 90,
+    "skills": {
+      "Resilience": 1
+    },
+    "talents": [
+      "EnhancedGeneticModifications",
+      "G-Mod"
+    ],
+    "Brawn": 2,
+    "Agility": 2,
+    "Intellect": 3,
+    "Cunning": 2,
+    "Willpower": 1,
+    "Presence": 2
+  },
+  "Loonie": {
+    "name": "Loonie",
+    "book": "SOTB",
+    "page": 30,
+    "description": "See SOTB, page 29, for more details.",
+    "setting": [
+      "Shadow Of The Beanstalk"
+    ],
+    "woundThreshold": 9,
+    "strainThreshold": 11,
+    "experience": 100,
+    "skills": {
+      "Coordination": 1
+    },
+    "talents": [
+      "Zero-GAdept",
+      "Resourceful"
+    ],
+    "Brawn": 1,
+    "Agility": 3,
+    "Intellect": 2,
+    "Cunning": 2,
+    "Willpower": 2,
+    "Presence": 2
+  }
+}

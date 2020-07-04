@@ -1,8 +1,143 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "emporium": {
+      "root": "packages/emporium",
+      "sourceRoot": "packages/emporium/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/packages/emporium",
+            "index": "packages/emporium/src/index.html",
+            "main": "packages/emporium/src/main.tsx",
+            "polyfills": "packages/emporium/src/polyfills.ts",
+            "tsConfig": "packages/emporium/tsconfig.app.json",
+            "assets": [
+              "packages/emporium/src/favicon.ico",
+              "packages/emporium/src/assets"
+            ],
+            "styles": ["packages/emporium/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "packages/emporium/src/environments/environment.ts",
+                  "with": "packages/emporium/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "emporium:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "emporium:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "packages/emporium/tsconfig.app.json",
+              "packages/emporium/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!packages/emporium/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/emporium/jest.config.js",
+            "tsConfig": "packages/emporium/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "emporium-e2e": {
+      "root": "packages/emporium-e2e",
+      "sourceRoot": "packages/emporium-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/emporium-e2e/cypress.json",
+            "tsConfig": "packages/emporium-e2e/tsconfig.e2e.json",
+            "devServerTarget": "emporium:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "emporium:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["packages/emporium-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!packages/emporium-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "ui": {
+      "root": "packages/ui",
+      "sourceRoot": "packages/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "packages/ui/tsconfig.lib.json",
+              "packages/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!packages/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/ui/jest.config.js",
+            "tsConfig": "packages/ui/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/react"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -17,13 +152,19 @@
     },
     "@nrwl/react": {
       "application": {
-        "linter": "eslint"
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
       },
       "library": {
+        "style": "scss",
         "linter": "eslint"
       },
       "storybook-configuration": {
         "linter": "eslint"
+      },
+      "component": {
+        "style": "scss"
       }
     },
     "@nrwl/next": {
@@ -62,5 +203,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "emporium"
 }

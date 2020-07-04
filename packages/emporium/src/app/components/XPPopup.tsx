@@ -1,0 +1,84 @@
+import { changeData } from '@emporium/actions';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Button, ButtonGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
+import { bindActionCreators } from 'redux';
+
+class XPPopupComponent extends React.Component<any, any> {
+    public constructor(props) {
+        super(props);
+        this.state = {
+            earnedXP: props.earnedXP
+        };
+    }
+
+    public handleChange = event => {
+        let xp = event.target.value;
+        if (xp > 9999) {
+            return;
+        }
+        if (xp.includes('+')) {
+            xp = +xp.replace(/\D+/g, '') + +this.state.earnedXP;
+        }
+        this.setState({ earnedXP: +xp });
+        event.preventDefault();
+    };
+
+    public handleSubmit = event => {
+        const { earnedXP } = this.state;
+        this.props.changeData(earnedXP, 'earnedXP');
+        this.props.handleClose();
+        event.preventDefault();
+    };
+
+    public render() {
+        const { earnedXP } = this.state;
+        const { handleClose, modal, theme } = this.props;
+        return (
+            <Modal
+                className={`body-${theme}`}
+                isOpen={modal}
+                toggle={handleClose}
+            >
+                <ModalHeader
+                    toggle={handleClose}
+                >{`Earned XP:  ${earnedXP}`}</ModalHeader>
+                <ModalBody className="m-4">
+                    <Row className="my-2">
+                        <input
+                            type="number"
+                            value={earnedXP > 0 ? earnedXP : ''}
+                            onChange={this.handleChange}
+                        />
+                    </Row>
+                    <Row className="my-2">
+                        <ButtonGroup>
+                            <Button value="+5" onClick={this.handleChange}>
+                                +5
+                            </Button>
+                            <Button value="+10" onClick={this.handleChange}>
+                                +10
+                            </Button>
+                            <Button onClick={this.handleSubmit}>Enter</Button>
+                        </ButtonGroup>
+                    </Row>
+                </ModalBody>
+            </Modal>
+        );
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        earnedXP: state.earnedXP,
+        theme: state.theme
+    };
+};
+
+const matchDispatchToProps = dispatch =>
+    bindActionCreators({ changeData }, dispatch);
+
+export const XPPopup = connect(
+    mapStateToProps,
+    matchDispatchToProps
+)(XPPopupComponent);

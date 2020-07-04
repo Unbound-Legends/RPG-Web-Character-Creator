@@ -1,0 +1,869 @@
+{
+  "Apothecary": {
+    "name": "Apothecary",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": true,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "Bullrush": {
+    "name": "Bullrush",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": true,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "Challenge": {
+    "name": "Challenge!",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": true,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "DarkInsight": {
+    "name": "Dark Insight",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "Dungeoneer": {
+    "name": "Dungeoneer",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": true,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "Finesse": {
+    "name": "Finesse",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "PainfulBlow": {
+    "name": "Painful Blow",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "Precision": {
+    "name": "Precision",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "Shapeshifter": {
+    "name": "Shapeshifter",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "ShieldSlam": {
+    "name": "Shield Slam",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "84",
+    "description": "See ROT, page 84, for more details."
+  },
+  "TavernBrawler": {
+    "name": "Tavern Brawler",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details."
+  },
+  "Templar": {
+    "name": "Templar",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "Divine"
+      ]
+    }
+  },
+  "Tumble": {
+    "name": "Tumble",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 1,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details."
+  },
+  "Adventurer": {
+    "name": "Adventurer",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "Athletics",
+        "KnowledgeAdventuring"
+      ]
+    }
+  },
+  "Bard": {
+    "name": "Bard",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "Verse",
+        "KnowledgeLore"
+      ]
+    }
+  },
+  "Block": {
+    "name": "Block",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details.",
+    "prerequisite": "Parry"
+  },
+  "BloodSacrifice": {
+    "name": "Blood Sacrifice",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": true,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details.",
+    "prerequisite": "DarkInsight"
+  },
+  "Bulwark": {
+    "name": "Bulwark",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental, Out of turn",
+    "ranked": false,
+    "book": "ROT",
+    "page": "87",
+    "description": "See ROT, page 87, for more details.",
+    "prerequisite": "Parry"
+  },
+  "ChillOfNordros": {
+    "name": "Chill of Nordros",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details.",
+    "antirequisite": "FlamesOfKellos"
+  },
+  "DirtyTricks": {
+    "name": "Dirty Tricks",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "DominionOfTheDimora": {
+    "name": "Dominion of the Dimora",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details.",
+    "antirequisite": "FavorOfTheFae"
+  },
+  "EncouragingSong": {
+    "name": "Encouraging Song",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "Exploit": {
+    "name": "Exploit",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": true,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "FavorOfTheFae": {
+    "name": "Favor of the Fae",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details.",
+    "antirequisite": "DominionOfTheDimora"
+  },
+  "FlamesofKellos": {
+    "name": "Flames of Kellos",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details.",
+    "antirequisite": "ChillOfNordros"
+  },
+  "FlashOfInsight": {
+    "name": "Flash of Insight",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "Grapple": {
+    "name": "Grapple",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "HeroicRecovery": {
+    "name": "Heroic Recovery",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "Hunter": {
+    "name": "Hunter",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "KnowledgeGeography",
+        "Ranged",
+        "Survival"
+      ]
+    }
+  },
+  "ImpalingStrike": {
+    "name": "ImpalingStrike",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "NaturalCommunion": {
+    "name": "Natural Communion",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "88",
+    "description": "See ROT, page 88, for more details."
+  },
+  "RecklessCharge": {
+    "name": "Reckless Charge",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details."
+  },
+  "RunicLore": {
+    "name": "Runic Lore",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "Runes",
+        "KnowledgeLore"
+      ]
+    }
+  },
+  "ShapeshifterImproved": {
+    "name": "Shapeshifter (Improved)",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details.",
+    "prerequisite": "Shapeshifter"
+  },
+  "SignatureSpell": {
+    "name": "Signature Spell",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details."
+  },
+  "TemplarImproved": {
+    "name": "Templar (Improved)",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details.",
+    "prerequisite": "Templar"
+  },
+  "Threaten": {
+    "name": "Threaten",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": true,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details."
+  },
+  "WellTraveled": {
+    "name": "Well Traveled",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details.",
+    "modifier": {
+      "careerSkills": [
+        "Negotiation",
+        "KnowledgeGeography",
+        "Vigilance"
+      ]
+    }
+  },
+  "Wraithbane": {
+    "name": "WraithBane",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 2,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "89",
+    "description": "See ROT, page 89, for more details."
+  },
+  "Backstab": {
+    "name": "Backstab",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "BattleCasting": {
+    "name": "Battle Casting",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "BodyGuard": {
+    "name": "Body Guard",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": true,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "Cavalier": {
+    "name": "Cavalier",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "Counterattack": {
+    "name": "Counterattack",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details.",
+    "prerequisite": "ParryImproved"
+  },
+  "Dissonance": {
+    "name": "Dissonance",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "DualStrike": {
+    "name": "Dual Strike",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "EasyPrey": {
+    "name": "Easy Prey",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Maneuver",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "JusticeOfTheCitadel": {
+    "name": "Justice of the Citadel",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "PotentConcoction": {
+    "name": "Potent Concoctions",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "PreciseArchery": {
+    "name": "Precise Archery",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "PressurePoint": {
+    "name": "Pressure Point",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "Shockwave": {
+    "name": "Shockwave",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 3,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "90",
+    "description": "See ROT, page 90, for more details."
+  },
+  "BackToBack": {
+    "name": "Back to Back",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "Conduit": {
+    "name": "Conduit",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 90, for more details."
+  },
+  "DeathRage": {
+    "name": "Death Rage",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "VenomSoakedBlade": {
+    "name": "Venom Soaked Blade",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "SignatureSpellImproved": {
+    "name": "Signature Spell (Improved)",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details.",
+    "prerequisite": "SignatureSpell"
+  },
+  "Unrelenting": {
+    "name": "Unrelenting",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "CrushingBlow": {
+    "name": "Crushing Blow",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Incidental",
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "LetsTalkAboutThis": {
+    "name": "Let's Talk About This",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "Retribution": {
+    "name": "Retribution",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 5,
+    "activation": true,
+    "turn": "Incidental, Out of Turn",
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "Whirlwind": {
+    "name": "Whirlwind",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 4,
+    "activation": true,
+    "turn": "Action",
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  },
+  "ZealousFire": {
+    "name": "ZealousFire",
+    "setting": [
+      "Fantasy"
+    ],
+    "tier": 5,
+    "activation": false,
+    "turn": false,
+    "ranked": false,
+    "book": "ROT",
+    "page": "91",
+    "description": "See ROT, page 91, for more details."
+  }
+}

@@ -1,0 +1,105 @@
+body {
+	--orange: rgb(255, 122, 22);
+	--lightblue: rgb(89, 163, 217);
+	--darkblue: rgb(19, 100, 185);
+	--gray: rgb(247, 245, 242);
+	--brown: rgb(179, 151, 123);
+	--red: rgb(148, 45, 37);
+	--difficulty: rgb(82, 40, 126);
+	--challenge: rgb(117, 19, 23);
+	--boost: rgb(118, 205, 219);
+	--ability: rgb(70, 172, 78);
+	--proficiency: rgb(254, 240, 53);
+	--orangeFade: rgba(255, 122, 22, 0.2);
+	--lightblueFade: rgba(89, 163, 217, 0.2);
+}
+
+hr {
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
+	border: 0;
+	border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+table {
+	vertical-align: middle;
+}
+
+thead {
+	font-weight: 600;
+}
+
+label {
+	padding-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-right: 0 !important;
+}
+
+.table th {
+	padding: 0.4rem;
+}
+
+.table td {
+	padding: 0.4rem;
+}
+
+.table-dice {
+}
+
+.table-career {
+	text-align: center;
+}
+
+.table-rank {
+	text-align: center;
+}
+
+.table-name {
+	text-align: left;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.text-pre {
+	white-space: pre-line;
+}
+
+.w-10 {
+	width: 10%;
+}
+
+.w-20 {
+	width: 20%;
+}
+
+.w-30 {
+	width: 30%;
+}
+
+.w-40 {
+	width: 40%;
+}
+
+.w-60 {
+	width: 60%;
+}
+
+.w-70 {
+	width: 70%;
+}
+
+.w-80 {
+	width: 80%;
+}
+
+.w-90 {
+	width: 90%;
+}

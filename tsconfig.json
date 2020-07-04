@@ -15,7 +15,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@emporium/ui": ["packages/ui/src/index.ts"],
+      "@emporium/data": ["packages/emporium/src/assets/data/index.js"],
+      "@emporium/data-lists": ["packages/emporium/src/assets/data/lists.js"],
+      "@emporium/images": ["packages/emporium/src/assets/images/index.ts"],
+      "@emporium/actions": ["packages/emporium/src/redux/actions.tsx"],
+      "@emporium/reducers": ["packages/emporium/src/redux/reducers.tsx"],
+      "@emporium/selectors": ["packages/emporium/src/redux/selectors/index.ts"],
+      "@emporium/firestoreDb": ["packages/emporium/src/app/firestoreDB.js"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

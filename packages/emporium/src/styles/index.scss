@@ -1,0 +1,552 @@
+@import url('main.scss');
+@import url('vehicle.scss');
+@import url('tabs.scss');
+@import url('fonts/index.scss');
+
+.form-check-label {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.header {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+    line-height: 1.2;
+    color: inherit;
+    font-weight: bold;
+}
+
+.theme-select-container {
+    position: relative;
+}
+
+.print-button-container {
+    position: absolute;
+    right: 5px;
+}
+
+.noUnderLine,
+.noUnderLine:hover,
+.noUnderLine:focus {
+    text-decoration: none;
+}
+
+.textSymbols {
+    vertical-align: middle;
+    height: 1.2rem;
+}
+
+.characterImage {
+    max-height: 18rem;
+    object-fit: contain;
+}
+
+.svg {
+    width: 100%;
+}
+
+.absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.talentDesc {
+    overflow-y: auto;
+    white-space: pre-line;
+}
+
+.row-hide {
+    display: none;
+}
+
+.talentCard {
+    width: 10rem;
+    height: 11rem;
+}
+
+.motivationCard {
+    min-width: 45%;
+}
+
+.ffi {
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.ffi-d6 {
+    letter-spacing: 0;
+}
+
+.ffi-border {
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.1rem;
+}
+
+.bg {
+    position: fixed;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.imageBox {
+    position: relative;
+    text-align: center;
+    color: black;
+    padding: 0;
+    margin: 0.15rem;
+    width: 6rem;
+}
+
+.attribute {
+    width: 10rem;
+    height: 5.5rem;
+}
+
+.xpBox {
+    width: 8rem;
+}
+
+.totalXP {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.availableXP {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.attributeValue {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.5rem;
+    top: 55%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    flex: unset;
+    padding: 0 0;
+    font-weight: bold;
+}
+
+.attributeInput {
+    font-size: 1.2rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    text-align: center;
+}
+
+.characteristicValue {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 39%;
+    left: 62.5%;
+    transform: translate(-50%, -50%);
+    flex: unset;
+    font-weight: bold;
+}
+
+.xpValue {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    top: 45%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    flex: unset;
+}
+
+/*CRB Theme*/
+.body-CRB {
+    font-family: 'Avenir Next LT Pro', sans-serif !important;
+}
+
+.header-CRB {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.75rem;
+}
+
+.bg-CRB {
+    background-image: url(../assets/images/CRB/background.png);
+}
+
+.attributeValue-CRB-Wounds,
+.attributeValue-CRB-Defense,
+.attributeValue-CRB-Soak,
+.attributeValue-CRB-Strain {
+    left: 59%;
+}
+
+.characteristicValue-CRB {
+    top: 37%;
+    left: 65%;
+}
+
+/*ROT Theme*/
+.bg-ROT {
+    background-image: url(../assets/images/ROT/background.png);
+}
+
+.body-ROT {
+    font-family: 'Adobe Garamond Pro', sans-serif !important;
+}
+
+.header-ROT {
+    font-family: 'Bolton', sans-serif !important;
+    font-size: 1rem;
+}
+
+.xpValue-ROT {
+    top: 36%;
+}
+
+.attributeValue-ROT-Wounds,
+.attributeValue-ROT-Soak,
+.attributeValue-ROT-Defense,
+.attributeValue-ROT-Strain {
+    top: 58%;
+    left: 58%;
+}
+
+.characteristicValue-ROT {
+    left: 65.5%;
+    top: 41%;
+}
+
+/*SOTB Theme*/
+.bg-SOTB {
+    background: url(../assets/images/SOTB/background.png) center;
+}
+
+.body-SOTB {
+    font-family: 'Avenir Next LT Pro', sans-serif !important;
+}
+
+.header-SOTB {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.75rem;
+}
+
+.characteristicValue-SOTB {
+    top: 36%;
+    left: 65.5%;
+}
+
+.xpValue-SOTB {
+    top: 70%;
+}
+
+.attributeValue-SOTB-Wounds,
+.attributeValue-SOTB-Soak,
+.attributeValue-SOTB-Defense,
+.attributeValue-SOTB-Strain,
+.attributeValue-SOTB-StrainThreshold,
+.attributeValue-SOTB-WoundsThreshold {
+    top: 61%;
+    left: 58%;
+}
+
+/* Keyforge Theme */
+.bg-KF {
+    background-image: url(https://ul-emporium.imgix.net/backgrounds/emporium-kf-background-01.jpg?w=500&h=500);
+    background-size: 500px 500px;
+    background-position: center;
+}
+
+.body-KF {
+    font-family: 'Khand', sans-serif !important;
+}
+
+.body-KF .attribute {
+    width: 10.5em;
+    position: relative;
+}
+
+.body-KF .attribute::before {
+    position: absolute;
+    display: block;
+    top: 4px;
+    left: 0;
+    right: 0;
+    color: white;
+    font-size: 18px;
+}
+
+.body-KF .attribute-wounds::before {
+    content: 'WOUNDS';
+}
+
+.body-KF .attribute-strain::before {
+    content: 'STRAIN';
+}
+
+.body-KF .attribute-soak::before {
+    content: 'SOAK';
+}
+
+.body-KF .attribute-defense::before {
+    content: 'DEFENSE';
+}
+
+.body-KF .attribute::after {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 24px;
+    color: white;
+    font-size: 13px;
+}
+
+.body-KF .attribute-wounds::after,
+.body-KF .attribute-strain::after,
+.body-KF .attribute-defense::after {
+    content: 'THRESHOLD    CURRENT';
+    white-space: pre;
+}
+
+.body-KF .characteristic::before {
+    position: absolute;
+    display: block;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    color: white;
+    font-size: 18px;
+}
+
+.body-KF .characteristic-Brawn::before {
+    content: 'BRAWN';
+}
+
+.body-KF .characteristic-Agility::before {
+    content: 'AGILITY';
+}
+
+.body-KF .characteristic-Intellect::before {
+    content: 'INTELLECT';
+}
+
+.body-KF .characteristic-Cunning::before {
+    content: 'CUNNING';
+}
+
+.body-KF .characteristic-Willpower::before {
+    content: 'WILLPOWER';
+}
+
+.body-KF .characteristic-Presence::before {
+    content: 'PRESENCE';
+}
+
+.body-KF .attribute-WoundsThreshold::before {
+    content: 'WOUND THRESHOLD';
+}
+
+.body-KF .attribute-StrainThreshold::before {
+    content: 'STRAIN THRESHOLD';
+}
+
+.header-KF {
+    font-family: 'Khand', sans-serif !important;
+    font-size: 1.75rem;
+}
+
+.attributeValue-KF-Wounds,
+.attributeValue-KF-Defense,
+.attributeValue-KF-Soak,
+.attributeValue-KF-Strain {
+    left: 59%;
+}
+
+.characteristicValue-KF {
+    top: 37%;
+    left: 65%;
+}
+
+.body-KF .xpValue {
+    top: 35%;
+    left: 63%;
+}
+
+/*CCC Theme
+.bg-CCC {
+	background: url(../images/CCC/background.png) center;
+}
+
+.body-CCC {
+	font-family: 'Charis SIL', sans-serif !important;
+}
+
+.header-CCC {
+	font-family: 'American Captian', sans-serif !important;
+}
+
+.characteristicValue-CCC {
+	top: 36%;
+}
+
+.xpValue-CCC {
+	top: 65%;
+}*/
+
+@media only screen and (max-width: 480px) {
+    .table {
+        font-size: 0.7rem;
+    }
+
+    .fontSizeSmall {
+        font-size: 0.5rem;
+    }
+
+    .talentCard {
+        width: 16vw;
+        height: 12vh;
+        font-size: 0.5rem;
+    }
+
+    .motivationCard {
+        width: 100%;
+    }
+
+    .ffi {
+        font-size: 1rem;
+    }
+
+    .overflowX {
+        overflow-x: scroll;
+    }
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact;
+    }
+
+    body {
+        --orangeFade: var(--orange);
+        --lightblueFade: var(--lightblue);
+    }
+
+    .no-break {
+        break-inside: avoid;
+    }
+
+    .break-after {
+        page-break-after: always;
+    }
+
+    .break-before {
+        page-break-before: always;
+    }
+
+    .table th {
+        padding: 0.1rem;
+    }
+
+    .table td {
+        padding: 0 0.2rem;
+    }
+
+    .talentCard {
+        width: 8rem;
+        height: 1rem;
+    }
+
+    .ffi {
+        font-size: 12pt;
+    }
+
+    .ffi-border {
+        -webkit-text-stroke-width: 0.05rem;
+    }
+
+    .table-dice {
+        width: 200px;
+    }
+
+    .table-career {
+        width: 70px;
+    }
+
+    .table-rank {
+        width: 70px;
+    }
+
+    .table-name {
+        width: 250px;
+    }
+
+    .table-skills {
+        font-size: 14pt;
+    }
+
+    .totalXP {
+        display: inline-block;
+        position: relative;
+    }
+
+    .availableXP {
+        display: inline-block;
+        position: relative;
+    }
+
+    .header-CRB {
+        font-size: 1.2rem;
+    }
+
+    .attributeValue-CRB-Wounds,
+    .attributeValue-CRB-Strain,
+    .attributeValue-CRB-Soak,
+    .attributeValue-CRB-Defense {
+        left: 55%;
+    }
+
+    .xpValue-CCC {
+        top: 54%;
+    }
+
+    .header-SOTB {
+        font-size: 1.2rem;
+    }
+
+    .xpValue-SOTB {
+        font-size: 1.2rem;
+    }
+
+    .attributeValue-SOTB-Wounds,
+    .attributeValue-SOTB-Strain,
+    .attributeValue-SOTB-Soak,
+    .attributeValue-SOTB-Defense {
+        font-size: 1.2rem;
+    }
+
+    /** Keyforge support for printing **/
+    .body-KF .attribute::before {
+        top: 1px;
+    }
+
+    .body-KF .attributeValue {
+        top: 42px;
+    }
+
+    .body-KF .attribute::after {
+        left: 10px;
+        bottom: 14px;
+    }
+
+    .body-KF .characteristic {
+        position: relative;
+    }
+}

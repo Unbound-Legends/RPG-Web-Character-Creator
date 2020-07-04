@@ -1,0 +1,132 @@
+{
+  "durableClothing": {
+    "name": "Durable Clothing",
+    "defense": 0,
+    "soak": "+1",
+    "encumbrance": 1,
+    "hardPoints": 1,
+    "price": 50,
+    "restricted": false,
+    "rarity": 1,
+    "book": "SOTB",
+    "page": 93
+  },
+  "concealedBuckyweave": {
+    "name": "Concealed Buckyweave",
+    "defense": 1,
+    "soak": "+1",
+    "encumbrance": 1,
+    "hardPoints": 2,
+    "price": 320,
+    "restricted": false,
+    "rarity": 4,
+    "book": "SOTB",
+    "page": 93
+  },
+  "environmentalHardsuit": {
+    "name": "Environmental Hardsuit",
+    "defense": 0,
+    "soak": "+1",
+    "encumbrance": 4,
+    "hardPoints": 2,
+    "price": 260,
+    "restricted": false,
+    "rarity": 4,
+    "book": "SOTB",
+    "page": 93,
+    "modifier": {
+      "Resilience": [
+        "[success]"
+      ]
+    }
+  },
+  "opticalCamouflageSuit": {
+    "name": "Optical Camouflage Suit",
+    "defense": 2,
+    "soak": "+0",
+    "encumbrance": 2,
+    "hardPoints": 1,
+    "price": 580,
+    "restricted": true,
+    "rarity": 7,
+    "book": "SOTB",
+    "page": 93
+  },
+  "lightBodyArmor": {
+    "name": "Light Body Armor",
+    "defense": 0,
+    "soak": "+2",
+    "encumbrance": 2,
+    "hardPoints": 1,
+    "price": 500,
+    "restricted": false,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 94
+  },
+  "personalExosuit": {
+    "name": "Personal Exosuit",
+    "defense": 0,
+    "soak": "+3",
+    "encumbrance": 5,
+    "hardPoints": 4,
+    "price": 5000,
+    "restricted": true,
+    "rarity": 6,
+    "book": "SOTB",
+    "page": 94,
+    "modifier": {
+      "Brawn": 1,
+      "Perception": [
+        "[rmblackblack]"
+      ],
+      "Vigilance": [
+        "[rmblackblack]"
+      ],
+      "Brawl": [
+        "[rmblackblack]"
+      ],
+      "Melee": [
+        "[rmblackblack]"
+      ],
+      "RangedLight": [
+        "[rmblackblack]"
+      ],
+      "RangedHeavy": [
+        "[rmblackblack]"
+      ],
+      "Gunnery": [
+        "[rmblackblack]"
+      ]
+    }
+  },
+  "plasteelCarapace": {
+    "name": "Plasteel Carapace",
+    "defense": 1,
+    "soak": "+2",
+    "encumbrance": 4,
+    "hardPoints": 3,
+    "price": 750,
+    "restricted": true,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 95
+  },
+  "riotArmor": {
+    "name": "Riot Armor",
+    "defense": 0,
+    "soak": "+2",
+    "encumbrance": 3,
+    "hardPoints": 2,
+    "price": 550,
+    "restricted": false,
+    "rarity": 5,
+    "book": "SOTB",
+    "page": 95,
+    "modifier": {
+      "Resilience": [
+        "[blue]"
+      ]
+    }
+  }
+}

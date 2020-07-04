@@ -1,0 +1,61 @@
+import React from 'react';
+
+export const archetype = null;
+export const archetypeSpecialSkills = {};
+export const career = null;
+export const careerSkillsRank = [];
+export const creationCharacteristics = {
+    Brawn: 0,
+    Agility: 0,
+    Intellect: 0,
+    Cunning: 0,
+    Willpower: 0,
+    Presence: 0
+};
+export const critical = [];
+export const currentHullTrauma = 0;
+export const currentSystemStrain = 0;
+export const currentWound = 0;
+export const currentStrain = 0;
+export const description = {
+    name: 'New Character',
+    playerName: 'Enter Player Name'
+};
+export const earnedXP = 0;
+export const equipmentArmor = {};
+export const equipmentGear = {};
+export const equipmentWeapons = {};
+export const masterMotivations = {
+    Desire: {},
+    Fear: {},
+    Strength: {},
+    Flaw: {}
+};
+export const masterSkills = {};
+export const masterTalents = { 1: { 1: '' } };
+export const misc = null;
+export const money = 0;
+export const aember = 0;
+export const setting = ['All'];
+export const talentModifiers = { Dedication: {} };
+export const theme = 'CRB';
+export const themes = {
+    CRB: 'Core Rule Book',
+    KF: 'Keyforge',
+    ROT: 'Realms of Terrinoth',
+    SOTB: 'Shadow of the Beanstalk'
+};
+export const vehicle = '';
+export const vehicleType = '';
+export const vehicleNotes = '';
+export const vehicleWrite = false;
+
+export const printContent = (
+    <h1 className="text-left m-3" style={{ whiteSpace: 'pre-line' }}>
+        {`You savage. I made print button and you dare to use the print function in the browser?!?!\n
+    For better results use the aforementioned print button.  It's located on the top-right of the characters tab.\n
+    Can't I just hijack the print function and do it automatically, you ask?\n
+    PROBABLY!\n\n
+    -Sky`}
+    </h1>
+);

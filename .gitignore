@@ -1,11 +1,14 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# compiled output
+# Env file
+.env
+
+# Compiled output
 /dist
 /tmp
 /out-tsc
 
-# dependencies
+# Dependencies
 /node_modules
 
 # IDEs and editors
@@ -24,7 +27,15 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# misc
+# System Files
+.DS_Store
+Thumbs.db
+
+# Firebase
+.firebase
+.firebaserc
+
+# Misc
 /.sass-cache
 /connect.lock
 /coverage
@@ -33,7 +44,5 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-
-# System Files
-.DS_Store
-Thumbs.db
+yarn-debug.log*
+*.iml
