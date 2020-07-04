@@ -191,6 +191,7 @@ class CharacterSelectComponent extends React.Component<any, any> {
                     </Label>
                     <Col id="setting">
                         <Typeahead
+                            id="characterSettingChoice"
                             multiple={true}
                             options={Object.values(settings)}
                             name="setting"

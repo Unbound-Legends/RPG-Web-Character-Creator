@@ -95,6 +95,7 @@ class FragmentComponent extends React.Component<any, any> {
             case 'setting':
                 return (
                     <Typeahead
+                        id={`settingChooser`}
                         multiple={true}
                         options={Object.values(settings)}
                         selected={setting}
