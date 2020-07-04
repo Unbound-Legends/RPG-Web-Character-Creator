@@ -16,7 +16,6 @@
             "polyfills": "packages/emporium/src/polyfills.ts",
             "tsConfig": "packages/emporium/tsconfig.app.json",
             "assets": [
-              "packages/emporium/src/favicon.ico",
               "packages/emporium/src/assets"
             ],
             "styles": ["packages/emporium/src/styles.scss"],

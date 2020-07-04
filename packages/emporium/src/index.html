@@ -19,8 +19,8 @@
     <body id="body">
         <div id="root"></div>
         <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
+            if ('serviceWorker' in (window?.navigator || {})) {
+                window?.addEventListener('load', () => {
                     navigator.serviceWorker
                         .register('/assets/service-worker.js')
                         .then(registration => {

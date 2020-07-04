@@ -1,6 +1,6 @@
 import { firebase } from '@firebase/app';
 import '@firebase/auth';
-import firebaseui from 'firebaseui';
+import * as firebaseui from "firebaseui";
 import React, { Component } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Container, Row } from 'reactstrap';
