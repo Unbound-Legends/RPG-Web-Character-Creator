@@ -10,15 +10,21 @@ import './gear.scss';
 
 class GearComponent extends React.Component<
     any,
-    { gearFilter: string; bookFilter: string[]; selected: boolean }
+    {
+        gearFilter: string;
+        bookFilter: string[];
+        selected: boolean;
+        restrictToSetting: boolean;
+    }
 > {
     public state = {
         selected: false,
         gearFilter: '',
-        bookFilter: []
+        bookFilter: [],
+        restrictToSetting: false
     };
 
-    public handleAdd(event): void {
+    public handleAdd = (event): void => {
         const { type, changeData } = this.props;
         const obj = { ...this.props[type] };
         const key = Math.random().toString(36).substr(2, 16);
@@ -77,10 +83,18 @@ class GearComponent extends React.Component<
         }
     };
 
+    public handleSettingRestrictionChange = (event): void => {
+        const value = event.target.checked;
+        this.setState({
+            restrictToSetting: !!value
+        });
+    };
+
     public filterItem(
         item: string,
         filter: string,
-        bookFilter: string[]
+        bookFilter: string[],
+        restrictToSetting: boolean
     ): boolean {
         const { weapons, armor, gear, skills, type } = this.props;
         if (!filter && !bookFilter) {
@@ -114,11 +128,33 @@ class GearComponent extends React.Component<
         }
 
         if (bookFilter.length && bookFilter.indexOf('All') === -1) {
-            return (
+            const passes =
                 bookFilter
                     .map(x => x?.toLowerCase())
-                    .indexOf(selectedItem?.book?.toLowerCase()) !== -1
-            );
+                    .indexOf(selectedItem?.book?.toLowerCase()) !== -1;
+
+            if (!passes) {
+                return false;
+            }
+        }
+
+        const { setting } = this.props;
+        if (
+            restrictToSetting &&
+            setting.length > 0 &&
+            setting.indexOf('All') === -1
+        ) {
+            let passes = false;
+            for (let i = 0; i < setting.length; i++) {
+                if ((selectedItem?.setting?.indexOf(setting[i]) ?? -1) !== -1) {
+                    passes = true;
+                    break;
+                }
+            }
+
+            if (!passes) {
+                return false;
+            }
         }
 
         return true;
@@ -263,7 +299,8 @@ class GearComponent extends React.Component<
                                             this.filterItem(
                                                 item,
                                                 this.state?.gearFilter,
-                                                this.state?.bookFilter
+                                                this.state?.bookFilter,
+                                                this.state?.restrictToSetting
                                             )
                                         )
                                         .map(item =>
@@ -276,6 +313,20 @@ class GearComponent extends React.Component<
                     </Row>
                 </ModalBody>
                 <ModalFooter>
+                    <span
+                        className="settings-restriction"
+                        title="By enabling this, you restrict options to only those found in your selected settings"
+                    >
+                        <label htmlFor="settingsRestriction">
+                            Restrict to Settings
+                        </label>
+                        <input
+                            id="settingsRestriction"
+                            type="checkbox"
+                            checked={this.state.restrictToSetting}
+                            onChange={this.handleSettingRestrictionChange}
+                        />
+                    </span>
                     <Button onClick={this.handleClose}>Close</Button>
                 </ModalFooter>
             </Modal>
@@ -293,7 +344,8 @@ const mapStateToProps = state => {
         equipmentArmor: state.equipmentArmor,
         equipmentGear: state.equipmentGear,
         equipmentWeapons: state.equipmentWeapons,
-        theme: state.theme
+        theme: state.theme,
+        setting: state.setting
     };
 };
 

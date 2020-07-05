@@ -1,9 +1,8 @@
 .gear-modal {
     .item-filter {
         float: right;
-        border-radius: 3px;
-        padding: 5px 6px 3px;
-        display: block;
+        border-radius: 4px;
+        padding: 7px 0 5px 11px;
         border: 1px solid rgb(206, 212, 218);
         margin: -15px 5px 5px;
     }
@@ -22,6 +21,42 @@
 
         .rbt-aux .rbt-close {
             margin-top: 3px;
+        }
+    }
+
+    table {
+        td {
+            &:first-child {
+                text-align: center;
+
+                button {
+                    width: 27px;
+                    height: 27px;
+                    text-align: center;
+                    padding: 0;
+                }
+            }
+
+            &:last-child {
+                text-align: center;
+            }
+        }
+    }
+
+    .settings-restriction {
+        margin-top: 4px;
+        position: absolute;
+        left: 16px;
+
+        input {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        label {
+            margin-right: 5px;
+            font-size: 1.2em;
         }
     }
 }
