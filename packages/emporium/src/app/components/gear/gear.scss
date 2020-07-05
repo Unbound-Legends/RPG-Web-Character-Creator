@@ -1,25 +1,27 @@
-.item-filter {
-    float: right;
-    border-radius: 3px;
-    padding: 5px 6px 3px;
-    display: block;
-    border: 1px solid rgb(206, 212, 218);
-    margin: -15px 5px 5px;
-}
+.gear-modal {
+    .item-filter {
+        float: right;
+        border-radius: 3px;
+        padding: 5px 6px 3px;
+        display: block;
+        border: 1px solid rgb(206, 212, 218);
+        margin: -15px 5px 5px;
+    }
 
-.table-container {
-    clear: right;
-}
+    .table-container {
+        clear: right;
+    }
 
-.rbt.clearfix {
-    position: relative;
-    width: 300px;
-    display: inline-block;
-    float: right;
-    margin-top: -15px;
-    margin-bottom: 5px;
+    .rbt {
+        position: relative;
+        width: 300px;
+        display: inline-block;
+        float: right;
+        margin-top: -15px;
+        margin-bottom: 5px;
 
-    .rbt-aux .rbt-close {
-        margin-top: 3px;
+        .rbt-aux .rbt-close {
+            margin-top: 3px;
+        }
     }
 }

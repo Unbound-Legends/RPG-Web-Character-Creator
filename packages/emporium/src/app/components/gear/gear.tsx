@@ -222,7 +222,7 @@ class GearComponent extends React.Component<
 
         return (
             <Modal
-                className={`body-${theme}`}
+                className={`body-${theme} gear-modal`}
                 isOpen={!!modal}
                 toggle={this.handleClose}
             >
