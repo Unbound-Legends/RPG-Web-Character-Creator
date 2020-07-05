@@ -8,7 +8,7 @@ export { CharacterDescription } from './CharacterDescription';
 export { CharacterImage } from './CharacterImage';
 export { Characteristics } from './Characteristics';
 export { CharacterSelect } from './CharacterSelect';
-export { Critical } from './Critical';
+export { Critical } from './critical/critical';
 export { DataPage } from './DataPage';
 export { Description } from './Description';
 export { ErrorBoundary } from './ErrorBoundary';

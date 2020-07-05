@@ -57,7 +57,7 @@
     "react-scripts": "^3.4.1",
     "react-tabs": "^3.0.0",
     "react-transition-group": "^2.5.2",
-    "reactstrap": "^7.0.2",
+    "reactstrap": "^8.5.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",

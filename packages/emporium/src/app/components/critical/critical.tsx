@@ -5,27 +5,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Input, Row, Table } from 'reactstrap';
 import { bindActionCreators } from 'redux';
-import { Description } from './Description';
+import { Description } from '../Description';
+import './critical.scss';
 
 class CriticalComponent extends React.Component<any, any> {
-    public state = { value: '', modal: false };
+    public state = { value: null, modal: false };
 
     public handleSubmit = event => {
         const newArr = [...this.props.critical];
         const value = this.state.value;
-        if (value !== '') {
+        if (value != null && value > 0) {
             newArr.push(value);
             this.props.changeData(newArr, 'critical');
         }
-        this.setState({ value: '' });
+
+        this.setState({ value: null });
         event.preventDefault();
     };
 
     public handleChange = event => {
-        const number = +event.target.value.replace(/\D+/g, '');
-        if (!(number > 999)) {
-            this.setState({ value: number });
+        const radix = 10;
+        const inputValue = event.target.value;
+        if (inputValue) {
+            const number = parseInt(inputValue.replace(/\D+/g, ''), radix);
+            if (!isNaN(number) && number <= 999) {
+                this.setState({ value: number });
+            }
+        } else {
+            this.setState({ value: null });
         }
+
         event.preventDefault();
     };
 
@@ -36,11 +45,17 @@ class CriticalComponent extends React.Component<any, any> {
         this.setState({ modal: false });
     };
 
+    public criticalInputKeypress = (event): void => {
+        if (event.key === 'Enter') {
+            this.handleSubmit(event);
+        }
+    };
+
     public render() {
         const { value } = this.state;
         const { critical, theme } = this.props;
         return (
-            <div>
+            <div className="critical-container">
                 <Row className="justify-content-end">
                     <div className={`header header-${theme}`}>
                         CRITICAL INJURES
@@ -83,7 +98,8 @@ class CriticalComponent extends React.Component<any, any> {
                         bsSize="sm"
                         type="number"
                         name="critical"
-                        value={value.length > 0 ? value : ''}
+                        value={value != null ? value : ''}
+                        onKeyPress={this.criticalInputKeypress}
                         onChange={this.handleChange}
                     />
                     <Button size="sm" onClick={this.handleSubmit}>

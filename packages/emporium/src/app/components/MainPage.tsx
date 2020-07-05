@@ -6,7 +6,7 @@ import {Attributes} from './Attributes';
 import {CharacterDescription} from './CharacterDescription';
 import {CharacterImage} from './CharacterImage';
 import {CharacterSelect} from './CharacterSelect';
-import {Critical} from './Critical';
+import {Critical} from './critical/critical';
 import {Equipment} from './Equipment';
 import {ErrorBoundary} from './ErrorBoundary';
 import {Motivation} from './Motivation';
