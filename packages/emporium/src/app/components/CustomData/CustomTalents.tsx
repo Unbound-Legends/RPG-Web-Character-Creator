@@ -44,7 +44,10 @@ class CustomTalentsComponent extends React.Component<any, any> {
     public handleDuplicate = event => {
         const { customTalents } = this.props;
         const { id = '', ...data } = { ...customTalents[event.target.name] };
-        this.props.addDataSet(this._type, { ...data, name: `${data.name} (copy)` });
+        this.props.addDataSet(this._type, {
+            ...data,
+            name: `${data.name} (copy)`
+        });
         event.preventDefault();
     };
 
@@ -63,7 +66,10 @@ class CustomTalentsComponent extends React.Component<any, any> {
     };
 
     public handleDelete = event => {
-        this.props.removeDataSet(this._type, this.props[this._type][event.target.name].id);
+        this.props.removeDataSet(
+            this._type,
+            this.props[this._type][event.target.name].id
+        );
         event.preventDefault();
     };
 

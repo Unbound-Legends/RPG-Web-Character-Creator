@@ -68,8 +68,8 @@ export const About = () => {
                     rel="noopener noreferrer"
                 >
                     DrainSmith
-                </a>.
-                &nbsp;
+                </a>
+                . &nbsp;
             </Row>
             <Row className="justify-content-center">
                 A Character Creator for&nbsp;
@@ -99,7 +99,7 @@ export const About = () => {
                     Source Code
                 </a>
                 {/* TODO: Add dynamic version support that doesn't use package.json */}
-                &nbsp;v0.2.0.0
+                &nbsp;v0.2.1.0
             </Row>
         </div>
     );

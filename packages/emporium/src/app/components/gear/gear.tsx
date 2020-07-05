@@ -4,7 +4,15 @@ import clone from 'clone';
 import React from 'react';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { connect } from 'react-redux';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table } from 'reactstrap';
+import {
+    Button,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    Row,
+    Table
+} from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import './gear.scss';
 

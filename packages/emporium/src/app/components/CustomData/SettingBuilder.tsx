@@ -2,7 +2,16 @@ import clone from 'clone';
 import { startCase, upperFirst } from 'lodash-es';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, CardBody, CardHeader, CardText, Col, Input, Row } from 'reactstrap';
+import {
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    CardText,
+    Col,
+    Input,
+    Row
+} from 'reactstrap';
 import { bindActionCreators } from 'redux';
 
 class SettingBuilderComponent extends React.Component<any, any> {

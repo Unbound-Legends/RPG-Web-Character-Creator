@@ -1,12 +1,12 @@
 import { changeData } from '@emporium/actions';
 import {
-  encumbranceLimit,
-  equipmentStats,
-  gearDice,
-  skillDice,
-  totalDefense,
-  totalEncumbrance,
-  totalSoak
+    encumbranceLimit,
+    equipmentStats,
+    gearDice,
+    skillDice,
+    totalDefense,
+    totalEncumbrance,
+    totalSoak
 } from '@emporium/selectors';
 import { DeleteButton } from '@emporium/ui';
 import clone from 'clone';
