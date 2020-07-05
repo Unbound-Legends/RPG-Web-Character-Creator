@@ -6,7 +6,7 @@
         "rarity": 5,
         "book": "SotC",
         "page": 147,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Aembrew": {
         "name": "Æmbrew",
@@ -15,7 +15,7 @@
         "rarity": 4,
         "book": "SotC",
         "page": 147,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "ARGoggles": {
         "name": "AR Goggles",
@@ -24,7 +24,7 @@
         "rarity": 3,
         "book": "SotC",
         "page": 147,
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "modifier": {
             "Computers": ["[blue]"]
         }
@@ -36,7 +36,7 @@
         "rarity": 3,
         "book": "SotC",
         "page": 147,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "ConstructionAids": {
         "name": "Construction Aids",
@@ -45,7 +45,7 @@
         "rarity": 5,
         "book": "SotC",
         "page": 147,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Databook": {
         "name": "Databook",
@@ -54,7 +54,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 148,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "DisguiseKit": {
         "name": "Disguise Kit",
@@ -63,7 +63,7 @@
         "rarity": 3,
         "book": "SotC",
         "page": 148,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "FieldForge": {
         "name": "Field Forge",
@@ -72,7 +72,7 @@
         "rarity": 6,
         "book": "SotC",
         "page": 148,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Flaskempty": {
         "name": "Flask (empty)",
@@ -81,7 +81,7 @@
         "rarity": 1,
         "book": "SotC",
         "page": 149,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "GyroscopicBelt": {
         "name": "Gyroscopic Belt",
@@ -90,7 +90,7 @@
         "rarity": 3,
         "book": "SotC",
         "page": 149,
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "modifier": {
             "Coordination": ["[blue]", "[blue]"]
         }
@@ -102,7 +102,7 @@
         "rarity": 4,
         "book": "SotC",
         "page": 149,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "HealXTab": {
         "name": "Heal-X Tab",
@@ -111,7 +111,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 149,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "HornofRenown": {
         "name": "Horn of Renown",
@@ -120,7 +120,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 149,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Illuminator": {
         "name": "Illuminator",
@@ -129,7 +129,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 149,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Jetpack": {
         "name": "Jetpack",
@@ -138,7 +138,7 @@
         "rarity": 7,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "LittleBlackBook": {
         "name": "Little Black Book",
@@ -147,7 +147,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "MusicalInstrument": {
         "name": "Musical Instrument",
@@ -156,7 +156,7 @@
         "rarity": 4,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "ProgrammingTools": {
         "name": "Programming Tools",
@@ -165,7 +165,7 @@
         "rarity": 5,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Rations1week": {
         "name": "Rations (1 week)",
@@ -174,7 +174,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Rebreather": {
         "name": "Rebreather",
@@ -183,7 +183,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "RocketBoots": {
         "name": "Rocket Boots",
@@ -192,7 +192,7 @@
         "rarity": 3,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "SoothingFlute": {
         "name": "Soothing Flute",
@@ -201,7 +201,7 @@
         "rarity": 4,
         "book": "SotC",
         "page": 150,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "SpireSextant": {
         "name": "Spire Sextant",
@@ -210,7 +210,7 @@
         "rarity": 5,
         "book": "SotC",
         "page": 151,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Steed": {
         "name": "Spire Sextant",
@@ -219,7 +219,7 @@
         "rarity": 5,
         "book": "SotC",
         "page": 151,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "ToolKit": {
         "name": "Tool Kit",
@@ -228,7 +228,7 @@
         "rarity": 4,
         "book": "SotC",
         "page": 152,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "Translator": {
         "name": "Translator",
@@ -237,6 +237,6 @@
         "rarity": 5,
         "book": "SotC",
         "page": 152,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     }
 }

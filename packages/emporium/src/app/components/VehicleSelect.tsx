@@ -24,7 +24,7 @@ class VehicleSelectComponent extends React.Component<any, any> {
         };
     }
 
-    public componentWillReceiveProps(nextProps) {
+    public UNSAFE_componentWillReceiveProps(nextProps) {
         const {
             vehicle,
             currentHullTrauma,

@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 class TalentDedicationComponent extends React.Component<any, any> {
     public state = { options: [] };
 
-    public componentWillMount() {
+    public UNSAFE_componentWillMount() {
         const { characteristics, talentModifiers, row } = this.props;
         const options = [];
         Object.keys(characteristics).forEach(characteristic => {

@@ -10,7 +10,7 @@ class CustomSettingsComponent extends React.Component<any, any> {
 
     public initState(): void {}
 
-    public componentWillMount = () => this.initState();
+    public UNSAFE_componentWillMount = () => this.initState();
 
     public handleSubmit = event => {
         this.initState();

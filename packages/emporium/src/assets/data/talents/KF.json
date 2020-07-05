@@ -1,7 +1,7 @@
 {
     "BadBreath": {
         "name": "BadBreath",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": true,
         "turn": "Action",
@@ -12,7 +12,7 @@
     },
     "CloseCombatant": {
         "name": "Close Combatant",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": true,
         "turn": "Incidental",
@@ -23,7 +23,7 @@
     },
     "Devourer": {
         "name": "Devourer",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": true,
         "turn": "Maneuver",
@@ -34,7 +34,7 @@
     },
     "FaerieFinesse": {
         "name": "Faerie Finesse",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -45,7 +45,7 @@
     },
     "Fearsome": {
         "name": "Fearsome",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -56,7 +56,7 @@
     },
     "HardHeaded": {
         "name": "Hard Headed",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": true,
         "turn": "Action",
@@ -67,7 +67,7 @@
     },
     "Mutation": {
         "name": "Mutation",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -78,7 +78,7 @@
     },
     "NeedforSpeed": {
         "name": "Need for Speed",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -89,7 +89,7 @@
     },
     "OneOfUs": {
         "name": "One of Us!",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -100,7 +100,7 @@
     },
     "SilentCommunication": {
         "name": "Silent Communication",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": true,
         "turn": "Incidental",
@@ -111,7 +111,7 @@
     },
     "SpireSense": {
         "name": "Spire Sense",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -122,7 +122,7 @@
     },
     "StreetHabits": {
         "name": "Street Habits",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -133,7 +133,7 @@
     },
     "TalkShop": {
         "name": "Talk Shop",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": true,
         "turn": "Incidental",
@@ -144,7 +144,7 @@
     },
     "Torment": {
         "name": "Torment",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -155,7 +155,7 @@
     },
     "WellOrganized": {
         "name": "Well Organized",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 1,
         "activation": false,
         "turn": false,
@@ -169,7 +169,7 @@
     },
     "AemberAptitude": {
         "name": "Æmber Aptitude",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -183,7 +183,7 @@
     },
     "Anthem": {
         "name": "Anthem",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Maneuver",
@@ -194,7 +194,7 @@
     },
     "BowlOver": {
         "name": "Bowl Over",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -205,7 +205,7 @@
     },
     "Distraction": {
         "name": "Distraction!",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Action",
@@ -216,7 +216,7 @@
     },
     "FlavorSensation": {
         "name": "Flavor Sensation",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Action",
@@ -227,7 +227,7 @@
     },
     "GoestoEleven": {
         "name": "Goes to Eleven",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -238,7 +238,7 @@
     },
     "Implacable": {
         "name": "Implacable",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": false,
@@ -249,7 +249,7 @@
     },
     "KnowItAll": {
         "name": "Know-It-All",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Incidental",
@@ -260,7 +260,7 @@
     },
     "LootFirst": {
         "name": "Loot First",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Incidental",
@@ -271,7 +271,7 @@
     },
     "OnewiththeCrucible": {
         "name": "One with the Crucible",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Incidental",
@@ -282,7 +282,7 @@
     },
     "PatchUp": {
         "name": "Patch Up",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Incidental",
@@ -293,7 +293,7 @@
     },
     "Pyromania": {
         "name": "Pyromania",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -304,7 +304,7 @@
     },
     "SharpTongue": {
         "name": "Sharp Tongue",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -315,7 +315,7 @@
     },
     "SuckerPunch": {
         "name": "Sucker Punch",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Incidental, Out of Turn",
@@ -326,7 +326,7 @@
     },
     "TanksaLot": {
         "name": "Tanks a Lot",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -337,7 +337,7 @@
     },
     "Telekinesis": {
         "name": "Telekinesis",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -348,7 +348,7 @@
     },
     "TicketstotheGunShow": {
         "name": "Tickets to the Gun Show",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": true,
         "turn": "Incidental",
@@ -359,7 +359,7 @@
     },
     "Wallcrawler": {
         "name": "Wallcrawler",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 2,
         "activation": false,
         "turn": false,
@@ -370,7 +370,7 @@
     },
     "AemberAffinity": {
         "name": "Æmber Affinity",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -381,7 +381,7 @@
     },
     "Aember Dowser": {
         "name": "Æmber Dowser",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Action",
@@ -392,7 +392,7 @@
     },
     "AnthemImproved": {
         "name": "Anthem (Improved)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -403,7 +403,7 @@
     },
     "BadBreathImproved": {
         "name": "Bad Breath (Improved)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -414,7 +414,7 @@
     },
     "Bloodhound": {
         "name": "Bloodhound",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental",
@@ -425,7 +425,7 @@
     },
     "BornintheSaddle": {
         "name": "Born in the Saddle",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental",
@@ -436,7 +436,7 @@
     },
     "BreakingBread": {
         "name": "Breaking Bread",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental",
@@ -447,7 +447,7 @@
     },
     "Bullseye": {
         "name": "Bullseye!",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental",
@@ -458,7 +458,7 @@
     },
     "ContingencyPlan": {
         "name": "Contingency Plan",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental",
@@ -469,7 +469,7 @@
     },
     "Daredevil": {
         "name": "Daredevil",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -480,7 +480,7 @@
     },
     "DramaticEntrance": {
         "name": "Dramatic Entrance",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental, Out of Turn",
@@ -491,7 +491,7 @@
     },
     "Electrified": {
         "name": "Electrified",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -502,7 +502,7 @@
     },
     "Elusive": {
         "name": "Elusive",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental, Out of Turn",
@@ -513,7 +513,7 @@
     },
     "Eureka!": {
         "name": "Eureka!",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -524,7 +524,7 @@
     },
     "HardHeadedImproved": {
         "name": "Hard Headed (Improved)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Action",
@@ -535,7 +535,7 @@
     },
     "InspiringCry": {
         "name": "Inspiring Cry",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Maneuver",
@@ -546,7 +546,7 @@
     },
     "PowerChord": {
         "name": "Power Chord",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Action",
@@ -557,7 +557,7 @@
     },
     "Shameless": {
         "name": "Shameless",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -568,7 +568,7 @@
     },
     "SweepingBlow": {
         "name": "Sweeping Blow",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": true,
         "turn": "Incidental",
@@ -579,7 +579,7 @@
     },
     "TagandRelease": {
         "name": "Tag and Release",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 3,
         "activation": false,
         "turn": false,
@@ -590,7 +590,7 @@
     },
     "DramaticEntranceImproved": {
         "name": "Dramatic Entrance (Improved)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Incidental, Out of Turn",
@@ -601,7 +601,7 @@
     },
     "DramaticEscape": {
         "name": "Dramatic Escape",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Incidental",
@@ -612,7 +612,7 @@
     },
     "Foresight": {
         "name": "Foresight",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Maneuver",
@@ -623,7 +623,7 @@
     },
     "HardHeadedSupreme": {
         "name": "Hard Headed (Supreme)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Action",
@@ -634,7 +634,7 @@
     },
     "IngeniousSolution": {
         "name": "Ingenious Solution",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Incidental",
@@ -645,7 +645,7 @@
     },
     "PainDontHurt": {
         "name": "Pain Don’t Hurt",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Maneuver",
@@ -656,7 +656,7 @@
     },
     "StunnedSilence": {
         "name": "Stunned Silence",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 4,
         "activation": true,
         "turn": "Incidental",
@@ -667,7 +667,7 @@
     },
     "AemberEnhancement": {
         "name": "Æmber Enhancement",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 5,
         "activation": true,
         "turn": "Maneuver",
@@ -678,7 +678,7 @@
     },
     "Beastmaster": {
         "name": "Beastmaster",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 5,
         "activation": false,
         "turn": false,
@@ -689,7 +689,7 @@
     },
     "DramaticEntranceSupreme": {
         "name": "Dramatic Entrance (Supreme)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 5,
         "activation": true,
         "turn": "Incidental, Out of Turn",
@@ -700,7 +700,7 @@
     },
     "SharpTongueImproved": {
         "name": "Sharp Tongue (Improved)",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "tier": 5,
         "activation": false,
         "turn": false,

@@ -18,7 +18,7 @@ class SettingBuilderComponent extends React.Component<any, any> {
         'weapons'
     ];
 
-    public componentWillMount = () => this.initState();
+    public UNSAFE_componentWillMount = () => this.initState();
 
     public initState = () =>
         this.setState({

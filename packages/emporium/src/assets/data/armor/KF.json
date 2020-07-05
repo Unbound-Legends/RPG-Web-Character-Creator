@@ -8,7 +8,7 @@
         "rarity": 0,
         "book": "SotC",
         "page": 143,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "DurableClothing": {
         "name": "Durable Clothing",
@@ -19,7 +19,7 @@
         "rarity": 1,
         "book": "SotC",
         "page": 143,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "LightArmor": {
         "name": "Light Armor",
@@ -30,7 +30,7 @@
         "rarity": 2,
         "book": "SotC",
         "page": 143,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     },
     "HeavyArmor": {
         "name": "Heavy Armor",
@@ -41,6 +41,6 @@
         "rarity": 4,
         "book": "SotC",
         "page": 143,
-        "setting": ["Secrets of the Crucible", "Keyforge"]
+        "setting": ["scienceFantasy", "Keyforge"]
     }
 }

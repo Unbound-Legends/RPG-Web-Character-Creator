@@ -6,7 +6,7 @@
     "book": "KF",
     "page": 25,
     "description": "See Secrets of the Crucible, page 25, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "SizeMatters": {
     "name": "Size Matters",
@@ -15,7 +15,7 @@
     "book": "KF",
     "page": 26,
     "description": "See Secrets of the Crucible, page 26, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "modifier": {
       "maxEncumbrance": 2
     }
@@ -27,7 +27,7 @@
     "book": "KF",
     "page": 26,
     "description": "See Secrets of the Crucible, page 26, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "MoreUpsetthanInjured": {
     "name": "More Upset than Injured",
@@ -36,7 +36,7 @@
     "book": "KF",
     "page": 27,
     "description": "See Secrets of the Crucible, page 27, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "ExtraLimbs": {
     "name": "Extra Limbs",
@@ -45,7 +45,7 @@
     "book": "KF",
     "page": 29,
     "description": "See Secrets of the Crucible, page 29, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "WhatTheyMeanttoSay": {
     "name": "What They Meant to Say",
@@ -54,7 +54,7 @@
     "book": "KF",
     "page": 29,
     "description": "See Secrets of the Crucible, page 29, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "SizeDoesntMatter": {
     "name": "Size Doesn’t Matter",
@@ -63,7 +63,7 @@
     "book": "KF",
     "page": 30,
     "description": "See Secrets of the Crucible, page 30, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "ZapZapZap": {
     "name": "Zap! Zap! Zap!",
@@ -72,7 +72,7 @@
     "book": "KF",
     "page": 30,
     "description": "See Secrets of the Crucible, page 30, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "AllPartofMyScheme": {
     "name": "All Part of My Scheme!",
@@ -81,7 +81,7 @@
     "book": "KF",
     "page": 31,
     "description": "See Secrets of the Crucible, page 31, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "PerennialSurvivor": {
     "name": "Perennial Survivor",
@@ -90,7 +90,7 @@
     "book": "KF",
     "page": 32,
     "description": "See Secrets of the Crucible, page 32, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "KeyforgeInorganic": {
     "name": "Inorganic",
@@ -99,7 +99,7 @@
     "book": "KF",
     "page": 33,
     "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "KeyforgeGloriesofMetal": {
     "name": "Glories of Metal",
@@ -108,7 +108,7 @@
     "book": "KF",
     "page": 33,
     "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "KeyforgeInitialProgramming": {
     "name": "Initial Programming",
@@ -117,7 +117,7 @@
     "book": "KF",
     "page": 33,
     "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "EvolvedArrogance": {
     "name": "Evolved Arrogance",
@@ -126,7 +126,7 @@
     "book": "KF",
     "page": 34,
     "description": "See Secrets of the Crucible, page 34, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "Incorporeal": {
     "name": "Incorporeal",
@@ -135,7 +135,7 @@
     "book": "KF",
     "page": 35,
     "description": "See Secrets of the Crucible, page 35, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   },
   "ToughasRock": {
     "name": "Tough as Rock",
@@ -144,6 +144,6 @@
     "book": "KF",
     "page": 36,
     "description": "See Secrets of the Crucible, page 36, for more details.",
-    "setting": ["Secrets of the Crucible", "Keyforge"]
+    "setting": ["scienceFantasy", "Keyforge"]
   }
 }

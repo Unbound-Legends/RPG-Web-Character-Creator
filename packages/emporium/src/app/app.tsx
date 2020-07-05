@@ -16,35 +16,39 @@ declare const window: any;
 class AppComponent extends React.Component<any> {
     public readonly state = { loading: true };
 
-    public componentWillMount(): void {
+    public UNSAFE_componentWillMount(): void {
         ReactGA.initialize(process.env.NX_gaID);
         ReactGA.pageview(window.location.pathname);
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.props.changeUser(user.uid);
             }
+
             this.setState({ loading: false });
         });
 
         this._registerWindowEvents();
     }
 
-    public componentWillReceiveProps(nextProps): void {
+    public UNSAFE_componentWillReceiveProps(nextProps): void {
         const { loadCharacterList, user, loadDataSets, loadDoc } = this.props;
         if (nextProps.user && user !== nextProps.user) {
             writeUser();
             loadCharacterList();
             loadDataSets();
         }
+
         if (
             nextProps.character &&
             nextProps.character !== this.props.character
         ) {
             this.props.loadData();
         }
+
         if (nextProps.vehicle && nextProps.vehicle !== this.props.vehicle) {
             loadDoc('vehicle', nextProps.vehicle);
         }
+
         if (nextProps.printContent !== this.props.printContent) {
             setTimeout(() => window.print(), 400);
         }
@@ -57,9 +61,11 @@ class AppComponent extends React.Component<any> {
         if (loading) {
             return <Loading />;
         }
+
         if (!this.props.user) {
             return <User />;
         }
+
         if (loadingData) {
             return <Loading />;
         } else {

@@ -10,7 +10,7 @@ class CustomVehiclesComponent extends React.Component<any, any> {
     public state: any = {};
     private _type = 'customVehicles';
 
-    public componentWillMount = () => this.initState();
+    public UNSAFE_componentWillMount = () => this.initState();
 
     public initState = () => {
         this.setState({

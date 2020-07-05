@@ -11,7 +11,7 @@ class CustomCareersComponent extends React.Component<any> {
     public state: any = {};
     private _type = 'customCareers';
 
-    public componentWillMount = (): void => this.initState();
+    public UNSAFE_componentWillMount = (): void => this.initState();
 
     public initState = () => {
         this.setState({

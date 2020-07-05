@@ -1,13 +1,15 @@
 {
-  "All": "All",
-  "scienceFiction": "Science Fiction",
-  "Fantasy": "Fantasy",
-  "modernDay": "Modern Day",
-  "spaceOpera": "Space Opera",
-  "steampunk": "Steampunk",
-  "weirdWar": "Weird War",
-  "hacking": "Hacking",
-  "vehicle": "Vehicle",
-  "magic": "Magic",
-  "taco": "Taco"
+    "All": "All",
+    "Fantasy": "Fantasy",
+    "hacking": "Hacking",
+    "Keyforge": "Keyforge",
+    "magic": "Magic",
+    "modernDay": "Modern Day",
+    "scienceFiction": "Science Fiction",
+    "scienceFantasy": "Science Fantasy",
+    "spaceOpera": "Space Opera",
+    "steampunk": "Steampunk",
+    "taco": "Taco",
+    "vehicle": "Vehicle",
+    "weirdWar": "Weird War"
 }
