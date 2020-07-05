@@ -275,6 +275,12 @@ class GearComponent extends React.Component<
                 </ModalHeader>
                 <ModalBody className="m-1">
                     <div>
+                        <input
+                            className="item-filter"
+                            type="text"
+                            placeholder="Name Filter"
+                            onChange={this.handleFilterChange.bind(this)}
+                        />
                         <Typeahead
                             id={`settingChooser`}
                             multiple={true}
@@ -288,12 +294,6 @@ class GearComponent extends React.Component<
                                         : selected
                                 })
                             }
-                        />
-                        <input
-                            className="item-filter"
-                            type="text"
-                            placeholder="Name Filter"
-                            onChange={this.handleFilterChange.bind(this)}
                         />
                     </div>
                     <Row className="table-container">

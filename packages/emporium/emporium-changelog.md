@@ -1,3 +1,8 @@
+# 0.2.1.1
+
+    Fixing styling of gear to support Firefox
+    Fixing background images that broke from nx migration
+
 # 0.2.1.0
 
     Added support for filtering items based on name, book, and setting
