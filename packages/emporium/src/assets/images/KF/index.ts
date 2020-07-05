@@ -20,5 +20,6 @@ export const TotalXp = 'https://ul-emporium.imgix.net/attributes/emp-kf-totxp.sv
 export const StrainThreshold = Soak;
 export const WoundsThreshold = Soak;
 
+export const VehicleStatBlock = '/assets/images/KF/kf-vehicle-statblocks.svg';
+
 export { default as background } from './background.png';
-export { default as VehicleStatBlock } from './VehicleStatBlock.svg';
