@@ -85,3 +85,10 @@ export const modifiableAttributes = [
     'defense',
     'careerSkills'
 ].sort();
+
+export const books = [
+    'CRB',
+    'RoT',
+    'SotB',
+    'SotC'
+];

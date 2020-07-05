@@ -13,7 +13,7 @@ export { DataPage } from './DataPage';
 export { Description } from './Description';
 export { ErrorBoundary } from './ErrorBoundary';
 export { Equipment } from './Equipment';
-export { Gear } from './Gear';
+export { Gear } from './gear/gear';
 export { ImportExport } from './ImportExport';
 export { Loading } from './Loading';
 export { MainPage } from './MainPage';

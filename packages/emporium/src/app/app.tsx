@@ -26,21 +26,7 @@ class AppComponent extends React.Component<any> {
             this.setState({ loading: false });
         });
 
-        if ('serviceWorker' in (window?.navigator || {})) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker
-                    .register('/assets/service-worker.js')
-                    .then(registration => {
-                        // Registration was successful
-                        console.log(
-                            'ServiceWorker registration successful with scope: ',
-                            registration.scope
-                        );
-                    }, console.error);
-            });
-        } else {
-            console.warn('Service worker is not supported');
-        }
+        this._registerWindowEvents();
     }
 
     public componentWillReceiveProps(nextProps): void {
@@ -109,6 +95,25 @@ class AppComponent extends React.Component<any> {
                     <div className={`bg bg-${theme} d-print-none`} />
                 </Container>
             );
+        }
+    }
+
+    private _registerWindowEvents(): void {
+        // Set up service worker
+        if ('serviceWorker' in (window?.navigator || {})) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker
+                    .register('/assets/service-worker.js')
+                    .then(registration => {
+                        // Registration was successful
+                        console.log(
+                            'ServiceWorker registration successful with scope: ',
+                            registration.scope
+                        );
+                    }, console.error);
+            });
+        } else {
+            console.warn('Service worker is not supported');
         }
     }
 }

@@ -1,247 +1,242 @@
 {
-  "Aembread": {
-    "name": "Æmbread",
-    "encumbrance": 1,
-    "price": 80,
-    "rarity": 5,
-    "book": "Secrets of the Crucible",
-    "page": 147,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Aembrew": {
-    "name": "Æmbrew",
-    "encumbrance": 1,
-    "price": 60,
-    "rarity": 4,
-    "book": "Secrets of the Crucible",
-    "page": 147,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "ARGoggles": {
-    "name": "AR Goggles",
-    "encumbrance": 0,
-    "price": 250,
-    "rarity": 3,
-    "book": "Secrets of the Crucible",
-    "page": 147,
-    "setting": ["Secrets of the Crucible", "Keyforge"],
-    "modifier": {
-      "Computers": [
-        "[blue]"
-      ]
+    "Aembread": {
+        "name": "Æmbread",
+        "encumbrance": 1,
+        "price": 80,
+        "rarity": 5,
+        "book": "SotC",
+        "page": 147,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Aembrew": {
+        "name": "Æmbrew",
+        "encumbrance": 1,
+        "price": 60,
+        "rarity": 4,
+        "book": "SotC",
+        "page": 147,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "ARGoggles": {
+        "name": "AR Goggles",
+        "encumbrance": 0,
+        "price": 250,
+        "rarity": 3,
+        "book": "SotC",
+        "page": 147,
+        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "modifier": {
+            "Computers": ["[blue]"]
+        }
+    },
+    "CombatPheromones": {
+        "name": "Combat Pheromones",
+        "encumbrance": 0,
+        "price": 100,
+        "rarity": 3,
+        "book": "SotC",
+        "page": 147,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "ConstructionAids": {
+        "name": "Construction Aids",
+        "encumbrance": 2,
+        "price": 250,
+        "rarity": 5,
+        "book": "SotC",
+        "page": 147,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Databook": {
+        "name": "Databook",
+        "encumbrance": 0,
+        "price": 100,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 148,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "DisguiseKit": {
+        "name": "Disguise Kit",
+        "encumbrance": 2,
+        "price": 150,
+        "rarity": 3,
+        "book": "SotC",
+        "page": 148,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "FieldForge": {
+        "name": "Field Forge",
+        "encumbrance": 3,
+        "price": 500,
+        "rarity": 6,
+        "book": "SotC",
+        "page": 148,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Flaskempty": {
+        "name": "Flask (empty)",
+        "encumbrance": 0,
+        "price": 5,
+        "rarity": 1,
+        "book": "SotC",
+        "page": 149,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "GyroscopicBelt": {
+        "name": "Gyroscopic Belt",
+        "encumbrance": 1,
+        "price": 250,
+        "rarity": 3,
+        "book": "SotC",
+        "page": 149,
+        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "modifier": {
+            "Coordination": ["[blue]", "[blue]"]
+        }
+    },
+    "HackingRig": {
+        "name": "Hacking Rig",
+        "encumbrance": 1,
+        "price": 300,
+        "rarity": 4,
+        "book": "SotC",
+        "page": 149,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "HealXTab": {
+        "name": "Heal-X Tab",
+        "encumbrance": 0,
+        "price": 25,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 149,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "HornofRenown": {
+        "name": "Horn of Renown",
+        "encumbrance": 1,
+        "price": 200,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 149,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Illuminator": {
+        "name": "Illuminator",
+        "encumbrance": 1,
+        "price": 25,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 149,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Jetpack": {
+        "name": "Jetpack",
+        "encumbrance": 2,
+        "price": 4500,
+        "rarity": 7,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "LittleBlackBook": {
+        "name": "Little Black Book",
+        "encumbrance": 1,
+        "price": 200,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "MusicalInstrument": {
+        "name": "Musical Instrument",
+        "encumbrance": 1,
+        "price": 100,
+        "rarity": 4,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "ProgrammingTools": {
+        "name": "Programming Tools",
+        "encumbrance": 0,
+        "price": 200,
+        "rarity": 5,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Rations1week": {
+        "name": "Rations (1 week)",
+        "encumbrance": 1,
+        "price": 40,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Rebreather": {
+        "name": "Rebreather",
+        "encumbrance": 1,
+        "price": 100,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "RocketBoots": {
+        "name": "Rocket Boots",
+        "encumbrance": 1,
+        "price": 850,
+        "rarity": 3,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "SoothingFlute": {
+        "name": "Soothing Flute",
+        "encumbrance": 1,
+        "price": 500,
+        "rarity": 4,
+        "book": "SotC",
+        "page": 150,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "SpireSextant": {
+        "name": "Spire Sextant",
+        "encumbrance": 0,
+        "price": 50,
+        "rarity": 5,
+        "book": "SotC",
+        "page": 151,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Steed": {
+        "name": "Spire Sextant",
+        "encumbrance": 0,
+        "price": 50,
+        "rarity": 5,
+        "book": "SotC",
+        "page": 151,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "ToolKit": {
+        "name": "Tool Kit",
+        "encumbrance": 2,
+        "price": 75,
+        "rarity": 4,
+        "book": "SotC",
+        "page": 152,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
+    },
+    "Translator": {
+        "name": "Translator",
+        "encumbrance": 0,
+        "price": 300,
+        "rarity": 5,
+        "book": "SotC",
+        "page": 152,
+        "setting": ["Secrets of the Crucible", "Keyforge"]
     }
-  },
-  "CombatPheromones": {
-    "name": "Combat Pheromones",
-    "encumbrance": 0,
-    "price": 100,
-    "rarity": 3,
-    "book": "Secrets of the Crucible",
-    "page": 147,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "ConstructionAids": {
-    "name": "Construction Aids",
-    "encumbrance": 2,
-    "price": 250,
-    "rarity": 5,
-    "book": "Secrets of the Crucible",
-    "page": 147,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Databook": {
-    "name": "Databook",
-    "encumbrance": 0,
-    "price": 100,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 148,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "DisguiseKit": {
-    "name": "Disguise Kit",
-    "encumbrance": 2,
-    "price": 150,
-    "rarity": 3,
-    "book": "Secrets of the Crucible",
-    "page": 148,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "FieldForge": {
-    "name": "Field Forge",
-    "encumbrance": 3,
-    "price": 500,
-    "rarity": 6,
-    "book": "Secrets of the Crucible",
-    "page": 148,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Flaskempty": {
-    "name": "Flask (empty)",
-    "encumbrance": 0,
-    "price": 5,
-    "rarity": 1,
-    "book": "Secrets of the Crucible",
-    "page": 149,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "GyroscopicBelt": {
-    "name": "Gyroscopic Belt",
-    "encumbrance": 1,
-    "price": 250,
-    "rarity": 3,
-    "book": "Secrets of the Crucible",
-    "page": 149,
-    "setting": ["Secrets of the Crucible", "Keyforge"],
-    "modifier": {
-      "Coordination": [
-        "[blue]",
-        "[blue]"
-      ]
-    }
-  },
-  "HackingRig": {
-    "name": "Hacking Rig",
-    "encumbrance": 1,
-    "price": 300,
-    "rarity": 4,
-    "book": "Secrets of the Crucible",
-    "page": 149,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "HealXTab": {
-    "name": "Heal-X Tab",
-    "encumbrance": 0,
-    "price": 25,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 149,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "HornofRenown": {
-    "name": "Horn of Renown",
-    "encumbrance": 1,
-    "price": 200,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 149,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Illuminator": {
-    "name": "Illuminator",
-    "encumbrance": 1,
-    "price": 25,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 149,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Jetpack": {
-    "name": "Jetpack",
-    "encumbrance": 2,
-    "price": 4500,
-    "rarity": 7,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "LittleBlackBook": {
-    "name": "Little Black Book",
-    "encumbrance": 1,
-    "price": 200,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "MusicalInstrument": {
-    "name": "Musical Instrument",
-    "encumbrance": 1,
-    "price": 100,
-    "rarity": 4,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "ProgrammingTools": {
-    "name": "Programming Tools",
-    "encumbrance": 0,
-    "price": 200,
-    "rarity": 5,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Rations1week": {
-    "name": "Rations (1 week)",
-    "encumbrance": 1,
-    "price": 40,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Rebreather": {
-    "name": "Rebreather",
-    "encumbrance": 1,
-    "price": 100,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "RocketBoots": {
-    "name": "Rocket Boots",
-    "encumbrance": 1,
-    "price": 850,
-    "rarity": 3,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "SoothingFlute": {
-    "name": "Soothing Flute",
-    "encumbrance": 1,
-    "price": 500,
-    "rarity": 4,
-    "book": "Secrets of the Crucible",
-    "page": 150,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "SpireSextant": {
-    "name": "Spire Sextant",
-    "encumbrance": 0,
-    "price": 50,
-    "rarity": 5,
-    "book": "Secrets of the Crucible",
-    "page": 151,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Steed": {
-    "name": "Spire Sextant",
-    "encumbrance": 0,
-    "price": 50,
-    "rarity": 5,
-    "book": "Secrets of the Crucible",
-    "page": 151,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "ToolKit": {
-    "name": "Tool Kit",
-    "encumbrance": 2,
-    "price": 75,
-    "rarity": 4,
-    "book": "Secrets of the Crucible",
-    "page": 152,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "Translator": {
-    "name": "Translator",
-    "encumbrance": 0,
-    "price": 300,
-    "rarity": 5,
-    "book": "Secrets of the Crucible",
-    "page": 152,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  }
 }

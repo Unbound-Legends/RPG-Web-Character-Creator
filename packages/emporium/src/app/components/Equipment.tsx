@@ -17,7 +17,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { Button, Col, Input, Row, Table } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { Description } from './Description';
-import { Gear } from './Gear';
+import { Gear } from './gear/gear';
 
 class EquipmentComponent extends React.Component<any, any> {
     public constructor(props) {
