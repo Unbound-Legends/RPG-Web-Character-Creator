@@ -47,7 +47,7 @@
     "Presence": 1
   },
   "CloneSOTB": {
-    "name": "Clone",
+    "name": "Clone (SotB)",
     "book": "SOTB",
     "page": 27,
     "description": "See SOTB, page 27, for more details.",
