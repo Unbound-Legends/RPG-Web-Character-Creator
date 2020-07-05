@@ -1,3 +1,6 @@
+# 0.2.1.0
+    Added support for filtering items based on name, book, and setting
+    Cleaned up item picker CSS a bit
 # 0.2.0.0
     Added pre-major version number (0) to indicate major UI changes vs code changes
     Several breaking changes to the code revolving around converting to an [nx](https://nx.dev) project and supporting typescript
