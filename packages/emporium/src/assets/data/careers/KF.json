@@ -4,7 +4,7 @@
         "description": "See Secrets of the Crucible, page 58, for more details.",
         "book": "KF",
         "page": "58",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "skills": [
             "Aembercraft",
             "Brawl",
@@ -21,7 +21,7 @@
         "description": "See Secrets of the Crucible, page 59, for more details.",
         "book": "KF",
         "page": "59",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "skills": [
             "Charm",
             "Coercion",
@@ -38,7 +38,7 @@
         "description": "See Secrets of the Crucible, page 60, for more details.",
         "book": "KF",
         "page": "60",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "skills": [
             "Aembercraft",
             "Computers",
@@ -55,7 +55,7 @@
         "description": "See Secrets of the Crucible, page 61, for more details.",
         "book": "KF",
         "page": "61",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "skills": [
             "Cool",
             "Discipline",
@@ -72,7 +72,7 @@
     "description": "See Secrets of the Crucible, page 62, for more details.",
     "book": "KF",
     "page": "62",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "skills": [
       "Athletics",
       "KnowledgeCrucible",
@@ -89,7 +89,7 @@
     "description": "See Secrets of the Crucible, page 63, for more details.",
     "book": "KF",
     "page": "63",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "skills": [
       "Athletics",
       "Computers",
@@ -106,7 +106,7 @@
     "description": "See Secrets of the Crucible, page 64, for more details.",
     "book": "KF",
     "page": "64",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "skills": [
       "Cool",
       "KnowledgeCrucible",
@@ -123,7 +123,7 @@
     "description": "See Secrets of the Crucible, page 65, for more details.",
     "book": "KF",
     "page": "65",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "skills": [
       "Charm",
       "Coordination",
@@ -140,7 +140,7 @@
     "description": "See Secrets of the Crucible, page 66, for more details.",
     "book": "KF",
     "page": "66",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "skills": [
       "Brawl",
       "Coordination",
@@ -157,7 +157,7 @@
     "description": "See Secrets of the Crucible, page 67, for more details.",
     "book": "KF",
     "page": "67",
-    "setting": ["Secrets of the Crucible", "Keyforge"],
+    "setting": ["scienceFantasy", "Keyforge"],
     "skills": [
       "Charm",
       "Coercion",
@@ -174,7 +174,7 @@
     "description": "See Secrets of the Crucible, page 68, for more details.",
         "book": "KF",
         "page": "68",
-        "setting": ["Secrets of the Crucible", "Keyforge"],
+        "setting": ["scienceFantasy", "Keyforge"],
         "skills": [
           "Athletics",
           "Brawl",

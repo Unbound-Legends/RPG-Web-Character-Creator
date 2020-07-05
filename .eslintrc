@@ -1,48 +1,64 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@typescript-eslint", "@nrwl/nx"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
-  ],
-  "rules": {
-    "curly": "error",
-    "TS2525": "off",
-    "no-case-declarations": "off",
-    "no-async-promise-executor": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/explicit-member-accessibility": "error",
-    "@typescript-eslint/explicit-function-return-type": "warn",
-    "@typescript-eslint/no-parameter-properties": "off",
-    "@nrwl/nx/enforce-module-boundaries": [
-      "error",
-      {
-        "enforceBuildableLibDependency": true,
-        "allow": [],
-        "depConstraints": [
-          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "ignorePatterns": ["**/*"],
+    "plugins": ["@typescript-eslint", "@nrwl/nx"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "prettier/@typescript-eslint"
+    ],
+    "rules": {
+        "curly": "error",
+        "TS2525": "off",
+        "no-case-declarations": "off",
+        "no-async-promise-executor": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/no-parameter-properties": "off",
+        "lines-between-class-members": ["error", "always"],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": [
+                    "block-like",
+                    "multiline-const",
+                    "multiline-var",
+                    "multiline-expression",
+                    "multiline-let",
+                    "function"
+                ],
+                "next": "*"
+            }
+        ],
+        "@nrwl/nx/enforce-module-boundaries": [
+            "error",
+            {
+                "enforceBuildableLibDependency": true,
+                "allow": [],
+                "depConstraints": [
+                    { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+                ]
+            }
         ]
-      }
+    },
+    "overrides": [
+        {
+            "files": ["*.tsx"],
+            "rules": {
+                "@typescript-eslint/no-unused-vars": "off"
+            }
+        }
     ]
-  },
-  "overrides": [
-    {
-      "files": ["*.tsx"],
-      "rules": {
-        "@typescript-eslint/no-unused-vars": "off"
-      }
-    }
-  ]
 }

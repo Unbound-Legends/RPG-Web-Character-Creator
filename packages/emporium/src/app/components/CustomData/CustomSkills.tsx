@@ -11,7 +11,7 @@ class CustomSkillsComponent extends React.Component<any, any> {
     public state: any = {};
     private _type = 'customSkills';
 
-    public componentWillMount = () => this.initState();
+    public UNSAFE_componentWillMount = () => this.initState();
 
     public initState = () => {
         this.setState({

@@ -1,46 +1,46 @@
 {
-  "StandardClothing": {
-    "name": "Standard Clothing",
-    "defense": 0,
-    "soak": "+0",
-    "encumbrance": 1,
-    "price": 10,
-    "rarity": 0,
-    "book": "Secrets of the Crucible",
-    "page": 143,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "DurableClothing": {
-    "name": "Durable Clothing",
-    "defense": 0,
-    "soak": "+1",
-    "encumbrance": 1,
-    "price": 50,
-    "rarity": 1,
-    "book": "Secrets of the Crucible",
-    "page": 143,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "LightArmor": {
-    "name": "Light Armor",
-    "defense": 0,
-    "soak": "+2",
-    "encumbrance": 2,
-    "price": 500,
-    "rarity": 2,
-    "book": "Secrets of the Crucible",
-    "page": 143,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  },
-  "HeavyArmor": {
-    "name": "Heavy Armor",
-    "defense": 1,
-    "soak": "+3",
-    "encumbrance": 3,
-    "price": 1200,
-    "rarity": 4,
-    "book": "Secrets of the Crucible",
-    "page": 143,
-    "setting": ["Secrets of the Crucible", "Keyforge"]
-  }
+    "StandardClothing": {
+        "name": "Standard Clothing",
+        "defense": 0,
+        "soak": "+0",
+        "encumbrance": 1,
+        "price": 10,
+        "rarity": 0,
+        "book": "SotC",
+        "page": 143,
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "DurableClothing": {
+        "name": "Durable Clothing",
+        "defense": 0,
+        "soak": "+1",
+        "encumbrance": 1,
+        "price": 50,
+        "rarity": 1,
+        "book": "SotC",
+        "page": 143,
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "LightArmor": {
+        "name": "Light Armor",
+        "defense": 0,
+        "soak": "+2",
+        "encumbrance": 2,
+        "price": 500,
+        "rarity": 2,
+        "book": "SotC",
+        "page": 143,
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "HeavyArmor": {
+        "name": "Heavy Armor",
+        "defense": 1,
+        "soak": "+3",
+        "encumbrance": 3,
+        "price": 1200,
+        "rarity": 4,
+        "book": "SotC",
+        "page": 143,
+        "setting": ["scienceFantasy", "Keyforge"]
+    }
 }

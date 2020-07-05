@@ -11,7 +11,7 @@ import { Fragment } from './Fragments';
 class CustomEquipmentComponent extends React.Component<any, any> {
     public state: any = {};
 
-    public componentWillMount = () => this.initState();
+    public UNSAFE_componentWillMount = () => this.initState();
 
     public initState = () => {
         this.setState({

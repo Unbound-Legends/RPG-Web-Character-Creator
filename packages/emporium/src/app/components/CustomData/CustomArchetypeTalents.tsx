@@ -11,7 +11,7 @@ class CustomArchetypeTalentsComponent extends React.Component<any, any> {
     public state: any = {};
     private _type = 'customArchetypeTalents';
 
-    public componentWillMount = () => this.initState();
+    public UNSAFE_componentWillMount = () => this.initState();
 
     public initState = () => {
         this.setState({
