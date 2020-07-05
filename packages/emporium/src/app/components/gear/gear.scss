@@ -1,10 +1,14 @@
 .gear-modal {
+    max-width: 600px;
+
     .item-filter {
-        float: right;
+        width: 30%;
+        display: inline-block;
         border-radius: 4px;
         padding: 7px 0 5px 11px;
         border: 1px solid rgb(206, 212, 218);
         margin: -15px 5px 5px;
+        vertical-align: top;
     }
 
     .table-container {
@@ -13,9 +17,8 @@
 
     .rbt {
         position: relative;
-        width: 300px;
+        width: calc(70% - 10px);
         display: inline-block;
-        float: right;
         margin-top: -15px;
         margin-bottom: 5px;
 
