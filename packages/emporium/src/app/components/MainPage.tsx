@@ -1,21 +1,21 @@
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Buttons } from './Buttons';
-import {About} from './About';
-import {Attributes} from './Attributes';
-import {CharacterDescription} from './CharacterDescription';
-import {CharacterImage} from './CharacterImage';
-import {CharacterSelect} from './CharacterSelect';
-import {Critical} from './critical/critical';
-import {Equipment} from './Equipment';
-import {ErrorBoundary} from './ErrorBoundary';
-import {Motivation} from './Motivation';
-import {Notes} from './Notes';
-import {ShowCharacteristics} from './ShowCharacteristics';
-import {Skill} from './Skill';
-import {TalentList} from './TalentList';
-import {Talents} from './Talents';
-import {XPBoxes} from './XPBoxes';
+import { About } from './About';
+import { Attributes } from './Attributes';
+import { CharacterDescription } from './CharacterDescription';
+import { CharacterImage } from './CharacterImage';
+import { CharacterSelect } from './CharacterSelect';
+import { Critical } from './critical/critical';
+import { Equipment } from './Equipment';
+import { ErrorBoundary } from './ErrorBoundary';
+import { Motivation } from './Motivation';
+import { Notes } from './Notes';
+import { ShowCharacteristics } from './ShowCharacteristics';
+import { Skill } from './Skill';
+import { TalentList } from './TalentList';
+import { Talents } from './Talents';
+import { XPBoxes } from './XPBoxes';
 
 export const MainPage = (): any => {
     return (

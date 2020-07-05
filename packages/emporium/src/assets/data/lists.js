@@ -86,9 +86,4 @@ export const modifiableAttributes = [
     'careerSkills'
 ].sort();
 
-export const books = [
-    'CRB',
-    'RoT',
-    'SotB',
-    'SotC'
-];
+export const books = ['CRB', 'RoT', 'SotB', 'SotC'];

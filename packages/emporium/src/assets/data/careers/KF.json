@@ -67,123 +67,123 @@
             "Survival"
         ]
     },
-  "Discoverer": {
-    "name": "Discoverer",
-    "description": "See Secrets of the Crucible, page 62, for more details.",
-    "book": "KF",
-    "page": "62",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "skills": [
-      "Athletics",
-      "KnowledgeCrucible",
-      "Melee",
-      "Perception",
-      "Piloting",
-      "Riding",
-      "Stealth",
-      "Survival"
-    ]
-  },
-  "Engineer": {
-    "name": "Engineer",
-    "description": "See Secrets of the Crucible, page 63, for more details.",
-    "book": "KF",
-    "page": "63",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "skills": [
-      "Athletics",
-      "Computers",
-      "KnowledgeScience",
-      "Mechanics",
-      "Operating",
-      "Perception",
-      "Ranged",
-      "Vigilance"
-    ]
-  },
-  "Mender": {
-    "name": "Mender",
-    "description": "See Secrets of the Crucible, page 64, for more details.",
-    "book": "KF",
-    "page": "64",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "skills": [
-      "Cool",
-      "KnowledgeCrucible",
-      "KnowledgeCulture",
-      "Mechanics",
-      "Medicine",
-      "Melee",
-      "Negotiation",
-      "Resilience"
-    ]
-  },
-  "Performer": {
-    "name": "Performer",
-    "description": "See Secrets of the Crucible, page 65, for more details.",
-    "book": "KF",
-    "page": "65",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "skills": [
-      "Charm",
-      "Coordination",
-      "Deception",
-      "Leadership",
-      "Melee",
-      "Perception",
-      "Skullduggery",
-      "Streetwise"
-    ]
-  },
-  "Rogue": {
-    "name": "Rogue",
-    "description": "See Secrets of the Crucible, page 66, for more details.",
-    "book": "KF",
-    "page": "66",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "skills": [
-      "Brawl",
-      "Coordination",
-      "Deception",
-      "Ranged",
-      "Skullduggery",
-      "Stealth",
-      "Streetwise",
-      "Vigilance"
-    ]
-  },
-  "Trader": {
-    "name": "Trader",
-    "description": "See Secrets of the Crucible, page 67, for more details.",
-    "book": "KF",
-    "page": "67",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "skills": [
-      "Charm",
-      "Coercion",
-      "Deception",
-      "Discipline",
-      "KnowledgeCulture",
-      "Medicine",
-      "Negotiation",
-      "Streetwise"
-    ]
-  },
-  "Vaultwarrior": {
-    "name": "Vaultwarrior",
-    "description": "See Secrets of the Crucible, page 68, for more details.",
+    "Discoverer": {
+        "name": "Discoverer",
+        "description": "See Secrets of the Crucible, page 62, for more details.",
+        "book": "KF",
+        "page": "62",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "skills": [
+            "Athletics",
+            "KnowledgeCrucible",
+            "Melee",
+            "Perception",
+            "Piloting",
+            "Riding",
+            "Stealth",
+            "Survival"
+        ]
+    },
+    "Engineer": {
+        "name": "Engineer",
+        "description": "See Secrets of the Crucible, page 63, for more details.",
+        "book": "KF",
+        "page": "63",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "skills": [
+            "Athletics",
+            "Computers",
+            "KnowledgeScience",
+            "Mechanics",
+            "Operating",
+            "Perception",
+            "Ranged",
+            "Vigilance"
+        ]
+    },
+    "Mender": {
+        "name": "Mender",
+        "description": "See Secrets of the Crucible, page 64, for more details.",
+        "book": "KF",
+        "page": "64",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "skills": [
+            "Cool",
+            "KnowledgeCrucible",
+            "KnowledgeCulture",
+            "Mechanics",
+            "Medicine",
+            "Melee",
+            "Negotiation",
+            "Resilience"
+        ]
+    },
+    "Performer": {
+        "name": "Performer",
+        "description": "See Secrets of the Crucible, page 65, for more details.",
+        "book": "KF",
+        "page": "65",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "skills": [
+            "Charm",
+            "Coordination",
+            "Deception",
+            "Leadership",
+            "Melee",
+            "Perception",
+            "Skullduggery",
+            "Streetwise"
+        ]
+    },
+    "Rogue": {
+        "name": "Rogue",
+        "description": "See Secrets of the Crucible, page 66, for more details.",
+        "book": "KF",
+        "page": "66",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "skills": [
+            "Brawl",
+            "Coordination",
+            "Deception",
+            "Ranged",
+            "Skullduggery",
+            "Stealth",
+            "Streetwise",
+            "Vigilance"
+        ]
+    },
+    "Trader": {
+        "name": "Trader",
+        "description": "See Secrets of the Crucible, page 67, for more details.",
+        "book": "KF",
+        "page": "67",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "skills": [
+            "Charm",
+            "Coercion",
+            "Deception",
+            "Discipline",
+            "KnowledgeCulture",
+            "Medicine",
+            "Negotiation",
+            "Streetwise"
+        ]
+    },
+    "Vaultwarrior": {
+        "name": "Vaultwarrior",
+        "description": "See Secrets of the Crucible, page 68, for more details.",
         "book": "KF",
         "page": "68",
         "setting": ["scienceFantasy", "Keyforge"],
         "skills": [
-          "Athletics",
-          "Brawl",
-          "Coordination",
-          "Gunnery",
-          "Medicine",
-          "Melee",
-          "Piloting",
-          "Ranged"
+            "Athletics",
+            "Brawl",
+            "Coordination",
+            "Gunnery",
+            "Medicine",
+            "Melee",
+            "Piloting",
+            "Ranged"
         ]
     }
 }

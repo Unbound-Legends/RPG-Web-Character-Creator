@@ -1,4 +1,11 @@
-import { changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser } from '@emporium/actions';
+import {
+    changeUser,
+    loadCharacterList,
+    loadData,
+    loadDataSets,
+    loadDoc,
+    writeUser
+} from '@emporium/actions';
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import React from 'react';

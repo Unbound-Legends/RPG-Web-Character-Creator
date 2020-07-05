@@ -1,9 +1,23 @@
-import { addDataSet, changeDocData, changeFieldData, changeReduxState, removeDataSet } from '@emporium/actions';
+import {
+    addDataSet,
+    changeDocData,
+    changeFieldData,
+    changeReduxState,
+    removeDataSet
+} from '@emporium/actions';
 import * as images from '@emporium/images';
 import { get, upperCase } from 'lodash-es';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row } from 'reactstrap';
+import {
+    Button,
+    ButtonGroup,
+    Col,
+    Input,
+    InputGroupAddon,
+    Label,
+    Row
+} from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { ModalDeleteConfirm } from './ModalDeleteConfirm';
 

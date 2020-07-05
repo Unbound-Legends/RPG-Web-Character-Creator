@@ -1,300 +1,277 @@
 {
-  "KeyforgeElf": {
-    "name": "Keyforge Elf",
-    "book": "KF",
-    "page": "25",
-    "description": "See Secrets of the Crucible, page 25, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 8,
-    "strainThreshold": 12,
-    "experience": 95,
-    "skills": {
-      "KnowledgeCulture": 1,
-      "choose": {
-        "count": 1,
+    "KeyforgeElf": {
+        "name": "Keyforge Elf",
+        "book": "KF",
+        "page": "25",
+        "description": "See Secrets of the Crucible, page 25, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 8,
+        "strainThreshold": 12,
+        "experience": 95,
         "skills": {
-          "Stealth": 1,
-          "Deception": 1
-        }
-      }
+            "KnowledgeCulture": 1,
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Stealth": 1,
+                    "Deception": 1
+                }
+            }
+        },
+        "talents": ["AlwaysComesOutonTop"],
+        "Brawn": 1,
+        "Agility": 2,
+        "Intellect": 2,
+        "Cunning": 3,
+        "Willpower": 2,
+        "Presence": 2
     },
-    "talents": [
-      "AlwaysComesOutonTop"
-    ],
-    "Brawn": 1,
-    "Agility": 2,
-    "Intellect": 2,
-    "Cunning": 3,
-    "Willpower": 2,
-    "Presence": 2
-  },
-  "Giant": {
-    "name": "Giant",
-    "book": "KF",
-    "page": "26",
-    "description": "See Secrets of the Crucible, page 26, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 12,
-    "strainThreshold": 8,
-    "experience": 90,
-    "skills": {
-      "KnowledgeCulture": 1,
-      "choose": {
-        "count": 1,
+    "Giant": {
+        "name": "Giant",
+        "book": "KF",
+        "page": "26",
+        "description": "See Secrets of the Crucible, page 26, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 12,
+        "strainThreshold": 8,
+        "experience": 90,
         "skills": {
-          "Melee": 1,
-          "Resilience": 2
-        }
-      }
+            "KnowledgeCulture": 1,
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Melee": 1,
+                    "Resilience": 2
+                }
+            }
+        },
+        "talents": ["SizeMatters", "MightyRoarandMightierBreath"],
+        "Brawn": 3,
+        "Agility": 2,
+        "Intellect": 1,
+        "Cunning": 2,
+        "Willpower": 2,
+        "Presence": 2
     },
-    "talents": [
-      "SizeMatters",
-      "MightyRoarandMightierBreath"
-    ],
-    "Brawn": 3,
-    "Agility": 2,
-    "Intellect": 1,
-    "Cunning": 2,
-    "Willpower": 2,
-    "Presence": 2
-  },
-  "Goblin": {
-    "name": "Goblin",
-    "book": "KF",
-    "page": "27",
-    "description": "See Secrets of the Crucible, page 27, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 8,
-    "strainThreshold": 10,
-    "experience": 95,
-    "skills": {
-      "choose": {
-        "count": 1,
+    "Goblin": {
+        "name": "Goblin",
+        "book": "KF",
+        "page": "27",
+        "description": "See Secrets of the Crucible, page 27, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 8,
+        "strainThreshold": 10,
+        "experience": 95,
         "skills": {
-          "Mechanics": 1,
-          "Skullduggery": 1
-        }
-      }
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Mechanics": 1,
+                    "Skullduggery": 1
+                }
+            }
+        },
+        "talents": ["MoreUpsetthanInjured"],
+        "Brawn": 1,
+        "Agility": 2,
+        "Intellect": 3,
+        "Cunning": 3,
+        "Willpower": 2,
+        "Presence": 1
     },
-    "talents": [
-      "MoreUpsetthanInjured"
-    ],
-    "Brawn": 1,
-    "Agility": 2,
-    "Intellect": 3,
-    "Cunning": 3,
-    "Willpower": 2,
-    "Presence": 1
-  },
-  "Krxix": {
-    "name": "Krxix",
-    "book": "KF",
-    "page": "29",
-    "description": "See Secrets of the Crucible, page 29, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 9,
-    "strainThreshold": 9,
-    "experience": 90,
-    "skills": {
-      "Charm": 1,
-      "Negotiation": 1
-    },
-    "talents": [
-      "ExtraLimbs",
-      "WhatTheyMeanttoSay"
-    ],
-    "Brawn": 2,
-    "Agility": 2,
-    "Intellect": 2,
-    "Cunning": 1,
-    "Willpower": 2,
-    "Presence": 3
-  },
-  "Martian": {
-    "name": "Martian",
-    "book": "KF",
-    "page": "30",
-    "description": "See Secrets of the Crucible, page 30, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 8,
-    "strainThreshold": 8,
-    "experience": 110,
-    "skills": {
-      "choose": {
-        "count": 1,
+    "Krxix": {
+        "name": "Krxix",
+        "book": "KF",
+        "page": "29",
+        "description": "See Secrets of the Crucible, page 29, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 9,
+        "strainThreshold": 9,
+        "experience": 90,
         "skills": {
-          "Ranged": 1,
-          "Operating": 2,
-          "Piloting": 2
-        }
-      }
+            "Charm": 1,
+            "Negotiation": 1
+        },
+        "talents": ["ExtraLimbs", "WhatTheyMeanttoSay"],
+        "Brawn": 2,
+        "Agility": 2,
+        "Intellect": 2,
+        "Cunning": 1,
+        "Willpower": 2,
+        "Presence": 3
     },
-    "talents": [
-      "SizeDoesntMatter",
-      "ZapZapZap"
-    ],
-    "Brawn": 1,
-    "Agility": 3,
-    "Intellect": 2,
-    "Cunning": 2,
-    "Willpower": 2,
-    "Presence": 1
-  },
-  "MartianElder": {
-    "name": "Martian Elder",
-    "book": "KF",
-    "page": "31",
-    "description": "See Secrets of the Crucible, page 31, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 7,
-    "strainThreshold": 11,
-    "experience": 95,
-    "skills": {
-      "Discipline": 1,
-      "choose": {
-        "count": 1,
+    "Martian": {
+        "name": "Martian",
+        "book": "KF",
+        "page": "30",
+        "description": "See Secrets of the Crucible, page 30, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 8,
+        "strainThreshold": 8,
+        "experience": 110,
         "skills": {
-          "Discipline": 1,
-          "KnowledgeScience": 2
-        }
-      }
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Ranged": 1,
+                    "Operating": 2,
+                    "Piloting": 2
+                }
+            }
+        },
+        "talents": ["SizeDoesntMatter", "ZapZapZap"],
+        "Brawn": 1,
+        "Agility": 3,
+        "Intellect": 2,
+        "Cunning": 2,
+        "Willpower": 2,
+        "Presence": 1
     },
-    "talents": [
-      "AllPartofMyScheme"
-    ],
-    "Brawn": 1,
-    "Agility": 1,
-    "Intellect": 3,
-    "Cunning": 2,
-    "Willpower": 3,
-    "Presence": 2
-  },
-  "Phyll": {
-    "name": "Phyll",
-    "book": "KF",
-    "page": "32",
-    "description": "See Secrets of the Crucible, page 32, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 11,
-    "strainThreshold": 10,
-    "experience": 100,
-    "skills": {
-      "choose": {
-        "count": 1,
+    "MartianElder": {
+        "name": "Martian Elder",
+        "book": "KF",
+        "page": "31",
+        "description": "See Secrets of the Crucible, page 31, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 7,
+        "strainThreshold": 11,
+        "experience": 95,
         "skills": {
-          "Survival": 1,
-          "Resilience": 1
-        }
-      }
+            "Discipline": 1,
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Discipline": 1,
+                    "KnowledgeScience": 2
+                }
+            }
+        },
+        "talents": ["AllPartofMyScheme"],
+        "Brawn": 1,
+        "Agility": 1,
+        "Intellect": 3,
+        "Cunning": 2,
+        "Willpower": 3,
+        "Presence": 2
     },
-    "talents": [
-      "PerennialSurvivor"
-    ],
-    "Brawn": 2,
-    "Agility": 2,
-    "Intellect": 2,
-    "Cunning": 2,
-    "Willpower": 2,
-    "Presence": 2
-  },
-  "KeyforgeRobot": {
-    "name": "Keyforge Robot",
-    "book": "KF",
-    "page": "33",
-    "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 10,
-    "strainThreshold": 10,
-    "experience": 175,
-    "skills": {
-      "careerSkills": 6
-    },
-    "talents": [
-      "KeyforgeInitialProgramming",
-      "KeyforgeGloriesofMetal",
-      "KeyforgeInorganic"
-    ],
-    "Brawn": 2,
-    "Agility": 2,
-    "Intellect": 2,
-    "Cunning": 2,
-    "Willpower": 2,
-    "Presence": 2
-  },
-  "Saurian": {
-    "name": "Saurian",
-    "book": "KF",
-    "page": "34",
-    "description": "See Secrets of the Crucible, page 34, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 11,
-    "strainThreshold": 10,
-    "experience": 85,
-    "skills": {
-      "KnowledgeCulture": 1,
-      "KnowledgeCrucible": 1,
-      "Resilience": 1
-    },
-    "talents": [
-      "EvolvedArrogance"
-    ],
-    "Brawn": 3,
-    "Agility": 2,
-    "Intellect": 3,
-    "Cunning": 1,
-    "Willpower": 2,
-    "Presence": 1
-  },
-  "Spirit": {
-    "name": "Spirit",
-    "book": "KF",
-    "page": "35",
-    "description": "See Secrets of the Crucible, page 35, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 7,
-    "strainThreshold": 12,
-    "experience": 90,
-    "skills": {
-      "choose": {
-        "count": 1,
+    "Phyll": {
+        "name": "Phyll",
+        "book": "KF",
+        "page": "32",
+        "description": "See Secrets of the Crucible, page 32, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 11,
+        "strainThreshold": 10,
+        "experience": 100,
         "skills": {
-          "Discipline": 1,
-          "Perception": 1
-        }
-      }
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Survival": 1,
+                    "Resilience": 1
+                }
+            }
+        },
+        "talents": ["PerennialSurvivor"],
+        "Brawn": 2,
+        "Agility": 2,
+        "Intellect": 2,
+        "Cunning": 2,
+        "Willpower": 2,
+        "Presence": 2
     },
-    "talents": [
-      "Incorporeal"
-    ],
-    "Brawn": 1,
-    "Agility": 2,
-    "Intellect": 2,
-    "Cunning": 2,
-    "Willpower": 3,
-    "Presence": 2
-  },
-  "Sylicate": {
-    "name": "Sylicate",
-    "book": "KF",
-    "page": "36",
-    "description": "See Secrets of the Crucible, page 36, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "woundThreshold": 11,
-    "strainThreshold": 10,
-    "experience": 95,
-    "skills": {
-      "KnowledgeCulture": 1,
-      "Cool": 1,
-      "Survival": 1
+    "KeyforgeRobot": {
+        "name": "Keyforge Robot",
+        "book": "KF",
+        "page": "33",
+        "description": "See Secrets of the Crucible, page 33, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 10,
+        "strainThreshold": 10,
+        "experience": 175,
+        "skills": {
+            "careerSkills": 6
+        },
+        "talents": [
+            "KeyforgeInitialProgramming",
+            "KeyforgeGloriesofMetal",
+            "KeyforgeInorganic"
+        ],
+        "Brawn": 2,
+        "Agility": 2,
+        "Intellect": 2,
+        "Cunning": 2,
+        "Willpower": 2,
+        "Presence": 2
     },
-    "talents": [
-      "ToughasRock"
-    ],
-    "Brawn": 1,
-    "Agility": 2,
-    "Intellect": 2,
-    "Cunning": 2,
-    "Willpower": 3,
-    "Presence": 2
-  }
+    "Saurian": {
+        "name": "Saurian",
+        "book": "KF",
+        "page": "34",
+        "description": "See Secrets of the Crucible, page 34, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 11,
+        "strainThreshold": 10,
+        "experience": 85,
+        "skills": {
+            "KnowledgeCulture": 1,
+            "KnowledgeCrucible": 1,
+            "Resilience": 1
+        },
+        "talents": ["EvolvedArrogance"],
+        "Brawn": 3,
+        "Agility": 2,
+        "Intellect": 3,
+        "Cunning": 1,
+        "Willpower": 2,
+        "Presence": 1
+    },
+    "Spirit": {
+        "name": "Spirit",
+        "book": "KF",
+        "page": "35",
+        "description": "See Secrets of the Crucible, page 35, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 7,
+        "strainThreshold": 12,
+        "experience": 90,
+        "skills": {
+            "choose": {
+                "count": 1,
+                "skills": {
+                    "Discipline": 1,
+                    "Perception": 1
+                }
+            }
+        },
+        "talents": ["Incorporeal"],
+        "Brawn": 1,
+        "Agility": 2,
+        "Intellect": 2,
+        "Cunning": 2,
+        "Willpower": 3,
+        "Presence": 2
+    },
+    "Sylicate": {
+        "name": "Sylicate",
+        "book": "KF",
+        "page": "36",
+        "description": "See Secrets of the Crucible, page 36, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "woundThreshold": 11,
+        "strainThreshold": 10,
+        "experience": 95,
+        "skills": {
+            "KnowledgeCulture": 1,
+            "Cool": 1,
+            "Survival": 1
+        },
+        "talents": ["ToughasRock"],
+        "Brawn": 1,
+        "Agility": 2,
+        "Intellect": 2,
+        "Cunning": 2,
+        "Willpower": 3,
+        "Presence": 2
+    }
 }

@@ -1,149 +1,149 @@
 {
-  "AlwaysComesOutonTop": {
-    "name": "Always Comes Out on Top",
-    "activation": true,
-    "turn": "Incidental, Out of Turn",
-    "book": "KF",
-    "page": 25,
-    "description": "See Secrets of the Crucible, page 25, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "SizeMatters": {
-    "name": "Size Matters",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 26,
-    "description": "See Secrets of the Crucible, page 26, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"],
-    "modifier": {
-      "maxEncumbrance": 2
+    "AlwaysComesOutonTop": {
+        "name": "Always Comes Out on Top",
+        "activation": true,
+        "turn": "Incidental, Out of Turn",
+        "book": "KF",
+        "page": 25,
+        "description": "See Secrets of the Crucible, page 25, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "SizeMatters": {
+        "name": "Size Matters",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 26,
+        "description": "See Secrets of the Crucible, page 26, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"],
+        "modifier": {
+            "maxEncumbrance": 2
+        }
+    },
+    "MightyRoarandMightierBreath": {
+        "name": "Mighty Roar (and Mightier Breath)",
+        "activation": true,
+        "turn": "Incidental, Out of Turn",
+        "book": "KF",
+        "page": 26,
+        "description": "See Secrets of the Crucible, page 26, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "MoreUpsetthanInjured": {
+        "name": "More Upset than Injured",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 27,
+        "description": "See Secrets of the Crucible, page 27, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "ExtraLimbs": {
+        "name": "Extra Limbs",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 29,
+        "description": "See Secrets of the Crucible, page 29, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "WhatTheyMeanttoSay": {
+        "name": "What They Meant to Say",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 29,
+        "description": "See Secrets of the Crucible, page 29, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "SizeDoesntMatter": {
+        "name": "Size Doesn’t Matter",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 30,
+        "description": "See Secrets of the Crucible, page 30, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "ZapZapZap": {
+        "name": "Zap! Zap! Zap!",
+        "activation": true,
+        "turn": "Incidental, Out of Turn",
+        "book": "KF",
+        "page": 30,
+        "description": "See Secrets of the Crucible, page 30, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "AllPartofMyScheme": {
+        "name": "All Part of My Scheme!",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 31,
+        "description": "See Secrets of the Crucible, page 31, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "PerennialSurvivor": {
+        "name": "Perennial Survivor",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 32,
+        "description": "See Secrets of the Crucible, page 32, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "KeyforgeInorganic": {
+        "name": "Inorganic",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 33,
+        "description": "See Secrets of the Crucible, page 33, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "KeyforgeGloriesofMetal": {
+        "name": "Glories of Metal",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 33,
+        "description": "See Secrets of the Crucible, page 33, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "KeyforgeInitialProgramming": {
+        "name": "Initial Programming",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 33,
+        "description": "See Secrets of the Crucible, page 33, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "EvolvedArrogance": {
+        "name": "Evolved Arrogance",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 34,
+        "description": "See Secrets of the Crucible, page 34, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "Incorporeal": {
+        "name": "Incorporeal",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 35,
+        "description": "See Secrets of the Crucible, page 35, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
+    },
+    "ToughasRock": {
+        "name": "Tough as Rock",
+        "activation": false,
+        "turn": false,
+        "book": "KF",
+        "page": 36,
+        "description": "See Secrets of the Crucible, page 36, for more details.",
+        "setting": ["scienceFantasy", "Keyforge"]
     }
-  },
-  "MightyRoarandMightierBreath": {
-    "name": "Mighty Roar (and Mightier Breath)",
-    "activation": true,
-    "turn": "Incidental, Out of Turn",
-    "book": "KF",
-    "page": 26,
-    "description": "See Secrets of the Crucible, page 26, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "MoreUpsetthanInjured": {
-    "name": "More Upset than Injured",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 27,
-    "description": "See Secrets of the Crucible, page 27, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "ExtraLimbs": {
-    "name": "Extra Limbs",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 29,
-    "description": "See Secrets of the Crucible, page 29, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "WhatTheyMeanttoSay": {
-    "name": "What They Meant to Say",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 29,
-    "description": "See Secrets of the Crucible, page 29, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "SizeDoesntMatter": {
-    "name": "Size Doesn’t Matter",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 30,
-    "description": "See Secrets of the Crucible, page 30, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "ZapZapZap": {
-    "name": "Zap! Zap! Zap!",
-    "activation": true,
-    "turn": "Incidental, Out of Turn",
-    "book": "KF",
-    "page": 30,
-    "description": "See Secrets of the Crucible, page 30, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "AllPartofMyScheme": {
-    "name": "All Part of My Scheme!",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 31,
-    "description": "See Secrets of the Crucible, page 31, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "PerennialSurvivor": {
-    "name": "Perennial Survivor",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 32,
-    "description": "See Secrets of the Crucible, page 32, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "KeyforgeInorganic": {
-    "name": "Inorganic",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 33,
-    "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "KeyforgeGloriesofMetal": {
-    "name": "Glories of Metal",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 33,
-    "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "KeyforgeInitialProgramming": {
-    "name": "Initial Programming",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 33,
-    "description": "See Secrets of the Crucible, page 33, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "EvolvedArrogance": {
-    "name": "Evolved Arrogance",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 34,
-    "description": "See Secrets of the Crucible, page 34, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "Incorporeal": {
-    "name": "Incorporeal",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 35,
-    "description": "See Secrets of the Crucible, page 35, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  },
-  "ToughasRock": {
-    "name": "Tough as Rock",
-    "activation": false,
-    "turn": false,
-    "book": "KF",
-    "page": 36,
-    "description": "See Secrets of the Crucible, page 36, for more details.",
-    "setting": ["scienceFantasy", "Keyforge"]
-  }
 }
