@@ -55,6 +55,7 @@ class CustomEquipmentComponent extends React.Component<any, any> {
                 ? +this.state.qualityRank
                 : ''
         };
+
         this.setState({
             qualityList: data,
             specialQualities: '',
@@ -83,7 +84,20 @@ class CustomEquipmentComponent extends React.Component<any, any> {
             strainThreshold,
             ...rest
         } = this.state;
-        const modifier = mod ? { [mod]: modifierValue, strainThreshold } : {};
+
+        console.log('Mod:', mod);
+
+        const radix = 10;
+        let strainThresholdModified = parseInt(strainThreshold, radix);
+        if (!strainThresholdModified || isNaN(strainThresholdModified)) {
+            strainThresholdModified = 0;
+        }
+
+        if (mod === 'strainThreshold') {
+            strainThresholdModified += modifierValue;
+        }
+
+        const modifier = mod ? { [mod]: modifierValue, strainThreshold: strainThresholdModified } : {};
         let data;
 
         if (type === 'customWeapons') {
@@ -97,6 +111,7 @@ class CustomEquipmentComponent extends React.Component<any, any> {
                 qualities
             };
         }
+
         if (type === 'customArmor') {
             data = {
                 ...rest,
@@ -112,11 +127,13 @@ class CustomEquipmentComponent extends React.Component<any, any> {
         if (type === 'customGear') {
             data = { ...rest, modifier, qualities };
         }
+
         if (mode === 'add') {
             this.props.addDataSet(type, data);
         } else if (mode === 'edit') {
             this.props.modifyDataSet(type, data);
         }
+
         this.initState();
     };
 
@@ -139,6 +156,7 @@ class CustomEquipmentComponent extends React.Component<any, any> {
         const equipment = this.props[event.target.getAttribute('type')][
             event.target.name
         ];
+
         this.setState({
             ...equipment,
             setting:
@@ -163,6 +181,7 @@ class CustomEquipmentComponent extends React.Component<any, any> {
             arr = Array.isArray(modifierValue)
                 ? [...modifierValue, event.target.value]
                 : [event.target.value];
+
         this.setState({ modifierValue: arr });
         event.preventDefault();
     };

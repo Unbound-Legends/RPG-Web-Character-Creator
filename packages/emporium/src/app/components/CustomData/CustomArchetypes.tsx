@@ -13,6 +13,7 @@ const attributes = { Wounds: 'woundThreshold', Strain: 'strainThreshold' };
 
 class CustomArchetypesComponent extends React.Component<any, any> {
     public state: any = {};
+
     private _type = 'customArchetypes';
 
     public UNSAFE_componentWillMount = () => this.initState();
@@ -48,10 +49,12 @@ class CustomArchetypesComponent extends React.Component<any, any> {
             alert(`Cannot set ${event.target.name} to ${value}`);
             return;
         }
+
         if (0 >= value) {
             alert(`Cannot set ${event.target.name} to ${value}`);
             return;
         }
+
         this.setState({ [event.target.name]: value });
     };
 
@@ -71,6 +74,7 @@ class CustomArchetypesComponent extends React.Component<any, any> {
             ...data,
             name: `${data.name} (copy)`
         });
+
         event.preventDefault();
     };
 
@@ -111,6 +115,7 @@ class CustomArchetypesComponent extends React.Component<any, any> {
             this._type,
             this.props[this._type][event.target.name].id
         );
+
         event.preventDefault();
     };
 
@@ -125,6 +130,7 @@ class CustomArchetypesComponent extends React.Component<any, any> {
             setting,
             mode
         } = this.state;
+
         return (
             <div>
                 <Fragment
