@@ -48,6 +48,7 @@ const calcStrain = createSelector(
         //check for Gear
         const Gear = Object.keys(equipmentStats)
             .map(key => {
+                console.log('Stats:', equipmentStats);
                 const modifier = get(
                         equipmentStats,
                         `${key}.modifier.strainThreshold`,
