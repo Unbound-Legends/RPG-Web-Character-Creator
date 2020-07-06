@@ -3,21 +3,14 @@ import {
     changeDocData,
     changeFieldData,
     changeReduxState,
+    loadDoc,
     removeDataSet
 } from '@emporium/actions';
 import * as images from '@emporium/images';
 import { get, upperCase } from 'lodash-es';
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-    Button,
-    ButtonGroup,
-    Col,
-    Input,
-    InputGroupAddon,
-    Label,
-    Row
-} from 'reactstrap';
+import { Button, ButtonGroup, Col, Input, InputGroupAddon, Label, Row } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { ModalDeleteConfirm } from './ModalDeleteConfirm';
 
@@ -38,42 +31,49 @@ class VehicleSelectComponent extends React.Component<any, any> {
         };
     }
 
-    public UNSAFE_componentWillReceiveProps(nextProps) {
+    public componentDidMount(): void {
+        this.props.loadDoc('vehicle', this.props.vehicle);
+    }
+
+    public componentDidUpdate(
+        prevProps: Readonly<any>,
+        prevState: Readonly<any>
+    ): void {
         const {
             vehicle,
             currentHullTrauma,
             currentSystemStrain,
-            vehicleNotes
+            vehicleNotes,
+            vehicleDataSet
         } = this.props;
-        if (nextProps.vehicle !== vehicle) {
+
+        if (prevProps.vehicle !== vehicle) {
             this.setState({
-                name: get(
-                    nextProps.vehicleDataSet,
-                    `${nextProps.vehicle}.name`,
-                    ''
-                )
+                name: get(vehicleDataSet, `${vehicle}.name`, '')
             });
         }
 
-        if (nextProps.currentHullTrauma !== currentHullTrauma) {
-            this.setState({ currentHullTrauma: nextProps.currentHullTrauma });
+        if (prevProps.currentHullTrauma !== currentHullTrauma) {
+            this.setState({ currentHullTrauma: currentHullTrauma });
         }
 
-        if (nextProps.currentSystemStrain !== currentSystemStrain) {
+        if (prevProps.currentSystemStrain !== currentSystemStrain) {
             this.setState({
-                currentSystemStrain: nextProps.currentSystemStrain
+                currentSystemStrain: currentSystemStrain
             });
         }
-        if (nextProps.vehicleNotes !== vehicleNotes) {
-            this.setState({ vehicleNotes: nextProps.vehicleNotes });
+
+        if (prevProps.vehicleNotes !== vehicleNotes) {
+            this.setState({ vehicleNotes: vehicleNotes });
         }
     }
 
     public handleChange = event => {
         event.preventDefault();
-        if (event.target.id === 'number') {
+        if (event.target.id.indexOf('number') === 0) {
             event.target.value = +event.target.value;
         }
+
         this.setState({ [event.target.name]: event.target.value });
     };
 
@@ -81,16 +81,21 @@ class VehicleSelectComponent extends React.Component<any, any> {
         event.preventDefault();
         // eslint-disable-next-line prefer-const
         let { value, name, id } = event.target;
-        if (id === 'number') {
+        if (id.indexOf('number') === 0) {
             value = +value;
         }
+
         this.props.changeDocData('vehicle', this.props.vehicle, name, value);
     };
 
     public handleSelect = event => {
         event.preventDefault();
-        this.props.changeReduxState(event.target.value, 'vehicle');
+        this._loadVehicleData(event.target.value);
     };
+
+    private _loadVehicleData(id): void {
+        this.props.changeReduxState(id, 'vehicle');
+    }
 
     public confirmedDelete = event => {
         this.props.removeDataSet('vehicle', this.props.vehicle);
@@ -108,6 +113,7 @@ class VehicleSelectComponent extends React.Component<any, any> {
             vehicleType,
             changeFieldData
         } = this.props;
+
         const { name, vehicleNotes, deleteModal, writeAccess } = this.state;
         return (
             <div>
@@ -240,7 +246,7 @@ class VehicleSelectComponent extends React.Component<any, any> {
                             type="number"
                             bsSize="sm"
                             name={type}
-                            id="number"
+                            id={`number${type}`}
                             maxLength="2"
                             disabled={!vehicle || !writeAccess}
                             className={`vehicleStat vehicleStat-${type} px-1 pt-1`}
@@ -328,7 +334,8 @@ const matchDispatchToProps = dispatch =>
             changeReduxState,
             removeDataSet,
             changeFieldData,
-            changeDocData
+            changeDocData,
+            loadDoc
         },
         dispatch
     );

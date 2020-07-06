@@ -1,3 +1,9 @@
+# 0.2.1.2
+    
+    Adding vehicle block styling for Keyforge
+    Fixing issue with loading correct vehicle data when you have multiple vehicles
+    Removed 2 of the many UNSAFE_ methods.
+
 # 0.2.1.1
 
     Fixing styling of gear to support Firefox
