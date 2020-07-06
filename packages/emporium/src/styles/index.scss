@@ -3,6 +3,9 @@
 @import url('tabs.scss');
 @import url('fonts/index.scss');
 
+// Themes
+@import './themes/kf';
+
 .form-check-label {
     margin-bottom: 0;
     vertical-align: middle;

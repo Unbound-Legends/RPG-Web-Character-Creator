@@ -9,6 +9,7 @@ const loadingReducer = (type, state, action) => {
     if (action.type === `${type}_Changed`) {
         return action.payload;
     }
+
     return state;
 };
 
@@ -34,6 +35,7 @@ const dataReducer = (type, state = clone(initialState[type]), action) => {
             return clone(initialState[type]);
         }
     }
+
     return state;
 };
 
@@ -95,6 +97,7 @@ export const motivation = (type, state, action, custom = false) => {
     const name = ['customArmor', 'customGear', 'customWeapons'].includes(type)
         ? camelCase(get(action, 'payload.name', 'unnamed'))
         : upperFirst(camelCase(get(action, 'payload.name', 'unnamed')));
+
     const id = get(action, 'payload.id');
     switch (action.type) {
         case `${type}_Added`:
@@ -104,6 +107,7 @@ export const motivation = (type, state, action, custom = false) => {
             const key = Object.keys(state).find(
                 key => state[key].id === action.payload.id
             );
+
             // @ts-ignore
             return merge(omit(state, key), {
                 [custom ? id : name]: action.payload
@@ -123,6 +127,7 @@ export const dataObjects = (type, state, action, custom = null) => {
             ? camelCase(get(action, 'payload.name', 'unnamed'))
             : upperFirst(camelCase(get(action, 'payload.name', 'unnamed'))),
         id = get(action, 'payload.id');
+
     switch (action.type) {
         case `${type}_Added`:
             // @ts-ignore
@@ -131,6 +136,7 @@ export const dataObjects = (type, state, action, custom = null) => {
             const key = Object.keys(state).find(
                 key => state[key].id === action.payload.id
             );
+
             // @ts-ignore
             return merge(omit(state, key), {
                 [custom ? id : name]: action.payload

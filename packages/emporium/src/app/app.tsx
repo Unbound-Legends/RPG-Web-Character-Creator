@@ -1,11 +1,4 @@
-import {
-    changeUser,
-    loadCharacterList,
-    loadData,
-    loadDataSets,
-    loadDoc,
-    writeUser
-} from '@emporium/actions';
+import { changeUser, loadCharacterList, loadData, loadDataSets, loadDoc, writeUser } from '@emporium/actions';
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import React from 'react';
@@ -37,26 +30,35 @@ class AppComponent extends React.Component<any> {
         this._registerWindowEvents();
     }
 
-    public UNSAFE_componentWillReceiveProps(nextProps): void {
-        const { loadCharacterList, user, loadDataSets, loadDoc } = this.props;
-        if (nextProps.user && user !== nextProps.user) {
+    public componentDidUpdate(
+        prevProps: Readonly<any>,
+        prevState: Readonly<{}>
+    ) {
+        const {
+            loadCharacterList,
+            user,
+            loadDataSets,
+            loadDoc,
+            character,
+            vehicle,
+            printContent
+        } = this.props;
+
+        if (user && prevProps.user !== user) {
             writeUser();
             loadCharacterList();
             loadDataSets();
         }
 
-        if (
-            nextProps.character &&
-            nextProps.character !== this.props.character
-        ) {
+        if (character && character !== prevProps.character) {
             this.props.loadData();
         }
 
-        if (nextProps.vehicle && nextProps.vehicle !== this.props.vehicle) {
-            loadDoc('vehicle', nextProps.vehicle);
+        if (vehicle && vehicle !== prevProps.vehicle) {
+            loadDoc('vehicle', vehicle);
         }
 
-        if (nextProps.printContent !== this.props.printContent) {
+        if (printContent !== prevProps.printContent) {
             setTimeout(() => window.print(), 400);
         }
     }
@@ -140,7 +142,10 @@ const mapStateToProps = state => {
         setting: state.setting,
         strict: state.strict,
         theme: state.theme,
-        vehicle: state.vehicle
+        vehicle: state.vehicle,
+        currentHullTrauma: state.currentHullTrauma,
+        currentSystemStrain: state.currentSystemStrain,
+        vehicleNotes: state.vehicleNotes
     };
 };
 

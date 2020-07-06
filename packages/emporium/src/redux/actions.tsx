@@ -15,6 +15,7 @@ export const writeUser = () => {
                 phone: user.phoneNumber,
                 lastLogin: new Date()
             };
+
             db.doc(`userDB/${user.uid}`).set(data).catch(console.error);
         }
     });
@@ -26,6 +27,7 @@ export const changeData = (data, type, merge = true) => {
         const dbRef = db.doc(
             `users/${user}/data/characters/${character}/${type}/`
         );
+
         dbRef.set({ data }, { merge: merge });
         dispatch({ type: `${type}_Changed`, payload: data });
     };
@@ -45,6 +47,7 @@ export const loadData = () => {
                         if (doc.exists) {
                             payload = doc.data().data;
                         }
+
                         dispatch({ type: `${type}_Changed`, payload: payload });
                         if (index + 1 >= dataTypes.length) {
                             dispatch({
@@ -87,10 +90,12 @@ export const loadCharacterList = () => {
                             ? 1
                             : 0
                     );
+
                     dispatch({
                         type: `characterList_Changed`,
                         payload: doc.data()
                     });
+
                     if (!character) {
                         dispatch({
                             type: `character_Changed`,
@@ -128,6 +133,7 @@ export const addCharacter = () => {
         db.doc(`users/${user}/data/characterList`).update({
             [newCharacter]: 'New Character'
         });
+
         dispatch({ type: `character_Changed`, payload: newCharacter });
     };
 };
@@ -144,11 +150,13 @@ export const deleteCharacter = () => {
                 .doc(`users/${user}/data/characters/${character}/${type}`)
                 .delete()
         );
+
         if (Object.keys(characterList).length === 0) {
             const newCharacter = Math.random().toString(36).substr(2, 16);
             db.doc(`users/${user}/data/characterList`).set({
                 [newCharacter]: 'New Character'
             });
+
             dispatch({ type: `character_Changed`, payload: newCharacter });
         } else {
             db.doc(`users/${user}/data/characterList`).set(characterList);
@@ -182,6 +190,7 @@ export const importCharacter = (characterImport, user) => {
         db.doc(`users/${user}/data/characterList`).update({
             [key]: characterImport.name
         });
+
         Object.keys(characterImport).forEach(type => {
             const data = characterImport[type];
             if (type !== 'name') {
@@ -206,13 +215,16 @@ export const importCustomData = customDataSetImport => {
                             read: [getState().user],
                             name: 'none'
                         };
+
                         if (item) {
                             final = { ...final, ...obj, ...characteristics };
                         }
+
                         db.collection(`${type}DB`)
                             .add(final)
                             .catch(console.error);
                     });
+
                     break;
                 case 'customMotivations':
                 case 'customArchetypeTalents':
@@ -230,10 +242,12 @@ export const importCustomData = customDataSetImport => {
                             name: 'none',
                             ...item
                         };
+
                         db.collection(`${type}DB`)
                             .add(final)
                             .catch(console.error);
                     });
+
                     break;
                 default:
                     break;
@@ -251,6 +265,7 @@ export const addDataSet = (type, data = {}) => {
             name: 'none',
             ...data
         };
+
         db.collection(`${type}DB`).add(final).catch(console.error);
     };
 };
@@ -261,6 +276,7 @@ export const removeDataSet = (type, key) => {
         list.forEach(dataType =>
             db.doc(`${type}DB/${key}/data/${dataType}`).delete()
         );
+
         db.doc(`${type}DB/${key}/`).delete();
     };
 };
@@ -290,12 +306,14 @@ export const loadDataSets = () => {
                                             id: change.doc.id
                                         }
                                     });
+
                                     break;
                                 case 'removed':
                                     dispatch({
                                         type: `${type}_Removed`,
                                         payload: change.doc.id
                                     });
+
                                     break;
                                 default:
                                     break;
@@ -309,22 +327,26 @@ export const loadDataSets = () => {
                                             [change.doc.id]: change.doc.data()
                                         }
                                     });
+
                                     dispatch({
                                         type: `${type}_Changed`,
                                         payload: change.doc.id
                                     });
+
                                     break;
                                 case 'removed':
                                     dispatch({
                                         type: `${type}DataSet_Removed`,
                                         payload: change.doc.id
                                     });
+
                                     dispatch({
                                         type: `${type}_Changed`,
                                         payload: querySnapshot.docs[0]
                                             ? querySnapshot.docs[0].id
                                             : ''
                                     });
+
                                     break;
                                 case 'modified':
                                     dispatch({
@@ -334,6 +356,7 @@ export const loadDataSets = () => {
                                             id: change.doc.id
                                         }
                                     });
+
                                     break;
                                 default:
                                     break;
@@ -361,7 +384,7 @@ export const loadDoc = (type, key) => {
     return dispatch => {
         vehicleDataTypes.forEach(dataType => {
             if (key) {
-                db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
+                const res = db.doc(`${type}DB/${key}/data/${dataType}`).onSnapshot(doc => {
                     if (doc.data()) {
                         dispatch({
                             type: `${dataType}_Changed`,

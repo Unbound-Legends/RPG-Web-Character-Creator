@@ -1,0 +1,49 @@
+.body-KF {
+    .vehicleStat-silhouette {
+        left: 8%;
+    }
+
+    .vehicleStat-maxSpeed {
+        left: 24.8%;
+    }
+
+    .vehicleStat-handling {
+        left: 41.3%;
+    }
+
+    .vehicleStat-defense {
+        top: 32%;
+        left: 62.5%;
+    }
+
+    .vehicleStat-armor {
+        top: 32%;
+        left: 88%;
+    }
+
+    .vehicleStat-hullTraumaThreshold {
+        top: 88%;
+        left: 58%;
+    }
+
+    .vehicleStat-currentHullTrauma {
+        top: 87.3%;
+        left: 67%;
+        width: 2.2rem;
+        font-size: 1.2rem;
+        height: 29px;
+    }
+
+    .vehicleStat-systemStrainThreshold {
+        top: 88%;
+        left: 84%;
+    }
+
+    .vehicleStat-currentSystemStrain {
+        top: 87.3%;
+        left: 92%;
+        width: 2.2rem;
+        font-size: 1.2rem;
+        height: 29px;
+    }
+}
