@@ -1,3 +1,7 @@
+# 0.2.1.3
+    
+    Fixing broken support for strain threshold on custom gear
+
 # 0.2.1.2
     
     Adding vehicle block styling for Keyforge
