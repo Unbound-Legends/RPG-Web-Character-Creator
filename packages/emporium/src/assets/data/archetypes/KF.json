@@ -267,11 +267,11 @@
             "Survival": 1
         },
         "talents": ["ToughasRock"],
-        "Brawn": 1,
-        "Agility": 2,
+        "Brawn": 3,
+        "Agility": 1,
         "Intellect": 2,
         "Cunning": 2,
-        "Willpower": 3,
+        "Willpower": 2,
         "Presence": 2
     }
 }
