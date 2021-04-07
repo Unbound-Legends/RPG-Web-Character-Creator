@@ -357,8 +357,8 @@
       "Steampunk"
     ]
   },
-  "handCannon": {
-    "name": "Hand Cannon",
+  "handCannonCore": {
+    "name": "Hand Cannon (Core)",
     "skill": "RangedLight",
     "damage": 9,
     "critical": 3,
