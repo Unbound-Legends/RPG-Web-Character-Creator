@@ -1,12 +1,22 @@
+# 0.2.1.5
+
+    - Adding support for remembering the last character selected (Support added by KoljaTM)
+
+# 0.2.1.4
+
+    - Deploying changes made to Sylicate base characteristics so long ago (sorry this took so long!)
+    - Various minor package updates
+    - Changing hand cannons so their names don't conflict. The one you've been using is the SotB version, the core version has different stats - so I split them out into a Core version and SotB version so you could pick the one you wanted instead of being forced to use the one you don't
+
 # 0.2.1.3
     
-    Fixing broken support for strain threshold on custom gear
+    - Fixing broken support for strain threshold on custom gear
 
 # 0.2.1.2
     
-    Adding vehicle block styling for Keyforge
-    Fixing issue with loading correct vehicle data when you have multiple vehicles
-    Removed 2 of the many UNSAFE_ methods.
+    - Adding vehicle block styling for Keyforge
+    - Fixing issue with loading correct vehicle data when you have multiple vehicles
+    - Removed 2 of the many UNSAFE_ methods.
 
 # 0.2.1.1
 
