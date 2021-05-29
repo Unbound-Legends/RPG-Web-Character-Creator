@@ -105,7 +105,7 @@ export const loadCharacterList = () => {
                             doc => {
                                 dispatch({
                                     type: `character_Changed`,
-                                    payload: doc.data().lastCharacter || list[0]
+                                    payload: doc.data()?.lastCharacter || list[0]
                                 });
                             });
                     }
