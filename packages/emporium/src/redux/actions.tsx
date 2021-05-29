@@ -37,6 +37,10 @@ export const loadData = () => {
     return (dispatch, getState) => {
         dispatch({ type: 'loadingData_Changed', payload: true });
         const { user, character } = getState();
+        db.doc(`users/${user}/data/settings`).set({ lastCharacter: character }, {
+            merge: true
+        });
+
         const unsub = {};
         dataTypes.forEach((type, index) => {
             unsub[type] = db
@@ -97,10 +101,13 @@ export const loadCharacterList = () => {
                     });
 
                     if (!character) {
-                        dispatch({
-                            type: `character_Changed`,
-                            payload: list[0]
-                        });
+                        db.doc(`users/${user}/data/settings`).onSnapshot(
+                            doc => {
+                                dispatch({
+                                    type: `character_Changed`,
+                                    payload: doc.data().lastCharacter || list[0]
+                                });
+                            });
                     }
                 }
             },
