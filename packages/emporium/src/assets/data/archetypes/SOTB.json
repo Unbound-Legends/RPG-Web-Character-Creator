@@ -24,8 +24,8 @@
     "Willpower": 2,
     "Presence": 2
   },
-  "Bioroid": {
-    "name": "Bioroid",
+  "BioroidSOTB": {
+    "name": "Bioroid (SotB)",
     "book": "SOTB",
     "page": 26,
     "description": "See SOTB, page 26, for more details.",
