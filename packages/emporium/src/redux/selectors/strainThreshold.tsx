@@ -1,7 +1,7 @@
 import { get } from 'lodash-es';
 import { createSelector } from 'reselect';
-import {talentCount } from './talentCount';
-import {equipmentStats } from './equipmentStats';
+import { talentCount } from './talentCount';
+import { equipmentStats } from './equipmentStats';
 
 const archetype = state => state.archetype;
 const archetypes = state => state.archetypes;
@@ -45,6 +45,9 @@ const calcStrain = createSelector(
             0
         );
 
+        // see if character has "Inorganic" talent
+        const inorganic = get(archetypes, `${archetype}.talents`, []).includes('Inorganic');
+
         //check for Gear
         const Gear = Object.keys(equipmentStats)
             .map(key => {
@@ -55,16 +58,20 @@ const calcStrain = createSelector(
                     ),
                     carried = get(equipmentStats, `${key}.carried`, false),
                     equipped = get(equipmentStats, `${key}.equipped`, false),
+                    cybernetics = get(equipmentStats, `${key}.cybernetics`, false),
                     kind = get(equipmentStats, `${key}.type`, '');
 
                 if ((carried && kind !== 'armor') || equipped) {
+                    if (inorganic && cybernetics) {
+                        return 0;
+                    }
                     return +modifier;
                 } else {
                     return 0;
                 }
             })
             .reduce((acc, num) => acc + num, 0);
-
+console.log('\x1b[35m%s\x1b[0m', '>>  startingThreshold +\n            startingWillpower +\n            creationWillpower +\n            talentModifier +\n            Gear',  startingThreshold, startingWillpower, creationWillpower , talentModifier ,Gear)
         return (
             startingThreshold +
             startingWillpower +
