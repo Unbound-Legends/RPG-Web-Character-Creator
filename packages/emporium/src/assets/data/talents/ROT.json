@@ -20,7 +20,7 @@
     "tier": 1,
     "activation": true,
     "turn": "Incidental",
-    "ranked": true,
+    "ranked": false,
     "book": "ROT",
     "page": "84",
     "description": "See ROT, page 84, for more details."

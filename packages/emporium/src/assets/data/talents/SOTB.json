@@ -617,7 +617,7 @@
     "activation": true,
     "turn": "Incidental",
     "ranked": false,
-    "prerequiste": "UndercityContacts",
+    "prerequisite": "UndercityContacts",
     "book": "SOTB",
     "page": 51,
     "description": "See SOTB, page 51, for more details."
