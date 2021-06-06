@@ -166,7 +166,7 @@
   },
   "Guided": {
     "name": "Guided",
-    "ranked": false,
+    "ranked": true,
     "description": "See CRB, page 87, for more details.",
     "book": "CRB",
     "page": "87",
