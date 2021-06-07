@@ -71,7 +71,6 @@ const calcStrain = createSelector(
                 }
             })
             .reduce((acc, num) => acc + num, 0);
-console.log('\x1b[35m%s\x1b[0m', '>>  startingThreshold +\n            startingWillpower +\n            creationWillpower +\n            talentModifier +\n            Gear',  startingThreshold, startingWillpower, creationWillpower , talentModifier ,Gear)
         return (
             startingThreshold +
             startingWillpower +
