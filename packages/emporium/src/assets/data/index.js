@@ -23,6 +23,7 @@ import { default as gearROT } from './gear/ROT.json';
 import { default as gearSOTB } from './gear/SOTB.json';
 import { default as gearKF } from './gear/KF.json';
 import { default as talentsCRB } from './talents/CRB.json';
+import { default as talentsEPG } from './talents/EPG.json';
 import { default as talentsROT } from './talents/ROT.json';
 import { default as talentsSOTB } from './talents/SOTB.json';
 import { default as talentsKF } from './talents/KF.json';
@@ -62,6 +63,7 @@ export const craftsmanship = merge.all([
 export const gear = merge.all([gearCRB, gearROT, gearSOTB, gearKF]);
 export const talents = merge.all([
     talentsCRB,
+    talentsEPG,
     talentsROT,
     talentsSOTB,
     talentsKF
