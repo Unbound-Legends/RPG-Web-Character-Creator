@@ -1,0 +1,268 @@
+{
+    "ComponentCasting": {
+        "name": "Component Casting",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 1,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 95,
+        "description": "See EPG, page 95, for more details."
+    },
+    "Elementalist": {
+        "name": "Elementalist",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 1,
+        "activation": false,
+        "turn": false,
+        "ranked": false,
+        "book": "EPG",
+        "page": 95,
+        "description": "See EPG, page 95, for more details."
+    },
+    "Ensorcelled": {
+        "name": "Ensorcelled",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 1,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 95,
+        "description": "See EPG, page 95, for more details."
+    },
+    "BrilliantCasting": {
+        "name": "Brilliant Casting",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 2,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 95,
+        "description": "See EPG, page 95, for more details."
+    },
+    "EnsorcelledImproved": {
+        "name": "Ensorcelled (Improved)",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 2,
+        "activation": false,
+        "turn": false,
+        "ranked": false,
+        "book": "EPG",
+        "page": 95,
+        "description": "See EPG, page 95, for more details.",
+        "prerequisite": "Ensorcelled"
+    },
+    "Druid": {
+        "name": "Druid",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": false,
+        "turn": false,
+        "ranked": false,
+        "book": "EPG",
+        "page": 96,
+        "description": "See EPG, page 96, for more details."
+    },
+    "ElementalistImproved": {
+        "name": "Elementalist (Improved)",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": false,
+        "turn": false,
+        "ranked": false,
+        "book": "EPG",
+        "page": 96,
+        "description": "See EPG, page 96, for more details.",
+        "prerequisite": "Elementalist"
+    },
+    "EnsorcelledSupreme": {
+        "name": "Ensorcelled (Supreme)",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 96,
+        "description": "See EPG, page 96, for more details.",
+        "prerequisite": "EnsorcelledImproved"
+    },
+    "ExplosiveCasting": {
+        "name": "Explosive Casting",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "FaceOfTheWild": {
+        "name": "Face of the Wild",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "InnateFocus": {
+        "name": "InnateFocus",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "MasterOfIllusion": {
+        "name": "Master of Illusion",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 3,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "ElementalistSupreme": {
+        "name": "Elementalist (Supreme)",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 4,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details.",
+        "prerequisite": "ElementalistImproved"
+    },
+    "FlickerStep": {
+        "name": "Flicker Step",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 4,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "MasterfulCasting": {
+        "name": "Masterful Casting",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 4,
+        "activation": true,
+        "turn": "Incidental",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "Polymorph": {
+        "name": "Polymorph",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 4,
+        "activation": false,
+        "turn": false,
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "StrengthOfFaith": {
+        "name": "Strength of Faith",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 4,
+        "activation": true,
+        "turn": "Maneuver",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "Teleportation": {
+        "name": "Teleportation",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 4,
+        "activation": true,
+        "turn": "Action",
+        "ranked": false,
+        "book": "EPG",
+        "page": 97,
+        "description": "See EPG, page 97, for more details."
+    },
+    "DireAnimalCompanion": {
+        "name": "Dire Animal Companion",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 5,
+        "activation": false,
+        "turn": false,
+        "ranked": false,
+        "book": "EPG",
+        "page": 98,
+        "description": "See EPG, page 98, for more details.",
+        "prerequisite": "AnimalCompanion"
+    },
+    "TeleportationImproved": {
+        "name": "Teleportation (Improved)",
+        "setting": [
+            "Fantasy"
+        ],
+        "tier": 5,
+        "activation": true,
+        "turn": "Action",
+        "ranked": false,
+        "book": "EPG",
+        "page": 98,
+        "description": "See EPG, page 98, for more details.",
+        "prerequisite": "Teleportation"
+    }
+}
