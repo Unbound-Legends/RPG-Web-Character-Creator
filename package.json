@@ -33,7 +33,7 @@
         "@firebase/app-types": "^0.6.0",
         "@firebase/firestore": "^1.14.3",
         "@nrwl/react": "^9.5.1",
-        "ajv": "^6.12.2",
+        "ajv": "^6.12.3",
         "bootstrap": "^4.4.1",
         "clone": "^2.1.2",
         "core-js": "^3.6.5",
